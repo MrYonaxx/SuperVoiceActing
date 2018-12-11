@@ -29,6 +29,8 @@ namespace VoiceActing
         UnityEvent eventBoutonY;
         [SerializeField]
         UnityEvent eventBoutonB;
+        [SerializeField]
+        UnityEvent eventBoutonA;
 
         [Header("Joystick Left")]
         [SerializeField]
@@ -90,6 +92,10 @@ namespace VoiceActing
             if (Input.GetButtonDown("ControllerB"))
             {
                 eventBoutonB.Invoke();
+            }
+            if (Input.GetButtonDown("ControllerA"))
+            {
+                eventBoutonA.Invoke();
             }
         }
 

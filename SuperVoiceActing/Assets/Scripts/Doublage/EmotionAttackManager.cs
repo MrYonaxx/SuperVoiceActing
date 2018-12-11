@@ -13,6 +13,7 @@ namespace VoiceActing
 {
     public enum Emotion
     {
+        Neutre,
         Joie,
         Tristesse,
         Dégoût,
@@ -20,8 +21,7 @@ namespace VoiceActing
         Surprise,
         Douceur,
         Peur,
-        Confiance,
-        Neutre
+        Confiance
     }
 
     [System.Serializable]
@@ -174,6 +174,12 @@ namespace VoiceActing
         float transitionSpeed = 1.1f;
         [SerializeField]
         float transitionSpeedCardSelect = 1.1f;
+
+        [Header("Calculate Emotion Damage")]
+        [SerializeField]
+        TextPerformanceAppear textMesh;
+        [SerializeField]
+        EnemyManager enemyStat;
 
 
         private IEnumerator transitionCoroutine = null;
@@ -492,6 +498,21 @@ namespace VoiceActing
                 yield return null;
             }
             emotionCards[emotionIndex].Cards[deckCount].anchoredPosition = new Vector2(0, 0);
+        }
+
+
+
+        public void ResetCard()
+        {
+
+        }
+
+
+
+        public void Attack()
+        {
+            textMesh.ApplyDamage(enemyStat.DamagePhrase(comboEmotion, 0));
+
         }
 
         #endregion

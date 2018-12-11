@@ -2046,8 +2046,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222066015}
+  - component: {fileID: 222066016}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2066,6 +2067,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &222066016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 222066014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50ca0a2893df7046bc7edb515ebee45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyText: Ragab cette fois-ci tu ne t'en sortiras pas vivant
+  enemyHP: 10
+  enemyHPMax: 10
+  enemyResistance:
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  enemyWeakPoints: []
+  voiceActor: {fileID: 11400000, guid: 84efba9ed6c9cc14eb4078d6e6f711a1, type: 2}
 --- !u!1 &224177147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +3017,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1467141197}
+        m_MethodName: PanelHide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 344114724}
+        m_MethodName: PanelHide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventBoutonB:
@@ -3018,6 +3066,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventBoutonA:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventLeft:
@@ -3155,7 +3208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emotionCards:
-  - emotion: 0
+  - emotion: 1
     emotionCards: {fileID: 1326168762}
     cards:
     - {fileID: 1063504635}
@@ -3163,7 +3216,7 @@ MonoBehaviour:
     - {fileID: 846423105}
     transformRessource: {fileID: 1358136777}
     transformBattle: {fileID: 20465620}
-  - emotion: 1
+  - emotion: 2
     emotionCards: {fileID: 1667210380}
     cards:
     - {fileID: 381756116}
@@ -3171,7 +3224,7 @@ MonoBehaviour:
     - {fileID: 1767915891}
     transformRessource: {fileID: 1069228225}
     transformBattle: {fileID: 2034113409}
-  - emotion: 2
+  - emotion: 3
     emotionCards: {fileID: 924652409}
     cards:
     - {fileID: 1742954664}
@@ -3179,7 +3232,7 @@ MonoBehaviour:
     - {fileID: 1294627358}
     transformRessource: {fileID: 1089741528}
     transformBattle: {fileID: 63454769}
-  - emotion: 3
+  - emotion: 4
     emotionCards: {fileID: 625051044}
     cards:
     - {fileID: 1601432321}
@@ -3187,7 +3240,7 @@ MonoBehaviour:
     - {fileID: 383077072}
     transformRessource: {fileID: 1634398963}
     transformBattle: {fileID: 227471612}
-  - emotion: 4
+  - emotion: 5
     emotionCards: {fileID: 298190147}
     cards:
     - {fileID: 1653469418}
@@ -3195,7 +3248,7 @@ MonoBehaviour:
     - {fileID: 847766245}
     transformRessource: {fileID: 692234640}
     transformBattle: {fileID: 377549897}
-  - emotion: 5
+  - emotion: 6
     emotionCards: {fileID: 1702643974}
     cards:
     - {fileID: 233142998}
@@ -3203,7 +3256,7 @@ MonoBehaviour:
     - {fileID: 221053933}
     transformRessource: {fileID: 217908227}
     transformBattle: {fileID: 1573562943}
-  - emotion: 6
+  - emotion: 7
     emotionCards: {fileID: 1923501087}
     cards:
     - {fileID: 1695707023}
@@ -3211,7 +3264,7 @@ MonoBehaviour:
     - {fileID: 838435928}
     transformRessource: {fileID: 56825162}
     transformBattle: {fileID: 1157080415}
-  - emotion: 7
+  - emotion: 8
     emotionCards: {fileID: 539569020}
     cards:
     - {fileID: 738183789}
@@ -3235,6 +3288,8 @@ MonoBehaviour:
   comboMax: 1
   transitionSpeed: 1.1
   transitionSpeedCardSelect: 1.1
+  textMesh: {fileID: 506731760}
+  enemyStat: {fileID: 222066016}
 --- !u!4 &289565001
 Transform:
   m_ObjectHideFlags: 0
@@ -3430,6 +3485,7 @@ GameObject:
   - component: {fileID: 344114723}
   - component: {fileID: 344114726}
   - component: {fileID: 344114725}
+  - component: {fileID: 344114724}
   m_Layer: 5
   m_Name: PanelPlayer
   m_TagString: Untagged
@@ -3457,6 +3513,18 @@ RectTransform:
   m_AnchoredPosition: {x: -911, y: 261}
   m_SizeDelta: {x: 1280, y: 488}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &344114724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344114722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae75dff48cc02174586561ba37c7e6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraController: {fileID: 0}
 --- !u!114 &344114725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3828,6 +3896,44 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1467141197}
+        m_MethodName: PanelScroll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 344114724}
+        m_MethodName: PanelScroll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventBoutonA:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 289565000}
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -11586,6 +11692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467141196}
+  - component: {fileID: 1467141197}
   m_Layer: 5
   m_Name: Commande
   m_TagString: Untagged
@@ -11621,6 +11728,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1467141197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1467141195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae75dff48cc02174586561ba37c7e6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraController: {fileID: 0}
 --- !u!1 &1480377163
 GameObject:
   m_ObjectHideFlags: 0
