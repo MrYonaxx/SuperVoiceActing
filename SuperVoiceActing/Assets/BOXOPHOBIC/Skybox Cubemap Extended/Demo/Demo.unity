@@ -2943,6 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346e0055b5dce3942a5f1f34d71f25a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystickDeadZone: 0.9
   eventBoutonY:
     m_PersistentCalls:
       m_Calls:
@@ -2993,6 +2994,48 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventBoutonB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 506731760}
+        m_MethodName: ApplyDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 50
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 506731760}
+        m_MethodName: SelectWord
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventLeft:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventRight:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventDown:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -3177,10 +3220,10 @@ MonoBehaviour:
     transformRessource: {fileID: 997892167}
     transformBattle: {fileID: 867243660}
   deckEmotion:
-    joy: 1
-    sadness: 1
-    disgust: 1
-    anger: 1
+    joy: 3
+    sadness: 3
+    disgust: 3
+    anger: 3
     surprise: 0
     sweetness: 0
     fear: 0
@@ -3189,7 +3232,7 @@ MonoBehaviour:
   - {fileID: 102023606}
   - {fileID: 1879263794}
   - {fileID: 949651307}
-  comboMax: 3
+  comboMax: 1
   transitionSpeed: 1.1
   transitionSpeedCardSelect: 1.1
 --- !u!4 &289565001
@@ -3722,9 +3765,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346e0055b5dce3942a5f1f34d71f25a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystickDeadZone: 0.9
   eventBoutonY:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 289565000}
+        m_MethodName: RemoveCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventBoutonB:
@@ -3773,6 +3828,70 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 289565000}
+        m_MethodName: SelectCard
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tristesse
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 289565000}
+        m_MethodName: SelectCard
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Joie
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventRight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 289565000}
+        m_MethodName: SelectCard
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Col\xE8re"
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 289565000}
+        m_MethodName: SelectCard
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "D\xE9go\xFBt"
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

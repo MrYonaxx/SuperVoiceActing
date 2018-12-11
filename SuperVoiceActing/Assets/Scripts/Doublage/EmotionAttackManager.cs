@@ -157,7 +157,7 @@ namespace VoiceActing
 
         [Header("Deck")]
         [SerializeField]
-        DeckEmotion deckEmotion;
+        EmotionStat deckEmotion;
 
         [Header("Combo")]
         [SerializeField]
@@ -344,45 +344,58 @@ namespace VoiceActing
         {
             if (comboCount == comboMax)
                 return;
+            int deckCount = 0;
             switch(emotion)
             {
                 case Emotion.Joie:
                     if (deckEmotion.Joy == 0)
                         return;
+                    deckEmotion.Joy -= 1;
+                    deckCount = 2 - deckEmotion.Joy;
                     break;
                 case Emotion.Tristesse:
                     if (deckEmotion.Sadness == 0)
                         return;
+                    deckEmotion.Sadness -= 1;
+                    deckCount = 2 - deckEmotion.Sadness;
                     break;
                 case Emotion.Dégoût:
                     if (deckEmotion.Disgust == 0)
                         return;
+                    deckEmotion.Disgust -= 1;
+                    deckCount = 2 - deckEmotion.Disgust;
                     break;
                 case Emotion.Colère:
                     if (deckEmotion.Anger == 0)
                         return;
+                    deckEmotion.Anger -= 1;
+                    deckCount = 2 - deckEmotion.Anger;
                     break;
                 case Emotion.Surprise:
                     if (deckEmotion.Surprise == 0)
                         return;
+                    deckEmotion.Surprise -= 1;
                     break;
                 case Emotion.Douceur:
                     if (deckEmotion.Sweetness == 0)
                         return;
+                    deckEmotion.Sweetness -= 1;
                     break;
                 case Emotion.Peur:
                     if (deckEmotion.Fear == 0)
                         return;
+                    deckEmotion.Fear -= 1;
                     break;
                 case Emotion.Confiance:
                     if (deckEmotion.Trust == 0)
                         return;
+                    deckEmotion.Trust -= 1;
                     break;
             }
-            PlaceCard(emotion);
+            PlaceCard(emotion, deckCount);
         }
 
-        private void PlaceCard(Emotion emotion)
+        private void PlaceCard(Emotion emotion, int deckCount)
         {
             comboEmotion[comboCount] = emotion;
             comboCount += 1;
@@ -390,24 +403,24 @@ namespace VoiceActing
             {
                 if (emotionCards[i].Emotion == emotion)
                 {
-                    StartCoroutine(ChangeTransformCoroutine(i, comboCount-1));
+                    StartCoroutine(ChangeTransformCoroutine(i, comboCount-1, deckCount));
                     break;
                 }
             }
         }
 
-        private IEnumerator ChangeTransformCoroutine(int emotionIndex, int combo)
+        private IEnumerator ChangeTransformCoroutine(int emotionIndex, int combo, int deckCount)
         {
-            emotionCards[emotionIndex].Cards[combo].SetParent(comboSlot[combo]);
+            emotionCards[emotionIndex].Cards[deckCount].SetParent(comboSlot[combo]);
 
             int time = 60;
             while (time > 0)
             {
-                emotionCards[emotionIndex].Cards[combo].anchoredPosition /= transitionSpeedCardSelect;
+                emotionCards[emotionIndex].Cards[deckCount].anchoredPosition /= transitionSpeedCardSelect;
                 time -= 1;
                 yield return null;
             }
-            emotionCards[emotionIndex].Cards[combo].anchoredPosition = new Vector2(0, 0);
+            emotionCards[emotionIndex].Cards[deckCount].anchoredPosition = new Vector2(0, 0);
         }
 
 
@@ -415,8 +428,70 @@ namespace VoiceActing
 
         public void RemoveCard()
         {
-
+            if (comboCount == 0)
+                return;
             comboCount -= 1;
+            int deckCount = 0;
+            switch (comboEmotion[comboCount])
+            {
+                case Emotion.Joie:
+                    deckEmotion.Joy += 1;
+                    deckCount = deckEmotion.Joy;
+                    break;
+                case Emotion.Tristesse:
+                    deckEmotion.Sadness += 1;
+                    deckCount = deckEmotion.Sadness;
+                    break;
+                case Emotion.Dégoût:
+                    deckEmotion.Disgust += 1;
+                    deckCount = deckEmotion.Disgust;
+                    break;
+                case Emotion.Colère:
+                    deckEmotion.Anger += 1;
+                    deckCount = deckEmotion.Anger;
+                    break;
+                case Emotion.Surprise:
+                    deckEmotion.Surprise += 1;
+                    deckCount = deckEmotion.Surprise;
+                    break;
+                case Emotion.Douceur:
+                    deckEmotion.Sweetness += 1;
+                    deckCount = deckEmotion.Sweetness;
+                    break;
+                case Emotion.Peur:
+                    deckEmotion.Fear += 1;
+                    deckCount = deckEmotion.Fear;
+                    break;
+                case Emotion.Confiance:
+                    deckEmotion.Trust += 1;
+                    deckCount = deckEmotion.Trust;
+                    break;
+            }
+
+            for (int i = 0; i < emotionCards.Length; i++)
+            {
+                if (emotionCards[i].Emotion == comboEmotion[comboCount])
+                {
+                    StartCoroutine(ResetTransformCoroutine(i, 2-(deckCount-1)));
+                    break;
+                }
+            }
+            comboEmotion[comboCount] = Emotion.Neutre;
+        }
+
+
+        private IEnumerator ResetTransformCoroutine(int emotionIndex, int deckCount)
+        {
+            emotionCards[emotionIndex].Cards[deckCount].SetParent(emotionCards[emotionIndex].EmotionCards);
+
+            int time = 60;
+            while (time > 0)
+            {
+                emotionCards[emotionIndex].Cards[deckCount].anchoredPosition /= transitionSpeedCardSelect;
+                time -= 1;
+                yield return null;
+            }
+            emotionCards[emotionIndex].Cards[deckCount].anchoredPosition = new Vector2(0, 0);
         }
 
         #endregion
