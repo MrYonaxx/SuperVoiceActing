@@ -511,7 +511,7 @@ namespace VoiceActing
 
         public void Attack()
         {
-            textMesh.ApplyDamage(enemyStat.DamagePhrase(comboEmotion, 0));
+            textMesh.ExplodeLetter(enemyStat.DamagePhrase(comboEmotion, 0));
 
         }
 

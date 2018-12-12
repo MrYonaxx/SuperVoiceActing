@@ -52,6 +52,8 @@ namespace VoiceActing
 
         VertexAnim[] vertexAnim = new VertexAnim[1024];
 
+        private IEnumerator coroutine = null;
+
         #endregion
 
         #region GettersSetters 
@@ -84,7 +86,8 @@ namespace VoiceActing
 
         void Start()
         {
-            StartCoroutine(AnimateVertexColors());
+            coroutine = AnimateVertexColors();
+            StartCoroutine(coroutine);
         }
 
 
@@ -168,8 +171,8 @@ namespace VoiceActing
 
         public void ApplyDamage(float percentage)
         {
-            float damage = (textMeshPro.textInfo.characterCount-1) * (percentage / 100);
-            for(int i = 0; i < textMeshPro.textInfo.characterCount-1; i++)
+            float damage = (textMeshPro.textInfo.characterCount) * (percentage / 100);
+            for(int i = 0; i < textMeshPro.textInfo.characterCount; i++)
             {
                 if(i < damage)
                     vertexAnim[i].damage = true;
@@ -378,8 +381,82 @@ namespace VoiceActing
             }
         }
 
-        #endregion
+        public void ExplodeLetter(float damage)
+        {
+            StopCoroutine(coroutine);
+            coroutine = ExplosionVertex(damage);
+            StartCoroutine(coroutine);
+        }
 
-    } // TextPerformanceAppear class
+        IEnumerator ExplosionVertex(float damage)
+        {
+            TMP_TextInfo textInfo = textMeshPro.textInfo;
+            Matrix4x4 matrix;
+            TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
+
+            float[] randomParameter = new float[characterCount];
+            for (int i = 0; i < characterCount; i++)
+            {
+                randomParameter[i] = Random.Range(0.01f, 0.2f);
+
+            }
+            
+            float coef = 0;
+            float time = 60;
+            while (time != 0)
+            {
+
+                for (int i = 0; i < characterCount; i++)
+                {
+                    TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
+                    int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+                    int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+
+                    Vector3[] sourceVertices = cachedMeshInfo[materialIndex].vertices;
+                    Vector2 charMidBasline = (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
+                    Vector3 offset = charMidBasline;
+                    offset *= randomParameter[i] + (coef);
+
+
+                    Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
+
+                    /*destinationVertices[vertexIndex + 0] = sourceVertices[vertexIndex + 0] - offset;
+                    destinationVertices[vertexIndex + 1] = sourceVertices[vertexIndex + 1] - offset;
+                    destinationVertices[vertexIndex + 2] = sourceVertices[vertexIndex + 2] - offset;
+                    destinationVertices[vertexIndex + 3] = sourceVertices[vertexIndex + 3] - offset;
+
+                    Vector3 position = new Vector3(0, 0.1f, 0);
+                    matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one);
+
+                    destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
+                    destinationVertices[vertexIndex + 1] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
+                    destinationVertices[vertexIndex + 2] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 2]);
+                    destinationVertices[vertexIndex + 3] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);*/
+
+                    destinationVertices[vertexIndex + 0] += offset;
+                    destinationVertices[vertexIndex + 1] += offset;
+                    destinationVertices[vertexIndex + 2] += offset;
+                    destinationVertices[vertexIndex + 3] += offset;
+
+                }
+                coef += 0.01f;
+                // Push changes into meshes
+                for (int i = 0; i < textInfo.meshInfo.Length; i++)
+                {
+                    textInfo.meshInfo[i].mesh.vertices = textInfo.meshInfo[i].vertices;
+                    textMeshPro.UpdateGeometry(textInfo.meshInfo[i].mesh, i);
+                }
+                time -= 1;
+                yield return null;
+            }
+            coroutine = AnimateVertexColors();
+            StartCoroutine(coroutine);
+            ApplyDamage(damage);
+
+        }
+
+            #endregion
+
+        } // TextPerformanceAppear class
 
 } // #PROJECTNAME# namespace

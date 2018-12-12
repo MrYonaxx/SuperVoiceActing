@@ -28,6 +28,8 @@ namespace VoiceActing
         [SerializeField]
         Transform initialPosition;
         [SerializeField]
+        Transform notQuitePosition;
+        [SerializeField]
         float offsetZ = 0;
         [SerializeField]
         float offsetX = 0;
@@ -40,6 +42,9 @@ namespace VoiceActing
         bool rotating = false;
 
         float offset = 0;
+
+        private IEnumerator movementCoroutine;
+        private IEnumerator rotatingCoroutine;
 
         #endregion
 
@@ -216,7 +221,8 @@ namespace VoiceActing
 
         public void MoveCamera(float x, float y, float z, float time)
         {
-            StartCoroutine(MoveCameraCoroutine(x, y, z, time));
+            movementCoroutine = MoveCameraCoroutine(x, y, z, time);
+            StartCoroutine(movementCoroutine);
         }
 
         private IEnumerator MoveCameraCoroutine(float x, float y, float z, float time)
@@ -240,7 +246,8 @@ namespace VoiceActing
         // Note : ne pas mettre d'angle négatif
         public void RotateCamera(float x, float y, float z, float time)
         {
-            StartCoroutine(RotateCameraCoroutine(x, y, z, time));
+            rotatingCoroutine = RotateCameraCoroutine(x, y, z, time);
+            StartCoroutine(rotatingCoroutine);
         }
 
         private IEnumerator RotateCameraCoroutine(float x, float y, float z, float time)
@@ -288,6 +295,19 @@ namespace VoiceActing
         }
 
 
+
+        public void NotQuite()
+        {
+            SetText(-6, 2.7f, 0);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if(rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+            SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
+            SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
+            MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 120);
+            RotateCamera(0, 90, 0, 120);
+        }
 
 
         #endregion
