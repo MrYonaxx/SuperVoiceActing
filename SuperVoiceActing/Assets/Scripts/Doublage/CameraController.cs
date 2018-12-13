@@ -82,7 +82,7 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 120);
+            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
             //RotateCamera(0f, 45f, 0f, 600f);
         }
         
