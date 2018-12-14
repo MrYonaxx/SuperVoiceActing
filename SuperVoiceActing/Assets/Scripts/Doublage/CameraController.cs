@@ -352,8 +352,8 @@ namespace VoiceActing
         [ContextMenu("ingeson3")]
         public void IngeSon3()
         {
-            StartCoroutine(ChangeCameraRect(0.8f,0,60));
-            //RotateCamera(0, 90, 0, 120);
+            StartCoroutine(ChangeCameraRect(0.5f,0,60));
+            //RotateCamera(0, 90, 0, 120)
         }
 
         [ContextMenu("ingeson3-cancel")]
