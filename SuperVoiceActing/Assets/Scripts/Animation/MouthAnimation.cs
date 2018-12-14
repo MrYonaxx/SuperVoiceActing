@@ -23,6 +23,9 @@ public class MouthAnimation : MonoBehaviour
     [SerializeField]
 	Sprite[] mouthmovement;
 
+    [SerializeField]
+    FeedbackSon soundVisualizer;
+
 
     IEnumerator mouthCoroutine = null;
 
@@ -46,6 +49,7 @@ public class MouthAnimation : MonoBehaviour
         if (mouthCoroutine != null)
             StopCoroutine(mouthCoroutine);
         spriteRenderer.sprite = mouthmovement[0];
+        soundVisualizer.StopVisualizer();
     }
 
     private IEnumerator MouthAnim()
@@ -63,6 +67,7 @@ public class MouthAnimation : MonoBehaviour
                     i = 0;
                 changeMouthSprite(i);
                 speed = speedMouth;
+                soundVisualizer.SetVisualizer();
             }
         }
     }

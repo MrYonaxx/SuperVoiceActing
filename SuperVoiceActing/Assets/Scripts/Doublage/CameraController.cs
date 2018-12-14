@@ -30,6 +30,8 @@ namespace VoiceActing
         [SerializeField]
         Transform notQuitePosition;
         [SerializeField]
+        Transform ingeSonPosition;
+        [SerializeField]
         float offsetZ = 0;
         [SerializeField]
         float offsetX = 0;
@@ -40,6 +42,7 @@ namespace VoiceActing
 
         bool moving = false;
         bool rotating = false;
+        bool noCameraEffect = false;
 
         float offset = 0;
 
@@ -83,7 +86,6 @@ namespace VoiceActing
         protected virtual void Start()
         {
             MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
-            //RotateCamera(0f, 45f, 0f, 600f);
         }
         
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +94,11 @@ namespace VoiceActing
         /// </summary>
         protected void Update()
         {
-            if(moving == false && rotating == false)
+            if (noCameraEffect == true)
+            {
+                return;
+            }
+            if (moving == false && rotating == false)
             {
                 InitializeCameraEffect();
             }
@@ -309,6 +315,73 @@ namespace VoiceActing
             RotateCamera(0, 90, 0, 120);
         }
 
+        public void IngeSon()
+        {
+            SetText(-6, 2.7f, 0);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            noCameraEffect = true;
+            //SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
+            SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
+            MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 20);
+            MoveCamera(this.transform.position.x - 1, ingeSonPosition.position.y, ingeSonPosition.position.z, 5000);
+            //RotateCamera(0, 90, 0, 120);
+        }
+
+        [ContextMenu("ingeson2")]
+        public void IngeSon2()
+        {
+            SetText(-6, 2.7f, 0);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            noCameraEffect = true;
+            SetCamera(ingeSonPosition.position.x, ingeSonPosition.position.y+ 2, ingeSonPosition.position.z);
+            SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
+            MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 40);
+            MoveCamera(ingeSonPosition.position.x, this.transform.position.y - 1, ingeSonPosition.position.z, 5000);
+            //RotateCamera(0, 90, 0, 120);
+        }
+
+
+        [ContextMenu("ingeson3")]
+        public void IngeSon3()
+        {
+            StartCoroutine(ChangeCameraRect(0.8f,0,60));
+            //RotateCamera(0, 90, 0, 120);
+        }
+
+        [ContextMenu("ingeson3-cancel")]
+        public void IngeSon4()
+        {
+            StartCoroutine(ChangeCameraRect(0, 0, 60));
+            //RotateCamera(0, 90, 0, 120);
+        }
+
+
+        private IEnumerator ChangeCameraRect(float x, float y, float time)
+        {
+            float speedX = (x - camera.rect.x) / time;
+            float speedY = (y - camera.rect.y) / time;
+            Rect rect = camera.rect;
+            while (time != 0)
+            {
+                rect.x += speedX;
+                rect.width -= speedX;
+                //camera.rect.Set(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
+                //camera.Render();
+                camera.rect = rect;// new Rect(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
+                time -= 1;
+                yield return null;
+            }
+            camera.rect = new Rect(x, 0, 1 - x, 1);
+            //orthographicCoroutine = null;
+        }
 
         #endregion
 
