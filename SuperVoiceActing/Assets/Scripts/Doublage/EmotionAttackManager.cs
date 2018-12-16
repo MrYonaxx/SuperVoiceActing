@@ -175,11 +175,11 @@ namespace VoiceActing
         [SerializeField]
         float transitionSpeedCardSelect = 1.1f;
 
-        [Header("Calculate Emotion Damage")]
+        /*[Header("Calculate Emotion Damage")]
         [SerializeField]
         TextPerformanceAppear textMesh;
         [SerializeField]
-        EnemyManager enemyStat;
+        EnemyManager enemyStat;*/
 
 
         private IEnumerator transitionCoroutine = null;
@@ -192,6 +192,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public Emotion[] GetComboEmotion()
+        {
+            return comboEmotion;
+        }
 
         #endregion
 
@@ -509,11 +513,7 @@ namespace VoiceActing
 
 
 
-        public void Attack()
-        {
-            textMesh.ExplodeLetter(enemyStat.DamagePhrase(comboEmotion, 0));
 
-        }
 
         #endregion
 

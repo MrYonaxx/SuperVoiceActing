@@ -51,6 +51,12 @@ namespace VoiceActing
         int characterCount = 0;
 
         VertexAnim[] vertexAnim = new VertexAnim[1024];
+        TMP_MeshInfo[] cachedMeshInfo;
+
+        float size = 0;
+        float sizeRatio = 0;
+
+        int wordSelected = -1;
 
         private IEnumerator coroutine = null;
 
@@ -88,6 +94,11 @@ namespace VoiceActing
         {
             coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
+        }
+
+        public int GetWordSelected()
+        {
+            return wordSelected;
         }
 
 
@@ -182,15 +193,61 @@ namespace VoiceActing
             ReprintText();
         }
 
+        [ContextMenu("a")]
+        public void SelectWord()
+        {
+            SelectWord(5);
+        }
+
+        public void SelectWordLeft()
+        {
+            wordSelected -= 1;
+            if (wordSelected == -2)
+            {
+                wordSelected = textMeshPro.textInfo.wordCount - 1;
+            }
+            SelectWord(wordSelected);
+        }
+
+        public void SelectWordRight()
+        {
+            wordSelected += 1;
+            if (wordSelected == textMeshPro.textInfo.wordCount + 1)
+            {
+                wordSelected = 0;
+            }
+            SelectWord(wordSelected);
+        }
+
         public void SelectWord(int wordSelected)
         {
-            int firstCharacter = textMeshPro.textInfo.wordInfo[wordSelected].firstCharacterIndex;
-            for (int i = firstCharacter; i < textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex+1; i++)
+            if(wordSelected < 0 || wordSelected >= textMeshPro.textInfo.wordCount)
             {
-                vertexAnim[i].damage = true;
-                vertexAnim[i].alpha = 254;
+                for (int i = 0; i < textMeshPro.textInfo.characterCount; i++)
+                {
+                    vertexAnim[i].selected = false;
+                }
+                return;
             }
-            //ReprintText();
+            int firstCharacter = textMeshPro.textInfo.wordInfo[wordSelected].firstCharacterIndex;
+            int lastCharacter = textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex;
+            /*for (int i = firstCharacter; i < textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex+1; i++)
+            {
+                //textMeshPro.fontStyle = FontStyles.Italic;
+                //textMeshPro.text[i] = textMeshPro.text[i].
+                //textMeshPro.textInfo.characterInfo[i].style = FontStyles.UpperCase;
+                vertexAnim[i].selected = true;
+                vertexAnim[i].alpha = 254;
+            }*/
+            for (int i = 0; i < textMeshPro.textInfo.characterCount; i++)
+            {
+                if (i < firstCharacter || lastCharacter < i)
+                    vertexAnim[i].selected = false;
+                else
+                    vertexAnim[i].selected = true;
+            }
+            //textMeshPro.ForceMeshUpdate();
+            //hasTextChanged = true;
         }
 
 
@@ -220,7 +277,7 @@ namespace VoiceActing
             }
 
             // Cache the vertex data of the text object as the Jitter FX is applied to the original position of the characters.
-            TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
+            cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
             characterCount = 1;
             Color32[] newVertexColors;
 
@@ -253,17 +310,19 @@ namespace VoiceActing
                 if (hasTextChanged)
                 {
                     // Update the copy of the vertex data for the text object.
+                    textInfo = textMeshPro.textInfo;
                     cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
-
                     hasTextChanged = false;
                 }
 
-
-                actualTime += 1;
                 if (actualTime == letterInterval && characterCount < textInfo.characterCount)
                 {
                     characterCount += 1;
                     actualTime = 0;
+                }
+                else if (characterCount < textInfo.characterCount)
+                {
+                    actualTime += 1;
                 }
 
                 if(characterCount == textInfo.characterCount)
@@ -278,7 +337,16 @@ namespace VoiceActing
                     continue;
                 }
 
+                if (size <= 0.15f)
+                {
+                    sizeRatio = 1;
+                }
+                else if (size >= 0.25f)
+                {
+                    sizeRatio = -1;
+                }
 
+                size += 0.01f * sizeRatio;
                 // =======================================================
 
                 for (int i = 0; i < characterCount; i++)
@@ -323,7 +391,15 @@ namespace VoiceActing
                     //Vector3 jitterOffset = new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
 
                     Vector3 position = new Vector3(0, vertAnim.offset, 0);
-                    matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one);
+                    if(vertexAnim[i].selected == true)
+                    {
+
+                        matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one + new Vector3(size, size, size));
+                    }
+                    else
+                    {
+                        matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one);
+                    }
 
                     vertAnim.offset *= letterCurveSpeed;
 
@@ -380,6 +456,15 @@ namespace VoiceActing
                 yield return null;//new WaitForSeconds(0.1f);
             }
         }
+
+
+
+
+
+
+
+
+
 
         public void ExplodeLetter(float damage)
         {

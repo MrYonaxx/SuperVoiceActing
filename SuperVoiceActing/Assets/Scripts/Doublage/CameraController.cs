@@ -300,7 +300,7 @@ namespace VoiceActing
             //orthographicCoroutine = null;
         }
 
-
+        // Placeholders ==================================================================
 
         public void NotQuite()
         {
@@ -317,7 +317,7 @@ namespace VoiceActing
 
         public void IngeSon()
         {
-            SetText(-6, 2.7f, 0);
+            SetText(-7.2f, 2.4f, 0.4f);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
@@ -334,17 +334,52 @@ namespace VoiceActing
         [ContextMenu("ingeson2")]
         public void IngeSon2()
         {
-            SetText(-6, 2.7f, 0);
+            SetText(-7.2f, 2.4f, 0.4f);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
                 StopCoroutine(rotatingCoroutine);
 
             noCameraEffect = true;
-            SetCamera(ingeSonPosition.position.x, ingeSonPosition.position.y+ 2, ingeSonPosition.position.z);
+            SetCamera(ingeSonPosition.position.x, ingeSonPosition.position.y + 0.6f, ingeSonPosition.position.z);
             SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
             MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 40);
-            MoveCamera(ingeSonPosition.position.x, this.transform.position.y - 1, ingeSonPosition.position.z, 5000);
+            MoveCamera(ingeSonPosition.position.x, this.transform.position.y - 0.1f, ingeSonPosition.position.z, 1000);
+            //RotateCamera(0, 90, 0, 120);
+        }
+
+        [ContextMenu("ingeson2")]
+        public void IngeSon2bis()
+        {
+            //SetText(-7.2f, 2.4f, 0.4f);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            noCameraEffect = true;
+            SetCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z);
+            SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
+            MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 40);
+            MoveCamera(ingeSonPosition.position.x, this.transform.position.y - 0.1f, ingeSonPosition.position.z, 1000);
+            //RotateCamera(0, 90, 0, 120);
+        }
+
+        public void IngeSon2Cancel()
+        {
+            SetText(-6, 2.7f, 0);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            noCameraEffect = false;
+            rotating = false;
+            moving = false;
+            //SetCamera(ingeSonPosition.position.x, ingeSonPosition.position.y + 2, ingeSonPosition.position.z);
+            //SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
+            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 40);
+            //MoveCamera(ingeSonPosition.position.x, this.transform.position.y - 0.1f, ingeSonPosition.position.z, 1000);
             //RotateCamera(0, 90, 0, 120);
         }
 
@@ -352,17 +387,23 @@ namespace VoiceActing
         [ContextMenu("ingeson3")]
         public void IngeSon3()
         {
-            StartCoroutine(ChangeCameraRect(0.5f,0,60));
-            //RotateCamera(0, 90, 0, 120)
+            StartCoroutine(ChangeCameraRect(0.5f,0,30));
+            
         }
 
         [ContextMenu("ingeson3-cancel")]
-        public void IngeSon4()
+        public void IngeSon3Cancel()
         {
-            StartCoroutine(ChangeCameraRect(0, 0, 60));
+            StartCoroutine(ChangeCameraRect(0, 0, 30));
             //RotateCamera(0, 90, 0, 120);
         }
 
+
+        public void IngeSon4()
+        {
+            StartCoroutine(ChangeCameraRect2(0.5f, 0, 30));
+
+        }
 
         private IEnumerator ChangeCameraRect(float x, float y, float time)
         {
@@ -372,6 +413,25 @@ namespace VoiceActing
             while (time != 0)
             {
                 rect.x += speedX;
+                rect.width -= speedX;
+                //camera.rect.Set(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
+                //camera.Render();
+                camera.rect = rect;// new Rect(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
+                time -= 1;
+                yield return null;
+            }
+            camera.rect = new Rect(x, 0, 1 - x, 1);
+            //orthographicCoroutine = null;
+        }
+
+        private IEnumerator ChangeCameraRect2(float x, float y, float time)
+        {
+            float speedX = (x - camera.rect.x) / time;
+            //float speedY = (y - camera.rect.y) / time;
+            Rect rect = camera.rect;
+            while (time != 0)
+            {
+                //rect.x += speedX;
                 rect.width -= speedX;
                 //camera.rect.Set(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
                 //camera.Render();

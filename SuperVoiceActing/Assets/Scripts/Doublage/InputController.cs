@@ -28,32 +28,47 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent eventBoutonY;
         [SerializeField]
+        UnityEvent eventBoutonX;
+        [SerializeField]
         UnityEvent eventBoutonB;
         [SerializeField]
         UnityEvent eventBoutonA;
 
+        [Header("Buttons")]
+        [SerializeField]
+        UnityEvent eventButtonR1;
+        [SerializeField]
+        UnityEvent eventButtonL1;
+        [SerializeField]
+        UnityEvent eventButtonR2;
+        [SerializeField]
+        UnityEvent eventButtonL2;
+
         [Header("Joystick Left")]
         [SerializeField]
-        UnityEvent eventLeft;
+        UnityEvent eventLeftLeft;
         [SerializeField]
-        UnityEvent eventUp;
+        UnityEvent eventLeftUp;
         [SerializeField]
-        UnityEvent eventRight;
+        UnityEvent eventLeftRight;
         [SerializeField]
-        UnityEvent eventDown;
+        UnityEvent eventLeftDown;
 
-        //[Header("Joystick Right")]
-        /*[SerializeField]
-        UnityEvent eventLeft;
+        [Header("Joystick Right")]
         [SerializeField]
-        UnityEvent eventUp;
+        UnityEvent eventRightLeft;
         [SerializeField]
-        UnityEvent eventRight;
+        UnityEvent eventRightUp;
         [SerializeField]
-        UnityEvent eventDown;*/
+        UnityEvent eventRightRight;
+        [SerializeField]
+        UnityEvent eventRightDown;
 
 
-        bool inputEnter = false;
+        bool inputLeftStickEnter = false;
+        bool inputRightStickEnter = false;
+        bool inputRightTrigger = false;
+        bool inputLeftTrigger = false;
 
         #endregion
 
@@ -80,7 +95,9 @@ namespace VoiceActing
         protected void Update()
         {
             CheckInput();
-            CheckDirection();
+            CheckTrigger();
+            CheckLeftDirection();
+            CheckRightDirection();
         }
 
         private void CheckInput()
@@ -88,6 +105,10 @@ namespace VoiceActing
             if(Input.GetButtonDown("ControllerY"))
             {
                 eventBoutonY.Invoke();
+            }
+            if (Input.GetButtonDown("ControllerX"))
+            {
+                eventBoutonX.Invoke();
             }
             if (Input.GetButtonDown("ControllerB"))
             {
@@ -99,36 +120,102 @@ namespace VoiceActing
             }
         }
 
-        private void CheckDirection()
+        private void CheckTrigger()
         {
-            if(inputEnter == true)
+            if (Input.GetButtonDown("ControllerR1"))
             {
-                if (Mathf.Abs(Input.GetAxis("ControllerHorizontal")) < joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerVertical")) < joystickDeadZone)
-                    inputEnter = false;
+                eventButtonR1.Invoke();
+            }
+            if (Input.GetButtonDown("ControllerL1"))
+            {
+                eventButtonL1.Invoke();
+            }
+
+            if (Input.GetAxis("ControllerTriggers") < -0.8f && inputRightTrigger == false)
+            {
+                inputRightTrigger = true;
+                eventButtonR2.Invoke();
+            }
+            else if (Input.GetAxis("ControllerTriggers") >= -0.8f)
+            {
+                inputRightTrigger = false;
+            }
+
+            if (Input.GetAxis("ControllerTriggers") > 0.8f && inputLeftTrigger == false)
+            {
+                inputLeftTrigger = true;
+                eventButtonL2.Invoke();
+            }
+            else if (Input.GetAxis("ControllerTriggers") <= 0.8f)
+            {
+                inputLeftTrigger = false;
+            }
+        }
+
+        private void CheckLeftDirection()
+        {
+            if(inputLeftStickEnter == true)
+            {
+                if (Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
+                    inputLeftStickEnter = false;
                 else
                     return;
 
             }
 
-            if(Input.GetAxis("ControllerHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerVertical")) < joystickDeadZone)
+            if(Input.GetAxis("ControllerLeftHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
             {
-                eventRight.Invoke();
-                inputEnter = true;
+                eventLeftRight.Invoke();
+                inputLeftStickEnter = true;
             }
-            else if (Input.GetAxis("ControllerHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerVertical")) < joystickDeadZone)
+            else if (Input.GetAxis("ControllerLeftHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
             {
-                eventLeft.Invoke();
-                inputEnter = true;
+                eventLeftLeft.Invoke();
+                inputLeftStickEnter = true;
             }
-            else if (Input.GetAxis("ControllerVertical") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerHorizontal")) < joystickDeadZone)
+            else if (Input.GetAxis("ControllerLeftVertical") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone)
             {
-                eventUp.Invoke();
-                inputEnter = true;
+                eventLeftUp.Invoke();
+                inputLeftStickEnter = true;
             }
-            else if (Input.GetAxis("ControllerVertical") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerHorizontal")) < joystickDeadZone)
+            else if (Input.GetAxis("ControllerLeftVertical") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone)
             {
-                eventDown.Invoke();
-                inputEnter = true;
+                eventLeftDown.Invoke();
+                inputLeftStickEnter = true;
+            }
+        }
+
+
+        private void CheckRightDirection()
+        {
+            if (inputRightStickEnter == true)
+            {
+                if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) < joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
+                    inputRightStickEnter = false;
+                else
+                    return;
+
+            }
+
+            if (Input.GetAxis("ControllerRightHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
+            {
+                eventRightRight.Invoke();
+                inputRightStickEnter = true;
+            }
+            else if (Input.GetAxis("ControllerRightHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
+            {
+                eventRightLeft.Invoke();
+                inputRightStickEnter = true;
+            }
+            else if (Input.GetAxis("ControllerRightVertical") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) < joystickDeadZone)
+            {
+                eventRightUp.Invoke();
+                inputRightStickEnter = true;
+            }
+            else if (Input.GetAxis("ControllerRightVertical") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) < joystickDeadZone)
+            {
+                eventRightDown.Invoke();
+                inputRightStickEnter = true;
             }
         }
 
