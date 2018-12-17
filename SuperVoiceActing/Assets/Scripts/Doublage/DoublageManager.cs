@@ -68,7 +68,7 @@ namespace VoiceActing
         private void IntroductionSequence()
         {
             //
-            emotionAttackManager.SwitchCardTransformToBattle();
+            emotionAttackManager.SwitchCardTransformIntro();
             inputController.enabled = true;
         }
 
