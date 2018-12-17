@@ -317,7 +317,8 @@ namespace VoiceActing
 
         public void IngeSon()
         {
-            SetText(-7.2f, 2.4f, 0.4f);
+            StartCoroutine(MoveTextCoroutine(-7.2f, 2.4f, 0.4f, 20));
+            //SetText(-7.2f, 2.4f, 0.4f);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
@@ -329,6 +330,20 @@ namespace VoiceActing
             MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 20);
             MoveCamera(this.transform.position.x - 1, ingeSonPosition.position.y, ingeSonPosition.position.z, 5000);
             //RotateCamera(0, 90, 0, 120);
+        }
+
+        private IEnumerator MoveTextCoroutine(float x, float y, float z, float time)
+        {
+            float speedX = (x - text.position.x) / time;
+            float speedY = (y - text.position.y) / time;
+            float speedZ = (z - text.position.z + offset) / time;
+            while (time != 0)
+            {
+                text.position += new Vector3(speedX, speedY, speedZ);
+                time -= 1;
+                yield return null;
+            }
+            text.position = new Vector3(x, y, z + offset);
         }
 
         [ContextMenu("ingeson2")]
@@ -367,7 +382,8 @@ namespace VoiceActing
 
         public void IngeSon2Cancel()
         {
-            SetText(-6, 2.7f, 0);
+            //SetText(-6, 2.7f, 0);
+            StartCoroutine(MoveTextCoroutine(-6, 2.7f, 0, 40));
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
