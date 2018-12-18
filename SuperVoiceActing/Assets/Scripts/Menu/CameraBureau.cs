@@ -181,6 +181,7 @@ namespace VoiceActing
 
         public void MoveToCamera()
         {
+            transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-4f, 4f));
             this.transform.SetParent(transforms[position]);
 
             if (coroutine != null)
@@ -235,7 +236,29 @@ namespace VoiceActing
                 {
                     angleY = 0;
                 }
-                this.transform.localEulerAngles += new Vector3(angleX, angleY, 0);
+
+
+                float angleZ = this.transform.localEulerAngles.z;
+                if (angleZ > 1 && angleZ < 359)
+                {
+                    float ratioZ = 0;
+                    if (angleZ > 180)
+                    {
+                        angleZ = 360 - angleZ;
+                        ratioZ = angleZ * speedCoroutine;
+                        angleZ = ratioZ - angleZ;
+                    }
+                    else
+                    {
+                        ratioZ = angleZ - (angleZ / speedCoroutine);
+                        angleZ = -ratioZ;
+                    }
+                }
+                else
+                {
+                    angleZ = 0;
+                }
+                this.transform.localEulerAngles += new Vector3(angleX, angleY, angleZ);
 
                 //this.transform.localEulerAngles /= speedCoroutine;
                 this.transform.localPosition /= speedCoroutine;
