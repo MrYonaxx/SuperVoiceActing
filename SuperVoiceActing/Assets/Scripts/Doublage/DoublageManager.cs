@@ -62,12 +62,13 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            IntroductionSequence();
+            StartCoroutine(IntroductionSequence());
         }
         
-        private void IntroductionSequence()
+        private IEnumerator IntroductionSequence()
         {
             //
+            yield return null;
             emotionAttackManager.SwitchCardTransformIntro();
             inputController.enabled = true;
         }
