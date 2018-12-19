@@ -30,6 +30,9 @@ namespace VoiceActing
 
         [SerializeField]
         Transform[] transforms;
+
+        [SerializeField]
+        Animator animatorHUD;
         /*[TableMatrix(HorizontalTitle = "X axis", VerticalTitle = "Y axis")]
         Transform[,] transforms;*/
 
@@ -83,9 +86,15 @@ namespace VoiceActing
             if (Input.GetAxis("ControllerTriggers") > 0.8f && inputLeftTrigger == false)
             {
                 if (camera.fieldOfView == 70)
+                {
+                    animatorHUD.SetTrigger("Hide");
                     ChangeOrthographicSize(-30);
+                }
                 else
+                {
+                    animatorHUD.SetTrigger("Show");
                     ChangeOrthographicSize(0);
+                }
 
                 inputLeftTrigger = true;
             }
@@ -98,11 +107,17 @@ namespace VoiceActing
             // Free Camera
             if (Input.GetAxis("ControllerTriggers") < -0.8f)
             {
+                if (freeCameraOn == false && camera.fieldOfView == 70)
+                {
+                    animatorHUD.SetTrigger("Hide");
+                }
                 FreeCamera();
                 return;
             }
             else if (freeCameraOn == true)
             {
+                if(camera.fieldOfView == 70)
+                    animatorHUD.SetTrigger("Show");
                 freeCameraOn = false;
                 MoveToCamera();
                 inputRightStickEnter = true;
@@ -193,7 +208,7 @@ namespace VoiceActing
 
         private IEnumerator MoveToOrigin(float speedCoroutine)
         {
-            while (this.transform.localPosition != Vector3.zero && this.transform.localEulerAngles != Vector3.zero)
+            while (this.transform.localPosition != Vector3.zero || this.transform.localEulerAngles != Vector3.zero)
             {
                 float angleX = this.transform.localEulerAngles.x;
                 if (angleX > 1 && angleX < 359)
