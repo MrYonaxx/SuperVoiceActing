@@ -10,7 +10,10 @@ public class MouseMovingDecor : MonoBehaviour {
 	float actual_view_x;
 	float actual_view_y;
 
-	[SerializeField]
+    [SerializeField]
+    Transform focusPoint = null;
+
+    [SerializeField]
 	float speed = 2;
 	[SerializeField]
 	float amplitude = 20;
@@ -22,11 +25,20 @@ public class MouseMovingDecor : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		var tmp = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		actual_view_x = 0;
+    // enlever le main.Camera
+	void Update ()
+    {
+        Vector3 tmp;
+        if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0 || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0)
+        {
+            tmp = Camera.main.ScreenToWorldPoint(new Vector3(960 * Input.GetAxis("ControllerRightHorizontal"), 540 * -Input.GetAxis("ControllerRightVertical"), 0));
+        } else if (focusPoint == null)
+            tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        else
+            tmp = focusPoint.position;
+        actual_view_x = 0;
 		actual_view_y = 0;
-		print (actual_view_y);
+		//print (actual_view_y);
 
 		actual_view_x += (tmp.x);
 		actual_view_x /= amplitude;

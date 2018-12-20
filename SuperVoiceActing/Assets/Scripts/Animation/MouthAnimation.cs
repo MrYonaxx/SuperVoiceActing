@@ -49,7 +49,9 @@ public class MouthAnimation : MonoBehaviour
         if (mouthCoroutine != null)
             StopCoroutine(mouthCoroutine);
         spriteRenderer.sprite = mouthmovement[0];
-        soundVisualizer.StopVisualizer();
+
+        if(soundVisualizer != null)
+            soundVisualizer.StopVisualizer();
     }
 
     private IEnumerator MouthAnim()
@@ -67,7 +69,8 @@ public class MouthAnimation : MonoBehaviour
                     i = 0;
                 changeMouthSprite(i);
                 speed = speedMouth;
-                soundVisualizer.SetVisualizer();
+                if (soundVisualizer != null)
+                    soundVisualizer.SetVisualizer();
             }
         }
     }
