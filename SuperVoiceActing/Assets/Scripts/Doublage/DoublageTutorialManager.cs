@@ -23,9 +23,14 @@ namespace VoiceActing
         [Header("Tutorial")]
 
         [SerializeField]
+        TextPerformanceAppear textDirector;
+
+        [SerializeField]
         InputController inputText;
         [SerializeField]
         string[] placeHolderText;
+
+
 
         int index = 0;
         int indexText = 0;
@@ -88,6 +93,28 @@ namespace VoiceActing
                     break;
                 case 1:
                     cameraController.IngeSon3();
+                    indexText += 1;
+                    textDirector.NewPhrase(placeHolderText[indexText]);
+                    break;
+                case 2:
+                    //cameraController.IngeSon3();
+                    indexText += 1;
+                    textDirector.NewPhrase(placeHolderText[indexText]);
+                    break;
+                case 3:
+                    //cameraController.IngeSon3();
+                    indexText += 1;
+                    textDirector.NewPhrase(placeHolderText[indexText]);
+                    break;
+                case 4:
+                    emotionAttackManager.ModifiyDeck(Emotion.Joie, 1);
+                    cameraController.IngeSon3Cancel();
+                    indexText += 1;
+                    textPerformanceAppear.NewPhrase(placeHolderText[indexText]);
+                    break;
+                case 5:
+                    emotionAttackManager.SwitchCardTransformIntro();
+                    inputController.enabled = true;
                     break;
             }
             index += 1;

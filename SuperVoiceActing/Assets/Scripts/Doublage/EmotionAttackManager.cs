@@ -206,6 +206,7 @@ namespace VoiceActing
             CreateComboSlot();
         }
 
+        // Eventuellement déplacer la gestion du deck dans n script a part
         private void CreateDeck()
         {
             for(int i = 0; i < emotionCards.Length; i++)
@@ -260,6 +261,38 @@ namespace VoiceActing
             }
         }
 
+
+        public void ModifiyDeck(Emotion emotion, int number)
+        {
+            switch (emotion)
+            {
+                case Emotion.Joie:
+                    deckEmotion.Joy = number;
+                    break;
+                case Emotion.Tristesse:
+                    deckEmotion.Sadness = number;
+                    break;
+                case Emotion.Dégoût:
+                    deckEmotion.Disgust = number;
+                    break;
+                case Emotion.Colère:
+                    deckEmotion.Anger = number;
+                    break;
+                case Emotion.Surprise:
+                    deckEmotion.Surprise = number;
+                    break;
+                case Emotion.Douceur:
+                    deckEmotion.Sweetness = number;
+                    break;
+                case Emotion.Peur:
+                    deckEmotion.Fear = number;
+                    break;
+                case Emotion.Confiance:
+                    deckEmotion.Trust = number;
+                    break;
+            }
+            CreateDeck();
+        }
         // =============================================================
 
 

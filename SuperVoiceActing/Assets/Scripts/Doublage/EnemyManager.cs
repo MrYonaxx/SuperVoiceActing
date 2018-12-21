@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -16,6 +17,10 @@ namespace VoiceActing
     [System.Serializable]
     public class EmotionStat
     {
+        //[Gr("Statistiques")]
+        [Title("Joie", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int joy;
         public int Joy
@@ -24,6 +29,10 @@ namespace VoiceActing
             set { joy = value; }
         }
 
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        //[Title("Tristesse", titleAlignment: TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int sadness;
         public int Sadness
@@ -32,6 +41,9 @@ namespace VoiceActing
             set { sadness = value; }
         }
 
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int disgust;
         public int Disgust
@@ -40,6 +52,9 @@ namespace VoiceActing
             set { disgust = value; }
         }
 
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int anger;
         public int Anger
@@ -48,6 +63,9 @@ namespace VoiceActing
             set { anger = value; }
         }
 
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int surprise;
         public int Surprise
@@ -56,6 +74,9 @@ namespace VoiceActing
             set { surprise = value; }
         }
 
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int sweetness;
         public int Sweetness
@@ -64,6 +85,9 @@ namespace VoiceActing
             set { sweetness = value; }
         }
 
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int fear;
         public int Fear
@@ -72,7 +96,9 @@ namespace VoiceActing
             set { fear = value; }
         }
 
-
+        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
         private int trust;
         public int Trust
@@ -126,6 +152,7 @@ namespace VoiceActing
         [SerializeField]
         int enemyHPMax = 100;
 
+        [BoxGroup("Statistique")]
         [SerializeField]
         EmotionStat enemyResistance;
 
