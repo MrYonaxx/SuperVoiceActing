@@ -11,32 +11,24 @@ using System.Collections;
 namespace VoiceActing
 {
     /// <summary>
-    /// Definition of the DoublageManager class
+    /// Definition of the DoublageTutorialManager class
     /// </summary>
-    public class DoublageManager : MonoBehaviour
+    public class DoublageTutorialManager : DoublageManager
     {
         #region Attributes 
 
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-
-        [Header("Controllers")]
-        [SerializeField]
-        protected CameraController cameraController;
-        [SerializeField]
-        protected InputController inputController;
+        [Header("Tutorial")]
 
         [SerializeField]
-        protected EmotionAttackManager emotionAttackManager;
+        InputController inputText;
         [SerializeField]
-        protected EnemyManager enemyManager;
+        string[] placeHolderText;
 
-        [SerializeField]
-        protected TextPerformanceAppear textPerformanceAppear;
-
-
-        //[Header("Contrat")]
+        int index = 0;
+        int indexText = 0;
 
         #endregion
 
@@ -45,7 +37,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-
+        
 
         #endregion
 
@@ -55,23 +47,56 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Awake is called when the script instance is being loaded.
+        /// </summary>
+        protected void Awake()
+        {
+            
+        }
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
         /// </summary>
-        protected virtual void Start()
+        protected override void Start()
         {
-            StartCoroutine(IntroductionSequence());
+            inputText.enabled = true;
+            //StartCoroutine(TutorialSequence());
         }
         
-        private IEnumerator IntroductionSequence()
+        public void PrintAllText()
         {
-            //
-            yield return null;
-            emotionAttackManager.SwitchCardTransformIntro();
-            inputController.enabled = true;
+            if (textPerformanceAppear.PrintAllText() == true)
+            {
+                PhaseTuto();
+                /*index += 1;
+                textPerformanceAppear.NewPhrase(placeHolderText[index]);*/
+            }
         }
+
+
+        public void PhaseTuto()
+        {
+            switch(index)
+            {
+                case 0:
+                    indexText += 1;
+                    textPerformanceAppear.NewPhrase(placeHolderText[indexText]);
+                    break;
+                case 1:
+                    cameraController.IngeSon3();
+                    break;
+            }
+            index += 1;
+        }
+
+        /*private IEnumerator TutorialSequence()
+        {
+            //yield return new WaitForSeconds()
+        }*/
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
@@ -79,17 +104,11 @@ namespace VoiceActing
         /// </summary>
         protected void Update()
         {
-            
+
         }
-
-
-        public void Attack()
-        {
-            textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
-        }
-
+        
         #endregion
 
-    } // DoublageManager class
+    } // DoublageTutorialManager class
 
 } // #PROJECTNAME# namespace

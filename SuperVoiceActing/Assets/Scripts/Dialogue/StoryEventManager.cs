@@ -92,7 +92,17 @@ namespace VoiceActing
             currentNode = storyEventData.GetEventNode(i);
             if (currentNode != null)
             {
-                yield return StartCoroutine(currentNode.GetStoryEvent(textMeshPro, characters));
+                if (currentNode is StoryEventText)
+                {
+                    StoryEventText node = (StoryEventText) currentNode;
+                    node.SetNode(textMeshPro, characters);
+                }
+                if (currentNode is StoryEventMoveCharacter)
+                {
+                    StoryEventMoveCharacter node = (StoryEventMoveCharacter)currentNode;
+                    node.SetNode(characters);
+                }
+                yield return StartCoroutine(currentNode.GetStoryEvent());
                 i += 1;
                 StartCoroutine(NextNodeCoroutine());
             }

@@ -15,7 +15,8 @@ namespace VoiceActing
     public enum StoryEventNode
     {
         Text,
-        Wait
+        Wait,
+        MoveCharacter
     }
 
     [System.Serializable]
@@ -31,6 +32,10 @@ namespace VoiceActing
         [ShowIf("eventNode", StoryEventNode.Wait)]
         [SerializeField]
         public StoryEventWait storyEventWait = null;
+
+        [ShowIf("eventNode", StoryEventNode.MoveCharacter)]
+        [SerializeField]
+        public StoryEventMoveCharacter storyEventMoveCharacter = null;
 
     }
 
@@ -55,6 +60,8 @@ namespace VoiceActing
                     return eventNodes[index].storyEventText;
                 case StoryEventNode.Wait:
                     return eventNodes[index].storyEventWait;
+                case StoryEventNode.MoveCharacter:
+                    return eventNodes[index].storyEventMoveCharacter;
             }
             return null;
         }

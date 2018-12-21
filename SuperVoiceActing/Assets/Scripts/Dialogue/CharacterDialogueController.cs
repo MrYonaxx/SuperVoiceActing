@@ -52,14 +52,42 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-        public void ActivateMouth()
+        public void ActivateMouth(float speed = -1)
         {
-            mouth.ActivateMouth();
+            if(speed == -1)
+                mouth.ActivateMouth();
+            else
+                mouth.ActivateMouth(speed);
         }
 
         public void StopMouth()
         {
             mouth.DesactivateMouth();
+        }
+
+        public void FadeIn(float time)
+        {
+            eyesScript.enabled = true;
+            StartCoroutine(Fade(true, time));
+        }
+
+        public void FadeOut(float time)
+        {
+            eyesScript.enabled = false;
+            StartCoroutine(Fade(false, time));
+        }
+
+        private IEnumerator Fade(bool appear, float time)
+        {
+            float alphaSpeed = spriteRenderer.color.a / time;
+            if (appear == false)
+                alphaSpeed = -alphaSpeed;
+            while (time != 0)
+            {
+                time -= 1;
+                spriteRenderer.color += new Color(0, 0, 0, alphaSpeed);
+                yield return null;
+            }
         }
         
         #endregion

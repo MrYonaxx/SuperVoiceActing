@@ -39,6 +39,7 @@ namespace VoiceActing
         protected float alphaSpeed = 5f;
 
 
+
         private Color32 damageColor = new Color32(255, 255, 0, 0);
 
 
@@ -112,6 +113,28 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public bool PrintAllText()
+        {
+            if (characterCount != textMeshPro.text.Length)
+            {
+                characterCount = textMeshPro.text.Length;
+                return false;
+            }
+            return true;
+
+        }
+
+        public void NewPhrase(string newText)
+        {
+            textMeshPro.text = newText;
+            StopCoroutine(coroutine);
+            coroutine = AnimateVertexColors();
+            StartCoroutine(coroutine);
+            //textMeshPro.ForceMeshUpdate();
+            //ReprintText();
+        }
+
 
         private void SetLetterTransparent()
         {
@@ -300,7 +323,7 @@ namespace VoiceActing
 
             }
 
-
+            mouth.ActivateMouth();
 
 
             while (true)

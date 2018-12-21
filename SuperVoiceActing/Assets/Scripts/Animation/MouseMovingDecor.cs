@@ -29,7 +29,7 @@ public class MouseMovingDecor : MonoBehaviour {
 	void Update ()
     {
         Vector3 tmp;
-        if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0 || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0)
+        if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.2f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.2f)
         {
             tmp = Camera.main.ScreenToWorldPoint(new Vector3(960 * Input.GetAxis("ControllerRightHorizontal"), 540 * -Input.GetAxis("ControllerRightVertical"), 0));
         } else if (focusPoint == null)

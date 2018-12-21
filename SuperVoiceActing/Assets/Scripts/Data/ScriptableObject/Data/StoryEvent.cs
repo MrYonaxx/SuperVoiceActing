@@ -19,28 +19,14 @@ namespace VoiceActing
     public class StoryEvent
     {
 
-        protected TextMeshPro textMeshPro;
-        protected CharacterDialogueController characterDialogue;
-
-
-
-
-
-        public IEnumerator GetStoryEvent(TextMeshPro eventText, CharacterDialogueController[] charactersEvent)
+        public IEnumerator GetStoryEvent()
         {
-            textMeshPro = eventText;
-            characterDialogue = SetCharacterDialogue(charactersEvent);
             return StoryEventCoroutine();
         }
 
         protected virtual IEnumerator StoryEventCoroutine()
         {
             yield return null;
-        }
-
-        protected virtual CharacterDialogueController SetCharacterDialogue(CharacterDialogueController[] charactersEvent)
-        {
-            return null;
         }
 
     } // StoryEvent class
