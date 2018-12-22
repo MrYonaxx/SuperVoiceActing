@@ -13,6 +13,8 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the ContractData class
     /// </summary>
+    /// 
+    [CreateAssetMenu(fileName = "ContractData", menuName = "ContractData", order = 1)]
     public class ContractData : ScriptableObject
     {
         #region Attributes 
@@ -25,8 +27,20 @@ namespace VoiceActing
         string name;
 
         [SerializeField]
+        private TextData[] textData;
+        public TextData[] TextData
+        {
+            get { return textData; }
+        }
 
-        
+        [SerializeField]
+        private DoublageEventData[] eventData;
+        public DoublageEventData[] EventData
+        {
+            get { return eventData; }
+        }
+
+
         #endregion
 
         #region GettersSetters 
@@ -34,7 +48,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 

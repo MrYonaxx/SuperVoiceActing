@@ -93,6 +93,9 @@ namespace VoiceActing
 
         void Start()
         {
+
+            if (coroutine != null)
+                StopCoroutine(coroutine);
             coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
         }
@@ -116,7 +119,7 @@ namespace VoiceActing
 
         public bool PrintAllText()
         {
-            if (characterCount != textMeshPro.text.Length)
+            if (characterCount < textMeshPro.text.Length)
             {
                 characterCount = textMeshPro.text.Length;
                 return false;
@@ -128,11 +131,12 @@ namespace VoiceActing
         public void NewPhrase(string newText)
         {
             textMeshPro.text = newText;
-            StopCoroutine(coroutine);
+
+            if (coroutine != null)
+                StopCoroutine(coroutine);
             coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
-            //textMeshPro.ForceMeshUpdate();
-            //ReprintText();
+            ReprintText();
         }
 
 
@@ -254,14 +258,6 @@ namespace VoiceActing
             }
             int firstCharacter = textMeshPro.textInfo.wordInfo[wordSelected].firstCharacterIndex;
             int lastCharacter = textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex;
-            /*for (int i = firstCharacter; i < textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex+1; i++)
-            {
-                //textMeshPro.fontStyle = FontStyles.Italic;
-                //textMeshPro.text[i] = textMeshPro.text[i].
-                //textMeshPro.textInfo.characterInfo[i].style = FontStyles.UpperCase;
-                vertexAnim[i].selected = true;
-                vertexAnim[i].alpha = 254;
-            }*/
             for (int i = 0; i < textMeshPro.textInfo.characterCount; i++)
             {
                 if (i < firstCharacter || lastCharacter < i)
@@ -269,8 +265,6 @@ namespace VoiceActing
                 else
                     vertexAnim[i].selected = true;
             }
-            //textMeshPro.ForceMeshUpdate();
-            //hasTextChanged = true;
         }
 
 
@@ -498,19 +492,21 @@ namespace VoiceActing
 
         IEnumerator ExplosionVertex(float damage)
         {
+            yield return null;
+
             TMP_TextInfo textInfo = textMeshPro.textInfo;
-            Matrix4x4 matrix;
+            //Matrix4x4 matrix;
             TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
 
             float[] randomParameter = new float[characterCount];
             for (int i = 0; i < characterCount; i++)
             {
                 randomParameter[i] = Random.Range(0.01f, 0.2f);
-
             }
             
             float coef = 0;
             float time = 60;
+
             while (time != 0)
             {
 
@@ -528,19 +524,6 @@ namespace VoiceActing
 
                     Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
 
-                    /*destinationVertices[vertexIndex + 0] = sourceVertices[vertexIndex + 0] - offset;
-                    destinationVertices[vertexIndex + 1] = sourceVertices[vertexIndex + 1] - offset;
-                    destinationVertices[vertexIndex + 2] = sourceVertices[vertexIndex + 2] - offset;
-                    destinationVertices[vertexIndex + 3] = sourceVertices[vertexIndex + 3] - offset;
-
-                    Vector3 position = new Vector3(0, 0.1f, 0);
-                    matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one);
-
-                    destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
-                    destinationVertices[vertexIndex + 1] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
-                    destinationVertices[vertexIndex + 2] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 2]);
-                    destinationVertices[vertexIndex + 3] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);*/
-
                     destinationVertices[vertexIndex + 0] += offset;
                     destinationVertices[vertexIndex + 1] += offset;
                     destinationVertices[vertexIndex + 2] += offset;
@@ -557,6 +540,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
+
             coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
             ApplyDamage(damage);

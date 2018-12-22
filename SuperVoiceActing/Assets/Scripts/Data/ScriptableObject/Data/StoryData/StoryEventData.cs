@@ -49,6 +49,8 @@ namespace VoiceActing
         [SerializeField]
         StoryEventDataNode[] eventNodes;
 
+
+
         public StoryEvent GetEventNode(int index)
         {
             if (index == eventNodes.Length)

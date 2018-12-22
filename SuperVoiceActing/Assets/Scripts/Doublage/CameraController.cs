@@ -403,14 +403,14 @@ namespace VoiceActing
         [ContextMenu("ingeson3")]
         public void IngeSon3()
         {
-            StartCoroutine(ChangeCameraRect(0.5f,0,30));
+            //StartCoroutine(ChangeCameraRect(0.5f,0,30));
             
         }
 
         [ContextMenu("ingeson3-cancel")]
         public void IngeSon3Cancel()
         {
-            StartCoroutine(ChangeCameraRect(0, 0, 30));
+            //StartCoroutine(ChangeCameraRect(0, 0, 30));
             //RotateCamera(0, 90, 0, 120);
         }
 
@@ -421,23 +421,29 @@ namespace VoiceActing
 
         }
 
-        private IEnumerator ChangeCameraRect(float x, float y, float time)
+        public void ChangeCameraViewport(float newX, float newY, float newWidth, float newHeight, float time)
+        {
+            StartCoroutine(ChangeCameraRect(newX, newY, newWidth, newHeight, time));
+        }
+
+        private IEnumerator ChangeCameraRect(float x, float y, float width, float height, float time)
         {
             float speedX = (x - camera.rect.x) / time;
             float speedY = (y - camera.rect.y) / time;
+            float speedWidth = (width - camera.rect.width) / time;
+            float speedHeight = (height - camera.rect.height) / time;
             Rect rect = camera.rect;
             while (time != 0)
             {
                 rect.x += speedX;
-                rect.width -= speedX;
-                //camera.rect.Set(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
-                //camera.Render();
-                camera.rect = rect;// new Rect(camera.rect.x + speedX, 0, camera.rect.width - speedX, 1);
+                rect.width += speedWidth;
+                rect.y += speedY;
+                rect.height += speedHeight;
+                camera.rect = rect;
                 time -= 1;
                 yield return null;
             }
-            camera.rect = new Rect(x, 0, 1 - x, 1);
-            //orthographicCoroutine = null;
+            camera.rect = new Rect(x, y, width, height);
         }
 
         private IEnumerator ChangeCameraRect2(float x, float y, float time)

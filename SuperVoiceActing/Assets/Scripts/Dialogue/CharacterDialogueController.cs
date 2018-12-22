@@ -32,6 +32,17 @@ namespace VoiceActing
         [SerializeField]
         MouthAnimation mouth;
 
+
+        [Header("Phase d'Acting")]
+
+        [SerializeField]
+        private TextPerformanceAppear textActing;
+        public TextPerformanceAppear TextActing
+        {
+            get { return textActing; }
+        }
+
+
         #endregion
 
         #region GettersSetters 
@@ -77,6 +88,7 @@ namespace VoiceActing
             StartCoroutine(Fade(false, time));
         }
 
+        // Peut etre a déplacer dans StoryEventMoveCharacter
         private IEnumerator Fade(bool appear, float time)
         {
             float alphaSpeed = spriteRenderer.color.a / time;

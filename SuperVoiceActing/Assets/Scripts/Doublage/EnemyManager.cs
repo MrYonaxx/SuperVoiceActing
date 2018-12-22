@@ -13,6 +13,48 @@ namespace VoiceActing
 {
 
 
+    [System.Serializable]
+    public class TextData
+    {
+        [SerializeField]
+        private int hpMax;
+        public int HPMax
+        {
+            get { return hpMax; }
+            set { hpMax = value; }
+        }
+
+        [HorizontalGroup("Texte")]
+        [SerializeField]
+        [TextArea]
+        private string text;
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+
+
+        [TabGroup("ParentGroup", "Statistiques")]
+        //[BoxGroup("Statistique")]
+        [SerializeField]
+        private EmotionStat enemyResistance;
+        public EmotionStat EnemyResistance
+        {
+            get { return enemyResistance; }
+            set { enemyResistance = value; }
+        }
+
+        [TabGroup("ParentGroup", "Points faibles")]
+        [SerializeField]
+        private WeakPoint[] enemyWeakPoints;
+        public WeakPoint[] EnemyWeakPoints
+        {
+            get { return enemyWeakPoints; }
+            set { enemyWeakPoints = value; }
+        }
+
+    }
 
     [System.Serializable]
     public class EmotionStat
@@ -41,7 +83,7 @@ namespace VoiceActing
             set { sadness = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Dégoût", " ", TitleAlignments.Centered)]
         [HideLabel]
         [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
@@ -52,7 +94,7 @@ namespace VoiceActing
             set { disgust = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Colère", " ", TitleAlignments.Centered)]
         [HideLabel]
         [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
@@ -63,7 +105,7 @@ namespace VoiceActing
             set { anger = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Surprise", " ", TitleAlignments.Centered)]
         [HideLabel]
         [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
@@ -74,7 +116,7 @@ namespace VoiceActing
             set { surprise = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Douceur", " ", TitleAlignments.Centered)]
         [HideLabel]
         [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
@@ -85,7 +127,7 @@ namespace VoiceActing
             set { sweetness = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Peur", " ", TitleAlignments.Centered)]
         [HideLabel]
         [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
@@ -96,7 +138,7 @@ namespace VoiceActing
             set { fear = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Confiance", " ", TitleAlignments.Centered)]
         [HideLabel]
         [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
         [SerializeField]
@@ -113,6 +155,7 @@ namespace VoiceActing
     [System.Serializable]
     public class WeakPoint
     {
+        [Header("WeakPoint")]
         [SerializeField]
         private int wordIndex;
         public int WordIndex
@@ -144,12 +187,16 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        /*[SerializeField]
+        string enemyText;*/
+        [Header("TextData")]
+        [Space]
         [SerializeField]
-        string enemyText;
+        TextData currentTextData;
 
-        [SerializeField]
+        /*[SerializeField]*/
         int enemyHP = 100;
-        [SerializeField]
+        /*[SerializeField]
         int enemyHPMax = 100;
 
         [BoxGroup("Statistique")]
@@ -157,8 +204,9 @@ namespace VoiceActing
         EmotionStat enemyResistance;
 
         [SerializeField]
-        WeakPoint[] enemyWeakPoints;
-
+        WeakPoint[] enemyWeakPoints;*/
+        [Header("Current Voice actor")]
+        [Space]
         [SerializeField]
         VoiceActorData voiceActor;
 
@@ -180,10 +228,20 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void SetTextData(TextData newTextData)
+        {
+            enemyHP = currentTextData.HPMax;
+            currentTextData = newTextData;
+        }
+
         public float DamagePhrase(Emotion[] emotions, int word)
         {
             float totalDamage = 0;
             EmotionStat statActor = voiceActor.Statistique;
+
+            int enemyHPMax = currentTextData.HPMax;
+            EmotionStat enemyResistance = currentTextData.EnemyResistance;
+
             for(int i = 0; i < emotions.Length; i++)
             {
                 switch(emotions[i])
@@ -228,6 +286,7 @@ namespace VoiceActing
         private float ApplyWordBonus(int word, EmotionStat statActor)
         {
             float bonusDamage = 0;
+            WeakPoint[] enemyWeakPoints = currentTextData.EnemyWeakPoints;
             for (int i = 0; i < enemyWeakPoints.Length; i++)
             {
                 if (word == enemyWeakPoints[i].WordIndex)

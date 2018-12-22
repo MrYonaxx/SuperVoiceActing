@@ -22,18 +22,18 @@ namespace VoiceActing
         \* ======================================== */
         [Header("Tutorial")]
 
-        [SerializeField]
+        /*[SerializeField]
         TextPerformanceAppear textDirector;
 
         [SerializeField]
-        InputController inputText;
+        InputController inputText;*/
         [SerializeField]
         string[] placeHolderText;
 
 
 
-        int index = 0;
-        int indexText = 0;
+        /*int index = 0;
+        int indexText = 0;*/
 
         #endregion
 
@@ -56,34 +56,32 @@ namespace VoiceActing
         /// <summary>
         /// Awake is called when the script instance is being loaded.
         /// </summary>
-        protected void Awake()
+        /*protected void Awake()
         {
             
-        }
+        }*/
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
         /// </summary>
-        protected override void Start()
+        /*protected override void Start()
         {
             inputText.enabled = true;
             //StartCoroutine(TutorialSequence());
-        }
+        }*/
         
-        public void PrintAllText()
+        /*public void PrintAllText()
         {
-            if (textPerformanceAppear.PrintAllText() == true)
+            if (textPerformanceAppear.PrintAllText() == true && textDirector.PrintAllText() == true)
             {
                 PhaseTuto();
-                /*index += 1;
-                textPerformanceAppear.NewPhrase(placeHolderText[index]);*/
             }
-        }
+        }*/
 
 
-        public void PhaseTuto()
+        /*public void PhaseTuto()
         {
             switch(index)
             {
@@ -118,7 +116,7 @@ namespace VoiceActing
                     break;
             }
             index += 1;
-        }
+        }*/
 
         /*private IEnumerator TutorialSequence()
         {
@@ -129,11 +127,11 @@ namespace VoiceActing
         /// <summary>
         /// Update is called once per frame.
         /// </summary>
-        protected void Update()
+        /*protected void Update()
         {
 
         }
-        
+        */
         #endregion
 
     } // DoublageTutorialManager class
