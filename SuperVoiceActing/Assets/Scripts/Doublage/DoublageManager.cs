@@ -22,7 +22,7 @@ namespace VoiceActing
         \* ======================================== */
         [Header("Contrat")]
         [SerializeField]
-        ContractData contrat;
+        protected ContractData contrat;
 
 
         [Header("Controllers")]
@@ -50,11 +50,11 @@ namespace VoiceActing
         protected TextPerformanceAppear[] textEvent;
 
         //[Header("Contrat")]
-        int indexPhrase = 0;
-        int indexEvent = -1;
-        DoublageEventData currentEvent;
+        protected int indexPhrase = 0;
+        protected int indexEvent = -1;
+        protected DoublageEventData currentEvent;
 
-        bool startLine = true;
+        protected bool startLine = true;
 
         #endregion
 
@@ -125,7 +125,7 @@ namespace VoiceActing
             startLine = false;
         }
 
-        public void SetPhrase()
+        public virtual void SetPhrase()
         {
             textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
             inputController.enabled = true;

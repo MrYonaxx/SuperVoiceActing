@@ -60,9 +60,20 @@ namespace VoiceActing
     public class EmotionStat
     {
         //[Gr("Statistiques")]
+        [Title("Neutr", " ", TitleAlignments.Centered)]
+        [HideLabel]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
+        [SerializeField]
+        private int neutral;
+        public int Neutral
+        {
+            get { return neutral; }
+            set { neutral = value; }
+        }
+
         [Title("Joie", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int joy;
         public int Joy
@@ -71,10 +82,10 @@ namespace VoiceActing
             set { joy = value; }
         }
 
-        [Title("Tristesse", " ", TitleAlignments.Centered)]
+        [Title("Triste", " ", TitleAlignments.Centered)]
         //[Title("Tristesse", titleAlignment: TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int sadness;
         public int Sadness
@@ -83,9 +94,9 @@ namespace VoiceActing
             set { sadness = value; }
         }
 
-        [Title("Dégoût", " ", TitleAlignments.Centered)]
+        [Title("Dégo", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int disgust;
         public int Disgust
@@ -94,9 +105,9 @@ namespace VoiceActing
             set { disgust = value; }
         }
 
-        [Title("Colère", " ", TitleAlignments.Centered)]
+        [Title("Colèr", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int anger;
         public int Anger
@@ -105,9 +116,9 @@ namespace VoiceActing
             set { anger = value; }
         }
 
-        [Title("Surprise", " ", TitleAlignments.Centered)]
+        [Title("Surpr", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int surprise;
         public int Surprise
@@ -116,9 +127,9 @@ namespace VoiceActing
             set { surprise = value; }
         }
 
-        [Title("Douceur", " ", TitleAlignments.Centered)]
+        [Title("Douce", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int sweetness;
         public int Sweetness
@@ -129,7 +140,7 @@ namespace VoiceActing
 
         [Title("Peur", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int fear;
         public int Fear
@@ -138,9 +149,9 @@ namespace VoiceActing
             set { fear = value; }
         }
 
-        [Title("Confiance", " ", TitleAlignments.Centered)]
+        [Title("Confi", " ", TitleAlignments.Centered)]
         [HideLabel]
-        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 100)]
+        [HorizontalGroup("Stat", PaddingLeft = 10, Width = 50)]
         [SerializeField]
         private int trust;
         public int Trust
@@ -220,6 +231,10 @@ namespace VoiceActing
 
         public float GetHpPercentage()
         {
+            if(currentTextData.HPMax == 0)
+            {
+                return 0;
+            }
             return ((float)enemyHP / (float) currentTextData.HPMax) * 100;
         }
 
@@ -282,7 +297,11 @@ namespace VoiceActing
             if (enemyHP < 0)
                 enemyHP = 0;
 
-            float percentage = ((float) enemyHP / (float) enemyHPMax) * 100;
+            float percentage = 100;
+            if (currentTextData.HPMax != 0)
+            {
+                percentage = ((float)enemyHP / (float)enemyHPMax) * 100;
+            }           
             return 100 - percentage;
         }
 

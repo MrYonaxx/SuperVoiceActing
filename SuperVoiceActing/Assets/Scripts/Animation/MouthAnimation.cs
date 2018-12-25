@@ -32,7 +32,7 @@ public class MouthAnimation : MonoBehaviour
 
     protected void Start()
     {
-        ActivateMouth(speedMouth);
+        //ActivateMouth(speedMouth);
     }
 
     public void ActivateMouth(float speed = 12)

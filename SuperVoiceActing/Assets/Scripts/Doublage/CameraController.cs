@@ -40,7 +40,7 @@ namespace VoiceActing
         [SerializeField]
         Transform text;
 
-        bool moving = false;
+        bool moving = true;
         bool rotating = false;
         bool noCameraEffect = false;
 
@@ -57,6 +57,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public void SetNoCameraEffect(bool b)
+        {
+            noCameraEffect = b;
+        }
 
         #endregion
 
@@ -85,7 +89,7 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
+            //MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
         }
         
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,6 +108,10 @@ namespace VoiceActing
             }
         }
 
+        public void MoveToInitialPosition()
+        {
+            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
+        }
 
 
         private void InitializeCameraEffect()
@@ -415,11 +423,11 @@ namespace VoiceActing
         }
 
 
-        public void IngeSon4()
+        /*public void IngeSon4()
         {
             StartCoroutine(ChangeCameraRect2(0.5f, 0, 30));
 
-        }
+        }*/
 
         public void ChangeCameraViewport(float newX, float newY, float newWidth, float newHeight, float time)
         {
@@ -446,7 +454,7 @@ namespace VoiceActing
             camera.rect = new Rect(x, y, width, height);
         }
 
-        private IEnumerator ChangeCameraRect2(float x, float y, float time)
+        /*private IEnumerator ChangeCameraRect2(float x, float y, float time)
         {
             float speedX = (x - camera.rect.x) / time;
             //float speedY = (y - camera.rect.y) / time;
@@ -463,7 +471,7 @@ namespace VoiceActing
             }
             camera.rect = new Rect(x, 0, 1 - x, 1);
             //orthographicCoroutine = null;
-        }
+        }*/
 
         #endregion
 

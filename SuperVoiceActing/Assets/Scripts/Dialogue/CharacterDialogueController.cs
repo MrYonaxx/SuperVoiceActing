@@ -101,7 +101,13 @@ namespace VoiceActing
                 yield return null;
             }
         }
-        
+
+        public void ChangeTint(Color newColor)
+        {
+            spriteRenderer.color = newColor;
+            eyesScript.ChangeTint(newColor);
+        }
+
         #endregion
 
     } // CharacterDialogueController class

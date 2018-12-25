@@ -2,24 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Yeux : MonoBehaviour {
+public class Yeux : MonoBehaviour
+{
+    [SerializeField]
+    bool forceStopBlink = false;
 
-	int wait_time = 0;
+	int waitTime = 0;
+    SpriteRenderer spriteRenderer;
+    IEnumerator coroutine = null;
 
 	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		wait_time -= 1;
-		if (wait_time == 0) {
-			GetComponent<SpriteRenderer> ().enabled = true;
-		}
-		if (wait_time == -4) {
-			GetComponent<SpriteRenderer> ().enabled = false;
-			wait_time = Random.Range (90, 600);
-		}
-	}
+	void Start ()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if(forceStopBlink == false)
+        {
+            coroutine = BlinkEye();
+            StartCoroutine(coroutine);
+        }
+
+    }
+
+    public void StartBlink()
+    {
+        if(coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = BlinkEye();
+        StartCoroutine(coroutine);
+    }
+
+    public void StopBlink()
+    {
+        StopCoroutine(coroutine);
+        coroutine = null;
+    }
+
+    private IEnumerator BlinkEye()
+    {
+        while(true)
+        {
+            waitTime -= 1;
+            if (waitTime == 0)
+            {
+                spriteRenderer.enabled = true;
+            }
+            else if (waitTime == -4)
+            {
+                spriteRenderer.enabled = false;
+                waitTime = Random.Range(90, 600);
+            }
+            yield return null;
+        }
+    }
+
+    public void ChangeTint(Color newColor)
+    {
+        spriteRenderer.color = newColor;
+    }
 }

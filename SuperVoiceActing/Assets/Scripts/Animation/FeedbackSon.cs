@@ -78,6 +78,8 @@ public class FeedbackSon : MonoBehaviour {
 
     public void StopVisualizer()
     {
+        if (scaleTarget == null)
+            return;
         for (int i = 0; i < scaleTarget.Count; i++)
         {
             scaleTarget[i] = 0;
