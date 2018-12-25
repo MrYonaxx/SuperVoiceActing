@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using TMPro;
 using System.Collections;
 
 namespace VoiceActing
@@ -20,9 +21,33 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [Header("Controller")]
         [SerializeField]
-        CameraController cameraController;
-        
+        RectTransform textPopup;
+        [SerializeField]
+        MouthAnimationImage mouthAnim;
+
+        [SerializeField]
+        TextMeshProUGUI textMeshProName;
+        [SerializeField]
+        TextMeshProUGUI textMeshProText;
+
+        [Header("Position")]
+        [SerializeField]
+        RectTransform positionAppear;
+        [SerializeField]
+        RectTransform positionDisappear;
+
+
+        RectTransform transform;
+
+        [SerializeField]
+        float speedPopupText = 15;
+        [SerializeField]
+        float initialTime = 60;
+        [SerializeField]
+        float letterTime = 3;
+
         #endregion
 
         #region GettersSetters 
@@ -30,7 +55,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -39,40 +64,89 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        private void Start()
+        {
+            transform = GetComponent<RectTransform>();
+        }
+
+
+
         [ContextMenu("cameraScroll")]
         public void PanelScroll()
         {
-            //cameraController.ActivateOffset();
-            StartCoroutine(PanelScrollCoroutine(20));
+            StartCoroutine(PanelScrollCoroutine(speedPopupText));
         }
 
         private IEnumerator PanelScrollCoroutine(float time)
         {
-            float speedZ = 700 / time;
+            this.transform.SetParent(positionAppear);
+            float speedScale = 1 / time;
             while (time != 0)
             {
-                this.transform.position += new Vector3(speedZ, 0, 0);
+                this.transform.anchoredPosition /= 1.1f;
+                textPopup.transform.localScale += new Vector3(0, speedScale, 0);
                 time -= 1;
                 yield return null;
             }
+
+            while (this.transform.anchoredPosition != Vector2.zero)
+            {
+                this.transform.anchoredPosition /= 1.1f;
+                yield return null;
+            }
         }
+
+
 
         [ContextMenu("cameraHide")]
         public void PanelHide()
         {
-            //cameraController.StopOffset();
-            StartCoroutine(PanelHideCoroutine(20));
+            StartCoroutine(PanelHideCoroutine(speedPopupText / 2));
         }
 
         private IEnumerator PanelHideCoroutine(float time)
         {
-            float speedZ = 700 / time;
+            this.transform.SetParent(positionDisappear);
+            float speedScale = 1 / time;
             while (time != 0)
             {
-                this.transform.position -= new Vector3(speedZ, 0, 0);
+                textPopup.transform.localScale -= new Vector3(0, speedScale, 0);
                 time -= 1;
                 yield return null;
             }
+
+
+            //this.transform.SetParent(positionDisappear);
+            while (this.transform.anchoredPosition != Vector2.zero)
+            {
+                this.transform.anchoredPosition /= 1.1f;
+                yield return null;
+            }
+        }
+
+
+        public void StartPopup(string name, string text)
+        {
+            textMeshProName.text = name;
+            textMeshProText.text = text;
+            mouthAnim.ActivateMouth();
+            StartCoroutine(PopupCoroutine());
+        }
+
+
+        private IEnumerator PopupCoroutine()
+        {
+            yield return PanelScrollCoroutine(speedPopupText);
+            float time = initialTime + textMeshProText.text.Length * letterTime;
+            while (time != 0)
+            {
+                if (time <= initialTime)
+                    mouthAnim.DesactivateMouth();
+                time -= 1;
+                yield return null;
+            }
+            PanelHide();
         }
 
 

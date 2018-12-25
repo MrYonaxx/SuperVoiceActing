@@ -36,6 +36,8 @@ namespace VoiceActing
         protected EnemyManager enemyManager;
         [SerializeField]
         protected TextPerformanceAppear textPerformanceAppear;
+        [SerializeField]
+        protected PanelPlayer panelPlayer;
 
         [Header("Events")]
         [SerializeField]
@@ -48,9 +50,11 @@ namespace VoiceActing
         protected TextPerformanceAppear[] textEvent;
 
         //[Header("Contrat")]
-        int indexPhrase = -1;
+        int indexPhrase = 0;
         int indexEvent = -1;
         DoublageEventData currentEvent;
+
+        bool startLine = true;
 
         #endregion
 
@@ -76,8 +80,10 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
+            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             if (CheckEvent() == false)
                 StartCoroutine(IntroductionSequence());
+            startLine = false;
         }
         
         private IEnumerator IntroductionSequence()
@@ -92,14 +98,35 @@ namespace VoiceActing
         public void Attack()
         {
             textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
+            CheckEvent();
+        }
+
+        public void KillPhrase()
+        {
+            if(enemyManager.GetHpPercentage() == 0)
+            {
+                inputController.enabled = false;
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.RemoveCard();
+                SetNextPhrase();
+            }
         }
 
 
 
-        public void SetPhrase()
+        public void SetNextPhrase()
         {
             indexPhrase += 1;
+            startLine = true;
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            if (CheckEvent() == false)
+                SetPhrase();
+            startLine = false;
+        }
+
+        public void SetPhrase()
+        {
             textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
             inputController.enabled = true;
         }
@@ -127,7 +154,7 @@ namespace VoiceActing
         private void ExecuteEvent()
         {
             indexEvent += 1;
-
+            inputController.enabled = false;
             DoublageEvent currentNode = currentEvent.GetEventNode(indexEvent);
             if (currentNode != null)
             {
@@ -143,6 +170,23 @@ namespace VoiceActing
                     cameraControllerEvent[node.CameraID].ChangeCameraViewport(node.ViewportX, node.ViewportY, node.ViewportWidth, node.ViewportHeight, node.Time);
                     ExecuteEvent();
                 }
+                if (currentNode is DoublageEventTextPopup)
+                {
+                    DoublageEventTextPopup node = (DoublageEventTextPopup)currentNode;
+                    panelPlayer.StartPopup("Ingé son", node.Text);
+                    ExecuteEvent();
+                }
+                if (currentNode is DoublageEventWait)
+                {
+                    DoublageEventWait node = (DoublageEventWait)currentNode;
+                    StartCoroutine(WaitCoroutine(node.Wait));
+                }
+                if (currentNode is DoublageEventDeck)
+                {
+                    DoublageEventDeck node = (DoublageEventDeck)currentNode;
+                    emotionAttackManager.ModifiyDeck(node.NewDeck);
+                    StartCoroutine(WaitCoroutine(1));
+                }
             }
             else // Fin d'event
             {
@@ -151,7 +195,7 @@ namespace VoiceActing
             }
         }
 
-        private IEnumerator waitCoroutine(float time)
+        private IEnumerator WaitCoroutine(float time)
         {
             while(time != 0)
             {
@@ -173,9 +217,12 @@ namespace VoiceActing
             return null;
         }
 
+
+
         private bool CheckEvent()
         {
-            for(int i = 0; i < contrat.EventData.Length; i++)
+
+            for (int i = 0; i < contrat.EventData.Length; i++)
             {
                 if(CheckEventCondition(contrat.EventData[i]) == true)
                 {
@@ -191,9 +238,27 @@ namespace VoiceActing
         private bool CheckEventCondition(DoublageEventData doublageEvent)
         {
             if(doublageEvent.PhraseNumber == indexPhrase)
-                return true;
+            {
+                if(doublageEvent.StartPhrase == true && startLine == true)
+                {
+                    return true;
+                }
+                else if(doublageEvent.StartPhrase == false)
+                {
+                    float hp = enemyManager.GetHpPercentage();
+                    if (doublageEvent.Equal == true && doublageEvent.HpPercentage == hp)
+                    {
+                        return true;
+                    }
+                    else if (doublageEvent.Equal == false && doublageEvent.HpPercentage > hp)
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
+
 
         // =================================================================
 

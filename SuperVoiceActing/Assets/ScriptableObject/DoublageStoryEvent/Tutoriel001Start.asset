@@ -9,15 +9,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4124b50f56a2b34d855573973cc6cdb, type: 3}
-  m_Name: Tutoriel001
+  m_Name: Tutoriel001Start
   m_EditorClassIdentifier: 
-  phraseNumber: -1
+  phraseNumber: 0
+  startPhrase: 1
+  hpPercentage: 101
   doublageEvent:
   - eventNode: 0
     doublageEventText:
       interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}
       emotionNPC: 0
       text: Test, test ...
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 0
@@ -25,11 +32,28 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 0
       viewportHeight: 0
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - eventNode: 0
     doublageEventText:
       interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}
       emotionNPC: 0
       text: "Est-ce que \xE7a enregistre bien ?"
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 0
@@ -37,11 +61,28 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 0
       viewportHeight: 0
-  - eventNode: 1
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+  - eventNode: 2
     doublageEventText:
       interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
       emotionNPC: 0
       text: Oui c'est bon, je t'entends.
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 40
@@ -49,6 +90,18 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 0.5
       viewportHeight: 1
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - eventNode: 0
     doublageEventText:
       interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
@@ -56,6 +109,11 @@ MonoBehaviour:
       text: 'Oui c''est bon, je t''entends bien.
 
 '
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 0
@@ -63,11 +121,28 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 0
       viewportHeight: 0
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - eventNode: 0
     doublageEventText:
       interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
       emotionNPC: 0
       text: "Mais essaye de tester d'autres fr\xE9qunces."
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 0
@@ -75,11 +150,28 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 0
       viewportHeight: 0
-  - eventNode: 1
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+  - eventNode: 2
     doublageEventText:
       interlocuteur: {fileID: 0}
       emotionNPC: 0
       text: 
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 40
@@ -87,11 +179,28 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 1
       viewportHeight: 1
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - eventNode: 0
     doublageEventText:
       interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}
       emotionNPC: 0
       text: "Ok, \xE7a roule."
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
     doublageEventCamera:
       cameraID: 0
       time: 0
@@ -99,3 +208,15 @@ MonoBehaviour:
       viewportY: 0
       viewportWidth: 0
       viewportHeight: 0
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0

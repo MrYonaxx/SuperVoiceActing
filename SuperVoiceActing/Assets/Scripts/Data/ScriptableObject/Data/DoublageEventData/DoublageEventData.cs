@@ -16,7 +16,10 @@ namespace VoiceActing
     public enum DoublageEventNode
     {
         Text,
-        Camera
+        TextPopup,
+        Camera,
+        Wait,
+        Deck
     }
 
     [System.Serializable]
@@ -29,13 +32,21 @@ namespace VoiceActing
         [SerializeField]
         public DoublageEventText doublageEventText = null;
 
+        [ShowIf("eventNode", DoublageEventNode.TextPopup)]
+        [SerializeField]
+        public DoublageEventTextPopup doublageEventTextPopup = null;
+
         [ShowIf("eventNode", DoublageEventNode.Camera)]
         [SerializeField]
         public DoublageEventCamera doublageEventCamera = null;
 
-        /*[ShowIf("eventNode", DoublageEventNode.MoveCharacter)]
+        [ShowIf("eventNode", DoublageEventNode.Wait)]
         [SerializeField]
-        public StoryEventMoveCharacter storyEventMoveCharacter = null;*/
+        public DoublageEventWait doublageEventWait = null;
+
+        [ShowIf("eventNode", DoublageEventNode.Deck)]
+        [SerializeField]
+        public DoublageEventDeck doublageEventDeck = null;
 
     }
 
@@ -52,6 +63,29 @@ namespace VoiceActing
         public int PhraseNumber
         {
             get { return phraseNumber; }
+        }
+
+        [SerializeField]
+        private bool startPhrase = true;
+        public bool StartPhrase
+        {
+            get { return startPhrase; }
+        }
+
+        [HideIf("startPhrase", true)]
+        [SerializeField]
+        private bool equal = false;
+        public bool Equal
+        {
+            get { return equal; }
+        }
+
+        [HideIf("startPhrase", true)]
+        [SerializeField]
+        private float hpPercentage = 100;
+        public float HpPercentage
+        {
+            get { return hpPercentage; }
         }
 
 
@@ -71,8 +105,14 @@ namespace VoiceActing
             {
                 case DoublageEventNode.Text:
                     return doublageEvent[index].doublageEventText;
+                case DoublageEventNode.TextPopup:
+                    return doublageEvent[index].doublageEventTextPopup;
                 case DoublageEventNode.Camera:
                     return doublageEvent[index].doublageEventCamera;
+                case DoublageEventNode.Wait:
+                    return doublageEvent[index].doublageEventWait;
+                case DoublageEventNode.Deck:
+                    return doublageEvent[index].doublageEventDeck;
             }
             return null;
         }

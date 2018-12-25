@@ -130,6 +130,9 @@ namespace VoiceActing
 
         public void NewPhrase(string newText)
         {
+            if (textMeshPro.text == newText)
+                return;
+
             textMeshPro.text = newText;
 
             if (coroutine != null)

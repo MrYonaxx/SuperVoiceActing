@@ -218,6 +218,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public float GetHpPercentage()
+        {
+            return ((float)enemyHP / (float) currentTextData.HPMax) * 100;
+        }
 
         #endregion
 
@@ -279,7 +283,6 @@ namespace VoiceActing
                 enemyHP = 0;
 
             float percentage = ((float) enemyHP / (float) enemyHPMax) * 100;
-            Debug.Log(100-percentage);
             return 100 - percentage;
         }
 

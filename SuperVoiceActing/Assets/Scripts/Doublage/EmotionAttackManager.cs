@@ -293,6 +293,12 @@ namespace VoiceActing
             }
             CreateDeck();
         }
+
+        public void ModifiyDeck(EmotionStat newDeck)
+        {
+            deckEmotion = newDeck;
+            CreateDeck();
+        }
         // =============================================================
 
 
