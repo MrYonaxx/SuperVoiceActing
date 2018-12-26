@@ -45,6 +45,13 @@ namespace VoiceActing
             get { return text; }
         }
 
+        [SerializeField]
+        private int cameraEffectID;
+        public int CameraEffectID
+        {
+            get { return cameraEffectID; }
+        }
+
     } // DoublageEventText class
 
 } // #PROJECTNAME# namespace

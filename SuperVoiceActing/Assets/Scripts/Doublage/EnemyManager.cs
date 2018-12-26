@@ -265,6 +265,9 @@ namespace VoiceActing
             {
                 switch(emotions[i])
                 {
+                    case Emotion.Neutre:
+                        totalDamage += statActor.Neutral * ((100f + enemyResistance.Neutral) / 100f);
+                        break;
                     case Emotion.Joie:
                         totalDamage += statActor.Joy * ((100f + enemyResistance.Joy) / 100f);
                         break;
@@ -297,7 +300,7 @@ namespace VoiceActing
             if (enemyHP < 0)
                 enemyHP = 0;
 
-            float percentage = 100;
+            float percentage = 0;
             if (currentTextData.HPMax != 0)
             {
                 percentage = ((float)enemyHP / (float)enemyHPMax) * 100;

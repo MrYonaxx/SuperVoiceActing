@@ -49,7 +49,8 @@ namespace VoiceActing
         [SerializeField]
         protected TextPerformanceAppear[] textEvent;
 
-        //[Header("Contrat")]
+        [Header("Debug")]
+        [SerializeField]
         protected int indexPhrase = 0;
         protected int indexEvent = -1;
         protected DoublageEventData currentEvent;
@@ -162,7 +163,7 @@ namespace VoiceActing
                 {
                     DoublageEventText node = (DoublageEventText) currentNode;
                     inputEvent.enabled = true;
-                    FindInterlocutor(node.Interlocuteur).TextActing.NewPhrase(node.Text);
+                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text);
                 }
                 if (currentNode is DoublageEventCamera)
                 {

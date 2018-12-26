@@ -37,10 +37,12 @@ namespace VoiceActing
 
         [SerializeField]
         private TextPerformanceAppear textActing;
-        public TextPerformanceAppear TextActing
+        [SerializeField]
+        private CameraController camera;
+        /*public TextPerformanceAppear TextActing
         {
             get { return textActing; }
-        }
+        }*/
 
 
         #endregion
@@ -50,6 +52,12 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+        public void SetPhraseTextacting(string newText)
+        {
+            textActing.NewMouthAnim(mouth);
+            textActing.NewPhrase(newText);
+        }
 
         public StoryCharacterData GetStoryCharacterData()
         {

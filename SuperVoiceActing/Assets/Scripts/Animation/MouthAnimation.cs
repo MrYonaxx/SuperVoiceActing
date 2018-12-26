@@ -26,6 +26,9 @@ public class MouthAnimation : MonoBehaviour
     [SerializeField]
     FeedbackSon soundVisualizer;
 
+    [SerializeField]
+    AudioSource voice = null;
+
 
     IEnumerator mouthCoroutine = null;
 
@@ -77,6 +80,11 @@ public class MouthAnimation : MonoBehaviour
 
 	public void changeMouthSprite(int index)
     {
+        if (voice != null)
+        {
+            voice.pitch = Random.Range(0.9f, 1.1f);
+            voice.Play();
+        }
         spriteRenderer.sprite = mouthmovement[index];
 	}
 }

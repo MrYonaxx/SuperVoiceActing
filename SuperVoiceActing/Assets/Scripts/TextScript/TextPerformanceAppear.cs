@@ -128,6 +128,12 @@ namespace VoiceActing
 
         }
 
+        public void NewMouthAnim(MouthAnimation newMouth)
+        {
+            mouth.DesactivateMouth();
+            mouth = newMouth;
+        }
+
         public void NewPhrase(string newText)
         {
             if (textMeshPro.text == newText)

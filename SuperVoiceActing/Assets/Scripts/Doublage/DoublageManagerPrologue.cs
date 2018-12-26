@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Collections;
 
@@ -35,6 +36,15 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent newAmbiance2;
 
+        [Header("Akihabara")]
+        [SerializeField]
+        Image transitionImage;
+        [SerializeField]
+        GameObject akihabara;
+        [SerializeField]
+        GameObject studio;
+
+
         #endregion
 
         #region GettersSetters 
@@ -60,6 +70,7 @@ namespace VoiceActing
             }
             else if (indexPhrase == 1)
             {
+                //TransitionToAkihabara();
                 textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
                 textPerformanceAppear.ApplyDamage(100);
                 inputController.enabled = true;
@@ -110,11 +121,43 @@ namespace VoiceActing
             newAmbiance2.Invoke();
             //emotionAttackManager.SwitchCardTransformIntro();
             //textPerformanceAppear.ApplyDamage(100);
+            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
             textPerformanceAppear.ApplyDamage(100);
             inputController.enabled = true;
             cameraController.SetNoCameraEffect(false);
             cameraController.MoveToInitialPosition();
+        }
+
+
+        private void TransitionToAkihabara()
+        {
+            StartCoroutine(TransitionAkihabaraCoroutine());
+        }
+
+        private IEnumerator TransitionAkihabaraCoroutine()
+        {
+            float time = 600;
+            float speedColor = 1 / time;
+            Color color = new Color(1, 1, 1, 0);
+            while (time != 0)
+            {
+                color += new Color(1, 1, 1, speedColor);
+                transitionImage.color = color;
+                time -= 1;
+                yield return null;
+            }
+            akihabara.SetActive(true);
+            studio.SetActive(false);
+            yield return new WaitForSeconds(5);
+            time = 600;
+            while (time != 0)
+            {
+                color -= new Color(1, 1, 1, speedColor);
+                transitionImage.color = color;
+                time -= 1;
+                yield return null;
+            }
         }
 
         #endregion
