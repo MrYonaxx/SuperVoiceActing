@@ -171,6 +171,10 @@ namespace VoiceActing
         [SerializeField]
         float transitionSpeedCardSelect = 1.1f;
 
+        [Header("Feedback")]
+        [SerializeField]
+        ParticleSystem particle;
+
         EmotionCard[] comboCardEmotion;
         Emotion[] comboEmotion;
         int comboCount = -1;
@@ -200,8 +204,8 @@ namespace VoiceActing
         // Initialization
         protected void Start()
         {
-            comboEmotion = new Emotion[3];
-            comboCardEmotion = new EmotionCard[3];
+            comboEmotion = new Emotion[comboMax];
+            comboCardEmotion = new EmotionCard[comboMax];
             CreateDeck();
             CreateComboSlot();
         }
@@ -396,6 +400,8 @@ namespace VoiceActing
                 {
                     if (emotionCards[i].Cards[0] != null && emotionCards[i].Cards[0].gameObject.activeInHierarchy == true)
                     {
+                        //particle.sta
+                        particle.Play();
                         comboCount += 1;
                         comboEmotion[comboCount] = emotion;
                         comboCardEmotion[comboCount] = emotionCards[i].Cards[0];

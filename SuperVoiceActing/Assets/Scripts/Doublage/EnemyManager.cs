@@ -238,6 +238,11 @@ namespace VoiceActing
             return ((float)enemyHP / (float) currentTextData.HPMax) * 100;
         }
 
+        public void SetHp(int newHP)
+        {
+            enemyHP = newHP;
+        }
+
         #endregion
 
         #region Functions 
@@ -263,6 +268,7 @@ namespace VoiceActing
 
             for(int i = 0; i < emotions.Length; i++)
             {
+                Debug.Log("hey");
                 switch(emotions[i])
                 {
                     case Emotion.Neutre:
@@ -300,6 +306,7 @@ namespace VoiceActing
             if (enemyHP < 0)
                 enemyHP = 0;
 
+            Debug.Log(totalDamage);
             float percentage = 0;
             if (currentTextData.HPMax != 0)
             {
@@ -325,6 +332,8 @@ namespace VoiceActing
                     bonusDamage += statActor.Sweetness * enemyWeakPoints[i].WeakPointStat.Sweetness;
                     bonusDamage += statActor.Fear * enemyWeakPoints[i].WeakPointStat.Fear;
                     bonusDamage += statActor.Trust * enemyWeakPoints[i].WeakPointStat.Trust;
+
+                    Debug.Log("Weakpoint");
                 }
             }
             return bonusDamage;

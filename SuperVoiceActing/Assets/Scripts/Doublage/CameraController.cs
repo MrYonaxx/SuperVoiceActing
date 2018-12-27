@@ -49,6 +49,8 @@ namespace VoiceActing
         private IEnumerator movementCoroutine;
         private IEnumerator rotatingCoroutine;
 
+        private IEnumerator cinematicCoroutine;
+
         float speedMovement = 0.75f;
 
         #endregion
@@ -167,12 +169,185 @@ namespace VoiceActing
                     break;
                 case 10:
                     SetCameraRotation(initialPosition.eulerAngles.x - 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
-                    SetCamera(initialPosition.position.x, initialPosition.position.y - 0.5f, initialPosition.position.z);
-                    MoveCamera(initialPosition.position.x, initialPosition.position.y + 0.5f, initialPosition.position.z, 900 * speedMovement);
+                    SetCamera(initialPosition.position.x, initialPosition.position.y - 0.25f, initialPosition.position.z);
+                    MoveCamera(initialPosition.position.x, initialPosition.position.y + 0.25f, initialPosition.position.z, 900 * speedMovement);
                     RotateCamera(initialPosition.eulerAngles.x + 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 900 * speedMovement);
                     break;
             }
         }
+
+
+
+
+
+        // ============================================================================================================================================
+        #region CinematicCamera
+
+        public void CinematicCamera(int id)
+        {
+            if (cinematicCoroutine != null)
+                StopCoroutine(cinematicCoroutine);
+
+            noCameraEffect = true;
+            // Base de donnée de mouvement de camera
+            switch (id)
+            {
+                case 1: // Right To Left
+                    cinematicCoroutine = CinematicCamera1(0, 0, 0.25f, 900);
+                    break;
+                case 2: // Left To Right
+                    cinematicCoroutine = CinematicCamera1(0, 0, -0.25f, 900);
+                    break;
+                case 3: // Down To Up
+                    cinematicCoroutine = CinematicCamera1(0, -0.25f, 0, 900);
+                    break;
+                case 4: // Up To Down
+                    cinematicCoroutine = CinematicCamera1(0, 0.25f, 0, 900);
+                    break;
+
+
+                case 5: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCamera1(0, 0, 0.25f, 900, -0.5f, 0.1f);
+                    break;
+                case 6: // Left To Right Zoomé
+                    cinematicCoroutine = CinematicCamera1(0, 0, -0.25f, 900, -0.5f, 0.1f);
+                    break;
+                case 7: // Down To Up Zoomé
+                    cinematicCoroutine = CinematicCamera1(0, -0.25f, 0, 900, -0.5f, 0.1f);
+                    break;
+                case 8: // Up To Down Zoomé
+                    cinematicCoroutine = CinematicCamera1(0, 0.25f, 0, 900, -0.5f, 0.1f);
+                    break;
+
+
+                case 9: // Right To Left Zoomé
+                    break;
+                case 10: // Left To Right Zoomé
+                    break;
+                case 11: // Down To Up Zoomé
+                    break;
+                case 12: // Up To Down Zoomé
+                    cinematicCoroutine = CinematicCamera2(0, 1f, 0, 20, 
+                                                          0, -0.25f, 0, 600, 
+                                                          -0.5f, 0.1f);
+                    break;
+
+                //  ======== Reverse ========== //
+
+                case 13: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCamera3(0, 0, -0.25f, 900,
+                                                          -3.2f, 0.3f, 0.25f);
+                    break;
+                case 14: // Left To Right Zoomé
+                    cinematicCoroutine = CinematicCamera3(0, 0, 0.25f, 900,
+                                                          -3.2f, 0.3f, 0.25f);
+                    break;
+                case 15: // Down To Up Zoomé
+                    //cinematicCoroutine = CinematicCamera2(0, -0.25f, 0, 900, -0.5f, 0.1f);
+                    break;
+                case 16: // Up To Down Zoomé
+
+                    break;
+
+
+                //  ======== Ingé son ========== //
+
+                case 17: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCamera1(0, 0, 0.25f, 900,
+                                                          -0.5f, 0, 1.75f);
+                    break;
+                case 18: // Left To Right Zoomé
+                    cinematicCoroutine = CinematicCamera3(0, 0, 0.25f, 900,
+                                                          -3.2f, 0, 2f);
+                    break;
+                case 19: // Down To Up Zoomé
+                    break;
+                case 20: // Up To Down Zoomé
+                    break;
+
+                //  ========= SmoothCameraToMain ========== //
+
+                case 21: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCameraSmooth(0, 0, 0.25f, 20, 900,
+                                                               -0.5f, 0, 0.25f);
+                    break;
+                case 22: // Left To Right Zoomé
+                    break;
+                case 23: // Down To Up Zoomé
+                    break;
+                case 24: // Up To Down Zoomé
+                    break;
+
+                //  ========= SmoothCameraToIngeSon ========== //
+                case 25: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCameraSmooth(0, 0, 0.25f, 20, 900,
+                                                               -0.5f, 0, 1.75f);
+                    break;
+                case 26: // Left To Right Zoomé
+                    cinematicCoroutine = CinematicCameraSmooth(0, 0, -0.25f, 20, 900,
+                                                               -0.5f, 0, 1.75f);
+                    break;
+                case 27: // Down To Up Zoomé
+                    break;
+                case 28: // Up To Down Zoomé
+                    break;
+
+                //  ========= Zoom Rapide ========== //
+                case 29: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCamera2(1.5f, 0, 0, 20,
+                                                          -0.5f, 0, 0, 600,
+                                                          -0.8f, 0.4f);
+                    break;
+
+
+            }
+
+            if (cinematicCoroutine != null)
+                StartCoroutine(cinematicCoroutine);
+        }
+
+        // Move Camera
+        private IEnumerator CinematicCamera1(float x, float y, float z, int time, float offsetX = 0, float offsetY = 0, float offsetZ = 0)
+        {
+            SetCamera(initialPosition.position.x + offsetX + x, initialPosition.position.y + offsetY + y, initialPosition.position.z + offsetZ + z);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX - x, initialPosition.position.y + offsetY - y, initialPosition.position.z + offsetZ - z, time);
+            cinematicCoroutine = null;
+        }
+
+        // Move Camera fast then slow
+        private IEnumerator CinematicCamera2(float x, float y, float z, int time, float x2, float y2, float z2, int time2, float offsetX = 0, float offsetY = 0, float offsetZ = 0)
+        {
+            SetCamera(initialPosition.position.x + offsetX + x, initialPosition.position.y + offsetY + y, initialPosition.position.z + offsetZ + z);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX, initialPosition.position.y + offsetY, initialPosition.position.z + offsetZ, time);
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX + x2, initialPosition.position.y + offsetY + y2, initialPosition.position.z + offsetZ + z2, time2);
+            cinematicCoroutine = null;
+        }
+
+        // Reverse
+        private IEnumerator CinematicCamera3(float x, float y, float z, int time, float offsetX = 0, float offsetY = 0, float offsetZ = 0)
+        {
+            SetCamera(initialPosition.position.x + offsetX + x, initialPosition.position.y + offsetY + y, initialPosition.position.z + offsetZ + z);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y - 180, initialPosition.eulerAngles.z);
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX - x, initialPosition.position.y + offsetY - y, initialPosition.position.z + offsetZ - z, time);
+            cinematicCoroutine = null;
+        }
+
+        // Reverse
+        private IEnumerator CinematicCameraSmooth(float x, float y, float z, int time1, int time2, float offsetX = 0, float offsetY = 0, float offsetZ = 0)
+        {
+            //yield return SetCamera(initialPosition.position.x + offsetX + x, initialPosition.position.y + offsetY + y, initialPosition.position.z + offsetZ + z);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX, initialPosition.position.y + offsetY, initialPosition.position.z + offsetZ, time1);
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX - x, initialPosition.position.y + offsetY - y, initialPosition.position.z + offsetZ - z, time2);
+            cinematicCoroutine = null;
+        }
+        #endregion
+        // ============================================================================================================================================
+
+
 
 
 

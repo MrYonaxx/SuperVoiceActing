@@ -44,6 +44,7 @@ namespace VoiceActing
         [SerializeField]
         GameObject studio;
 
+        bool eventCustom = false;
 
         #endregion
 
@@ -70,9 +71,36 @@ namespace VoiceActing
             }
             else if (indexPhrase == 1)
             {
-                //TransitionToAkihabara();
                 textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
                 textPerformanceAppear.ApplyDamage(100);
+                inputController.enabled = true;
+            }
+            else if (indexPhrase == 2)
+            {
+                if (eventCustom == false)
+                {
+                    textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                    enemyManager.SetHp(10);
+                    textPerformanceAppear.ApplyDamage(50);
+                    //inputController.enabled = true;
+                    StartCoroutine(EventPhrase2());
+                    eventCustom = true;
+                }
+                else
+                {
+                    inputController.enabled = true;
+                }
+            }
+            else if (indexPhrase == 3)
+            {
+                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textPerformanceAppear.ApplyDamage(100);
+                inputController.enabled = true;
+            }
+            else if (indexPhrase == 8)
+            {
+                TransitionToAkihabara();
+                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.enabled = true;
             }
             else
@@ -81,6 +109,12 @@ namespace VoiceActing
                 inputController.enabled = true;
             }
 
+        }
+
+        private IEnumerator EventPhrase2()
+        {
+            yield return new WaitForSeconds(4);
+            CheckEvent();
         }
 
         private void ShiftAmbiance()
@@ -137,6 +171,7 @@ namespace VoiceActing
 
         private IEnumerator TransitionAkihabaraCoroutine()
         {
+            yield return new WaitForSeconds(10);
             float time = 600;
             float speedColor = 1 / time;
             Color color = new Color(1, 1, 1, 0);

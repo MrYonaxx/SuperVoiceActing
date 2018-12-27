@@ -53,10 +53,12 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        public void SetPhraseTextacting(string newText)
+        public void SetPhraseTextacting(string newText, int cameraID)
         {
             textActing.NewMouthAnim(mouth);
             textActing.NewPhrase(newText);
+            if(cameraID != 0)
+                camera.CinematicCamera(cameraID);
         }
 
         public StoryCharacterData GetStoryCharacterData()

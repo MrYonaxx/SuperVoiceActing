@@ -39,6 +39,10 @@ namespace VoiceActing
         [SerializeField]
         protected PanelPlayer panelPlayer;
 
+        [Header("Feedback & UI")]
+        [SerializeField]
+        protected TimerDoublage timer;
+
         [Header("Events")]
         [SerializeField]
         protected InputController inputEvent;
@@ -56,6 +60,8 @@ namespace VoiceActing
         protected DoublageEventData currentEvent;
 
         protected bool startLine = true;
+
+        int turnCount = 0;
 
         #endregion
 
@@ -98,6 +104,8 @@ namespace VoiceActing
 
         public void Attack()
         {
+            turnCount += 1;
+            DrawTimer();
             textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
             CheckEvent();
         }
@@ -132,6 +140,10 @@ namespace VoiceActing
             inputController.enabled = true;
         }
 
+        private void DrawTimer()
+        {
+            timer.SetTurn(turnCount);
+        }
 
         // =================================================================
         // Faire un DoublageEventManager
@@ -163,7 +175,7 @@ namespace VoiceActing
                 {
                     DoublageEventText node = (DoublageEventText) currentNode;
                     inputEvent.enabled = true;
-                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text);
+                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);
                 }
                 if (currentNode is DoublageEventCamera)
                 {
@@ -220,7 +232,7 @@ namespace VoiceActing
 
 
 
-        private bool CheckEvent()
+        protected bool CheckEvent()
         {
 
             for (int i = 0; i < contrat.EventData.Length; i++)

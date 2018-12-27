@@ -82,7 +82,7 @@ public class MouthAnimation : MonoBehaviour
     {
         if (voice != null)
         {
-            voice.pitch = Random.Range(0.9f, 1.1f);
+            voice.pitch = Random.Range(0.95f, 1.05f);
             voice.Play();
         }
         spriteRenderer.sprite = mouthmovement[index];

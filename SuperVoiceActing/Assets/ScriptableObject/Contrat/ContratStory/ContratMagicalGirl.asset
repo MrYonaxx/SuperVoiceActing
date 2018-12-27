@@ -39,11 +39,11 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "Mais en r\xE9alit\xE9 tout a bascul\xE9 ce jour l\xE0 ..."
     enemyResistance:
       neutral: 0
-      joy: 0
+      joy: -50
       sadness: 0
       disgust: 0
       anger: 0
@@ -65,20 +65,31 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "Je dois affronter d'horribles cr\xE9atures ..."
     enemyResistance:
       neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
+      joy: -50
+      sadness: 50
+      disgust: 100
+      anger: 50
       surprise: 0
       sweetness: 0
       fear: 0
       trust: 0
-    enemyWeakPoints: []
-  - hpMax: 0
+    enemyWeakPoints:
+    - wordIndex: 3
+      weakPointStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+  - hpMax: 5
     text: Et pourtant ...
     enemyResistance:
       neutral: 0
@@ -91,7 +102,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "Je ne regrette pas ce qu'il m'est arriv\xE9."
     enemyResistance:
       neutral: 0
@@ -104,7 +115,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: J'ai pu rencontrer des gens extraordinaires !
     enemyResistance:
       neutral: 0
@@ -117,7 +128,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "Et ils m'ont appris \xE0 aimer."
     enemyResistance:
       neutral: 0
@@ -130,7 +141,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "\xC0 pleurer."
     enemyResistance:
       neutral: 0
@@ -143,7 +154,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "\xC0 m'\xE9nerver."
     enemyResistance:
       neutral: 0
@@ -156,7 +167,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: "\xC0 \xEAtre d\xE9go\xFBt\xE9."
     enemyResistance:
       neutral: 0
@@ -169,7 +180,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: Ce sont ces sentiments qui me permettent de me relever.
     enemyResistance:
       neutral: 0
@@ -182,7 +193,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 0
+  - hpMax: 20
     text: Et qui guide mon bras pour vaincre le mal !
     enemyResistance:
       neutral: 0
@@ -199,3 +210,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b8caf436e1ddb840b3a8598206574f7, type: 2}
   - {fileID: 11400000, guid: 851f1015c85d1734295558efe3f5f049, type: 2}
   - {fileID: 11400000, guid: 7d9042919d59a874783751b4d730d1d8, type: 2}
+  - {fileID: 11400000, guid: 0029a813278b0864892f5b4843738c54, type: 2}
+  - {fileID: 11400000, guid: fe95d75086459ee45b38ef4be3c16f72, type: 2}
