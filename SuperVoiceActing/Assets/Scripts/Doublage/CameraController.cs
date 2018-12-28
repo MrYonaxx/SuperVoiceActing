@@ -512,8 +512,8 @@ namespace VoiceActing
                 StopCoroutine(rotatingCoroutine);
             SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
             SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
-            MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 120);
-            RotateCamera(0, 90, 0, 120);
+            MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 80);
+            RotateCamera(0, 90, 0, 80);
         }
 
         public void IngeSon()

@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using Sirenix.OdinInspector;
 
@@ -198,28 +199,23 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        /*[SerializeField]
-        string enemyText;*/
         [Header("TextData")]
         [Space]
         [SerializeField]
         TextData currentTextData;
 
-        /*[SerializeField]*/
         int enemyHP = 100;
-        /*[SerializeField]
-        int enemyHPMax = 100;
 
-        [BoxGroup("Statistique")]
-        [SerializeField]
-        EmotionStat enemyResistance;
-
-        [SerializeField]
-        WeakPoint[] enemyWeakPoints;*/
         [Header("Current Voice actor")]
         [Space]
         [SerializeField]
         VoiceActorData voiceActor;
+
+        [Header("Feedbacks")]
+        [SerializeField]
+        ParticleSystem[] particleFeedbacks;
+        [SerializeField]
+        Image haloCurrentEmotion;
 
         #endregion
 
@@ -306,6 +302,9 @@ namespace VoiceActing
             if (enemyHP < 0)
                 enemyHP = 0;
 
+            ChangeParticleAttack(emotions);
+            ChangeHaloEmotion(emotions);
+
             Debug.Log(totalDamage);
             float percentage = 0;
             if (currentTextData.HPMax != 0)
@@ -337,6 +336,122 @@ namespace VoiceActing
                 }
             }
             return bonusDamage;
+        }
+
+
+
+
+
+        // ======================== //
+        //        Feedback          //
+        // ======================== //
+
+        private void ChangeParticleAttack(Emotion[] emotions)
+        {
+            Color colorEmotion;
+            for (int i = 0; i < emotions.Length; i++)
+            {
+                switch (emotions[i])
+                {
+                    case Emotion.Joie:
+                        colorEmotion = Color.yellow;
+                        break;
+                    case Emotion.Tristesse:
+                        colorEmotion = Color.blue;
+                        break;
+                    case Emotion.Dégoût:
+                        colorEmotion = Color.green;
+                        break;
+                    case Emotion.Colère:
+                        colorEmotion = Color.red;
+                        break;
+                    /*case Emotion.Surprise:
+                        deckEmotion.Surprise = number;
+                        break;
+                    case Emotion.Douceur:
+                        deckEmotion.Sweetness = number;
+                        break;
+                    case Emotion.Peur:
+                        deckEmotion.Fear = number;
+                        break;
+                    case Emotion.Confiance:
+                        deckEmotion.Trust = number;
+                        break;*/
+                    default:
+                        colorEmotion = Color.white;
+                        break;
+                }
+                if (colorEmotion == Color.white && i > 0)
+                    return;
+                else
+                {
+                    for (int j = i; j < particleFeedbacks.Length; j++)
+                    {
+                        var particleColor = particleFeedbacks[j].main;
+                        particleColor.startColor = colorEmotion;
+                    }
+                }
+            }
+        }
+
+        private void ChangeHaloEmotion(Emotion[] emotions)
+        {
+            // Attention aux combo de 2 emotion quand il y a 3 slot, emotions peut retourner [emotion, emotion, neutre]
+
+            int size = emotions.Length;
+            Color colorEmotion = new Color(0, 0, 0, 0);
+            for (int i = 0; i < emotions.Length; i++)
+            {
+                switch (emotions[i])
+                {
+                    case Emotion.Joie:
+                        colorEmotion += Color.yellow;
+                        break;
+                    case Emotion.Tristesse:
+                        colorEmotion += Color.blue;
+                        break;
+                    case Emotion.Dégoût:
+                        colorEmotion += Color.green;
+                        break;
+                    case Emotion.Colère:
+                        colorEmotion += Color.red;
+                        break;
+                    /*case Emotion.Surprise:
+                        deckEmotion.Surprise = number;
+                        break;
+                    case Emotion.Douceur:
+                        deckEmotion.Sweetness = number;
+                        break;
+                    case Emotion.Peur:
+                        deckEmotion.Fear = number;
+                        break;
+                    case Emotion.Confiance:
+                        deckEmotion.Trust = number;
+                        break;*/
+                    default:
+                        if (i == 0)
+                            colorEmotion = Color.white;
+                        else
+                            size -= 1;
+                        break;
+                }
+            }
+            colorEmotion = new Color(colorEmotion.r, colorEmotion.g, colorEmotion.b, 0.1f * size);
+            StartCoroutine(ChangeHaloEmotionCoroutine(colorEmotion, 70));
+        }
+
+        private IEnumerator ChangeHaloEmotionCoroutine(Color colorEmotion, int time)
+        {
+            float speedRed = (colorEmotion.r - haloCurrentEmotion.color.r) / time;
+            float speedGreen = (colorEmotion.g - haloCurrentEmotion.color.g) / time;
+            float speedBlue = (colorEmotion.b - haloCurrentEmotion.color.b) / time;
+            float speedAlpha = (colorEmotion.a - haloCurrentEmotion.color.a) / time;
+            while(time != 0)
+            {
+                time -= 1;
+                haloCurrentEmotion.color += new Color(speedRed, speedGreen, speedBlue, speedAlpha);
+                yield return null;
+            }
         }
 
         #endregion

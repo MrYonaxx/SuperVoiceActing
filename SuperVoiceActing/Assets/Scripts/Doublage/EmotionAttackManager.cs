@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -173,7 +174,11 @@ namespace VoiceActing
 
         [Header("Feedback")]
         [SerializeField]
+        Image feedbackSelectCard;
+        [SerializeField]
         ParticleSystem particle;
+        [SerializeField]
+        Image haloEmotion;
 
         EmotionCard[] comboCardEmotion;
         Emotion[] comboEmotion;
@@ -400,8 +405,8 @@ namespace VoiceActing
                 {
                     if (emotionCards[i].Cards[0] != null && emotionCards[i].Cards[0].gameObject.activeInHierarchy == true)
                     {
-                        //particle.sta
-                        particle.Play();
+                        emotionCards[i].Cards[0].FeedbackCardSelected(feedbackSelectCard);
+                        ParticleSelectEmotion(emotion);
                         comboCount += 1;
                         comboEmotion[comboCount] = emotion;
                         comboCardEmotion[comboCount] = emotionCards[i].Cards[0];
@@ -460,9 +465,68 @@ namespace VoiceActing
 
         }
 
+        // ================================================= //
+        // =============== FEEDBACK ==================
+        // ================================================= //
 
 
+        private void ParticleSelectEmotion(Emotion emotion)
+        {
+            var particleColor = particle.main;
+            Color colorEmotion;
+            switch (emotion)
+            {
+                case Emotion.Joie:
+                    colorEmotion = Color.yellow;
+                    break;
+                case Emotion.Tristesse:
+                    colorEmotion = Color.blue;
+                    break;
+                case Emotion.Dégoût:
+                    colorEmotion = Color.green;
+                    break;
+                case Emotion.Colère:
+                    colorEmotion = Color.red;
+                    break;
+                /*case Emotion.Surprise:
+                    deckEmotion.Surprise = number;
+                    break;
+                case Emotion.Douceur:
+                    deckEmotion.Sweetness = number;
+                    break;
+                case Emotion.Peur:
+                    deckEmotion.Fear = number;
+                    break;
+                case Emotion.Confiance:
+                    deckEmotion.Trust = number;
+                    break;*/
+                default:
+                    colorEmotion = Color.white;
+                    break;
+            }
+            particleColor.startColor = colorEmotion;
+            StartCoroutine(HaloEmotionCoroutine(colorEmotion, 0.1f, 10, 10));
+            particle.Play();
+        }
 
+        private IEnumerator HaloEmotionCoroutine(Color initialColor, float alpha, int time1, int time2)
+        {
+            haloEmotion.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+            float speedAlpha = alpha / time1;
+            float speedAlpha2 = alpha / time2;
+            while (time1 != 0)
+            {
+                haloEmotion.color += new Color(0, 0, 0, speedAlpha);
+                time1 -= 1;
+                yield return null;
+            }
+            while (time2 != 0)
+            {
+                haloEmotion.color -= new Color(0, 0, 0, speedAlpha2);
+                time2 -= 1;
+                yield return null;
+            }
+        }
 
         #endregion
 

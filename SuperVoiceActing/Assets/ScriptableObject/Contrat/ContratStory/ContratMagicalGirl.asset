@@ -89,37 +89,46 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-  - hpMax: 5
-    text: Et pourtant ...
-    enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
   - hpMax: 20
-    text: "Je ne regrette pas ce qu'il m'est arriv\xE9."
+    text: "Et pourtant je ne regrette pas ce qu'il m'est arriv\xE9."
     enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
+      neutral: -20
+      joy: 80
+      sadness: -50
+      disgust: -50
+      anger: -50
       surprise: 0
       sweetness: 0
       fear: 0
       trust: 0
-    enemyWeakPoints: []
+    enemyWeakPoints:
+    - wordIndex: 4
+      weakPointStat:
+        neutral: 0
+        joy: 20
+        sadness: 20
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    - wordIndex: 5
+      weakPointStat:
+        neutral: 0
+        joy: 20
+        sadness: 20
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - hpMax: 20
     text: J'ai pu rencontrer des gens extraordinaires !
     enemyResistance:
       neutral: 0
-      joy: 0
+      joy: 50
       sadness: 0
       disgust: 0
       anger: 0
@@ -127,12 +136,34 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
-    enemyWeakPoints: []
+    enemyWeakPoints:
+    - wordIndex: 2
+      weakPointStat:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    - wordIndex: 5
+      weakPointStat:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - hpMax: 20
     text: "Et ils m'ont appris \xE0 aimer."
     enemyResistance:
       neutral: 0
-      joy: 0
+      joy: 100
       sadness: 0
       disgust: 0
       anger: 0
@@ -145,8 +176,8 @@ MonoBehaviour:
     text: "\xC0 pleurer."
     enemyResistance:
       neutral: 0
-      joy: 0
-      sadness: 0
+      joy: 50
+      sadness: 100
       disgust: 0
       anger: 0
       surprise: 0
@@ -158,10 +189,10 @@ MonoBehaviour:
     text: "\xC0 m'\xE9nerver."
     enemyResistance:
       neutral: 0
-      joy: 0
+      joy: 50
       sadness: 0
       disgust: 0
-      anger: 0
+      anger: 100
       surprise: 0
       sweetness: 0
       fear: 0
@@ -171,9 +202,9 @@ MonoBehaviour:
     text: "\xC0 \xEAtre d\xE9go\xFBt\xE9."
     enemyResistance:
       neutral: 0
-      joy: 0
+      joy: 50
       sadness: 0
-      disgust: 0
+      disgust: 100
       anger: 0
       surprise: 0
       sweetness: 0
@@ -184,7 +215,7 @@ MonoBehaviour:
     text: Ce sont ces sentiments qui me permettent de me relever.
     enemyResistance:
       neutral: 0
-      joy: 0
+      joy: 50
       sadness: 0
       disgust: 0
       anger: 0
@@ -192,7 +223,18 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
-    enemyWeakPoints: []
+    enemyWeakPoints:
+    - wordIndex: 3
+      weakPointStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
   - hpMax: 20
     text: Et qui guide mon bras pour vaincre le mal !
     enemyResistance:
@@ -200,7 +242,7 @@ MonoBehaviour:
       joy: 0
       sadness: 0
       disgust: 0
-      anger: 0
+      anger: 50
       surprise: 0
       sweetness: 0
       fear: 0

@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace VoiceActing
@@ -23,6 +24,7 @@ namespace VoiceActing
 
         private IEnumerator coroutine = null;
         private RectTransform rectTransform;
+        private Image image;
 
         #endregion
 
@@ -44,6 +46,7 @@ namespace VoiceActing
         private void Start()
         {
             rectTransform = GetComponent<RectTransform>();
+            image = GetComponent<Image>();
         }
 
         public void MoveCard(RectTransform newTransform, float speed)
@@ -66,8 +69,28 @@ namespace VoiceActing
             }
             coroutine = null;
         }
-        
-        
+
+        public void FeedbackCardSelected(Image feedback)
+        {
+            feedback.transform.position = this.transform.position;//.anchoredPosition;
+            feedback.rectTransform.localScale = this.rectTransform.localScale;
+            feedback.sprite = image.sprite;
+            feedback.color = image.color;
+            StartCoroutine(FeedbackCoroutine(feedback, 20));
+        }
+
+        private IEnumerator FeedbackCoroutine(Image feedback, int time)
+        {
+            //feedback.color = new Color(1, 1, 1, 1);
+            while (time != 0)
+            {
+                feedback.color -= new Color(0, 0, 0, 0.05f);
+                feedback.rectTransform.localScale += new Vector3(0.075f, 0.075f, 0);
+                time -= 1;
+                yield return null;
+            }
+        }
+
         #endregion
 
     } // EmotionCard class
