@@ -46,6 +46,8 @@ namespace VoiceActing
 
         float offset = 0;
 
+        private bool pauseCoroutine = false;
+
         private IEnumerator movementCoroutine;
         private IEnumerator rotatingCoroutine;
 
@@ -64,6 +66,11 @@ namespace VoiceActing
         public void SetNoCameraEffect(bool b)
         {
             noCameraEffect = b;
+        }
+
+        public void SetCameraPause(bool b)
+        {
+            pauseCoroutine = b;
         }
 
         #endregion
@@ -425,8 +432,11 @@ namespace VoiceActing
             moving = true;
             while (time != 0)
             {
-                this.transform.position += new Vector3(speedX, speedY, speedZ);
-                time -= 1;
+                if (pauseCoroutine == false)
+                {
+                    this.transform.position += new Vector3(speedX, speedY, speedZ);
+                    time -= 1;
+                }
                 yield return null;
             }
             moving = false;
@@ -465,8 +475,11 @@ namespace VoiceActing
             rotating = true;
             while (time != 0)
             {
-                this.transform.eulerAngles += new Vector3(speedX, speedY, speedZ);
-                time -= 1;
+                if (pauseCoroutine == false)
+                {
+                    this.transform.eulerAngles += new Vector3(speedX, speedY, speedZ);
+                    time -= 1;
+                }
                 yield return null;
             }
             rotating = false;
@@ -476,20 +489,20 @@ namespace VoiceActing
 
 
 
-        public void ChangeOrthographicSize(float addValue)
+        public void ChangeOrthographicSize(float addValue, int time = 20)
         {
             /*if (orthographicCoroutine != null)
             {
                 StopCoroutine(orthographicCoroutine);
             }
             orthographicCoroutine = OrthographicSizeTransition(addValue);*/
-            StartCoroutine(OrthographicSizeTransition(addValue));
+            StartCoroutine(OrthographicSizeTransition(addValue, time));
         }
 
-        private IEnumerator OrthographicSizeTransition(float addValue)
+        private IEnumerator OrthographicSizeTransition(float addValue, int time)
         {
-            float time = 20;
-            float rate = ((70 + addValue) - camera.fieldOfView) / 20;
+            //float time = 20;
+            float rate = ((65 + addValue) - camera.fieldOfView) / time;
             while (time != 0)
             {
                 camera.fieldOfView += rate;
@@ -497,7 +510,7 @@ namespace VoiceActing
                 yield return null;
             }
 
-            camera.orthographicSize = 70 + addValue;
+            camera.orthographicSize = 65 + addValue;
             //orthographicCoroutine = null;
         }
 

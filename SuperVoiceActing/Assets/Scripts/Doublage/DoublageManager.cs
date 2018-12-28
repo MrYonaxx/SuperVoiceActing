@@ -35,6 +35,8 @@ namespace VoiceActing
         [SerializeField]
         protected EnemyManager enemyManager;
         [SerializeField]
+        protected SkillManager skillManager;
+        [SerializeField]
         protected TextPerformanceAppear textPerformanceAppear;
         [SerializeField]
         protected PanelPlayer panelPlayer;

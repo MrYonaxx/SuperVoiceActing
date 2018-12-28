@@ -118,6 +118,13 @@ namespace VoiceActing
             eyesScript.ChangeTint(newColor);
         }
 
+
+
+        public void ChangeOrderInLayer(int newOrder)
+        {
+            spriteRenderer.sortingOrder = newOrder;
+        }
+
         #endregion
 
     } // CharacterDialogueController class

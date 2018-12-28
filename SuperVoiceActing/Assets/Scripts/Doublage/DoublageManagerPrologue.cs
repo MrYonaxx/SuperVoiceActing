@@ -97,9 +97,15 @@ namespace VoiceActing
                 textPerformanceAppear.ApplyDamage(100);
                 inputController.enabled = true;
             }
-            else if (indexPhrase == 8)
+            else if (indexPhrase == 6)
             {
                 TransitionToAkihabara();
+                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                inputController.enabled = true;
+            }
+            else if (indexPhrase == 11)
+            {
+                skillManager.ActorSkillFeedback();
                 textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.enabled = true;
             }
