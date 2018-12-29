@@ -27,6 +27,10 @@ namespace UnityEngine.PostProcessing
 
         public RenderTexture Get(int width, int height, int depthBuffer = 0, RenderTextureFormat format = RenderTextureFormat.ARGBHalf, RenderTextureReadWrite rw = RenderTextureReadWrite.Default, FilterMode filterMode = FilterMode.Bilinear, TextureWrapMode wrapMode = TextureWrapMode.Clamp, string name = "FactoryTempTexture")
         {
+            if (width <= 0)
+                return null;
+            if (height <= 0)
+                return null;
             var rt = RenderTexture.GetTemporary(width, height, depthBuffer, format, rw); // add forgotten param rw
             rt.filterMode = filterMode;
             rt.wrapMode = wrapMode;

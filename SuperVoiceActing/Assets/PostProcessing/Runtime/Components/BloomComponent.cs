@@ -83,28 +83,34 @@ namespace UnityEngine.PostProcessing
 
             for (int level = 0; level < iterations; level++)
             {
-                m_BlurBuffer1[level] = context.renderTextureFactory.Get(
-                        last.width / 2, last.height / 2, 0, rtFormat
-                        );
+                if (last != null)
+                {
+                    m_BlurBuffer1[level] = context.renderTextureFactory.Get(
+                            last.width / 2, last.height / 2, 0, rtFormat
+                            );
 
-                int pass = (level == 0) ? 1 : 2;
-                Graphics.Blit(last, m_BlurBuffer1[level], material, pass);
+                    int pass = (level == 0) ? 1 : 2;
+                    Graphics.Blit(last, m_BlurBuffer1[level], material, pass);
 
-                last = m_BlurBuffer1[level];
+                    last = m_BlurBuffer1[level];
+                }
             }
 
             // Upsample and combine loop
             for (int level = iterations - 2; level >= 0; level--)
             {
                 var baseTex = m_BlurBuffer1[level];
-                material.SetTexture(Uniforms._BaseTex, baseTex);
+                if (baseTex != null)
+                {
+                    material.SetTexture(Uniforms._BaseTex, baseTex);
 
-                m_BlurBuffer2[level] = context.renderTextureFactory.Get(
-                        baseTex.width, baseTex.height, 0, rtFormat
-                        );
+                    m_BlurBuffer2[level] = context.renderTextureFactory.Get(
+                            baseTex.width, baseTex.height, 0, rtFormat
+                            );
 
-                Graphics.Blit(last, m_BlurBuffer2[level], material, 3);
-                last = m_BlurBuffer2[level];
+                    Graphics.Blit(last, m_BlurBuffer2[level], material, 3);
+                    last = m_BlurBuffer2[level];
+                }
             }
 
             var bloomTex = last;
