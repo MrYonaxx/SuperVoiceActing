@@ -47,7 +47,11 @@ namespace VoiceActing
         [SerializeField]
         EmotionAttackManager emotionAttackManager;
 
+        [SerializeField]
+        TextPerformanceAppear textToStop;
+
         private IEnumerator coroutineSkill = null;
+        Vector3 initialScaleText;
 
         #endregion
 
@@ -66,6 +70,11 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public bool CheckPassiveSkills()
+        {
+            return false;
+        }
+
         private void CheckSkillCondition()
         {
 
@@ -74,6 +83,7 @@ namespace VoiceActing
         [ContextMenu("Hey")]
         public void ActorSkillFeedback()
         {
+            textToStop.SetPauseText(true);
             animationPotentiel.SetActive(true);
             textMeshSkillDesc.gameObject.SetActive(false);
             cameraController.SetCameraPause(true);
@@ -90,6 +100,10 @@ namespace VoiceActing
             doubleur.ChangeOrderInLayer(60);
             cameraController.ChangeOrthographicSize(-30, 30);
             animationSkillName.SetActive(true);
+
+            textToStop.SetPauseText(true);
+            initialScaleText = textToStop.transform.localScale;
+            textToStop.transform.localScale = new Vector3(0, 0, 0);
 
             if (coroutineSkill != null)
                 StopCoroutine(coroutineSkill);
@@ -187,6 +201,8 @@ namespace VoiceActing
             doubleur.transform.SetParent(panelDefault);
             doubleur.ChangeOrderInLayer(-2);
             cameraController.ChangeOrthographicSize(0, 30);
+            textToStop.SetPauseText(false);
+            textToStop.transform.localScale = initialScaleText;
 
             if (coroutineSkill != null)
                 StopCoroutine(coroutineSkill);

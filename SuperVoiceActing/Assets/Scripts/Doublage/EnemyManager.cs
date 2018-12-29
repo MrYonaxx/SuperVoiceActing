@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Collections;
 using Sirenix.OdinInspector;
 
@@ -216,6 +217,10 @@ namespace VoiceActing
         ParticleSystem[] particleFeedbacks;
         [SerializeField]
         Image haloCurrentEmotion;
+        [SerializeField]
+        TextMeshPro damageText;
+
+        Animator damageTextAnimator;
 
         #endregion
 
@@ -248,10 +253,15 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        private void Start()
+        {
+            damageTextAnimator = damageText.GetComponent<Animator>();
+        }
+
         public void SetTextData(TextData newTextData)
         {
-            enemyHP = currentTextData.HPMax;
             currentTextData = newTextData;
+            enemyHP = currentTextData.HPMax;
         }
 
         public float DamagePhrase(Emotion[] emotions, int word)
@@ -264,7 +274,7 @@ namespace VoiceActing
 
             for(int i = 0; i < emotions.Length; i++)
             {
-                Debug.Log("hey");
+
                 switch(emotions[i])
                 {
                     case Emotion.Neutre:
@@ -305,6 +315,8 @@ namespace VoiceActing
             ChangeParticleAttack(emotions);
             ChangeHaloEmotion(emotions);
 
+            PrintDamage(totalDamage);
+
             Debug.Log(totalDamage);
             float percentage = 0;
             if (currentTextData.HPMax != 0)
@@ -322,15 +334,15 @@ namespace VoiceActing
             {
                 if (word == enemyWeakPoints[i].WordIndex)
                 {
-                    bonusDamage += statActor.Joy * enemyWeakPoints[i].WeakPointStat.Joy;
-                    bonusDamage += statActor.Sadness * enemyWeakPoints[i].WeakPointStat.Sadness;
-                    bonusDamage += statActor.Disgust * enemyWeakPoints[i].WeakPointStat.Disgust;
-                    bonusDamage += statActor.Anger * enemyWeakPoints[i].WeakPointStat.Anger;
+                    bonusDamage += statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
+                    bonusDamage += statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
+                    bonusDamage += statActor.Disgust * (enemyWeakPoints[i].WeakPointStat.Disgust / 100f);
+                    bonusDamage += statActor.Anger * (enemyWeakPoints[i].WeakPointStat.Anger / 100f);
 
-                    bonusDamage += statActor.Surprise * enemyWeakPoints[i].WeakPointStat.Surprise;
-                    bonusDamage += statActor.Sweetness * enemyWeakPoints[i].WeakPointStat.Sweetness;
-                    bonusDamage += statActor.Fear * enemyWeakPoints[i].WeakPointStat.Fear;
-                    bonusDamage += statActor.Trust * enemyWeakPoints[i].WeakPointStat.Trust;
+                    bonusDamage += statActor.Surprise * (enemyWeakPoints[i].WeakPointStat.Surprise / 100f);
+                    bonusDamage += statActor.Sweetness * (enemyWeakPoints[i].WeakPointStat.Sweetness / 100f);
+                    bonusDamage += statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
+                    bonusDamage += statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
 
                     Debug.Log("Weakpoint");
                 }
@@ -345,6 +357,10 @@ namespace VoiceActing
         // ======================== //
         //        Feedback          //
         // ======================== //
+        /*public void SetParticlePosition(Vector2 pos)
+        {
+            particleFeedbacks[2].transform.localPosition = new Vector3(pos.x, pos.y, 0);
+        }*/
 
         private void ChangeParticleAttack(Emotion[] emotions)
         {
@@ -391,6 +407,11 @@ namespace VoiceActing
                         particleColor.startColor = colorEmotion;
                     }
                 }
+            }
+
+            for (int i = 0; i < particleFeedbacks.Length; i++)
+            {
+                particleFeedbacks[i].Play();
             }
         }
 
@@ -452,6 +473,40 @@ namespace VoiceActing
                 haloCurrentEmotion.color += new Color(speedRed, speedGreen, speedBlue, speedAlpha);
                 yield return null;
             }
+        }
+
+        private void PrintDamage(float totalDamage)
+        {
+            damageText.gameObject.SetActive(true);
+            damageText.text = totalDamage.ToString();
+            damageText.transform.localScale = new Vector3(1, 1, 1);
+            int timeFeedback = 40;
+            float speed = (totalDamage / timeFeedback);
+            Debug.Log(speed);
+            StartCoroutine(DamageTextCoroutine(speed, timeFeedback, 120));
+        }
+
+        private IEnumerator DamageTextCoroutine(float speed, int timeFeedback, int time)
+        {
+            float currentDamage = 0;
+            while (time != 0)
+            {
+                time -= 1;
+                if(timeFeedback > 0)
+                {
+                    timeFeedback -= 1;
+                    currentDamage += speed;
+                    damageText.text = ((int)currentDamage).ToString();
+                }
+                else if (timeFeedback == 0)
+                {
+                    damageTextAnimator.enabled = true;
+                }
+                yield return null;
+            }
+            damageText.text = "";
+            damageTextAnimator.enabled = false;
+            damageText.gameObject.SetActive(false);
         }
 
         #endregion

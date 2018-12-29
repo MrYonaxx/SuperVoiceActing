@@ -100,27 +100,37 @@ namespace VoiceActing
             //
             yield return null;
             emotionAttackManager.SwitchCardTransformIntro();
-            inputController.enabled = true;
+            SetPhrase();
         }
 
 
         public void Attack()
         {
-            turnCount += 1;
-            DrawTimer();
-            textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
-            CheckEvent();
+            if (enemyManager.GetHpPercentage() != 0)
+            {
+                if (textPerformanceAppear.GetEndLine() == true)
+                {
+                    turnCount += 1;
+                    timer.SetTurn(turnCount);
+                    cameraController.NotQuite();
+                    textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
+                    CheckEvent();
+                }
+            }
         }
 
         public void KillPhrase()
         {
             if(enemyManager.GetHpPercentage() == 0)
             {
-                inputController.enabled = false;
-                emotionAttackManager.RemoveCard();
-                emotionAttackManager.RemoveCard();
-                emotionAttackManager.RemoveCard();
-                SetNextPhrase();
+                if (textPerformanceAppear.GetEndLine() == true)
+                {
+                    inputController.enabled = false;
+                    emotionAttackManager.RemoveCard();
+                    emotionAttackManager.RemoveCard();
+                    emotionAttackManager.RemoveCard();
+                    SetNextPhrase();
+                }
             }
         }
 
@@ -131,7 +141,7 @@ namespace VoiceActing
             indexPhrase += 1;
             startLine = true;
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            if (CheckEvent() == false)
+            if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
                 SetPhrase();
             startLine = false;
         }
@@ -140,12 +150,18 @@ namespace VoiceActing
         {
             textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
             inputController.enabled = true;
+            inputEvent.enabled = false;
         }
 
-        private void DrawTimer()
-        {
-            timer.SetTurn(turnCount);
-        }
+
+
+
+
+
+
+
+
+
 
         // =================================================================
         // Faire un DoublageEventManager

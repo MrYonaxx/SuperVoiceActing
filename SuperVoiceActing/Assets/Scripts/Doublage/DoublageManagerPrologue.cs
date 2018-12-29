@@ -105,9 +105,10 @@ namespace VoiceActing
             }
             else if (indexPhrase == 11)
             {
-                skillManager.ActorSkillFeedback();
+                //skillManager.ActorSkillFeedback();
                 textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.enabled = true;
+                skillManager.ActorSkillFeedback();
             }
             else
             {
