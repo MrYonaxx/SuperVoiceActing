@@ -255,7 +255,8 @@ namespace VoiceActing
 
         private void Start()
         {
-            damageTextAnimator = damageText.GetComponent<Animator>();
+            if(damageText != null)
+                damageTextAnimator = damageText.GetComponent<Animator>();
         }
 
         public void SetTextData(TextData newTextData)
@@ -364,6 +365,8 @@ namespace VoiceActing
 
         private void ChangeParticleAttack(Emotion[] emotions)
         {
+            if (particleFeedbacks == null)
+                return;
             Color colorEmotion;
             for (int i = 0; i < emotions.Length; i++)
             {
@@ -418,6 +421,8 @@ namespace VoiceActing
         private void ChangeHaloEmotion(Emotion[] emotions)
         {
             // Attention aux combo de 2 emotion quand il y a 3 slot, emotions peut retourner [emotion, emotion, neutre]
+            if (haloCurrentEmotion == null)
+                return;
 
             int size = emotions.Length;
             Color colorEmotion = new Color(0, 0, 0, 0);
@@ -477,6 +482,8 @@ namespace VoiceActing
 
         private void PrintDamage(float totalDamage)
         {
+            if (damageText == null)
+                return;
             damageText.gameObject.SetActive(true);
             damageText.text = totalDamage.ToString();
             damageText.transform.localScale = new Vector3(1, 1, 1);

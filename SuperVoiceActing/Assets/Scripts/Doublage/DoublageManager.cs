@@ -89,30 +89,36 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            if (CheckEvent() == false)
-                StartCoroutine(IntroductionSequence());
-            startLine = false;
+            StartCoroutine(IntroductionSequence());
         }
         
         private IEnumerator IntroductionSequence()
         {
             //
             yield return null;
-            emotionAttackManager.SwitchCardTransformIntro();
-            SetPhrase();
+            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            if (CheckEvent() == false)
+            {
+                emotionAttackManager.SwitchCardTransformIntro();
+                SetPhrase();
+            }
+            startLine = false;
         }
 
 
         public void Attack()
         {
+            Debug.Log(enemyManager.GetHpPercentage());
+            Debug.Log(textPerformanceAppear.GetEndLine());
             if (enemyManager.GetHpPercentage() != 0)
             {
                 if (textPerformanceAppear.GetEndLine() == true)
                 {
                     turnCount += 1;
-                    timer.SetTurn(turnCount);
-                    cameraController.NotQuite();
+                    if(timer != null)
+                        timer.SetTurn(turnCount);
+                    if(cameraController != null)
+                        cameraController.NotQuite();
                     textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
                     CheckEvent();
                 }
@@ -259,6 +265,7 @@ namespace VoiceActing
                 {
                     indexEvent = -1;
                     currentEvent = contrat.EventData[i];
+                    emotionAttackManager.SwitchCardTransformToRessource();
                     ExecuteEvent();
                     return true;
                 }

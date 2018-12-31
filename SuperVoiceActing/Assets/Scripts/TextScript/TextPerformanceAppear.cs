@@ -24,7 +24,7 @@ namespace VoiceActing
         \* ======================================== */
         [Header("Mouth")]
         [SerializeField]
-        MouthAnimation mouth = null;
+        protected MouthAnimation mouth = null;
 
         [Header("Letter Parameter")]
         [SerializeField]
@@ -40,32 +40,32 @@ namespace VoiceActing
 
         [Header("Feedback")]
         [SerializeField]
-        ParticleSystem particlesEndLine = null;
+        protected ParticleSystem particlesEndLine = null;
 
 
 
-        private Color32 damageColor = new Color32(255, 255, 0, 0);
+        protected Color32 damageColor = new Color32(255, 255, 0, 0);
 
 
-        private TMP_Text textMeshPro;
+        protected TMP_Text textMeshPro;
 
-        bool hasTextChanged = false;
-        bool endLine = false;
-        bool pauseText = false;
+        protected bool hasTextChanged = false;
+        protected bool endLine = false;
+        protected bool pauseText = false;
 
-        float actualTime = 0;
+        protected float actualTime = 0;
 
-        int characterCount = 0;
+        protected int characterCount = 0;
 
-        VertexAnim[] vertexAnim = new VertexAnim[1024];
-        TMP_MeshInfo[] cachedMeshInfo;
+        protected VertexAnim[] vertexAnim = new VertexAnim[1024];
+        protected TMP_MeshInfo[] cachedMeshInfo;
 
-        float size = 0;
-        float sizeRatio = 0;
+        protected float size = 0;
+        protected float sizeRatio = 0;
 
-        int wordSelected = -1;
+        protected int wordSelected = -1;
 
-        private IEnumerator coroutine = null;
+        protected IEnumerator coroutine = null;
 
         #endregion
 
@@ -78,24 +78,26 @@ namespace VoiceActing
         /// <summary>
         /// Structure to hold pre-computed animation data.
         /// </summary>
-        private struct VertexAnim
+        protected struct VertexAnim
         {
             public bool damage;
             public bool selected;
             public float offset;
             public float alpha;
+            public Vector3 vertexPosition;
+            public float angle;
         }
 
 
 
 
-        void Awake()
+        protected void Awake()
         {
             textMeshPro = GetComponent<TMP_Text>();          
         }
 
 
-        void Start()
+        protected void Start()
         {
             if (coroutine != null)
                 StopCoroutine(coroutine);
@@ -309,7 +311,7 @@ namespace VoiceActing
 
 
 
-        IEnumerator AnimateVertexColors()
+        protected virtual IEnumerator AnimateVertexColors()
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
@@ -512,8 +514,8 @@ namespace VoiceActing
                         {
                             particlesEndLine.transform.localPosition = offset;
                             particlesEndLine.Play();
-                            endLine = true;
                         }
+                        endLine = true;
                     }
                 }
 

@@ -2536,6 +2536,7 @@ MonoBehaviour:
     hpMax: 10
     text: Test, Test
     enemyResistance:
+      neutral: 0
       joy: 0
       sadness: 0
       disgust: 0
@@ -2546,6 +2547,9 @@ MonoBehaviour:
       trust: 0
     enemyWeakPoints: []
   voiceActor: {fileID: 11400000, guid: 84efba9ed6c9cc14eb4078d6e6f711a1, type: 2}
+  particleFeedbacks: []
+  haloCurrentEmotion: {fileID: 0}
+  damageText: {fileID: 0}
 --- !u!1 &227471611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a353e9e72b46ad45ab21e3b2517ad32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceStopBlink: 0
 --- !u!1 &289564999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,6 +3304,7 @@ MonoBehaviour:
     transformRessource: {fileID: 997892167}
     transformBattle: {fileID: 867243660}
   deckEmotion:
+    neutral: 0
     joy: 1
     sadness: 0
     disgust: 0
@@ -3315,6 +3321,9 @@ MonoBehaviour:
   transitionSpeed: 1.1
   transitionSpeedIntro: 1.05
   transitionSpeedCardSelect: 1.1
+  feedbackSelectCard: {fileID: 0}
+  particle: {fileID: 0}
+  haloEmotion: {fileID: 0}
 --- !u!4 &289565001
 Transform:
   m_ObjectHideFlags: 0
@@ -4455,6 +4464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a353e9e72b46ad45ab21e3b2517ad32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceStopBlink: 0
 --- !u!212 &395226680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5444,12 +5454,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contrat: {fileID: 11400000, guid: 623b941cb5af25c4d84e3bc20856415a, type: 2}
-  cameraController: {fileID: 1480377170}
+  cameraController: {fileID: 0}
   inputController: {fileID: 82474070}
   emotionAttackManager: {fileID: 289565000}
   enemyManager: {fileID: 222066016}
+  skillManager: {fileID: 0}
   textPerformanceAppear: {fileID: 506731760}
   panelPlayer: {fileID: 1704566724}
+  timer: {fileID: 0}
   inputEvent: {fileID: 1611494305}
   cameraControllerEvent:
   - {fileID: 1480377170}
@@ -5460,6 +5472,7 @@ MonoBehaviour:
   textEvent:
   - {fileID: 506731760}
   - {fileID: 1679581499}
+  indexPhrase: 0
 --- !u!4 &481652801
 Transform:
   m_ObjectHideFlags: 0
@@ -5571,6 +5584,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a1fb483356dbefa44a7afd4e8163a963, type: 3}
   - {fileID: 21300000, guid: 78f3d4347574c7d47a1e597468b47fdd, type: 3}
   soundVisualizer: {fileID: 0}
+  voice: {fileID: 0}
 --- !u!1 &505617878
 GameObject:
   m_ObjectHideFlags: 0
@@ -5931,6 +5945,7 @@ MonoBehaviour:
   letterCurveSpeed: 0.8
   letterInterval: 4
   alphaSpeed: 20
+  particlesEndLine: {fileID: 0}
 --- !u!1 &519898594
 GameObject:
   m_ObjectHideFlags: 0
@@ -8046,6 +8061,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35ab9a6198c2e6b4fb42fdda8a1a5f25, type: 3}
   - {fileID: 21300000, guid: 50d26ae905cb23445b08a67502382384, type: 3}
   soundVisualizer: {fileID: 0}
+  voice: {fileID: 0}
 --- !u!212 &829923859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16154,6 +16170,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a1fb483356dbefa44a7afd4e8163a963, type: 3}
   - {fileID: 21300000, guid: 78f3d4347574c7d47a1e597468b47fdd, type: 3}
   soundVisualizer: {fileID: 0}
+  voice: {fileID: 0}
 --- !u!1 &1270762398
 GameObject:
   m_ObjectHideFlags: 0
@@ -19779,6 +19796,7 @@ MonoBehaviour:
   letterCurveSpeed: 0.8
   letterInterval: 4
   alphaSpeed: 20
+  particlesEndLine: {fileID: 0}
 --- !u!114 &1679581500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21775,6 +21793,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35ab9a6198c2e6b4fb42fdda8a1a5f25, type: 3}
   - {fileID: 21300000, guid: 50d26ae905cb23445b08a67502382384, type: 3}
   soundVisualizer: {fileID: 0}
+  voice: {fileID: 0}
 --- !u!212 &1962661479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21851,6 +21870,7 @@ MonoBehaviour:
   eyesScript: {fileID: 0}
   mouth: {fileID: 1962661478}
   textActing: {fileID: 506731760}
+  camera: {fileID: 0}
 --- !u!1 &1963275022
 GameObject:
   m_ObjectHideFlags: 0
@@ -22914,6 +22934,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a1fb483356dbefa44a7afd4e8163a963, type: 3}
   - {fileID: 21300000, guid: 78f3d4347574c7d47a1e597468b47fdd, type: 3}
   soundVisualizer: {fileID: 0}
+  voice: {fileID: 0}
 --- !u!212 &2106719358
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22993,6 +23014,7 @@ MonoBehaviour:
   eyesScript: {fileID: 395226679}
   mouth: {fileID: 2106719357}
   textActing: {fileID: 1679581499}
+  camera: {fileID: 0}
 --- !u!1 &2133177910
 GameObject:
   m_ObjectHideFlags: 0

@@ -472,6 +472,11 @@ namespace VoiceActing
 
         private void ParticleSelectEmotion(Emotion emotion)
         {
+            if (particle == null)
+                return;
+            if (haloEmotion == null)
+                return;
+
             var particleColor = particle.main;
             Color colorEmotion;
             switch (emotion)

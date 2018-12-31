@@ -72,11 +72,14 @@ namespace VoiceActing
 
         public void FeedbackCardSelected(Image feedback)
         {
-            feedback.transform.position = this.transform.position;//.anchoredPosition;
-            feedback.rectTransform.localScale = this.rectTransform.localScale;
-            feedback.sprite = image.sprite;
-            feedback.color = image.color;
-            StartCoroutine(FeedbackCoroutine(feedback, 20));
+            if (feedback != null)
+            {
+                feedback.transform.position = this.transform.position;//.anchoredPosition;
+                feedback.rectTransform.localScale = this.rectTransform.localScale;
+                feedback.sprite = image.sprite;
+                feedback.color = image.color;
+                StartCoroutine(FeedbackCoroutine(feedback, 20));
+            }
         }
 
         private IEnumerator FeedbackCoroutine(Image feedback, int time)
