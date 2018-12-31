@@ -37,7 +37,7 @@ namespace VoiceActing
         [SerializeField]
         protected SkillManager skillManager;
         [SerializeField]
-        protected TextPerformanceAppear textPerformanceAppear;
+        protected TextAppearManager textAppearManager;
         [SerializeField]
         protected PanelPlayer panelPlayer;
 
@@ -108,18 +108,18 @@ namespace VoiceActing
 
         public void Attack()
         {
-            Debug.Log(enemyManager.GetHpPercentage());
-            Debug.Log(textPerformanceAppear.GetEndLine());
             if (enemyManager.GetHpPercentage() != 0)
             {
-                if (textPerformanceAppear.GetEndLine() == true)
+                if (textAppearManager.GetEndLine() == true)
                 {
                     turnCount += 1;
                     if(timer != null)
                         timer.SetTurn(turnCount);
                     if(cameraController != null)
                         cameraController.NotQuite();
-                    textPerformanceAppear.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboEmotion(), textPerformanceAppear.GetWordSelected()));
+
+                    Emotion[] emotions = emotionAttackManager.GetComboEmotion();
+                    textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
                     CheckEvent();
                 }
             }
@@ -129,7 +129,7 @@ namespace VoiceActing
         {
             if(enemyManager.GetHpPercentage() == 0)
             {
-                if (textPerformanceAppear.GetEndLine() == true)
+                if (textAppearManager.GetEndLine() == true)
                 {
                     inputController.enabled = false;
                     emotionAttackManager.RemoveCard();
@@ -154,7 +154,7 @@ namespace VoiceActing
 
         public virtual void SetPhrase()
         {
-            textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
             inputController.enabled = true;
             inputEvent.enabled = false;
         }
@@ -174,7 +174,7 @@ namespace VoiceActing
 
         public void PrintAllText()
         {
-            if (textPerformanceAppear.PrintAllText() == false)
+            if (textAppearManager.PrintAllText() == false)
             {
                 return;
             }

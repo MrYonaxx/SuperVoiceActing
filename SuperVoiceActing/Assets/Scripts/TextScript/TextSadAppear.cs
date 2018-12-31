@@ -42,7 +42,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        protected override IEnumerator AnimateVertexColors()
+        /*protected override IEnumerator AnimateVertexColors()
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
@@ -283,7 +283,47 @@ namespace VoiceActing
 
                 yield return null;//new WaitForSeconds(0.1f);
             }
+        }*/
+
+
+
+        protected override void InitializeVertex()
+        {
+            for (int i = 0; i < 1024; i++)
+            {
+                vertexAnim[i].damage = false;
+                vertexAnim[i].selected = false;
+                vertexAnim[i].offset = letterOffset * 2;
+                vertexAnim[i].alpha = 0;
+                vertexAnim[i].vertexPosition = Vector3.zero;
+            }
         }
+
+        protected override Vector3 ModifyPosition(int vertexIndex)
+        {
+            Vector3 position = new Vector3(0, 0, 0);
+
+            if (vertexAnim[vertexIndex].offset > letterOffset)
+            {
+                position = vertexAnim[vertexIndex].vertexPosition + new Vector3(0, vertexAnim[vertexIndex].offset - (letterOffset * 1.5f), 0);
+                vertexAnim[vertexIndex].offset -= gravity;
+                vertexAnim[vertexIndex].vertexPosition = position;
+            }
+            else if (vertexAnim[vertexIndex].offset > 0)
+            {
+                position = vertexAnim[vertexIndex].vertexPosition - new Vector3(0, vertexAnim[vertexIndex].offset - (letterOffset * 0.5f), 0);
+                vertexAnim[vertexIndex].offset -= gravity;
+                vertexAnim[vertexIndex].vertexPosition = position;
+            }
+            else
+            {
+                vertexAnim[vertexIndex].offset = letterOffset * 2;
+                vertexAnim[vertexIndex].vertexPosition = position;
+            }
+
+            return position;
+        }
+
 
         #endregion
 

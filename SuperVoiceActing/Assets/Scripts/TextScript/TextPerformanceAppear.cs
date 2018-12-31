@@ -22,8 +22,8 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Mouth")]
-        [SerializeField]
+        /*[Header("Mouth")]
+        [SerializeField]*/
         protected MouthAnimation mouth = null;
 
         [Header("Letter Parameter")]
@@ -38,8 +38,8 @@ namespace VoiceActing
         [SerializeField]
         protected float alphaSpeed = 5f;
 
-        [Header("Feedback")]
-        [SerializeField]
+        /*[Header("Feedback")]
+        [SerializeField]*/
         protected ParticleSystem particlesEndLine = null;
 
 
@@ -58,6 +58,7 @@ namespace VoiceActing
         protected int characterCount = 0;
 
         protected VertexAnim[] vertexAnim = new VertexAnim[1024];
+        protected TMP_TextInfo textInfo;
         protected TMP_MeshInfo[] cachedMeshInfo;
 
         protected float size = 0;
@@ -66,14 +67,6 @@ namespace VoiceActing
         protected int wordSelected = -1;
 
         protected IEnumerator coroutine = null;
-
-        #endregion
-
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
 
         /// <summary>
         /// Structure to hold pre-computed animation data.
@@ -88,22 +81,14 @@ namespace VoiceActing
             public float angle;
         }
 
+        #endregion
 
+        #region GettersSetters 
 
+        /* ======================================== *\
+         *           GETTERS AND SETTERS            *
+        \* ======================================== */
 
-        protected void Awake()
-        {
-            textMeshPro = GetComponent<TMP_Text>();          
-        }
-
-
-        protected void Start()
-        {
-            if (coroutine != null)
-                StopCoroutine(coroutine);
-            coroutine = AnimateVertexColors();
-            StartCoroutine(coroutine);
-        }
 
         public int GetWordSelected()
         {
@@ -135,6 +120,20 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        protected void Awake()
+        {
+            textMeshPro = GetComponent<TMP_Text>();
+        }
+
+
+        /*protected void Start()
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = AnimateVertexColors();
+            StartCoroutine(coroutine);
+        }*/
+
         /*public Vector2 GetEmphasisPosition()
         {
             if(wordSelected >= 0 && wordSelected <= textMeshPro.textInfo.wordCount)
@@ -148,6 +147,11 @@ namespace VoiceActing
             }
             return Vector2.zero;
         }*/
+        public void Stop()
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+        }
 
         public bool PrintAllText()
         {
@@ -162,7 +166,8 @@ namespace VoiceActing
 
         public void NewMouthAnim(MouthAnimation newMouth)
         {
-            mouth.DesactivateMouth();
+            if(mouth != null)
+                mouth.DesactivateMouth();
             mouth = newMouth;
         }
 
@@ -177,7 +182,7 @@ namespace VoiceActing
                 StopCoroutine(coroutine);
             coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
-            ReprintText();
+            //ReprintText();
         }
 
 
@@ -209,8 +214,12 @@ namespace VoiceActing
         [ContextMenu("Reset")]
         public void ReprintText()
         {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = AnimateVertexColors();
+            StartCoroutine(coroutine);
             // ================================
-            TMP_TextInfo textInfo = textMeshPro.textInfo;
+            /*TMP_TextInfo textInfo = textMeshPro.textInfo;
             Color32[] newVertexColors;
             for (int i = 0; i < textInfo.characterCount; i++)
             {
@@ -240,7 +249,7 @@ namespace VoiceActing
             }
             mouth.ActivateMouth();
             characterCount = 1;
-            actualTime = 0;
+            actualTime = 0;*/
             // ================================
         }
 
@@ -258,7 +267,7 @@ namespace VoiceActing
                 else
                     vertexAnim[i].damage = false;
             }
-            ReprintText();
+            //ReprintText();
         }
 
         [ContextMenu("a")]
@@ -309,27 +318,9 @@ namespace VoiceActing
         }
 
 
-
-
-        protected virtual IEnumerator AnimateVertexColors()
+        // Create an Array which contains pre-computed Angle Ranges and Speeds for a bunch of characters.
+        protected virtual void InitializeVertex()
         {
-
-            // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
-            // Alternatively, we could yield and wait until the end of the frame when the text object will be generated.
-
-            textMeshPro.ForceMeshUpdate();
-
-            TMP_TextInfo textInfo = textMeshPro.textInfo;
-
-            Matrix4x4 matrix;
-
-            int loopCount = 0;
-            hasTextChanged = true;
-            endLine = false;
-
-            wordSelected = -1;
-            // Create an Array which contains pre-computed Angle Ranges and Speeds for a bunch of characters.
-            
             for (int i = 0; i < 1024; i++)
             {
                 vertexAnim[i].damage = false;
@@ -337,15 +328,11 @@ namespace VoiceActing
                 vertexAnim[i].offset = letterOffset;
                 vertexAnim[i].alpha = 0;
             }
+        }
 
-            // Cache the vertex data of the text object as the Jitter FX is applied to the original position of the characters.
-            cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
-            characterCount = 1;
-            Color32[] newVertexColors;
-
-
-
-
+        protected virtual Color32[] InitializeVertexColor()
+        {
+            Color32[] newVertexColors = null;
             for (int i = 0; i < textInfo.characterCount; i++)
             {
                 int vertexIndex = textInfo.characterInfo[i].vertexIndex;
@@ -359,11 +346,36 @@ namespace VoiceActing
                 newVertexColors[vertexIndex + 1] = colorAlpha;
                 newVertexColors[vertexIndex + 2] = colorAlpha;
                 newVertexColors[vertexIndex + 3] = colorAlpha;
-
             }
+            return newVertexColors;
+        }
+
+
+        protected virtual IEnumerator AnimateVertexColors()
+        {
+
+            // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
+            // Alternatively, we could yield and wait until the end of the frame when the text object will be generated.
+            textMeshPro.ForceMeshUpdate();
+
+            textInfo = textMeshPro.textInfo;
+            Matrix4x4 matrix;
+
+            int loopCount = 0;
+
+            hasTextChanged = true;
+            endLine = false;
+            characterCount = 1;
+            wordSelected = -1;
+
+            // Cache the vertex data of the text object as the Jitter FX is applied to the original position of the characters.
+            cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
+
+            // Create an Array which contains pre-computed Angle Ranges and Speeds for a bunch of characters.
+            InitializeVertex();
+            Color32[] newVertexColors = InitializeVertexColor();
 
             mouth.ActivateMouth();
-
 
             while (true)
             {
@@ -392,8 +404,6 @@ namespace VoiceActing
 
                 if(characterCount == textInfo.characterCount)
                     mouth.DesactivateMouth();
-
-                //int characterCount = textInfo.characterCount;
 
                 // If No Characters then just yield and wait for some text to be added
                 if (characterCount == 0)
@@ -434,6 +444,8 @@ namespace VoiceActing
                     // Get the cached vertices of the mesh used by this text element (character or sprite).
                     Vector3[] sourceVertices = cachedMeshInfo[materialIndex].vertices;
 
+
+                    // ====================== Position ====================== //
                     // Determine the center point of each character at the baseline.
                     //Vector2 charMidBasline = new Vector2((sourceVertices[vertexIndex + 0].x + sourceVertices[vertexIndex + 2].x) / 2, charInfo.baseLine);
 
@@ -443,7 +455,6 @@ namespace VoiceActing
                     // Need to translate all 4 vertices of each quad to aligned with middle of character / baseline.
                     // This is needed so the matrix TRS is applied at the origin for each character.
                     Vector3 offset = charMidBasline;
-
 
                     Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
 
@@ -455,7 +466,10 @@ namespace VoiceActing
                     //vertAnim.angle = Mathf.SmoothStep(-vertAnim.angleRange, vertAnim.angleRange, Mathf.PingPong(loopCount / 25f * vertAnim.speed, 1f));
                     //Vector3 jitterOffset = new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
 
-                    Vector3 position = new Vector3(0, vertAnim.offset, 0);
+                    Vector3 position = ModifyPosition(i);
+                        
+
+
                     if(vertexAnim[i].selected == true)
                     {
 
@@ -466,7 +480,6 @@ namespace VoiceActing
                         matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one);
                     }
 
-                    vertAnim.offset *= letterCurveSpeed;
 
                     destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
                     destinationVertices[vertexIndex + 1] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
@@ -477,46 +490,41 @@ namespace VoiceActing
                     destinationVertices[vertexIndex + 1] += offset;
                     destinationVertices[vertexIndex + 2] += offset;
                     destinationVertices[vertexIndex + 3] += offset;
+                    // ====================================================== //
 
 
 
                     // ====================== Couleur ====================== //
-                    if (vertAnim.alpha != 255)
+                    if (vertexAnim[i].alpha != 255)
                     {
-                        vertAnim.alpha += alphaSpeed;
-                        if (vertAnim.alpha > 255f)
+                        vertexAnim[i].alpha += alphaSpeed;
+                        if (vertexAnim[i].alpha > 255f)
                         {
-                            vertAnim.alpha = 255f;
+                            vertexAnim[i].alpha = 255f;
                         }
-
                         newVertexColors = textInfo.meshInfo[materialIndex].colors32;
-                        Color32 colorAlpha;
-                        if (vertexAnim[i].damage == true)
-                            colorAlpha = new Color32(damageColor.r, damageColor.g, damageColor.b, (byte)vertexAnim[i].alpha);
-                        else
-                            colorAlpha = new Color32(255, 255, 255, (byte)vertexAnim[i].alpha);
+
+                        Color32 colorAlpha = ModifyVertexColor(i);
+
                         newVertexColors[vertexIndex + 0] = colorAlpha;
                         newVertexColors[vertexIndex + 1] = colorAlpha;
                         newVertexColors[vertexIndex + 2] = colorAlpha;
                         newVertexColors[vertexIndex + 3] = colorAlpha;
                     }
-
-                    //textMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
-                    // ====================== Couleur ====================== //
+                    // ====================================================== //
 
 
 
-                    vertexAnim[i] = vertAnim;
-
-                    if(i == textInfo.characterCount-1 && endLine == false)
+                    // ====================== Particle ====================== //
+                    if (i == textInfo.characterCount - 1 && endLine == false)
                     {
-                        if (particlesEndLine != null)
-                        {
-                            particlesEndLine.transform.localPosition = offset;
-                            particlesEndLine.Play();
-                        }
+                        PlayParticle(offset);
                         endLine = true;
                     }
+                    // ====================================================== //
+
+                    //vertexAnim[i] = vertAnim;
+
                 }
 
                 // Push changes into meshes
@@ -532,6 +540,38 @@ namespace VoiceActing
             }
         }
 
+        protected virtual Vector3 ModifyPosition(int vertexIndex)
+        {
+            Vector3 position = new Vector3(0, vertexAnim[vertexIndex].offset, 0);
+            vertexAnim[vertexIndex].offset *= letterCurveSpeed;
+            return position;
+        }
+
+        protected virtual Vector3 ModifyRotation(int vertexIndex)
+        {
+            Vector3 rotation = Vector3.zero;
+            return rotation;
+        }
+
+        protected virtual Color32 ModifyVertexColor(int vertexIndex)
+        {
+            if (vertexAnim[vertexIndex].damage == true)
+            {
+                return new Color32(damageColor.r, damageColor.g, damageColor.b, (byte)vertexAnim[vertexIndex].alpha);
+            }
+            return new Color32(255, 255, 255, (byte)vertexAnim[vertexIndex].alpha);
+        }
+
+
+
+        protected virtual void PlayParticle(Vector3 offset)
+        {
+            if (particlesEndLine != null)
+            {
+                particlesEndLine.transform.localPosition = offset;
+                particlesEndLine.Play();
+            }
+        }
 
 
 
@@ -539,21 +579,19 @@ namespace VoiceActing
 
 
 
-
-
-        public void ExplodeLetter(float damage)
+        public void ExplodeLetter(float damage, float time)
         {
             endLine = false;
             StopCoroutine(coroutine);
-            coroutine = ExplosionVertex(damage);
+            coroutine = ExplosionVertex(damage, time);
             StartCoroutine(coroutine);
         }
 
-        IEnumerator ExplosionVertex(float damage)
+        protected IEnumerator ExplosionVertex(float damage, float time)
         {
             yield return null;
 
-            TMP_TextInfo textInfo = textMeshPro.textInfo;
+            textInfo = textMeshPro.textInfo;
             //Matrix4x4 matrix;
             TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
 
@@ -564,7 +602,6 @@ namespace VoiceActing
             }
             
             float coef = 0;
-            float time = 60;
 
             while (time != 0)
             {
@@ -579,7 +616,6 @@ namespace VoiceActing
                     Vector2 charMidBasline = (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
                     Vector3 offset = charMidBasline;
                     offset *= randomParameter[i] + (coef);
-
 
                     Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
 
@@ -600,9 +636,9 @@ namespace VoiceActing
                 yield return null;
             }
 
-            coroutine = AnimateVertexColors();
+            /*coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
-            ApplyDamage(damage);
+            ApplyDamage(damage);*/
 
         }
 

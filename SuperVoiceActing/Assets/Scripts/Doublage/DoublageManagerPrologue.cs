@@ -71,17 +71,17 @@ namespace VoiceActing
             }
             else if (indexPhrase == 1)
             {
-                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
-                textPerformanceAppear.ApplyDamage(100);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.ApplyDamage(100);
                 inputController.enabled = true;
             }
             else if (indexPhrase == 2)
             {
                 if (eventCustom == false)
                 {
-                    textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                    textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                     enemyManager.SetHp(10);
-                    textPerformanceAppear.ApplyDamage(50);
+                    textAppearManager.ApplyDamage(50);
                     //inputController.enabled = true;
                     StartCoroutine(EventPhrase2());
                     eventCustom = true;
@@ -93,26 +93,26 @@ namespace VoiceActing
             }
             else if (indexPhrase == 3)
             {
-                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
-                textPerformanceAppear.ApplyDamage(100);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.ApplyDamage(100);
                 inputController.enabled = true;
             }
             else if (indexPhrase == 6)
             {
                 TransitionToAkihabara();
-                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.enabled = true;
             }
             else if (indexPhrase == 11)
             {
                 //skillManager.ActorSkillFeedback();
-                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.enabled = true;
                 skillManager.ActorSkillFeedback();
             }
             else
             {
-                textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.enabled = true;
             }
 
@@ -163,8 +163,8 @@ namespace VoiceActing
             //emotionAttackManager.SwitchCardTransformIntro();
             //textPerformanceAppear.ApplyDamage(100);
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            textPerformanceAppear.NewPhrase(contrat.TextData[indexPhrase].Text);
-            textPerformanceAppear.ApplyDamage(100);
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+            textAppearManager.ApplyDamage(100);
             inputController.enabled = true;
             cameraController.SetNoCameraEffect(false);
             cameraController.MoveToInitialPosition();
