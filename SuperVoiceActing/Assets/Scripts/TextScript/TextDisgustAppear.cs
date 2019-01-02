@@ -24,7 +24,6 @@ namespace VoiceActing
 
         [SerializeField]
         protected float shake = 0.1f;
-
         #endregion
 
         #region GettersSetters 
@@ -42,7 +41,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        protected override IEnumerator AnimateVertexColors()
+        /*protected override IEnumerator AnimateVertexColors()
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
@@ -269,10 +268,56 @@ namespace VoiceActing
 
                 yield return null;//new WaitForSeconds(0.1f);
             }
+        }*/
+
+
+        protected override void InitializeVertex()
+        {
+            for (int i = 0; i < 1024; i++)
+            {
+                vertexAnim[i].damage = false;
+                vertexAnim[i].selected = false;
+                vertexAnim[i].offset = Random.Range(-3, 3f);
+                vertexAnim[i].alpha = 0;
+                vertexAnim[i].vertexPosition = Vector3.zero;
+                vertexAnim[i].angle = Random.Range(0.25f, 0.75f);
+            }
         }
 
-        #endregion
+        protected override Vector3 ModifyPosition(int vertexIndex)
+        {
+            Vector3 position = new Vector3(0, vertexAnim[vertexIndex].offset, 0);
+            vertexAnim[vertexIndex].offset *= letterCurveSpeed;
+            return position;
+        }
 
-    } // TextJoyAppear class
+        protected override Vector3 ModifyRotation(int vertexIndex)
+        {
+            float angle = Mathf.SmoothStep(-shake, shake, Mathf.PingPong(loopCount / 50f * vertexAnim[vertexIndex].angle, 1f));
+            Vector3 rotation = new Vector3(0, 0, angle);
+            return rotation;
+        }
+
+        protected override void MoveVertices(Vector3[] destinationVertices, int vertexIndex, Matrix4x4 matrix)
+        {
+            float angle2 = Mathf.SmoothStep(-shake, shake, Mathf.PingPong(loopCount / 50f * vertexAnim[vertexIndex].angle, 1f));
+            float angle3 = Mathf.SmoothStep(-shake, shake, Mathf.PingPong(loopCount / 50f * vertexAnim[vertexIndex].angle, 1f));
+            float angle4 = Mathf.SmoothStep(-shake, shake, Mathf.PingPong(loopCount / 50f * vertexAnim[vertexIndex].angle, 1f));
+
+            // remplacer vector3.zero par matrix.transform
+            Matrix4x4 matrix2 = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, angle2), Vector3.one);
+            Matrix4x4 matrix3 = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, angle3), Vector3.one);
+            Matrix4x4 matrix4 = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, angle4), Vector3.one);
+
+            destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
+            destinationVertices[vertexIndex + 1] = matrix2.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
+            destinationVertices[vertexIndex + 2] = matrix3.MultiplyPoint3x4(destinationVertices[vertexIndex + 2]);
+            destinationVertices[vertexIndex + 3] = matrix4.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);
+        }
+
+
+            #endregion
+
+        } // TextJoyAppear class
 
 } // #PROJECTNAME# namespacePROJECTNAME# namespace

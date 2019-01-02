@@ -43,7 +43,7 @@ namespace VoiceActing
         protected ParticleSystem particlesEndLine = null;
 
 
-
+        [SerializeField]
         protected Color32 damageColor = new Color32(255, 255, 0, 0);
 
 
@@ -56,6 +56,7 @@ namespace VoiceActing
         protected float actualTime = 0;
 
         protected int characterCount = 0;
+        protected int loopCount = 0;
 
         protected VertexAnim[] vertexAnim = new VertexAnim[1024];
         protected TMP_TextInfo textInfo;
@@ -108,7 +109,10 @@ namespace VoiceActing
                 mouth.ActivateMouth();
         }
 
-
+        public void SetParticle(ParticleSystem par)
+        {
+            particlesEndLine = par;
+        }
 
 
 
@@ -361,7 +365,7 @@ namespace VoiceActing
             textInfo = textMeshPro.textInfo;
             Matrix4x4 matrix;
 
-            int loopCount = 0;
+            loopCount = 0;
 
             hasTextChanged = true;
             endLine = false;
@@ -467,24 +471,21 @@ namespace VoiceActing
                     //Vector3 jitterOffset = new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
 
                     Vector3 position = ModifyPosition(i);
+                    Vector3 eulerAngle = ModifyRotation(i);
+                    Vector3 scale = ModifyScale(i);
                         
 
 
                     if(vertexAnim[i].selected == true)
                     {
-
-                        matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one + new Vector3(size, size, size));
+                        matrix = Matrix4x4.TRS(position, Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z), scale + new Vector3(size, size, size));
                     }
                     else
                     {
-                        matrix = Matrix4x4.TRS(position, Quaternion.identity, Vector3.one);
+                        matrix = Matrix4x4.TRS(position, Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z), scale);
                     }
 
-
-                    destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
-                    destinationVertices[vertexIndex + 1] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
-                    destinationVertices[vertexIndex + 2] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 2]);
-                    destinationVertices[vertexIndex + 3] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);
+                    MoveVertices(destinationVertices, vertexIndex, matrix);
 
                     destinationVertices[vertexIndex + 0] += offset;
                     destinationVertices[vertexIndex + 1] += offset;
@@ -540,6 +541,14 @@ namespace VoiceActing
             }
         }
 
+        protected virtual void MoveVertices(Vector3[] destinationVertices, int vertexIndex, Matrix4x4 matrix)
+        {
+            destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
+            destinationVertices[vertexIndex + 1] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
+            destinationVertices[vertexIndex + 2] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 2]);
+            destinationVertices[vertexIndex + 3] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);
+        }
+
         protected virtual Vector3 ModifyPosition(int vertexIndex)
         {
             Vector3 position = new Vector3(0, vertexAnim[vertexIndex].offset, 0);
@@ -551,6 +560,12 @@ namespace VoiceActing
         {
             Vector3 rotation = Vector3.zero;
             return rotation;
+        }
+
+        protected virtual Vector3 ModifyScale(int vertexIndex)
+        {
+            Vector3 scale = Vector3.one;
+            return scale;
         }
 
         protected virtual Color32 ModifyVertexColor(int vertexIndex)

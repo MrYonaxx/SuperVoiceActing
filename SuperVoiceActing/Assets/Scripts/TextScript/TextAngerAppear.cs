@@ -25,6 +25,9 @@ namespace VoiceActing
         [SerializeField]
         protected float shake = 0.02f;
 
+        int sign = 1;
+        float angerSize = 1;
+
         #endregion
 
         #region GettersSetters 
@@ -42,7 +45,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        protected override IEnumerator AnimateVertexColors()
+        /*protected override IEnumerator AnimateVertexColors()
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
@@ -262,6 +265,29 @@ namespace VoiceActing
 
                 yield return null;//new WaitForSeconds(0.1f);
             }
+        }*/
+
+
+
+        protected override Vector3 ModifyPosition(int vertexIndex)
+        {
+            Vector3 position = new Vector3(Random.Range(-shake, shake), Random.Range(-shake, shake), 0);
+            return position;
+        }
+
+        protected override Vector3 ModifyScale(int vertexIndex)
+        {
+            if(vertexIndex == 1)
+            {
+                if (angerSize <= 1f)
+                    sign = 1;
+                else if (angerSize >= 1.2f)
+                    sign = -1;
+
+                angerSize += 0.015f * sign;
+            }
+            Vector3 scale = new Vector3(1 + Random.Range(-shake, shake), angerSize, 1 + Random.Range(-shake, shake));
+            return scale;
         }
 
         #endregion

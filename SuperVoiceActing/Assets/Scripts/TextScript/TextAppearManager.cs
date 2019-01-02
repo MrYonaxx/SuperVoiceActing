@@ -90,6 +90,7 @@ namespace VoiceActing
                 currentText.Stop();
             currentText = SelectTextEffect(emotion);
             currentText.NewMouthAnim(mouth);
+            currentText.SetParticle(particleEnd);
             currentText.NewPhrase(newText);
         }
 
@@ -114,6 +115,7 @@ namespace VoiceActing
                 yield return null;
             }
             currentText.NewMouthAnim(mouth);
+            currentText.SetParticle(particleEnd);
             currentText.ReprintText();
             ApplyDamage(damage);
         }
@@ -126,6 +128,10 @@ namespace VoiceActing
                     return textJoy;
                 case Emotion.Tristesse:
                     return textSadness;
+                case Emotion.Colère:
+                    return textAnger;
+                case Emotion.Dégoût:
+                    return textDisgust;
             }
             return textNeutral;
         }
