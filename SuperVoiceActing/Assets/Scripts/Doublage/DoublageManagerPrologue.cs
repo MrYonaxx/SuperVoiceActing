@@ -71,7 +71,7 @@ namespace VoiceActing
             }
             else if (indexPhrase == 1)
             {
-                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Joie);
                 textAppearManager.ApplyDamage(100);
                 inputController.enabled = true;
             }
