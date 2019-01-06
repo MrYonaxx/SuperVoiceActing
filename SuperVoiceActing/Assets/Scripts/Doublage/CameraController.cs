@@ -306,6 +306,13 @@ namespace VoiceActing
                                                           -0.8f, 0.4f);
                     break;
 
+                //  ========= DiagonaleBizarre ========== //
+                case 34: // Right To Left Zoomé
+                    cinematicCoroutine = CinematicCameraRotation(0, 0, 0.4f,
+                                                                 0, 10, 0, 600,
+                                                                 -0.8f, 0, 0.4f);
+                    break;
+
 
             }
 
@@ -349,6 +356,16 @@ namespace VoiceActing
             SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
             yield return MoveCameraCoroutine(initialPosition.position.x + offsetX, initialPosition.position.y + offsetY, initialPosition.position.z + offsetZ, time1);
             yield return MoveCameraCoroutine(initialPosition.position.x + offsetX - x, initialPosition.position.y + offsetY - y, initialPosition.position.z + offsetZ - z, time2);
+            cinematicCoroutine = null;
+        }
+
+
+        // Reverse
+        private IEnumerator CinematicCameraRotation(float x, float y, float z, float rotateX, float rotateY, float rotateZ, int time, float offsetX = 0, float offsetY = 0, float offsetZ = 0)
+        {
+            SetCamera(initialPosition.position.x + offsetX + x, initialPosition.position.y + offsetY + y, initialPosition.position.z + offsetZ + z);
+            SetCameraRotation(initialPosition.eulerAngles.x + rotateX, initialPosition.eulerAngles.y + rotateY, initialPosition.eulerAngles.z + rotateZ);
+            yield return MoveCameraCoroutine(initialPosition.position.x + offsetX - x, initialPosition.position.y + offsetY - y, initialPosition.position.z + offsetZ - z, time);
             cinematicCoroutine = null;
         }
         #endregion
