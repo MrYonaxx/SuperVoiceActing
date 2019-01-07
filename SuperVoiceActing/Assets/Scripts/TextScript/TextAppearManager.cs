@@ -126,6 +126,15 @@ namespace VoiceActing
         public void ApplyDamage(float damage)
         {
             currentText.ApplyDamage(damage);
+            if (damage >= 100)
+            {
+                if (coroutineWaitEndLine != null)
+                {
+                    StopCoroutine(coroutineWaitEndLine);
+                }
+                coroutineWaitEndLine = WaitEndLine();
+                StartCoroutine(coroutineWaitEndLine);
+            }
         }
 
         public void HideUIButton()
@@ -154,11 +163,6 @@ namespace VoiceActing
             currentText.SetParticle(particleEnd);
             currentText.ReprintText();
             ApplyDamage(damage);
-            if (damage >= 100)
-            {
-                coroutineWaitEndLine = WaitEndLine();
-                StartCoroutine(coroutineWaitEndLine);
-            }
         }
 
         private IEnumerator MoveUIButton(float targetY)
