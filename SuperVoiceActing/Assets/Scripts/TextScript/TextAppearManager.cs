@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace VoiceActing
@@ -48,8 +49,14 @@ namespace VoiceActing
         [SerializeField]
         ParticleSystem particleEnd;
 
+        [Header("UI")]
+        [SerializeField]
+        Image buttonUI;
+
 
         TextPerformanceAppear currentText = null;
+
+        private IEnumerator coroutineWaitEndLine = null;
 
         #endregion
 
@@ -74,6 +81,16 @@ namespace VoiceActing
             return currentText.PrintAllText();
         }
 
+        public void SelectWordRight()
+        {
+            currentText.SelectWordRight();
+        }
+
+        public void SelectWordLeft()
+        {
+            currentText.SelectWordLeft();
+        }
+
         public int GetWordSelected()
         {
             return currentText.GetWordSelected();
@@ -96,6 +113,10 @@ namespace VoiceActing
 
         public void ExplodeLetter(float damage, Emotion[] emotions)
         {
+            if (coroutineWaitEndLine != null)
+            {
+                StopCoroutine(coroutineWaitEndLine);
+            }
             currentText.ExplodeLetter(damage, 60);
             currentText = SelectTextEffect(emotions[0]);
             StartCoroutine(WaitFrame(60, damage));
@@ -105,6 +126,21 @@ namespace VoiceActing
         public void ApplyDamage(float damage)
         {
             currentText.ApplyDamage(damage);
+        }
+
+        public void HideUIButton()
+        {
+            StartCoroutine(MoveUIButton(-600));
+        }
+
+        private IEnumerator WaitEndLine()
+        {
+            yield return null;
+            while (currentText.GetEndLine() == false)
+            {
+                yield return null;
+            }
+            StartCoroutine(MoveUIButton(-500));
         }
 
         private IEnumerator WaitFrame(float time, float damage)
@@ -118,6 +154,24 @@ namespace VoiceActing
             currentText.SetParticle(particleEnd);
             currentText.ReprintText();
             ApplyDamage(damage);
+            if (damage >= 100)
+            {
+                coroutineWaitEndLine = WaitEndLine();
+                StartCoroutine(coroutineWaitEndLine);
+            }
+        }
+
+        private IEnumerator MoveUIButton(float targetY)
+        {
+
+            int time = 20;
+            float speedY = (targetY - buttonUI.rectTransform.anchoredPosition.y) / time;
+            while (time != 0)
+            {
+                buttonUI.rectTransform.anchoredPosition += new Vector2(0, speedY);
+                time -= 1;
+                yield return null;
+            }
         }
 
         private TextPerformanceAppear SelectTextEffect(Emotion emotion)

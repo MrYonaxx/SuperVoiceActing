@@ -596,10 +596,10 @@ namespace VoiceActing
 
         public void ExplodeLetter(float damage, float time)
         {
-            endLine = false;
             StopCoroutine(coroutine);
             coroutine = ExplosionVertex(damage, time);
             StartCoroutine(coroutine);
+            endLine = false;
         }
 
         protected IEnumerator ExplosionVertex(float damage, float time)
