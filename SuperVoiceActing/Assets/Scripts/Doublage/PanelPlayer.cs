@@ -48,6 +48,8 @@ namespace VoiceActing
         [SerializeField]
         float letterTime = 3;
 
+        private IEnumerator coroutine = null;
+
         #endregion
 
         #region GettersSetters 
@@ -75,7 +77,12 @@ namespace VoiceActing
         [ContextMenu("cameraScroll")]
         public void PanelScroll()
         {
-            StartCoroutine(PanelScrollCoroutine(speedPopupText));
+            if(coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = PanelScrollCoroutine(speedPopupText);
+            StartCoroutine(coroutine);
         }
 
         private IEnumerator PanelScrollCoroutine(float time)
@@ -104,7 +111,12 @@ namespace VoiceActing
         [ContextMenu("cameraHide")]
         public void PanelHide()
         {
-            StartCoroutine(PanelHideCoroutine(speedPopupText / 2));
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = PanelHideCoroutine(speedPopupText / 2);
+            StartCoroutine(coroutine);
         }
 
         private IEnumerator PanelHideCoroutine(float time)

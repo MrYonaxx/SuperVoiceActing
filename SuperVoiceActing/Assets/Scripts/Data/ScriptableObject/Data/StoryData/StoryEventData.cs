@@ -16,7 +16,8 @@ namespace VoiceActing
     {
         Text,
         Wait,
-        MoveCharacter
+        MoveCharacter,
+        SceneLoader
     }
 
     [System.Serializable]
@@ -36,6 +37,10 @@ namespace VoiceActing
         [ShowIf("eventNode", StoryEventNode.MoveCharacter)]
         [SerializeField]
         public StoryEventMoveCharacter storyEventMoveCharacter = null;
+
+        [ShowIf("eventNode", StoryEventNode.SceneLoader)]
+        [SerializeField]
+        public StoryEventSceneLoader storyEventSceneLoader = null;
 
     }
 
@@ -64,6 +69,8 @@ namespace VoiceActing
                     return eventNodes[index].storyEventWait;
                 case StoryEventNode.MoveCharacter:
                     return eventNodes[index].storyEventMoveCharacter;
+                case StoryEventNode.SceneLoader:
+                    return eventNodes[index].storyEventSceneLoader;
             }
             return null;
         }

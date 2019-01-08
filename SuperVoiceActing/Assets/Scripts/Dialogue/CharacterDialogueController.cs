@@ -88,20 +88,22 @@ namespace VoiceActing
 
         public void FadeIn(float time)
         {
-            eyesScript.StartBlink();
+            if(eyesScript != null)
+                eyesScript.StartBlink();
             StartCoroutine(Fade(true, time));
         }
 
         public void FadeOut(float time)
         {
-            eyesScript.StopBlink();
+            if (eyesScript != null)
+                eyesScript.StopBlink();
             StartCoroutine(Fade(false, time));
         }
 
         // Peut etre a déplacer dans StoryEventMoveCharacter
         private IEnumerator Fade(bool appear, float time)
         {
-            float alphaSpeed = spriteRenderer.color.a / time;
+            float alphaSpeed = 1 / time;
             if (appear == false)
                 alphaSpeed = -alphaSpeed;
             while (time != 0)
