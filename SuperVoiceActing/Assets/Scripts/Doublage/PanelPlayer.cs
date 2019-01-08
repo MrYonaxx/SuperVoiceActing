@@ -85,7 +85,9 @@ namespace VoiceActing
             while (time != 0)
             {
                 this.transform.anchoredPosition /= 1.1f;
-                textPopup.transform.localScale += new Vector3(0, speedScale, 0);
+                
+                if(textPopup.transform.localScale.y < 1)
+                    textPopup.transform.localScale += new Vector3(0, speedScale, 0);
                 time -= 1;
                 yield return null;
             }
@@ -111,7 +113,8 @@ namespace VoiceActing
             float speedScale = 1 / time;
             while (time != 0)
             {
-                textPopup.transform.localScale -= new Vector3(0, speedScale, 0);
+                if (textPopup.transform.localScale.y > 0)
+                    textPopup.transform.localScale -= new Vector3(0, speedScale, 0);
                 time -= 1;
                 yield return null;
             }

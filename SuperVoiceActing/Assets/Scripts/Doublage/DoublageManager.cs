@@ -118,6 +118,7 @@ namespace VoiceActing
                     if(cameraController != null)
                         cameraController.NotQuite();
 
+                    textAppearManager.HideUIButton();
                     Emotion[] emotions = emotionAttackManager.GetComboEmotion();
                     textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
                     CheckEvent();
@@ -135,6 +136,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
+                    textAppearManager.HideUIButton();
                     SetNextPhrase();
                 }
             }
@@ -155,6 +157,7 @@ namespace VoiceActing
         public virtual void SetPhrase()
         {
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+            textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
             inputController.enabled = true;
             inputEvent.enabled = false;
         }

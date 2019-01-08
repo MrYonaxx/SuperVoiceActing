@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4124b50f56a2b34d855573973cc6cdb, type: 3}
-  m_Name: Tutorial001Fail
+  m_Name: Tutorial002Fail
   m_EditorClassIdentifier: 
-  phraseNumber: 0
+  phraseNumber: 1
   startPhrase: 0
   equal: 1
   hpPercentage: 100
@@ -54,10 +54,71 @@ MonoBehaviour:
       text: 
       cameraEffectID: 0
     doublageEventTextPopup:
+      interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
+      emotionNPC: 0
+      text: " Tr\xE8s dr\xF4le ..."
+      time: 0
+    doublageEventCamera:
+      cameraID: 0
+      time: 0
+      viewportX: 0
+      viewportY: 0
+      viewportWidth: 0
+      viewportHeight: 0
+    doublageEventWait:
+      wait: 0
+    doublageEventDeck:
+      newDeck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+  - eventNode: 3
+    doublageEventText:
       interlocuteur: {fileID: 0}
       emotionNPC: 0
-      text: "   L\xE0 tu viens de tester la m\xEAme fr\xE9quence.\nEssaye de parler
-        avec une autre \xE9motion."
+      text: 
+      cameraEffectID: 0
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      time: 0
+    doublageEventCamera:
+      cameraID: 0
+      time: 0
+      viewportX: 0
+      viewportY: 0
+      viewportWidth: 0
+      viewportHeight: 0
+    doublageEventWait:
+      wait: 120
+    doublageEventDeck:
+      newDeck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+  - eventNode: 1
+    doublageEventText:
+      interlocuteur: {fileID: 0}
+      emotionNPC: 0
+      text: 
+      cameraEffectID: 0
+    doublageEventTextPopup:
+      interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
+      emotionNPC: 0
+      text: " Mais tes \xE9motions ne sont pas en accord avec\nce que tu dis."
       time: 0
     doublageEventCamera:
       cameraID: 0

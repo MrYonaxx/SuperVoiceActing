@@ -129,12 +129,15 @@ namespace VoiceActing
                         if (CheckSkipPause() == false)
                         {
                             textMeshPro.maxVisibleCharacters = text.Length;
+                            if (characterDialogue != null)
+                                characterDialogue.StopMouth();
                         }
                     }
                 }
 
                 //Check End print
-                if (textMeshPro.maxVisibleCharacters == text.Length) {
+                if (textMeshPro.maxVisibleCharacters == textMeshPro.textInfo.characterCount)
+                {
                     if (characterDialogue != null)
                         characterDialogue.StopMouth();
                     if(forceSkip == true)

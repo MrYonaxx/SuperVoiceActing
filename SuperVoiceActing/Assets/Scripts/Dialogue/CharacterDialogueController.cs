@@ -88,13 +88,13 @@ namespace VoiceActing
 
         public void FadeIn(float time)
         {
-            eyesScript.enabled = true;
+            eyesScript.StartBlink();
             StartCoroutine(Fade(true, time));
         }
 
         public void FadeOut(float time)
         {
-            eyesScript.enabled = false;
+            eyesScript.StopBlink();
             StartCoroutine(Fade(false, time));
         }
 
