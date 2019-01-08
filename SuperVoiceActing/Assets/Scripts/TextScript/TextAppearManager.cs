@@ -51,7 +51,9 @@ namespace VoiceActing
 
         [Header("UI")]
         [SerializeField]
-        Image buttonUI;
+        Image buttonUIY;
+        [SerializeField]
+        Image buttonUIA;
 
 
         TextPerformanceAppear currentText = null;
@@ -169,10 +171,11 @@ namespace VoiceActing
         {
 
             int time = 20;
-            float speedY = (targetY - buttonUI.rectTransform.anchoredPosition.y) / time;
+            float speedY = (targetY - buttonUIY.rectTransform.anchoredPosition.y) / time;
             while (time != 0)
             {
-                buttonUI.rectTransform.anchoredPosition += new Vector2(0, speedY);
+                buttonUIY.rectTransform.anchoredPosition += new Vector2(0, speedY);
+                //buttonUIA.rectTransform.anchoredPosition += new Vector2(0, speedY);
                 time -= 1;
                 yield return null;
             }
