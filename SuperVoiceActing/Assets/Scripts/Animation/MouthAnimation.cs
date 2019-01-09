@@ -38,9 +38,10 @@ public class MouthAnimation : MonoBehaviour
         //ActivateMouth(speedMouth);
     }
 
-    public void ActivateMouth(float speed = 12)
+    public void ActivateMouth(float speed = -1)
     {
-        speedMouth = speed;
+        if(speed != -1)
+            speedMouth = speed;
         if (mouthCoroutine != null)
             StopCoroutine(mouthCoroutine);
         mouthCoroutine = MouthAnim();
