@@ -105,8 +105,13 @@ namespace VoiceActing
 
         public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre)
         {
-            if(currentText != null)
+
+            if (currentText != null)
+            {
+                if (currentText.GetEndLine() != true)
+                    return;
                 currentText.Stop();
+            }
             currentText = SelectTextEffect(emotion);
             currentText.NewMouthAnim(mouth);
             currentText.SetParticle(particleEnd);

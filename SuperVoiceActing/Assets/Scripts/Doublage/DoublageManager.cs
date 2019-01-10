@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace VoiceActing
 {
@@ -54,6 +55,8 @@ namespace VoiceActing
         protected CharacterDialogueController[] characters;
         [SerializeField]
         protected TextPerformanceAppear[] textEvent;
+        [SerializeField]
+        protected string endScene;
 
         [Header("Debug")]
         [SerializeField]
@@ -148,7 +151,9 @@ namespace VoiceActing
         {
             indexPhrase += 1;
             startLine = true;
-            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            if(indexPhrase < contrat.TextData.Length)
+                enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+
             if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
                 SetPhrase();
             startLine = false;
@@ -156,10 +161,22 @@ namespace VoiceActing
 
         public virtual void SetPhrase()
         {
+            if (indexPhrase == contrat.TextData.Length)
+            {
+                EndSession();
+                return;
+            }
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
             textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
             inputController.enabled = true;
             inputEvent.enabled = false;
+        }
+
+
+        public void EndSession()
+        {
+            SceneManager.LoadScene(endScene);
+            Debug.Log("lol");
         }
 
 
