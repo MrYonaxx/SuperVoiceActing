@@ -100,8 +100,7 @@ namespace VoiceActing
             else if (indexPhrase == 6)
             {
                 TransitionToAkihabara();
-                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
-                inputController.enabled = true;
+                base.SetPhrase();
             }
             else if (indexPhrase == 11)
             {
