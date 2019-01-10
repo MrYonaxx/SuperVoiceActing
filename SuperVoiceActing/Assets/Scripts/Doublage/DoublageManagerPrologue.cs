@@ -112,9 +112,10 @@ namespace VoiceActing
             }
             else
             {
-                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                base.SetPhrase();
+                /*textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
-                inputController.enabled = true;
+                inputController.enabled = true;*/
             }
 
         }

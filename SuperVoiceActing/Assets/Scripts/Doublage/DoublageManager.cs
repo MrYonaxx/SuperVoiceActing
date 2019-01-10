@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -45,6 +46,14 @@ namespace VoiceActing
         [Header("Feedback & UI")]
         [SerializeField]
         protected TimerDoublage timer;
+        [SerializeField]
+        protected GameObject feedbackLine;
+        [SerializeField]
+        protected RectTransform feedbackLineTransform;
+        [SerializeField]
+        protected TextMeshProUGUI textMeshLine;
+        [SerializeField]
+        protected TextMeshProUGUI textMeshTurn;
 
         [Header("Events")]
         [SerializeField]
@@ -66,7 +75,7 @@ namespace VoiceActing
 
         protected bool startLine = true;
 
-        int turnCount = 0;
+        int turnCount = 15;
 
         #endregion
 
@@ -115,11 +124,14 @@ namespace VoiceActing
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
-                    turnCount += 1;
+                    turnCount -= 1;
                     if(timer != null)
                         timer.SetTurn(turnCount);
                     if(cameraController != null)
                         cameraController.NotQuite();
+
+                    if(feedbackLine != null)
+                        feedbackLine.SetActive(false);
 
                     textAppearManager.HideUIButton();
                     Emotion[] emotions = emotionAttackManager.GetComboEmotion();
@@ -166,6 +178,10 @@ namespace VoiceActing
                 EndSession();
                 return;
             }
+            if(startLine == true)
+            {
+                FeedbackNewLine();
+            }
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
             textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
             inputController.enabled = true;
@@ -184,7 +200,17 @@ namespace VoiceActing
 
 
 
+        private void FeedbackNewLine()
+        {
+            if (feedbackLine == null)
+                return;
+            enemyManager.ResetHalo();
+            textMeshLine.text = (contrat.TextData.Length - indexPhrase).ToString();
+            textMeshTurn.text = turnCount.ToString();
+            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
+            feedbackLine.SetActive(true);
 
+        }
 
 
 

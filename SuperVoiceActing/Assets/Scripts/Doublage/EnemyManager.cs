@@ -480,6 +480,12 @@ namespace VoiceActing
             }
         }
 
+
+        public void ResetHalo()
+        {
+            haloCurrentEmotion.color = new Color(0, 0, 0, 0);
+        }
+
         private void PrintDamage(float totalDamage)
         {
             if (damageText == null)
