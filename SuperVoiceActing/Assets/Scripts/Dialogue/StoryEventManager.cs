@@ -101,6 +101,16 @@ namespace VoiceActing
                 {
                     StoryEventMoveCharacter node = (StoryEventMoveCharacter)currentNode;
                     node.SetNode(characters);
+                    if(node.GetWaitEnd() == false)
+                    {
+                        StartCoroutine(node.MoveCoroutine());
+                    }
+                }
+                if (currentNode is StoryEventLoad)
+                {
+                    StoryEventLoad node = (StoryEventLoad) currentNode;
+                    storyEventData = node.GetDataToLoad();
+                    i = -1;
                 }
                 yield return StartCoroutine(currentNode.GetStoryEvent());
                 i += 1;

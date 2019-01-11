@@ -35,7 +35,10 @@ public class Yeux : MonoBehaviour
 
     public void StopBlink()
     {
-        StopCoroutine(coroutine);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         coroutine = null;
     }
 

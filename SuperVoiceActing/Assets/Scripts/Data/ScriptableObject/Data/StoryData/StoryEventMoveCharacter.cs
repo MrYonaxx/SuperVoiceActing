@@ -34,6 +34,8 @@ namespace VoiceActing
         bool fadeIn = false;
         [SerializeField]
         bool fadeOut = false;
+        [SerializeField]
+        bool waitEnd = false;
 
         CharacterDialogueController character;
 
@@ -49,13 +51,32 @@ namespace VoiceActing
             }
         }
 
+        public bool GetWaitEnd()
+        {
+            return waitEnd;
+        }
+
+
         protected override IEnumerator StoryEventCoroutine()
+        {
+            if(waitEnd == false)
+            {
+                yield break;
+            }
+            else
+            {
+                yield return MoveCoroutine();
+            }
+
+        }
+
+        public IEnumerator MoveCoroutine()
         {
             // Initialization
             float actualTime = time;
             float speedX = (newPosition.x - character.transform.position.x) / actualTime;
             float speedY = (newPosition.y - character.transform.position.y) / actualTime;
-            if(fadeIn == true)
+            if (fadeIn == true)
             {
                 character.FadeIn(actualTime);
             }
@@ -74,6 +95,6 @@ namespace VoiceActing
         }
 
 
-        } // StoryEventMoveCharacter class
+    } // StoryEventMoveCharacter class
 
 } // #PROJECTNAME# namespace
