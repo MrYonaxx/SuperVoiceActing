@@ -136,6 +136,9 @@ namespace VoiceActing
                     textAppearManager.HideUIButton();
                     Emotion[] emotions = emotionAttackManager.GetComboEmotion();
                     textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
+                    emotionAttackManager.RemoveCard();
+                    emotionAttackManager.RemoveCard();
+                    emotionAttackManager.RemoveCard();
                     CheckEvent();
                 }
             }
