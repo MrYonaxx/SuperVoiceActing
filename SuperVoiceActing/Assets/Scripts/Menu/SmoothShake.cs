@@ -24,9 +24,16 @@ namespace VoiceActing
         float shakeRange = 0.1f;
         [SerializeField]
         float shakeTime = 60;
+        [SerializeField]
+        bool isRectTransform = false;
 
         bool moving = false;
         private IEnumerator coroutine = null;
+
+        private RectTransform rectTransform = null;
+
+        private float originX = 0;
+        private float originY = 0;
 
         #endregion
 
@@ -45,32 +52,31 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
+        protected void Start()
         {
-            
+            if (isRectTransform)
+            {
+                rectTransform = GetComponent<RectTransform>();
+                originX = rectTransform.anchoredPosition.x;
+                originY = rectTransform.anchoredPosition.y;
+            }
         }
 
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
-        {
-            
-        }
-        
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Update is called once per frame.
         /// </summary>
         protected void Update()
         {
-            if (moving == false)
+            if(isRectTransform)
+            {
+                if (moving == false)
+                {
+                    coroutine = MoveCoroutineRectTransform(originX + Random.Range(-shakeRange, shakeRange), originY + Random.Range(-shakeRange, shakeRange), shakeTime);
+                    StartCoroutine(coroutine);
+                }
+            }
+            else if (moving == false)
             {
                 coroutine = MoveCoroutine(Random.Range(-shakeRange, shakeRange), Random.Range(-shakeRange, shakeRange), 0, shakeTime);
                 StartCoroutine(coroutine);
@@ -92,7 +98,22 @@ namespace VoiceActing
                 yield return null;
             }
             moving = false;
-            //this.transform.position = new Vector3(x, y, z);
+        }
+
+        private IEnumerator MoveCoroutineRectTransform(float x, float y, float time)
+        {
+            float speedX = (x - rectTransform.anchoredPosition.x) / time;
+            float speedY = (y - rectTransform.anchoredPosition.y) / time;
+            moving = true;
+            while (time != 0)
+            {
+                rectTransform.anchoredPosition += new Vector2(speedX, speedY);
+                speedX /= 1.01f;
+                speedY /= 1.01f;
+                time -= 1;
+                yield return null;
+            }
+            moving = false;
         }
 
         #endregion
