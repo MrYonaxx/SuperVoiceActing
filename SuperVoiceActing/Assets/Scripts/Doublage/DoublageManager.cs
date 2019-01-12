@@ -142,6 +142,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
+                    emotionAttackManager.SwitchCardTransformToRessource();
                     reprintText = false;
                     CheckEvent();
                 }

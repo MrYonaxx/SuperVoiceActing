@@ -25061,6 +25061,7 @@ GameObject:
   - component: {fileID: 506731765}
   - component: {fileID: 506731766}
   - component: {fileID: 506731763}
+  - component: {fileID: 506731768}
   m_Layer: 9
   m_Name: TextMeshProDoubleuse
   m_TagString: Untagged
@@ -25411,6 +25412,25 @@ MonoBehaviour:
   particleEnd: {fileID: 84211744}
   buttonUIY: {fileID: 133964775}
   buttonUIA: {fileID: 837013312}
+  emotionAttackManager: {fileID: 289565000}
+--- !u!114 &506731768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506731754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f96d457699402f48815839ac94cfd61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterOffset: 2
+  letterCurveSpeed: 0.95
+  letterInterval: 4
+  alphaSpeed: 4
+  damageColor:
+    serializedVersion: 2
+    rgba: 65535
 --- !u!1 &506760560
 GameObject:
   m_ObjectHideFlags: 0

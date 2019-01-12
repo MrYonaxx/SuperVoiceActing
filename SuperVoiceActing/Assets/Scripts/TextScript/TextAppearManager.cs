@@ -55,6 +55,9 @@ namespace VoiceActing
         [SerializeField]
         Image buttonUIA;
 
+        [SerializeField]
+        EmotionAttackManager emotionAttackManager;
+
 
         TextPerformanceAppear currentText = null;
 
@@ -178,7 +181,8 @@ namespace VoiceActing
             {
                 yield return null;
             }
-            if(damage == 100)
+            emotionAttackManager.SwitchCardTransformToBattle();
+            if (damage == 100)
                 StartCoroutine(MoveUIButton(buttonUIY, -500));
             else
                 StartCoroutine(MoveUIButton(buttonUIA, -500));
