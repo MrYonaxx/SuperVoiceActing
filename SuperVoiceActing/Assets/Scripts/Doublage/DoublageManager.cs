@@ -102,6 +102,8 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
+            if (timer != null)
+                timer.SetTurn(turnCount);
             StartCoroutine(IntroductionSequence());
         }
         
@@ -197,7 +199,7 @@ namespace VoiceActing
                 reprintText = true;
                 return;
             }
-            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, contrat.TextData[indexPhrase].Text.Length);
             textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
         }
 

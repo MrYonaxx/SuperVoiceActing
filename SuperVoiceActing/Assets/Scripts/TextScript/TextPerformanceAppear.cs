@@ -175,7 +175,7 @@ namespace VoiceActing
             mouth = newMouth;
         }
 
-        public void NewPhrase(string newText)
+        public void NewPhrase(string newText, int count = 1)
         {
             if (textMeshPro.text == newText)
                 return;
@@ -184,7 +184,7 @@ namespace VoiceActing
 
             if (coroutine != null)
                 StopCoroutine(coroutine);
-            coroutine = AnimateVertexColors();
+            coroutine = AnimateVertexColors(count);
             StartCoroutine(coroutine);
             //ReprintText();
         }
@@ -355,7 +355,7 @@ namespace VoiceActing
         }
 
 
-        protected virtual IEnumerator AnimateVertexColors()
+        protected virtual IEnumerator AnimateVertexColors(int count = 1)
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
@@ -369,7 +369,7 @@ namespace VoiceActing
 
             hasTextChanged = true;
             endLine = false;
-            characterCount = 1;
+            characterCount = count;
             wordSelected = -1;
 
             // Cache the vertex data of the text object as the Jitter FX is applied to the original position of the characters.

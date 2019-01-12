@@ -103,7 +103,7 @@ namespace VoiceActing
             return currentText.GetEndLine();
         }
 
-        public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre)
+        public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, int count = 1)
         {
 
             if (currentText != null)
@@ -115,7 +115,7 @@ namespace VoiceActing
             currentText = SelectTextEffect(emotion);
             currentText.NewMouthAnim(mouth);
             currentText.SetParticle(particleEnd);
-            currentText.NewPhrase(newText);
+            currentText.NewPhrase(newText, count);
         }
 
         public void ExplodeLetter(float damage, Emotion[] emotions)

@@ -42,7 +42,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        protected override IEnumerator AnimateVertexColors()
+        /*protected override IEnumerator AnimateVertexColors()
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
@@ -274,7 +274,7 @@ namespace VoiceActing
 
                 yield return null;//new WaitForSeconds(0.1f);
             }
-        }
+        }*/
 
         #endregion
 
