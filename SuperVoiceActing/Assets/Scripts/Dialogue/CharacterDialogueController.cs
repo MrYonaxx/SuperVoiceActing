@@ -125,6 +125,7 @@ namespace VoiceActing
         public void ChangeOrderInLayer(int newOrder)
         {
             spriteRenderer.sortingOrder = newOrder;
+            mouth.ChangeOrderInLayer(newOrder + 1);
         }
 
         #endregion

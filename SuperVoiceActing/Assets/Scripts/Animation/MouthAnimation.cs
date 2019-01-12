@@ -88,4 +88,10 @@ public class MouthAnimation : MonoBehaviour
         }
         spriteRenderer.sprite = mouthmovement[index];
 	}
+
+    public void ChangeOrderInLayer(int newOrder)
+    {
+        spriteRenderer.sortingOrder = newOrder;
+    }
+
 }

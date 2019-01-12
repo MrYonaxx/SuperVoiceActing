@@ -74,6 +74,7 @@ namespace VoiceActing
         protected DoublageEventData currentEvent;
 
         protected bool startLine = true;
+        protected bool reprintText = true;
 
         int turnCount = 15;
 
@@ -117,7 +118,7 @@ namespace VoiceActing
             startLine = false;
         }
 
-
+        // Tape la phrase si les pv sont pas 0
         public void Attack()
         {
             if (enemyManager.GetHpPercentage() != 0)
@@ -139,11 +140,13 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
+                    reprintText = false;
                     CheckEvent();
                 }
             }
         }
 
+        // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
             if(enemyManager.GetHpPercentage() == 0)
@@ -161,10 +164,11 @@ namespace VoiceActing
         }
 
 
-
+        // Modifie les data pour correspondre a la prochaine ligne
         public void SetNextPhrase()
         {
             indexPhrase += 1;
+            reprintText = true;
             startLine = true;
             if(indexPhrase < contrat.TextData.Length)
                 enemyManager.SetTextData(contrat.TextData[indexPhrase]);
@@ -174,6 +178,7 @@ namespace VoiceActing
             startLine = false;
         }
 
+        // Affiche la phrase
         public virtual void SetPhrase()
         {
             if (indexPhrase == contrat.TextData.Length)
@@ -185,10 +190,15 @@ namespace VoiceActing
             {
                 FeedbackNewLine();
             }
-            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
-            textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
             inputController.enabled = true;
             inputEvent.enabled = false;
+            if(reprintText == false)
+            {
+                reprintText = true;
+                return;
+            }
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+            textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
         }
 
 
@@ -210,7 +220,7 @@ namespace VoiceActing
             enemyManager.ResetHalo();
             textMeshLine.text = (contrat.TextData.Length - indexPhrase).ToString();
             textMeshTurn.text = turnCount.ToString();
-            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
+            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-30f, -20f));
             feedbackLine.SetActive(true);
 
         }
