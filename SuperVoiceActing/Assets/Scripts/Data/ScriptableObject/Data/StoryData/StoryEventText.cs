@@ -44,16 +44,22 @@ namespace VoiceActing
 
         protected TextMeshPro textMeshPro;
         protected CharacterDialogueController characterDialogue;
+        protected GameObject nextButton;
 
         int characterCount = 0;
         int actualTime = 0;
 
         List<int> pauseList = new List<int>();
 
+        public StoryCharacterData GetInterlocuteur()
+        {
+            return interlocuteur;
+        }
 
-        public void SetNode(TextMeshPro textMesh, CharacterDialogueController[] charactersEvent)
+        public void SetNode(TextMeshPro textMesh, CharacterDialogueController[] charactersEvent, GameObject next)
         {
             textMeshPro = textMesh;
+            nextButton = next;
             for (int i = 0; i < charactersEvent.Length; i++)
             {
                 if (charactersEvent[i].GetStoryCharacterData() == interlocuteur)
@@ -121,6 +127,7 @@ namespace VoiceActing
                         actualTime = 0;
                         textMeshPro.maxVisibleCharacters = 0;
                         textMeshPro.text = "";
+                        nextButton.SetActive(false);
                         break;
                     }
                     else if (Input.GetButtonDown("ControllerA"))
@@ -131,6 +138,7 @@ namespace VoiceActing
                             textMeshPro.maxVisibleCharacters = text.Length;
                             if (characterDialogue != null)
                                 characterDialogue.StopMouth();
+                            nextButton.SetActive(true);
                         }
                     }
                 }
@@ -138,6 +146,7 @@ namespace VoiceActing
                 //Check End print
                 if (textMeshPro.maxVisibleCharacters == textMeshPro.textInfo.characterCount)
                 {
+                    nextButton.SetActive(true);
                     if (characterDialogue != null)
                         characterDialogue.StopMouth();
                     if(forceSkip == true)
@@ -161,6 +170,7 @@ namespace VoiceActing
                 {
                     if (characterDialogue != null)
                         characterDialogue.StopMouth();
+                    nextButton.SetActive(true);
                     return true;
                 }
             }

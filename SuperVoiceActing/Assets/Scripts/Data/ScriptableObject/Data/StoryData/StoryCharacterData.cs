@@ -30,6 +30,11 @@ namespace VoiceActing
 
         [Header("Emotion")]
         Sprite spriteNormal = null;
+
+        public string GetName()
+        {
+            return name;
+        }
         
         #endregion
 

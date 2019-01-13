@@ -54,6 +54,8 @@ namespace VoiceActing
 
         protected void Start()
         {
+            originX = this.transform.localPosition.x;
+            originY = this.transform.localPosition.y;
             if (isRectTransform)
             {
                 rectTransform = GetComponent<RectTransform>();
@@ -78,7 +80,7 @@ namespace VoiceActing
             }
             else if (moving == false)
             {
-                coroutine = MoveCoroutine(Random.Range(-shakeRange, shakeRange), Random.Range(-shakeRange, shakeRange), 0, shakeTime);
+                coroutine = MoveCoroutine(originX + Random.Range(-shakeRange, shakeRange), originY + Random.Range(-shakeRange, shakeRange), 0, shakeTime);
                 StartCoroutine(coroutine);
             }
         }

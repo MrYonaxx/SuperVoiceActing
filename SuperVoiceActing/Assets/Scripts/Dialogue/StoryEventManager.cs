@@ -28,6 +28,14 @@ namespace VoiceActing
         [Header("EventText")]
         [SerializeField]
         TextMeshPro textMeshPro;
+        [SerializeField]
+        GameObject next;
+        [SerializeField]
+        Animator animName;
+        [SerializeField]
+        TextMeshPro textName;
+        [SerializeField]
+        AudioSource audioSourceText;
 
         [Header("Characters")]
         [SerializeField]
@@ -92,10 +100,12 @@ namespace VoiceActing
             currentNode = storyEventData.GetEventNode(i);
             if (currentNode != null)
             {
+                HideName();
                 if (currentNode is StoryEventText)
                 {
                     StoryEventText node = (StoryEventText) currentNode;
-                    node.SetNode(textMeshPro, characters);
+                    node.SetNode(textMeshPro, characters, next);
+                    DrawName(node.GetInterlocuteur());
                 }
                 if (currentNode is StoryEventMoveCharacter)
                 {
@@ -113,11 +123,33 @@ namespace VoiceActing
                     i = -1;
                 }
                 yield return StartCoroutine(currentNode.GetStoryEvent());
+                if (currentNode is StoryEventText)
+                {
+                    audioSourceText.Play();
+                }
                 i += 1;
                 StartCoroutine(NextNodeCoroutine());
             }
         }
-        
+
+
+        private void DrawName(StoryCharacterData interlocuteur)
+        {
+            if (interlocuteur == null)
+            {
+                HideName();
+                return;
+            }
+            textName.text = interlocuteur.GetName();
+            animName.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        }
+
+
+        private void HideName()
+        {
+            animName.transform.localScale = new Vector3(0.7f, 0, 0.7f);
+        }
+
         #endregion
 
     } // StoryEventManager class
