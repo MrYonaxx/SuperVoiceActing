@@ -42,7 +42,7 @@ namespace VoiceActing
         CharacterDialogueController[] characters;
 
 
-
+        private IEnumerator coroutineAnimName = null;
 
         StoryEvent currentNode;
         int i = 0;
@@ -141,13 +141,35 @@ namespace VoiceActing
                 return;
             }
             textName.text = interlocuteur.GetName();
-            animName.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            if (coroutineAnimName != null)
+                StopCoroutine(coroutineAnimName);
+            coroutineAnimName = ScaleAnimName(0.7f, false);
+            StartCoroutine(coroutineAnimName);
+            animName.Play("ANIM_BandeRouge");
         }
 
 
         private void HideName()
         {
-            animName.transform.localScale = new Vector3(0.7f, 0, 0.7f);
+            if (coroutineAnimName != null)
+                StopCoroutine(coroutineAnimName);
+            coroutineAnimName = ScaleAnimName(0, true);
+            StartCoroutine(coroutineAnimName);
+        }
+
+        private IEnumerator ScaleAnimName(float target, bool changeRotation)
+        {
+            while(animName.transform.localScale.y < target - 0.05f || animName.transform.localScale.y > target + 0.05f)
+            {
+                if (animName.transform.localScale.y < target)
+                    animName.transform.localScale += new Vector3(0, 0.05f, 0);
+                else if (animName.transform.localScale.y > target)
+                    animName.transform.localScale -= new Vector3(0, 0.05f, 0);
+                yield return null;
+            }
+            animName.transform.localScale = new Vector3(animName.transform.localScale.x, target, animName.transform.localScale.z);
+            if (changeRotation == true)
+                animName.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-5, 0));
         }
 
         #endregion

@@ -122,7 +122,7 @@ namespace VoiceActing
                 // Check Input
                 if (ignorePlayerInput == false)
                 {
-                    if (Input.GetButtonDown("ControllerA") && textMeshPro.maxVisibleCharacters == text.Length)
+                    if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == text.Length)
                     {
                         actualTime = 0;
                         textMeshPro.maxVisibleCharacters = 0;
@@ -130,7 +130,7 @@ namespace VoiceActing
                         nextButton.SetActive(false);
                         break;
                     }
-                    else if (Input.GetButtonDown("ControllerA"))
+                    else if (Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0))
                     {
                         actualTime = 0;
                         if (CheckSkipPause() == false)
