@@ -54,6 +54,10 @@ namespace VoiceActing
         protected TextMeshProUGUI textMeshLine;
         [SerializeField]
         protected TextMeshProUGUI textMeshTurn;
+        [SerializeField]
+        protected TextMeshProUGUI currentLineNumber;
+        [SerializeField]
+        protected TextMeshProUGUI maxLineNumber;
 
         [Header("Events")]
         [SerializeField]
@@ -104,6 +108,10 @@ namespace VoiceActing
         {
             if (timer != null)
                 timer.SetTurn(turnCount);
+            if (maxLineNumber != null)
+                maxLineNumber.text = (contrat.TextData.Length-1).ToString();
+            if (currentLineNumber != null)
+                currentLineNumber.text = indexPhrase.ToString();
             StartCoroutine(IntroductionSequence());
         }
         
@@ -123,29 +131,25 @@ namespace VoiceActing
         // Tape la phrase si les pv sont pas 0
         public void Attack()
         {
-            if (enemyManager.GetHpPercentage() != 0)
+            if (textAppearManager.GetEndLine() == true)
             {
-                if (textAppearManager.GetEndLine() == true)
-                {
-                    turnCount -= 1;
-                    if(timer != null)
-                        timer.SetTurn(turnCount);
-                    if(cameraController != null)
-                        cameraController.NotQuite();
-
-                    if(feedbackLine != null)
-                        feedbackLine.SetActive(false);
-
-                    textAppearManager.HideUIButton();
-                    Emotion[] emotions = emotionAttackManager.GetComboEmotion();
-                    textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
-                    emotionAttackManager.RemoveCard();
-                    emotionAttackManager.RemoveCard();
-                    emotionAttackManager.RemoveCard();
-                    emotionAttackManager.SwitchCardTransformToRessource();
-                    reprintText = false;
-                    CheckEvent();
-                }
+                turnCount -= 1;
+                if(timer != null)
+                    timer.SetTurn(turnCount);
+                if(cameraController != null)
+                    cameraController.NotQuite();
+    
+                if(feedbackLine != null)
+                    feedbackLine.SetActive(false);
+    
+                textAppearManager.HideUIButton();
+                Emotion[] emotions = emotionAttackManager.GetComboEmotion();
+                textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.RemoveCard();
+                reprintText = false;
+                CheckEvent();
             }
         }
 
@@ -156,11 +160,14 @@ namespace VoiceActing
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
+                    if (currentLineNumber != null)
+                        currentLineNumber.text = indexPhrase.ToString();
                     inputController.enabled = false;
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     textAppearManager.HideUIButton();
+                    textAppearManager.TextPop();
                     SetNextPhrase();
                 }
             }
@@ -200,7 +207,7 @@ namespace VoiceActing
                 reprintText = true;
                 return;
             }
-            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, contrat.TextData[indexPhrase].Text.Length);
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
             textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
         }
 
@@ -223,7 +230,7 @@ namespace VoiceActing
             enemyManager.ResetHalo();
             textMeshLine.text = (contrat.TextData.Length - indexPhrase).ToString();
             textMeshTurn.text = turnCount.ToString();
-            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-30f, -20f));
+            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-30f, -10f));
             feedbackLine.SetActive(true);
 
         }

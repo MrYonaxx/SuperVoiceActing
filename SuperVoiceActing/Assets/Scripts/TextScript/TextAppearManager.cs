@@ -45,9 +45,16 @@ namespace VoiceActing
         [SerializeField]
         TextPerformanceAppear textTrust;
 
+        [SerializeField]
+        TextPerformanceAppear textNewPhrase;
+
         [Header("Particle")]
         [SerializeField]
         ParticleSystem particleEnd;
+        [SerializeField]
+        ParticleSystem particleLineDead1;
+        [SerializeField]
+        ParticleSystem particleLineDead2;
 
         [Header("UI")]
         [SerializeField]
@@ -55,13 +62,12 @@ namespace VoiceActing
         [SerializeField]
         Image buttonUIA;
 
-        [SerializeField]
-        EmotionAttackManager emotionAttackManager;
-
 
         TextPerformanceAppear currentText = null;
 
         private IEnumerator coroutineWaitEndLine = null;
+
+        int wordID = 0;
 
         #endregion
 
@@ -106,7 +112,12 @@ namespace VoiceActing
             return currentText.GetEndLine();
         }
 
-        public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, int count = 1)
+        public void TextPop()
+        {
+            currentText.TextPop();
+        }
+
+        public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, bool startPhrase = false)
         {
 
             if (currentText != null)
@@ -115,20 +126,34 @@ namespace VoiceActing
                     return;
                 currentText.Stop();
             }
-            currentText = SelectTextEffect(emotion);
-            currentText.NewMouthAnim(mouth);
-            currentText.SetParticle(particleEnd);
-            currentText.NewPhrase(newText, count);
+
+            if(startPhrase == true)
+            {
+                currentText = textNewPhrase;
+                currentText.NewMouthAnim(mouth);
+                //currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
+                currentText.NewPhrase(newText, newText.Length);
+            }
+            else
+            {
+                currentText = SelectTextEffect(emotion);
+                currentText.NewMouthAnim(mouth);
+                currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
+                currentText.NewPhrase(newText);
+            }
         }
 
+        // Attack
         public void ExplodeLetter(float damage, Emotion[] emotions)
         {
             if (coroutineWaitEndLine != null)
             {
                 StopCoroutine(coroutineWaitEndLine);
             }
+            wordID = GetWordSelected();
             currentText.ExplodeLetter(damage, 60);
             currentText = SelectTextEffect(emotions[0]);
+
             StartCoroutine(WaitFrame(60, damage));
 
         }
@@ -166,8 +191,9 @@ namespace VoiceActing
                 yield return null;
             }
             currentText.NewMouthAnim(mouth);
-            currentText.SetParticle(particleEnd);
+            currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
             currentText.ReprintText();
+            currentText.SetWordFeedback(wordID);
             ApplyDamage(damage);
         }
 
@@ -181,7 +207,6 @@ namespace VoiceActing
             {
                 yield return null;
             }
-            emotionAttackManager.SwitchCardTransformToBattle();
             if (damage == 100)
                 StartCoroutine(MoveUIButton(buttonUIY, -500));
             else

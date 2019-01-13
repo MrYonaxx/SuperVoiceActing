@@ -25,6 +25,10 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textMeshPro = null;
         [SerializeField]
+        TextMeshProUGUI textMeshTurnCount = null;
+        [SerializeField]
+        Animator animTextMesh = null;
+        [SerializeField]
         bool active = false;
 
         int turnCount = 0;
@@ -73,43 +77,37 @@ namespace VoiceActing
             if (active == false)
                 return;
 
-            seconds += Random.Range(10, 50);
-            if (seconds > 999)
+            seconds -= Random.Range(10, 50);
+            if (seconds < 0)
             {
-                seconds -= 999;
+                seconds += 100;
             }
-            minute += 1;
-            if (minute > 99)
-                minute = 0;
-
-            if (turnCount / 10 < 1)
-                turnDraw = "0" + turnCount.ToString();
-            else
-                turnDraw = turnCount.ToString();
+            minute -= 1;
+            if (minute < 0)
+                minute = 99;
 
             if (minute / 10 < 1)
                 minuteDraw = "0" + minute.ToString();
             else
                 minuteDraw = minute.ToString();
 
-            if (seconds / 100 < 1)
-            {
-                if (seconds / 10 < 1)
-                    secondDraw = "00" + seconds.ToString();
-                else
-                    secondDraw = "0" + seconds.ToString();
-            }
+            if (seconds / 10 < 1)
+                secondDraw = "0" + seconds.ToString();
             else
-            {
                 secondDraw = seconds.ToString();
-            }
 
-            textMeshPro.text = "TURN " + turnDraw + ":" + minuteDraw + ":" + secondDraw;
+            textMeshPro.text = "TURN       :" + minuteDraw + ":" + secondDraw;
         }
         
         public void SetTurn(int newTurn)
         {
             turnCount = newTurn;
+            if (turnCount / 10 < 1)
+                turnDraw = "0" + turnCount.ToString();
+            else
+                turnDraw = turnCount.ToString();
+            textMeshTurnCount.text = turnDraw;
+            animTextMesh.Play("ANIM_TurnDigit");
         }
 
         public void ActiveTimer(bool b)

@@ -41,6 +41,8 @@ namespace VoiceActing
         /*[Header("Feedback")]
         [SerializeField]*/
         protected ParticleSystem particlesEndLine = null;
+        protected ParticleSystem particlesLineDead = null;
+        protected ParticleSystem particlesLineDead2 = null;
 
 
         [SerializeField]
@@ -74,6 +76,7 @@ namespace VoiceActing
         /// </summary>
         protected struct VertexAnim
         {
+            public bool feedback;
             public bool damage;
             public bool selected;
             public float offset;
@@ -109,9 +112,11 @@ namespace VoiceActing
                 mouth.ActivateMouth();
         }
 
-        public void SetParticle(ParticleSystem par)
+        public void SetParticle(ParticleSystem par, ParticleSystem par2, ParticleSystem par3)
         {
             particlesEndLine = par;
+            particlesLineDead = par2;
+            particlesLineDead2 = par3;
         }
 
 
@@ -257,7 +262,27 @@ namespace VoiceActing
             // ================================
         }
 
-
+        public void SetWordFeedback(int wordSelected)
+        {
+            if (wordSelected < 0 || wordSelected >= textMeshPro.textInfo.wordCount)
+            {
+                for (int i = 0; i < textMeshPro.textInfo.characterCount; i++)
+                {
+                    vertexAnim[i].feedback = false;
+                }
+                return;
+            }
+            int firstCharacter = textMeshPro.textInfo.wordInfo[wordSelected].firstCharacterIndex;
+            int lastCharacter = textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex;
+            for (int i = 0; i < textMeshPro.textInfo.characterCount; i++)
+            {
+                if (i < firstCharacter || lastCharacter < i)
+                    vertexAnim[i].feedback = false;
+                else
+                    vertexAnim[i].feedback = true;
+            }
+            Debug.Log("Ham");
+        }
 
 
 
@@ -325,8 +350,9 @@ namespace VoiceActing
         // Create an Array which contains pre-computed Angle Ranges and Speeds for a bunch of characters.
         protected virtual void InitializeVertex()
         {
-            for (int i = 0; i < 1024; i++)
+            for (int i = 0; i < 255; i++)
             {
+                vertexAnim[i].feedback = false;
                 vertexAnim[i].damage = false;
                 vertexAnim[i].selected = false;
                 vertexAnim[i].offset = letterOffset;
@@ -519,11 +545,20 @@ namespace VoiceActing
                     // ====================== Particle ====================== //
                     if (i == textInfo.characterCount - 1 && endLine == false)
                     {
-                        PlayParticle(offset);
+                        PlayParticle(offset, vertexAnim[i].damage);
                         endLine = true;
                     }
                     // ====================================================== //
-
+                    if(i == characterCount-1 && vertexAnim[i].feedback == true)
+                    {
+                        ParticleSystem par = Instantiate(particlesEndLine, this.transform);
+                        par.transform.localPosition = offset;
+                        var particleColor = par.main;
+                        particleColor.startColor = (Color)damageColor;
+                        par.Play();
+                        vertexAnim[i].feedback = false;
+                        Debug.Log("Stram");
+                    }
                     //vertexAnim[i] = vertAnim;
 
                 }
@@ -579,9 +614,26 @@ namespace VoiceActing
 
 
 
-        protected virtual void PlayParticle(Vector3 offset)
+        protected virtual void PlayParticle(Vector3 offset, bool dead)
         {
-            if (particlesEndLine != null)
+            if(dead)
+            {
+                if (particlesLineDead != null)
+                {
+                    particlesLineDead.transform.localPosition = offset;
+                    var particleColor = particlesLineDead.main;
+                    particleColor.startColor = (Color) damageColor;
+                    particlesLineDead.Play();
+                }
+                if (particlesLineDead2 != null)
+                {
+                    particlesLineDead2.transform.localPosition = offset;
+                    var particleColor = particlesLineDead2.main;
+                    particleColor.startColor = (Color) damageColor;
+                    particlesLineDead2.Play();
+                }
+            }
+            else if (particlesEndLine != null)
             {
                 particlesEndLine.transform.localPosition = offset;
                 particlesEndLine.Play();
@@ -657,8 +709,37 @@ namespace VoiceActing
 
         }
 
+
+
+        public void TextPop()
+        {
+            //StartCoroutine(PopVertex());
+        }
+
+        protected IEnumerator PopVertex()
+        {
+            for (int i = 0; i < characterCount; i++)
+            {
+                TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
+                int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
+                int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+
+                Vector3[] sourceVertices = cachedMeshInfo[materialIndex].vertices;
+                Vector2 charMidBasline = (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
+                Vector3 offset = charMidBasline;
+
+                ParticleSystem par = Instantiate(particlesEndLine, this.transform);
+                par.transform.localPosition = offset;
+                par.Play();
+                yield return null;
+            }
+        }
+
+
+
+
             #endregion
 
-        } // TextPerformanceAppear class
+    } // TextPerformanceAppear class
 
 } // #PROJECTNAME# namespace
