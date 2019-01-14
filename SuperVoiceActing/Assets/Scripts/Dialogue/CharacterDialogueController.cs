@@ -90,6 +90,8 @@ namespace VoiceActing
         {
             if(eyesScript != null)
                 eyesScript.StartBlink();
+            if(mouth != null)
+                mouth.ShowMouth();
             StartCoroutine(Fade(true, time));
         }
 
@@ -97,6 +99,8 @@ namespace VoiceActing
         {
             if (eyesScript != null)
                 eyesScript.StopBlink();
+            if (mouth != null)
+                mouth.HideMouth();
             StartCoroutine(Fade(false, time));
         }
 
