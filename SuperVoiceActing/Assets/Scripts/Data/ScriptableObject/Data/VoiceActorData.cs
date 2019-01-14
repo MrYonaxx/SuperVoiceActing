@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -61,6 +62,26 @@ namespace VoiceActing
         {
             get { return statistique; }
             set { statistique = value; }
+        }
+
+        [Space]
+        [HorizontalGroup("Fourchette")]
+        [SerializeField]
+        private int fourchetteMin;
+        public int FourchetteMin
+        {
+            get { return fourchetteMin; }
+            set { fourchetteMin = value; }
+        }
+
+        [Space]
+        [HorizontalGroup("Fourchette")]
+        [SerializeField]
+        private int fourchetteMax;
+        public int FourchetteMax
+        {
+            get { return fourchetteMax; }
+            set { fourchetteMax = value; }
         }
 
         [SerializeField]

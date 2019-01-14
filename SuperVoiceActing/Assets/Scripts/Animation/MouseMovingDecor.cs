@@ -29,13 +29,17 @@ public class MouseMovingDecor : MonoBehaviour {
 	void Update ()
     {
         Vector3 tmp;
-        if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.2f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.2f)
+        /*if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.1f)
         {
-            tmp = Camera.main.ScreenToWorldPoint(new Vector3(960 * Input.GetAxis("ControllerRightHorizontal"), 540 * -Input.GetAxis("ControllerRightVertical"), 0));
-        } else if (focusPoint == null)
+            tmp = Camera.main.ScreenToWorldPoint(new Vector3(1920 * Input.GetAxis("ControllerRightHorizontal"), 1080 * -Input.GetAxis("ControllerRightVertical"), 0));
+            Debug.Log(1920 * Input.GetAxis("ControllerRightHorizontal"));
+            Debug.Log(1080 * Input.GetAxis("ControllerRightVertical"));
+        } else*/
+        if (focusPoint == null)
             tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         else
             tmp = focusPoint.position;
+
         actual_view_x = 0;
 		actual_view_y = 0;
 		//print (actual_view_y);
