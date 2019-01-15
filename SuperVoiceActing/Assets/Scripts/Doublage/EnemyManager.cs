@@ -221,6 +221,8 @@ namespace VoiceActing
         TextMeshPro damageText;
         [SerializeField]
         TextMeshPro[] damageTextCritical;
+        [SerializeField]
+        ParticleSystem[] particleCritical;
 
         [SerializeField]
         GameObject criticalFeedback;
@@ -378,27 +380,43 @@ namespace VoiceActing
 
         public void StartDamageCriticalFeedback(float[] allDamages)
         {
+            int count = 0;
             for(int i = 0; i < allDamages.Length; i++)
             {
                 if(allDamages[i] > 0)
                 {
                     damageTextCritical[i].text = ((int)allDamages[i]).ToString();
-                    StartCoroutine(BonusDamageCoroutine(damageTextCritical[i]));
+                    StartCoroutine(BonusDamageCoroutine(damageTextCritical[i], count, particleCritical[i]));
+                    
+                    count += 1;
                 }
             }
         }
 
-        private IEnumerator BonusDamageCoroutine(TextMeshPro textMesh)
+        private IEnumerator BonusDamageCoroutine(TextMeshPro textMesh, int count, ParticleSystem particleCritical)
         {
+            yield return new WaitForSeconds(count/8f);
             textMesh.color = new Color(1, 1, 1, 1);
-            textMesh.rectTransform.anchoredPosition3D = new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 1f), -0.1f);
-            float speed = Random.Range(0.02f, 0.08f);
-            int time = 120;
+            textMesh.rectTransform.anchoredPosition3D = new Vector3(Random.Range(-6f, 6f), Random.Range(-4f, 1f), -0.1f);
+            particleCritical.transform.position = textMesh.transform.position;
+            particleCritical.Play();
+            float speed = 0.2f;
+            int time = 80;
+            bool stop = false;
             while(time > 0)
             {
+                if(speed <= -0.3f)
+                {
+                    speed = 0;
+                    stop = true;
+                }
+                else if (stop == false)
+                {
+                    speed -= 0.005f;
+                }
                 textMesh.rectTransform.anchoredPosition3D += new Vector3(0, speed, 0);
-                if(time < 60)
-                    textMesh.color -= new Color(0, 0, 0, 0.02f);
+                if(time < 20)
+                    textMesh.color -= new Color(0, 0, 0, 0.1f);
                 time -= 1;
                 yield return null;
             }
