@@ -135,6 +135,11 @@ namespace VoiceActing
         {
             if (textAppearManager.GetEndLine() == true)
             {
+                if (emotionAttackManager.GetComboCount() == -1)
+                {
+                    emotionAttackManager.SelectCard("Neutre");
+                    return;
+                }
                 turnCount -= 1;
                 if(timer != null)
                     timer.SetTurn(turnCount);
@@ -169,6 +174,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     textAppearManager.HideUIButton();
+                    //textAppearManager.ExplodeLetter();
                     textAppearManager.TextPop();
                     SetNextPhrase();
                 }

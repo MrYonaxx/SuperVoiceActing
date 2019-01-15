@@ -193,6 +193,11 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public int GetComboCount()
+        {
+            return comboCount;
+        }
+
         public Emotion[] GetComboEmotion()
         {
             return comboEmotion;
@@ -246,6 +251,9 @@ namespace VoiceActing
                         break;
                     case Emotion.Confiance:
                         cardNumber = deckEmotion.Trust;
+                        break;
+                    case Emotion.Neutre:
+                        cardNumber = 1;
                         break;
                 }
 
@@ -389,6 +397,9 @@ namespace VoiceActing
                     break;
                 case "Confiance":
                     SelectCard(Emotion.Confiance);
+                    break;
+                case "Neutre":
+                    SelectCard(Emotion.Neutre);
                     break;
             }
         }
