@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -37,12 +38,22 @@ namespace VoiceActing
             get { return emotionNPC; }
         }
 
+        [HorizontalGroup("Texte")]
         [SerializeField]
         [TextArea]
         private string text;
         public string Text
         {
             get { return text; }
+        }
+
+        [HorizontalGroup("Texte")]
+        [SerializeField]
+        [TextArea]
+        private string textEng;
+        public string TextEng
+        {
+            get { return textEng; }
         }
 
         [SerializeField]

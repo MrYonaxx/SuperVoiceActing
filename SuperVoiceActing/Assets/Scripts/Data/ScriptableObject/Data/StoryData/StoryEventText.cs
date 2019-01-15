@@ -28,6 +28,11 @@ namespace VoiceActing
         [TextArea]
         string text = null;
 
+        [HorizontalGroup("Texte")]
+        [SerializeField]
+        [TextArea]
+        string textEng = null;
+
 
         [SerializeField]
         float mouthSpeed = 2;
