@@ -352,8 +352,11 @@ namespace VoiceActing
                     bonusDamage += statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
 
                     Debug.Log("Weakpoint");
-                    criticalFeedback.SetActive(true);
-                    criticalFeedback2.SetActive(true);
+                    if (criticalFeedback != null)
+                    {
+                        criticalFeedback.SetActive(true);
+                        criticalFeedback2.SetActive(true);
+                    }
                 }
             }
             return bonusDamage;
