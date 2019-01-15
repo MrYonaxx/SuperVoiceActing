@@ -551,13 +551,15 @@ namespace VoiceActing
                     // ====================================================== //
                     if(i == characterCount-1 && vertexAnim[i].feedback == true)
                     {
-                        ParticleSystem par = Instantiate(particlesEndLine, this.transform);
-                        par.transform.localPosition = offset;
-                        var particleColor = par.main;
-                        particleColor.startColor = (Color)damageColor;
-                        par.Play();
-                        vertexAnim[i].feedback = false;
-                        Debug.Log("Stram");
+                        if (particlesEndLine != null)
+                        {
+                            ParticleSystem par = Instantiate(particlesEndLine, this.transform);
+                            par.transform.localPosition = offset;
+                            var particleColor = par.main;
+                            particleColor.startColor = (Color)damageColor;
+                            par.Play();
+                            vertexAnim[i].feedback = false;
+                        }
                     }
                     //vertexAnim[i] = vertAnim;
 
