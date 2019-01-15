@@ -274,6 +274,16 @@ namespace VoiceActing
             enemyHP = currentTextData.HPMax;
         }
 
+        public float DamagePhrase()
+        {
+
+            for (int i = 0; i < particleFeedbacks.Length; i++)
+            {
+                particleFeedbacks[i].Play();
+            }
+            return 0;
+        }
+
         public float DamagePhrase(Emotion[] emotions, int word)
         {
             float totalDamage = 0;

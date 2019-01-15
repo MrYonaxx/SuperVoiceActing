@@ -143,8 +143,8 @@ namespace VoiceActing
                 turnCount -= 1;
                 if(timer != null)
                     timer.SetTurn(turnCount);
-                if(cameraController != null)
-                    cameraController.NotQuite();
+                /*if(cameraController != null)
+                    cameraController.NotQuite();*/
     
                 if(feedbackLine != null)
                     feedbackLine.SetActive(false);
@@ -175,10 +175,27 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     textAppearManager.HideUIButton();
                     //textAppearManager.ExplodeLetter();
+
+                    enemyManager.DamagePhrase();
                     textAppearManager.TextPop();
-                    SetNextPhrase();
+                    FeedbackNewLine();
+                    if (cameraController != null)
+                        cameraController.NotQuite();
+
+
+                    StartCoroutine(WaitCoroutineNextPhrase(60));
                 }
             }
+        }
+
+        private IEnumerator WaitCoroutineNextPhrase(float time)
+        {
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            SetNextPhrase();
         }
 
 
@@ -206,7 +223,7 @@ namespace VoiceActing
             }
             if(startLine == true)
             {
-                FeedbackNewLine();
+                //FeedbackNewLine();
             }
             inputController.gameObject.SetActive(true);
             inputEvent.gameObject.SetActive(false);
@@ -239,7 +256,7 @@ namespace VoiceActing
             enemyManager.ResetHalo();
             textMeshLine.text = (contrat.TextData.Length - indexPhrase).ToString();
             textMeshTurn.text = turnCount.ToString();
-            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-30f, -10f));
+            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
             feedbackLine.SetActive(true);
 
         }

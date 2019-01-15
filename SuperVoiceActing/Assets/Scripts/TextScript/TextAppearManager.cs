@@ -114,7 +114,7 @@ namespace VoiceActing
 
         public void TextPop()
         {
-            currentText.ExplodeLetter(100, 60);
+            currentText.TextPop();
         }
 
         public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, bool startPhrase = false)

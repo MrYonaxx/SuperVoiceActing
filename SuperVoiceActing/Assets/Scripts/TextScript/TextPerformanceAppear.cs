@@ -715,7 +715,8 @@ namespace VoiceActing
 
         public void TextPop()
         {
-            //StartCoroutine(PopVertex());
+            StopCoroutine(coroutine);
+            StartCoroutine(ExplosionVertex(100, 60));
         }
 
         protected IEnumerator PopVertex()
