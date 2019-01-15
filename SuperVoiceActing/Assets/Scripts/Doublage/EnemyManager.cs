@@ -219,6 +219,8 @@ namespace VoiceActing
         Image haloCurrentEmotion;
         [SerializeField]
         TextMeshPro damageText;
+        [SerializeField]
+        TextMeshPro[] damageTextCritical;
 
         [SerializeField]
         GameObject criticalFeedback;
@@ -313,7 +315,7 @@ namespace VoiceActing
                 }
             }
 
-            totalDamage += ApplyWordBonus(word, statActor);
+            totalDamage += ApplyWordBonus(totalDamage, word, statActor);
             totalDamage += Random.Range(voiceActor.FourchetteMin, voiceActor.FourchetteMax);
             enemyHP -= (int) totalDamage;
             if (enemyHP < 0)
@@ -333,29 +335,40 @@ namespace VoiceActing
             return 100 - percentage;
         }
 
-        private float ApplyWordBonus(int word, EmotionStat statActor)
+        private float ApplyWordBonus(float totalDamage, int word, EmotionStat statActor)
         {
             float bonusDamage = 0;
+            float[] allDamages = new float[9];
+            allDamages[0] = totalDamage;
             WeakPoint[] enemyWeakPoints = currentTextData.EnemyWeakPoints;
             for (int i = 0; i < enemyWeakPoints.Length; i++)
             {
                 if (word == enemyWeakPoints[i].WordIndex)
                 {
                     bonusDamage += statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
+                    allDamages[1] = statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
                     bonusDamage += statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
+                    allDamages[2] = statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
                     bonusDamage += statActor.Disgust * (enemyWeakPoints[i].WeakPointStat.Disgust / 100f);
+                    allDamages[3] = statActor.Disgust * (enemyWeakPoints[i].WeakPointStat.Disgust / 100f);
                     bonusDamage += statActor.Anger * (enemyWeakPoints[i].WeakPointStat.Anger / 100f);
+                    allDamages[4] = statActor.Anger * (enemyWeakPoints[i].WeakPointStat.Anger / 100f);
 
                     bonusDamage += statActor.Surprise * (enemyWeakPoints[i].WeakPointStat.Surprise / 100f);
+                    allDamages[5] = statActor.Surprise * (enemyWeakPoints[i].WeakPointStat.Surprise / 100f);
                     bonusDamage += statActor.Sweetness * (enemyWeakPoints[i].WeakPointStat.Sweetness / 100f);
+                    allDamages[6] = statActor.Sweetness * (enemyWeakPoints[i].WeakPointStat.Sweetness / 100f);
                     bonusDamage += statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
+                    allDamages[7] = statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
                     bonusDamage += statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
+                    allDamages[8] = statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
 
                     Debug.Log("Weakpoint");
                     if (criticalFeedback != null)
                     {
                         criticalFeedback.SetActive(true);
                         criticalFeedback2.SetActive(true);
+                        StartDamageCriticalFeedback(allDamages);
                     }
                 }
             }
@@ -363,7 +376,33 @@ namespace VoiceActing
         }
 
 
+        public void StartDamageCriticalFeedback(float[] allDamages)
+        {
+            for(int i = 0; i < allDamages.Length; i++)
+            {
+                if(allDamages[i] > 0)
+                {
+                    damageTextCritical[i].text = ((int)allDamages[i]).ToString();
+                    StartCoroutine(BonusDamageCoroutine(damageTextCritical[i]));
+                }
+            }
+        }
 
+        private IEnumerator BonusDamageCoroutine(TextMeshPro textMesh)
+        {
+            textMesh.color = new Color(1, 1, 1, 1);
+            textMesh.rectTransform.anchoredPosition3D = new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 1f), -0.1f);
+            float speed = Random.Range(0.02f, 0.08f);
+            int time = 120;
+            while(time > 0)
+            {
+                textMesh.rectTransform.anchoredPosition3D += new Vector3(0, speed, 0);
+                if(time < 60)
+                    textMesh.color -= new Color(0, 0, 0, 0.02f);
+                time -= 1;
+                yield return null;
+            }
+        }
 
 
         // ======================== //

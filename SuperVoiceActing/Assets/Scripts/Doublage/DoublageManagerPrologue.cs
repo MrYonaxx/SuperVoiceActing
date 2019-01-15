@@ -65,7 +65,8 @@ namespace VoiceActing
 
         public override void SetPhrase()
         {
-            if(indexPhrase == 0)
+            recIcon.SetActive(true);
+            if (indexPhrase == 0)
             {
                 ShiftAmbiance();
             }

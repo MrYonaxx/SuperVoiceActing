@@ -58,6 +58,8 @@ namespace VoiceActing
         protected TextMeshProUGUI currentLineNumber;
         [SerializeField]
         protected TextMeshProUGUI maxLineNumber;
+        [SerializeField]
+        protected GameObject recIcon;
 
         [Header("Events")]
         [SerializeField]
@@ -202,7 +204,8 @@ namespace VoiceActing
             }
             inputController.gameObject.SetActive(true);
             inputEvent.gameObject.SetActive(false);
-            if(reprintText == false)
+            recIcon.SetActive(true);
+            if (reprintText == false)
             {
                 reprintText = true;
                 return;
@@ -335,6 +338,7 @@ namespace VoiceActing
                     indexEvent = -1;
                     currentEvent = contrat.EventData[i];
                     emotionAttackManager.SwitchCardTransformToRessource();
+                    recIcon.SetActive(false);
                     ExecuteEvent();
                     return true;
                 }
