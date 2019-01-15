@@ -73,7 +73,7 @@ namespace VoiceActing
             {
                 textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Joie);
                 textAppearManager.ApplyDamage(100);
-                inputController.enabled = true;
+                inputController.gameObject.SetActive(true);
             }
             else if (indexPhrase == 2)
             {
@@ -82,20 +82,19 @@ namespace VoiceActing
                     textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                     enemyManager.SetHp(10);
                     textAppearManager.ApplyDamage(50);
-                    //inputController.enabled = true;
                     StartCoroutine(EventPhrase2());
                     eventCustom = true;
                 }
                 else
                 {
-                    inputController.enabled = true;
+                    inputController.gameObject.SetActive(true);
                 }
             }
             else if (indexPhrase == 3)
             {
                 textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 textAppearManager.ApplyDamage(100);
-                inputController.enabled = true;
+                inputController.gameObject.SetActive(true);
             }
             else if (indexPhrase == 6)
             {
@@ -104,17 +103,13 @@ namespace VoiceActing
             }
             else if (indexPhrase == 11)
             {
-                //skillManager.ActorSkillFeedback();
                 textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
-                inputController.enabled = true;
+                inputController.gameObject.SetActive(true);
                 skillManager.ActorSkillFeedback();
             }
             else
             {
                 base.SetPhrase();
-                /*textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
-                textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
-                inputController.enabled = true;*/
             }
 
         }
@@ -161,12 +156,11 @@ namespace VoiceActing
             newAmbiance.Invoke();
             yield return new WaitForSeconds(3);
             newAmbiance2.Invoke();
-            //emotionAttackManager.SwitchCardTransformIntro();
-            //textPerformanceAppear.ApplyDamage(100);
+            emotionAttackManager.SwitchCardTransformIntro();
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
             textAppearManager.ApplyDamage(100);
-            inputController.enabled = true;
+            inputController.gameObject.SetActive(true);
             cameraController.SetNoCameraEffect(false);
             cameraController.MoveToInitialPosition();
         }

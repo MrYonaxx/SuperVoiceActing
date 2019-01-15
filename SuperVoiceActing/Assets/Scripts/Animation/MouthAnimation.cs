@@ -58,6 +58,17 @@ public class MouthAnimation : MonoBehaviour
             soundVisualizer.StopVisualizer();
     }
 
+    public void ShowMouth()
+    {
+        spriteRenderer.enabled = true;
+    }
+
+    public void HideMouth()
+    {
+        DesactivateMouth();
+        spriteRenderer.enabled = false;
+    }
+
     private IEnumerator MouthAnim()
     {
         int i = 0;

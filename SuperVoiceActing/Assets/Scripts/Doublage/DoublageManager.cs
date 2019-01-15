@@ -162,7 +162,7 @@ namespace VoiceActing
                 {
                     if (currentLineNumber != null)
                         currentLineNumber.text = indexPhrase.ToString();
-                    inputController.enabled = false;
+                    inputController.gameObject.SetActive(false);
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
@@ -200,8 +200,8 @@ namespace VoiceActing
             {
                 FeedbackNewLine();
             }
-            inputController.enabled = true;
-            inputEvent.enabled = false;
+            inputController.gameObject.SetActive(true);
+            inputEvent.gameObject.SetActive(false);
             if(reprintText == false)
             {
                 reprintText = true;
@@ -252,7 +252,7 @@ namespace VoiceActing
                 if (textEvent[i].PrintAllText() == false)
                     return;
             }
-            inputEvent.enabled = false;
+            inputEvent.gameObject.SetActive(false);
             ExecuteEvent();
         }
 
@@ -260,14 +260,14 @@ namespace VoiceActing
         private void ExecuteEvent()
         {
             indexEvent += 1;
-            inputController.enabled = false;
+            inputController.gameObject.SetActive(false);
             DoublageEvent currentNode = currentEvent.GetEventNode(indexEvent);
             if (currentNode != null)
             {
                 if (currentNode is DoublageEventText)
                 {
                     DoublageEventText node = (DoublageEventText) currentNode;
-                    inputEvent.enabled = true;
+                    inputEvent.gameObject.SetActive(true);
                     FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);
                 }
                 if (currentNode is DoublageEventCamera)
