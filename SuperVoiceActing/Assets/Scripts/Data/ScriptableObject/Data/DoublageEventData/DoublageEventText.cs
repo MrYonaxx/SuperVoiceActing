@@ -38,7 +38,7 @@ namespace VoiceActing
             get { return emotionNPC; }
         }
 
-        [HorizontalGroup("Texte")]
+        [TabGroup("ParentGroup", "Texte")]
         [SerializeField]
         [TextArea]
         private string text;
@@ -47,7 +47,7 @@ namespace VoiceActing
             get { return text; }
         }
 
-        [HorizontalGroup("Texte")]
+        [TabGroup("ParentGroup", "TexteEng")]
         [SerializeField]
         [TextArea]
         private string textEng;

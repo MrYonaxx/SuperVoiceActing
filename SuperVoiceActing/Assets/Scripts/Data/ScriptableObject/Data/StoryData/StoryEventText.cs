@@ -23,12 +23,12 @@ namespace VoiceActing
         [SerializeField]
         EmotionNPC emotionNPC;
 
-        [HorizontalGroup("Texte")]
+        [TabGroup("ParentGroup", "Texte")]
         [SerializeField]
         [TextArea]
         string text = null;
 
-        [HorizontalGroup("Texte")]
+        [TabGroup("ParentGroup", "TexteEng")]
         [SerializeField]
         [TextArea]
         string textEng = null;
