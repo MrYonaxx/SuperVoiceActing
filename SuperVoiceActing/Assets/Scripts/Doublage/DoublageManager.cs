@@ -287,7 +287,6 @@ namespace VoiceActing
             }
             inputController.gameObject.SetActive(true);
             inputEvent.gameObject.SetActive(false);
-            timer.ActiveTimer(true);
             recIcon.SetActive(true);
             if (reprintText == false)
             {
@@ -439,7 +438,6 @@ namespace VoiceActing
                     indexEvent = -1;
                     currentEvent = contrat.EventData[i];
                     emotionAttackManager.SwitchCardTransformToRessource();
-                    timer.ActiveTimer(false);
                     recIcon.SetActive(false);
                     ExecuteEvent();
                     return true;
