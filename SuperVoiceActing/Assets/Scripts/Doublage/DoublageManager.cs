@@ -61,6 +61,16 @@ namespace VoiceActing
         [SerializeField]
         protected GameObject recIcon;
 
+        [Header("AudioSource")]
+        [SerializeField]
+        protected AudioSource audioSourceKillPhrase;
+        [SerializeField]
+        protected AudioSource audioSourceKillPhrase2;
+        [SerializeField]
+        protected AudioSource audioSourceAttack;
+        [SerializeField]
+        protected AudioSource audioSourceAttack2;
+
         [Header("Events")]
         [SerializeField]
         protected InputController inputEvent;
@@ -130,6 +140,11 @@ namespace VoiceActing
             startLine = false;
         }
 
+
+
+
+
+
         // Tape la phrase si les pv sont pas 0
         public void Attack()
         {
@@ -140,6 +155,8 @@ namespace VoiceActing
                     emotionAttackManager.SelectCard("Neutre");
                     return;
                 }
+                audioSourceAttack.Play();
+                audioSourceAttack2.Play();
                 turnCount -= 1;
                 if(timer != null)
                     timer.SetTurn(turnCount);
@@ -156,9 +173,38 @@ namespace VoiceActing
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.RemoveCard();
                 reprintText = false;
+                StartCoroutine(CoroutineAttack(10));
                 CheckEvent();
             }
         }
+
+        private IEnumerator CoroutineAttack(int time)
+        {
+            if (cameraController == null)
+            {
+                yield break;
+            }
+            cameraController.ChangeOrthographicSize(-1, time);
+            int timer = time;
+            while (timer != 0)
+            {
+                timer -= 1;
+                yield return null;
+            }
+            cameraController.ChangeOrthographicSize(2, time*2);
+            timer = time*2;
+            while (timer != 0)
+            {
+                timer -= 1;
+                yield return null;
+            }
+            cameraController.ChangeOrthographicSize(0, time*6);
+        }
+
+
+
+
+
 
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
@@ -176,14 +222,25 @@ namespace VoiceActing
                     textAppearManager.HideUIButton();
                     //textAppearManager.ExplodeLetter();
 
-                    enemyManager.DamagePhrase();
-                    textAppearManager.TextPop();
-                    FeedbackNewLine();
-                    if (cameraController != null)
-                        cameraController.NotQuite();
+                    indexPhrase += 1;
+                    reprintText = true;
+                    startLine = true;
+                    if (indexPhrase < contrat.TextData.Length)
+                        enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
-
-                    StartCoroutine(WaitCoroutineNextPhrase(60));
+                    if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
+                    {
+                        enemyManager.DamagePhrase();
+                        textAppearManager.TextPop();
+                        textAppearManager.SelectWord(0);
+                        FeedbackNewLine();
+                        if (cameraController != null)
+                            cameraController.NotQuite();
+                        StartCoroutine(WaitCoroutineNextPhrase(60));
+                        audioSourceKillPhrase.Play();
+                        audioSourceKillPhrase2.Play();
+                    }
+                    startLine = false;
                 }
             }
         }
@@ -195,7 +252,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-            SetNextPhrase();
+            SetPhrase();
         }
 
 

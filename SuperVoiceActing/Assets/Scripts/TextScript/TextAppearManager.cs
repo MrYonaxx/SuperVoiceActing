@@ -92,6 +92,11 @@ namespace VoiceActing
             return currentText.PrintAllText();
         }
 
+        public void SelectWord(int index)
+        {
+            currentText.SelectWord(index);
+        }
+
         public void SelectWordRight()
         {
             currentText.SelectWordRight();

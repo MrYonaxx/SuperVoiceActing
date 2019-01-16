@@ -380,12 +380,17 @@ namespace VoiceActing
                     {
                         criticalFeedback.SetActive(true);
                         criticalFeedback2.SetActive(true);
-                        StartDamageCriticalFeedback(allDamages);
+                        //StartDamageCriticalFeedback(allDamages);
                     }
                 }
             }
             return bonusDamage;
         }
+
+
+
+        // Section Feedback ===============================================================================
+
 
 
         public void StartDamageCriticalFeedback(float[] allDamages)
@@ -490,7 +495,7 @@ namespace VoiceActing
                 }
             }
 
-            for (int i = 0; i < particleFeedbacks.Length; i++)
+            for (int i = 0; i < particleFeedbacks.Length-1; i++)
             {
                 particleFeedbacks[i].Play();
             }

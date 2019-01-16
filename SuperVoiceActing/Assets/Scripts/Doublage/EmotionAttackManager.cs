@@ -179,6 +179,8 @@ namespace VoiceActing
         ParticleSystem particle;
         [SerializeField]
         Image haloEmotion;
+        [SerializeField]
+        AudioSource audioSelection;
 
         EmotionCard[] comboCardEmotion;
         Emotion[] comboEmotion;
@@ -520,6 +522,7 @@ namespace VoiceActing
                     colorEmotion = Color.white;
                     break;
             }
+            audioSelection.Play();
             particleColor.startColor = colorEmotion;
             StartCoroutine(HaloEmotionCoroutine(colorEmotion, 0.1f, 10, 10));
             particle.Play();
