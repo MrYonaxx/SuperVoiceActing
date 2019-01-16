@@ -88,6 +88,8 @@ namespace VoiceActing
         [SerializeField]
         protected TextPerformanceAppear[] textEvent;
         [SerializeField]
+        protected GameObject[] popups;
+        [SerializeField]
         protected string endScene;
 
         [Header("Debug")]
@@ -348,7 +350,7 @@ namespace VoiceActing
         // =================================================================
         // Faire un DoublageEventManager
 
-        public void PrintAllText()
+        public virtual void PrintAllText()
         {
             if (textAppearManager.PrintAllText() == false)
             {
@@ -358,6 +360,10 @@ namespace VoiceActing
             {
                 if (textEvent[i].PrintAllText() == false)
                     return;
+            }
+            for(int i = 0; i < popups.Length; i++)
+            {
+                popups[i].SetActive(false);
             }
             inputEvent.gameObject.SetActive(false);
             ExecuteEvent();
@@ -402,6 +408,12 @@ namespace VoiceActing
                     DoublageEventDeck node = (DoublageEventDeck)currentNode;
                     emotionAttackManager.ModifiyDeck(node.NewDeck);
                     StartCoroutine(WaitCoroutine(1));
+                }
+                if (currentNode is DoublageEventTutoPopup)
+                {
+                    DoublageEventTutoPopup node = (DoublageEventTutoPopup) currentNode;
+                    popups[node.PopupID].SetActive(true);
+                    inputEvent.gameObject.SetActive(true);
                 }
             }
             else // Fin d'event

@@ -21,12 +21,6 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-
-        [SerializeField]
-        private List<int> index;
-        [SerializeField]
-        private List<GameObject> popups;
-
         #endregion
 
         #region GettersSetters 
@@ -44,25 +38,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public override void SetPhrase()
-        {
-            if(CheckPopupTuto() == false)
-                base.SetPhrase();
-            else
-            {
-                popups[indexPhrase].SetActive(true);
-            }
-        }
-
-        private bool CheckPopupTuto()
-        {
-            for(int i = 0; i < index.Count; i++)
-            {
-                if (indexPhrase == index[i])
-                    return true;
-            }
-            return false;
-        }
 
         #endregion
 
