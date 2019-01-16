@@ -27,6 +27,10 @@ namespace VoiceActing
         [SerializeField]
         protected ContractData contrat;
 
+        [Header("Contrat")]
+        [SerializeField]
+        protected PlayerData playerData;
+
 
         [Header("Controllers")]
         [SerializeField]
@@ -371,7 +375,10 @@ namespace VoiceActing
                 {
                     DoublageEventText node = (DoublageEventText) currentNode;
                     inputEvent.gameObject.SetActive(true);
-                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);
+                    if(playerData.Language == 1)
+                        FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.TextEng, node.CameraEffectID);
+                    else
+                        FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);
                 }
                 if (currentNode is DoublageEventCamera)
                 {

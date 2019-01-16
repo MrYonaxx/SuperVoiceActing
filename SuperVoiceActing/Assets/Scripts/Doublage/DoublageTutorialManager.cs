@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VoiceActing
 {
@@ -20,20 +21,11 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Tutorial")]
-
-        /*[SerializeField]
-        TextPerformanceAppear textDirector;
 
         [SerializeField]
-        InputController inputText;*/
+        private List<int> index;
         [SerializeField]
-        string[] placeHolderText;
-
-
-
-        /*int index = 0;
-        int indexText = 0;*/
+        private List<GameObject> popups;
 
         #endregion
 
@@ -42,7 +34,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -52,86 +44,26 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        /*protected void Awake()
+        public override void SetPhrase()
         {
-            
-        }*/
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        /*protected override void Start()
-        {
-            inputText.enabled = true;
-            //StartCoroutine(TutorialSequence());
-        }*/
-        
-        /*public void PrintAllText()
-        {
-            if (textPerformanceAppear.PrintAllText() == true && textDirector.PrintAllText() == true)
+            if(CheckPopupTuto() == false)
+                base.SetPhrase();
+            else
             {
-                PhaseTuto();
+                popups[indexPhrase].SetActive(true);
             }
-        }*/
-
-
-        /*public void PhaseTuto()
-        {
-            switch(index)
-            {
-                case 0:
-                    indexText += 1;
-                    textPerformanceAppear.NewPhrase(placeHolderText[indexText]);
-                    break;
-                case 1:
-                    cameraController.IngeSon3();
-                    indexText += 1;
-                    textDirector.NewPhrase(placeHolderText[indexText]);
-                    break;
-                case 2:
-                    //cameraController.IngeSon3();
-                    indexText += 1;
-                    textDirector.NewPhrase(placeHolderText[indexText]);
-                    break;
-                case 3:
-                    //cameraController.IngeSon3();
-                    indexText += 1;
-                    textDirector.NewPhrase(placeHolderText[indexText]);
-                    break;
-                case 4:
-                    emotionAttackManager.ModifiyDeck(Emotion.Joie, 1);
-                    cameraController.IngeSon3Cancel();
-                    indexText += 1;
-                    textPerformanceAppear.NewPhrase(placeHolderText[indexText]);
-                    break;
-                case 5:
-                    emotionAttackManager.SwitchCardTransformIntro();
-                    inputController.enabled = true;
-                    break;
-            }
-            index += 1;
-        }*/
-
-        /*private IEnumerator TutorialSequence()
-        {
-            //yield return new WaitForSeconds()
-        }*/
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        /*protected void Update()
-        {
-
         }
-        */
+
+        private bool CheckPopupTuto()
+        {
+            for(int i = 0; i < index.Count; i++)
+            {
+                if (indexPhrase == index[i])
+                    return true;
+            }
+            return false;
+        }
+
         #endregion
 
     } // DoublageTutorialManager class

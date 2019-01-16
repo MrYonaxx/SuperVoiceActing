@@ -212,10 +212,9 @@ namespace VoiceActing
             {
                 yield return null;
             }
+            StartCoroutine(MoveUIButton(buttonUIA, -500));
             if (damage == 100)
                 StartCoroutine(MoveUIButton(buttonUIY, -500));
-            else
-                StartCoroutine(MoveUIButton(buttonUIA, -500));
         }
 
         private IEnumerator MoveUIButton(Image button, float targetY)

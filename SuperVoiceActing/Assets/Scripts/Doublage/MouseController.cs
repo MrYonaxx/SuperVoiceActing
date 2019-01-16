@@ -38,6 +38,14 @@ namespace VoiceActing
         [SerializeField]
         GameObject buttonAttack;
 
+        [Header("Buttons Icon")]
+        [SerializeField]
+        GameObject[] mouseButtons;
+        [SerializeField]
+        GameObject[] controllerButtons;
+
+
+
         float scrollValue = 0;
         int time = 0;
 
@@ -91,29 +99,39 @@ namespace VoiceActing
         {
             if (Input.GetMouseButtonDown(0) && time > 0)
             {
+                ChangeButtonIcon();
                 eventDoubleClick.Invoke();
                 time = 0;
             }
             else if (Input.GetMouseButtonDown(0))
             {
+                ChangeButtonIcon();
                 eventLeftClick.Invoke();
-                time = 10;
+                time = 15;
             }
             if (Input.GetMouseButtonDown(1))
             {
+                ChangeButtonIcon();
                 eventRightClick.Invoke();
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
+                ChangeButtonIcon();
                 scrollValue = Input.GetAxis("Mouse ScrollWheel");
                 eventWheelUp.Invoke();
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0)
             {
+                ChangeButtonIcon();
                 scrollValue = Input.GetAxis("Mouse ScrollWheel");
                 eventWheelDown.Invoke();
             }
+        }
+
+        private void ChangeButtonIcon()
+        {
+
         }
 
         #endregion
