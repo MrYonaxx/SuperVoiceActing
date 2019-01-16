@@ -25,6 +25,10 @@ namespace VoiceActing
         [SerializeField]
         StoryEventData storyEventData;
 
+        [Header("Player")]
+        [SerializeField]
+        PlayerData playerData;
+
         [Header("EventText")]
         [SerializeField]
         TextMeshPro textMeshPro;
@@ -104,6 +108,7 @@ namespace VoiceActing
                 if (currentNode is StoryEventText)
                 {
                     StoryEventText node = (StoryEventText) currentNode;
+                    node.SetLanguage(playerData.Language);
                     node.SetNode(textMeshPro, characters, next);
                     DrawName(node.GetInterlocuteur());
                 }

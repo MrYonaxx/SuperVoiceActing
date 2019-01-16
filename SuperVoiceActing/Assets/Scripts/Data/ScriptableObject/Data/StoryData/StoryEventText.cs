@@ -47,6 +47,9 @@ namespace VoiceActing
 
 
 
+
+
+
         protected TextMeshPro textMeshPro;
         protected CharacterDialogueController characterDialogue;
         protected GameObject nextButton;
@@ -55,6 +58,18 @@ namespace VoiceActing
         int actualTime = 0;
 
         List<int> pauseList = new List<int>();
+
+        int language = 0;
+
+
+
+
+
+
+        public void SetLanguage(int newLanguage)
+        {
+            language = newLanguage;
+        }
 
         public StoryCharacterData GetInterlocuteur()
         {
@@ -83,7 +98,12 @@ namespace VoiceActing
             textMeshPro.textInfo.linkCount = 0;
             pauseList.Clear();
             actualTime = 0;
-            textMeshPro.text = text;
+            string actualText = text; // French
+            if (language == 1) // English
+                actualText = textEng;
+
+
+            textMeshPro.text = actualText;
 
             yield return null;
 
@@ -111,7 +131,7 @@ namespace VoiceActing
             while (true)
             {
                 // print
-                if (actualTime == mouthSpeed && textMeshPro.maxVisibleCharacters < text.Length)
+                if (actualTime == mouthSpeed && textMeshPro.maxVisibleCharacters < actualText.Length)
                 {
                     if (CheckPause() == false)
                     {
@@ -119,7 +139,7 @@ namespace VoiceActing
                         actualTime = 0;
                     }
                 }
-                else if (textMeshPro.maxVisibleCharacters < text.Length)
+                else if (textMeshPro.maxVisibleCharacters < actualText.Length)
                 {
                     actualTime += 1;
                 }
@@ -127,7 +147,7 @@ namespace VoiceActing
                 // Check Input
                 if (ignorePlayerInput == false)
                 {
-                    if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == text.Length)
+                    if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == actualText.Length)
                     {
                         actualTime = 0;
                         textMeshPro.maxVisibleCharacters = 0;
@@ -140,7 +160,7 @@ namespace VoiceActing
                         actualTime = 0;
                         if (CheckSkipPause() == false)
                         {
-                            textMeshPro.maxVisibleCharacters = text.Length;
+                            textMeshPro.maxVisibleCharacters = actualText.Length;
                             if (characterDialogue != null)
                                 characterDialogue.StopMouth();
                             nextButton.SetActive(true);
