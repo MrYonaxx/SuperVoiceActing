@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -60,6 +61,8 @@ namespace VoiceActing
         protected TextMeshProUGUI maxLineNumber;
         [SerializeField]
         protected GameObject recIcon;
+        [SerializeField]
+        protected Image fade;
 
         [Header("AudioSource")]
         [SerializeField]
@@ -284,6 +287,7 @@ namespace VoiceActing
             }
             inputController.gameObject.SetActive(true);
             inputEvent.gameObject.SetActive(false);
+            timer.ActiveTimer(true);
             recIcon.SetActive(true);
             if (reprintText == false)
             {
@@ -297,8 +301,25 @@ namespace VoiceActing
 
         public void EndSession()
         {
+            StartCoroutine(EndSessionCoroutine(120));
+        }
+
+        private IEnumerator EndSessionCoroutine(int time)
+        {
+            float speedAlpha = 1f / time;
+            while (time != 0)
+            {
+                fade.color += new Color(0, 0, 0, speedAlpha);
+                time -= 1;
+                yield return null;
+            }
+            time = 60;
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
             SceneManager.LoadScene(endScene);
-            Debug.Log("lol");
         }
 
 
@@ -418,6 +439,7 @@ namespace VoiceActing
                     indexEvent = -1;
                     currentEvent = contrat.EventData[i];
                     emotionAttackManager.SwitchCardTransformToRessource();
+                    timer.ActiveTimer(false);
                     recIcon.SetActive(false);
                     ExecuteEvent();
                     return true;
