@@ -20,7 +20,8 @@ namespace VoiceActing
         Camera,
         Wait,
         Deck,
-        Tuto
+        Tuto,
+        Sound
     }
 
     [System.Serializable]
@@ -52,6 +53,10 @@ namespace VoiceActing
         [ShowIf("eventNode", DoublageEventNode.Tuto)]
         [SerializeField]
         public DoublageEventTutoPopup doublageTutoPopup = null;
+
+        [ShowIf("eventNode", DoublageEventNode.Sound)]
+        [SerializeField]
+        public DoublageEventSound doublageEventSound = null;
 
     }
 
@@ -120,6 +125,8 @@ namespace VoiceActing
                     return doublageEvent[index].doublageEventDeck;
                 case DoublageEventNode.Tuto:
                     return doublageEvent[index].doublageTutoPopup;
+                case DoublageEventNode.Sound:
+                    return doublageEvent[index].doublageEventSound;
             }
             return null;
         }

@@ -423,6 +423,12 @@ namespace VoiceActing
                     popups[node.PopupID].SetActive(true);
                     inputEvent.gameObject.SetActive(true);
                 }
+                if (currentNode is DoublageEventSound)
+                {
+                    DoublageEventSound node = (DoublageEventSound)currentNode;
+                    audioSourceKillPhrase.PlayOneShot(node.Audio);
+                    ExecuteEvent();
+                }
             }
             else // Fin d'event
             {

@@ -17,7 +17,7 @@ namespace VoiceActing
     {
 
         public static AudioManager Instance;
-
+        private AudioSource audio;
 
         void Awake()
         {
@@ -27,6 +27,7 @@ namespace VoiceActing
             }
             else
             {
+                audio = GetComponent<AudioSource>();
                 Instance = this;
                 DontDestroyOnLoad(this);
             }
@@ -35,8 +36,9 @@ namespace VoiceActing
 
         public void PlayMusic(AudioClip music)
         {
-            AudioSource audio = GetComponent<AudioSource>();
             audio.clip = music;
+            audio.Play();
+            StartCoroutine(PlayMusicCoroutine(audio));
         }
 
         private IEnumerator PlayMusicCoroutine(AudioSource audio)
@@ -51,7 +53,6 @@ namespace VoiceActing
 
         public void StopMusic()
         {
-            AudioSource audio = GetComponent<AudioSource>();
             StartCoroutine(StopMusicCoroutine(audio));
         }
 
