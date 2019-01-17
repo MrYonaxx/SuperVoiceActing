@@ -45,7 +45,7 @@ namespace VoiceActing
         {
             while (audio.volume < 1)
             {
-                audio.volume += 0.05f;
+                audio.volume += 0.01f;
                 yield return null;
             }
             audio.volume = 1;
@@ -60,7 +60,7 @@ namespace VoiceActing
         {
             while(audio.volume > 0)
             {
-                audio.volume -= 0.05f;
+                audio.volume -= 0.01f;
                 yield return null;
             }
             audio.volume = 0;
