@@ -124,6 +124,10 @@ namespace VoiceActing
             }
             if (Input.GetButtonDown("ControllerA"))
             {
+                if(Input.GetKey(KeyCode.Space))
+                    ChangeButtonIcon(false);
+                else
+                    ChangeButtonIcon(true);
                 eventBoutonA.Invoke();
             }
         }
