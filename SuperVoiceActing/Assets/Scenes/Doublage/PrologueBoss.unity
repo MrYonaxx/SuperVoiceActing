@@ -1859,7 +1859,6 @@ GameObject:
   - component: {fileID: 79245941}
   - component: {fileID: 79245940}
   - component: {fileID: 79245939}
-  - component: {fileID: 79245938}
   m_Layer: 5
   m_Name: CanvasBetweenSkill
   m_TagString: Untagged
@@ -1867,22 +1866,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &79245938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 79245937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &79245939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7687,7 +7670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -67.29999, y: -500}
+  m_AnchoredPosition: {x: -67.29999, y: -600}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &133964775
@@ -35157,6 +35140,7 @@ MonoBehaviour:
   textEvent:
   - {fileID: 506731760}
   - {fileID: 345497923}
+  popups: []
   endScene: 
   indexPhrase: 5
   light: {fileID: 455138623}
@@ -50597,7 +50581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227.3, y: -500}
+  m_AnchoredPosition: {x: -227.3, y: -600}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837013312
@@ -60943,7 +60927,6 @@ GameObject:
   - component: {fileID: 927155660}
   - component: {fileID: 927155659}
   - component: {fileID: 927155658}
-  - component: {fileID: 927155657}
   m_Layer: 5
   m_Name: CanvasAlwaysBehind
   m_TagString: Untagged
@@ -60951,22 +60934,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &927155657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 927155656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &927155658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71839,7 +71806,6 @@ GameObject:
   - component: {fileID: 1062661280}
   - component: {fileID: 1062661279}
   - component: {fileID: 1062661278}
-  - component: {fileID: 1062661277}
   m_Layer: 5
   m_Name: CanvasAlwaysFront
   m_TagString: Untagged
@@ -71847,22 +71813,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1062661277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062661276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1062661278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117939,7 +117889,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c879a9d908ade5e4d8d9be5d127c712b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 075479284c4832d4d9440b831c7832b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -123213,7 +123163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1883751321
 RectTransform:
   m_ObjectHideFlags: 0

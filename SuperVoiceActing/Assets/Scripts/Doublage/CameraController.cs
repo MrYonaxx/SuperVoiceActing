@@ -47,6 +47,7 @@ namespace VoiceActing
         float offset = 0;
 
         private bool pauseCoroutine = false;
+        private int cameraPlacement = 0;
 
         private IEnumerator movementCoroutine;
         private IEnumerator rotatingCoroutine;
@@ -130,57 +131,66 @@ namespace VoiceActing
             SetText(-6,2.7f,0);
             SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
             SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
-            switch (Random.Range(1,11))
+            if(cameraPlacement == 0)
             {
-                case 1:
-                    MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z + 0.5f, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y + 15f, initialPosition.eulerAngles.z, 900 * speedMovement);
-                    break;
-                case 2:
-                    MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z - 0.5f, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y - 15f, initialPosition.eulerAngles.z, 900 * speedMovement);
-                    break;
-                case 3:
-                    MoveCamera(initialPosition.position.x + 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z - 10f, 900 * speedMovement);
-                    break;
-                case 4:
-                    MoveCamera(initialPosition.position.x + 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900 * speedMovement);
-                    break;
-                case 5:
-                    MoveCamera(initialPosition.position.x - 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z - 10f, 900 * speedMovement);
-                    break;
-                case 6:
-                    MoveCamera(initialPosition.position.x - 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900 * speedMovement);
-                    break;
-                case 7:
-                    SetText(-5.2f, 3f, 0.5f);
-                    SetCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.5f, initialPosition.position.z + 0.6f);
-                    MoveCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.1f, initialPosition.position.z + 0.6f, 900 * speedMovement);
-                    //RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900);
-                    break;
-                case 8:
-                    SetText(-5.2f, 3.1f, -0.25f);
-                    SetCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.1f, initialPosition.position.z - 0.2f);
-                    MoveCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.5f, initialPosition.position.z - 0.2f, 900 * speedMovement);
-                    //RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900);
-                    break;
-                case 9:
-                    SetText(-5.2f, 3f, 0);
-                    SetCamera(initialPosition.position.x + 1.2f, initialPosition.position.y + 0.3f, initialPosition.position.z);
-                    MoveCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.2f, initialPosition.position.z, 900 * speedMovement);
-                    //RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900);
-                    break;
-                case 10:
-                    SetCameraRotation(initialPosition.eulerAngles.x - 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
-                    SetCamera(initialPosition.position.x, initialPosition.position.y - 0.25f, initialPosition.position.z);
-                    MoveCamera(initialPosition.position.x, initialPosition.position.y + 0.25f, initialPosition.position.z, 900 * speedMovement);
-                    RotateCamera(initialPosition.eulerAngles.x + 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 900 * speedMovement);
-                    break;
+                switch (Random.Range(1, 7))
+                {
+                    case 1:
+                        MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z + 0.5f, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y + 15f, initialPosition.eulerAngles.z, 900 * speedMovement);
+                        break;
+                    case 2:
+                        MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z - 0.5f, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y - 15f, initialPosition.eulerAngles.z, 900 * speedMovement);
+                        break;
+                    case 3:
+                        MoveCamera(initialPosition.position.x + 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z - 10f, 900 * speedMovement);
+                        break;
+                    case 4:
+                        MoveCamera(initialPosition.position.x + 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900 * speedMovement);
+                        break;
+                    case 5:
+                        MoveCamera(initialPosition.position.x - 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z - 10f, 900 * speedMovement);
+                        break;
+                    case 6:
+                        MoveCamera(initialPosition.position.x - 0.2f, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + 10f, 900 * speedMovement);
+                        break;
+                }
+                cameraPlacement = 1;
             }
+            else if (cameraPlacement == 1)
+            {
+                switch (Random.Range(1, 5))
+                {
+                    case 1:
+                        SetText(-5.2f, 3f, 0.5f);
+                        SetCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.5f, initialPosition.position.z + 0.6f);
+                        MoveCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.1f, initialPosition.position.z + 0.6f, 900 * speedMovement);
+                        break;
+                    case 2:
+                        SetText(-5.2f, 3.1f, -0.25f);
+                        SetCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.1f, initialPosition.position.z - 0.2f);
+                        MoveCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.5f, initialPosition.position.z - 0.2f, 900 * speedMovement);
+                        break;
+                    case 3:
+                        SetText(-5.2f, 3f, 0);
+                        SetCamera(initialPosition.position.x + 1.2f, initialPosition.position.y + 0.3f, initialPosition.position.z);
+                        MoveCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.2f, initialPosition.position.z, 900 * speedMovement);
+                        break;
+                    case 4:
+                        SetCameraRotation(initialPosition.eulerAngles.x - 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+                        SetCamera(initialPosition.position.x, initialPosition.position.y - 0.25f, initialPosition.position.z);
+                        MoveCamera(initialPosition.position.x, initialPosition.position.y + 0.25f, initialPosition.position.z, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x + 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 900 * speedMovement);
+                        break;
+                }
+                cameraPlacement = 0;
+            }
+
         }
 
 
@@ -544,6 +554,7 @@ namespace VoiceActing
             SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
             MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 80);
             RotateCamera(0, 90, 0, 80);
+            cameraPlacement = 0;
         }
 
         public void IngeSon()
