@@ -67,6 +67,8 @@ namespace VoiceActing
         protected GameObject recIcon;
         [SerializeField]
         protected Image fade;
+        [SerializeField]
+        protected TextMeshProUGUI textDemo;
 
         [Header("AudioSource")]
         [SerializeField]
@@ -324,7 +326,13 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-            SceneManager.LoadScene(endScene);
+            if(endScene != "")
+                SceneManager.LoadScene(endScene);
+
+            if(endScene == "") // Pour demo uniquement
+            {
+                textDemo.text = "Thanks for playing";
+            }
         }
 
 

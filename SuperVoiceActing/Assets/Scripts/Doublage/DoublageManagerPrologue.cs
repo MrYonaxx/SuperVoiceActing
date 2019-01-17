@@ -107,6 +107,8 @@ namespace VoiceActing
                 textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.gameObject.SetActive(true);
                 skillManager.ActorSkillFeedback();
+                emotionAttackManager.SelectCard(Emotion.Confiance);
+
             }
             else
             {
