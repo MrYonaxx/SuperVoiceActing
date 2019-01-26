@@ -145,6 +145,7 @@ namespace VoiceActing
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             if (CheckEvent() == false)
             {
+                cameraController.MoveToInitialPosition();
                 emotionAttackManager.SwitchCardTransformIntro();
                 SetPhrase();
             }
