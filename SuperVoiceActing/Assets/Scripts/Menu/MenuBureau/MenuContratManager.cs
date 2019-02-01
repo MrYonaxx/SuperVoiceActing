@@ -11,11 +11,9 @@ using System.Collections;
 namespace VoiceActing
 {
     /// <summary>
-    /// Definition of the ContractData class
+    /// Definition of the MenuContratManager class
     /// </summary>
-    /// 
-    [CreateAssetMenu(fileName = "ContractData", menuName = "ContractData", order = 1)]
-    public class ContractData : ScriptableObject
+    public class MenuContratManager : MonoBehaviour
     {
         #region Attributes 
 
@@ -24,37 +22,13 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        string name;
-
-        [Space]
-        [Space]
+        private ContractData[] contractDatabase;
 
         [SerializeField]
-        private VoiceActorData[] characters;
-        public VoiceActorData[] Characters
-        {
-            get { return characters; }
-        }
-
-        [Space]
-        [Space]
+        private ContractData[] contractAvailableList;
 
         [SerializeField]
-        private TextData[] textData;
-        public TextData[] TextData
-        {
-            get { return textData; }
-        }
-
-        [Space]
-        [Space]
-
-        [SerializeField]
-        private DoublageEventData[] eventData;
-        public DoublageEventData[] EventData
-        {
-            get { return eventData; }
-        }
+        private ContractData[] contractCurrentList;
 
 
         #endregion
@@ -74,9 +48,19 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        
+        // Créer un Contract depuis ContractData
+        public void CreateContract()
+        {
+
+        }
+
+        public void DrawAvailableContract()
+        {
+
+        }
+
         #endregion
 
-    } // ContractData class
+    } // MenuContratManager class
 
 } // #PROJECTNAME# namespace
