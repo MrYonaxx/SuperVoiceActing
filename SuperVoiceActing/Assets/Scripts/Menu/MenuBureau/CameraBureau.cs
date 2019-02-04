@@ -306,7 +306,6 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-
             camera.fieldOfView = 70 + addValue;
             orthographicCoroutine = null;
         }

@@ -24,6 +24,85 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         
+        [SerializeField]
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        [SerializeField]
+        private int money;
+        public int Money
+        {
+            get { return money; }
+            set { money = value; }
+        }
+
+        [SerializeField]
+        private int weekRemaining;
+        public int WeekRemaining
+        {
+            get { return weekRemaining; }
+            set { weekRemaining = value; }
+        }
+
+
+        [SerializeField]
+        private int currentLine;
+        public int CurrentLine
+        {
+            get { return currentLine; }
+            set { currentLine = value; }
+        }
+        [SerializeField]
+        private int totalLine;
+        public int TotalLine
+        {
+            get { return totalLine; }
+            set { totalLine = value; }
+        }
+
+
+        [SerializeField]
+        private int currentMixing;
+        public int CurrentMixing
+        {
+            get { return currentMixing; }
+            set { currentMixing = value; }
+        }
+        [SerializeField]
+        private int totalMixing;
+        public int TotalMixing
+        {
+            get { return totalMixing; }
+            set { totalMixing = value; }
+        }
+
+
+        [SerializeField]
+        private VoiceActor[] role;
+        public VoiceActor[] Role
+        {
+            get { return role; }
+            set { role = value; }
+        }
+        [SerializeField]
+        private VoiceActor[] actors;
+        public VoiceActor[] Actors
+        {
+            get { return actors; }
+            set { actors = value; }
+        }
+
+        [SerializeField]
+        private TextData[] textData;
+        public TextData[] TextData
+        {
+            get { return textData; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -31,7 +110,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -41,34 +120,11 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
+        public Contract()
         {
-            
+            name = "Salut";
         }
 
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
-        {
-            
-        }
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        protected void Update()
-        {
-            
-        }
-        
         #endregion
 
     } // Contract class

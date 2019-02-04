@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VoiceActing
 {
@@ -25,10 +26,19 @@ namespace VoiceActing
         private ContractData[] contractDatabase;
 
         [SerializeField]
-        private ContractData[] contractAvailableList;
+        private List<Contract> contractAvailableList = new List<Contract>(5);
 
         [SerializeField]
-        private ContractData[] contractCurrentList;
+        private List<Contract> contractCurrentList = new List<Contract>(5);
+
+        [Header("Prefab")]
+
+        [SerializeField]
+        GameObject[] contractAvailables;
+
+        int indexCurrentList = 0;
+        int indexAvailableList = 0;
+
 
 
         #endregion
@@ -48,6 +58,16 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        private void Start()
+        {
+            contractAvailableList.Add(new Contract());
+            contractAvailableList.Add(new Contract());
+            contractAvailableList.Add(null);
+            contractAvailableList.Add(null);
+            contractAvailableList.Add(null);
+            DrawAvailableContract();
+        }
+
         // Créer un Contract depuis ContractData
         public void CreateContract()
         {
@@ -56,8 +76,17 @@ namespace VoiceActing
 
         public void DrawAvailableContract()
         {
-
+            // à voir si j'instancie des prefab, mais pour 5 objets on va faire simple
+            for(int i = 0; i < contractAvailableList.Count; i++)
+            {
+                if(contractAvailableList[i] != null)
+                {
+                    contractAvailables[i].SetActive(true);
+                }
+            }
         }
+
+
 
         #endregion
 
