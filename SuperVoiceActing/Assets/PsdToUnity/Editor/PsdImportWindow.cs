@@ -225,7 +225,7 @@ namespace SubjectNerd.PsdImporter
 			};
 			styleVisOn = new GUIStyle(tempStyle)
 			{
-				normal = new GUIStyleState() { background = tempStyle.onNormal.background },
+				//normal = new GUIStyleState() { background = tempStyle.onNormal.background },
 				margin = new RectOffset(10, 10, 3, 3)
 			};
 
