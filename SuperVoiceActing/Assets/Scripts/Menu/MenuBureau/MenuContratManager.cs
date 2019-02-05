@@ -26,17 +26,17 @@ namespace VoiceActing
         private ContractData[] contractDatabase;
 
         [SerializeField]
-        private List<Contract> contractAvailableList = new List<Contract>(5);
+        private List<Contract> contractAcceptedList = new List<Contract>(5);
 
         [SerializeField]
-        private List<Contract> contractCurrentList = new List<Contract>(5);
+        private List<Contract> contractAvailableList = new List<Contract>(5);
 
         [Header("Prefab")]
 
         [SerializeField]
-        GameObject[] contractAvailables;
+        ButtonContratAccepted[] contractAccepted;
 
-        int indexCurrentList = 0;
+        int indexAcceptedList = 0;
         int indexAvailableList = 0;
 
 
@@ -60,11 +60,11 @@ namespace VoiceActing
 
         private void Start()
         {
-            contractAvailableList.Add(new Contract());
-            contractAvailableList.Add(new Contract());
-            contractAvailableList.Add(null);
-            contractAvailableList.Add(null);
-            contractAvailableList.Add(null);
+            contractAcceptedList.Add(new Contract());
+            contractAcceptedList.Add(new Contract());
+            contractAcceptedList.Add(null);
+            contractAcceptedList.Add(null);
+            contractAcceptedList.Add(null);
             DrawAvailableContract();
         }
 
@@ -77,13 +77,30 @@ namespace VoiceActing
         public void DrawAvailableContract()
         {
             // à voir si j'instancie des prefab, mais pour 5 objets on va faire simple
-            for(int i = 0; i < contractAvailableList.Count; i++)
+            for(int i = 0; i < contractAcceptedList.Count; i++)
             {
-                if(contractAvailableList[i] != null)
+                if(contractAcceptedList[i] != null)
                 {
-                    contractAvailables[i].SetActive(true);
+                    contractAccepted[i].gameObject.SetActive(true);
+                    contractAccepted[i].DrawContract(contractAcceptedList[i]);
                 }
             }
+        }
+
+        [ContextMenu("SelectionUp")]
+        public void SelectContractAcceptedUp()
+        {
+            contractAccepted[indexAcceptedList].UnSelectContract();
+            indexAcceptedList -= 1;
+            contractAccepted[indexAcceptedList].SelectContract();
+        }
+
+        [ContextMenu("SelectionDown")]
+        public void SelectContractAcceptedDown()
+        {
+            contractAccepted[indexAcceptedList].UnSelectContract();
+            indexAcceptedList += 1;
+            contractAccepted[indexAcceptedList].SelectContract();
         }
 
 

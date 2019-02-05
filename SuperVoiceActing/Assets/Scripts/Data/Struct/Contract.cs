@@ -125,6 +125,11 @@ namespace VoiceActing
             name = "Salut";
         }
 
+        public Contract(string name)
+        {
+            this.name = name;
+        }
+
         #endregion
 
     } // Contract class
