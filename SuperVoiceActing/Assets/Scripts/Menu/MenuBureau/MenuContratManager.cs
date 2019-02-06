@@ -60,8 +60,8 @@ namespace VoiceActing
 
         private void Start()
         {
-            contractAcceptedList.Add(new Contract());
-            contractAcceptedList.Add(new Contract());
+            contractAcceptedList.Add(new Contract("Salut"));
+            contractAcceptedList.Add(new Contract("C'est moi"));
             contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
@@ -92,6 +92,10 @@ namespace VoiceActing
         {
             contractAccepted[indexAcceptedList].UnSelectContract();
             indexAcceptedList -= 1;
+            if(indexAcceptedList == -1)
+            {
+                indexAcceptedList = contractAccepted.Length-1;
+            }
             contractAccepted[indexAcceptedList].SelectContract();
         }
 
@@ -100,6 +104,10 @@ namespace VoiceActing
         {
             contractAccepted[indexAcceptedList].UnSelectContract();
             indexAcceptedList += 1;
+            if (contractAcceptedList[indexAcceptedList] == null)
+            {
+                indexAcceptedList = 0;
+            }
             contractAccepted[indexAcceptedList].SelectContract();
         }
 

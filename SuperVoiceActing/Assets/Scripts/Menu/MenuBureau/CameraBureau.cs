@@ -30,13 +30,15 @@ namespace VoiceActing
 
         [SerializeField]
         Transform[] transforms;
+        [SerializeField]
+        GameObject[] screenManager;
 
         [SerializeField]
         Animator animatorHUD;
         /*[TableMatrix(HorizontalTitle = "X axis", VerticalTitle = "Y axis")]
         Transform[,] transforms;*/
 
-        int position = 1;
+        int position = 2;
 
         float speedX;
         float speedY;
@@ -198,6 +200,7 @@ namespace VoiceActing
         {
             transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-4f, 4f));
             this.transform.SetParent(transforms[position]);
+            ActivateScreenManager(position);
 
             if (coroutine != null)
                 StopCoroutine(coroutine);
@@ -309,6 +312,25 @@ namespace VoiceActing
             camera.fieldOfView = 70 + addValue;
             orthographicCoroutine = null;
         }
+
+
+
+        private void ActivateScreenManager(int index)
+        {
+            // active le screen Manager a l'index de la camera
+            for(int i = 0; i < screenManager.Length; i++)
+            {
+                if(screenManager[i] != null)
+                    screenManager[i].SetActive(false);
+
+                if(i == index && screenManager[i] != null)
+                {
+                    screenManager[index].SetActive(true);
+                }
+            }
+
+        }
+
 
         #endregion
 
