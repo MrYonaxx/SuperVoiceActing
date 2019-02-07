@@ -22,7 +22,7 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header(" Informations générales")]
+        [Header("Informations générales")]
         [SerializeField]
         private string name;
         public string Name
@@ -39,8 +39,13 @@ namespace VoiceActing
             set { fan = value; }
         }
 
-        [Header(" Statistiques")]
+
+
+
+        [Space]
+        [Header("Statistiques")]
         [SerializeField]
+        [MinValue(1), MaxValue(99)]
         private int level;
         public int Level
         {
@@ -85,12 +90,84 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private int relation;
+        public int Relation
+        {
+            get { return relation; }
+            set { relation = value; }
+        }
+
+        [SerializeField]
+        private SkillData[] potentials;
+        public SkillData[] Potentials
+        {
+            get { return potentials; }
+            set { potentials = value; }
+        }
+
+
+
+
+        [Space]
+        [Header("Stat Variation")]
+        [SerializeField]
+        bool hasVariation = false;
+
+        [SerializeField]
+        [ShowIf("hasVariation", true)]
+        private int levelVariation;
+        public int LevelVariation
+        {
+            get { return levelVariation; }
+            set { levelVariation = value; }
+        }
+
+
+        [SerializeField]
+        [ShowIf("hasVariation", true)]
+        private int hpVariation;
+        public int HpVariation
+        {
+            get { return hpVariation; }
+            set { hpVariation = value; }
+        }
+
+        [SerializeField]
+        [ShowIf("hasVariation", true)]
+        private EmotionStat statistiqueVariation;
+        public EmotionStat StatistiqueVariation
+        {
+            get { return statistiqueVariation; }
+            set { statistiqueVariation = value; }
+        }
+        /*[SerializeField]
         private int experience;
         public int Experience
         {
             get { return experience; }
             set { experience = value; }
+        }*/
+
+
+        [Space]
+        [Header("Graphics")]
+
+        [SerializeField]
+        private AudioClip voice;
+        public AudioClip Voice
+        {
+            get { return voice; }
+            set { voice = value; }
         }
+
+        [SerializeField]
+        private Sprite actorSprite;
+        public Sprite ActorSprite
+        {
+            get { return actorSprite; }
+            set { actorSprite = value; }
+        }
+
         #endregion
 
         #region GettersSetters 

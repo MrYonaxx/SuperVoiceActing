@@ -30,6 +30,13 @@ namespace VoiceActing
         [SerializeField]
         Image actorImage;
 
+        [SerializeField]
+        Image buttonImage;
+        [SerializeField]
+        Color colorSelected;
+        [SerializeField]
+        Color colorUnSelected;
+
         #endregion
 
         #region GettersSetters 
@@ -47,14 +54,22 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void DrawActor(string name, int level)
+        {
+            actorName.text = name;
+            actorLevel.text = "Lv." + level;
+        }
+
         public void SelectButton()
         {
             actorImage.enabled = false;
+            buttonImage.color = colorSelected;
         }
 
         public void UnSelectButton()
         {
             actorImage.enabled = true;
+            buttonImage.color = colorUnSelected;
         }
 
         #endregion

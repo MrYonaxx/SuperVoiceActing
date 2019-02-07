@@ -53,6 +53,8 @@ namespace VoiceActing
         UnityEvent eventLeftRight;
         [SerializeField]
         UnityEvent eventLeftDown;
+        [SerializeField]
+        UnityEvent eventLeftStop;
 
         [Header("Joystick Right")]
         [SerializeField]
@@ -64,6 +66,8 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent eventRightDown;
 
+        [SerializeField]
+        bool canRepeatJoystickLeft = false;
 
         bool inputLeftStickEnter = false;
         bool inputRightStickEnter = false;
@@ -168,8 +172,14 @@ namespace VoiceActing
         {
             if(inputLeftStickEnter == true)
             {
-                if (Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
+                if (canRepeatJoystickLeft == true)
                     inputLeftStickEnter = false;
+
+                if (Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
+                {
+                    eventLeftStop.Invoke();
+                    inputLeftStickEnter = false;
+                }
                 else
                     return;
 

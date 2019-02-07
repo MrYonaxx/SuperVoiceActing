@@ -23,8 +23,76 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        
-        
+
+        [Header(" Informations générales")]
+        [SerializeField]
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        [SerializeField]
+        private int fan;
+        public int Fan
+        {
+            get { return fan; }
+            set { fan = value; }
+        }
+
+
+
+
+        [Header(" Statistiques")]
+        [SerializeField]
+        private int level;
+        public int Level
+        {
+            get { return level; }
+            set { level = value; }
+        }
+
+        [SerializeField]
+        private int hp;
+        public int Hp
+        {
+            get { return hp; }
+            set { hp = value; }
+        }
+
+        [SerializeField]
+        private int hpMax;
+        public int HpMax
+        {
+            get { return hpMax; }
+            set { hpMax = value; }
+        }
+
+        [SerializeField]
+        private EmotionStat statistique;
+        public EmotionStat Statistique
+        {
+            get { return statistique; }
+            set { statistique = value; }
+        }
+
+        [SerializeField]
+        private int experience;
+        public int Experience
+        {
+            get { return experience; }
+            set { experience = value; }
+        }
+
+        [SerializeField]
+        private int relation;
+        public int Relation
+        {
+            get { return relation; }
+            set { relation = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -32,7 +100,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -42,34 +110,17 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
+        public VoiceActor()
         {
-            
+
         }
 
+        public VoiceActor(VoiceActorData actorData)
+        {
+            name = actorData.Name;
+            level = actorData.Level;
+        }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
-        {
-            
-        }
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        protected void Update()
-        {
-            
-        }
-        
         #endregion
 
     } // VoiceActor class
