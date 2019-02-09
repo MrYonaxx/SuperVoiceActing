@@ -170,7 +170,7 @@ namespace VoiceActing
 
         private void CheckLeftDirection()
         {
-            if(inputLeftStickEnter == true)
+            if (inputLeftStickEnter == true)
             {
                 if (canRepeatJoystickLeft == true)
                     inputLeftStickEnter = false;
@@ -185,7 +185,7 @@ namespace VoiceActing
 
             }
 
-            if(Input.GetAxis("ControllerLeftHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
+            if (Input.GetAxis("ControllerLeftHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
             {
                 eventLeftRight.Invoke();
                 inputLeftStickEnter = true;
@@ -208,6 +208,10 @@ namespace VoiceActing
                 eventLeftDown.Invoke();
                 inputLeftStickEnter = true;
                 ChangeButtonIcon(true);
+            }
+            else if (canRepeatJoystickLeft == true)
+            {
+                eventLeftStop.Invoke();
             }
         }
 

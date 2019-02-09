@@ -93,6 +93,14 @@ namespace VoiceActing
             set { relation = value; }
         }
 
+        [SerializeField]
+        private Sprite actorSprite;
+        public Sprite ActorSprite
+        {
+            get { return actorSprite; }
+            set { actorSprite = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -119,6 +127,8 @@ namespace VoiceActing
         {
             name = actorData.Name;
             level = actorData.Level;
+            fan = actorData.Fan;
+            actorSprite = actorData.ActorSprite;
         }
 
         #endregion

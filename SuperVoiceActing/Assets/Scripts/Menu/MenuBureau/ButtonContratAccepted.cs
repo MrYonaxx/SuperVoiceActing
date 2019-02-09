@@ -24,17 +24,27 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Header("Panel")]
+        [SerializeField]
+        GameObject panelContract;
+        [SerializeField]
+        GameObject panelAddContract;
+
         [Header("Animator")]
         [SerializeField]
         Animator outlineSelection;
         [SerializeField]
         Animator contractButton;
+        [SerializeField]
+        Animator contractAddButton;
 
         [Header("Text & Info")]
         [SerializeField]
         TextMeshProUGUI contractTitle;
         [SerializeField]
         TextMeshProUGUI contractWeekRemaining;
+
+        bool isButtonAddContract = false;
 
         #endregion
 
@@ -55,19 +65,38 @@ namespace VoiceActing
 
         public void DrawContract(Contract contract)
         {
+            isButtonAddContract = false;
+            panelContract.SetActive(true);
+            panelAddContract.SetActive(false);
+
             contractTitle.text = contract.Name;
         }
 
         public void SelectContract()
         {
-            contractButton.SetBool("Selected", true);
+            if(!isButtonAddContract)
+                contractButton.SetBool("Selected", true);
+            else
+                contractAddButton.SetBool("Selected", true);
+
             outlineSelection.gameObject.SetActive(true);
         }
 
         public void UnSelectContract()
         {
-            contractButton.SetBool("Selected", false);
+            if (!isButtonAddContract)
+                contractButton.SetBool("Selected", false);
+            else
+                contractAddButton.SetBool("Selected", false);
+
             outlineSelection.gameObject.SetActive(false);
+        }
+
+        public void SetButtonToAddContract()
+        {
+            isButtonAddContract = true;
+            panelContract.SetActive(false);
+            panelAddContract.SetActive(true);
         }
 
         #endregion

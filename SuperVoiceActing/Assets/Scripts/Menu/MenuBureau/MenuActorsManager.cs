@@ -8,6 +8,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -33,6 +35,26 @@ namespace VoiceActing
         [SerializeField]
         private ButtonVoiceActor prefabButtonVoiceActor;
 
+        [Header("Stat Panel")]
+        [SerializeField]
+        private Animator statImageActorAnimator;
+        [SerializeField]
+        private Image statImageActor;
+        [SerializeField]
+        private Image statOutlineImageActor;
+        [SerializeField]
+        private TextMeshProUGUI statNameStylishActor;
+        [SerializeField]
+        private TextMeshProUGUI statNameActor;
+        [SerializeField]
+        private TextMeshProUGUI statLevelActor;
+        [SerializeField]
+        private TextMeshProUGUI statFanActor;
+
+        [Header("Tri")]
+        [SerializeField]
+        private bool croissant = true;
+
         // ===========================
         // Menu Input
         [Header("Menu Input")]
@@ -48,7 +70,8 @@ namespace VoiceActing
         private int currentTimeBeforeRepeat = -1;
         private int currentRepeatInterval = -1;
         private int lastDirection = 0; // 2 c'est bas, 8 c'est haut (voir numpad)
-        private int indexActorLimit = 0;
+        public int indexActorLimit = 0;
+        public int indexActorSelected = 0;
         private IEnumerator coroutineScroll = null;
         // Menu Input
         // ===========================
@@ -58,7 +81,7 @@ namespace VoiceActing
 
 
 
-        int indexActorSelected = 0;
+
 
         #endregion
 
@@ -114,10 +137,22 @@ namespace VoiceActing
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
         }
 
-        private void DrawActorStat()
+        private void DrawActorStat(VoiceActor actor)
         {
-
+            statImageActorAnimator.SetTrigger("AppearAnim");
+            statImageActor.sprite = actor.ActorSprite;
+            statOutlineImageActor.sprite = actor.ActorSprite;
+            statNameStylishActor.text = actor.Name;
+            statNameActor.text = actor.Name;
+            statLevelActor.text = actor.Level.ToString();
+            statFanActor.text = actor.Fan.ToString();
         }
+
+
+
+
+
+
 
         public void SelectActorUp()
         {
@@ -136,8 +171,9 @@ namespace VoiceActing
             {
                 indexActorSelected = buttonsActors.Count-1;
             }
-            buttonsActors[indexActorSelected].SelectButton();
 
+            buttonsActors[indexActorSelected].SelectButton();
+            DrawActorStat(actorsList[indexActorSelected]);
             MoveScrollRect();
         }
 
@@ -157,8 +193,9 @@ namespace VoiceActing
             {
                 indexActorSelected = 0;
             }
-            buttonsActors[indexActorSelected].SelectButton();
 
+            buttonsActors[indexActorSelected].SelectButton();
+            DrawActorStat(actorsList[indexActorSelected]);
             MoveScrollRect();
 
         }
@@ -225,17 +262,21 @@ namespace VoiceActing
 
         private IEnumerator MoveScrollRectCoroutine()
         {
-            int time = 20;
-            int ratio = indexActorSelected - scrollSize;
-            if (ratio <= 0) {
-                float speed = (buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time;
-                while (time != 0)
-                {
-                    buttonListTransform.anchoredPosition -= new Vector2(0, speed);
-                    time -= 1;
-                    yield return null;
-                }
+            int time = 10;
+            int ratio = indexActorLimit - scrollSize;
+            //if (ratio != 0) {
+            float speed = (buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time;
+            while (time != 0)
+            {
+                buttonListTransform.anchoredPosition -= new Vector2(0, speed);
+                time -= 1;
+                yield return null;
             }
+            //}
+            /*if(indexActorLimit == scrollSize)
+            {
+
+            }*/
             
         }
         

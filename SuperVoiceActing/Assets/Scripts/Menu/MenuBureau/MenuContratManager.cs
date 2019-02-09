@@ -34,7 +34,7 @@ namespace VoiceActing
         [Header("Prefab")]
 
         [SerializeField]
-        ButtonContratAccepted[] contractAccepted;
+        ButtonContratAccepted[] buttonContractAccepted;
 
         int indexAcceptedList = 0;
         int indexAvailableList = 0;
@@ -61,7 +61,7 @@ namespace VoiceActing
         private void Start()
         {
             contractAcceptedList.Add(new Contract("Salut"));
-            contractAcceptedList.Add(new Contract("C'est moi"));
+            contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
@@ -76,13 +76,22 @@ namespace VoiceActing
 
         public void DrawAvailableContract()
         {
+            buttonContractAccepted[0].gameObject.SetActive(true);
+            buttonContractAccepted[0].SetButtonToAddContract();
+
             // à voir si j'instancie des prefab, mais pour 5 objets on va faire simple
-            for(int i = 0; i < contractAcceptedList.Count; i++)
+            for (int i = 0; i < contractAcceptedList.Count; i++)
             {
                 if(contractAcceptedList[i] != null)
                 {
-                    contractAccepted[i].gameObject.SetActive(true);
-                    contractAccepted[i].DrawContract(contractAcceptedList[i]);
+                    //contractAccepted[i].gameObject.SetActive(true);
+                    buttonContractAccepted[i].DrawContract(contractAcceptedList[i]);
+                    if (i + 1 < buttonContractAccepted.Length)
+                    {
+                        buttonContractAccepted[i + 1].gameObject.SetActive(true);
+                        buttonContractAccepted[i + 1].SetButtonToAddContract();
+                    }
+
                 }
             }
         }
@@ -90,25 +99,25 @@ namespace VoiceActing
         [ContextMenu("SelectionUp")]
         public void SelectContractAcceptedUp()
         {
-            contractAccepted[indexAcceptedList].UnSelectContract();
+            buttonContractAccepted[indexAcceptedList].UnSelectContract();
             indexAcceptedList -= 1;
             if(indexAcceptedList == -1)
             {
-                indexAcceptedList = contractAccepted.Length-1;
+                indexAcceptedList = buttonContractAccepted.Length-1;
             }
-            contractAccepted[indexAcceptedList].SelectContract();
+            buttonContractAccepted[indexAcceptedList].SelectContract();
         }
 
         [ContextMenu("SelectionDown")]
         public void SelectContractAcceptedDown()
         {
-            contractAccepted[indexAcceptedList].UnSelectContract();
+            buttonContractAccepted[indexAcceptedList].UnSelectContract();
             indexAcceptedList += 1;
-            if (contractAcceptedList[indexAcceptedList] == null)
+            if (buttonContractAccepted[indexAcceptedList] == null || buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
             {
                 indexAcceptedList = 0;
             }
-            contractAccepted[indexAcceptedList].SelectContract();
+            buttonContractAccepted[indexAcceptedList].SelectContract();
         }
 
 
