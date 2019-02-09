@@ -61,6 +61,16 @@ namespace VoiceActing
             set { hp = value; }
         }
 
+        [MinValue(-100), MaxValue(100)]
+        [MinMaxSlider(-100, 100)]
+        [SerializeField]
+        private Vector2 timbre;
+        public Vector2 Timbre
+        {
+            get { return timbre; }
+            set { timbre = value; }
+        }
+
         [SerializeField]
         private EmotionStat statistique;
         public EmotionStat Statistique

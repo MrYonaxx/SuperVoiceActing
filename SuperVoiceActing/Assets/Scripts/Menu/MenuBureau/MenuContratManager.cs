@@ -22,6 +22,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        // [AssetList(Path = "Plugins/Sirenix/")] pour chopper tout les asset d'un repertoire et remplir automatiquement un truc
         [SerializeField]
         private ContractData[] contractDatabase;
 
