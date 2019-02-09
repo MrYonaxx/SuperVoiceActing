@@ -10,6 +10,38 @@ using System.Collections;
 
 namespace VoiceActing
 {
+
+
+    [System.Serializable]
+    public class CharacterContractData
+    {
+        [SerializeField]
+        private string[] name;
+        public string[] Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        [SerializeField]
+        private EmotionStat characterStatMin;
+        public EmotionStat CharacterStatMin
+        {
+            get { return characterStatMin; }
+            set { characterStatMin = value; }
+        }
+        [SerializeField]
+        private EmotionStat characterStatMax;
+        public EmotionStat CharacterStatMax
+        {
+            get { return characterStatMax; }
+            set { characterStatMax = value; }
+        }
+
+    }
+
+
+
     /// <summary>
     /// Definition of the ContractData class
     /// </summary>
@@ -30,8 +62,8 @@ namespace VoiceActing
         [Space]
 
         [SerializeField]
-        private VoiceActorData[] characters;
-        public VoiceActorData[] Characters
+        private CharacterContractData[] characters;
+        public CharacterContractData[] Characters
         {
             get { return characters; }
         }
