@@ -40,6 +40,8 @@ namespace VoiceActing
             set { money = value; }
         }
 
+
+
         [SerializeField]
         private int weekRemaining;
         public int WeekRemaining
@@ -82,18 +84,18 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private VoiceActor[] role;
-        public VoiceActor[] Role
+        private VoiceActor[] characters;
+        public VoiceActor[] Characters
         {
-            get { return role; }
-            set { role = value; }
+            get { return characters; }
+            set { characters = value; }
         }
         [SerializeField]
-        private VoiceActor[] actors;
-        public VoiceActor[] Actors
+        private VoiceActor[] voiceActors;
+        public VoiceActor[] VoiceActors
         {
-            get { return actors; }
-            set { actors = value; }
+            get { return voiceActors; }
+            set { voiceActors = value; }
         }
 
         [SerializeField]
@@ -128,6 +130,30 @@ namespace VoiceActing
         public Contract(string name)
         {
             this.name = name;
+        }
+
+        public Contract(ContractData data)
+        {
+            this.money = data.SalaryMin + (Random.Range(0, data.SalaryMax - data.SalaryMin / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
+            this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax);
+            this.totalMixing = Random.Range(data.MixingMin, data.MixingMax);
+
+            // Select Characters
+            for (int i = 0; i < data.Characters.Length; i++)
+            {
+                if (data.Characters[i].MainCharacter == true)
+                {
+                    //List<CharacterData>
+                    int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
+                    /*for (int j = 0; j < data.Characters[i].CharactersProfil.Length; j++)
+                    {
+
+                    }*/
+                    //characters.Add
+                }
+            }
+            // Select TextData
+
         }
 
         #endregion

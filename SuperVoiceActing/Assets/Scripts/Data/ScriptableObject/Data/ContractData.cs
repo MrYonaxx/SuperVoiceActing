@@ -71,6 +71,21 @@ namespace VoiceActing
             get { return lineMax; }
         }
 
+        [HorizontalGroup("Fan")]
+        [SerializeField]
+        private int fanMin;
+        public int FanMin
+        {
+            get { return fanMin; }
+        }
+        [HorizontalGroup("Fan")]
+        [SerializeField]
+        private int fanMax;
+        public int FanMax
+        {
+            get { return fanMax; }
+        }
+
         [MinMaxSlider(-100, 100)]
         [SerializeField]
         private Vector2Int timbre;
@@ -305,6 +320,21 @@ namespace VoiceActing
         public int MixingMax
         {
             get { return mixingMax; }
+        }
+
+        [HorizontalGroup("Semaine")]
+        [SerializeField]
+        private int weekMin;
+        public int WeekMin
+        {
+            get { return weekMin; }
+        }
+        [HorizontalGroup("Semaine")]
+        [SerializeField]
+        private int weekMax;
+        public int WeekMax
+        {
+            get { return weekMax; }
         }
 
         [Space]

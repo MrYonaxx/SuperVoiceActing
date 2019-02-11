@@ -10,35 +10,231 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
-  m_Name: TestRandomBattle
+  m_Name: LigneTelephoniqueLv1
   m_EditorClassIdentifier: 
-  name: 
-  characters: []
-  textData:
-  - hpMax: 20
-    text: Hello world
-    enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
-  - hpMax: 0
-    text: 
-    enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
+  name: "Ligne T\xE9l\xE9phonique"
+  level: 1
+  contractType: 0
+  salaryMin: 500
+  salaryMax: 600
+  mixingMin: 10
+  mixingMax: 10
+  weekMin: 4
+  weekMax: 8
+  characters:
+  - mainCharacter: 1
+    charactersProfil:
+    - names:
+      - "R\xE9pondeur"
+      lineMin: 20
+      lineMax: 50
+      fanMin: 0
+      fanMax: 0
+      timbre: {x: -25, y: 80}
+      timbreRand: {x: -30, y: 90}
+      characterStatMin:
+        neutral: 10
+        joy: 15
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 20
+        fear: 0
+        trust: 5
+      characterStatMax:
+        neutral: 12
+        joy: 16
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 25
+        fear: 0
+        trust: 11
+  textDataContract:
+  - nbPhraseMin: 1
+    nbPhraseMax: 1
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 15
+      hpMax: 15
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Bonjour, vous \xEAtes bien chez [Nom]."
+      enemyResistance:
+        neutral: 30
+        joy: 30
+        sadness: 0
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 30
+      enemyWeakPoints: []
+  - nbPhraseMin: 1
+    nbPhraseMax: 2
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: Veuillez ne pas quitter, nous allons prendre votre appel.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - nbPhraseMin: 1
+    nbPhraseMax: 2
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Nous nous efforcons d'\xE9courter agr\xE9ablement votre attente."
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - nbPhraseMin: 0
+    nbPhraseMax: 2
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: Chez [Nom], 93% des clients sont satisfaits.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Nous vous souhaitons de bonnes f\xEAtes"
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: Nos services sont actuellement indisponibles.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Le temps de r\xE9ponse moyen de cet appel est d'environ ... minutes"
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  textData: []
   eventData: []

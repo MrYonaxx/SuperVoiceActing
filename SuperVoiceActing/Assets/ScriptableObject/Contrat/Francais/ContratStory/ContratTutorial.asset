@@ -13,31 +13,62 @@ MonoBehaviour:
   m_Name: ContratTutorial
   m_EditorClassIdentifier: 
   name: Tutoriel
+  level: 0
+  contractType: 0
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
   characters:
-  - name:
-    - Pablo
-    - Jean-Pierre
-    - Maurice
-    characterStatMin:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    characterStatMax:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
+  - mainCharacter: 0
+    charactersProfil: []
+  - mainCharacter: 0
+    charactersProfil: []
+  textDataContract:
+  - nbPhraseMin: 0
+    nbPhraseMax: 0
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - nbPhraseMin: 0
+    nbPhraseMax: 0
+    textDataPossible: []
   textData:
   - hpMax: 10
     text: Test.
