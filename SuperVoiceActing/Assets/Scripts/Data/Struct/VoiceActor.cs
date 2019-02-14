@@ -41,9 +41,6 @@ namespace VoiceActing
             set { fan = value; }
         }
 
-
-
-
         [Header(" Statistiques")]
         [SerializeField]
         private int level;

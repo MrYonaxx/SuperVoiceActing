@@ -19,108 +19,6 @@ namespace VoiceActing
         Autre
     }
 
-    // CharacterContractData Contract ===================================================================
-
-    [System.Serializable]
-    public class CharacterContractDatabase
-    {
-        [Header("CHARACTER")]
-        [SerializeField]
-        private bool mainCharacter;
-        public bool MainCharacter
-        {
-            get { return mainCharacter; }
-            set { mainCharacter = value; }
-        }
-
-        [SerializeField]
-        private CharacterContractData[] charactersProfil;
-        public CharacterContractData[] CharactersProfil
-        {
-            get { return charactersProfil; }
-        }
-    }
-
-    // CharacterContractData Contract ===================================================================
-
-    [System.Serializable]
-    public class CharacterContractData
-    {
-        [Header("CharacterData")]
-
-        [SerializeField]
-        private string[] names;
-        public string[] Names
-        {
-            get { return names; }
-            set { names = value; }
-        }
-
-        [HorizontalGroup("Line")]
-        [SerializeField]
-        private int lineMin;
-        public int LineMin
-        {
-            get { return lineMin; }
-        }
-        [HorizontalGroup("Line")]
-        [SerializeField]
-        private int lineMax;
-        public int LineMax
-        {
-            get { return lineMax; }
-        }
-
-        [HorizontalGroup("Fan")]
-        [SerializeField]
-        private int fanMin;
-        public int FanMin
-        {
-            get { return fanMin; }
-        }
-        [HorizontalGroup("Fan")]
-        [SerializeField]
-        private int fanMax;
-        public int FanMax
-        {
-            get { return fanMax; }
-        }
-
-        [MinMaxSlider(-100, 100)]
-        [SerializeField]
-        private Vector2Int timbre;
-        public Vector2Int Timbre
-        {
-            get { return timbre; }
-            set { timbre = value; }
-        }
-
-        [MinMaxSlider(-100, 100)]
-        [SerializeField]
-        private Vector2Int timbreRand;
-        public Vector2Int TimbreRand
-        {
-            get { return timbre; }
-            set { timbre = value; }
-        }
-
-        [SerializeField]
-        private EmotionStat characterStatMin;
-        public EmotionStat CharacterStatMin
-        {
-            get { return characterStatMin; }
-            set { characterStatMin = value; }
-        }
-        [SerializeField]
-        private EmotionStat characterStatMax;
-        public EmotionStat CharacterStatMax
-        {
-            get { return characterStatMax; }
-            set { characterStatMax = value; }
-        }
-
-    }
-
     // TextData Contract ===================================================================
 
     [System.Serializable]
@@ -342,8 +240,8 @@ namespace VoiceActing
 
         [Header("Characters")]
         [SerializeField]
-        private CharacterContractDatabase[] characters;
-        public CharacterContractDatabase[] Characters
+        private RoleContractDatabase[] characters;
+        public RoleContractDatabase[] Characters
         {
             get { return characters; }
         }

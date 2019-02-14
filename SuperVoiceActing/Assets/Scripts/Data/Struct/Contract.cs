@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VoiceActing
 {
@@ -30,6 +31,14 @@ namespace VoiceActing
         {
             get { return name; }
             set { name = value; }
+        }
+
+        [SerializeField]
+        private int level;
+        public int Level
+        {
+            get { return level; }
+            set { level = value; }
         }
 
         [SerializeField]
@@ -84,23 +93,23 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private VoiceActor[] characters;
-        public VoiceActor[] Characters
+        private List<VoiceActor> characters;
+        public List<VoiceActor> Characters
         {
             get { return characters; }
             set { characters = value; }
         }
         [SerializeField]
-        private VoiceActor[] voiceActors;
-        public VoiceActor[] VoiceActors
+        private List<VoiceActor> voiceActors;
+        public List<VoiceActor> VoiceActors
         {
             get { return voiceActors; }
             set { voiceActors = value; }
         }
 
         [SerializeField]
-        private TextData[] textData;
-        public TextData[] TextData
+        private List<TextDataContract> textData;
+        public List<TextDataContract> TextData
         {
             get { return textData; }
         }
@@ -134,11 +143,14 @@ namespace VoiceActing
 
         public Contract(ContractData data)
         {
+            this.name = data.Name;
+            this.level = data.Level;
             this.money = data.SalaryMin + (Random.Range(0, data.SalaryMax - data.SalaryMin / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
             this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax);
             this.totalMixing = Random.Range(data.MixingMin, data.MixingMax);
 
-            // Select Characters
+
+            // Select Characters -------------------------------------------------------
             for (int i = 0; i < data.Characters.Length; i++)
             {
                 if (data.Characters[i].MainCharacter == true)
@@ -152,7 +164,29 @@ namespace VoiceActing
                     //characters.Add
                 }
             }
-            // Select TextData
+
+            // Select TextData -------------------------------------------------------
+
+            for (int i = 0; i < data.TextDataContract.Length; i++)
+            {
+                int nbSelection = Random.Range(data.TextDataContract[i].NbPhraseMin, data.TextDataContract[i].NbPhraseMax);
+                if (nbSelection > 0)
+                {
+                    // Copie des possibilité de text Data
+                    List<TextDataContract> listTextDataPossibilities = new List<TextDataContract>(3);
+                    for (int j = 0; j < data.TextDataContract[i].TextDataPossible.Length; j++)
+                    {
+                        listTextDataPossibilities.Add(data.TextDataContract[i].TextDataPossible[j]);
+                    }
+                    // Selection
+                    for (int n = 0; n < nbSelection; n++)
+                    {
+                        int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
+                        textData.Add(listTextDataPossibilities[indexRandom]);
+                        listTextDataPossibilities.RemoveAt(indexRandom);
+                    }
+                }
+            }
 
         }
 
