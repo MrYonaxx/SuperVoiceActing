@@ -13,13 +13,18 @@ namespace VoiceActing
 {
 	public class MenuContractAvailable : MonoBehaviour
 	{
-		#region Attributes 
+        #region Attributes 
 
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        
-        
+
+        [Header("MenuManagers")]
+        [SerializeField]
+        Animator animatorMenu;
+        [SerializeField]
+        MenuContratManager menuContractManager;
+
         #endregion
 
         #region GettersSetters 
@@ -27,7 +32,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -37,10 +42,27 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        private void OnEnable()
+        {
+            animatorMenu.gameObject.SetActive(true);
+            //animatorMenu.disabled = false
+        }
 
-        
+        /*private void OnDisable()
+        {
+            animatorMenu.gameObject.SetActive(false);
+            //animatorMenu.enabled = true;
+        }*/
+
+        public void SwitchToMenuContractManager()
+        {
+            menuContractManager.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+            animatorMenu.gameObject.SetActive(false);
+        }
+
         #endregion
-		
-	} // MenuContractAvailable class
+
+    } // MenuContractAvailable class
 	
 }// #PROJECTNAME# namespace

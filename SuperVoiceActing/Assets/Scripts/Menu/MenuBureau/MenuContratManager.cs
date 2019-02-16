@@ -27,10 +27,10 @@ namespace VoiceActing
         private ContractData[] contractDatabase;
 
         [SerializeField]
-        private List<Contract> contractAcceptedList = new List<Contract>(5);
+        private List<Contract> contractAcceptedList = new List<Contract>(3);
 
-        [SerializeField]
-        private List<Contract> contractAvailableList = new List<Contract>(5);
+        /*[SerializeField]
+        private List<Contract> contractAvailableList = new List<Contract>(5);*/
 
         [Header("Prefab")]
 
@@ -38,8 +38,13 @@ namespace VoiceActing
         ButtonContratAccepted[] buttonContractAccepted;
 
         int indexAcceptedList = 0;
-        int indexAvailableList = 0;
 
+
+        [Header("MenuManagers")]
+        [SerializeField]
+        Animator animatorMenu;
+        [SerializeField]
+        MenuContractAvailable menuContractAvailable;
 
 
         #endregion
@@ -59,12 +64,22 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        private void OnEnable()
+        {
+            animatorMenu.gameObject.SetActive(true);
+            //animatorMenu.disabled = false
+        }
+
+        /*private void OnDisable()
+        {
+            animatorMenu.gameObject.SetActive(false);
+            //animatorMenu.enabled = true;
+        }*/
+
         private void Start()
         {
             contractAcceptedList.Add(new Contract("Salut"));
-            contractAcceptedList.Add(null);
-            contractAcceptedList.Add(null);
-            contractAcceptedList.Add(null);
+            contractAcceptedList.Add(new Contract("Hello"));
             contractAcceptedList.Add(null);
             DrawAvailableContract();
         }
@@ -97,6 +112,14 @@ namespace VoiceActing
             }
         }
 
+        public void Validate()
+        {
+            if(contractAcceptedList[indexAcceptedList] == null)
+            {
+                SwitchToMenuContractAvailable();
+            }
+        }
+
         [ContextMenu("SelectionUp")]
         public void SelectContractAcceptedUp()
         {
@@ -104,7 +127,11 @@ namespace VoiceActing
             indexAcceptedList -= 1;
             if(indexAcceptedList == -1)
             {
-                indexAcceptedList = buttonContractAccepted.Length-1;
+                indexAcceptedList = contractAcceptedList.Count-1;
+                while (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
+                {
+                    indexAcceptedList -= 1;
+                }
             }
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
@@ -114,13 +141,27 @@ namespace VoiceActing
         {
             buttonContractAccepted[indexAcceptedList].UnSelectContract();
             indexAcceptedList += 1;
-            if (buttonContractAccepted[indexAcceptedList] == null || buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
+            if(indexAcceptedList == contractAcceptedList.Count)
             {
                 indexAcceptedList = 0;
             }
+            else if (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
+            {
+                indexAcceptedList = 0;
+            }
+            /*if (contractAcceptedList[indexAcceptedList] == null)
+            {
+                indexAcceptedList = 0;
+            }*/
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
 
+        private void SwitchToMenuContractAvailable()
+        {
+            menuContractAvailable.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+            animatorMenu.gameObject.SetActive(false);
+        }
 
 
         #endregion
