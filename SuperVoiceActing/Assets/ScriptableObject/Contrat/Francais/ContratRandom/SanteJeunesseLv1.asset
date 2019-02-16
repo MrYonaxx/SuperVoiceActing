@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: SanteJeunesseLv1
+  m_EditorClassIdentifier: 
+  name: 
+  level: 0
+  contractType: 0
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 0
+  weekMax: 0
+  characters: []
+  textDataContract:
+  - nbPhraseMin: 1
+    nbPhraseMax: 1
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 10
+      hpMax: 15
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: Pour bien grandir ...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - nbPhraseMin: 1
+    nbPhraseMax: 2
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 15
+      hpMax: 20
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Mange au moins 5 fruits et l\xE9gumes par jour."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 6
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - interlocuteurID: 0
+      hpMin: 20
+      hpMax: 30
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Ne mange pas trop gras, trop sucr\xE9, trop sal\xE9."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 20
+        disgust: 20
+        anger: 20
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints: []
+  - nbPhraseMin: 1
+    nbPhraseMax: 1
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 10
+      hpMax: 15
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Pour \xEAtre en forme ..."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - nbPhraseMin: 1
+    nbPhraseMax: 2
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 10
+      hpMax: 15
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "D\xE9pense-toi bien !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - interlocuteurID: 0
+      hpMin: 12
+      hpMax: 20
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "Evite de grignoter dans la journ\xE9e."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 20
+        disgust: 20
+        anger: 20
+        surprise: -50
+        sweetness: 20
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  textData: []
+  eventData: []
