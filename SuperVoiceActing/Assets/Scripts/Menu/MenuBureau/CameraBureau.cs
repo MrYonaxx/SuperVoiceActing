@@ -29,20 +29,22 @@ namespace VoiceActing
         float joystickDeadZone = 0.9f;
 
         [SerializeField]
+        SmoothShake smoothShakeCamera;
+
+        [SerializeField]
         Transform[] transforms;
         [SerializeField]
         GameObject[] screenManager;
 
         [SerializeField]
         Animator animatorHUD;
-        /*[TableMatrix(HorizontalTitle = "X axis", VerticalTitle = "Y axis")]
-        Transform[,] transforms;*/
 
         int position = 2;
 
         float speedX;
         float speedY;
 
+        bool zoomed = false;
         bool freeCameraOn = false;
         bool inputRightStickEnter = false;
         bool inputLeftTrigger = false;
@@ -81,21 +83,30 @@ namespace VoiceActing
             CheckRightDirection();
         }
 
-
+        //!\
+        // C'est un peu l'anarchie, à clarifier
+        //!\
         private void CheckRightDirection()
         {
             // Zoom
             if (Input.GetAxis("ControllerTriggers") > 0.8f && inputLeftTrigger == false)
             {
-                if (camera.fieldOfView == 70)
+                if (zoomed == false)
                 {
                     animatorHUD.SetTrigger("Hide");
+                    ModifyAnglePosition(0);
+                    MoveToCamera();
                     ChangeOrthographicSize(-30);
+                    smoothShakeCamera.enabled = false;
+                    smoothShakeCamera.transform.position = Vector3.zero;
+                    zoomed = true;
                 }
                 else
                 {
                     animatorHUD.SetTrigger("Show");
                     ChangeOrthographicSize(0);
+                    smoothShakeCamera.enabled = true;
+                    zoomed = false;
                 }
 
                 inputLeftTrigger = true;
@@ -109,7 +120,7 @@ namespace VoiceActing
             // Free Camera
             if (Input.GetAxis("ControllerTriggers") < -0.8f)
             {
-                if (freeCameraOn == false && camera.fieldOfView == 70)
+                if (freeCameraOn == false && zoomed == false)
                 {
                     animatorHUD.SetTrigger("Hide");
                 }
@@ -118,9 +129,10 @@ namespace VoiceActing
             }
             else if (freeCameraOn == true)
             {
-                if(camera.fieldOfView == 70)
+                if(zoomed == false)
                     animatorHUD.SetTrigger("Show");
                 freeCameraOn = false;
+                ModifyAnglePosition(4);
                 MoveToCamera();
                 inputRightStickEnter = true;
                 return;
@@ -142,7 +154,13 @@ namespace VoiceActing
                 position += 1;
                 if (position == transforms.Length)
                     position -= 1;
+
+                if (zoomed == false)
+                    ModifyAnglePosition(4);
+                else
+                    ModifyAnglePosition(0);
                 MoveToCamera();
+
                 inputRightStickEnter = true;
             }
             else if (Input.GetAxis("ControllerRightHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
@@ -150,7 +168,13 @@ namespace VoiceActing
                 position -= 1;
                 if (position == -1)
                     position += 1;
+
+                if (zoomed == false)
+                    ModifyAnglePosition(4);
+                else
+                    ModifyAnglePosition(0);
                 MoveToCamera();
+
                 inputRightStickEnter = true;
             }
         }
@@ -193,13 +217,16 @@ namespace VoiceActing
         }
 
 
-
+        private void ModifyAnglePosition(float range)
+        {
+            transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-range, range));
+            this.transform.SetParent(transforms[position]);
+        }
 
 
         public void MoveToCamera()
         {
-            transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-4f, 4f));
-            this.transform.SetParent(transforms[position]);
+
             ActivateScreenManager(position);
 
             if (coroutine != null)
@@ -211,12 +238,20 @@ namespace VoiceActing
 
         private IEnumerator MoveToOrigin(float speedCoroutine)
         {
+            float angleX = 0;
+            float angleY = 0;
+            float angleZ = 0;
+
+            float ratioX = 0;
+            float ratioY = 0;
+            float ratioZ = 0;
+
             while (this.transform.localPosition != Vector3.zero || this.transform.localEulerAngles != Vector3.zero)
             {
-                float angleX = this.transform.localEulerAngles.x;
+                angleX = this.transform.localEulerAngles.x;
                 if (angleX > 1 && angleX < 359)
                 {
-                    float ratioX = 0;
+                    ratioX = 0;
                     if (angleX > 180)
                     {
                         angleX = 360 - angleX;
@@ -234,10 +269,10 @@ namespace VoiceActing
                     angleX = 0;
                 }
 
-                float angleY = this.transform.localEulerAngles.y;
+                angleY = this.transform.localEulerAngles.y;
                 if (angleY > 1 && angleY < 359)
                 {
-                    float ratioY = 0;
+                    ratioY = 0;
                     if (angleY > 180)
                     {
                         angleY = 360 - angleY;
@@ -256,10 +291,10 @@ namespace VoiceActing
                 }
 
 
-                float angleZ = this.transform.localEulerAngles.z;
+                angleZ = this.transform.localEulerAngles.z;
                 if (angleZ > 1 && angleZ < 359)
                 {
-                    float ratioZ = 0;
+                    ratioZ = 0;
                     if (angleZ > 180)
                     {
                         angleZ = 360 - angleZ;
@@ -277,9 +312,8 @@ namespace VoiceActing
                     angleZ = 0;
                 }
                 this.transform.localEulerAngles += new Vector3(angleX, angleY, angleZ);
-
-                //this.transform.localEulerAngles /= speedCoroutine;
                 this.transform.localPosition /= speedCoroutine;
+
                 yield return null;
             }
             coroutine = null;
