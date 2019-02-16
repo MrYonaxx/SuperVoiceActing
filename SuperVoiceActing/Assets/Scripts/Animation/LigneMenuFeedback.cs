@@ -76,7 +76,7 @@ namespace VoiceActing
                 angleZ = lines[i].transform.eulerAngles.z;
                 if (angleZ > 180)
                     angleZ = -(360 - angleZ);
-                zTarget = Random.Range(angleValues[i] - 8, angleValues[i] + 8);
+                zTarget = Random.Range(angleValues[i] - 15, angleValues[i] + 15);
                 if (zTarget > 180)
                     zTarget = -(360 - zTarget);
                 speedZ[i] = (zTarget - angleZ) / time;
