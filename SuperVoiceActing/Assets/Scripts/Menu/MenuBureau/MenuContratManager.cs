@@ -66,15 +66,11 @@ namespace VoiceActing
 
         private void OnEnable()
         {
+            animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
             //animatorMenu.disabled = false
         }
 
-        /*private void OnDisable()
-        {
-            animatorMenu.gameObject.SetActive(false);
-            //animatorMenu.enabled = true;
-        }*/
 
         private void Start()
         {
@@ -84,11 +80,6 @@ namespace VoiceActing
             DrawAvailableContract();
         }
 
-        // Créer un Contract depuis ContractData
-        public void CreateContract()
-        {
-
-        }
 
         public void DrawAvailableContract()
         {
@@ -149,18 +140,16 @@ namespace VoiceActing
             {
                 indexAcceptedList = 0;
             }
-            /*if (contractAcceptedList[indexAcceptedList] == null)
-            {
-                indexAcceptedList = 0;
-            }*/
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
 
         private void SwitchToMenuContractAvailable()
         {
             menuContractAvailable.gameObject.SetActive(true);
+            animatorMenu.SetBool("Appear", false);
             this.gameObject.SetActive(false);
-            animatorMenu.gameObject.SetActive(false);
+            //animatorMenu.SetBool("Appear", false);
+            //animatorMenu.gameObject.SetActive(false);
         }
 
 

@@ -108,7 +108,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<TextDataContract> textData;
+        private List<TextDataContract> textData = new List<TextDataContract>();
         public List<TextDataContract> TextData
         {
             get { return textData; }
@@ -177,6 +177,7 @@ namespace VoiceActing
                     for (int j = 0; j < data.TextDataContract[i].TextDataPossible.Length; j++)
                     {
                         listTextDataPossibilities.Add(data.TextDataContract[i].TextDataPossible[j]);
+                        Debug.Log(data.TextDataContract[i].TextDataPossible[j].Text);
                     }
                     // Selection
                     for (int n = 0; n < nbSelection; n++)

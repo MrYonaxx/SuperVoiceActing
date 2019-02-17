@@ -60,13 +60,24 @@ namespace VoiceActing
             {
                 StopCoroutine(coroutine);
             }
-            coroutine = RotateCameraCoroutine(10);
+            coroutine = RotateCameraCoroutine(10, 15);
+            StartCoroutine(coroutine);
+        }
+
+        public void SuperFeedbackLinesMenu()
+        {
+            //SetNewLineAngle();
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = RotateCameraCoroutine(25, 180);
             StartCoroutine(coroutine);
         }
 
 
 
-        private IEnumerator RotateCameraCoroutine(float time)
+        private IEnumerator RotateCameraCoroutine(float time, float power)
         {
             float[] speedZ = new float[lines.Length];
             float angleZ = 0;
@@ -76,9 +87,21 @@ namespace VoiceActing
                 angleZ = lines[i].transform.eulerAngles.z;
                 if (angleZ > 180)
                     angleZ = -(360 - angleZ);
-                zTarget = Random.Range(angleValues[i] - 15, angleValues[i] + 15);
+
+                if (power == 180)
+                {
+                    zTarget = angleValues[i] - power;
+                }
+                else
+                {
+                    zTarget = Random.Range(angleValues[i] - power, angleValues[i] + power);
+                    /*if (zTarget > 180)
+                        zTarget = -(360 - zTarget);*/
+                }
                 if (zTarget > 180)
                     zTarget = -(360 - zTarget);
+
+
                 speedZ[i] = (zTarget - angleZ) / time;
                 //speedZ[i] *= 2;
             }
@@ -94,7 +117,14 @@ namespace VoiceActing
                 yield return null;
             }
             //this.transform.eulerAngles = new Vector3(0, 0, z);
-            coroutine = RotateCameraCoroutine(500);
+            if (power == 180)
+            {
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i].transform.eulerAngles -= new Vector3(0, 0, 180);
+                }
+            }
+            coroutine = RotateCameraCoroutine(500, 10);
             StartCoroutine(coroutine);
         }
 
