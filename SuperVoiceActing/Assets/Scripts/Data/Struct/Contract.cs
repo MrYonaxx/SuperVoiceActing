@@ -93,14 +93,14 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private List<VoiceActor> characters;
-        public List<VoiceActor> Characters
+        private List<Role> characters = new List<Role>();
+        public List<Role> Characters
         {
             get { return characters; }
             set { characters = value; }
         }
         [SerializeField]
-        private List<VoiceActor> voiceActors;
+        private List<VoiceActor> voiceActors = new List<VoiceActor>();
         public List<VoiceActor> VoiceActors
         {
             get { return voiceActors; }
@@ -153,15 +153,18 @@ namespace VoiceActing
             // Select Characters -------------------------------------------------------
             for (int i = 0; i < data.Characters.Length; i++)
             {
-                if (data.Characters[i].MainCharacter == true)
+                if (data.Characters[i].Optional == true)
                 {
-                    //List<CharacterData>
-                    int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
-                    /*for (int j = 0; j < data.Characters[i].CharactersProfil.Length; j++)
+                    if(Random.Range(0f,1f) >= 0.5f)
                     {
-
-                    }*/
-                    //characters.Add
+                        int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
+                        characters.Add(new Role(data.Characters[i].CharactersProfil[selectProfil]));
+                    }
+                }
+                else
+                {
+                    int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
+                    characters.Add(new Role(data.Characters[i].CharactersProfil[selectProfil]));
                 }
             }
 

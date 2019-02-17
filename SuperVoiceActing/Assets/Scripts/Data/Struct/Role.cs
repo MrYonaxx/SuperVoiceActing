@@ -86,6 +86,17 @@ namespace VoiceActing
             this.timbre = new Vector2Int(Random.Range(data.Timbre.x, data.TimbreRand.x), Random.Range(data.Timbre.y, data.TimbreRand.y));
             //!\ à tester 
 
+            this.characterStat = new EmotionStat
+                                 (
+                                    Random.Range(data.CharacterStatMin.Joy, data.CharacterStatMax.Joy),
+                                    Random.Range(data.CharacterStatMin.Sadness, data.CharacterStatMax.Sadness),
+                                    Random.Range(data.CharacterStatMin.Disgust, data.CharacterStatMax.Disgust),
+                                    Random.Range(data.CharacterStatMin.Anger, data.CharacterStatMax.Anger),
+                                    Random.Range(data.CharacterStatMin.Surprise, data.CharacterStatMax.Surprise),
+                                    Random.Range(data.CharacterStatMin.Sweetness, data.CharacterStatMax.Sweetness),
+                                    Random.Range(data.CharacterStatMin.Fear, data.CharacterStatMax.Fear),
+                                    Random.Range(data.CharacterStatMin.Trust, data.CharacterStatMax.Trust)
+                                 );
 
         }
 

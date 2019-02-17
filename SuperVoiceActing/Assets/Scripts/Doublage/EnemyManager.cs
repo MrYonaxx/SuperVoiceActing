@@ -162,6 +162,21 @@ namespace VoiceActing
             set { trust = value; }
         }
 
+
+
+        public EmotionStat(int jo, int sa, int di, int an, int su, int sw, int fe, int tr)
+        {
+            this.joy = jo;
+            this.sadness = sa;
+            this.disgust = di;
+            this.anger = an;
+            this.surprise = su;
+            this.sweetness = sw;
+            this.fear = fe;
+            this.trust = tr;
+            this.neutral = (jo + sa + di + an + su + sw + fe + tr) / 8;
+        }
+
     }
 
 

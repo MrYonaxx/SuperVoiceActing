@@ -43,6 +43,12 @@ namespace VoiceActing
         TextMeshProUGUI contractTitle;
         [SerializeField]
         TextMeshProUGUI contractWeekRemaining;
+        [SerializeField]
+        TextMeshProUGUI contractWeekRemainingShadow;
+        [SerializeField]
+        TextMeshProUGUI contractLine;
+        [SerializeField]
+        TextMeshProUGUI contractMixage;
 
         bool isButtonAddContract = false;
 
@@ -70,6 +76,10 @@ namespace VoiceActing
             panelAddContract.SetActive(false);
 
             contractTitle.text = contract.Name;
+            contractLine.text = contract.CurrentLine + " / " + contract.TotalLine;
+            contractMixage.text = contract.CurrentMixing + " / " + contract.TotalMixing;
+            contractWeekRemaining.text = contract.WeekRemaining.ToString();
+            contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
         }
 
         public void SelectContract()

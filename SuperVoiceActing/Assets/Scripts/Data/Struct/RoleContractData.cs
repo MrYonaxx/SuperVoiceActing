@@ -25,6 +25,13 @@ namespace VoiceActing
             get { return mainCharacter; }
             set { mainCharacter = value; }
         }
+        [SerializeField]
+        private bool optional;
+        public bool Optional
+        {
+            get { return optional; }
+            set { optional = value; }
+        }
 
         [SerializeField]
         private RoleContractData[] charactersProfil;
