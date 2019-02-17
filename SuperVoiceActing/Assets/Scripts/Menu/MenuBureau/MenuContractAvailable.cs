@@ -43,6 +43,10 @@ namespace VoiceActing
         TextMeshProUGUI textInfoMoney;
         [SerializeField]
         TextMeshProUGUI textInfoWeek;
+        [SerializeField]
+        TextMeshProUGUI textInfoLine;
+        [SerializeField]
+        TextMeshProUGUI textInfoMixage;
 
         [Header("MenuManagers")]
         [SerializeField]
@@ -65,6 +69,7 @@ namespace VoiceActing
         private int currentTimeBeforeRepeat = -1;
         private int currentRepeatInterval = -1;
         private int lastDirection = 0; // 2 c'est bas, 8 c'est haut (voir numpad)
+        private int indexLimit = 0;
 
         private IEnumerator coroutineScroll = null;
         // ===========================
@@ -97,16 +102,22 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
+            indexSelected = 0;
+            SelectButton();
         }
 
         private void Start()
         {
-            listContractAvailable.Add(new Contract("Hello"));
+            indexLimit = scrollSize;
+            /*listContractAvailable.Add(new Contract("Hello"));
             listContractAvailable.Add(new Contract("Hello2"));
-            listContractAvailable.Add(new Contract("Hello3"));
+            listContractAvailable.Add(new Contract("Hello3"));*/
             listContractAvailable.Add(new Contract(contractDatabase[0]));
+            listContractAvailable.Add(new Contract(contractDatabase[1]));
             listContractAvailable.Add(new Contract(contractDatabase[0]));
-            listContractAvailable.Add(new Contract(contractDatabase[0]));
+            listContractAvailable.Add(new Contract(contractDatabase[1]));
+            //listContractAvailable.Add(new Contract(contractDatabase[0]));
+            //listContractAvailable.Add(new Contract(contractDatabase[0]));
             CreateListButton();
         }
 
@@ -119,6 +130,11 @@ namespace VoiceActing
             }
         }
 
+        private void RedrawListButton()
+        {
+
+        }
+
         public void SwitchToMenuContractManager()
         {
             menuContractManager.gameObject.SetActive(true);
@@ -129,6 +145,10 @@ namespace VoiceActing
 
         private void SelectButton()
         {
+            if(indexSelected >= buttonsContracts.Count)
+            {
+                return;
+            }
             animatorSelection.transform.position = buttonsContracts[indexSelected].transform.position;
             textMeshSelection.text = listContractAvailable[indexSelected].Name;
             animatorSelection.SetTrigger("Active");
@@ -140,14 +160,35 @@ namespace VoiceActing
             textInfoTitle.text = listContractAvailable[indexSelected].Name;
             textInfoWeek.text = listContractAvailable[indexSelected].WeekRemaining.ToString();
             textInfoMoney.text = listContractAvailable[indexSelected].Money.ToString();
+            textInfoLine.text = listContractAvailable[indexSelected].TotalLine.ToString();
+            textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
             // textInfoType.text = listContractAvailable[indexSelected].;
         }
 
+        public void Validate()
+        {
+            if(listContractAvailable.Count == 0)
+            {
+                return;
+            }
+            if (menuContractManager.AddContractToList(listContractAvailable[indexSelected]) == true)
+            {
+                listContractAvailable.RemoveAt(indexSelected);
+                Destroy(buttonsContracts[indexSelected].gameObject);
+                buttonsContracts.RemoveAt(indexSelected);
+                //RedrawListButton(indexSelected);
+                SwitchToMenuContractManager();
+            }
+        }
 
 
 
         public void SelectContractUp()
         {
+            if (listContractAvailable.Count == 0)
+            {
+                return;
+            }
             if (lastDirection != 8)
             {
                 StopRepeat();
@@ -162,12 +203,16 @@ namespace VoiceActing
             {
                 indexSelected = buttonsContracts.Count - 1;
             }
-            SelectButton();
             MoveScrollRect();
+            SelectButton();
         }
 
         public void SelectContractDown()
         {
+            if (listContractAvailable.Count == 0)
+            {
+                return;
+            }
             if (lastDirection != 2)
             {
                 StopRepeat();
@@ -181,8 +226,8 @@ namespace VoiceActing
             {
                 indexSelected = 0;
             }
-            SelectButton();
             MoveScrollRect();
+            SelectButton();
 
         }
 
@@ -231,25 +276,25 @@ namespace VoiceActing
             {
                 StopCoroutine(coroutineScroll);
             }
-            /*if (indexActorSelected > indexActorLimit)
+            if (indexSelected > indexLimit)
             {
-                indexActorLimit = indexActorSelected;
+                indexLimit = indexSelected;
                 coroutineScroll = MoveScrollRectCoroutine();
                 StartCoroutine(coroutineScroll);
             }
-            else if (indexActorSelected < indexActorLimit - scrollSize)
+            else if (indexSelected < indexLimit - scrollSize)
             {
-                indexActorLimit = indexActorSelected + scrollSize;
+                indexLimit = indexSelected + scrollSize;
                 coroutineScroll = MoveScrollRectCoroutine();
                 StartCoroutine(coroutineScroll);
-            }*/
+            }
 
         }
 
-        /*private IEnumerator MoveScrollRectCoroutine()
+        private IEnumerator MoveScrollRectCoroutine()
         {
             int time = 10;
-            int ratio = indexActorLimit - scrollSize;
+            int ratio = indexLimit - scrollSize;
             float speed = (buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time;
             while (time != 0)
             {
@@ -258,7 +303,7 @@ namespace VoiceActing
                 yield return null;
             }
 
-        }*/
+        }
 
 
 

@@ -177,17 +177,18 @@ namespace VoiceActing
                     for (int j = 0; j < data.TextDataContract[i].TextDataPossible.Length; j++)
                     {
                         listTextDataPossibilities.Add(data.TextDataContract[i].TextDataPossible[j]);
-                        Debug.Log(data.TextDataContract[i].TextDataPossible[j].Text);
                     }
                     // Selection
                     for (int n = 0; n < nbSelection; n++)
                     {
                         int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
                         textData.Add(listTextDataPossibilities[indexRandom]);
+                        Debug.Log(listTextDataPossibilities[indexRandom].Text);
                         listTextDataPossibilities.RemoveAt(indexRandom);
                     }
                 }
             }
+            totalLine = textData.Count;
 
         }
 

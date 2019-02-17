@@ -40,6 +40,7 @@ namespace VoiceActing
         int indexAcceptedList = 0;
 
 
+
         [Header("MenuManagers")]
         [SerializeField]
         Animator animatorMenu;
@@ -74,8 +75,8 @@ namespace VoiceActing
 
         private void Start()
         {
-            contractAcceptedList.Add(new Contract("Salut"));
-            contractAcceptedList.Add(new Contract("Hello"));
+            contractAcceptedList.Add(null);
+            contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
             DrawAvailableContract();
         }
@@ -101,6 +102,20 @@ namespace VoiceActing
 
                 }
             }
+        }
+
+        public bool AddContractToList(Contract newContract)
+        {
+            for(int i = 0; i < contractAcceptedList.Count; i++)
+            {
+                if (contractAcceptedList[i] == null)
+                {
+                    contractAcceptedList[i] = newContract;
+                    DrawAvailableContract();
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Validate()
