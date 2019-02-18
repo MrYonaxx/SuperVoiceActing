@@ -47,6 +47,10 @@ namespace VoiceActing
         TextMeshProUGUI textInfoLine;
         [SerializeField]
         TextMeshProUGUI textInfoMixage;
+        [SerializeField]
+        Animator animatorInfoCharacter;
+        [SerializeField]
+        PanelContractCharacter[] infoRoles;
 
         [Header("MenuManagers")]
         [SerializeField]
@@ -162,7 +166,15 @@ namespace VoiceActing
             textInfoMoney.text = listContractAvailable[indexSelected].Money.ToString();
             textInfoLine.text = listContractAvailable[indexSelected].TotalLine.ToString();
             textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
-            // textInfoType.text = listContractAvailable[indexSelected].;
+
+            if(infoRoles.Length < listContractAvailable[indexSelected].Characters.Count)
+            {
+                return;
+            }
+
+            for (int i = 0; i < listContractAvailable[indexSelected].Characters.Count; i++)
+                infoRoles[i].DrawPanel(listContractAvailable[indexSelected].Characters[i]);
+
         }
 
         public void Validate()
@@ -177,11 +189,21 @@ namespace VoiceActing
                 Destroy(buttonsContracts[indexSelected].gameObject);
                 buttonsContracts.RemoveAt(indexSelected);
                 //RedrawListButton(indexSelected);
-                SwitchToMenuContractManager();
+                animatorSelection.SetTrigger("Validate");
+                StartCoroutine(WaitValidate(0.2f));
             }
         }
 
+        private IEnumerator WaitValidate(float time)
+        {
+            yield return new WaitForSeconds(time);
+            SwitchToMenuContractManager();
+        }
 
+        public void ShowCharacterInfo()
+        {
+            animatorInfoCharacter.SetBool("Appear", !animatorInfoCharacter.GetBool("Appear"));
+        }
 
         public void SelectContractUp()
         {
