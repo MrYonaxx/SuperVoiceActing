@@ -168,6 +168,13 @@ namespace VoiceActing
                 }
             }
 
+
+            voiceActors = new List<VoiceActor>(characters.Count);
+            for (int i = 0; i < characters.Count; i++)
+            {
+                voiceActors.Add(null);
+            }
+
             // Select TextData -------------------------------------------------------
 
             for (int i = 0; i < data.TextDataContract.Length; i++)
