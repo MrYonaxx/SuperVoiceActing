@@ -12,7 +12,7 @@ using TMPro;
 
 namespace VoiceActing
 {
-	public class MenuContractAvailable : MonoBehaviour
+	public class MenuContractPreparation : MonoBehaviour
 	{
         #region Attributes 
 
@@ -20,47 +20,38 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [Header("Database")]
+        [Header("Info")]
         [SerializeField]
-        private ContractData[] contractDatabase;
+        TextMeshProUGUI textContractTitle;
+        [SerializeField]
+        TextMeshProUGUI textContractSalaire;
+        [SerializeField]
+        TextMeshProUGUI textContractLine;
+        [SerializeField]
+        TextMeshProUGUI textContractLineMax;
+        [SerializeField]
+        TextMeshProUGUI textContractMixage;
+        [SerializeField]
+        TextMeshProUGUI textContractMixageMax;
 
-        [Header("Prefab")]
+        [Header("InfoRole")]
         [SerializeField]
-        private ButtonContratAvailable buttonPrefab;
+        TextMeshProUGUI textRoleName;
         [SerializeField]
-        private RectTransform buttonListTransform;
+        TextMeshProUGUI textRoleFan;
         [SerializeField]
-        private Animator animatorSelection;
-        [SerializeField]
-        private TextMeshProUGUI textMeshSelection;
+        TextMeshProUGUI textRoleLine;
 
-        [Header("InfoPanel")]
+        [Header("Prefabs")]
         [SerializeField]
-        TextMeshProUGUI textInfoTitle;
-        [SerializeField]
-        TextMeshProUGUI textInfoType;
-        [SerializeField]
-        TextMeshProUGUI textInfoMoney;
-        [SerializeField]
-        TextMeshProUGUI textInfoWeek;
-        [SerializeField]
-        TextMeshProUGUI textInfoLine;
-        [SerializeField]
-        TextMeshProUGUI textInfoMixage;
-        [SerializeField]
-        Animator animatorInfoCharacter;
-        [SerializeField]
-        PanelContractCharacter[] infoRoles;
-
-        [Header("Feedback")]
-        [SerializeField]
-        Animator animatorPanelContract;
+        ButtonPreparationRole[] listButtonRoles;
 
         [Header("MenuManagers")]
         [SerializeField]
         Animator animatorMenu;
         [SerializeField]
         MenuContratManager menuContractManager;
+
 
         // ===========================
         // Menu Input (Sans doute mettre dans une classe parent mais flemme)
@@ -83,11 +74,8 @@ namespace VoiceActing
         // ===========================
 
 
-        private List<Contract> listContractAvailable = new List<Contract>();
-        private List<ButtonContratAvailable> buttonsContracts = new List<ButtonContratAvailable>();
-
+        private Contract currentContract = null;
         private int indexSelected = 0;
-
 
         #endregion
 
@@ -110,32 +98,6 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
-            //indexSelected = 0;
-            //SelectButton();
-        }
-
-        private void Start()
-        {
-            indexLimit = scrollSize;
-            listContractAvailable.Add(new Contract(contractDatabase[0]));
-            listContractAvailable.Add(new Contract(contractDatabase[1]));
-            //listContractAvailable.Add(new Contract(contractDatabase[0]));
-            //listContractAvailable.Add(new Contract(contractDatabase[0]));
-            CreateListButton();
-        }
-
-        private void CreateListButton()
-        {
-            for(int i = 0; i < listContractAvailable.Count; i++)
-            {
-                buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
-                buttonsContracts[i].DrawButton(listContractAvailable[i].Name);
-            }
-        }
-
-        private void RedrawListButton()
-        {
-
         }
 
         public void SwitchToMenuContractManager()
@@ -143,84 +105,58 @@ namespace VoiceActing
             menuContractManager.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
             animatorMenu.SetBool("Appear", false);
-            //animatorMenu.gameObject.SetActive(false);
         }
 
-        private void SelectButton()
+        public void SetContract(Contract contract)
         {
-            if(indexSelected >= buttonsContracts.Count)
-            {
-                return;
-            }
-            animatorSelection.transform.position = buttonsContracts[indexSelected].transform.position;
-            textMeshSelection.text = listContractAvailable[indexSelected].Name;
-            animatorSelection.SetTrigger("Active");
-            animatorPanelContract.SetTrigger("Feedback");
-            DrawInfo();
+            currentContract = contract;
+            DrawContractInfo();
+            DrawButtons();
         }
 
-        private void DrawInfo()
+        private void DrawContractInfo()
         {
-            textInfoTitle.text = listContractAvailable[indexSelected].Name;
-            textInfoWeek.text = listContractAvailable[indexSelected].WeekRemaining.ToString();
-            textInfoMoney.text = listContractAvailable[indexSelected].Money.ToString();
-            textInfoLine.text = listContractAvailable[indexSelected].TotalLine.ToString();
-            textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
+            textContractTitle.text = currentContract.Name;
+            textContractSalaire.text = currentContract.Money.ToString();
+            textContractLine.text = currentContract.CurrentLine.ToString();
+            textContractLineMax.text = currentContract.TotalLine.ToString();
+            textContractMixage.text = currentContract.CurrentMixing.ToString();
+            textContractMixageMax.text = currentContract.TotalMixing.ToString();
+        }
 
-            if(infoRoles.Length < listContractAvailable[indexSelected].Characters.Count)
+        private void DrawButtons()
+        {
+            //VoiceActor tmp = null;
+            for(int i = 0; i < listButtonRoles.Length; i++)
             {
-                return;
-            }
-
-            for(int i = 0; i < infoRoles.Length; i++)
-            {
-                if (i < listContractAvailable[indexSelected].Characters.Count)
+                if(i < currentContract.Characters.Count)
                 {
-                    infoRoles[i].gameObject.SetActive(true);
-                    infoRoles[i].DrawPanel(listContractAvailable[indexSelected].Characters[i]);
+                    listButtonRoles[i].gameObject.SetActive(true);
+                    listButtonRoles[i].DrawButton(currentContract.Characters[i], currentContract.VoiceActors[i]);
+                    listButtonRoles[i].UnselectButton();
                 }
                 else
                 {
-                    infoRoles[i].gameObject.SetActive(false);
+                    listButtonRoles[i].gameObject.SetActive(false);
                 }
             }
 
-            /*for (int i = 0; i < listContractAvailable[indexSelected].Characters.Count; i++)
-                infoRoles[i].DrawPanel(listContractAvailable[indexSelected].Characters[i]);*/
+            listButtonRoles[0].SelectButton();
 
         }
 
-        public void Validate()
+        private void DrawRoleInfo()
         {
-            if(listContractAvailable.Count == 0)
-            {
-                return;
-            }
-            if (menuContractManager.AddContractToList(listContractAvailable[indexSelected]) == true)
-            {
-                listContractAvailable.RemoveAt(indexSelected);
-                Destroy(buttonsContracts[indexSelected].gameObject);
-                buttonsContracts.RemoveAt(indexSelected);
-                //RedrawListButton(indexSelected);
-                animatorSelection.SetTrigger("Validate");
-                StartCoroutine(WaitValidate(0.2f));
-            }
+            textRoleName.text = currentContract.Characters[indexSelected].Name;
+            textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
+            textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
         }
 
-        private IEnumerator WaitValidate(float time)
-        {
-            yield return new WaitForSeconds(time);
-            SwitchToMenuContractManager();
-        }
 
-        public void ShowCharacterInfo()
+        // =================================================================
+        public void SelectRoleUp()
         {
-            animatorInfoCharacter.SetBool("Appear", !animatorInfoCharacter.GetBool("Appear"));
-        }
-
-        public void SelectContractUp()
-        {
-            if (listContractAvailable.Count == 0)
+            if (currentContract.Characters.Count == 0)
             {
                 return;
             }
@@ -233,18 +169,21 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
+            listButtonRoles[indexSelected].UnselectButton();
+
             indexSelected -= 1;
             if (indexSelected <= -1)
             {
-                indexSelected = buttonsContracts.Count - 1;
+                indexSelected = currentContract.Characters.Count - 1;
             }
             MoveScrollRect();
-            SelectButton();
+            DrawRoleInfo();
+            listButtonRoles[indexSelected].SelectButton();
         }
 
-        public void SelectContractDown()
+        public void SelectRoleDown()
         {
-            if (listContractAvailable.Count == 0)
+            if (currentContract.Characters.Count == 0)
             {
                 return;
             }
@@ -256,13 +195,16 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
+            listButtonRoles[indexSelected].UnselectButton();
+
             indexSelected += 1;
-            if (indexSelected >= buttonsContracts.Count)
+            if (indexSelected >= currentContract.Characters.Count)
             {
                 indexSelected = 0;
             }
             MoveScrollRect();
-            SelectButton();
+            DrawRoleInfo();
+            listButtonRoles[indexSelected].SelectButton();
 
         }
 
@@ -307,7 +249,7 @@ namespace VoiceActing
 
         private void MoveScrollRect()
         {
-            if (coroutineScroll != null)
+            /*if (coroutineScroll != null)
             {
                 StopCoroutine(coroutineScroll);
             }
@@ -322,11 +264,11 @@ namespace VoiceActing
                 indexLimit = indexSelected + scrollSize;
                 coroutineScroll = MoveScrollRectCoroutine();
                 StartCoroutine(coroutineScroll);
-            }
+            }*/
 
         }
 
-        private IEnumerator MoveScrollRectCoroutine()
+        /*private IEnumerator MoveScrollRectCoroutine()
         {
             int time = 10;
             int ratio = indexLimit - scrollSize;
@@ -338,13 +280,13 @@ namespace VoiceActing
                 yield return null;
             }
 
-        }
+        }*/
 
 
 
 
         #endregion
 
-    } // MenuContractAvailable class
+    } // MenuContractPreparation class
 	
 }// #PROJECTNAME# namespace

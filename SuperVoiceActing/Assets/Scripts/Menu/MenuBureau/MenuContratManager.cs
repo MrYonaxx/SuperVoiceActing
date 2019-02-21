@@ -46,6 +46,8 @@ namespace VoiceActing
         Animator animatorMenu;
         [SerializeField]
         MenuContractAvailable menuContractAvailable;
+        [SerializeField]
+        MenuContractPreparation menuContractPreparation;
 
 
         #endregion
@@ -124,6 +126,11 @@ namespace VoiceActing
             {
                 SwitchToMenuContractAvailable();
             }
+            else
+            {
+                menuContractPreparation.SetContract(contractAcceptedList[indexAcceptedList]);
+                SwitchToMenuContractPreparation();
+            }
         }
 
         [ContextMenu("SelectionUp")]
@@ -163,8 +170,13 @@ namespace VoiceActing
             menuContractAvailable.gameObject.SetActive(true);
             animatorMenu.SetBool("Appear", false);
             this.gameObject.SetActive(false);
-            //animatorMenu.SetBool("Appear", false);
-            //animatorMenu.gameObject.SetActive(false);
+        }
+
+        private void SwitchToMenuContractPreparation()
+        {
+            menuContractPreparation.gameObject.SetActive(true);
+            animatorMenu.SetBool("Appear", false);
+            this.gameObject.SetActive(false);
         }
 
 
