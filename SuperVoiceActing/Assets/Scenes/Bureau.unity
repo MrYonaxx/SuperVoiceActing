@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 42368083}
   - component: {fileID: 42368082}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurDouceur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2593,6 +2593,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &68988508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68988509}
+  m_Layer: 5
+  m_Name: ' ---'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &68988509
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68988508}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1688017292}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 300, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &72324142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,6 +3266,166 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87523257}
   m_CullTransparentMesh: 0
+--- !u!1 &91124699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91124700}
+  - component: {fileID: 91124702}
+  - component: {fileID: 91124701}
+  m_Layer: 5
+  m_Name: TextMeshPro Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &91124700
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91124699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1072295500}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 120, y: 0}
+  m_SizeDelta: {x: 600, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &91124701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91124699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_text: Selectionner un acteur pour le Role de ...
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 54
+  m_fontSizeBase: 54
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_textAlignment: 514
+  m_isAlignmentEnumConverted: 1
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: 23
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 91124701}
+    characterCount: 42
+    spriteCount: 0
+    spaceCount: 7
+    wordCount: 7
+    linkCount: 0
+    lineCount: 2
+    pageCount: 1
+    materialCount: 1
+  m_havePropertiesChanged: 0
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_isInputParsingRequired: 0
+  m_inputSource: 0
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &91124702
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91124699}
+  m_CullTransparentMesh: 0
 --- !u!1 &95895624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,7 +3516,7 @@ GameObject:
   - component: {fileID: 97206713}
   - component: {fileID: 97206712}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRolePeur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6458,7 +6653,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   eventBoutonA:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1931618285}
+        m_MethodName: Validate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventButtonR1:
@@ -6695,7 +6901,7 @@ GameObject:
   - component: {fileID: 186959254}
   - component: {fileID: 186959253}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurDouceur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9028,7 +9234,7 @@ GameObject:
   - component: {fileID: 266080993}
   - component: {fileID: 266080992}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleDouceur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9043,7 +9249,7 @@ RectTransform:
   m_GameObject: {fileID: 266080990}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1077388480}
   m_RootOrder: 3
@@ -10759,7 +10965,7 @@ GameObject:
   - component: {fileID: 323224387}
   - component: {fileID: 323224386}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurConfiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12244,7 +12450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &362161858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12335,7 +12541,7 @@ GameObject:
   - component: {fileID: 372985945}
   - component: {fileID: 372985944}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActorJoie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12572,7 +12778,7 @@ GameObject:
   - component: {fileID: 387072565}
   - component: {fileID: 387072564}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleJoie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12626,8 +12832,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294901760
-  m_fontColor: {r: 0, g: 0, b: 1, a: 1}
+    rgba: 4294861824
+  m_fontColor: {r: 0, g: 0.3921569, b: 0.9960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12732,7 +12938,7 @@ GameObject:
   - component: {fileID: 388114242}
   - component: {fileID: 388114241}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleJoie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16422,7 +16628,7 @@ GameObject:
   - component: {fileID: 501788935}
   - component: {fileID: 501788934}
   m_Layer: 5
-  m_Name: StatJoie (2)
+  m_Name: StatTristesse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16437,14 +16643,14 @@ RectTransform:
   m_GameObject: {fileID: 501788932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000306, y: 1.0000306, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1905538436}
   - {fileID: 1981672665}
   - {fileID: 1801892702}
   - {fileID: 1192494668}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16471,7 +16677,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f8f11bed9f609040b39bba37aacc0f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18252,7 +18458,7 @@ GameObject:
   - component: {fileID: 544966345}
   - component: {fileID: 544966344}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurDegout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23581,7 +23787,7 @@ GameObject:
   - component: {fileID: 737021460}
   - component: {fileID: 737021459}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleColere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25563,6 +25769,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1822232158}
+  - {fileID: 1072295500}
   m_Father: {fileID: 254751391}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26150,7 +26357,7 @@ GameObject:
   - component: {fileID: 801157871}
   - component: {fileID: 801157870}
   m_Layer: 5
-  m_Name: StatJoie (6)
+  m_Name: StatColere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26172,7 +26379,7 @@ RectTransform:
   - {fileID: 1926384742}
   - {fileID: 1360482652}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26199,7 +26406,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82e01258eb5392241bc45f23cbe90e26, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26228,7 +26435,7 @@ GameObject:
   - component: {fileID: 802870460}
   - component: {fileID: 802870459}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurDegout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27504,7 +27711,7 @@ GameObject:
   - component: {fileID: 843386904}
   - component: {fileID: 843386903}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurPeur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27666,7 +27873,7 @@ GameObject:
   - component: {fileID: 845614493}
   - component: {fileID: 845614492}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleDegout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28971,6 +29178,7 @@ MonoBehaviour:
   statNameActor: {fileID: 1595340095}
   statLevelActor: {fileID: 1239630350}
   statFanActor: {fileID: 1331988148}
+  auditionIndication: {fileID: 1072295497}
   croissant: 1
   scrollSize: 11
   buttonSize: 85
@@ -28978,6 +29186,7 @@ MonoBehaviour:
   repeatInterval: 1
   indexActorLimit: 0
   indexActorSelected: 0
+  menuContractPreparation: {fileID: 1931618285}
 --- !u!1 &902376764
 GameObject:
   m_ObjectHideFlags: 0
@@ -35622,7 +35831,7 @@ GameObject:
   - component: {fileID: 963124292}
   - component: {fileID: 963124291}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleDegout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35637,7 +35846,7 @@ RectTransform:
   m_GameObject: {fileID: 963124289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1171553852}
   m_RootOrder: 3
@@ -39297,6 +39506,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067289344}
   m_CullTransparentMesh: 0
+--- !u!1 &1072295497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072295500}
+  - component: {fileID: 1072295499}
+  - component: {fileID: 1072295498}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1072295498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072295497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1072295499
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072295497}
+  m_CullTransparentMesh: 0
+--- !u!224 &1072295500
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072295497}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 91124700}
+  m_Father: {fileID: 779541325}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 500, y: -470}
+  m_SizeDelta: {x: 1000, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1073716566
 GameObject:
   m_ObjectHideFlags: 0
@@ -39592,7 +39876,7 @@ GameObject:
   - component: {fileID: 1077388482}
   - component: {fileID: 1077388481}
   m_Layer: 5
-  m_Name: StatJoie (3)
+  m_Name: StatDouceur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39614,7 +39898,7 @@ RectTransform:
   - {fileID: 186959252}
   - {fileID: 266080991}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -39641,7 +39925,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea6a9c69d8c54ea45967766ed6177c02, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -40184,7 +40468,7 @@ GameObject:
   - component: {fileID: 1094959238}
   - component: {fileID: 1094959237}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRolePeur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40199,7 +40483,7 @@ RectTransform:
   m_GameObject: {fileID: 1094959235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482843202}
   m_RootOrder: 3
@@ -40720,7 +41004,7 @@ GameObject:
   - component: {fileID: 1128355918}
   - component: {fileID: 1128355917}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurPeur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42254,7 +42538,7 @@ GameObject:
   - component: {fileID: 1171553854}
   - component: {fileID: 1171553853}
   m_Layer: 5
-  m_Name: StatJoie (4)
+  m_Name: StatDegout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42276,7 +42560,7 @@ RectTransform:
   - {fileID: 802870458}
   - {fileID: 963124290}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -42303,7 +42587,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b093b211aeed6f341b05b454a8272558, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42966,7 +43250,7 @@ GameObject:
   - component: {fileID: 1192494670}
   - component: {fileID: 1192494669}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleTristesse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42981,7 +43265,7 @@ RectTransform:
   m_GameObject: {fileID: 1192494667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 501788933}
   m_RootOrder: 3
@@ -47410,7 +47694,7 @@ GameObject:
   - component: {fileID: 1293375953}
   - component: {fileID: 1293375952}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleSurprise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48792,7 +49076,7 @@ GameObject:
   - component: {fileID: 1340267435}
   - component: {fileID: 1340267434}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleConfiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48807,7 +49091,7 @@ RectTransform:
   m_GameObject: {fileID: 1340267432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2143605164}
   m_RootOrder: 3
@@ -48952,7 +49236,7 @@ GameObject:
   - component: {fileID: 1346156331}
   - component: {fileID: 1346156330}
   m_Layer: 5
-  m_Name: StatJoie (1)
+  m_Name: StatSurprise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48974,7 +49258,7 @@ RectTransform:
   - {fileID: 1564776788}
   - {fileID: 1452684725}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -49001,7 +49285,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9ef9fdba69b65849b980b374de811f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -50222,7 +50506,7 @@ GameObject:
   - component: {fileID: 1360482654}
   - component: {fileID: 1360482653}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleColere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50237,7 +50521,7 @@ RectTransform:
   m_GameObject: {fileID: 1360482651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 801157869}
   m_RootOrder: 3
@@ -51536,7 +51820,7 @@ GameObject:
   - component: {fileID: 1379521937}
   - component: {fileID: 1379521936}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurSurprise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54123,7 +54407,7 @@ GameObject:
   - component: {fileID: 1452684727}
   - component: {fileID: 1452684726}
   m_Layer: 5
-  m_Name: TextMeshPro Text (1)
+  m_Name: TextRoleSurprise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54138,7 +54422,7 @@ RectTransform:
   m_GameObject: {fileID: 1452684724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999906, y: 0.999906, z: 1.0000306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1346156329}
   m_RootOrder: 3
@@ -55044,7 +55328,7 @@ GameObject:
   - component: {fileID: 1482843204}
   - component: {fileID: 1482843203}
   m_Layer: 5
-  m_Name: StatJoie (5)
+  m_Name: StatPeur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55066,7 +55350,7 @@ RectTransform:
   - {fileID: 843386902}
   - {fileID: 1094959236}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -55093,7 +55377,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1ae4d1ce562bf54bb3ca14810642363, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -57282,7 +57566,7 @@ GameObject:
   - component: {fileID: 1564776790}
   - component: {fileID: 1564776789}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurSurprise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59518,7 +59802,7 @@ GameObject:
   - component: {fileID: 1609992885}
   - component: {fileID: 1609992884}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurConfiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63031,12 +63315,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 531062324}
-  - {fileID: 1346156329}
   - {fileID: 501788933}
-  - {fileID: 1077388480}
   - {fileID: 1171553852}
-  - {fileID: 1482843202}
   - {fileID: 801157869}
+  - {fileID: 68988509}
+  - {fileID: 1346156329}
+  - {fileID: 1077388480}
+  - {fileID: 1482843202}
   - {fileID: 2143605164}
   m_Father: {fileID: 2076612018}
   m_RootOrder: 3
@@ -66503,7 +66788,7 @@ GameObject:
   - component: {fileID: 1801892704}
   - component: {fileID: 1801892703}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurTristesse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69307,7 +69592,7 @@ GameObject:
   - component: {fileID: 1903329273}
   - component: {fileID: 1903329272}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActorJoie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69381,7 +69666,7 @@ GameObject:
   - component: {fileID: 1905538438}
   - component: {fileID: 1905538437}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurTristesse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69700,7 +69985,7 @@ GameObject:
   - component: {fileID: 1919702882}
   - component: {fileID: 1919702881}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleConfiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69923,7 +70208,7 @@ GameObject:
   - component: {fileID: 1926384744}
   - component: {fileID: 1926384743}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: TextActeurColere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70308,12 +70593,50 @@ MonoBehaviour:
   textRoleName: {fileID: 2134958538}
   textRoleFan: {fileID: 1067289346}
   textRoleLine: {fileID: 1963536847}
+  textStatsActor:
+  - {fileID: 372985944}
+  - {fileID: 1801892703}
+  - {fileID: 802870459}
+  - {fileID: 1926384743}
+  - {fileID: 1564776789}
+  - {fileID: 186959253}
+  - {fileID: 843386903}
+  - {fileID: 1609992884}
+  jaugeStatsActor:
+  - {fileID: 1903329271}
+  - {fileID: 1905538436}
+  - {fileID: 544966343}
+  - {fileID: 1946887849}
+  - {fileID: 1379521935}
+  - {fileID: 42368081}
+  - {fileID: 1128355916}
+  - {fileID: 323224385}
+  textStatsRole:
+  - {fileID: 387072564}
+  - {fileID: 1192494669}
+  - {fileID: 963124291}
+  - {fileID: 1360482653}
+  - {fileID: 1452684726}
+  - {fileID: 266080992}
+  - {fileID: 1094959237}
+  - {fileID: 1340267434}
+  jaugeStatsRole:
+  - {fileID: 388114240}
+  - {fileID: 1981672665}
+  - {fileID: 845614491}
+  - {fileID: 737021458}
+  - {fileID: 1293375951}
+  - {fileID: 2018427547}
+  - {fileID: 97206711}
+  - {fileID: 1919702880}
   listButtonRoles:
   - {fileID: 55945564034630559}
   - {fileID: 772291832}
   - {fileID: 780083924}
+  cameraManager: {fileID: 510296401}
   animatorMenu: {fileID: 1309724103}
   menuContractManager: {fileID: 661692377}
+  menuActorsManager: {fileID: 896691946}
   scrollSize: 8
   buttonSize: 85
   timeBeforeRepeat: 10
@@ -70892,7 +71215,7 @@ GameObject:
   - component: {fileID: 1946887851}
   - component: {fileID: 1946887850}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JaugeActeurColere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72457,7 +72780,7 @@ GameObject:
   - component: {fileID: 1981672667}
   - component: {fileID: 1981672666}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleTristesse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73244,7 +73567,7 @@ GameObject:
   - component: {fileID: 2018427549}
   - component: {fileID: 2018427548}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: JaugeRoleDouceur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77029,7 +77352,7 @@ GameObject:
   - component: {fileID: 2143605166}
   - component: {fileID: 2143605165}
   m_Layer: 5
-  m_Name: StatJoie (7)
+  m_Name: StatConfiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77051,11 +77374,11 @@ RectTransform:
   - {fileID: 1609992883}
   - {fileID: 1340267433}
   m_Father: {fileID: 1688017292}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300.00015, y: -390}
+  m_AnchoredPosition: {x: 300, y: -390}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143605165
@@ -77078,7 +77401,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b8be5ace7c1b15478fd8689fe351084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0181011fdf8c7a14bb1d7e154b9a8579, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

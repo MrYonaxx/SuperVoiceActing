@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -42,15 +43,32 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleLine;
 
+        [Header("PanelFinal")]
+        [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
+        [SerializeField]
+        TextMeshProUGUI[] textStatsActor;
+        [SerializeField]
+        RectTransform[] jaugeStatsActor;
+
+        [SerializeField]
+        TextMeshProUGUI[] textStatsRole;
+        [SerializeField]
+        RectTransform[] jaugeStatsRole;
+
         [Header("Prefabs")]
         [SerializeField]
         ButtonPreparationRole[] listButtonRoles;
 
         [Header("MenuManagers")]
         [SerializeField]
+        CameraBureau cameraManager;
+        [SerializeField]
         Animator animatorMenu;
         [SerializeField]
         MenuContratManager menuContractManager;
+        [SerializeField]
+        MenuActorsManager menuActorsManager;
+
 
 
         // ===========================
@@ -102,6 +120,8 @@ namespace VoiceActing
 
         public void SwitchToMenuContractManager()
         {
+            menuActorsManager.AuditionMode(false, null);
+            StopAllCoroutines();
             menuContractManager.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
             animatorMenu.SetBool("Appear", false);
@@ -126,7 +146,6 @@ namespace VoiceActing
 
         private void DrawButtons()
         {
-            //VoiceActor tmp = null;
             for(int i = 0; i < listButtonRoles.Length; i++)
             {
                 if(i < currentContract.Characters.Count)
@@ -142,15 +161,110 @@ namespace VoiceActing
             }
 
             listButtonRoles[0].SelectButton();
+            indexSelected = 0;
+            //DrawRoleInfo();
 
         }
 
         private void DrawRoleInfo()
         {
+            // bug si appelé dans OnEnable(), les buttons sont encore considéré inactive
+            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+
             textRoleName.text = currentContract.Characters[indexSelected].Name;
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
             textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
+
+            DrawActorInfo();
+
+            if(currentContract.VoiceActors[indexSelected] == null)
+                DrawGaugeInfo(false);
+            else
+                DrawGaugeInfo(true);
         }
+
+
+        private void DrawActorInfo()
+        {
+
+        }
+
+        private void DrawGaugeInfo(bool hasActor)
+        {
+            StopAllCoroutines();
+            for (int i = 0; i < textStatsRole.Length; i++)
+            {
+                int currentStat = 0;
+                switch(i)
+                {
+                    case 0:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Joy;
+                        break;
+                    case 1:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Sadness;
+                        break;
+                    case 2:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Disgust;
+                        break;
+                    case 3:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Anger;
+                        break;
+                    case 4:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Surprise;
+                        break;
+                    case 5:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Sweetness;
+                        break;
+                    case 6:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Fear;
+                        break;
+                    case 7:
+                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Trust;
+                        break;
+                }
+                textStatsRole[i].text = currentStat.ToString();
+                StartCoroutine(GaugeCoroutine(jaugeStatsRole[i], currentStat / 100f));
+                //jaugeStatsRole[i].transform.localScale = new Vector3(currentStat / 100f, jaugeStatsRole[i].transform.localScale.y, jaugeStatsRole[i].transform.localScale.z);
+
+                if (hasActor == true)
+                {
+                    textStatsActor[i].text = currentStat.ToString();
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStat / 100f));
+                    //jaugeStatsActor[i].transform.localScale = new Vector3(currentStat / 100f, jaugeStatsRole[i].transform.localScale.y, jaugeStatsRole[i].transform.localScale.z);
+                }
+                else
+                {
+                    textStatsActor[i].text = "0";
+                    jaugeStatsActor[i].transform.localScale = new Vector3(0, jaugeStatsRole[i].transform.localScale.y, jaugeStatsRole[i].transform.localScale.z);
+                }
+            }
+        }
+
+        private IEnumerator GaugeCoroutine(RectTransform jaugeStat, float target, int time = 10)
+        {
+            if(jaugeStat.transform.localScale.x == target)
+            {
+                yield break;
+            }
+            Vector3 speed = new Vector3((target - jaugeStat.transform.localScale.x) / time, 0, 0);
+            while (time != 0)
+            {
+                time -= 1;
+                jaugeStat.transform.localScale += speed;
+                yield return null;
+            }
+        }
+
+
+
+
+
+        public void Validate()
+        {
+            cameraManager.MoveToCamera(1);
+        }
+
+
 
 
         // =================================================================

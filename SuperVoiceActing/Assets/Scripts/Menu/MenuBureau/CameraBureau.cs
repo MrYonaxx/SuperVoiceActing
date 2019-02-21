@@ -224,8 +224,16 @@ namespace VoiceActing
         }
 
 
-        public void MoveToCamera()
+
+
+
+        public void MoveToCamera(int newPos = -1)
         {
+            if(newPos != -1)
+            {
+                position = newPos;
+                ModifyAnglePosition(0);
+            }
 
             ActivateScreenManager(position);
 

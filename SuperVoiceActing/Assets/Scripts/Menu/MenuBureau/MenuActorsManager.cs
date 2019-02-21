@@ -51,6 +51,10 @@ namespace VoiceActing
         [SerializeField]
         private TextMeshProUGUI statFanActor;
 
+        [Header("Audition")]
+        [SerializeField]
+        GameObject auditionIndication;
+
         [Header("Tri")]
         [SerializeField]
         private bool croissant = true;
@@ -77,7 +81,14 @@ namespace VoiceActing
         // ===========================
 
 
+        [Header("MenuManagers")]
+        [SerializeField]
+        MenuContractPreparation menuContractPreparation;
+
         private List<ButtonVoiceActor> buttonsActors = new List<ButtonVoiceActor>();
+
+        private bool auditionMode = false;
+        private Role auditionRole = null;
 
 
 
@@ -112,7 +123,16 @@ namespace VoiceActing
             CreateFromDebugList();
             CreateActorsButtonList();
         }
-        
+
+
+        private void OnEnable()
+        {
+            if (auditionMode == true)
+                auditionIndication.SetActive(true);
+            else
+                auditionIndication.SetActive(false);
+        }
+
         private void CreateFromDebugList()
         {
             if(debugList != null)
@@ -151,7 +171,19 @@ namespace VoiceActing
 
 
 
+        public void AuditionMode(bool b, Role roleToAudition)
+        {
+            auditionMode = b;
+            if(b == true)
+                auditionRole = roleToAudition;
+        }
 
+        public void Validate()
+        {
+            if (auditionMode == false)
+                return;
+
+        }
 
 
         public void SelectActorUp()
@@ -200,7 +232,7 @@ namespace VoiceActing
 
         }
 
-
+        // ==================================================================================
         // Check si on peut repeter l'input
         private bool CheckRepeat()
         {
