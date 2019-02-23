@@ -58,7 +58,7 @@ namespace VoiceActing
             textRoleName.text = role.Name;
             if(voiceActor != null)
             {
-
+                DrawActor(voiceActor);
             }
             else
             {
@@ -70,7 +70,9 @@ namespace VoiceActing
 
         public void DrawActor(VoiceActor voiceActor)
         {
-
+            textActorName.text = voiceActor.Name;
+            textActorLevel.text = voiceActor.Level.ToString();
+            textActorHP.text = voiceActor.Hp.ToString();
         }
 
         public void SelectButton()

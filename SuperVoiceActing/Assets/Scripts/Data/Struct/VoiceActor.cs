@@ -125,7 +125,10 @@ namespace VoiceActing
             name = actorData.Name;
             level = actorData.Level;
             fan = actorData.Fan;
+            hp = actorData.Hp;
             actorSprite = actorData.ActorSprite;
+
+            statistique = actorData.Statistique;
         }
 
         #endregion

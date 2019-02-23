@@ -43,6 +43,10 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleLine;
 
+        [Header("InfoActeur")]
+        [SerializeField]
+        GameObject panelActor;
+
         [Header("PanelFinal")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
@@ -162,6 +166,7 @@ namespace VoiceActing
 
             listButtonRoles[0].SelectButton();
             indexSelected = 0;
+            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
             //DrawRoleInfo();
 
         }
@@ -173,20 +178,28 @@ namespace VoiceActing
 
             textRoleName.text = currentContract.Characters[indexSelected].Name;
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
-            textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
+            textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();          
 
-            DrawActorInfo();
-
-            if(currentContract.VoiceActors[indexSelected] == null)
+            if (currentContract.VoiceActors[indexSelected] == null)
+            {
+                DrawActorInfo(false);
                 DrawGaugeInfo(false);
+            }
             else
+            {
+                DrawActorInfo(true);
                 DrawGaugeInfo(true);
+            }
         }
 
 
-        private void DrawActorInfo()
+        private void DrawActorInfo(bool hasActor)
         {
+            panelActor.SetActive(hasActor);
+            if (hasActor == true)
+            {
 
+            }
         }
 
         private void DrawGaugeInfo(bool hasActor)
@@ -194,43 +207,69 @@ namespace VoiceActing
             StopAllCoroutines();
             for (int i = 0; i < textStatsRole.Length; i++)
             {
-                int currentStat = 0;
-                switch(i)
+                int currentStatRole = 0;
+                switch (i)
                 {
                     case 0:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Joy;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Joy;
                         break;
                     case 1:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Sadness;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Sadness;
                         break;
                     case 2:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Disgust;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Disgust;
                         break;
                     case 3:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Anger;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Anger;
                         break;
                     case 4:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Surprise;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Surprise;
                         break;
                     case 5:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Sweetness;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Sweetness;
                         break;
                     case 6:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Fear;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Fear;
                         break;
                     case 7:
-                        currentStat = currentContract.Characters[indexSelected].CharacterStat.Trust;
+                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Trust;
                         break;
                 }
-                textStatsRole[i].text = currentStat.ToString();
-                StartCoroutine(GaugeCoroutine(jaugeStatsRole[i], currentStat / 100f));
-                //jaugeStatsRole[i].transform.localScale = new Vector3(currentStat / 100f, jaugeStatsRole[i].transform.localScale.y, jaugeStatsRole[i].transform.localScale.z);
+                textStatsRole[i].text = currentStatRole.ToString();
+                StartCoroutine(GaugeCoroutine(jaugeStatsRole[i], currentStatRole / 100f));
 
                 if (hasActor == true)
                 {
-                    textStatsActor[i].text = currentStat.ToString();
-                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStat / 100f));
-                    //jaugeStatsActor[i].transform.localScale = new Vector3(currentStat / 100f, jaugeStatsRole[i].transform.localScale.y, jaugeStatsRole[i].transform.localScale.z);
+                    int currentStatActor = 0;
+                    switch (i)
+                    {
+                        case 0:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Joy;
+                            break;
+                        case 1:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Sadness;
+                            break;
+                        case 2:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Disgust;
+                            break;
+                        case 3:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Anger;
+                            break;
+                        case 4:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Surprise;
+                            break;
+                        case 5:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Sweetness;
+                            break;
+                        case 6:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Fear;
+                            break;
+                        case 7:
+                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Trust;
+                            break;
+                    }
+                    textStatsActor[i].text = currentStatActor.ToString();
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
                 }
                 else
                 {
@@ -261,10 +300,16 @@ namespace VoiceActing
 
         public void Validate()
         {
+            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
             cameraManager.MoveToCamera(1);
         }
 
-
+        public void SetActor(VoiceActor actor)
+        {
+            currentContract.VoiceActors[indexSelected] = actor;
+            DrawRoleInfo();
+            listButtonRoles[indexSelected].DrawActor(actor);
+        }
 
 
         // =================================================================

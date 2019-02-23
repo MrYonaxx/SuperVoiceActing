@@ -61,8 +61,8 @@ namespace VoiceActing
             set { hp = value; }
         }
 
-        [MinValue(-100), MaxValue(100)]
-        [MinMaxSlider(-100, 100)]
+        [MinValue(-10), MaxValue(10)]
+        [MinMaxSlider(-10, 10)]
         [SerializeField]
         private Vector2 timbre;
         public Vector2 Timbre
