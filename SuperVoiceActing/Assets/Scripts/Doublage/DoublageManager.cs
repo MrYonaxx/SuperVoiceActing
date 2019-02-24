@@ -25,7 +25,7 @@ namespace VoiceActing
         \* ======================================== */
         [Header("Contrat")]
         [SerializeField]
-        protected ContractData contrat;
+        protected ContractData contratData;
 
         [Header("Contrat")]
         [SerializeField]
@@ -70,6 +70,18 @@ namespace VoiceActing
         [SerializeField]
         protected TextMeshProUGUI textDemo;
 
+        [Header("IntroSequence")]
+        [SerializeField]
+        CharacterDialogueController introText;
+        [SerializeField]
+        GameObject textIntro;
+        [SerializeField]
+        Image introBlackScreen;
+        [SerializeField]
+        Animator[] animatorsIntro;
+        [SerializeField]
+        protected AudioSource audioSourceBattleTheme;
+
         [Header("AudioSource")]
         [SerializeField]
         protected AudioSource audioSourceKillPhrase;
@@ -103,6 +115,8 @@ namespace VoiceActing
         protected bool startLine = true;
         protected bool reprintText = true;
 
+        protected Contract contrat;
+
         int turnCount = 15;
 
         #endregion
@@ -129,12 +143,15 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
+            if (contratData != null)
+                contrat = new Contract(contratData);
+
             if (timer != null)
                 timer.SetTurn(turnCount);
             if (maxLineNumber != null)
-                maxLineNumber.text = (contrat.TextData.Length-1).ToString();
+                maxLineNumber.text = (contrat.TextData.Count).ToString();
             if (currentLineNumber != null)
-                currentLineNumber.text = indexPhrase.ToString();
+                currentLineNumber.text = (indexPhrase+1).ToString();
             StartCoroutine(IntroductionSequence());
         }
         
@@ -142,11 +159,29 @@ namespace VoiceActing
         {
             //
             yield return null;
-            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            //enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             if (CheckEvent() == false)
             {
-                cameraController.MoveToInitialPosition();
+                yield return new WaitForSeconds(1);
+                introText.SetPhraseTextacting("25 Février", 0);
+                yield return new WaitForSeconds(1.5f);
+                introText.SetPhraseTextacting(contrat.Name, 0);
+                yield return new WaitForSeconds(3);
+                textIntro.SetActive(false);
+                yield return new WaitForSeconds(1f);
+                introBlackScreen.gameObject.SetActive(false);
+                introBlackScreen.enabled = false;
+                audioSourceBattleTheme.enabled = true;
+                //FeedbackNewLine();
+                for (int i = 0; i < animatorsIntro.Length; i++)
+                {
+                    animatorsIntro[i].enabled = true;
+                }
+                yield return new WaitForSeconds(1);
+                cameraController.MoveToInitialPosition(300);
+                yield return new WaitForSeconds(1);
                 emotionAttackManager.SwitchCardTransformIntro();
+                yield return new WaitForSeconds(0.5f);
                 SetPhrase();
             }
             startLine = false;
@@ -225,8 +260,9 @@ namespace VoiceActing
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
+                    indexPhrase += 1;
                     if (currentLineNumber != null)
-                        currentLineNumber.text = indexPhrase.ToString();
+                        currentLineNumber.text = (indexPhrase+1).ToString();
                     inputController.gameObject.SetActive(false);
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
@@ -234,10 +270,10 @@ namespace VoiceActing
                     textAppearManager.HideUIButton();
                     //textAppearManager.ExplodeLetter();
 
-                    indexPhrase += 1;
+                    //indexPhrase += 1;
                     reprintText = true;
                     startLine = true;
-                    if (indexPhrase < contrat.TextData.Length)
+                    if (indexPhrase < contrat.TextData.Count)
                         enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
                     if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
@@ -274,7 +310,7 @@ namespace VoiceActing
             indexPhrase += 1;
             reprintText = true;
             startLine = true;
-            if(indexPhrase < contrat.TextData.Length)
+            if(indexPhrase < contrat.TextData.Count)
                 enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
             if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
@@ -285,7 +321,7 @@ namespace VoiceActing
         // Affiche la phrase
         public virtual void SetPhrase()
         {
-            if (indexPhrase == contrat.TextData.Length)
+            if (indexPhrase == contrat.TextData.Count)
             {
                 EndSession();
                 return;
@@ -346,7 +382,7 @@ namespace VoiceActing
             if (feedbackLine == null)
                 return;
             enemyManager.ResetHalo();
-            textMeshLine.text = (contrat.TextData.Length - indexPhrase).ToString();
+            textMeshLine.text = (contrat.TextData.Count - indexPhrase).ToString();
             textMeshTurn.text = turnCount.ToString();
             feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
             feedbackLine.SetActive(true);

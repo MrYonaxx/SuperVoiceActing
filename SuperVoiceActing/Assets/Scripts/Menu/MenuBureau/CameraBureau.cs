@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 using Sirenix;
+using UnityEngine.SceneManagement;
 
 namespace VoiceActing
 {
@@ -321,6 +322,13 @@ namespace VoiceActing
                 }
                 this.transform.localEulerAngles += new Vector3(angleX, angleY, angleZ);
                 this.transform.localPosition /= speedCoroutine;
+                if(Mathf.Abs(this.transform.localPosition.x) < 0.01f &&
+                   Mathf.Abs(this.transform.localPosition.y) < 0.01f &&
+                   Mathf.Abs(this.transform.localPosition.z) < 0.01f)
+                {
+                    this.transform.localPosition = Vector3.zero;
+                }
+
 
                 yield return null;
             }
@@ -373,6 +381,21 @@ namespace VoiceActing
 
         }
 
+
+
+        public void TransitionDoublage()
+        {
+            if (zoomed == false)
+            {
+                ChangeOrthographicSize(-30);
+            }
+            animatorHUD.SetTrigger("Hide");
+        }
+
+        public void GoToDoublage()
+        {
+            SceneManager.LoadScene("Doublage");
+        }
 
         #endregion
 

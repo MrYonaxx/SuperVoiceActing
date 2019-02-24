@@ -41,6 +41,14 @@ namespace VoiceActing
             set { fan = value; }
         }
 
+        [SerializeField]
+        private int price;
+        public int Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
+
         [Header(" Statistiques")]
         [SerializeField]
         private int level;
@@ -125,6 +133,7 @@ namespace VoiceActing
             name = actorData.Name;
             level = actorData.Level;
             fan = actorData.Fan;
+            price = actorData.Price;
             hp = actorData.Hp;
             actorSprite = actorData.ActorSprite;
 

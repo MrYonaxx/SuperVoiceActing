@@ -55,6 +55,8 @@ namespace VoiceActing
         private TextMeshProUGUI statLevelActor;
         [SerializeField]
         private TextMeshProUGUI statFanActor;
+        [SerializeField]
+        private TextMeshProUGUI statPriceActor;
 
         [Header("Stats Panel")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
@@ -70,6 +72,16 @@ namespace VoiceActing
         [Header("Audition")]
         [SerializeField]
         GameObject auditionIndication;
+        [SerializeField]
+        TextMeshProUGUI textContractName;
+        [SerializeField]
+        TextMeshProUGUI textRoleName;
+        [SerializeField]
+        TextMeshProUGUI textRoleFan;
+        [SerializeField]
+        TextMeshProUGUI textRoleLine;
+        [SerializeField]
+        TextMeshProUGUI textRoleCostEstimate;
 
         [Header("Tri")]
         [SerializeField]
@@ -157,6 +169,11 @@ namespace VoiceActing
                 
         }
 
+        private void OnDisable()
+        {
+            auditionIndication.SetActive(false);
+        }
+
         private void CreateFromDebugList()
         {
             if(debugList != null)
@@ -175,10 +192,18 @@ namespace VoiceActing
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
                 buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level);
             }
-            if(indexActorSelected < actorsList.Count)
-                buttonsActors[indexActorSelected].SelectButton();
+            if (indexActorSelected < actorsList.Count)
+                StartCoroutine(WaitEndOfFrame());
 
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
+        }
+
+        private IEnumerator WaitEndOfFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            DrawActorStat(actorsList[indexActorSelected]);
+            buttonsActors[indexActorSelected].SelectButton();
+            this.gameObject.SetActive(false);
         }
 
         private void DrawActorStat(VoiceActor actor)
@@ -198,8 +223,12 @@ namespace VoiceActing
 
             statLevelActor.text = actor.Level.ToString();
             statFanActor.text = actor.Fan.ToString();
+            statPriceActor.text = actor.Price.ToString();
 
             DrawGaugeInfo(actor);
+
+            if(auditionMode == true)
+                CalculateAudtionEstimate();
         }
 
 
@@ -307,6 +336,12 @@ namespace VoiceActing
 
 
 
+
+
+
+        // =======================================================================
+        // Audition
+
         public void AuditionMode(bool b, Role roleToAudition)
         {
             if (auditionMode == false && b == true)
@@ -319,6 +354,7 @@ namespace VoiceActing
             if (b == true)
             {
                 auditionRole = roleToAudition;
+                DrawAuditionInfo(roleToAudition);
             }
         }
 
@@ -342,6 +378,32 @@ namespace VoiceActing
             }
         }
 
+        private void DrawAuditionInfo(Role role)
+        {
+            textRoleName.text = role.Name;
+            textRoleFan.text = role.Fan.ToString();
+            textRoleLine.text = role.Line.ToString();
+            CalculateAudtionEstimate();
+        }
+
+        public void DrawAuditionTitle(string title)
+        {
+            textContractName.text = title;
+        }
+
+        private void CalculateAudtionEstimate()
+        {
+            textRoleCostEstimate.text = (auditionRole.Line * actorsList[indexActorSelected].Price).ToString();
+        }
+
+
+
+
+
+
+        // ==================================================================================
+        // Commandes
+
         public void Validate()
         {
             if (auditionMode == false)
@@ -352,9 +414,11 @@ namespace VoiceActing
 
         }
 
+        public void Return()
+        {
+            cameraManager.MoveToCamera(2);
+        }
 
-
-        // ==================================================================================
         public void SelectActorUp()
         {
             if(lastDirection != 8)

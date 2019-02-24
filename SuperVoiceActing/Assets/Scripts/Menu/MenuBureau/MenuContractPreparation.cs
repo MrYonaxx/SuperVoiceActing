@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
 
@@ -46,6 +47,16 @@ namespace VoiceActing
         [Header("InfoActeur")]
         [SerializeField]
         GameObject panelActor;
+        [SerializeField]
+        TextMeshProUGUI textActorName;
+        [SerializeField]
+        TextMeshProUGUI textActorFan;
+        [SerializeField]
+        TextMeshProUGUI textActorCost;
+        [SerializeField]
+        TextMeshProUGUI textActorLevel;
+        [SerializeField]
+        Image imageActorSprite;
 
         [Header("PanelFinal")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
@@ -120,6 +131,7 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
+            StartCoroutine(WaitEndOfFrame());
         }
 
         public void SwitchToMenuContractManager()
@@ -134,6 +146,7 @@ namespace VoiceActing
         public void SetContract(Contract contract)
         {
             currentContract = contract;
+            menuActorsManager.DrawAuditionTitle(contract.Name);
             DrawContractInfo();
             DrawButtons();
         }
@@ -164,11 +177,16 @@ namespace VoiceActing
                 }
             }
 
+            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+
+        }
+
+        private IEnumerator WaitEndOfFrame()
+        {
+            yield return new WaitForEndOfFrame();
             listButtonRoles[0].SelectButton();
             indexSelected = 0;
-            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
-            //DrawRoleInfo();
-
+            DrawRoleInfo();
         }
 
         private void DrawRoleInfo()
@@ -198,7 +216,11 @@ namespace VoiceActing
             panelActor.SetActive(hasActor);
             if (hasActor == true)
             {
-
+                textActorName.text = currentContract.VoiceActors[indexSelected].Name;
+                textActorFan.text = currentContract.VoiceActors[indexSelected].Fan.ToString();
+                textActorCost.text = currentContract.VoiceActors[indexSelected].Price.ToString();
+                textActorLevel.text = currentContract.VoiceActors[indexSelected].Level.ToString();
+                imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].ActorSprite;
             }
         }
 
@@ -308,7 +330,7 @@ namespace VoiceActing
         {
             currentContract.VoiceActors[indexSelected] = actor;
             DrawRoleInfo();
-            listButtonRoles[indexSelected].DrawActor(actor);
+            listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
         }
 
 

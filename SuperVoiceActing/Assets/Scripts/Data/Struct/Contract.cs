@@ -108,10 +108,17 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<TextDataContract> textData = new List<TextDataContract>();
-        public List<TextDataContract> TextData
+        private List<TextData> textData = new List<TextData>();
+        public List<TextData> TextData
         {
             get { return textData; }
+        }
+
+        [SerializeField]
+        private DoublageEventData[] eventData;
+        public DoublageEventData[] EventData
+        {
+            get { return eventData; }
         }
 
         #endregion
@@ -145,10 +152,11 @@ namespace VoiceActing
         {
             this.name = data.Name;
             this.level = data.Level;
-            this.money = data.SalaryMin + (Random.Range(0, data.SalaryMax - data.SalaryMin / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
-            this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax);
-            this.totalMixing = Random.Range(data.MixingMin, data.MixingMax);
+            this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
+            this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax+1);
+            this.totalMixing = Random.Range(data.MixingMin, data.MixingMax+1);
 
+            this.eventData = data.EventData;
 
             // Select Characters -------------------------------------------------------
             for (int i = 0; i < data.Characters.Length; i++)
@@ -179,7 +187,7 @@ namespace VoiceActing
 
             for (int i = 0; i < data.TextDataContract.Length; i++)
             {
-                int nbSelection = Random.Range(data.TextDataContract[i].NbPhraseMin, data.TextDataContract[i].NbPhraseMax);
+                int nbSelection = Random.Range(data.TextDataContract[i].NbPhraseMin, data.TextDataContract[i].NbPhraseMax+1);
                 if (nbSelection > 0)
                 {
                     // Copie des possibilité de text Data
@@ -192,7 +200,7 @@ namespace VoiceActing
                     for (int n = 0; n < nbSelection; n++)
                     {
                         int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
-                        textData.Add(listTextDataPossibilities[indexRandom]);
+                        textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
                         Debug.Log(listTextDataPossibilities[indexRandom].Text);
                         listTextDataPossibilities.RemoveAt(indexRandom);
                     }

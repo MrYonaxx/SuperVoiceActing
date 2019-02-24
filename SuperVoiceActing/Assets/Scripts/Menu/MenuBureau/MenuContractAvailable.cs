@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 namespace VoiceActing
 {
 	public class MenuContractAvailable : MonoBehaviour
@@ -110,6 +111,8 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
+            if (listContractAvailable.Count != 0)
+                SelectButton();
             //indexSelected = 0;
             //SelectButton();
         }
@@ -119,8 +122,6 @@ namespace VoiceActing
             indexLimit = scrollSize;
             listContractAvailable.Add(new Contract(contractDatabase[0]));
             listContractAvailable.Add(new Contract(contractDatabase[1]));
-            //listContractAvailable.Add(new Contract(contractDatabase[0]));
-            //listContractAvailable.Add(new Contract(contractDatabase[0]));
             CreateListButton();
         }
 
@@ -131,6 +132,13 @@ namespace VoiceActing
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
                 buttonsContracts[i].DrawButton(listContractAvailable[i].Name);
             }
+            StartCoroutine(WaitEndOfFrame());
+        }
+
+        private IEnumerator WaitEndOfFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            SelectButton();
         }
 
         private void RedrawListButton()
@@ -202,6 +210,11 @@ namespace VoiceActing
                 Destroy(buttonsContracts[indexSelected].gameObject);
                 buttonsContracts.RemoveAt(indexSelected);
                 //RedrawListButton(indexSelected);
+                indexSelected -= 1;
+                if(indexSelected < 0)
+                {
+                    indexSelected = 0;
+                }
                 animatorSelection.SetTrigger("Validate");
                 StartCoroutine(WaitValidate(0.2f));
             }

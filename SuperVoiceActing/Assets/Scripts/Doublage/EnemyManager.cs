@@ -19,6 +19,14 @@ namespace VoiceActing
     public class TextData
     {
         [SerializeField]
+        private int interlocuteur;
+        public int Interlocuteur
+        {
+            get { return interlocuteur; }
+            set { interlocuteur = value; }
+        }
+
+        [SerializeField]
         private int hpMax;
         public int HPMax
         {
@@ -54,6 +62,15 @@ namespace VoiceActing
         {
             get { return enemyWeakPoints; }
             set { enemyWeakPoints = value; }
+        }
+
+        public TextData(TextDataContract data)
+        {
+            interlocuteur = data.InterlocuteurID;
+            hpMax = Random.Range(data.HPMin, data.HPMax);
+            text = data.Text;
+            enemyResistance = data.EnemyResistance;
+            enemyWeakPoints = data.EnemyWeakPoints;
         }
 
     }

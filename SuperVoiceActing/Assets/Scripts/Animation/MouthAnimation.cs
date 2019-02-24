@@ -52,7 +52,9 @@ public class MouthAnimation : MonoBehaviour
     {
         if (mouthCoroutine != null)
             StopCoroutine(mouthCoroutine);
-        spriteRenderer.sprite = mouthmovement[0];
+
+        if(spriteRenderer != null)
+            spriteRenderer.sprite = mouthmovement[0];
 
         if(soundVisualizer != null)
             soundVisualizer.StopVisualizer();
@@ -97,7 +99,8 @@ public class MouthAnimation : MonoBehaviour
             voice.pitch = Random.Range(0.95f, 1.05f);
             voice.Play();
         }
-        spriteRenderer.sprite = mouthmovement[index];
+        if(index < mouthmovement.Length)
+            spriteRenderer.sprite = mouthmovement[index];
 	}
 
     public void ChangeOrderInLayer(int newOrder)

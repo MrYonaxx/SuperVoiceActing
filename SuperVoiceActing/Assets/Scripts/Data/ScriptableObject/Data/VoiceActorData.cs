@@ -39,6 +39,14 @@ namespace VoiceActing
             set { fan = value; }
         }
 
+        [SerializeField]
+        private int price;
+        public int Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
+
 
 
 
@@ -61,11 +69,10 @@ namespace VoiceActing
             set { hp = value; }
         }
 
-        [MinValue(-10), MaxValue(10)]
         [MinMaxSlider(-10, 10)]
         [SerializeField]
-        private Vector2 timbre;
-        public Vector2 Timbre
+        private Vector2Int timbre;
+        public Vector2Int Timbre
         {
             get { return timbre; }
             set { timbre = value; }
@@ -176,6 +183,22 @@ namespace VoiceActing
         {
             get { return actorSprite; }
             set { actorSprite = value; }
+        }
+
+        [SerializeField]
+        private Sprite actorIcon;
+        public Sprite ActorIcon
+        {
+            get { return actorIcon; }
+            set { actorIcon = value; }
+        }
+
+        [SerializeField]
+        private Sprite actorContractIcon;
+        public Sprite ActorContractIcon
+        {
+            get { return actorContractIcon; }
+            set { actorContractIcon = value; }
         }
 
         #endregion

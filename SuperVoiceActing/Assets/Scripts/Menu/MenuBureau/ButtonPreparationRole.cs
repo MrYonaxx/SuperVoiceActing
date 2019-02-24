@@ -36,6 +36,11 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorOutline;
 
+        [SerializeField]
+        GameObject panelActor;
+        [SerializeField]
+        GameObject panelNoActor;
+
         #endregion
 
         #region GettersSetters 
@@ -58,21 +63,23 @@ namespace VoiceActing
             textRoleName.text = role.Name;
             if(voiceActor != null)
             {
-                DrawActor(voiceActor);
+                DrawActor(role, voiceActor);
             }
             else
             {
-                textActorName.text = "";
-                textActorLevel.text = "   [ AUDITION ]";
-                textActorHP.text = "";
+                panelActor.SetActive(false);
+                panelNoActor.SetActive(true);
             }
         }
 
-        public void DrawActor(VoiceActor voiceActor)
+        public void DrawActor(Role role, VoiceActor voiceActor)
         {
+            panelNoActor.SetActive(false);
+            panelActor.SetActive(true);
             textActorName.text = voiceActor.Name;
             textActorLevel.text = voiceActor.Level.ToString();
             textActorHP.text = voiceActor.Hp.ToString();
+            textActorCost.text = (role.Line * voiceActor.Price).ToString();
         }
 
         public void SelectButton()

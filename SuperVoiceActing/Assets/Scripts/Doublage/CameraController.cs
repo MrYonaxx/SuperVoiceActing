@@ -120,9 +120,9 @@ namespace VoiceActing
             }
         }
 
-        public void MoveToInitialPosition()
+        public void MoveToInitialPosition(int time = 180)
         {
-            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
+            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, time);
         }
 
 
