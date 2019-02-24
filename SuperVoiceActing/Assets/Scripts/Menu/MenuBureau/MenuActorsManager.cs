@@ -61,6 +61,10 @@ namespace VoiceActing
         [Header("Stats Panel")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
+        GameObject representation1;
+        [SerializeField]
+        Image[] imageStatIcon;
+        [SerializeField]
         TextMeshProUGUI[] textStatsActor;
         [SerializeField]
         RectTransform[] jaugeStatsActor;
@@ -68,6 +72,21 @@ namespace VoiceActing
         TextMeshProUGUI[] textStatsRole;
         [SerializeField]
         RectTransform[] jaugeStatsRole;
+
+        [Header("Stats Gauge")]
+        [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
+        [SerializeField]
+        GameObject representation2;
+        [SerializeField]
+        Image[] imageStatIcon2;
+        [SerializeField]
+        TextMeshProUGUI[] textStatsActor2;
+        [SerializeField]
+        RectTransform[] jaugeStatsActor2;
+        [SerializeField]
+        TextMeshProUGUI[] textStatsRole2;
+        [SerializeField]
+        RectTransform[] jaugeStatsRole2;
 
         [Header("Audition")]
         [SerializeField]
@@ -119,6 +138,8 @@ namespace VoiceActing
 
         private bool auditionMode = false;
         private Role auditionRole = null;
+
+        private bool gaugeCursorMode = false;
 
 
 
@@ -267,8 +288,69 @@ namespace VoiceActing
                         break;
                 }
 
-                textStatsActor[i].text = currentStatActor.ToString();
-                StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
+
+                if (gaugeCursorMode == false)
+                {
+
+                    textStatsActor[i].text = currentStatActor.ToString();
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
+                }
+                else
+                {
+
+                    textStatsActor2[i].text = currentStatActor.ToString();
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], currentStatActor / 100f));
+                }
+
+
+
+
+                if (auditionMode == true)
+                {
+                    int currentStatRole = 0;
+                    switch (i)
+                    {
+                        case 0:
+                            currentStatRole = auditionRole.CharacterStat.Joy;
+                            break;
+                        case 1:
+                            currentStatRole = auditionRole.CharacterStat.Sadness;
+                            break;
+                        case 2:
+                            currentStatRole = auditionRole.CharacterStat.Disgust;
+                            break;
+                        case 3:
+                            currentStatRole = auditionRole.CharacterStat.Anger;
+                            break;
+                        case 4:
+                            currentStatRole = auditionRole.CharacterStat.Surprise;
+                            break;
+                        case 5:
+                            currentStatRole = auditionRole.CharacterStat.Sweetness;
+                            break;
+                        case 6:
+                            currentStatRole = auditionRole.CharacterStat.Fear;
+                            break;
+                        case 7:
+                            currentStatRole = auditionRole.CharacterStat.Trust;
+                            break;
+                    }
+                    if (gaugeCursorMode == false)
+                    {
+                        if (currentStatActor > currentStatRole)
+                            imageStatIcon[i].color = new Color(0, 1, 0);
+                        else
+                            imageStatIcon[i].color = new Color(1, 1, 1);
+                    }
+                    else
+                    {
+                        if (currentStatActor > currentStatRole)
+                            imageStatIcon2[i].color = new Color(0, 1, 0);
+                        else
+                            imageStatIcon2[i].color = new Color(1, 1, 1);
+                    }
+                }
+
             }
         }
 
@@ -304,8 +386,15 @@ namespace VoiceActing
                         currentStatRole = auditionRole.CharacterStat.Trust;
                         break;
                 }
-                textStatsRole[i].text = currentStatRole.ToString();
-                jaugeStatsRole[i].transform.localScale = new Vector3(currentStatRole / 100f, 1, 1);
+                if (gaugeCursorMode == false)
+                {
+                    textStatsRole[i].text = currentStatRole.ToString();
+                    jaugeStatsRole[i].transform.localScale = new Vector3(currentStatRole / 100f, 1, 1);
+                }
+                else
+                {
+                    jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / 100f) * 750, 0);
+                }
             }
         }
 
@@ -316,16 +405,16 @@ namespace VoiceActing
             {
                 yield break;
             }
-            int time2 = time/2;
+            /*int time2 = time/2;
             Vector3 speed = new Vector3((1 - jaugeStat.transform.localScale.x) / Random.Range(time/2,time*1.5f), 0, 0);
             while (time2 != 0)
             {
                 time2 -= 1;
                 jaugeStat.transform.localScale += speed;
                 yield return null;
-            }
+            }*/
 
-            speed = new Vector3((target - jaugeStat.transform.localScale.x) / time, 0, 0);
+            Vector3 speed = new Vector3((target - jaugeStat.transform.localScale.x) / time, 0, 0);
             while (time != 0)
             {
                 time -= 1;
@@ -360,20 +449,40 @@ namespace VoiceActing
 
         private void ChangeStatForAudition(bool hideRole)
         {
-            if (hideRole == false)
+            if (gaugeCursorMode == false)
             {
-                for (int i = 0; i < textStatsActor.Length; i++)
+                if (hideRole == false)
                 {
-                    textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, 10);
-                    textStatsRole[i].transform.localScale = new Vector3(1, 1, 1);
+                    for (int i = 0; i < textStatsActor.Length; i++)
+                    {
+                        textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, 10);
+                        textStatsRole[i].transform.localScale = new Vector3(1, 1, 1);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < textStatsActor.Length; i++)
+                    {
+                        textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, -10);
+                        textStatsRole[i].transform.localScale = new Vector3(1, 0, 1);
+                    }
                 }
             }
             else
             {
-                for (int i = 0; i < textStatsActor.Length; i++)
+                if (hideRole == false)
                 {
-                    textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, -10);
-                    textStatsRole[i].transform.localScale = new Vector3(1, 0, 1);
+                    for (int i = 0; i < textStatsActor.Length; i++)
+                    {
+                        jaugeStatsRole2[i].transform.localScale = new Vector3(1, 1, 1);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < textStatsActor.Length; i++)
+                    {
+                        jaugeStatsRole2[i].transform.localScale = new Vector3(1, 0, 1);
+                    }
                 }
             }
         }
@@ -417,6 +526,24 @@ namespace VoiceActing
         public void Return()
         {
             cameraManager.MoveToCamera(2);
+        }
+
+        public void ChangeRepresentation()
+        {
+            gaugeCursorMode = !gaugeCursorMode;
+            if (gaugeCursorMode == true)
+            {
+                representation1.SetActive(false);
+                representation2.SetActive(true);
+            }
+            else
+            {
+                representation1.SetActive(true);
+                representation2.SetActive(false);
+            }
+            DrawActorStat(actorsList[indexActorSelected]);
+            if (auditionMode == true)
+                DrawGaugeRoleInfo();
         }
 
         public void SelectActorUp()

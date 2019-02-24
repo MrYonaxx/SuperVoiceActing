@@ -59,6 +59,15 @@ namespace VoiceActing
             set { characterStat = value; }
         }
 
+        [SerializeField]
+        private int bestStat;
+        public int BestStat
+        {
+            get { return bestStat; }
+        }
+
+
+
         #endregion
 
         #region GettersSetters 
@@ -97,6 +106,48 @@ namespace VoiceActing
                                     Random.Range(data.CharacterStatMin.Fear, data.CharacterStatMax.Fear),
                                     Random.Range(data.CharacterStatMin.Trust, data.CharacterStatMax.Trust)
                                  );
+
+
+
+            /*int[] bestValues = new int[8];
+
+            bestValues[0] = characterStat.Joy;
+            bestValues[1] = characterStat.Sadness;
+            bestValues[2] = characterStat.Disgust;
+            bestValues[3] = characterStat.Anger;
+            bestValues[4] = characterStat.Surprise;
+            bestValues[5] = characterStat.Sweetness;
+            bestValues[6] = characterStat.Fear;
+            bestValues[7] = characterStat.Trust;
+
+            int best = 0;
+            int secondBest = 0;
+
+            for (int i = 0; i < bestValues.Length; i++)
+            {
+                if (bestValues[i] > best)
+                {
+                    secondBest = best;
+                    best = bestValues[i];
+                }
+                else if (bestValues[i] > secondBest)
+                {
+                    secondBest = bestValues[i];
+                }
+            }
+
+            for (int i = 0; i < bestValues.Length; i++)
+            {
+                if (bestValues[i] == best || bestValues[i] == secondBest)
+                {
+
+                }
+                else
+                {
+
+                }
+            }*/
+
 
         }
 
