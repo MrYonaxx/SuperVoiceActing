@@ -64,7 +64,7 @@ namespace VoiceActing
         [SerializeField]
         Image[] imageStatIcon;
         [SerializeField]
-        GameObject[] feedbackBestStat;
+        Image[] feedbackBestStat;
 
         [Header("Stats Panel 1")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
@@ -348,11 +348,13 @@ namespace VoiceActing
 
                     if (currentStatActor >= currentStatRole)
                     {
+                        feedbackBestStat[i].color = new Color(1, 1, 0, 0.5f);
                         imageStatIcon[i].color = new Color(1, 1, 0);
                         jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
                     }
                     else
                     {
+                        feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
                         imageStatIcon[i].color = new Color(1, 1, 1);
                         jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                     }
@@ -401,16 +403,16 @@ namespace VoiceActing
                 }
                 else
                 {
-                    jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / 100f) * 750, 0);
+                    jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / 100f) * 500, 0);
                 }
 
                 if(currentStatRole == auditionRole.BestStat || currentStatRole == auditionRole.SecondBestStat)
                 {
-                    feedbackBestStat[i].SetActive(true);
+                    feedbackBestStat[i].gameObject.SetActive(true);
                 }
                 else
                 {
-                    feedbackBestStat[i].SetActive(false);
+                    feedbackBestStat[i].gameObject.SetActive(false);
                 }
             }
         }
@@ -479,7 +481,7 @@ namespace VoiceActing
             {
                 for (int i = 0; i < textStatsActor.Length; i++)
                 {
-                    feedbackBestStat[i].SetActive(false);
+                    feedbackBestStat[i].gameObject.SetActive(false);
                     textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, -10);
                     textStatsRole[i].transform.localScale = new Vector3(1, 0, 1);
                     jaugeStatsRole2[i].transform.localScale = new Vector3(1, 0, 1);
