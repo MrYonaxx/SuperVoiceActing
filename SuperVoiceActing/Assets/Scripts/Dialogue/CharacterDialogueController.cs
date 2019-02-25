@@ -57,7 +57,7 @@ namespace VoiceActing
         {
             textActing.NewMouthAnim(mouth);
             textActing.NewPhrase(newText);
-            if(cameraID != 0)
+            if (cameraID != 0)
                 camera.CinematicCamera(cameraID);
         }
 
@@ -132,8 +132,27 @@ namespace VoiceActing
             mouth.ChangeOrderInLayer(newOrder + 1);
         }
 
+        [ContextMenu("Shake")]
+        public void Shake()
+        {
+            StartCoroutine(ShakeCoroutine(0.06f, 60));
+        }
+
+        private IEnumerator ShakeCoroutine(float intensity, float time)
+        {
+            Vector3 origin = this.transform.position;
+            while (time != 0)
+            {
+                time -= 1;
+                this.transform.position = origin + new Vector3(Random.Range(-intensity, intensity), Random.Range(-intensity, intensity), Random.Range(-intensity, intensity));
+                intensity *= 0.9f;
+                yield return null;
+            }
+            this.transform.position = origin;
+        }
+
         #endregion
 
-    } // CharacterDialogueController class
+        } // CharacterDialogueController class
 
 } // #PROJECTNAME# namespace

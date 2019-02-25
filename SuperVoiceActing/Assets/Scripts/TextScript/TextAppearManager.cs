@@ -210,6 +210,7 @@ namespace VoiceActing
             yield return null;
             while (currentText.GetEndLine() == false)
             {
+                
                 yield return null;
             }
             StartCoroutine(MoveUIButton(buttonUIA, -500));

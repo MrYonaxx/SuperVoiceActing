@@ -42,6 +42,8 @@ namespace VoiceActing
         [SerializeField]
         protected EnemyManager enemyManager;
         [SerializeField]
+        protected ActorsManager actorsManager;
+        [SerializeField]
         protected SkillManager skillManager;
         [SerializeField]
         protected TextAppearManager textAppearManager;
@@ -159,7 +161,9 @@ namespace VoiceActing
         {
             //
             yield return null;
-            //enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            actorsManager.SetActors(contrat.VoiceActors);
+            //
             if (CheckEvent() == false)
             {
                 yield return new WaitForSeconds(1);
