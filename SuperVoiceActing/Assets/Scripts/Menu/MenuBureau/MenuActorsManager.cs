@@ -57,6 +57,8 @@ namespace VoiceActing
         private TextMeshProUGUI statFanActor;
         [SerializeField]
         private TextMeshProUGUI statPriceActor;
+        [SerializeField]
+        private RectTransform statTimbre;
 
         [Header("Stats Panel")]
         [SerializeField]
@@ -237,9 +239,13 @@ namespace VoiceActing
             textMeshSelection.text = actor.Name;
             animatorSelection.SetTrigger("Active");
 
-            statImageActorAnimator.SetTrigger("AppearAnim");
+            statImageActorAnimator.SetTrigger("AppearAnim");          
             statImageActor.sprite = actor.ActorSprite;
             statOutlineImageActor.sprite = actor.ActorSprite;
+
+            statTimbre.anchorMin = new Vector2((actor.Timbre.x + 10) / 20f, 0);
+            statTimbre.anchorMax = new Vector2((actor.Timbre.y + 10) / 20f, 1);
+            statTimbre.anchoredPosition = Vector3.zero;
 
             statNameStylishActor.text = actor.Name;
             statNameActor.text = actor.Name;
@@ -340,9 +346,9 @@ namespace VoiceActing
                             break;
                     }
 
-                    if (currentStatActor > currentStatRole)
+                    if (currentStatActor >= currentStatRole)
                     {
-                        imageStatIcon[i].color = new Color(0, 1, 0);
+                        imageStatIcon[i].color = new Color(1, 1, 0);
                         jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
                     }
                     else
