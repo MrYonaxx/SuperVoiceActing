@@ -66,6 +66,13 @@ namespace VoiceActing
             get { return bestStat; }
         }
 
+        [SerializeField]
+        private int secondBestStat;
+        public int SecondBestStat
+        {
+            get { return secondBestStat; }
+        }
+
 
 
         #endregion
@@ -109,7 +116,7 @@ namespace VoiceActing
 
 
 
-            /*int[] bestValues = new int[8];
+            int[] bestValues = new int[8];
 
             bestValues[0] = characterStat.Joy;
             bestValues[1] = characterStat.Sadness;
@@ -120,33 +127,21 @@ namespace VoiceActing
             bestValues[6] = characterStat.Fear;
             bestValues[7] = characterStat.Trust;
 
-            int best = 0;
-            int secondBest = 0;
+            bestStat = 0;
+            secondBestStat = 0;
 
             for (int i = 0; i < bestValues.Length; i++)
             {
-                if (bestValues[i] > best)
+                if (bestValues[i] > bestStat)
                 {
-                    secondBest = best;
-                    best = bestValues[i];
+                    secondBestStat = bestStat;
+                    bestStat = bestValues[i];
                 }
-                else if (bestValues[i] > secondBest)
+                else if (bestValues[i] > secondBestStat)
                 {
-                    secondBest = bestValues[i];
+                    secondBestStat = bestValues[i];
                 }
             }
-
-            for (int i = 0; i < bestValues.Length; i++)
-            {
-                if (bestValues[i] == best || bestValues[i] == secondBest)
-                {
-
-                }
-                else
-                {
-
-                }
-            }*/
 
 
         }
