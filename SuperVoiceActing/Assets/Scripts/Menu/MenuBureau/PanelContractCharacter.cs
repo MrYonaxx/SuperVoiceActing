@@ -78,7 +78,7 @@ namespace VoiceActing
             bestValues[6] = role.CharacterStat.Fear;
             bestValues[7] = role.CharacterStat.Trust;
 
-            int best = 0;
+            /*int best = 0;
             int secondBest = 0;
 
             for (int i = 0; i < bestValues.Length; i++)
@@ -92,14 +92,22 @@ namespace VoiceActing
                 {
                     secondBest = bestValues[i];
                 }
-            }
+            }*/
 
             for (int i = 0; i < bestValues.Length; i++)
             {
-                if(bestValues[i] == best || bestValues[i] == secondBest)
+                if (bestValues[i] != 0)
                 {
-                    animatorsStat[i].enabled = true;
-                    textStats[i].color = colorBest;
+                    if (bestValues[i] == role.BestStat || bestValues[i] == role.SecondBestStat)
+                    {
+                        animatorsStat[i].enabled = true;
+                        textStats[i].color = colorBest;
+                    }
+                    else
+                    {
+                        animatorsStat[i].enabled = false;
+                        textStats[i].color = colorNormal;
+                    }
                 }
                 else
                 {

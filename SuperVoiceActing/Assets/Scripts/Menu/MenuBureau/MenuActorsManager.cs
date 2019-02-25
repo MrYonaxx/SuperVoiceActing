@@ -59,11 +59,15 @@ namespace VoiceActing
         private TextMeshProUGUI statPriceActor;
 
         [Header("Stats Panel")]
+        [SerializeField]
+        Image[] imageStatIcon;
+        [SerializeField]
+        GameObject[] feedbackBestStat;
+
+        [Header("Stats Panel 1")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
         GameObject representation1;
-        [SerializeField]
-        Image[] imageStatIcon;
         [SerializeField]
         TextMeshProUGUI[] textStatsActor;
         [SerializeField]
@@ -73,12 +77,10 @@ namespace VoiceActing
         [SerializeField]
         RectTransform[] jaugeStatsRole;
 
-        [Header("Stats Gauge")]
+        [Header("Stats Panel 2")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
         GameObject representation2;
-        [SerializeField]
-        Image[] imageStatIcon2;
         [SerializeField]
         TextMeshProUGUI[] textStatsActor2;
         [SerializeField]
@@ -87,6 +89,8 @@ namespace VoiceActing
         TextMeshProUGUI[] textStatsRole2;
         [SerializeField]
         RectTransform[] jaugeStatsRole2;
+        [SerializeField]
+        Image[] jaugeEmpty;
 
         [Header("Audition")]
         [SerializeField]
@@ -335,19 +339,16 @@ namespace VoiceActing
                             currentStatRole = auditionRole.CharacterStat.Trust;
                             break;
                     }
-                    if (gaugeCursorMode == false)
+
+                    if (currentStatActor > currentStatRole)
                     {
-                        if (currentStatActor > currentStatRole)
-                            imageStatIcon[i].color = new Color(0, 1, 0);
-                        else
-                            imageStatIcon[i].color = new Color(1, 1, 1);
+                        imageStatIcon[i].color = new Color(0, 1, 0);
+                        jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
                     }
                     else
                     {
-                        if (currentStatActor > currentStatRole)
-                            imageStatIcon2[i].color = new Color(0, 1, 0);
-                        else
-                            imageStatIcon2[i].color = new Color(1, 1, 1);
+                        imageStatIcon[i].color = new Color(1, 1, 1);
+                        jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                     }
                 }
 
@@ -386,6 +387,7 @@ namespace VoiceActing
                         currentStatRole = auditionRole.CharacterStat.Trust;
                         break;
                 }
+
                 if (gaugeCursorMode == false)
                 {
                     textStatsRole[i].text = currentStatRole.ToString();
@@ -394,6 +396,15 @@ namespace VoiceActing
                 else
                 {
                     jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / 100f) * 750, 0);
+                }
+
+                if(currentStatRole == auditionRole.BestStat || currentStatRole == auditionRole.SecondBestStat)
+                {
+                    feedbackBestStat[i].SetActive(true);
+                }
+                else
+                {
+                    feedbackBestStat[i].SetActive(false);
                 }
             }
         }
@@ -449,42 +460,25 @@ namespace VoiceActing
 
         private void ChangeStatForAudition(bool hideRole)
         {
-            if (gaugeCursorMode == false)
+            if (hideRole == false)
             {
-                if (hideRole == false)
+                for (int i = 0; i < textStatsActor.Length; i++)
                 {
-                    for (int i = 0; i < textStatsActor.Length; i++)
-                    {
-                        textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, 10);
-                        textStatsRole[i].transform.localScale = new Vector3(1, 1, 1);
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < textStatsActor.Length; i++)
-                    {
-                        textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, -10);
-                        textStatsRole[i].transform.localScale = new Vector3(1, 0, 1);
-                    }
+                    textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, 10);
+                    textStatsRole[i].transform.localScale = new Vector3(1, 1, 1);
+                    jaugeStatsRole2[i].transform.localScale = new Vector3(1, 1, 1);
                 }
             }
             else
             {
-                if (hideRole == false)
+                for (int i = 0; i < textStatsActor.Length; i++)
                 {
-                    for (int i = 0; i < textStatsActor.Length; i++)
-                    {
-                        jaugeStatsRole2[i].transform.localScale = new Vector3(1, 1, 1);
-                    }
+                    feedbackBestStat[i].SetActive(false);
+                    textStatsActor[i].rectTransform.anchoredPosition = new Vector2(textStatsActor[i].rectTransform.anchoredPosition.x, -10);
+                    textStatsRole[i].transform.localScale = new Vector3(1, 0, 1);
+                    jaugeStatsRole2[i].transform.localScale = new Vector3(1, 0, 1);
                 }
-                else
-                {
-                    for (int i = 0; i < textStatsActor.Length; i++)
-                    {
-                        jaugeStatsRole2[i].transform.localScale = new Vector3(1, 0, 1);
-                    }
-                }
-            }
+            }         
         }
 
         private void DrawAuditionInfo(Role role)
