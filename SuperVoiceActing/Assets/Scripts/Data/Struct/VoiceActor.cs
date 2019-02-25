@@ -75,6 +75,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private Vector2Int timbre;
+        public Vector2Int Timbre
+        {
+            get { return timbre; }
+            set { timbre = value; }
+        }
+
+        [SerializeField]
         private EmotionStat statistique;
         public EmotionStat Statistique
         {
@@ -137,6 +145,7 @@ namespace VoiceActing
             hp = actorData.Hp;
             actorSprite = actorData.ActorSprite;
 
+            timbre = actorData.Timbre;
             statistique = actorData.Statistique;
         }
 
