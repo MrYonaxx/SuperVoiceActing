@@ -44,6 +44,8 @@ namespace VoiceActing
         [SerializeField]
         protected ActorsManager actorsManager;
         [SerializeField]
+        protected RoleManager roleManager;
+        [SerializeField]
         protected SkillManager skillManager;
         [SerializeField]
         protected TextAppearManager textAppearManager;
@@ -83,6 +85,12 @@ namespace VoiceActing
         Animator[] animatorsIntro;
         [SerializeField]
         protected AudioSource audioSourceBattleTheme;
+
+        [Header("UI")]
+        [SerializeField]
+        Image buttonUIY;
+        [SerializeField]
+        Image buttonUIA;
 
         [Header("AudioSource")]
         [SerializeField]
@@ -153,10 +161,10 @@ namespace VoiceActing
             if (maxLineNumber != null)
                 maxLineNumber.text = (contrat.TextData.Count).ToString();
             if (currentLineNumber != null)
-                currentLineNumber.text = (indexPhrase+1).ToString();
+                currentLineNumber.text = (indexPhrase + 1).ToString();
             StartCoroutine(IntroductionSequence());
         }
-        
+
         private IEnumerator IntroductionSequence()
         {
             //
@@ -206,28 +214,29 @@ namespace VoiceActing
                     emotionAttackManager.SelectCard("Neutre");
                     return;
                 }
+                actorsManager.ActorTakeDamage(4);
                 audioSourceAttack.Play();
                 audioSourceAttack2.Play();
                 turnCount -= 1;
                 if(timer != null)
                     timer.SetTurn(turnCount);
-                /*if(cameraController != null)
-                    cameraController.NotQuite();*/
     
                 if(feedbackLine != null)
                     feedbackLine.SetActive(false);
     
-                textAppearManager.HideUIButton();
+                HideUIButton();
                 Emotion[] emotions = emotionAttackManager.GetComboEmotion();
                 textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.RemoveCard();
+                emotionAttackManager.SwitchCardTransformToRessource();
                 reprintText = false;
                 StartCoroutine(CoroutineAttack(10));
                 CheckEvent();
             }
         }
+
 
         private IEnumerator CoroutineAttack(int time)
         {
@@ -250,6 +259,7 @@ namespace VoiceActing
                 yield return null;
             }
             cameraController.ChangeOrthographicSize(0, time*6);
+            StartCoroutine(WaitText());
         }
 
 
@@ -271,8 +281,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
-                    textAppearManager.HideUIButton();
-                    //textAppearManager.ExplodeLetter();
+                    HideUIButton();
 
                     //indexPhrase += 1;
                     reprintText = true;
@@ -343,7 +352,8 @@ namespace VoiceActing
                 return;
             }
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
-            textAppearManager.ShowUIButton(100 - enemyManager.GetHpPercentage());
+            //StartCoroutine(WaitText());
+            //ShowUIButton(100 - enemyManager.GetHpPercentage());
         }
 
 
@@ -392,6 +402,72 @@ namespace VoiceActing
             feedbackLine.SetActive(true);
 
         }
+
+
+
+        private IEnumerator WaitText()
+        {
+            int time = 60;
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            yield return null;
+
+            while (textAppearManager.GetEndDamage() == false)
+            {
+                yield return null;
+            }
+            // Check Si Role Attaque
+            roleManager.ActivateSpot();
+            while (textAppearManager.GetEndLine() == false)
+            {
+                yield return null;
+            }
+            //emotionAttackManager.SwitchCardTransformToBattle();
+            roleManager.EnemyAttackActivation();
+            StartCoroutine(MoveUIButton(buttonUIA, -500));
+            /*if (damage == 100)
+                StartCoroutine(MoveUIButton(buttonUIY, -500));*/
+        }
+
+
+        public void HideUIButton()
+        {
+            StartCoroutine(MoveUIButton(buttonUIA, -600));
+            StartCoroutine(MoveUIButton(buttonUIY, -600));
+        }
+
+        private IEnumerator MoveUIButton(Image button, float targetY)
+        {
+
+            int time = 20;
+            float speedY = (targetY - button.rectTransform.anchoredPosition.y) / time;
+            while (time != 0)
+            {
+                button.rectTransform.anchoredPosition += new Vector2(0, speedY);
+                time -= 1;
+                yield return null;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

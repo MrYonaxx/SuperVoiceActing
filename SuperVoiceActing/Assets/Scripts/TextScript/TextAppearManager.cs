@@ -56,11 +56,6 @@ namespace VoiceActing
         [SerializeField]
         ParticleSystem particleLineDead2;
 
-        [Header("UI")]
-        [SerializeField]
-        Image buttonUIY;
-        [SerializeField]
-        Image buttonUIA;
 
 
         TextPerformanceAppear currentText = null;
@@ -117,10 +112,20 @@ namespace VoiceActing
             return currentText.GetEndLine();
         }
 
+        public bool GetEndDamage()
+        {
+            return currentText.GetEndDamage();
+        }
+
         public void TextPop()
         {
             currentText.TextPop();
         }
+
+
+
+
+
 
         public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, bool startPhrase = false)
         {
@@ -166,11 +171,11 @@ namespace VoiceActing
         public void ApplyDamage(float damage)
         {
             currentText.ApplyDamage(damage);
-            ShowUIButton(damage);
+            //ShowUIButton(damage);
 
         }
 
-        public void ShowUIButton(float damage)
+        /*public void ShowUIButton(float damage)
         {
             if (coroutineWaitEndLine != null)
             {
@@ -178,13 +183,13 @@ namespace VoiceActing
             }
             coroutineWaitEndLine = WaitEndLine(damage);
             StartCoroutine(coroutineWaitEndLine);
-        }
+        }*/
 
-        public void HideUIButton()
+        /*public void HideUIButton()
         {
             StartCoroutine(MoveUIButton(buttonUIA, -600));
             StartCoroutine(MoveUIButton(buttonUIY, -600));
-        }
+        }*/
 
 
 
@@ -205,7 +210,7 @@ namespace VoiceActing
 
 
 
-        private IEnumerator WaitEndLine(float damage)
+        /*private IEnumerator WaitEndLine(float damage)
         {
             yield return null;
             while (currentText.GetEndLine() == false)
@@ -229,7 +234,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-        }
+        }*/
 
 
 
@@ -245,6 +250,14 @@ namespace VoiceActing
                     return textAnger;
                 case Emotion.Dégoût:
                     return textDisgust;
+                case Emotion.Surprise:
+                    return textSurprise;
+                case Emotion.Douceur:
+                    return textSweetness;
+                case Emotion.Peur:
+                    return textFear;
+                case Emotion.Confiance:
+                    return textTrust;
             }
             return textNeutral;
         }

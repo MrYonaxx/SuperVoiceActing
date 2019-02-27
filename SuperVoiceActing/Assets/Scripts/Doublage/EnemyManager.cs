@@ -244,6 +244,7 @@ namespace VoiceActing
         [SerializeField]
         VoiceActorData voiceActor;
 
+
         [Header("Feedbacks")]
         [SerializeField]
         ParticleSystem[] particleFeedbacks;
@@ -499,18 +500,18 @@ namespace VoiceActing
                     case Emotion.Colère:
                         colorEmotion = Color.red;
                         break;
-                    /*case Emotion.Surprise:
-                        deckEmotion.Surprise = number;
+                    case Emotion.Surprise:
+                        colorEmotion = new Color(0.9f,0.55f,0.3f);
                         break;
                     case Emotion.Douceur:
-                        deckEmotion.Sweetness = number;
+                        colorEmotion = new Color(0.88f, 0.58f, 0.9f);
                         break;
                     case Emotion.Peur:
-                        deckEmotion.Fear = number;
+                        colorEmotion = Color.black;
                         break;
                     case Emotion.Confiance:
-                        deckEmotion.Trust = number;
-                        break;*/
+                        colorEmotion = Color.white;
+                        break;
                     default:
                         colorEmotion = Color.white;
                         break;
@@ -557,18 +558,18 @@ namespace VoiceActing
                     case Emotion.Colère:
                         colorEmotion += Color.red;
                         break;
-                    /*case Emotion.Surprise:
-                        deckEmotion.Surprise = number;
+                    case Emotion.Surprise:
+                        colorEmotion = new Color(0.9f, 0.55f, 0.3f);
                         break;
                     case Emotion.Douceur:
-                        deckEmotion.Sweetness = number;
+                        colorEmotion = new Color(0.88f, 0.58f, 0.9f);
                         break;
                     case Emotion.Peur:
-                        deckEmotion.Fear = number;
+                        colorEmotion = Color.black;
                         break;
                     case Emotion.Confiance:
-                        deckEmotion.Trust = number;
-                        break;*/
+                        colorEmotion = Color.white;
+                        break;
                     default:
                         if (i == 0)
                             colorEmotion = Color.white;

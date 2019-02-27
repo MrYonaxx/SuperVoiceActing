@@ -143,6 +143,7 @@ namespace VoiceActing
             fan = actorData.Fan;
             price = actorData.Price;
             hp = actorData.Hp;
+            hpMax = actorData.Hp;
             actorSprite = actorData.ActorSprite;
 
             timbre = actorData.Timbre;

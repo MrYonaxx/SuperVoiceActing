@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -19,13 +20,31 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [Header("Debug")]
         [SerializeField]
-        private List<VoiceActor> actors;
+        VoiceActorData debug;
+
+        [SerializeField]
+        private List<VoiceActor> actors = new List<VoiceActor>();
 
         [SerializeField]
         TextMeshProUGUI[] textCardStats;
 
-        private int indexCurrentActor;
+        [Header("Feedbacks Damage")]
+        [SerializeField]
+        Animator animatorHealthBar;
+        [SerializeField]
+        RectTransform healthBar;
+        [SerializeField]
+        Image healthContent;
+        [SerializeField]
+        Image healthContentProgression;
+        [SerializeField]
+        TextMeshProUGUI textCurrentHp;
+        [SerializeField]
+        TextMeshProUGUI textMaxHp;
+
+        private int indexCurrentActor = 0;
         
         #endregion
 
@@ -46,6 +65,9 @@ namespace VoiceActing
 
         public void SetActors(List<VoiceActor> actorsContract)
         {
+            actors.Add(new VoiceActor(debug));
+            if (actorsContract == null)
+                actors.Add(new VoiceActor(debug));
             DrawActorStat();
         }
 
@@ -63,6 +85,43 @@ namespace VoiceActing
             textCardStats[7].text = actors[indexCurrentActor].Statistique.Trust.ToString();
             textCardStats[8].text = actors[indexCurrentActor].Statistique.Neutral.ToString();
 
+            textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
+            textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();
+
+        }
+
+        public void ActorTakeDamage(int damage)
+        {
+            
+            actors[indexCurrentActor].Hp -= damage;
+            textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
+
+            float ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
+            healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
+            StartCoroutine(FeedbackHealthBar());
+        }
+
+        private IEnumerator FeedbackHealthBar(int timeShake = 30, int timeGauge = 180)
+        {
+            float intensity = 100;
+            Vector2 origin = healthBar.anchoredPosition;
+            while (timeShake != 0)
+            {
+                timeShake -= 1;
+                healthBar.anchoredPosition = new Vector2(origin.x + Random.Range(-intensity, intensity), origin.y);
+                intensity *= 0.9f;
+                yield return null;
+            }
+            healthBar.anchoredPosition = origin;
+
+            Vector3 speed = new Vector3((healthContent.transform.localScale.x - healthContentProgression.transform.localScale.x) / timeGauge, 0, 0);
+            while (timeGauge != 0)
+            {
+                timeGauge -= 1;
+                healthContentProgression.transform.localScale += speed;
+                yield return null;
+            }
+            animatorHealthBar.SetBool("Appear", false);
         }
         
         #endregion

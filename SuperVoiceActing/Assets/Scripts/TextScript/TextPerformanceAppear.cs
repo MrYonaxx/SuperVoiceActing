@@ -53,6 +53,8 @@ namespace VoiceActing
 
         protected bool hasTextChanged = false;
         protected bool endLine = false;
+        protected int coloredCharacterCount = -1;
+        protected bool endDamage = false;
         protected bool pauseText = false;
 
         protected float actualTime = 0;
@@ -102,6 +104,11 @@ namespace VoiceActing
         public bool GetEndLine()
         {
             return endLine;
+        }
+
+        public bool GetEndDamage()
+        {
+            return endDamage;
         }
 
         public void SetPauseText(bool b)
@@ -296,6 +303,7 @@ namespace VoiceActing
                 else
                     vertexAnim[i].damage = false;
             }
+            coloredCharacterCount = (int) damage;
             //ReprintText();
         }
 
@@ -395,6 +403,7 @@ namespace VoiceActing
 
             hasTextChanged = true;
             endLine = false;
+            endDamage = false;
             characterCount = count;
             wordSelected = -1;
 
@@ -543,6 +552,11 @@ namespace VoiceActing
 
 
                     // ====================== Particle ====================== //
+                    if (i == coloredCharacterCount-1 && endDamage == false)
+                    {
+                        endDamage = true;
+                    }
+
                     if (i == textInfo.characterCount - 1 && endLine == false)
                     {
                         PlayParticle(offset, vertexAnim[i].damage);
@@ -654,6 +668,7 @@ namespace VoiceActing
             coroutine = ExplosionVertex(damage, time);
             StartCoroutine(coroutine);
             endLine = false;
+            endDamage = false;
         }
 
         protected IEnumerator ExplosionVertex(float damage, float time)
