@@ -234,6 +234,7 @@ namespace VoiceActing
                 reprintText = false;
                 StartCoroutine(CoroutineAttack(10));
                 CheckEvent();
+                inputController.gameObject.SetActive(false);
             }
         }
 
@@ -403,7 +404,11 @@ namespace VoiceActing
 
         }
 
-
+        public void NewTurn()
+        {
+            emotionAttackManager.SwitchCardTransformToBattle();
+            inputController.gameObject.SetActive(true);
+        }
 
         private IEnumerator WaitText()
         {
@@ -419,17 +424,27 @@ namespace VoiceActing
             {
                 yield return null;
             }
+
             // Check Si Role Attaque
-            roleManager.ActivateSpot();
+            if (enemyManager.GetHpPercentage() != 0)
+                roleManager.SelectAttack();
+
             while (textAppearManager.GetEndLine() == false)
             {
                 yield return null;
             }
-            //emotionAttackManager.SwitchCardTransformToBattle();
-            roleManager.EnemyAttackActivation();
-            StartCoroutine(MoveUIButton(buttonUIA, -500));
-            /*if (damage == 100)
-                StartCoroutine(MoveUIButton(buttonUIY, -500));*/
+
+            // Check si on peut lancer l'attaque sinon nouveau tour pour le joueur
+            if (roleManager.IsAttacking() == true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                cameraController.EnemySkill();
+                roleManager.EnemyAttackActivation();
+            }
+            else
+            {
+                NewTurn();
+            }
         }
 
 

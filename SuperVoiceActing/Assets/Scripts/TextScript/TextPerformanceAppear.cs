@@ -304,6 +304,10 @@ namespace VoiceActing
                     vertexAnim[i].damage = false;
             }
             coloredCharacterCount = (int) damage;
+            if(coloredCharacterCount <= 0)
+            {
+                coloredCharacterCount = 1;
+            }
             //ReprintText();
         }
 

@@ -362,6 +362,10 @@ namespace VoiceActing
 
             totalDamage += ApplyWordBonus(totalDamage, word, statActor);
             totalDamage += Random.Range(voiceActor.FourchetteMin, voiceActor.FourchetteMax);
+            if(totalDamage <= 0)
+            {
+                totalDamage = 1;
+            }
             enemyHP -= (int) totalDamage;
             if (enemyHP < 0)
                 enemyHP = 0;

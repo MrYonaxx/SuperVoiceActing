@@ -32,6 +32,8 @@ namespace VoiceActing
         [SerializeField]
         Transform ingeSonPosition;
         [SerializeField]
+        Transform enemyPosition;
+        [SerializeField]
         float offsetZ = 0;
         [SerializeField]
         float offsetX = 0;
@@ -497,6 +499,9 @@ namespace VoiceActing
             float angleZ = this.transform.eulerAngles.z;
             if (angleZ > 180)
                 angleZ = -(360 - angleZ);
+            if (z > 180)
+                z = -(360 - z);
+
             float speedZ = (z - angleZ) / time;
 
             rotating = true;
@@ -639,6 +644,40 @@ namespace VoiceActing
             MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 40);
             //MoveCamera(ingeSonPosition.position.x, this.transform.position.y - 0.1f, ingeSonPosition.position.z, 1000);
             //RotateCamera(0, 90, 0, 120);
+        }
+
+
+        [ContextMenu("enemySkill")]
+        public void EnemySkill()
+        {
+            //SetText(-7.2f, 2.4f, 0.4f);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            noCameraEffect = true;
+            RotateCamera(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z, 40);
+            MoveCamera(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, 40);
+            RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 600);
+            //MoveCamera(enemyPosition.position.x, enemyPosition.position.y + 0.01f, enemyPosition.position.z, 1000);
+        }
+
+        [ContextMenu("enemySkill")]
+        public void EnemySkillCancel()
+        {
+            //SetText(-7.2f, 2.4f, 0.4f);
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            cameraPlacement = 0;
+            noCameraEffect = false;
+            rotating = false;
+            moving = false;
+            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 40);
+            RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 40);
         }
 
 

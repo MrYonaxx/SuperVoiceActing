@@ -121,7 +121,7 @@ namespace VoiceActing
                 healthContentProgression.transform.localScale += speed;
                 yield return null;
             }
-            animatorHealthBar.SetBool("Appear", false);
+            //animatorHealthBar.SetBool("Appear", false);
         }
         
         #endregion
