@@ -202,6 +202,7 @@ namespace VoiceActing
             }
             currentText.NewMouthAnim(mouth);
             currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
+            currentText.CalculateDamageColor(damage);
             currentText.ReprintText();
             currentText.SetWordFeedback(wordID);
             ApplyDamage(damage);

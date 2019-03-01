@@ -1227,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &45633609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7476,7 +7476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &85631545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13674,7 +13674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &172864549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15785,7 +15785,6 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  voiceActor: {fileID: 11400000, guid: b60d4007baa479c4d8c3e61a27468f94, type: 2}
   particleFeedbacks:
   - {fileID: 1022164037}
   - {fileID: 1647141107}
@@ -22076,14 +22075,14 @@ MonoBehaviour:
     transformBattle: {fileID: 1418134518}
   deckEmotion:
     neutral: 0
-    joy: 3
-    sadness: 3
-    disgust: 3
-    anger: 3
-    surprise: 3
-    sweetness: 3
-    fear: 3
-    trust: 3
+    joy: 1
+    sadness: 1
+    disgust: 1
+    anger: 1
+    surprise: 1
+    sweetness: 1
+    fear: 1
+    trust: 1
   comboSlot:
   - {fileID: 102023606}
   - {fileID: 1879263794}
@@ -22418,7 +22417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323491650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.064, z: 0}
+  m_LocalPosition: {x: 0, y: 0.046, z: -1}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1277550297}
@@ -25933,7 +25932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c95a40c79dd8a42aa0e28629f19090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contratData: {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
+  contratData: {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
   playerData: {fileID: 11400000, guid: 1c7907ef99e7b76478510af20a83fbd9, type: 2}
   cameraController: {fileID: 1480377170}
   inputController: {fileID: 82474070}
@@ -25967,6 +25966,7 @@ MonoBehaviour:
   - {fileID: 471379760}
   - {fileID: 414670279}
   audioSourceBattleTheme: {fileID: 1583494081}
+  endBlackScreen: {fileID: 1277550299}
   buttonUIY: {fileID: 133964775}
   buttonUIA: {fileID: 837013312}
   audioSourceKillPhrase: {fileID: 1193332238}
@@ -27695,11 +27695,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -29125,11 +29125,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -31526,7 +31526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &682120482
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55066,7 +55066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &936997207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55540,7 +55540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &953290017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -80948,7 +80948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1277550297
 Transform:
   m_ObjectHideFlags: 0
@@ -80957,13 +80957,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277550296}
   m_LocalRotation: {x: -0.5171452, y: 0.48224562, z: -0.48224562, w: 0.5171452}
-  m_LocalPosition: {x: -3.2084658, y: -0.23438168, z: 6}
-  m_LocalScale: {x: 20, y: 25, z: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 6}
+  m_LocalScale: {x: 20, y: 30, z: 1}
   m_Children:
   - {fileID: 323491651}
   m_Father: {fileID: 1349242041}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -4, y: 90, z: -90}
 --- !u!212 &1277550298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94432,7 +94432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480377163}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7, y: 2.9, z: 0}
+  m_LocalPosition: {x: -9.2, y: 2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1724473006}
@@ -107978,7 +107978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1703918123
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114754,7 +114754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1818753628
 RectTransform:
   m_ObjectHideFlags: 0

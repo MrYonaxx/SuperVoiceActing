@@ -242,7 +242,7 @@ namespace VoiceActing
         [Header("Current Voice actor")]
         [Space]
         [SerializeField]
-        VoiceActorData voiceActor;
+        VoiceActor voiceActor;
 
 
         [Header("Feedbacks")]
@@ -284,6 +284,11 @@ namespace VoiceActing
         public void SetHp(int newHP)
         {
             enemyHP = newHP;
+        }
+
+        public void SetVoiceActor(VoiceActor va)
+        {
+            voiceActor = va;
         }
 
         #endregion
@@ -361,7 +366,7 @@ namespace VoiceActing
             }
 
             totalDamage += ApplyWordBonus(totalDamage, word, statActor);
-            totalDamage += Random.Range(voiceActor.FourchetteMin, voiceActor.FourchetteMax);
+            totalDamage += Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance);
             if(totalDamage <= 0)
             {
                 totalDamage = 1;

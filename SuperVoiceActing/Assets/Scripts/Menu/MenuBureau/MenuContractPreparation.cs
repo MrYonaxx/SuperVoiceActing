@@ -22,6 +22,10 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Header("Save")]
+        [SerializeField]
+        PlayerData playerData;
+
         [Header("Info")]
         [SerializeField]
         TextMeshProUGUI textContractTitle;
@@ -70,6 +74,12 @@ namespace VoiceActing
         [SerializeField]
         RectTransform[] jaugeStatsRole;
 
+        [Header("InSession")]
+        [SerializeField]
+        GameObject inSessionObject;
+        [SerializeField]
+        MenuTransitionDoublage menuTransitionDoublage;
+
         [Header("Prefabs")]
         [SerializeField]
         ButtonPreparationRole[] listButtonRoles;
@@ -109,6 +119,7 @@ namespace VoiceActing
 
         private Contract currentContract = null;
         private int indexSelected = 0;
+        private bool inSessionPossible = false;
 
         #endregion
 
@@ -150,6 +161,7 @@ namespace VoiceActing
             menuActorsManager.DrawAuditionTitle(contract.Name);
             DrawContractInfo();
             DrawButtons();
+            CheckButtonInSession();
         }
 
         private void DrawContractInfo()
@@ -333,6 +345,38 @@ namespace VoiceActing
             currentContract.VoiceActors[indexSelected] = actor;
             DrawRoleInfo();
             listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
+            CheckButtonInSession();
+        }
+
+        private void CheckButtonInSession()
+        {
+            for(int i = 0; i < currentContract.VoiceActors.Count; i++)
+            {
+                if (currentContract.VoiceActors[i] == null)
+                {
+                    inSessionPossible = false;
+                    inSessionObject.SetActive(false);
+                    return;
+                }
+            }
+            inSessionPossible = true;
+            /*if(currentContract.VoiceActors.Count == currentContract.Characters.Count)
+            {
+                inSessionPossible = true;
+            }
+            else
+            {
+                inSessionPossible = false;
+            }*/
+            inSessionObject.SetActive(true);
+        }
+
+        public void InSession()
+        {
+            if (inSessionPossible == false)
+                return;
+            playerData.CurrentContract = currentContract;
+            menuTransitionDoublage.StartTransition();
         }
 
 

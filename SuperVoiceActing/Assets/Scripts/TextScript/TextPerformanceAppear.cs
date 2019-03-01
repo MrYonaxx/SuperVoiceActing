@@ -53,7 +53,7 @@ namespace VoiceActing
 
         protected bool hasTextChanged = false;
         protected bool endLine = false;
-        protected int coloredCharacterCount = -1;
+        protected int coloredCharacterCount = 1;
         protected bool endDamage = false;
         protected bool pauseText = false;
 
@@ -234,39 +234,6 @@ namespace VoiceActing
                 StopCoroutine(coroutine);
             coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
-            // ================================
-            /*TMP_TextInfo textInfo = textMeshPro.textInfo;
-            Color32[] newVertexColors;
-            for (int i = 0; i < textInfo.characterCount; i++)
-            {
-                int vertexIndex = textInfo.characterInfo[i].vertexIndex;
-
-                int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
-
-                newVertexColors = textInfo.meshInfo[materialIndex].colors32;
-                Color32 colorAlpha;
-                if (vertexAnim[i].damage == true)
-                {
-                    colorAlpha = damageColor;
-                }
-                else
-                {
-                    colorAlpha = new Color32(255, 255, 255, 0);
-                }
-
-                newVertexColors[vertexIndex + 0] = colorAlpha;
-                newVertexColors[vertexIndex + 1] = colorAlpha;
-                newVertexColors[vertexIndex + 2] = colorAlpha;
-                newVertexColors[vertexIndex + 3] = colorAlpha;
-
-                vertexAnim[i].offset = letterOffset;
-                vertexAnim[i].alpha = 0;
-
-            }
-            mouth.ActivateMouth();
-            characterCount = 1;
-            actualTime = 0;*/
-            // ================================
         }
 
         public void SetWordFeedback(int wordSelected)
@@ -303,12 +270,18 @@ namespace VoiceActing
                 else
                     vertexAnim[i].damage = false;
             }
-            coloredCharacterCount = (int) damage;
-            if(coloredCharacterCount <= 0)
+            CalculateDamageColor(percentage);
+            //ReprintText();
+        }
+
+        public void CalculateDamageColor(float percentage)
+        {
+            coloredCharacterCount = (int) ((textMeshPro.textInfo.characterCount) * (percentage / 100));
+            Debug.Log("Colored Character Count : " + coloredCharacterCount);
+            if (coloredCharacterCount <= 0)
             {
                 coloredCharacterCount = 1;
             }
-            //ReprintText();
         }
 
         [ContextMenu("a")]
@@ -558,6 +531,7 @@ namespace VoiceActing
                     // ====================== Particle ====================== //
                     if (i == coloredCharacterCount-1 && endDamage == false)
                     {
+                        Debug.Log("Hey");
                         endDamage = true;
                     }
 

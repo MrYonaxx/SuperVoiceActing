@@ -114,6 +114,14 @@ namespace VoiceActing
             set { actorSprite = value; }
         }
 
+        [SerializeField]
+        private int damageVariance;
+        public int DamageVariance
+        {
+            get { return damageVariance; }
+            set { damageVariance = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -145,7 +153,7 @@ namespace VoiceActing
             hp = actorData.Hp;
             hpMax = actorData.Hp;
             actorSprite = actorData.ActorSprite;
-
+            damageVariance = actorData.FourchetteMin;
             timbre = actorData.Timbre;
             statistique = actorData.Statistique;
         }

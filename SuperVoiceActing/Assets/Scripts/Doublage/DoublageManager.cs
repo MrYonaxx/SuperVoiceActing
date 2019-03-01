@@ -86,6 +86,10 @@ namespace VoiceActing
         [SerializeField]
         protected AudioSource audioSourceBattleTheme;
 
+        [Header("EndSequence")]
+        [SerializeField]
+        Animator endBlackScreen;
+
         [Header("UI")]
         [SerializeField]
         Image buttonUIY;
@@ -153,8 +157,17 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            if (contratData != null)
-                contrat = new Contract(contratData);
+
+            contrat = playerData.CurrentContract;
+            if(contrat == null)
+            {
+                if (contratData != null)
+                {
+                    contrat = new Contract(contratData); // Pour Debug
+                }
+            }
+
+
 
             if (timer != null)
                 timer.SetTurn(turnCount);
@@ -170,6 +183,7 @@ namespace VoiceActing
             //
             yield return null;
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
             //
             if (CheckEvent() == false)
@@ -365,26 +379,24 @@ namespace VoiceActing
 
         private IEnumerator EndSessionCoroutine(int time)
         {
-            float speedAlpha = 1f / time;
+            endBlackScreen.SetBool("Appear", false);
+            cameraController.EndSequence();
+            yield return new WaitForSeconds(5);
+            float speedAlpha = 1f / 5;
             while (time != 0)
             {
                 fade.color += new Color(0, 0, 0, speedAlpha);
                 time -= 1;
                 yield return null;
             }
-            time = 60;
-            while (time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
-            if(endScene != "")
-                SceneManager.LoadScene(endScene);
+            yield return new WaitForSeconds(1);
+            introBlackScreen.gameObject.SetActive(true);
+            textIntro.SetActive(true);
+            introText.SetPhraseTextacting("We did it everyone !", 0);
+            yield return new WaitForSeconds(2);
+            introText.SetPhraseTextacting("Enregistrement terminé !", 0);
+            yield return new WaitForSeconds(99);
 
-            if(endScene == "") // Pour demo uniquement
-            {
-                textDemo.text = "Thanks for playing";
-            }
         }
 
 
