@@ -89,6 +89,10 @@ namespace VoiceActing
         [Header("EndSequence")]
         [SerializeField]
         Animator endBlackScreen;
+        [SerializeField]
+        Animator bandeRythmo;
+        [SerializeField]
+        protected AudioSource audioSourceYokaiDisco;
 
         [Header("UI")]
         [SerializeField]
@@ -285,10 +289,13 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
-            if(enemyManager.GetHpPercentage() == 0)
+            enemyManager.SetHp(0);
+            indexPhrase = contrat.TextData.Count-1;
+            if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
+                    
                     indexPhrase += 1;
                     if (currentLineNumber != null)
                         currentLineNumber.text = (indexPhrase+1).ToString();
@@ -310,7 +317,7 @@ namespace VoiceActing
                         textAppearManager.TextPop();
                         textAppearManager.SelectWord(0);
                         FeedbackNewLine();
-                        if (cameraController != null)
+                        if (cameraController != null && indexPhrase < contrat.TextData.Count)
                             cameraController.NotQuite();
                         StartCoroutine(WaitCoroutineNextPhrase(60));
                         audioSourceKillPhrase.Play();
@@ -374,15 +381,21 @@ namespace VoiceActing
 
         public void EndSession()
         {
-            StartCoroutine(EndSessionCoroutine(120));
+            StartCoroutine(EndSessionCoroutine(60));
         }
 
         private IEnumerator EndSessionCoroutine(int time)
         {
+            StartCoroutine(FadeVolume(180));
+            emotionAttackManager.SwitchCardTransformToRessource();
             endBlackScreen.SetBool("Appear", false);
             cameraController.EndSequence();
-            yield return new WaitForSeconds(5);
-            float speedAlpha = 1f / 5;
+            yield return new WaitForSeconds(1);
+            audioSourceYokaiDisco.gameObject.SetActive(true);
+            yield return new WaitForSeconds(3);
+            bandeRythmo.gameObject.SetActive(true);
+            //yield return new WaitForSeconds(1.5f);
+            float speedAlpha = 1f / time;
             while (time != 0)
             {
                 fade.color += new Color(0, 0, 0, speedAlpha);
@@ -397,6 +410,19 @@ namespace VoiceActing
             introText.SetPhraseTextacting("Enregistrement terminé !", 0);
             yield return new WaitForSeconds(99);
 
+        }
+
+        private IEnumerator FadeVolume(int time)
+        {
+            float speed = audioSourceBattleTheme.volume / time;
+            audioSourceBattleTheme.pitch += 1;
+            while (time != 0)
+            {
+                time -= 1;
+                audioSourceBattleTheme.volume -= speed;
+                yield return null;
+                audioSourceBattleTheme.pitch -= 0.01f;
+            }
         }
 
 

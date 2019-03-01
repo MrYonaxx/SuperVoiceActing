@@ -654,10 +654,28 @@ namespace VoiceActing
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
                 StopCoroutine(rotatingCoroutine);
-            SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
-            SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
-            MoveCamera(notQuitePosition.position.x + 1, notQuitePosition.position.y, notQuitePosition.position.z, 80);
-            MoveCamera(notQuitePosition.position.x + 1.2f, notQuitePosition.position.y, notQuitePosition.position.z, 600);
+            /*SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);*/
+            MoveCamera(this.transform.localPosition.x - 1, this.transform.localPosition.y, this.transform.localPosition.z, 80);
+            StartCoroutine(EndSequenceCoroutine(80));
+            //MoveCamera(initialPosition.position.x - 1.2f, initialPosition.position.y, initialPosition.position.z, 600);
+        }
+
+        private IEnumerator EndSequenceCoroutine(int time)
+        {
+            while(time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            time = 150;
+            MoveCamera(this.transform.localPosition.x - 0.2f, this.transform.localPosition.y, this.transform.localPosition.z, time);
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            MoveCamera(this.transform.localPosition.x - 1f, this.transform.localPosition.y, this.transform.localPosition.z, 30);
         }
 
 
