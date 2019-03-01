@@ -529,7 +529,8 @@ namespace VoiceActing
 
 
                     // ====================== Particle ====================== //
-                    if (i == coloredCharacterCount-1 && endDamage == false)
+                    // Bug si coloredCharacterCount est un espace donc je check sur 2i mais ça peut ne pas régler à 100% le problème
+                    if ((i == coloredCharacterCount-1 || i == coloredCharacterCount) && endDamage == false)
                     {
                         Debug.Log("Hey");
                         endDamage = true;

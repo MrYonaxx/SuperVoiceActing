@@ -657,7 +657,7 @@ namespace VoiceActing
             SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
             SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
             MoveCamera(notQuitePosition.position.x + 1, notQuitePosition.position.y, notQuitePosition.position.z, 80);
-            MoveCamera(notQuitePosition.position.x + 0.2f, notQuitePosition.position.y, notQuitePosition.position.z, 600);
+            MoveCamera(notQuitePosition.position.x + 1.2f, notQuitePosition.position.y, notQuitePosition.position.z, 600);
         }
 
 
