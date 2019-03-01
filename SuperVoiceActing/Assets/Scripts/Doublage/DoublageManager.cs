@@ -93,6 +93,10 @@ namespace VoiceActing
         Animator bandeRythmo;
         [SerializeField]
         protected AudioSource audioSourceYokaiDisco;
+        [SerializeField]
+        Image mcPanel;
+        [SerializeField]
+        Image ingeSonPanel;
 
         [Header("UI")]
         [SerializeField]
@@ -109,6 +113,8 @@ namespace VoiceActing
         protected AudioSource audioSourceAttack;
         [SerializeField]
         protected AudioSource audioSourceAttack2;
+        [SerializeField]
+        protected AudioSource audioSourceSpotlight;
 
         [Header("Events")]
         [SerializeField]
@@ -207,6 +213,7 @@ namespace VoiceActing
                 {
                     animatorsIntro[i].enabled = true;
                 }
+                audioSourceSpotlight.Play();
                 yield return new WaitForSeconds(1);
                 cameraController.MoveToInitialPosition(300);
                 yield return new WaitForSeconds(1);
@@ -314,14 +321,20 @@ namespace VoiceActing
                     if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
                     {
                         enemyManager.DamagePhrase();
-                        textAppearManager.TextPop();
+                        textAppearManager.TextPop();                 
                         textAppearManager.SelectWord(0);
                         FeedbackNewLine();
                         if (cameraController != null && indexPhrase < contrat.TextData.Count)
                             cameraController.NotQuite();
-                        StartCoroutine(WaitCoroutineNextPhrase(60));
+                        
                         audioSourceKillPhrase.Play();
                         audioSourceKillPhrase2.Play();
+                        if (indexPhrase == contrat.TextData.Count)
+                        {
+                            EndSession();
+                            return;
+                        }
+                        StartCoroutine(WaitCoroutineNextPhrase(60));
                     }
                     startLine = false;
                 }
@@ -387,10 +400,42 @@ namespace VoiceActing
         private IEnumerator EndSessionCoroutine(int time)
         {
             StartCoroutine(FadeVolume(180));
+            yield return new WaitForSeconds(1f);
+            ingeSonPanel.gameObject.SetActive(true);
+            cameraController.EndSequence1(0.3f, 10f);
+            enemyManager.DamagePhrase();
+            textAppearManager.TextPop();
+            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, -10);
+            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackFinalLine");
+            audioSourceKillPhrase.Play();
+            audioSourceKillPhrase2.Play();
+
+            endBlackScreen.SetBool("Appear", false);
+            yield return new WaitForSeconds(1f);
+            //ingeSonPanel.gameObject.SetActive(false);
+            mcPanel.gameObject.SetActive(true);
+            cameraController.EndSequence1(0.6f, -10f);
+            enemyManager.DamagePhrase();
+            textAppearManager.TextPop();
+            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 10);
+            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackFinalLine");
+            audioSourceKillPhrase.Play();
+            audioSourceKillPhrase2.Play();
+
+            yield return new WaitForSeconds(1f);
+            ingeSonPanel.gameObject.SetActive(false);
+            mcPanel.gameObject.SetActive(false);
+            enemyManager.DamagePhrase();
+            textAppearManager.TextPop(210);
+            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackUltimeLine");
+            audioSourceKillPhrase.Play();
+            audioSourceKillPhrase2.Play();
+
+            //StartCoroutine(FadeVolumeWithPitch(180));
             emotionAttackManager.SwitchCardTransformToRessource();
             endBlackScreen.SetBool("Appear", false);
             cameraController.EndSequence();
-            yield return new WaitForSeconds(1);
             audioSourceYokaiDisco.gameObject.SetActive(true);
             yield return new WaitForSeconds(3);
             bandeRythmo.gameObject.SetActive(true);
@@ -412,7 +457,20 @@ namespace VoiceActing
 
         }
 
+
         private IEnumerator FadeVolume(int time)
+        {
+            float speed = audioSourceBattleTheme.volume / time;
+            while (time != 0)
+            {
+                time -= 1;
+                audioSourceBattleTheme.volume -= speed;
+                yield return null;
+            }
+        }
+
+
+        private IEnumerator FadeVolumeWithPitch(int time)
         {
             float speed = audioSourceBattleTheme.volume / time;
             audioSourceBattleTheme.pitch += 1;
@@ -421,7 +479,8 @@ namespace VoiceActing
                 time -= 1;
                 audioSourceBattleTheme.volume -= speed;
                 yield return null;
-                audioSourceBattleTheme.pitch -= 0.01f;
+                if(audioSourceBattleTheme.pitch >= 1)
+                    audioSourceBattleTheme.pitch -= 0.01f;
             }
         }
 
@@ -437,7 +496,7 @@ namespace VoiceActing
             enemyManager.ResetHalo();
             textMeshLine.text = (contrat.TextData.Count - indexPhrase).ToString();
             textMeshTurn.text = turnCount.ToString();
-            feedbackLineTransform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
+            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
             feedbackLine.SetActive(true);
 
         }

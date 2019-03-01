@@ -646,7 +646,16 @@ namespace VoiceActing
             //RotateCamera(0, 90, 0, 120);
         }
 
-
+        public void EndSequence1(float offset, float rotationOffset)
+        {
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + rotationOffset);
+            SetCamera(initialPosition.position.x + offset, initialPosition.position.y, initialPosition.position.z);
+            MoveCamera(initialPosition.position.x + offset + 0.02f, initialPosition.position.y, initialPosition.position.z, 60);
+        }
 
         public void EndSequence()
         {
@@ -654,9 +663,9 @@ namespace VoiceActing
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
                 StopCoroutine(rotatingCoroutine);
-            /*SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
-            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);*/
-            MoveCamera(this.transform.localPosition.x - 1, this.transform.localPosition.y, this.transform.localPosition.z, 80);
+            /*SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);*/
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+            MoveCamera(this.transform.localPosition.x - 2, this.transform.localPosition.y, this.transform.localPosition.z, 80);
             StartCoroutine(EndSequenceCoroutine(80));
             //MoveCamera(initialPosition.position.x - 1.2f, initialPosition.position.y, initialPosition.position.z, 600);
         }
@@ -668,13 +677,17 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-            time = 150;
+            time = 110;
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
             MoveCamera(this.transform.localPosition.x - 0.2f, this.transform.localPosition.y, this.transform.localPosition.z, time);
             while (time != 0)
             {
                 time -= 1;
                 yield return null;
             }
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
             MoveCamera(this.transform.localPosition.x - 1f, this.transform.localPosition.y, this.transform.localPosition.z, 30);
         }
 

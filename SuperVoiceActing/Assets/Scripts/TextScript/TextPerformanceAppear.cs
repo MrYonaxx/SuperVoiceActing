@@ -141,28 +141,6 @@ namespace VoiceActing
             textMeshPro = GetComponent<TMP_Text>();
         }
 
-
-        /*protected void Start()
-        {
-            if (coroutine != null)
-                StopCoroutine(coroutine);
-            coroutine = AnimateVertexColors();
-            StartCoroutine(coroutine);
-        }*/
-
-        /*public Vector2 GetEmphasisPosition()
-        {
-            if(wordSelected >= 0 && wordSelected <= textMeshPro.textInfo.wordCount)
-            {
-                int wordCharacterCenter = (textMeshPro.textInfo.wordInfo[wordSelected].firstCharacterIndex - textMeshPro.textInfo.wordInfo[wordSelected].lastCharacterIndex / 2);
-
-                int materialIndex = textMeshPro.textInfo.characterInfo[wordCharacterCenter].materialReferenceIndex;
-                int vertexIndex = textMeshPro.textInfo.characterInfo[wordCharacterCenter].vertexIndex;
-                Vector3[] sourceVertices = cachedMeshInfo[materialIndex].vertices;
-                return (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
-            }
-            return Vector2.zero;
-        }*/
         public void Stop()
         {
             if (coroutine != null)
@@ -653,7 +631,9 @@ namespace VoiceActing
         protected IEnumerator ExplosionVertex(float damage, float time)
         {
             yield return null;
+            textMeshPro.ForceMeshUpdate();
 
+            //textMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
             textInfo = textMeshPro.textInfo;
             //Matrix4x4 matrix;
             TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
@@ -677,6 +657,7 @@ namespace VoiceActing
 
                     Vector3[] sourceVertices = cachedMeshInfo[materialIndex].vertices;
                     Vector2 charMidBasline = (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
+                        
                     Vector3 offset = charMidBasline;
                     offset *= randomParameter[i] + (coef);
 
@@ -707,10 +688,14 @@ namespace VoiceActing
 
 
 
-        public void TextPop()
+
+
+
+
+        public void TextPop(int time)
         {
             StopCoroutine(coroutine);
-            StartCoroutine(ExplosionVertex(100, 60));
+            StartCoroutine(ExplosionVertex(100, time));
         }
 
         protected IEnumerator PopVertex()

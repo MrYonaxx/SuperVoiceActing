@@ -117,13 +117,10 @@ namespace VoiceActing
             return currentText.GetEndDamage();
         }
 
-        public void TextPop()
+        public void TextPop(int time = 60)
         {
-            currentText.TextPop();
+            currentText.TextPop(time);
         }
-
-
-
 
 
 
