@@ -94,9 +94,9 @@ namespace VoiceActing
         [SerializeField]
         protected AudioSource audioSourceYokaiDisco;
         [SerializeField]
-        Image mcPanel;
+        Animator mcPanel;
         [SerializeField]
-        Image ingeSonPanel;
+        Animator ingeSonPanel;
 
         [Header("UI")]
         [SerializeField]
@@ -423,8 +423,10 @@ namespace VoiceActing
             audioSourceKillPhrase2.Play();
 
             yield return new WaitForSeconds(1f);
-            ingeSonPanel.gameObject.SetActive(false);
-            mcPanel.gameObject.SetActive(false);
+            ingeSonPanel.SetTrigger("Feedback");
+            mcPanel.SetTrigger("Feedback");
+            /*ingeSonPanel.gameObject.SetActive(false);
+            mcPanel.gameObject.SetActive(false);*/
             enemyManager.DamagePhrase();
             textAppearManager.TextPop(210);
             feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 0);
