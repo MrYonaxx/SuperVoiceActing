@@ -97,6 +97,8 @@ namespace VoiceActing
         Animator mcPanel;
         [SerializeField]
         Animator ingeSonPanel;
+        [SerializeField]
+        GameObject resultScreen;
 
         [Header("UI")]
         [SerializeField]
@@ -299,6 +301,8 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
+            enemyManager.SetHp(0);
+            indexPhrase = contrat.TextData.Count - 1;
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)
@@ -449,6 +453,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
+            resultScreen.SetActive(true);
             yield return new WaitForSeconds(1);
             introBlackScreen.gameObject.SetActive(true);
             textIntro.SetActive(true);
