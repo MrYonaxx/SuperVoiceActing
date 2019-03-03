@@ -122,6 +122,15 @@ namespace VoiceActing
             set { damageVariance = value; }
         }
 
+
+        [SerializeField]
+        private SkillData[] potentials;
+        public SkillData[] Potentials
+        {
+            get { return potentials; }
+            set { potentials = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -156,6 +165,7 @@ namespace VoiceActing
             damageVariance = actorData.FourchetteMin;
             timbre = actorData.Timbre;
             statistique = actorData.Statistique;
+            potentials = actorData.Potentials;
         }
 
         #endregion

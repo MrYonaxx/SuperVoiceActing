@@ -122,6 +122,11 @@ namespace VoiceActing
             currentText.TextPop(time);
         }
 
+        public void SetPauseText(bool b)
+        {
+            currentText.SetPauseText(b);
+        }
+
 
 
         public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, bool startPhrase = false)

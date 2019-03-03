@@ -120,8 +120,10 @@ namespace VoiceActing
         private void Start()
         {
             indexLimit = scrollSize;
-            listContractAvailable.Add(new Contract(contractDatabase[0]));
-            listContractAvailable.Add(new Contract(contractDatabase[1]));
+            for(int i = 0; i < contractDatabase.Length; i++)
+            {
+                listContractAvailable.Add(new Contract(contractDatabase[i]));
+            }
             CreateListButton();
         }
 

@@ -573,8 +573,9 @@ namespace VoiceActing
 
             noCameraEffect = true;
             //SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
-            SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
+            //SetCameraRotation(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z);
             MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 20);
+            RotateCamera(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z, 20);
             MoveCamera(this.transform.position.x - 1, ingeSonPosition.position.y, ingeSonPosition.position.z, 5000);
             //RotateCamera(0, 90, 0, 120);
         }

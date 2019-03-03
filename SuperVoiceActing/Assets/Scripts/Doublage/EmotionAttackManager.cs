@@ -202,7 +202,12 @@ namespace VoiceActing
 
         public Emotion[] GetComboEmotion()
         {
-            return comboEmotion;
+            var emoti = new Emotion[comboMax];
+            for(int i = 0; i < comboEmotion.Length; i++)
+            {
+                emoti[i] = comboEmotion[i];
+            }
+            return emoti;
         }
 
         #endregion

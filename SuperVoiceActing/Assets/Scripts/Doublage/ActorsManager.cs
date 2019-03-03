@@ -62,12 +62,17 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+        public VoiceActor GetCurrentActor()
+        {
+            return actors[indexCurrentActor];
+        }
 
         public void SetActors(List<VoiceActor> actorsContract)
         {
-            actors.Add(new VoiceActor(debug));
-            if (actorsContract == null)
+            if (actorsContract[0] == null)
                 actors.Add(new VoiceActor(debug));
+            else
+                actors = actorsContract;
             DrawActorStat();
         }
 

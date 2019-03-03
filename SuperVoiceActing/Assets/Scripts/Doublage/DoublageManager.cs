@@ -141,7 +141,9 @@ namespace VoiceActing
 
         protected Contract contrat;
 
-        int turnCount = 15;
+        protected int turnCount = 15;
+
+        protected Emotion[] lastAttack = null;
 
         #endregion
 
@@ -250,8 +252,9 @@ namespace VoiceActing
                     feedbackLine.SetActive(false);
     
                 HideUIButton();
-                Emotion[] emotions = emotionAttackManager.GetComboEmotion();
-                textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotions, textAppearManager.GetWordSelected()), emotions);
+                lastAttack = emotionAttackManager.GetComboEmotion();
+                Debug.Log(lastAttack[0]);
+                textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, textAppearManager.GetWordSelected()), lastAttack);
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.RemoveCard();
@@ -296,8 +299,6 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
-            enemyManager.SetHp(0);
-            indexPhrase = contrat.TextData.Count-1;
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)
@@ -318,7 +319,7 @@ namespace VoiceActing
                     if (indexPhrase < contrat.TextData.Count)
                         enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
-                    if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
+                    if (CheckEvent() == false)
                     {
                         enemyManager.DamagePhrase();
                         textAppearManager.TextPop();                 
@@ -361,7 +362,7 @@ namespace VoiceActing
             if(indexPhrase < contrat.TextData.Count)
                 enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
-            if (CheckEvent() == false && skillManager.CheckPassiveSkills() == false)
+            if (CheckEvent() == false)
                 SetPhrase();
             startLine = false;
         }
@@ -387,8 +388,7 @@ namespace VoiceActing
                 return;
             }
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
-            //StartCoroutine(WaitText());
-            //ShowUIButton(100 - enemyManager.GetHpPercentage());
+            skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Kill", lastAttack);
         }
 
 
@@ -507,6 +507,7 @@ namespace VoiceActing
         {
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
+            skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack);
         }
 
         private IEnumerator WaitText()
