@@ -301,8 +301,8 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
-            enemyManager.SetHp(0);
-            indexPhrase = contrat.TextData.Count - 1;
+            /*enemyManager.SetHp(0);
+            indexPhrase = contrat.TextData.Count - 1;*/
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)
@@ -398,7 +398,7 @@ namespace VoiceActing
 
         public void EndSession()
         {
-            StartCoroutine(EndSessionCoroutine(60));
+            StartCoroutine(EndSessionCoroutine(50));
         }
 
         private IEnumerator EndSessionCoroutine(int time)
