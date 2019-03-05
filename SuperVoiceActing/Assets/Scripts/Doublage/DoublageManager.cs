@@ -48,6 +48,8 @@ namespace VoiceActing
         [SerializeField]
         protected SkillManager skillManager;
         [SerializeField]
+        protected ResultScreen resultScreenManager;
+        [SerializeField]
         protected TextAppearManager textAppearManager;
         [SerializeField]
         protected PanelPlayer panelPlayer;
@@ -144,6 +146,7 @@ namespace VoiceActing
         protected Contract contrat;
 
         protected int turnCount = 15;
+        protected int killCount = 0;
 
         protected Emotion[] lastAttack = null;
 
@@ -301,14 +304,16 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
-            /*enemyManager.SetHp(0);
-            indexPhrase = contrat.TextData.Count - 1;*/
+            enemyManager.SetHp(0);
+            indexPhrase = contrat.TextData.Count - 1;
+            killCount = 2;
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
                     
                     indexPhrase += 1;
+                    killCount += 1;
                     if (currentLineNumber != null)
                         currentLineNumber.text = (indexPhrase+1).ToString();
                     inputController.gameObject.SetActive(false);
@@ -454,6 +459,8 @@ namespace VoiceActing
                 yield return null;
             }
             resultScreen.SetActive(true);
+            resultScreenManager.SetContract(contrat);
+            resultScreenManager.DrawResult(turnCount, killCount);
             yield return new WaitForSeconds(1);
             introBlackScreen.gameObject.SetActive(true);
             textIntro.SetActive(true);

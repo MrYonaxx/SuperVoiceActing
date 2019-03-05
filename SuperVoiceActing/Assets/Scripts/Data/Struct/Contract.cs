@@ -50,7 +50,13 @@ namespace VoiceActing
         }
 
 
-
+        [SerializeField]
+        private int sessionNumber;
+        public int SessionNumber
+        {
+            get { return sessionNumber; }
+            set { sessionNumber = value; }
+        }
         [SerializeField]
         private int weekRemaining;
         public int WeekRemaining
@@ -121,6 +127,22 @@ namespace VoiceActing
             get { return eventData; }
         }
 
+        [SerializeField]
+        private int expGain;
+        public int ExpGain
+        {
+            get { return expGain; }
+            set { expGain = value; }
+        }
+
+        [SerializeField]
+        private int expBonus;
+        public int ExpBonus
+        {
+            get { return expBonus; }
+            set { expBonus = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -155,6 +177,9 @@ namespace VoiceActing
             this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
             this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax+1);
             this.totalMixing = Random.Range(data.MixingMin, data.MixingMax+1);
+
+            this.expGain = data.ExpGain;
+            this.expBonus = data.ExpBonus;
 
             this.eventData = data.EventData;
 

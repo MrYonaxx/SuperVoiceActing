@@ -235,6 +235,21 @@ namespace VoiceActing
             get { return weekMax; }
         }
 
+        [HorizontalGroup("EXP")]
+        [SerializeField]
+        private int expGain;
+        public int ExpGain
+        {
+            get { return expGain; }
+        }
+        [HorizontalGroup("EXP")]
+        [SerializeField]
+        private int expBonus;
+        public int ExpBonus
+        {
+            get { return expBonus; }
+        }
+
         [Space]
         [Space]
 
