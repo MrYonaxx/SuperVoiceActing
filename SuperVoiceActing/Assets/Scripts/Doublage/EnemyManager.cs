@@ -194,6 +194,19 @@ namespace VoiceActing
             this.neutral = (jo + sa + di + an + su + sw + fe + tr) / 8;
         }
 
+        public EmotionStat(EmotionStat newStat)
+        {
+            this.joy = newStat.Joy;
+            this.sadness = newStat.Sadness;
+            this.disgust = newStat.Disgust;
+            this.anger = newStat.Anger;
+            this.surprise = newStat.Surprise;
+            this.sweetness = newStat.Sweetness;
+            this.fear = newStat.Fear;
+            this.trust = newStat.Trust;
+            this.neutral = (joy + sadness + disgust + anger + surprise + sweetness + fear + trust) / 8;
+        }
+
     }
 
 

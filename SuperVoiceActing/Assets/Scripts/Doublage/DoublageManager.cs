@@ -306,7 +306,7 @@ namespace VoiceActing
         {
             enemyManager.SetHp(0);
             indexPhrase = contrat.TextData.Count - 1;
-            killCount = 2;
+            killCount = 5;
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)

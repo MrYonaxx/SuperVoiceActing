@@ -87,6 +87,27 @@ namespace VoiceActing
         }
 
         [Space]
+        [SerializeField]
+        private EmotionStat growth;
+        public EmotionStat Growth
+        {
+            get { return growth; }
+            set { growth = value; }
+        }
+
+        [Space]
+        [SerializeField]
+        private EmotionStat growthRandom;
+        public EmotionStat GrowthRandom
+        {
+            get { return growthRandom; }
+            set { growthRandom = value; }
+        }
+
+
+
+        [Space]
+        [Space]
         [HorizontalGroup("Fourchette")]
         [SerializeField]
         private int fourchetteMin;
@@ -96,6 +117,7 @@ namespace VoiceActing
             set { fourchetteMin = value; }
         }
 
+        [Space]
         [Space]
         [HorizontalGroup("Fourchette")]
         [SerializeField]
@@ -121,6 +143,15 @@ namespace VoiceActing
             get { return potentials; }
             set { potentials = value; }
         }
+
+
+
+
+
+
+
+
+
 
 
 
