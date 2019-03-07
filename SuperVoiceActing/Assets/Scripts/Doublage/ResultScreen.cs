@@ -68,17 +68,28 @@ namespace VoiceActing
 
         [Header("LevelUp")]
         [SerializeField]
+        TextMeshProUGUI textOldLevel;
+        [SerializeField]
+        TextMeshProUGUI textNewLevel;
+        [SerializeField]
         TextMeshProUGUI[] textsStats;
         [SerializeField]
         RectTransform[] gaugeStats;
         [SerializeField]
         RectTransform[] newGaugeStats;
+        [SerializeField]
+        TextMeshProUGUI[] textsGain;
 
 
+        private bool[] actorsLevelUp;
+        private int[] actorsOldLevel;
+        private EmotionStat[] actorsOldStats;
 
+        [Header("Feedback")]
+        [SerializeField]
+        Animator resultScreen;
 
-        private int[] oldLevel;
-        private EmotionStat[] oldStats;
+        private bool inAnimation = true;
 
         #endregion
 
@@ -99,11 +110,19 @@ namespace VoiceActing
         public void SetContract(Contract con)
         {
             contract = con;
+
+            actorsLevelUp = new bool[contract.VoiceActors.Count];
+            for (int i = 0; i < actorsLevelUp.Length; i++)
+            {
+                actorsLevelUp[i] = false;
+            }
+            actorsOldLevel = new int[contract.VoiceActors.Count];
+            actorsOldStats = new EmotionStat[contract.VoiceActors.Count];
         }
 
 
         public void DrawResult(int numberTurn, int lineDefeated)
-        {
+        {           
             // Draw
             textName.text = contract.Name;
             textSessionNumber.text = contract.SessionNumber.ToString();
@@ -198,6 +217,13 @@ namespace VoiceActing
             while (va.Experience > va.NextEXP)
             {
                 // Level Up
+                if (actorsLevelUp[i] == false)
+                {
+                    actorsOldLevel[i] = va.Level;
+                    actorsOldStats[i] = new EmotionStat(va.Statistique);
+                }
+                actorsLevelUp[i] = true;
+
                 va.Experience -= va.NextEXP;
                 va.LevelUp();
                 va.NextEXP = experience.ExperienceCurve[va.Level];
@@ -210,6 +236,7 @@ namespace VoiceActing
 
             textsLevel[i].text = va.Level.ToString();
             textsNext[i].text = (va.NextEXP- va.Experience).ToString();
+            inAnimation = false;
         }
 
         private IEnumerator DrawExpGauge(RectTransform expGauge, TextMeshProUGUI textNext, float nextExp, float exp)
@@ -219,104 +246,191 @@ namespace VoiceActing
             while(time != 0)
             {
                 time -= 1;
-
                 textNext.text = ((int)(nextExp * (1 - expGauge.transform.localScale.x))).ToString();
-
                 expGauge.transform.localScale += speed;
-
                 if (expGauge.transform.localScale.x >= 1)
                 {
                     expGauge.transform.localScale = new Vector3(0, expGauge.transform.localScale.y, expGauge.transform.localScale.z);
                     yield break;
                 }
-
-
-
                 yield return null;
             }
         }
 
 
 
+        public void ValidateNext()
+        {
+            if(inAnimation == true)
+            {
+                //SkipAnimation();
+            }
+            else
+            {
+                for(int i = 0; i < actorsLevelUp.Length; i++)
+                {
+                    if (actorsLevelUp[i] == true)
+                    {
+                        ActivateLevelUp(i);
+                    }
+                }
+            }
+        }
 
+        private void SkipAnimation()
+        {
+            StopAllCoroutines();
+            VoiceActor va;
+            for (int i = 0; i < contract.VoiceActors.Count; i++)
+            {
+                va = contract.VoiceActors[i];
+                while (va.Experience > va.NextEXP)
+                {
+                    // Level Up
+                    if (actorsLevelUp[i] == false)
+                    {
+                        actorsOldLevel[i] = va.Level;
+                        actorsOldStats[i] = new EmotionStat(va.Statistique);
+                    }
+                    actorsLevelUp[i] = true;
+
+                    va.Experience -= va.NextEXP;
+                    va.LevelUp();
+                    va.NextEXP = experience.ExperienceCurve[va.Level];
+                }
+                textsLevel[i].text = va.Level.ToString();
+                textsNext[i].text = (va.NextEXP- va.Experience).ToString();
+            }
+            inAnimation = false;
+        }
+
+
+
+        private void ActivateLevelUp(int id)
+        {
+            resultScreen.SetTrigger("LevelUp");
+            actorsLevelUp[id] = false;
+            DrawOldLevelStat(id);
+            StartCoroutine(NewstatCoroutine(id));
+        }
+
+
+        private IEnumerator NewstatCoroutine(int id)
+        {
+            yield return new WaitForSeconds(1.5f);
+            DrawNewLevelStat(id);
+        }
 
         private void DrawOldLevelStat(int id)
         {
+            textOldLevel.text = actorsOldLevel[id].ToString();
             int stat = 0;
             for(int i = 0; i < gaugeStats.Length; i++)
             {
                 switch(i)
                 {
                     case 0:
-                        stat = oldStats[i].Joy;
+                        stat = actorsOldStats[id].Joy;
                         break;
                     case 1:
-                        stat = oldStats[i].Sadness;
+                        stat = actorsOldStats[id].Sadness;
                         break;
                     case 2:
-                        stat = oldStats[i].Disgust;
+                        stat = actorsOldStats[id].Disgust;
                         break;
                     case 3:
-                        stat = oldStats[i].Anger;
+                        stat = actorsOldStats[id].Anger;
                         break;
                     case 4:
-                        stat = oldStats[i].Surprise;
+                        stat = actorsOldStats[id].Surprise;
                         break;
                     case 5:
-                        stat = oldStats[i].Sweetness;
+                        stat = actorsOldStats[id].Sweetness;
                         break;
                     case 6:
-                        stat = oldStats[i].Fear;
+                        stat = actorsOldStats[id].Fear;
                         break;
                     case 7:
-                        stat = oldStats[i].Trust;
+                        stat = actorsOldStats[id].Trust;
                         break;
 
                 }
                 gaugeStats[i].transform.localScale = new Vector3(stat / 100f, gaugeStats[i].transform.localScale.y, gaugeStats[i].transform.localScale.z);
-                newGaugeStats[i].sizeDelta = new Vector2((stat / 100f) * 500, 0);
+                newGaugeStats[i].sizeDelta = new Vector2((stat / 100f) * 500, newGaugeStats[i].sizeDelta.y);
                 textsStats[i].text = stat.ToString();
+                textsGain[i].transform.localScale = new Vector3(1, 0, 1);
             }
         }
 
 
         private void DrawNewLevelStat(int id)
         {
+            VoiceActor va = contract.VoiceActors[id];
+            textNewLevel.text = va.Level.ToString();
             int stat = 0;
+            int oldStat = 0;
             for (int i = 0; i < gaugeStats.Length; i++)
             {
                 switch (i)
                 {
                     case 0:
-                        stat = oldStats[i].Joy;
+                        oldStat = actorsOldStats[id].Joy;
+                        stat = va.Statistique.Joy;
                         break;
                     case 1:
-                        stat = oldStats[i].Sadness;
+                        oldStat = actorsOldStats[id].Sadness;
+                        stat = va.Statistique.Sadness;
                         break;
                     case 2:
-                        stat = oldStats[i].Disgust;
+                        oldStat = actorsOldStats[id].Disgust;
+                        stat = va.Statistique.Disgust;
                         break;
                     case 3:
-                        stat = oldStats[i].Anger;
+                        oldStat = actorsOldStats[id].Anger;
+                        stat = va.Statistique.Anger;
                         break;
                     case 4:
-                        stat = oldStats[i].Surprise;
+                        oldStat = actorsOldStats[id].Surprise;
+                        stat = va.Statistique.Surprise;
                         break;
                     case 5:
-                        stat = oldStats[i].Sweetness;
+                        oldStat = actorsOldStats[id].Sweetness;
+                        stat = va.Statistique.Sweetness;
                         break;
                     case 6:
-                        stat = oldStats[i].Fear;
+                        oldStat = actorsOldStats[id].Fear;
+                        stat = va.Statistique.Fear;
                         break;
                     case 7:
-                        stat = oldStats[i].Trust;
+                        oldStat = actorsOldStats[id].Trust;
+                        stat = va.Statistique.Trust;
                         break;
 
                 }
-                gaugeStats[i].transform.localScale = new Vector3(stat / 100f, gaugeStats[i].transform.localScale.y, gaugeStats[i].transform.localScale.z);
-                textsStats[i].text = stat.ToString();
+                if(oldStat != stat)
+                    StartCoroutine(NewStatDrawCoroutine(stat, oldStat, i));
             }
         }
+
+        private IEnumerator NewStatDrawCoroutine(int stat, int oldStat, int i)
+        {
+            yield return new WaitForSeconds(0.1f * i);
+            int time = 20;
+            Vector2 speed = new Vector2((((stat / 100f) * 500) - newGaugeStats[i].sizeDelta.x) / time, 0);
+            while (time != 0)
+            {
+                time -= 1;
+                newGaugeStats[i].sizeDelta += speed;
+                yield return null;
+            }
+            textsStats[i].text = stat.ToString();
+            textsStats[i].color = new Color(1, 1, 0);
+            textsGain[i].transform.localScale = new Vector3(1, 1, 1);
+            textsGain[i].text = (stat - oldStat).ToString();
+        }
+
+
+
 
 
 
