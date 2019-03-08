@@ -68,17 +68,17 @@ namespace VoiceActing
 
         [Header("LevelUp")]
         [SerializeField]
-        TextMeshProUGUI textOldLevel;
+        private TextMeshProUGUI textOldLevel;
         [SerializeField]
-        TextMeshProUGUI textNewLevel;
+        private TextMeshProUGUI textNewLevel;
         [SerializeField]
-        TextMeshProUGUI[] textsStats;
+        private TextMeshProUGUI[] textsStats;
         [SerializeField]
-        RectTransform[] gaugeStats;
+        private RectTransform[] gaugeStats;
         [SerializeField]
-        RectTransform[] newGaugeStats;
+        private RectTransform[] newGaugeStats;
         [SerializeField]
-        TextMeshProUGUI[] textsGain;
+        private TextMeshProUGUI[] textsGain;
 
 
         private bool[] actorsLevelUp;
@@ -87,9 +87,18 @@ namespace VoiceActing
 
         [Header("Feedback")]
         [SerializeField]
-        Animator resultScreen;
+        private Animator resultScreen;
+        [SerializeField]
+        private Animator[] animatorLevelUpFeedback;
+        [SerializeField]
+        private Animator[] animatorStats;
+        [SerializeField]
+        private Animator animatorEndStatScreen;
+        [SerializeField]
+        private AudioSource yokaiDisco;
 
         private bool inAnimation = true;
+        private int lineDefeated = 0;
 
         #endregion
 
@@ -122,7 +131,8 @@ namespace VoiceActing
 
 
         public void DrawResult(int numberTurn, int lineDefeated)
-        {           
+        {
+            this.lineDefeated = lineDefeated;
             // Draw
             textName.text = contract.Name;
             textSessionNumber.text = contract.SessionNumber.ToString();
@@ -231,6 +241,8 @@ namespace VoiceActing
                 textsLevel[i].text = va.Level.ToString();
                 textsNext[i].text = va.NextEXP.ToString();
 
+                animatorLevelUpFeedback[i].SetTrigger("LevelUp");
+
                 yield return DrawExpGauge(expGauge, textsNext[i], va.NextEXP, va.Experience);
             }
 
@@ -263,7 +275,8 @@ namespace VoiceActing
         {
             if(inAnimation == true)
             {
-                //SkipAnimation();
+                SkipAnimation();
+                return;
             }
             else
             {
@@ -272,9 +285,11 @@ namespace VoiceActing
                     if (actorsLevelUp[i] == true)
                     {
                         ActivateLevelUp(i);
+                        return;
                     }
                 }
             }
+            EndScreenResult();
         }
 
         private void SkipAnimation()
@@ -297,10 +312,14 @@ namespace VoiceActing
                     va.Experience -= va.NextEXP;
                     va.LevelUp();
                     va.NextEXP = experience.ExperienceCurve[va.Level];
+
+                    animatorLevelUpFeedback[i].SetTrigger("LevelUp");
                 }
                 textsLevel[i].text = va.Level.ToString();
                 textsNext[i].text = (va.NextEXP- va.Experience).ToString();
             }
+            textCurrentLine.text = contract.CurrentLine.ToString();
+            textEXP.text = (contract.ExpGain * lineDefeated).ToString();
             inAnimation = false;
         }
 
@@ -317,7 +336,7 @@ namespace VoiceActing
 
         private IEnumerator NewstatCoroutine(int id)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.2f);
             DrawNewLevelStat(id);
         }
 
@@ -424,7 +443,7 @@ namespace VoiceActing
                 yield return null;
             }
             textsStats[i].text = stat.ToString();
-            textsStats[i].color = new Color(1, 1, 0);
+            animatorStats[i].SetTrigger("Feedback");
             textsGain[i].transform.localScale = new Vector3(1, 1, 1);
             textsGain[i].text = (stat - oldStat).ToString();
         }
@@ -435,9 +454,32 @@ namespace VoiceActing
 
 
 
+        private void EndScreenResult()
+        {
+            animatorEndStatScreen.gameObject.SetActive(true);
+            animatorEndStatScreen.SetTrigger("End");
+            StartCoroutine(StopYokaiDisco());
 
-        #endregion
+        }
 
-    } // ResultScreen class
+        private IEnumerator StopYokaiDisco()
+        {
+            int time = 90;
+            float speed = yokaiDisco.volume / time;
+            while(time != 0)
+            {
+                time -= 1;
+                yokaiDisco.volume -= speed;
+                yield return null;
+            }
+            yokaiDisco.volume = 0;
+
+        }
+
+
+
+    #endregion
+
+} // ResultScreen class
 	
 }// #PROJECTNAME# namespace
