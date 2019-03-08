@@ -77,9 +77,15 @@ namespace VoiceActing
 
         private void Start()
         {
+            /*contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
             contractAcceptedList.Add(null);
-            contractAcceptedList.Add(null);
+            DrawAvailableContract();*/
+        }
+
+        public void SetContractList(List<Contract> contracts)
+        {
+            contractAcceptedList = contracts;
             DrawAvailableContract();
         }
 

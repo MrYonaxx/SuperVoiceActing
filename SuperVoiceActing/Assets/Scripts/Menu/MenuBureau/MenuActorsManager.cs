@@ -177,7 +177,13 @@ namespace VoiceActing
         protected virtual void Start()
         {
             indexActorLimit = scrollSize;
-            CreateFromDebugList();
+            //CreateFromDebugList();
+            //CreateActorsButtonList();
+        }
+
+        public void SetListActors(List<VoiceActor> list)
+        {
+            actorsList = list;
             CreateActorsButtonList();
         }
 

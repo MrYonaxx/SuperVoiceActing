@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace VoiceActing
 {
@@ -460,6 +461,7 @@ namespace VoiceActing
             animatorEndStatScreen.SetTrigger("End");
             StartCoroutine(StopYokaiDisco());
 
+
         }
 
         private IEnumerator StopYokaiDisco()
@@ -473,6 +475,7 @@ namespace VoiceActing
                 yield return null;
             }
             yokaiDisco.volume = 0;
+            SceneManager.LoadScene("Bureau");
 
         }
 

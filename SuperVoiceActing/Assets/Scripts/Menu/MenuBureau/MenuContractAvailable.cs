@@ -120,10 +120,16 @@ namespace VoiceActing
         private void Start()
         {
             indexLimit = scrollSize;
-            for(int i = 0; i < contractDatabase.Length; i++)
+            /*for(int i = 0; i < contractDatabase.Length; i++)
             {
                 listContractAvailable.Add(new Contract(contractDatabase[i]));
             }
+            CreateListButton();*/
+        }
+
+        public void SetContractAvailable(List<Contract> list)
+        {
+            listContractAvailable = list;
             CreateListButton();
         }
 
@@ -134,7 +140,7 @@ namespace VoiceActing
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
                 buttonsContracts[i].DrawButton(listContractAvailable[i].Name);
             }
-            StartCoroutine(WaitEndOfFrame());
+            //StartCoroutine(WaitEndOfFrame());
         }
 
         private IEnumerator WaitEndOfFrame()
