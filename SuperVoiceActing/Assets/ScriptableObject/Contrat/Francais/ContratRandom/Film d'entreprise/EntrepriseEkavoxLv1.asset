@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: EntrepriseEkavoxLv1
+  m_EditorClassIdentifier: 
+  name: Entreprise Ekavox
+  level: 1
+  contractType: 0
+  salaryMin: 850
+  salaryMax: 1250
+  mixingMin: 5
+  mixingMax: 10
+  weekMin: 6
+  weekMax: 9
+  expGain: 20
+  expBonus: 50
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Narrateur
+      lineMin: 12
+      lineMax: 60
+      fanMin: 0
+      fanMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 3
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 6
+        trust: 3
+      characterStatMax:
+        neutral: 0
+        joy: 7
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 9
+        trust: 7
+  textDataContract:
+  - nbPhraseMin: 1
+    nbPhraseMax: 1
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 5
+      hpMax: 10
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: "L'ins\xE9curit\xE9 ..."
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 50
+        trust: 0
+      enemyWeakPoints: []
+  - nbPhraseMin: 1
+    nbPhraseMax: 1
+    textDataPossible:
+    - interlocuteurID: 0
+      hpMin: 0
+      hpMax: 0
+      atkMin: 0
+      atkMax: 0
+      evadeMin: 0
+      evadeMax: 0
+      text: Elle provoque la peur dans nos coeurs
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  textData: []
+  eventData: []
