@@ -26,7 +26,7 @@ namespace VoiceActing
 
         [ReadOnly]
         [SerializeField]
-        private int[] experienceCurve = new int[255];
+        private int[] experienceCurve = new int[50];
         public int[] ExperienceCurve
         {
             get { return experienceCurve; }
