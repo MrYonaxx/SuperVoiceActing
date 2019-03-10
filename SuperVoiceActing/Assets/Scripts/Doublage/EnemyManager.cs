@@ -66,8 +66,8 @@ namespace VoiceActing
 
         public TextData(TextDataContract data)
         {
-            interlocuteur = data.InterlocuteurID;
-            hpMax = Random.Range(data.HPMin, data.HPMax);
+            interlocuteur = data.TextStats.InterlocuteurID;
+            hpMax = Random.Range(data.TextStats.HPMin, data.TextStats.HPMax);
             text = data.Text;
             enemyResistance = data.EnemyResistance;
             enemyWeakPoints = data.EnemyWeakPoints;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SanteJeunesseLv1
   m_EditorClassIdentifier: 
   name: "Sant\xE9 pr\xE9vention jeunesse"
+  contractTitle: []
   level: 1
   contractType: 0
   salaryMin: 700
@@ -23,6 +24,7 @@ MonoBehaviour:
   weekMax: 8
   expGain: 20
   expBonus: 50
+  description: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -56,17 +58,23 @@ MonoBehaviour:
         fear: 0
         trust: 0
   textDataContract:
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 10
-      hpMax: 15
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Pour bien grandir ...
+    - text: Pour bien grandir ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 5
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -89,17 +97,23 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 1
-    nbPhraseMax: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Mange au moins 5 fruits et l\xE9gumes par jour."
+    - text: "Mange au moins 5 fruits et l\xE9gumes par jour."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 18
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -144,14 +158,16 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-    - interlocuteurID: 0
-      hpMin: 20
-      hpMax: 30
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Ne mange pas trop gras, trop sucr\xE9, trop sal\xE9."
+    - text: "Ne mange pas trop gras, trop sucr\xE9, trop sal\xE9."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 18
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -163,17 +179,23 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 10
-      hpMax: 15
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Pour \xEAtre en forme ..."
+    - text: "Pour \xEAtre en forme ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 5
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -196,17 +218,23 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 1
-    nbPhraseMax: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 10
-      hpMax: 15
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "D\xE9pense-toi bien !"
+    - text: "D\xE9pense-toi bien !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 16
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 100
@@ -229,14 +257,16 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-    - interlocuteurID: 0
-      hpMin: 12
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Evite de grignoter dans la journ\xE9e."
+    - text: "Evite de grignoter dans la journ\xE9e."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 16
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50

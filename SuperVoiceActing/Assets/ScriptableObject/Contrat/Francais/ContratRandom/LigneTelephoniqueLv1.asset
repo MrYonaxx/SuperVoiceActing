@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LigneTelephoniqueLv1
   m_EditorClassIdentifier: 
   name: "Ligne T\xE9l\xE9phonique"
+  contractTitle: []
   level: 1
   contractType: 0
   salaryMin: 800
@@ -23,6 +24,7 @@ MonoBehaviour:
   weekMax: 8
   expGain: 27
   expBonus: 30
+  description: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -56,17 +58,23 @@ MonoBehaviour:
         fear: 2
         trust: 6
   textDataContract:
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Bonjour, vous \xEAtes bien chez [Nom]."
+    - text: "Bonjour, vous \xEAtes bien chez [Nom]."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 7
+        hpMax: 12
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -78,61 +86,96 @@ MonoBehaviour:
         fear: -50
         trust: 30
       enemyWeakPoints: []
-  - nbPhraseMin: 1
-    nbPhraseMax: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Veuillez ne pas quitter, nous allons prendre votre appel.
+    - text: Veuillez ne pas quitter, nous allons prendre votre appel.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
+        neutral: 30
+        joy: 30
         sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 100
+        fear: -50
+        trust: 30
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
+    - text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 14
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
+        neutral: 30
+        joy: 30
         sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 100
+        fear: -50
+        trust: 30
       enemyWeakPoints: []
-  - nbPhraseMin: 1
-    nbPhraseMax: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Nous nous efforcons d'\xE9courter agr\xE9ablement votre attente."
+    - text: "Nous nous efforcons d'\xE9courter agr\xE9ablement votre attente."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 9
+        hpMax: 17
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
+        neutral: 30
+        joy: 30
+        sadness: 30
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 100
+        fear: -50
+        trust: 300
+      enemyWeakPoints: []
+    - text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 19
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 30
+        joy: 30
         sadness: 0
         disgust: 0
         anger: 0
@@ -141,103 +184,96 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - nbPhraseMin: 0
-    nbPhraseMax: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 4
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Chez [Nom], 93% des clients sont satisfaits.
+    - text: Chez [Nom], 93% des clients sont satisfaits.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 12
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 30
+        joy: 70
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 100
+        fear: -50
+        trust: 30
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Nous vous souhaitons de bonnes f\xEAtes"
+    - text: "Nous vous souhaitons de bonnes f\xEAtes"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 13
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 30
+        joy: 100
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 100
+        fear: -50
+        trust: 30
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Nos services sont actuellement indisponibles.
+    - text: Nos services sont actuellement indisponibles.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 7
+        hpMax: 14
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 30
+        sadness: 30
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 50
+        fear: -50
+        trust: 30
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Le temps de r\xE9ponse moyen de cet appel est d'environ ... minutes"
+    - text: "Le temps de r\xE9ponse moyen de cet appel est d'environ ... minutes"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 21
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 100
+        fear: -50
+        trust: 30
       enemyWeakPoints: []
   textData: []
   eventData: []

@@ -19,121 +19,177 @@ namespace VoiceActing
         Autre
     }
 
-    // TextData Contract ===================================================================
-
+    // TextDataCondition Contract ===================================================================
     [System.Serializable]
-    public class TextDatabaseContract
+    public class TextDataCondition
     {
-        [Header("Parameter")]
-
+        [Space]
+        [HorizontalGroup("All", LabelWidth = 100, Width = 100)]
         [SerializeField]
-        private bool random;
-        public bool Random
+        private bool all;
+        public bool All
         {
-            get { return random; }
-            set { random = value; }
+            get { return all; }
         }
 
-        [HorizontalGroup("NumberPhrase")]
+        [Space]
+        [HorizontalGroup("PhraseMin", LabelWidth = 100, Width = 100)]
+        [HideIf("all")]
         [SerializeField]
         private int nbPhraseMin;
         public int NbPhraseMin
         {
             get { return nbPhraseMin; }
-            set { nbPhraseMin = value; }
         }
-        [HorizontalGroup("NumberPhrase")]
+
+        [HorizontalGroup("PhraseMax", LabelWidth = 100, Width = 100)]
+        [HideIf("all")]
         [SerializeField]
         private int nbPhraseMax;
         public int NbPhraseMax
         {
             get { return nbPhraseMax; }
-            set { nbPhraseMax = value; }
         }
 
-        [Header("Database")]
+        [Space]
+
+        [HorizontalGroup("Condition", LabelWidth = 100, Width = 100)]
         [SerializeField]
-        private TextDataContract[] textDataPossible;
-        public TextDataContract[] TextDataPossible
+        private bool condition;
+        public bool Condition
         {
-            get { return textDataPossible; }
-            set { textDataPossible = value; }
+            get { return condition; }
+        }
+
+        /*[HorizontalGroup("ConditionPerso", LabelWidth = 100, Width = 100)]
+        [ShowIf("condition")]
+        [SerializeField]
+        private int characterCondition;
+        public int CharacterCondition
+        {
+            get { return characterCondition; }
+        }*/
+        [HorizontalGroup("Dictionnary", LabelWidth = 0, Width = 150)]
+        [ShowIf("condition")]
+        [SerializeField]
+        [HideLabel]
+        private string dictionnaryCondition;
+        public string DictionnaryCondition
+        {
+            get { return dictionnaryCondition; }
         }
     }
 
     // TextData Contract ===================================================================
 
     [System.Serializable]
-    public class TextDataContract
+    public class TextDatabaseContract
     {
-        //[Header("TextData ---------------")]
+        [HorizontalGroup("Hey", LabelWidth = 100, Width = 100)]
+        [HideLabel]
+        [SerializeField]
+        private TextDataCondition textDataCondition;
+        public TextDataCondition TextDataCondition
+        {
+            get { return textDataCondition; }
+        }
+
+        [HorizontalGroup("Hey")]
+        [SerializeField]
+        private TextDataContract[] textDataPossible;
+        public TextDataContract[] TextDataPossible
+        {
+            get { return textDataPossible; }
+        }
+    }
+
+
+
+    // TextData Contract ===================================================================
+
+    [System.Serializable]
+    public class TextStats
+    {
+        [HorizontalGroup("Interlocuteur", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int interlocuteurID;
         public int InterlocuteurID
         {
             get { return interlocuteurID; }
-            set { interlocuteurID = value; }
+        }
+        [HorizontalGroup("Interlocuteur", LabelWidth = 100, Width = 100)]
+        [SerializeField]
+        private int linked;
+        public int Linked
+        {
+            get { return linked; }
         }
 
-        [HorizontalGroup("HP")]
+        [HorizontalGroup("HP", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int hpMin;
         public int HPMin
         {
             get { return hpMin; }
-            set { hpMin = value; }
         }
-        [HorizontalGroup("HP")]
+        [HorizontalGroup("HP", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int hpMax;
         public int HPMax
         {
             get { return hpMax; }
-            set { hpMax = value; }
         }
 
 
-        [HorizontalGroup("Atk")]
+        [HorizontalGroup("Atk", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int atkMin;
         public int AtkMin
         {
             get { return atkMin; }
-            set { atkMin = value; }
         }
-        [HorizontalGroup("Atk")]
+        [HorizontalGroup("Atk", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int atkMax;
         public int AtkMax
         {
             get { return atkMax; }
-            set { atkMax = value; }
         }
 
 
-        [HorizontalGroup("Evade")]
+        [HorizontalGroup("Evade", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int evadeMin;
         public int EvadeMin
         {
             get { return evadeMin; }
-            set { evadeMin = value; }
         }
-        [HorizontalGroup("Evade")]
+        [HorizontalGroup("Evade", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int evadeMax;
         public int EvadeMax
         {
             get { return evadeMax; }
-            set { evadeMax = value; }
         }
+    }
 
 
 
 
-        [HorizontalGroup("Texte")]
+
+
+    // TextData Contract ===================================================================
+
+    [System.Serializable]
+    public class TextDataContract
+    {
+
+
+        [Space]
         [SerializeField]
-        [TextArea(2, 2)]
+        [HorizontalGroup("Test3", Width = 200, MarginLeft = 20)]
+        [TextArea(3, 3)]
+        [HideLabel]
         private string text;
         public string Text
         {
@@ -142,9 +198,20 @@ namespace VoiceActing
         }
 
 
-        [TabGroup("ParentGroup", "Statistiques")]
+
+        [HorizontalGroup("Test3")]
+        [SerializeField]
+        [HideLabel]
+        private TextStats textStats;
+        public TextStats TextStats
+        {
+            get { return textStats; }
+        }
+
+        //[TabGroup("ParentGroup", "Statistiques")]
         //[BoxGroup("Statistique")]
         [SerializeField]
+        [HideLabel]
         private EmotionStat enemyResistance;
         public EmotionStat EnemyResistance
         {
@@ -152,7 +219,8 @@ namespace VoiceActing
             set { enemyResistance = value; }
         }
 
-        [TabGroup("ParentGroup", "Points faibles")]
+        //[TabGroup("ParentGroup", "Points faibles")]
+        [Space]
         [SerializeField]
         private WeakPoint[] enemyWeakPoints;
         public WeakPoint[] EnemyWeakPoints
@@ -192,6 +260,8 @@ namespace VoiceActing
         {
             get { return contractTitle; }
         }
+
+
         [SerializeField]
         private int level;
         public int Level
@@ -288,6 +358,12 @@ namespace VoiceActing
             get { return characters; }
         }
 
+        [Space]
+        [Space]
+        [Space]
+
+        /*[Header("Dictionnaire")]
+        [SerializeField]*/
 
 
         [Space]

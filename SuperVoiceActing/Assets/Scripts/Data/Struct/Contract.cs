@@ -34,6 +34,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private string description;
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        [SerializeField]
         private int level;
         public int Level
         {
@@ -172,7 +180,16 @@ namespace VoiceActing
 
         public Contract(ContractData data)
         {
-            this.name = data.Name;
+            if (data.ContractTitle.Length == 0)
+                this.name = data.Name;
+            else
+                this.name = data.ContractTitle[Random.Range(0, data.ContractTitle.Length)];
+
+            if (data.Description.Length == 0)
+                this.description = " ";
+            else
+                this.description = data.Description[Random.Range(0, data.Description.Length)];
+
             this.level = data.Level;
             this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
             this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax+1);
@@ -212,28 +229,48 @@ namespace VoiceActing
 
             for (int i = 0; i < data.TextDataContract.Length; i++)
             {
-                int nbSelection = Random.Range(data.TextDataContract[i].NbPhraseMin, data.TextDataContract[i].NbPhraseMax+1);
-                if (nbSelection > 0)
+                if (data.TextDataContract[i].TextDataCondition.All == true)
                 {
-                    // Copie des possibilité de text Data
-                    List<TextDataContract> listTextDataPossibilities = new List<TextDataContract>(3);
+                    // Selection all
                     for (int j = 0; j < data.TextDataContract[i].TextDataPossible.Length; j++)
                     {
-                        listTextDataPossibilities.Add(data.TextDataContract[i].TextDataPossible[j]);
+                        textData.Add(new TextData(data.TextDataContract[i].TextDataPossible[j]));
                     }
-                    // Selection
-                    for (int n = 0; n < nbSelection; n++)
+                }
+                else
+                {
+                    // Selection aléatoire
+                    int nbSelection = Random.Range(data.TextDataContract[i].TextDataCondition.NbPhraseMin, data.TextDataContract[i].TextDataCondition.NbPhraseMax + 1);
+                    if (nbSelection > 0)
                     {
-                        int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
-                        textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
-                        Debug.Log(listTextDataPossibilities[indexRandom].Text);
-                        listTextDataPossibilities.RemoveAt(indexRandom);
+                        // Copie des possibilité de text Data
+                        List<TextDataContract> listTextDataPossibilities = new List<TextDataContract>();
+                        for (int j = 0; j < data.TextDataContract[i].TextDataPossible.Length; j++)
+                        {
+                            listTextDataPossibilities.Add(data.TextDataContract[i].TextDataPossible[j]);
+                        }
+                        // Selection
+                        for (int n = 0; n < nbSelection; n++)
+                        {
+                            int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
+                            textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
+                            Debug.Log(listTextDataPossibilities[indexRandom].Text);
+                            listTextDataPossibilities.RemoveAt(indexRandom);
+                        }
                     }
                 }
             }
             totalLine = textData.Count;
 
         }
+
+
+
+
+        /*private string ReplaceText()
+        {
+
+        }*/
 
         #endregion
 

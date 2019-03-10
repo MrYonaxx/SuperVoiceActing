@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: KidGIGNLv1
   m_EditorClassIdentifier: 
   name: Kid GIGN
+  contractTitle:
+  - Kid GIGN
+  - Action Kids
+  - Action Kids +
+  - Super Kids
   level: 1
   contractType: 3
   salaryMin: 800
@@ -23,6 +28,11 @@ MonoBehaviour:
   weekMax: 7
   expGain: 25
   expBonus: 50
+  description:
+  - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
+    un nouveau produit de la licence."
+  - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
+    un nouvelle accessoire pour la licence."
   characters:
   - mainCharacter: 1
     optional: 0
@@ -56,17 +66,23 @@ MonoBehaviour:
         fear: 0
         trust: 3
   textDataContract:
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 12
-      hpMax: 15
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Paris est menac\xE9 ..."
+    - text: "Paris est menac\xE9 ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: -30
@@ -78,14 +94,16 @@ MonoBehaviour:
         fear: 50
         trust: 0
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 12
-      hpMax: 15
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Paris est menac\xE9 !"
+    - text: "Paris est menac\xE9 !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: -10
         joy: -50
@@ -108,17 +126,44 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+    - text: La ville est en flamme !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: -10
+        joy: -50
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 30
+        sweetness: -50
+        fear: 30
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 14
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "Mais qui voil\xE0 !? Les Kids GIGN !!!"
+    - text: "Mais qui voil\xE0 !? Les Kids GIGN !!!"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -130,17 +175,23 @@ MonoBehaviour:
         fear: 0
         trust: 30
       enemyWeakPoints: []
-  - nbPhraseMin: 0
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 12
-      hpMax: 21
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "\xC0 bord de leur vaisseau toupie !?"
+    - text: "\xC0 bord de leur vaisseau toupie !?"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -163,17 +214,23 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 13
-      hpMax: 19
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Et avec une nouvelle arme !?
+    - text: Et avec une nouvelle arme !?
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -207,17 +264,23 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 15
-      hpMax: 20
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Un canon proto-alpha-IV !!!
+    - text: Un canon proto-alpha-IV !!!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -240,17 +303,23 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 0
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 12
-      hpMax: 15
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Ils repoussent les menaces anti-gouvernementales.
+    - text: Ils repoussent les menaces anti-gouvernementales.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -284,17 +353,23 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 16
-      hpMax: 22
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Les jouets Kids GIGN ne conviennent pas aux enfants de moins de 14 ans.
+    - text: Les jouets Kids GIGN ne conviennent pas aux enfants de moins de 14 ans.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 50
         joy: 50

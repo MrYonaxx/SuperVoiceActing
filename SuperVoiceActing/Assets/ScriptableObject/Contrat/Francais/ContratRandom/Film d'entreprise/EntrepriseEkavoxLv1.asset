@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EntrepriseEkavoxLv1
   m_EditorClassIdentifier: 
   name: Entreprise Ekavox
+  contractTitle: []
   level: 1
   contractType: 0
   salaryMin: 850
@@ -23,6 +24,7 @@ MonoBehaviour:
   weekMax: 9
   expGain: 20
   expBonus: 50
+  description: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -39,7 +41,7 @@ MonoBehaviour:
         neutral: 0
         joy: 3
         sadness: 0
-        disgust: 0
+        disgust: 2
         anger: 0
         surprise: 0
         sweetness: 0
@@ -49,46 +51,267 @@ MonoBehaviour:
         neutral: 0
         joy: 7
         sadness: 0
-        disgust: 0
+        disgust: 5
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 9
         trust: 7
   textDataContract:
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 5
-      hpMax: 10
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: "L'ins\xE9curit\xE9 ..."
+    - text: "L'ins\xE9curit\xE9 ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -50
+        sweetness: -50
+        fear: 50
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 0
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: Les carries ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -50
         sweetness: 0
         fear: 50
-        trust: 0
-      enemyWeakPoints: []
-  - nbPhraseMin: 1
-    nbPhraseMax: 1
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 0
-      hpMax: 0
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: Elle provoque la peur dans nos coeurs
+    - text: Elles entrainent la peur dans nos coeurs ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 10
+        surprise: -30
+        sweetness: 0
+        fear: 60
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 6
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: Il arrive qu'elles provoquent la mort.
+      textStats:
+        interlocuteurID: 0
+        linked: 2
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 0
+        surprise: -20
+        sweetness: -50
+        fear: 100
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "La mort de la dignit\xE9"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -20
+        sweetness: 0
+        fear: 100
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: "Eh oui, \xEAtre au travail, ne signifie pas d\xE9laisser son hygi\xE8ne
+        dentaire !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 30
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: "C'est pourquoi chez Ekavox, nous nous engageons \xE0 accorder 10 minutes
+        ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -97,8 +320,51 @@ MonoBehaviour:
         anger: 0
         surprise: 0
         sweetness: 0
-        fear: 0
+        fear: -50
         trust: 0
+      enemyWeakPoints: []
+    - text: '...Au brossage de dents de toutes l''entreprise !'
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 30
+        sweetness: 0
+        fear: -50
+        trust: 30
+      enemyWeakPoints: []
+    - text: "Les 30 minutes de repas seront donc consacr\xE9es \xE0 30% au brossage
+        de dents !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
       enemyWeakPoints: []
   textData: []
   eventData: []
