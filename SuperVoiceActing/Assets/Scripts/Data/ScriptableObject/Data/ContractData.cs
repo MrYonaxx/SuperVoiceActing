@@ -25,7 +25,16 @@ namespace VoiceActing
     public class TextDatabaseContract
     {
         [Header("Parameter")]
-        //[HorizontalGroup("NumberPhrase")]
+
+        [SerializeField]
+        private bool random;
+        public bool Random
+        {
+            get { return random; }
+            set { random = value; }
+        }
+
+        [HorizontalGroup("NumberPhrase")]
         [SerializeField]
         private int nbPhraseMin;
         public int NbPhraseMin
@@ -33,7 +42,7 @@ namespace VoiceActing
             get { return nbPhraseMin; }
             set { nbPhraseMin = value; }
         }
-        //[HorizontalGroup("NumberPhrase")]
+        [HorizontalGroup("NumberPhrase")]
         [SerializeField]
         private int nbPhraseMax;
         public int NbPhraseMax
@@ -57,7 +66,7 @@ namespace VoiceActing
     [System.Serializable]
     public class TextDataContract
     {
-        [Header("TextData ---------------")]
+        //[Header("TextData ---------------")]
         [SerializeField]
         private int interlocuteurID;
         public int InterlocuteurID
@@ -124,7 +133,7 @@ namespace VoiceActing
 
         [HorizontalGroup("Texte")]
         [SerializeField]
-        [TextArea]
+        [TextArea(2, 2)]
         private string text;
         public string Text
         {
@@ -175,6 +184,13 @@ namespace VoiceActing
         public string Name
         {
             get { return name; }
+        }
+
+        [SerializeField]
+        private string[] contractTitle;
+        public string[] ContractTitle
+        {
+            get { return contractTitle; }
         }
         [SerializeField]
         private int level;
@@ -251,6 +267,17 @@ namespace VoiceActing
         }
 
         [Space]
+
+        [TextArea]
+        [SerializeField]
+        private string[] description;
+        public string[] Description
+        {
+            get { return description; }
+        }
+
+        [Space]
+        [Space]
         [Space]
 
         [Header("Characters")]
@@ -263,6 +290,7 @@ namespace VoiceActing
 
 
 
+        [Space]
         [Space]
         [Space]
 
@@ -278,6 +306,7 @@ namespace VoiceActing
 
         [Space]
         [Space]
+        [Space]
 
         [SerializeField]
         private TextData[] textData;
@@ -286,6 +315,7 @@ namespace VoiceActing
             get { return textData; }
         }
 
+        [Space]
         [Space]
         [Space]
 

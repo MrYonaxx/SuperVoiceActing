@@ -54,6 +54,8 @@ namespace VoiceActing
         [SerializeField]
         private TextMeshProUGUI statLevelActor;
         [SerializeField]
+        private TextMeshProUGUI statLevelActorSelection;
+        [SerializeField]
         private TextMeshProUGUI statFanActor;
         [SerializeField]
         private TextMeshProUGUI statPriceActor;
@@ -65,6 +67,8 @@ namespace VoiceActing
         private RectTransform statHpGauge;
         [SerializeField]
         private RectTransform statTimbre;
+        [SerializeField]
+        private TextMeshProUGUI[] statSkillsActor;
 
         [Header("Stats Panel")]
         [SerializeField]
@@ -269,12 +273,25 @@ namespace VoiceActing
             statNameStylishActor.transform.eulerAngles = statNameActor.transform.eulerAngles;
 
             statLevelActor.text = actor.Level.ToString();
+            statLevelActorSelection.text = "Lv. " + actor.Level.ToString();
             statFanActor.text = actor.Fan.ToString();
             statPriceActor.text = actor.Price.ToString();
 
             statCurrentHpActor.text = actor.Hp.ToString();
             statMaxHpActor.text = actor.HpMax.ToString();
             statHpGauge.transform.localScale = new Vector3((actor.Hp / (float)actor.HpMax), statHpGauge.transform.localScale.y, statHpGauge.transform.localScale.z);
+
+            for(int i = 0; i < statSkillsActor.Length; i++)
+            {
+                if (i < actor.Potentials.Length)
+                {
+                    statSkillsActor[i].text = actor.Potentials[i].SkillName;
+                }
+                else
+                {
+                    statSkillsActor[i].text = " ";
+                }
+            }
 
             DrawGaugeInfo(actor);
 
