@@ -304,9 +304,9 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
-            enemyManager.SetHp(0);
+            /*enemyManager.SetHp(0);
             indexPhrase = contrat.TextData.Count - 1;
-            killCount = 5;
+            killCount = 5;*/
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)

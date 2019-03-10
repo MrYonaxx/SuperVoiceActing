@@ -58,6 +58,12 @@ namespace VoiceActing
         [SerializeField]
         private TextMeshProUGUI statPriceActor;
         [SerializeField]
+        private TextMeshProUGUI statCurrentHpActor;
+        [SerializeField]
+        private TextMeshProUGUI statMaxHpActor;
+        [SerializeField]
+        private RectTransform statHpGauge;
+        [SerializeField]
         private RectTransform statTimbre;
 
         [Header("Stats Panel")]
@@ -107,6 +113,10 @@ namespace VoiceActing
         TextMeshProUGUI textRoleLine;
         [SerializeField]
         TextMeshProUGUI textRoleCostEstimate;
+
+        [Header("Feedbacks")]
+        [SerializeField]
+        Animator animatorFeedbackButtonAudition;
 
         [Header("Tri")]
         [SerializeField]
@@ -261,6 +271,10 @@ namespace VoiceActing
             statLevelActor.text = actor.Level.ToString();
             statFanActor.text = actor.Fan.ToString();
             statPriceActor.text = actor.Price.ToString();
+
+            statCurrentHpActor.text = actor.Hp.ToString();
+            statMaxHpActor.text = actor.HpMax.ToString();
+            statHpGauge.transform.localScale = new Vector3((actor.Hp / (float)actor.HpMax), statHpGauge.transform.localScale.y, statHpGauge.transform.localScale.z);
 
             DrawGaugeInfo(actor);
 
@@ -526,9 +540,23 @@ namespace VoiceActing
             if (auditionMode == false)
                 return;
 
+            animatorFeedbackButtonAudition.SetTrigger("Feedback");
+            statImageActorAnimator.SetTrigger("Feedback");
+            animatorSelection.SetTrigger("Validate");
+            StartCoroutine(WaitFeedback());
+
+        }
+
+        private IEnumerator WaitFeedback()
+        {
+            int time = 20;
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
             cameraManager.MoveToCamera(2);
             menuContractPreparation.SetActor(actorsList[indexActorSelected]);
-
         }
 
         public void Return()

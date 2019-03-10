@@ -49,6 +49,8 @@ namespace VoiceActing
         TextMeshProUGUI contractLine;
         [SerializeField]
         TextMeshProUGUI contractMixage;
+        [SerializeField]
+        RectTransform gaugeLine;
 
         bool isButtonAddContract = false;
 
@@ -80,6 +82,7 @@ namespace VoiceActing
             contractMixage.text = contract.CurrentMixing + " / " + contract.TotalMixing;
             contractWeekRemaining.text = contract.WeekRemaining.ToString();
             contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
+            gaugeLine.transform.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), gaugeLine.transform.localScale.y, gaugeLine.transform.localScale.z);
         }
 
         public void SelectContract()

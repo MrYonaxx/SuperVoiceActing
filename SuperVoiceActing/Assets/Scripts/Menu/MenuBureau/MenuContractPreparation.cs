@@ -94,6 +94,10 @@ namespace VoiceActing
         [SerializeField]
         MenuActorsManager menuActorsManager;
 
+        [Header("Feedbacks")]
+        [SerializeField]
+        Animator animatorFeedbackSpriteAudition;
+
 
 
         // ===========================
@@ -344,6 +348,7 @@ namespace VoiceActing
         {
             currentContract.VoiceActors[indexSelected] = actor;
             DrawRoleInfo();
+            animatorFeedbackSpriteAudition.SetTrigger("Feedback");
             listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
             CheckButtonInSession();
         }
