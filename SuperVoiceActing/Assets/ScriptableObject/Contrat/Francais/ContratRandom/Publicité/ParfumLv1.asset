@@ -12,20 +12,269 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: ParfumLv1
   m_EditorClassIdentifier: 
-  name: 
+  name: Parfum
   contractTitle: []
   level: 0
   contractType: 0
-  salaryMin: 0
-  salaryMax: 0
-  mixingMin: 0
-  mixingMax: 0
-  weekMin: 0
-  weekMax: 0
-  expGain: 0
-  expBonus: 0
+  salaryMin: 1800
+  salaryMax: 2500
+  mixingMin: 20
+  mixingMax: 30
+  weekMin: 5
+  weekMax: 11
+  expGain: 30
+  expBonus: 20
   description: []
-  characters: []
-  textDataContract: []
+  characters:
+  - mainCharacter: 0
+    optional: 0
+    charactersProfil:
+    - names:
+      - Femme
+      lineMin: 30
+      lineMax: 70
+      fanMin: 0
+      fanMax: 0
+      timbre: {x: -100, y: 0}
+      timbreRand: {x: -100, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 5
+        anger: 0
+        surprise: 0
+        sweetness: 11
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 10
+        anger: 0
+        surprise: 0
+        sweetness: 15
+        fear: 0
+        trust: 0
+    - names:
+      - Homme
+      lineMin: 30
+      lineMax: 70
+      fanMin: 0
+      fanMax: 0
+      timbre: {x: 0, y: 100}
+      timbreRand: {x: 0, y: 100}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 5
+        anger: 0
+        surprise: 0
+        sweetness: 11
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 10
+        anger: 0
+        surprise: 0
+        sweetness: 15
+        fear: 0
+        trust: 0
+  textDataContract:
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: Cette douce odeur  ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Ce parfum ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 4
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: Hmmm ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 30
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Ha ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 30
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Enivrant ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 30
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Splendide ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 30
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: Parfum [Nom], une fragrance euphorique.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 25
+        hpMax: 40
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
   textData: []
   eventData: []
