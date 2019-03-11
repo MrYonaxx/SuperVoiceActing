@@ -262,6 +262,8 @@ namespace VoiceActing
             statImageActorAnimator.SetTrigger("AppearAnim");          
             statImageActor.sprite = actor.ActorSprite;
             statOutlineImageActor.sprite = actor.ActorSprite;
+            statImageActor.SetNativeSize();
+            statOutlineImageActor.SetNativeSize();
 
             statTimbre.anchorMin = new Vector2((actor.Timbre.x + 10) / 20f, 0);
             statTimbre.anchorMax = new Vector2((actor.Timbre.y + 10) / 20f, 1);
