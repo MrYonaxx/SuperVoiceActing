@@ -17,31 +17,37 @@ namespace VoiceActing
     [System.Serializable]
     public class StoryEventText : StoryEvent
     {
+        [HorizontalGroup("Interlocuteur", LabelWidth = 100)]
         [SerializeField]
         StoryCharacterData interlocuteur;
 
+        [HorizontalGroup("Interlocuteur", Width = 200)]
         [SerializeField]
+        [HideLabel]
         EmotionNPC emotionNPC;
 
         [TabGroup("ParentGroup", "Texte")]
         [SerializeField]
-        [TextArea]
+        [TextArea(2,2)]
+        [HideLabel]
         string text = null;
 
         [TabGroup("ParentGroup", "TexteEng")]
         [SerializeField]
-        [TextArea]
+        [TextArea(2, 2)]
+        [HideLabel]
         string textEng = null;
 
 
+        [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200, PaddingRight = 20)]
         [SerializeField]
         float mouthSpeed = 2;
 
-        [HorizontalGroup("Option Avancées")]
+        [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200)]
         [SerializeField]
         bool forceSkip = false;
 
-        [HorizontalGroup("Option Avancées")]
+        [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200)]
         [SerializeField]
         bool ignorePlayerInput = false;
 
