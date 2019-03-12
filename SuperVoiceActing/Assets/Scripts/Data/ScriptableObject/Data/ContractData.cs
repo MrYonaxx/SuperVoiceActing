@@ -261,7 +261,7 @@ namespace VoiceActing
             get { return contractTitle; }
         }
 
-
+        [HorizontalGroup("Level")]
         [SerializeField]
         private int level;
         public int Level
@@ -269,7 +269,9 @@ namespace VoiceActing
             get { return level; }
         }
 
+        [HorizontalGroup("Level")]
         [SerializeField]
+        [HideLabel]
         private ContractType contractType;
         public ContractType ContractType
         {

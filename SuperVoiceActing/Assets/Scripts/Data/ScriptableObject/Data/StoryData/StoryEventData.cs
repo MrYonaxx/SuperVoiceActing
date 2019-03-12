@@ -25,29 +25,38 @@ namespace VoiceActing
     [System.Serializable]
     public class StoryEventDataNode
     {
-        [Header("====================================================================================================================================")]
+        //[Header("====================================================================================================================================")]
+        [FoldoutGroup("$eventNode")]
+        [HideLabel]
         public StoryEventNode eventNode;
 
+        [FoldoutGroup("$eventNode")]
         [ShowIf("eventNode", StoryEventNode.Text)]
         [SerializeField]
+        [HideLabel]
         public StoryEventText storyEventText = null;
 
+        [FoldoutGroup("$eventNode")]
         [ShowIf("eventNode", StoryEventNode.Wait)]
         [SerializeField]
         public StoryEventWait storyEventWait = null;
 
+        [FoldoutGroup("$eventNode")]
         [ShowIf("eventNode", StoryEventNode.MoveCharacter)]
         [SerializeField]
         public StoryEventMoveCharacter storyEventMoveCharacter = null;
 
+        [FoldoutGroup("$eventNode")]
         [ShowIf("eventNode", StoryEventNode.SceneLoader)]
         [SerializeField]
         public StoryEventSceneLoader storyEventSceneLoader = null;
 
+        [FoldoutGroup("$eventNode")]
         [ShowIf("eventNode", StoryEventNode.LoadEvent)]
         [SerializeField]
         public StoryEventLoad storyEventLoadEvent = null;
 
+        [FoldoutGroup("$eventNode")]
         [ShowIf("eventNode", StoryEventNode.Music)]
         [SerializeField]
         public StoryEventMusic storyEventMusic = null;
