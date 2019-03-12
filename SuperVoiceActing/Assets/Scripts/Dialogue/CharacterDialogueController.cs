@@ -20,17 +20,25 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [Header("CharacterData")]
+
         [SerializeField]
         StoryCharacterData storyCharacterData;
-
         [SerializeField]
         SpriteRenderer spriteRenderer;
-
         [SerializeField]
         Yeux eyesScript;
 
+
+        [Header("Mouth")]
         [SerializeField]
         MouthAnimation mouth;
+        [SerializeField]
+        float speedMouth = 5;
+        [SerializeField]
+        AudioSource voice = null;
+        [SerializeField]
+        FeedbackSon soundVisualizer;
 
 
         [Header("Phase d'Acting")]
@@ -39,10 +47,11 @@ namespace VoiceActing
         private TextPerformanceAppear textActing;
         [SerializeField]
         private CameraController camera;
-        /*public TextPerformanceAppear TextActing
-        {
-            get { return textActing; }
-        }*/
+
+
+
+
+        IEnumerator mouthCoroutine = null;
 
 
         #endregion
@@ -55,10 +64,17 @@ namespace VoiceActing
 
         public void SetPhraseTextacting(string newText, int cameraID)
         {
-            textActing.NewMouthAnim(mouth);
+            textActing.NewMouthAnim(this);
             textActing.NewPhrase(newText);
             if (cameraID != 0)
                 camera.CinematicCamera(cameraID);
+        }
+
+        public void SetStoryCharacterData(StoryCharacterData sprites)
+        {
+            storyCharacterData = sprites;
+            if (spriteRenderer != null)
+                spriteRenderer.sprite = sprites.SpriteNormal[0];
         }
 
         public StoryCharacterData GetStoryCharacterData()
@@ -75,16 +91,76 @@ namespace VoiceActing
         \* ======================================== */
         public void ActivateMouth(float speed = -1)
         {
-            if(speed == -1)
-                mouth.ActivateMouth();
-            else
-                mouth.ActivateMouth(speed);
+            if (speed != -1)
+                speedMouth = speed;
+            if (mouthCoroutine != null)
+                StopCoroutine(mouthCoroutine);
+            mouthCoroutine = MouthAnim();
+            StartCoroutine(mouthCoroutine);
         }
 
         public void StopMouth()
         {
-            mouth.DesactivateMouth();
+            if (mouthCoroutine != null)
+                StopCoroutine(mouthCoroutine);
+
+            if (spriteRenderer != null)
+                spriteRenderer.sprite = storyCharacterData.SpriteNormal[0];
+
+            if (soundVisualizer != null)
+                soundVisualizer.StopVisualizer();
         }
+
+        public void DesactivateMouth()
+        {
+            if (mouthCoroutine != null)
+                StopCoroutine(mouthCoroutine);
+
+            if (spriteRenderer != null)
+                spriteRenderer.sprite = storyCharacterData.SpriteNormal[0];
+
+            if (soundVisualizer != null)
+                soundVisualizer.StopVisualizer();
+        }
+
+
+        private IEnumerator MouthAnim()
+        {
+            int i = 0;
+            float speed = speedMouth;
+            while (speed > 0)
+            {
+                speed -= 1;
+                yield return null;
+                if (speed == 0)
+                {
+                    i += Random.Range(1, 2);
+                    if (i >= storyCharacterData.SpriteNormal.Length)
+                        i = 0;
+                    changeMouthSprite(i);
+                    speed = speedMouth;
+                    if (soundVisualizer != null)
+                        soundVisualizer.SetVisualizer();
+                }
+            }
+        }
+
+        public void changeMouthSprite(int index)
+        {
+            if (voice != null)
+            {
+                voice.pitch = Random.Range(0.95f, 1.05f);
+                voice.Play();
+            }
+            if (index < storyCharacterData.SpriteNormal.Length)
+                spriteRenderer.sprite = storyCharacterData.SpriteNormal[index];
+        }
+
+
+
+
+
+
 
         public void FadeIn(float time)
         {
@@ -117,6 +193,8 @@ namespace VoiceActing
                 yield return null;
             }
         }
+
+
 
         public void ChangeTint(Color newColor)
         {

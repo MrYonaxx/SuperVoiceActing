@@ -24,7 +24,7 @@ namespace VoiceActing
         \* ======================================== */
         /*[Header("Mouth")]
         [SerializeField]*/
-        protected MouthAnimation mouth = null;
+        protected CharacterDialogueController mouth = null;
 
         [Header("Letter Parameter")]
         [SerializeField]
@@ -158,7 +158,7 @@ namespace VoiceActing
 
         }
 
-        public void NewMouthAnim(MouthAnimation newMouth)
+        public void NewMouthAnim(CharacterDialogueController newMouth)
         {
             if(mouth != null)
                 mouth.DesactivateMouth();

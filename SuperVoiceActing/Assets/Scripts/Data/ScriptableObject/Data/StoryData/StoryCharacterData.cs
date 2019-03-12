@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -29,7 +30,15 @@ namespace VoiceActing
         string name;
 
         [Header("Emotion")]
-        Sprite spriteNormal = null;
+        [SerializeField]
+        private Sprite[] spriteNormal;
+        public Sprite[] SpriteNormal
+        {
+            get { return spriteNormal; }
+        }
+
+        [SerializeField]
+        Sprite[] spriteJoy = null;
 
         public string GetName()
         {

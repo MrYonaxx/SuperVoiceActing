@@ -23,7 +23,7 @@ namespace VoiceActing
         \* ======================================== */
         [Header("Mouth")]
         [SerializeField]
-        MouthAnimation mouth;
+        CharacterDialogueController mouth;
 
         [Header("Text Emotion")]
         [SerializeField]
@@ -177,22 +177,6 @@ namespace VoiceActing
 
         }
 
-        /*public void ShowUIButton(float damage)
-        {
-            if (coroutineWaitEndLine != null)
-            {
-                StopCoroutine(coroutineWaitEndLine);
-            }
-            coroutineWaitEndLine = WaitEndLine(damage);
-            StartCoroutine(coroutineWaitEndLine);
-        }*/
-
-        /*public void HideUIButton()
-        {
-            StartCoroutine(MoveUIButton(buttonUIA, -600));
-            StartCoroutine(MoveUIButton(buttonUIY, -600));
-        }*/
-
 
 
         private IEnumerator WaitFrame(float time, float damage)
@@ -209,35 +193,6 @@ namespace VoiceActing
             currentText.SetWordFeedback(wordID);
             ApplyDamage(damage);
         }
-
-
-
-
-        /*private IEnumerator WaitEndLine(float damage)
-        {
-            yield return null;
-            while (currentText.GetEndLine() == false)
-            {
-                
-                yield return null;
-            }
-            StartCoroutine(MoveUIButton(buttonUIA, -500));
-            if (damage == 100)
-                StartCoroutine(MoveUIButton(buttonUIY, -500));
-        }
-
-        private IEnumerator MoveUIButton(Image button, float targetY)
-        {
-
-            int time = 20;
-            float speedY = (targetY - button.rectTransform.anchoredPosition.y) / time;
-            while (time != 0)
-            {
-                button.rectTransform.anchoredPosition += new Vector2(0, speedY);
-                time -= 1;
-                yield return null;
-            }
-        }*/
 
 
 

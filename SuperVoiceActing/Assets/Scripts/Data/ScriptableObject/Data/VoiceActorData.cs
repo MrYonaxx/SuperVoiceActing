@@ -28,7 +28,6 @@ namespace VoiceActing
         public string Name
         {
             get { return name; }
-            set { name = value; }
         }
 
         [SerializeField]
@@ -36,7 +35,6 @@ namespace VoiceActing
         public int Fan
         {
             get { return fan; }
-            set { fan = value; }
         }
 
         [SerializeField]
@@ -44,7 +42,6 @@ namespace VoiceActing
         public int Price
         {
             get { return price; }
-            set { price = value; }
         }
 
 
@@ -58,7 +55,6 @@ namespace VoiceActing
         public int Level
         {
             get { return level; }
-            set { level = value; }
         }
 
         [SerializeField]
@@ -66,7 +62,6 @@ namespace VoiceActing
         public int Hp
         {
             get { return hp; }
-            set { hp = value; }
         }
 
         [MinMaxSlider(-10, 10)]
@@ -75,7 +70,6 @@ namespace VoiceActing
         public Vector2Int Timbre
         {
             get { return timbre; }
-            set { timbre = value; }
         }
 
         [SerializeField]
@@ -83,7 +77,6 @@ namespace VoiceActing
         public EmotionStat Statistique
         {
             get { return statistique; }
-            set { statistique = value; }
         }
 
         [Space]
@@ -92,7 +85,6 @@ namespace VoiceActing
         public EmotionStat Growth
         {
             get { return growth; }
-            set { growth = value; }
         }
 
         [Space]
@@ -101,7 +93,6 @@ namespace VoiceActing
         public EmotionStat GrowthRandom
         {
             get { return growthRandom; }
-            set { growthRandom = value; }
         }
 
 
@@ -114,7 +105,6 @@ namespace VoiceActing
         public int FourchetteMin
         {
             get { return fourchetteMin; }
-            set { fourchetteMin = value; }
         }
 
         [Space]
@@ -125,7 +115,6 @@ namespace VoiceActing
         public int FourchetteMax
         {
             get { return fourchetteMax; }
-            set { fourchetteMax = value; }
         }
 
         [SerializeField]
@@ -133,7 +122,6 @@ namespace VoiceActing
         public int Relation
         {
             get { return relation; }
-            set { relation = value; }
         }
 
         [SerializeField]
@@ -141,7 +129,6 @@ namespace VoiceActing
         public SkillData[] Potentials
         {
             get { return potentials; }
-            set { potentials = value; }
         }
 
 
@@ -157,7 +144,7 @@ namespace VoiceActing
 
 
         [Space]
-        [Header("Stat Variation")]
+        /*[Header("Stat Variation")]
         [SerializeField]
         bool hasVariation = false;
 
@@ -187,13 +174,6 @@ namespace VoiceActing
         {
             get { return statistiqueVariation; }
             set { statistiqueVariation = value; }
-        }
-        /*[SerializeField]
-        private int experience;
-        public int Experience
-        {
-            get { return experience; }
-            set { experience = value; }
         }*/
 
 
@@ -205,7 +185,6 @@ namespace VoiceActing
         public AudioClip Voice
         {
             get { return voice; }
-            set { voice = value; }
         }
 
         [SerializeField]
@@ -213,7 +192,6 @@ namespace VoiceActing
         public Sprite ActorSprite
         {
             get { return actorSprite; }
-            set { actorSprite = value; }
         }
 
         [SerializeField]
@@ -221,7 +199,6 @@ namespace VoiceActing
         public Sprite ActorIcon
         {
             get { return actorIcon; }
-            set { actorIcon = value; }
         }
 
         [SerializeField]
@@ -229,7 +206,13 @@ namespace VoiceActing
         public Sprite ActorContractIcon
         {
             get { return actorContractIcon; }
-            set { actorContractIcon = value; }
+        }
+
+        [SerializeField]
+        private StoryCharacterData spriteSheets;
+        public StoryCharacterData SpriteSheets
+        {
+            get { return spriteSheets; }
         }
 
         #endregion

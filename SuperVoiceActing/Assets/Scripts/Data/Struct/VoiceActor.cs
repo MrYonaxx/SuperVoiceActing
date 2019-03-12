@@ -147,6 +147,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private StoryCharacterData spriteSheets;
+        public StoryCharacterData SpriteSheets
+        {
+            get { return spriteSheets; }
+            set { spriteSheets = value; }
+        }
+
+        [SerializeField]
         private int damageVariance;
         public int DamageVariance
         {
@@ -197,6 +205,8 @@ namespace VoiceActing
             damageVariance = actorData.FourchetteMax;
             timbre = actorData.Timbre;
             potentials = actorData.Potentials;
+
+            spriteSheets = actorData.SpriteSheets;
 
             statistique = new EmotionStat( actorData.Statistique);
             growth = new EmotionStat(actorData.Growth);

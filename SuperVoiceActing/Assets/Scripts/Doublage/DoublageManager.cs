@@ -202,6 +202,10 @@ namespace VoiceActing
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
+            for(int i = 0; i < contrat.VoiceActors.Count; i++)
+            {
+                characters[i].SetStoryCharacterData(contrat.VoiceActors[i].SpriteSheets);
+            }
             //
             if (CheckEvent() == false)
             {
