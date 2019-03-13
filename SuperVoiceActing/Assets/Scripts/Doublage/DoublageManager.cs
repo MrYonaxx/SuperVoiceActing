@@ -204,7 +204,8 @@ namespace VoiceActing
             actorsManager.SetActors(contrat.VoiceActors);
             for(int i = 0; i < contrat.VoiceActors.Count; i++)
             {
-                characters[i].SetStoryCharacterData(contrat.VoiceActors[i].SpriteSheets);
+                if (contrat.VoiceActors[i] != null)
+                    characters[i].SetStoryCharacterData(contrat.VoiceActors[i].SpriteSheets);
             }
             //
             if (CheckEvent() == false)

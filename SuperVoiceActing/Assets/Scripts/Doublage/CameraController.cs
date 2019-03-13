@@ -130,7 +130,7 @@ namespace VoiceActing
 
         private void InitializeCameraEffect()
         {
-            SetText(-6,2.7f,0);
+            SetText(-6,2.6f,0);
             SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
             SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
             if(cameraPlacement == 0)
