@@ -42,6 +42,8 @@ namespace VoiceActing
         [SerializeField]
         Transform text;
 
+        Vector3 textInitialPosition;
+
         bool moving = true;
         bool rotating = false;
         bool noCameraEffect = false;
@@ -96,16 +98,11 @@ namespace VoiceActing
                 Application.targetFrameRate = -1;
         }
 
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
+        protected void Start()
         {
-            //MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 180);
+            textInitialPosition = text.transform.position;
         }
-        
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Update is called once per frame.
@@ -130,7 +127,8 @@ namespace VoiceActing
 
         private void InitializeCameraEffect()
         {
-            SetText(-6,2.6f,0);
+            SetText(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z);
+
             SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
             SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
             if(cameraPlacement == 0)
@@ -169,25 +167,29 @@ namespace VoiceActing
                 switch (Random.Range(1, 5))
                 {
                     case 1:
-                        SetText(-5.2f, 3f, 0.5f);
-                        SetCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.5f, initialPosition.position.z + 0.6f);
-                        MoveCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.1f, initialPosition.position.z + 0.6f, 900 * speedMovement);
+                        SetText(textInitialPosition.x + 0.65f, textInitialPosition.y + 0.4f, textInitialPosition.z + 0.7f);
+                        //SetText(-5.2f, 3f, 0.4f);
+                        SetCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.5f, initialPosition.position.z + 0.4f);
+                        MoveCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.1f, initialPosition.position.z + 0.4f, 900 * speedMovement);
                         break;
                     case 2:
-                        SetText(-5.2f, 3.1f, -0.25f);
-                        SetCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.1f, initialPosition.position.z - 0.2f);
-                        MoveCamera(initialPosition.position.x + 1, initialPosition.position.y + 0.5f, initialPosition.position.z - 0.2f, 900 * speedMovement);
+
+                        SetText(textInitialPosition.x + 0.65f, textInitialPosition.y + 0.4f, textInitialPosition.z - 0.5f);
+                        //SetText(-5.2f, 3.1f, -0.2f);
+                        SetCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.1f, initialPosition.position.z - 0.2f);
+                        MoveCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.5f, initialPosition.position.z - 0.2f, 900 * speedMovement);
                         break;
                     case 3:
-                        SetText(-5.2f, 3f, 0);
-                        SetCamera(initialPosition.position.x + 1.2f, initialPosition.position.y + 0.3f, initialPosition.position.z);
-                        MoveCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.2f, initialPosition.position.z, 900 * speedMovement);
+                        SetText(textInitialPosition.x + 0.3f, textInitialPosition.y + 0.1f, textInitialPosition.z);
+                        //SetText(-5.2f, 3f, 0);
+                        SetCamera(initialPosition.position.x + 0.8f, initialPosition.position.y + 0.2f, initialPosition.position.z);
+                        MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
                         break;
                     case 4:
-                        SetCameraRotation(initialPosition.eulerAngles.x - 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+                        SetCameraRotation(initialPosition.eulerAngles.x - 15, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
                         SetCamera(initialPosition.position.x, initialPosition.position.y - 0.25f, initialPosition.position.z);
-                        MoveCamera(initialPosition.position.x, initialPosition.position.y + 0.25f, initialPosition.position.z, 900 * speedMovement);
-                        RotateCamera(initialPosition.eulerAngles.x + 10, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 900 * speedMovement);
+                        MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 900 * speedMovement);
+                        RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 900 * speedMovement);
                         break;
                 }
                 cameraPlacement = 0;
@@ -386,47 +388,6 @@ namespace VoiceActing
 
 
 
-
-        /*[ContextMenu("camera")]
-        public void ActivateOffset()
-        {
-            StartCoroutine(OffsetCoroutine(20));
-        }
-
-        private IEnumerator OffsetCoroutine(float time)
-        {
-            float speedZ = offsetZ / time;
-            while (time != 0)
-            {
-                this.transform.position += new Vector3(0, 0, speedZ);
-                offset += speedZ;
-                time -= 1;
-                yield return null;
-            }
-            offset = offsetZ;
-        }
-
-        [ContextMenu("cameraStop")]
-        public void StopOffset()
-        {
-            StartCoroutine(StopOffsetCoroutine(20));
-        }
-
-        private IEnumerator StopOffsetCoroutine(float time)
-        {
-            float speedZ = offsetZ / time;
-            while (time != 0)
-            {
-                this.transform.position -= new Vector3(0, 0, speedZ);
-                offset -= speedZ;
-                time -= 1;
-                yield return null;
-            }
-            offset = 0;
-        }*/
-
-
-
         private void SetText(float x, float y, float z)
         {
             text.position = new Vector3(x, y, z);
@@ -489,7 +450,6 @@ namespace VoiceActing
                 angleX = -(360 - angleX);
             }
             float speedX = (x - angleX) / time;
-            //Debug.Log(speedX);
 
             float angleY = this.transform.eulerAngles.y;
             if (angleY > 180)
@@ -546,11 +506,35 @@ namespace VoiceActing
             //orthographicCoroutine = null;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Placeholders ==================================================================
 
         public void NotQuite()
         {
-            SetText(-6, 2.7f, 0);
+            SetText(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if(rotatingCoroutine != null)
