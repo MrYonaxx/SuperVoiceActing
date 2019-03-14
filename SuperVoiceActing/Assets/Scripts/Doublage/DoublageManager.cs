@@ -52,7 +52,7 @@ namespace VoiceActing
         [SerializeField]
         protected TextAppearManager textAppearManager;
         [SerializeField]
-        protected PanelPlayer panelPlayer;
+        protected DoublageEventManager eventManager;
 
         [Header("Feedback & UI")]
         [SerializeField]
@@ -120,25 +120,11 @@ namespace VoiceActing
         [SerializeField]
         protected AudioSource audioSourceSpotlight;
 
-        [Header("Events")]
-        [SerializeField]
-        protected InputController inputEvent;
-        [SerializeField]
-        protected CameraController[] cameraControllerEvent;
-        [SerializeField]
-        protected CharacterDialogueController[] characters;
-        [SerializeField]
-        protected TextPerformanceAppear[] textEvent;
-        [SerializeField]
-        protected GameObject[] popups;
-        [SerializeField]
-        protected string endScene;
+
 
         [Header("Debug")]
         [SerializeField]
         protected int indexPhrase = 0;
-        protected int indexEvent = -1;
-        protected DoublageEventData currentEvent;
 
         protected bool startLine = true;
         protected bool reprintText = true;
@@ -174,7 +160,6 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-
             contrat = playerData.CurrentContract;
             if(contrat == null)
             {
@@ -183,9 +168,6 @@ namespace VoiceActing
                     contrat = new Contract(contratData); // Pour Debug
                 }
             }
-
-
-
             if (timer != null)
                 timer.SetTurn(turnCount);
             if (maxLineNumber != null)
@@ -195,20 +177,22 @@ namespace VoiceActing
             StartCoroutine(IntroductionSequence());
         }
 
+
         private IEnumerator IntroductionSequence()
         {
-            //
+            // On attend une frame que les scripts soient chargés
+            // Initialisation
             yield return null;
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
-            for(int i = 0; i < contrat.VoiceActors.Count; i++)
-            {
-                if (contrat.VoiceActors[i] != null)
-                    characters[i].SetStoryCharacterData(contrat.VoiceActors[i].SpriteSheets);
-            }
-            //
-            if (CheckEvent() == false)
+            eventManager.SetCharactersSprites(contrat.VoiceActors);
+            // Initialisation
+
+
+
+
+            if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
             {
                 yield return new WaitForSeconds(1);
                 introText.SetPhraseTextacting("25 Février", 0);
@@ -233,6 +217,10 @@ namespace VoiceActing
                 yield return new WaitForSeconds(0.5f);
                 SetPhrase();
             }
+            else
+            {
+                ChangeEventPhase();
+            }
             startLine = false;
         }
 
@@ -240,7 +228,8 @@ namespace VoiceActing
 
 
 
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // ATTACK =================================================================
         // Tape la phrase si les pv sont pas 0
         public void Attack()
         {
@@ -271,7 +260,10 @@ namespace VoiceActing
                 emotionAttackManager.SwitchCardTransformToRessource();
                 reprintText = false;
                 StartCoroutine(CoroutineAttack(10));
-                CheckEvent();
+                if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
+                {
+                    ChangeEventPhase();
+                }
                 inputController.gameObject.SetActive(false);
             }
         }
@@ -306,6 +298,22 @@ namespace VoiceActing
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
@@ -327,13 +335,12 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     HideUIButton();
 
-                    //indexPhrase += 1;
                     reprintText = true;
                     startLine = true;
                     if (indexPhrase < contrat.TextData.Count)
                         enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
-                    if (CheckEvent() == false)
+                    if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
                     {
                         enemyManager.DamagePhrase();
                         textAppearManager.TextPop();                 
@@ -350,6 +357,10 @@ namespace VoiceActing
                             return;
                         }
                         StartCoroutine(WaitCoroutineNextPhrase(60));
+                    }
+                    else
+                    {
+                        ChangeEventPhase();
                     }
                     startLine = false;
                 }
@@ -376,8 +387,14 @@ namespace VoiceActing
             if(indexPhrase < contrat.TextData.Count)
                 enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
-            if (CheckEvent() == false)
+            if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
+            {
                 SetPhrase();
+            }
+            else
+            {
+                ChangeEventPhase();
+            }
             startLine = false;
         }
 
@@ -394,7 +411,7 @@ namespace VoiceActing
                 //FeedbackNewLine();
             }
             inputController.gameObject.SetActive(true);
-            inputEvent.gameObject.SetActive(false);
+            //inputEvent.gameObject.SetActive(false);
             recIcon.SetActive(true);
             if (reprintText == false)
             {
@@ -426,7 +443,6 @@ namespace VoiceActing
 
             endBlackScreen.SetBool("Appear", false);
             yield return new WaitForSeconds(1f);
-            //ingeSonPanel.gameObject.SetActive(false);
             mcPanel.gameObject.SetActive(true);
             cameraController.EndSequence1(0.6f, -10f);
             enemyManager.DamagePhrase();
@@ -439,8 +455,6 @@ namespace VoiceActing
             yield return new WaitForSeconds(1f);
             ingeSonPanel.SetTrigger("Feedback");
             mcPanel.SetTrigger("Feedback");
-            /*ingeSonPanel.gameObject.SetActive(false);
-            mcPanel.gameObject.SetActive(false);*/
             enemyManager.DamagePhrase();
             textAppearManager.TextPop(210);
             feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -448,7 +462,6 @@ namespace VoiceActing
             audioSourceKillPhrase.Play();
             audioSourceKillPhrase2.Play();
 
-            //StartCoroutine(FadeVolumeWithPitch(180));
             emotionAttackManager.SwitchCardTransformToRessource();
             endBlackScreen.SetBool("Appear", false);
             cameraController.EndSequence();
@@ -589,168 +602,18 @@ namespace VoiceActing
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+        private void ChangeEventPhase()
+        {
+            emotionAttackManager.SwitchCardTransformToRessource();
+            recIcon.SetActive(false);
+        }
 
 
 
         // =================================================================
         // Faire un DoublageEventManager
 
-        public virtual void PrintAllText()
-        {
-            if (textAppearManager.PrintAllText() == false)
-            {
-                return;
-            }
-            for (int i = 0; i < textEvent.Length; i++)
-            {
-                if (textEvent[i].PrintAllText() == false)
-                    return;
-            }
-            for(int i = 0; i < popups.Length; i++)
-            {
-                popups[i].SetActive(false);
-            }
-            inputEvent.gameObject.SetActive(false);
-            ExecuteEvent();
-        }
 
-
-        private void ExecuteEvent()
-        {
-            indexEvent += 1;
-            inputController.gameObject.SetActive(false);
-            DoublageEvent currentNode = currentEvent.GetEventNode(indexEvent);
-            if (currentNode != null)
-            {
-                if (currentNode is DoublageEventText)
-                {
-                    DoublageEventText node = (DoublageEventText) currentNode;
-                    inputEvent.gameObject.SetActive(true);
-                    if(playerData.Language == 1)
-                        FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.TextEng, node.CameraEffectID);
-                    else
-                        FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);
-                }
-                if (currentNode is DoublageEventCamera)
-                {
-                    DoublageEventCamera node = (DoublageEventCamera)currentNode;
-                    cameraControllerEvent[node.CameraID].ChangeCameraViewport(node.ViewportX, node.ViewportY, node.ViewportWidth, node.ViewportHeight, node.Time);
-                    ExecuteEvent();
-                }
-                if (currentNode is DoublageEventTextPopup)
-                {
-                    DoublageEventTextPopup node = (DoublageEventTextPopup)currentNode;
-                    panelPlayer.StartPopup("Ingé son", node.Text);
-                    ExecuteEvent();
-                }
-                if (currentNode is DoublageEventWait)
-                {
-                    DoublageEventWait node = (DoublageEventWait)currentNode;
-                    StartCoroutine(WaitCoroutine(node.Wait));
-                }
-                if (currentNode is DoublageEventDeck)
-                {
-                    DoublageEventDeck node = (DoublageEventDeck)currentNode;
-                    emotionAttackManager.ModifiyDeck(node.NewDeck);
-                    StartCoroutine(WaitCoroutine(1));
-                }
-                if (currentNode is DoublageEventTutoPopup)
-                {
-                    DoublageEventTutoPopup node = (DoublageEventTutoPopup) currentNode;
-                    popups[node.PopupID].SetActive(true);
-                    inputEvent.gameObject.SetActive(true);
-                }
-                if (currentNode is DoublageEventSound)
-                {
-                    DoublageEventSound node = (DoublageEventSound)currentNode;
-                    audioSourceKillPhrase.PlayOneShot(node.Audio);
-                    ExecuteEvent();
-                }
-            }
-            else // Fin d'event
-            {
-                emotionAttackManager.SwitchCardTransformToBattle();
-                SetPhrase();
-            }
-        }
-
-        private IEnumerator WaitCoroutine(float time)
-        {
-            while(time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
-            ExecuteEvent();
-        }
-
-        private CharacterDialogueController FindInterlocutor(StoryCharacterData characterToFind)
-        {
-            for(int i = 0; i < characters.Length; i++)
-            {
-                if(characters[i].GetStoryCharacterData() == characterToFind)
-                {
-                    return characters[i];
-                }
-            }
-            return null;
-        }
-
-
-
-        protected bool CheckEvent()
-        {
-
-            for (int i = 0; i < contrat.EventData.Length; i++)
-            {
-                if(CheckEventCondition(contrat.EventData[i]) == true)
-                {
-                    indexEvent = -1;
-                    currentEvent = contrat.EventData[i];
-                    emotionAttackManager.SwitchCardTransformToRessource();
-                    recIcon.SetActive(false);
-                    ExecuteEvent();
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private bool CheckEventCondition(DoublageEventData doublageEvent)
-        {
-            if(doublageEvent.PhraseNumber == indexPhrase)
-            {
-                if(doublageEvent.StartPhrase == true && startLine == true)
-                {
-                    return true;
-                }
-                else if(doublageEvent.StartPhrase == false)
-                {
-                    float hp = enemyManager.GetHpPercentage();
-                    if (doublageEvent.Equal == true && doublageEvent.HpPercentage == hp)
-                    {
-                        return true;
-                    }
-                    else if (doublageEvent.Equal == false && doublageEvent.HpPercentage > hp)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
 
 
         // =================================================================

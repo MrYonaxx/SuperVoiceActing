@@ -120,7 +120,7 @@ namespace VoiceActing
         private IEnumerator EventPhrase2()
         {
             yield return new WaitForSeconds(4);
-            CheckEvent();
+            //CheckEvent();
         }
 
         private void ShiftAmbiance()
@@ -147,7 +147,7 @@ namespace VoiceActing
                     blackRectLower.anchoredPosition -= new Vector2(0,0.25f);
                 }
                 color -= new Color(speedColor, speedColor, speedColor, 0);
-                characters[0].ChangeTint(color);
+                //characters[0].ChangeTint(color);
                 light.intensity -= speedLight;
                 time -= 1;
                 yield return null;
@@ -155,7 +155,7 @@ namespace VoiceActing
             }
             yield return new WaitForSeconds(2);
             color = new Color(1, 1, 1, 1);
-            characters[0].ChangeTint(color);
+            //characters[0].ChangeTint(color);
             newAmbiance.Invoke();
             yield return new WaitForSeconds(3);
             newAmbiance2.Invoke();
