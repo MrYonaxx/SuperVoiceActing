@@ -70,7 +70,7 @@ namespace VoiceActing
 
 
 
-    public virtual void PrintAllText()
+        public virtual void PrintAllText()
         {
             /*if (textAppearManager.PrintAllText() == false)
             {

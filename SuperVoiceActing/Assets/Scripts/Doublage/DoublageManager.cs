@@ -53,6 +53,8 @@ namespace VoiceActing
         protected TextAppearManager textAppearManager;
         [SerializeField]
         protected DoublageEventManager eventManager;
+        [SerializeField]
+        protected SoundEngineerManager soundEngineerManager;
 
         [Header("Feedback & UI")]
         [SerializeField]
@@ -219,6 +221,21 @@ namespace VoiceActing
             }
             else
             {
+                //
+                textIntro.SetActive(false);
+                yield return new WaitForSeconds(1f);
+                introBlackScreen.gameObject.SetActive(false);
+                introBlackScreen.enabled = false;
+                audioSourceBattleTheme.enabled = true;
+                //FeedbackNewLine();
+                for (int i = 0; i < animatorsIntro.Length; i++)
+                {
+                    animatorsIntro[i].enabled = true;
+                }
+                audioSourceSpotlight.Play();
+                yield return new WaitForSeconds(1);
+                cameraController.MoveToInitialPosition(300);
+                //
                 ChangeEventPhase();
             }
             startLine = false;
@@ -606,8 +623,25 @@ namespace VoiceActing
         {
             emotionAttackManager.SwitchCardTransformToRessource();
             recIcon.SetActive(false);
+            inputController.gameObject.SetActive(false);
         }
 
+
+        public void SwitchToMixingTable()
+        {
+            soundEngineerManager.SwitchToMixingTable();
+            emotionAttackManager.SwitchCardTransformToRessource();
+            cameraController.IngeSon();
+            inputController.gameObject.SetActive(false);
+        }
+
+        public void SwitchToDoublage()
+        {
+            soundEngineerManager.SwitchToEmotion();
+            emotionAttackManager.SwitchCardTransformToBattle();
+            cameraController.IngeSon2Cancel();
+            inputController.gameObject.SetActive(true);
+        }
 
 
         // =================================================================
