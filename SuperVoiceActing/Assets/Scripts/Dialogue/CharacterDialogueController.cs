@@ -31,8 +31,8 @@ namespace VoiceActing
 
 
         [Header("Mouth")]
-        [SerializeField]
-        MouthAnimation mouth;
+        /*[SerializeField]
+        MouthAnimation mouth;*/
         [SerializeField]
         float speedMouth = 5;
         [SerializeField]
@@ -166,8 +166,6 @@ namespace VoiceActing
         {
             if(eyesScript != null)
                 eyesScript.StartBlink();
-            if(mouth != null)
-                mouth.ShowMouth();
             StartCoroutine(Fade(true, time));
         }
 
@@ -175,8 +173,6 @@ namespace VoiceActing
         {
             if (eyesScript != null)
                 eyesScript.StopBlink();
-            if (mouth != null)
-                mouth.HideMouth();
             StartCoroutine(Fade(false, time));
         }
 
@@ -207,7 +203,7 @@ namespace VoiceActing
         public void ChangeOrderInLayer(int newOrder)
         {
             spriteRenderer.sortingOrder = newOrder;
-            mouth.ChangeOrderInLayer(newOrder + 1);
+            //mouth.ChangeOrderInLayer(newOrder + 1);
         }
 
         [ContextMenu("Shake")]

@@ -41,7 +41,7 @@ namespace VoiceActing
 
         [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200, PaddingRight = 20)]
         [SerializeField]
-        float mouthSpeed = 2;
+        float mouthSpeed = 1;
 
         [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200)]
         [SerializeField]

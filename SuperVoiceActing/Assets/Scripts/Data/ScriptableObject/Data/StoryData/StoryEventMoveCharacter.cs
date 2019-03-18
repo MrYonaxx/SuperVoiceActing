@@ -76,6 +76,7 @@ namespace VoiceActing
             float actualTime = time;
             float speedX = (newPosition.x - character.transform.position.x) / actualTime;
             float speedY = (newPosition.y - character.transform.position.y) / actualTime;
+            float speedRotateY = (newRotation.y - character.transform.eulerAngles.y) / actualTime;
             if (fadeIn == true)
             {
                 character.FadeIn(actualTime);
@@ -89,6 +90,7 @@ namespace VoiceActing
             while (actualTime != 0)
             {
                 character.transform.position += new Vector3(speedX, speedY, 0);
+                character.transform.eulerAngles += new Vector3(0, speedRotateY, 0);
                 actualTime -= 1;
                 yield return null;
             }
