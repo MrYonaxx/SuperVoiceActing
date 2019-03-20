@@ -16,14 +16,14 @@ namespace VoiceActing
     /// </summary>
 
     [System.Serializable]
-    public class DoublageEventCamera : DoublageEvent
+    public class DoublageEventViewport : DoublageEvent
     {
 
         [SerializeField]
-        private int cameraID;
-        public int CameraID
+        private int viewportID;
+        public int ViewportID
         {
-            get { return cameraID; }
+            get { return viewportID; }
         }
 
         [SerializeField]
@@ -33,23 +33,36 @@ namespace VoiceActing
             get { return time; }
         }
 
-        [HorizontalGroup("Viewport")]
         [SerializeField]
-        private float viewportX;
-        public float ViewportX
+        private Vector2 position;
+        public Vector2 Position
         {
-            get { return viewportX; }
+            get { return position; }
+        }
+        [SerializeField]
+        private Vector3 rotation;
+        public Vector3 Rotation
+        {
+            get { return rotation; }
         }
 
-        [HorizontalGroup("Viewport")]
+        //[HorizontalGroup("Viewport")]
+        [SerializeField]
+        private Vector2 viewportSize;
+        public Vector2 ViewportSize
+        {
+            get { return viewportSize; }
+        }
+
+        /*[HorizontalGroup("Viewport")]
         [SerializeField]
         private float viewportY;
         public float ViewportY
         {
             get { return viewportY; }
-        }
+        }*/
 
-        [HorizontalGroup("ViewportRect")]
+        /*[HorizontalGroup("ViewportRect")]
         [SerializeField]
         private float viewportWidth;
         public float ViewportWidth
@@ -63,7 +76,7 @@ namespace VoiceActing
         public float ViewportHeight
         {
             get { return viewportHeight; }
-        }
+        }*/
 
 
 

@@ -25,7 +25,7 @@ namespace VoiceActing
         [SerializeField]
         protected InputController inputEvent;
         [SerializeField]
-        protected CameraController[] cameraControllerEvent;
+        protected ViewportManager[] viewports;
         [SerializeField]
         protected CharacterDialogueController[] characters;
         [SerializeField]
@@ -107,10 +107,11 @@ namespace VoiceActing
                     else
                         FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);*/
                 }
-                if (currentNode is DoublageEventCamera)
+                if (currentNode is DoublageEventViewport)
                 {
-                    DoublageEventCamera node = (DoublageEventCamera)currentNode;
-                    cameraControllerEvent[node.CameraID].ChangeCameraViewport(node.ViewportX, node.ViewportY, node.ViewportWidth, node.ViewportHeight, node.Time);
+                    DoublageEventViewport node = (DoublageEventViewport)currentNode;
+                    viewports[node.ViewportID].SetViewportSetting(node);
+                    //cameraControllerEvent[node.CameraID].ChangeCameraViewport(node.ViewportX, node.ViewportY, node.ViewportWidth, node.ViewportHeight, node.Time);
                     ExecuteEvent();
                 }
                 if (currentNode is DoublageEventTextPopup)

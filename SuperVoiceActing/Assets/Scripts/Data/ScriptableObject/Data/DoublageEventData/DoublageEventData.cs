@@ -17,7 +17,7 @@ namespace VoiceActing
     {
         Text,
         TextPopup,
-        Camera,
+        Viewport,
         Wait,
         Deck,
         Tuto,
@@ -48,10 +48,10 @@ namespace VoiceActing
 
 
         [HorizontalGroup("Hey")]
-        [ShowIf("eventNode", DoublageEventNode.Camera)]
+        [ShowIf("eventNode", DoublageEventNode.Viewport)]
         [SerializeField]
         [HideLabel]
-        public DoublageEventCamera doublageEventCamera = null;
+        public DoublageEventViewport doublageEventViewport = null;
 
 
         [HorizontalGroup("Hey")]
@@ -87,8 +87,8 @@ namespace VoiceActing
                     return eventNode + " : " + doublageEventText.Text;
                 case DoublageEventNode.TextPopup:
                     return eventNode + " : " + doublageEventTextPopup.Text;
-                case DoublageEventNode.Camera:
-                    return eventNode.ToString();
+                case DoublageEventNode.Viewport:
+                    return eventNode + " : " + doublageEventViewport.ViewportID.ToString();
                 case DoublageEventNode.Wait:
                     return eventNode + " : " + doublageEventWait.Wait.ToString();
             }
@@ -100,14 +100,13 @@ namespace VoiceActing
     public class DoublageEventDataNode
     {
         [FoldoutGroup("$name")]
-        [OnValueChanged("SetTitle", true)]
         [SerializeField]
         [HideLabel]
         public DoublageEventDataBox dataBox;
 
         private string name = " ";
 
-        private void SetTitle()
+        public void SetTitle()
         {
             name = dataBox.GetBoxTitle();
         }
@@ -153,12 +152,21 @@ namespace VoiceActing
         }
 
 
-        [Header("Doublage Event")]
 
+        [Header("Doublage Event")]
         [SerializeField]
         DoublageEventDataNode[] doublageEvent;
 
 
+        [Button]
+        private void SetTitles()
+        {
+            for (int i = 0; i < doublageEvent.Length; i++)
+            {
+                doublageEvent[i].SetTitle();
+            }
+
+        }
 
         public DoublageEvent GetEventNode(int index)
         {
@@ -171,8 +179,8 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageEventText;
                 case DoublageEventNode.TextPopup:
                     return doublageEvent[index].dataBox.doublageEventTextPopup;
-                case DoublageEventNode.Camera:
-                    return doublageEvent[index].dataBox.doublageEventCamera;
+                case DoublageEventNode.Viewport:
+                    return doublageEvent[index].dataBox.doublageEventViewport;
                 case DoublageEventNode.Wait:
                     return doublageEvent[index].dataBox.doublageEventWait;
                 case DoublageEventNode.Deck:
