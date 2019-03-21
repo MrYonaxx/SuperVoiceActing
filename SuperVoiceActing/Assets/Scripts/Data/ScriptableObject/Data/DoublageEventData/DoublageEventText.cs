@@ -141,10 +141,10 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private int cameraEffectID;
-        public int CameraEffectID
+        private int cameraID;
+        public int CameraID
         {
-            get { return cameraEffectID; }
+            get { return cameraID; }
         }
 
     } // DoublageEventText class

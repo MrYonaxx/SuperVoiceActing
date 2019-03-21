@@ -27,6 +27,8 @@ namespace VoiceActing
         [SerializeField]
         protected ViewportManager[] viewports;
         [SerializeField]
+        protected CameraController[] cameras;
+        [SerializeField]
         protected CharacterDialogueController[] characters;
         [SerializeField]
         protected TextPerformanceAppear[] textEvent;
@@ -34,7 +36,6 @@ namespace VoiceActing
         protected GameObject[] popups;
         [SerializeField]
         protected string endScene;
-
 
         protected int indexEvent = -1;
         protected DoublageEventData currentEvent;
@@ -101,7 +102,9 @@ namespace VoiceActing
                 {
                     DoublageEventText node = (DoublageEventText)currentNode;
                     inputEvent.gameObject.SetActive(true);
-                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);
+                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, 0); // Le 0 sert à rien, vire le quand t'aura pas la flemme
+                    if(node.CameraID != 0)
+                        cameras[node.CameraID].CinematicCamera(node);
                     /*if (playerData.Language == 1)
                         FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.TextEng, node.CameraEffectID);
                     else
@@ -214,8 +217,49 @@ namespace VoiceActing
             return false;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         #endregion
 
     } // DoublageEventManager class
-	
+
 }// #PROJECTNAME# namespace

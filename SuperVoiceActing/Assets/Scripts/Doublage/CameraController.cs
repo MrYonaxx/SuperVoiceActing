@@ -46,7 +46,7 @@ namespace VoiceActing
 
         bool moving = true;
         bool rotating = false;
-        bool noCameraEffect = false;
+        public bool noCameraEffect = false;
 
         float offset = 0;
 
@@ -100,7 +100,8 @@ namespace VoiceActing
 
         protected void Start()
         {
-            textInitialPosition = text.transform.position;
+            if(text != null)
+                textInitialPosition = text.transform.position;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,6 +204,32 @@ namespace VoiceActing
 
         // ============================================================================================================================================
         #region CinematicCamera
+
+        public void CinematicCamera(DoublageEventText info)
+        {
+            if (cinematicCoroutine != null)
+                StopCoroutine(cinematicCoroutine);
+
+            cinematicCoroutine = CinematicCameraCoroutine(info.CamStart.x, info.CamStart.y, info.CamStart.z, info.TimeStart,
+                                                  info.CameraEnd.x, info.CameraEnd.y, info.CameraEnd.z, info.TimeEnd,
+                                                  info.CameraEnd2.x, info.CameraEnd2.y, info.CameraEnd2.z, info.TimeEnd2);
+
+            StartCoroutine(cinematicCoroutine);
+
+        }
+
+
+        // Move Camera fast then slow
+        private IEnumerator CinematicCameraCoroutine(float x, float y, float z, int time, 
+                                                     float x2, float y2, float z2, int time2,
+                                                     float x3, float y3, float z3, int time3)
+        {
+            SetCamera(initialPosition.position.x + x, initialPosition.position.y + y, initialPosition.position.z + z);
+            //SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+            yield return MoveCameraCoroutine(initialPosition.position.x + x2, initialPosition.position.y + y2, initialPosition.position.z + z2, time2);
+            yield return MoveCameraCoroutine(initialPosition.position.x + x3, initialPosition.position.y + y3, initialPosition.position.z + z3, time3);
+            cinematicCoroutine = null;
+        }
 
         public void CinematicCamera(int id)
         {

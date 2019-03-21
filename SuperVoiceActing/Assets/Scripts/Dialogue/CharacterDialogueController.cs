@@ -66,8 +66,8 @@ namespace VoiceActing
         {
             textActing.NewMouthAnim(this);
             textActing.NewPhrase(newText);
-            if (cameraID != 0)
-                camera.CinematicCamera(cameraID);
+            /*if (cameraID != 0)
+                camera.CinematicCamera(cameraID);*/
         }
 
         public void SetStoryCharacterData(StoryCharacterData sprites)

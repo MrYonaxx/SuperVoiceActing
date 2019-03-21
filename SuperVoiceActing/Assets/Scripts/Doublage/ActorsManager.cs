@@ -128,9 +128,18 @@ namespace VoiceActing
             }
             //animatorHealthBar.SetBool("Appear", false);
         }
-        
+
+        public void HideHealthBar()
+        {
+            animatorHealthBar.SetBool("Appear", false);
+        }
+        public void ShowHealthBar()
+        {
+            animatorHealthBar.SetBool("Appear", true);
+        }
+
         #endregion
-		
-	} // ActorsManager class
+
+    } // ActorsManager class
 	
 }// #PROJECTNAME# namespace

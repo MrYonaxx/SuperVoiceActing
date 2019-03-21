@@ -624,6 +624,7 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToRessource();
             recIcon.SetActive(false);
             inputController.gameObject.SetActive(false);
+            actorsManager.HideHealthBar();
         }
 
 

@@ -72,17 +72,17 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 0
     m_Settings:
-      focusDistance: 5
-      aperture: 6.2
-      focalLength: 90
-      useCameraFov: 0
-      kernelSize: 1
+      focusDistance: 1.4
+      aperture: 32
+      focalLength: 11
+      useCameraFov: 1
+      kernelSize: 0
   motionBlur:
     m_Enabled: 0
     m_Settings:
-      shutterAngle: 270
-      sampleCount: 10
-      frameBlending: 0.75
+      shutterAngle: 360
+      sampleCount: 32
+      frameBlending: 1
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -128,7 +128,7 @@ MonoBehaviour:
         saturation: 1
         contrast: 1
       channelMixer:
-        red: {x: 0.07, y: 0, z: 0}
+        red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
         currentEditingChannel: 0
@@ -154,8 +154,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
@@ -163,11 +163,11 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
-            m_RotationOrder: 0
+            m_RotationOrder: 4
           m_Loop: 0
           m_ZeroValue: 0
           m_Range: 1
@@ -182,8 +182,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
@@ -191,8 +191,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -210,8 +210,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
@@ -219,8 +219,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -238,8 +238,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
@@ -247,8 +247,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -315,7 +315,7 @@ MonoBehaviour:
     m_Settings:
       colored: 1
       intensity: 0.5
-      size: 1
+      size: 3
       luminanceContribution: 0.8
   vignette:
     m_Enabled: 0
@@ -323,12 +323,12 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
-      smoothness: 0.2
+      intensity: 1
+      smoothness: 0.01
       roundness: 1
       mask: {fileID: 0}
       opacity: 1
-      rounded: 0
+      rounded: 1
   dithering:
     m_Enabled: 0
   monitors:
