@@ -129,6 +129,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private bool stopSession = true;
+        public bool StopSession
+        {
+            get { return stopSession; }
+        }
+
+        [SerializeField]
         private bool startPhrase = true;
         public bool StartPhrase
         {

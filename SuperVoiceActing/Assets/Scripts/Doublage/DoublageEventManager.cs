@@ -37,6 +37,10 @@ namespace VoiceActing
         [SerializeField]
         protected string endScene;
 
+        [Header("DoublageManager")]
+        [SerializeField]
+        protected DoublageManager doublageManager;
+
         protected int indexEvent = -1;
         protected DoublageEventData currentEvent;
 
@@ -47,6 +51,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
 
 
         #endregion
@@ -68,6 +73,11 @@ namespace VoiceActing
         }
 
 
+        public bool CheckStopSession()
+        {
+            return currentEvent.StopSession;
+        }
+
 
 
 
@@ -77,11 +87,15 @@ namespace VoiceActing
             {
                 return;
             }*/
+            bool checkText = false;
             for (int i = 0; i < textEvent.Length; i++)
             {
+                //a changé, ça c'est chiant
                 if (textEvent[i].PrintAllText() == false)
-                    return;
+                    checkText = true;
             }
+            if (checkText == true)
+                return;
             for (int i = 0; i < popups.Length; i++)
             {
                 popups[i].SetActive(false);
@@ -149,6 +163,15 @@ namespace VoiceActing
             }
             else // Fin d'event
             {
+                for (int i = 0; i < textEvent.Length; i++)
+                {
+                    textEvent[i].gameObject.SetActive(false);
+                }
+                if (currentEvent.StopSession == true)
+                {
+                    doublageManager.SwitchToDoublage();
+                    doublageManager.SetPhrase();
+                }
                 /*emotionAttackManager.SwitchCardTransformToBattle();
                 SetPhrase();*/
             }
@@ -187,6 +210,10 @@ namespace VoiceActing
                 {
                     indexEvent = -1;
                     currentEvent = contrat.EventData[i];
+                    for (int j = 0; j < textEvent.Length; j++)
+                    {
+                        textEvent[j].gameObject.SetActive(true);
+                    }
                     ExecuteEvent();
                     return true;
                 }

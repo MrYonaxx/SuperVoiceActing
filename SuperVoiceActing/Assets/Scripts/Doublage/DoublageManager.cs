@@ -184,6 +184,7 @@ namespace VoiceActing
         {
             // On attend une frame que les scripts soient chargés
             // Initialisation
+            inputController.gameObject.SetActive(false);
             yield return null;
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
@@ -357,28 +358,30 @@ namespace VoiceActing
                     if (indexPhrase < contrat.TextData.Count)
                         enemyManager.SetTextData(contrat.TextData[indexPhrase]);
 
-                    if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
+                    if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
                     {
-                        enemyManager.DamagePhrase();
-                        textAppearManager.TextPop();                 
-                        textAppearManager.SelectWord(0);
-                        FeedbackNewLine();
-                        if (cameraController != null && indexPhrase < contrat.TextData.Count)
-                            cameraController.NotQuite();
-                        
-                        audioSourceKillPhrase.Play();
-                        audioSourceKillPhrase2.Play();
-                        if (indexPhrase == contrat.TextData.Count)
+                        if (eventManager.CheckStopSession() == true)
                         {
-                            EndSession();
+                            ChangeEventPhase();
                             return;
                         }
-                        StartCoroutine(WaitCoroutineNextPhrase(60));
                     }
-                    else
+
+                    enemyManager.DamagePhrase();
+                    textAppearManager.TextPop();
+                    textAppearManager.SelectWord(0);
+                    FeedbackNewLine();
+                    if (cameraController != null && indexPhrase < contrat.TextData.Count)
+                        cameraController.NotQuite();
+
+                    audioSourceKillPhrase.Play();
+                    audioSourceKillPhrase2.Play();
+                    if (indexPhrase == contrat.TextData.Count)
                     {
-                        ChangeEventPhase();
+                        EndSession();
+                        return;
                     }
+                    StartCoroutine(WaitCoroutineNextPhrase(60));
                     startLine = false;
                 }
             }
@@ -621,6 +624,10 @@ namespace VoiceActing
 
         private void ChangeEventPhase()
         {
+            if(eventManager.CheckStopSession() == false)
+            {
+                return;
+            }
             emotionAttackManager.SwitchCardTransformToRessource();
             recIcon.SetActive(false);
             inputController.gameObject.SetActive(false);
@@ -642,6 +649,8 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToBattle();
             cameraController.IngeSon2Cancel();
             inputController.gameObject.SetActive(true);
+            recIcon.SetActive(true);
+            actorsManager.ShowHealthBar();
         }
 
 

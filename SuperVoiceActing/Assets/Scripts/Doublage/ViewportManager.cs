@@ -54,7 +54,8 @@ namespace VoiceActing
         \* ======================================== */
         private void Start()
         {
-            initialSize = viewportMask.sizeDelta;
+            if (viewportMask != null)
+                initialSize = viewportMask.sizeDelta;
         }
 
         public void SetViewportSetting(DoublageEventViewport viewportSetting)
@@ -62,15 +63,19 @@ namespace VoiceActing
             if (viewportSetting.Time == 0)
             {
                 viewport.anchoredPosition = viewportSetting.Position;
-                viewportMask.sizeDelta = (initialSize * viewportSetting.ViewportSize);
-                viewportOutline.sizeDelta = viewportSetting.ViewportSize;
+                if(viewportMask != null)
+                    viewportMask.sizeDelta = (initialSize * viewportSetting.ViewportSize);
+                if (viewportOutline != null)
+                    viewportOutline.sizeDelta = viewportSetting.ViewportSize;
             }
             else
             {
                 StartCoroutine(MoveViewport(viewportSetting.Position));
-                StartCoroutine(RotateViewport(viewportSetting.Rotation.z, viewportSetting.Time));
-                if(viewportMask != null)
+                if (viewportMask != null)
+                {
                     StartCoroutine(ChangeViewportSize(viewportSetting.ViewportSize, viewportSetting.Time));
+                    StartCoroutine(RotateViewport(viewportSetting.Rotation.z, viewportSetting.Time));
+                }
             }
         }
 
