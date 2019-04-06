@@ -120,6 +120,13 @@ namespace VoiceActing
             }
         }
 
+        public void SetInitialPosition(Vector3 newPos, Vector3 newRot, int time)
+        {
+            initialPosition.localPosition = newPos;
+            initialPosition.rotation = Quaternion.Euler(newRot.x, newRot.y, newRot.z);
+            MoveToInitialPosition(time);
+        }
+
         public void MoveToInitialPosition(int time = 180)
         {
             MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, time);
@@ -226,6 +233,7 @@ namespace VoiceActing
         {
             SetCamera(initialPosition.position.x + x, initialPosition.position.y + y, initialPosition.position.z + z);
             //SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+            yield return null;
             yield return MoveCameraCoroutine(initialPosition.position.x + x2, initialPosition.position.y + y2, initialPosition.position.z + z2, time2);
             yield return MoveCameraCoroutine(initialPosition.position.x + x3, initialPosition.position.y + y3, initialPosition.position.z + z3, time3);
             cinematicCoroutine = null;

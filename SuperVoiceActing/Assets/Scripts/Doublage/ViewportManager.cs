@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -18,6 +19,17 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+
+
+
+
+
+
+
+
+
+
+
 
         [SerializeField]
         RectTransform viewport;
@@ -32,9 +44,65 @@ namespace VoiceActing
 
         [SerializeField]
         RectTransform viewportText;
+        [SerializeField]
+        CameraController viewportCam;
 
         private float speedViewport = 1.05f;
         Vector2 initialSize;
+
+        [Space]
+        [Space]
+        [Space]
+
+        [Header("Debug")]
+
+
+        [OnValueChanged("DebugChangeSize")]
+        [SerializeField]
+        Vector2 debugSize = new Vector2(2880, 1620);
+
+        [Space]
+        [SerializeField]
+        Vector3 debugRotation = new Vector3(0f, 0f, 0f);
+        [SerializeField]
+        Vector2 debugSizeModifier = new Vector2(1f, 1f);
+
+
+        private void DebugChangeSize()
+        {
+            viewportMask.sizeDelta = (debugSize * debugSizeModifier);
+            viewportOutline.sizeDelta = (debugSize * debugSizeModifier);
+        }
+        private void DebugChangeRotation()
+        {
+            viewportMask.eulerAngles = debugRotation;
+            viewportRotationOutline.eulerAngles = debugRotation;
+            viewportTexture.eulerAngles = debugRotation - new Vector3(0,0,debugRotation.z);
+        }
+
+
+        [Button]
+        private void UpdateDebug()
+        {
+            DebugChangeSize();
+            DebugChangeRotation();
+        }
+
+        [Button]
+        private void ResetDebug()
+        {
+            debugSize = new Vector2(2880, 1620);
+            debugSizeModifier = new Vector2(1f, 1f);
+            debugRotation = new Vector3(0f, 0f, 0f);
+            DebugChangeSize();
+            DebugChangeRotation();
+        }
+
+
+
+        private IEnumerator coroutineMove = null;
+        private IEnumerator coroutineViewport = null;
+        private IEnumerator coroutineRotate = null;
 
         #endregion
 
@@ -60,6 +128,13 @@ namespace VoiceActing
 
         public void SetViewportSetting(DoublageEventViewport viewportSetting)
         {
+            if (coroutineMove != null)
+                StopCoroutine(coroutineMove);
+            if (coroutineViewport != null)
+                StopCoroutine(coroutineViewport);
+            if (coroutineRotate != null)
+                StopCoroutine(coroutineRotate);
+
             if (viewportSetting.Time == 0)
             {
                 viewport.anchoredPosition = viewportSetting.Position;
@@ -70,12 +145,25 @@ namespace VoiceActing
             }
             else
             {
-                StartCoroutine(MoveViewport(viewportSetting.Position));
+                coroutineMove = MoveViewport(viewportSetting.Position);
+                StartCoroutine(coroutineMove);
                 if (viewportMask != null)
                 {
-                    StartCoroutine(ChangeViewportSize(viewportSetting.ViewportSize, viewportSetting.Time));
-                    StartCoroutine(RotateViewport(viewportSetting.Rotation.z, viewportSetting.Time));
+                    coroutineViewport = ChangeViewportSize(viewportSetting.ViewportSize, viewportSetting.Time);
+                    StartCoroutine(coroutineViewport);
+                    coroutineRotate = RotateViewport(viewportSetting.Rotation.z, viewportSetting.Time);
+                    StartCoroutine(coroutineRotate);
                 }
+            }
+
+            if(viewportSetting.CamViewport == true)
+            {
+                viewportCam.SetInitialPosition(viewportSetting.CamPosition, viewportSetting.CamRotation, viewportSetting.TimeCamera);
+            }
+
+            if(viewportSetting.ChangeTextPosition == true)
+            {
+                viewportText.anchoredPosition = viewportSetting.TextPosition;
             }
         }
 
@@ -103,7 +191,16 @@ namespace VoiceActing
         // Bon c'est trop tard mais je viens te hanter pour te dire que t'aurais pu faire une classe plutot que de te retaper ce truc un milliard de fois
         private IEnumerator RotateViewport(float z, float time)
         {
-            Vector3 speed = new Vector3(0,0, (z - viewportMask.eulerAngles.z) / time);
+            if (z > 180)
+            {
+                z = -(360 - z);
+            }
+            float angleZ = viewportMask.eulerAngles.z;
+            if (angleZ > 180)
+            {
+                angleZ = -(360 - angleZ);
+            }
+            Vector3 speed = new Vector3(0,0, (z - angleZ) / time);
             while (time != 0)
             {
                 viewportMask.eulerAngles += speed;

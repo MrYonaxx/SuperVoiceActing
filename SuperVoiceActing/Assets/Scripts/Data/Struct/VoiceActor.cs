@@ -164,8 +164,8 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private SkillData[] potentials;
-        public SkillData[] Potentials
+        private SkillActorData[] potentials;
+        public SkillActorData[] Potentials
         {
             get { return potentials; }
             set { potentials = value; }

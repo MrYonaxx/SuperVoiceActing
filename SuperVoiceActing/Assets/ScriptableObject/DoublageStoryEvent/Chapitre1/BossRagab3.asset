@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BossRagab3
   m_EditorClassIdentifier: 
   phraseNumber: 12
+  stopSession: 1
   startPhrase: 1
   equal: 0
   hpPercentage: 100
@@ -40,11 +41,66 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        changeViewport: 0
         viewportID: 1
         time: 0
         position: {x: -1500, y: -50}
         rotation: {x: 0, y: 0, z: 20}
         viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        changeViewport: 0
+        viewportID: 1
+        time: 60
+        position: {x: -770, y: -50}
+        rotation: {x: 0, y: 0, z: 20}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -86,11 +142,16 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        changeViewport: 0
         viewportID: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -132,11 +193,16 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        changeViewport: 0
         viewportID: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -178,11 +244,16 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        changeViewport: 0
         viewportID: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -224,11 +295,16 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        changeViewport: 0
         viewportID: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -270,11 +346,16 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        changeViewport: 0
         viewportID: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
       doublageEventWait:
         wait: 0
       doublageEventDeck:

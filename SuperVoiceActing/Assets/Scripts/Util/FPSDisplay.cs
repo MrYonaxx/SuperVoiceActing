@@ -18,7 +18,7 @@ public class FPSDisplay : MonoBehaviour
 
         Rect rect = new Rect(0, 0, w, h * 2 / 100);
         style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = h * 2 / 50;
+        style.fontSize = h * 1 / 50;
         style.normal.textColor = new Color(1f, 1f, 0f, 1.0f);
         float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
@@ -26,9 +26,9 @@ public class FPSDisplay : MonoBehaviour
         GUI.Label(rect, text, style);
 
 
-        rect = new Rect(500, 0, w, h * 2 / 100);
+        rect = new Rect(200, 0, w, h * 2 / 100);
         GUI.Label(rect, "Build Alpha 0.01f", style);
-        rect = new Rect(1000, 0, w, h * 2 / 100);
-        GUI.Label(rect, "Ça fait trop professionnel", style);
+        /*rect = new Rect(1000, 0, w, h * 2 / 100);
+        GUI.Label(rect, "Ça fait trop professionnel", style);*/
     }
 }

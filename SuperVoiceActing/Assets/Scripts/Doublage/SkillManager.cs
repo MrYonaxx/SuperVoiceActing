@@ -88,7 +88,7 @@ namespace VoiceActing
             bool next = false;
             for(int i = 0; i < voiceActor.Potentials.Length; i++)
             {
-                SkillData skill = voiceActor.Potentials[i];
+                SkillActorData skill = voiceActor.Potentials[i];
                 Debug.Log(skill.SkillName);
                 switch(phase)
                 {

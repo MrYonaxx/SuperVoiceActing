@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4124b50f56a2b34d855573973cc6cdb, type: 3}
-  m_Name: BossRagab1
+  m_Name: BossRagabDoremi1
   m_EditorClassIdentifier: 
   phraseNumber: 0
   stopSession: 1
@@ -18,106 +18,6 @@ MonoBehaviour:
   equal: 0
   hpPercentage: 100
   doublageEvent:
-  - dataBox:
-      eventNode: 2
-      doublageEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 1
-        time: 0
-        position: {x: -1500, y: -50}
-        rotation: {x: 0, y: 0, z: 20}
-        viewportSize: {x: 0.5, y: 1}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 2
-      doublageEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 1
-        time: 60
-        position: {x: -770, y: -50}
-        rotation: {x: 0, y: 0, z: 20}
-        viewportSize: {x: 0.5, y: 1}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
   - dataBox:
       eventNode: 3
       doublageEventText:
@@ -141,8 +41,8 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -151,8 +51,10 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
-        wait: 20
+        wait: 60
       doublageEventDeck:
         newDeck:
           neutral: 0
@@ -191,8 +93,112 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
+        viewportID: 1
+        changeViewport: 1
+        time: 0
+        position: {x: -1500, y: -50}
+        rotation: {x: 0, y: 0, z: 10}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 1
+        changeViewport: 1
+        time: 60
+        position: {x: -770, y: -50}
+        rotation: {x: 0, y: 0, z: 10}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 1
+        camPosition: {x: -5.4, y: 2.8, z: -1.5}
+        camRotation: {x: 0, y: -90, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
         viewportID: 0
+        changeViewport: 1
         time: 60
         position: {x: 480, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -201,6 +207,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -224,60 +232,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
           type: 2}
         emotionNPC: 0
-        text: 'Ok, bon ...
-
-'
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0.5}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: -0.5}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 600
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 1
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 0
-        time: 0
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0, y: 0}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      doublageEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
-        emotionNPC: 0
-        text: "Pr\xEAt Bocca ?\n"
+        text: "Ok, d\xE8s que t'es pr\xEAte."
         textEng: 
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
@@ -295,8 +250,8 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -305,6 +260,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -345,16 +302,18 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 1
+        changeViewport: 1
         time: 60
-        position: {x: -1010, y: -50}
+        position: {x: -1100, y: -50}
         rotation: {x: 0, y: 0, z: 10}
         viewportSize: {x: 0.5, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -395,277 +354,18 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 1
         time: 60
-        position: {x: 240, y: 0}
+        position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 1, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      doublageEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
-        emotionNPC: 0
-        text: 'Regarde moi bien petite !
-
-'
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 0
-        time: 0
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0, y: 0}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      doublageEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
-        emotionNPC: 0
-        text: "Je me fiche que tu sois une d\xE9butante ou une v\xE9t\xE9ran.\n"
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 0
-        time: 0
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0, y: 0}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      doublageEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
-        emotionNPC: 0
-        text: 'Tout ce qui compte c''est de tout donner !
-
-'
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 0
-        time: 0
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0, y: 0}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      doublageEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
-        emotionNPC: 0
-        text: 'Ecoute bien ma performance et essaye de d''ajuster sur elle quand ce
-          sera ton tour.
-
-'
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 0
-        time: 0
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0, y: 0}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 2
-      doublageEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 1
-        time: 60
-        position: {x: -500, y: -50}
-        rotation: {x: 0, y: 0, z: -10}
-        viewportSize: {x: 0.5, y: 1}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -689,26 +389,26 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483,
           type: 2}
         emotionNPC: 0
-        text: E-Entendu !
+        text: '...'
         textEng: 
-        camStart: {x: 0, y: 0, z: -0.25}
+        camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0.2, z: -0.2}
+        cameraEnd: {x: 0, y: 0, z: 0}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 180
+        timeEnd: 0
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
-        cameraID: 1
+        cameraID: 0
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -717,6 +417,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -735,11 +437,12 @@ MonoBehaviour:
       doublageEventSound:
         audio: {fileID: 0}
   - dataBox:
-      eventNode: 2
+      eventNode: 0
       doublageEventText:
-        interlocuteur: {fileID: 0}
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
         emotionNPC: 0
-        text: 
+        text: (C'est comme pour Princesse Muffin.)
         textEng: 
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
@@ -757,16 +460,125 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
+        viewportID: 0
         changeViewport: 0
-        viewportID: 2
         time: 0
-        position: {x: 0, y: -1500}
+        position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 1, y: 0.5}
+        viewportSize: {x: 0, y: 0}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "(On dirait qu'elle fait le vide dans sa t\xEAte avant de commencer.)"
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "(\xC7a doit \xEAtre son rituel pour \xE9vacuer son stress, laissons-la
+          faire.) "
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -807,16 +619,174 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 2
-        time: 60
-        position: {x: 0, y: -500}
-        rotation: {x: 0, y: 0, z: 15}
-        viewportSize: {x: 1, y: 0.5}
+        changeViewport: 1
+        time: 0
+        position: {x: 2000, y: 20}
+        rotation: {x: 0, y: 0, z: -10}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 1
+        camPosition: {x: -8.5, y: 2.4, z: 0.5}
+        camRotation: {x: 0, y: -90, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 2
+        changeViewport: 1
+        time: 30
+        position: {x: 900, y: 50}
+        rotation: {x: 0, y: 0, z: 20}
+        viewportSize: {x: 0.5, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 1
+        changeViewport: 1
+        time: 30
+        position: {x: -1400, y: -250}
+        rotation: {x: 0, y: 0, z: 30}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 1
+        camPosition: {x: -5.4, y: 2.8, z: -1.9}
+        camRotation: {x: 0, y: -90, z: 0}
+        timeCamera: 30
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 1
+        time: 30
+        position: {x: -200, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 1, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -840,12 +810,12 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: Hrm ... Hrm ...
+        text: "Mademoiselle Dor\xE9mi."
         textEng: 
-        camStart: {x: 0, y: 0, z: 0.5}
+        camStart: {x: 0, y: 0, z: -0.2}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: -0.5}
+        cameraEnd: {x: 0, y: 0, z: 0.2}
         cameraEndRotation: {x: 0, y: 0, z: 0}
         timeEnd: 600
         cameraEnd2: {x: 0, y: 0, z: 0}
@@ -858,8 +828,8 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -868,6 +838,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -891,7 +863,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: Pouvons-nous commencer ?
+        text: Nous vous attendons.
         textEng: 
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
@@ -909,8 +881,8 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -919,156 +891,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 2
-      doublageEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 1
-        time: 60
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 1, y: 1}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 2
-      doublageEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 2
-        time: 60
-        position: {x: 0, y: -1500}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 1, y: 0.5}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
-      doublageEventWait:
-        wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-      doublageTutoPopup:
-        popupID: 0
-      doublageEventSound:
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 2
-      doublageEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
-        timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
-        cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
-        cameraEnd2: {x: 0, y: 0, z: 0}
-        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
-      doublageEventTextPopup:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        time: 0
-      doublageEventViewport:
-        changeViewport: 0
-        viewportID: 0
-        time: 60
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 1, y: 1}
-        camViewport: 0
-        camPosition: {x: 0, y: 0, z: 0}
-        camRotation: {x: 0, y: 0, z: 0}
-        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -1092,27 +916,27 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
           type: 2}
         emotionNPC: 0
-        text: Allez, en piste.
+        text: (Evidemment ...)
         textEng: 
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0.01, z: 0}
+        cameraEnd: {x: 0, y: 0, z: 0}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 180
+        timeEnd: 0
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
-        cameraID: 1
+        cameraID: 0
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
         time: 0
       doublageEventViewport:
+        viewportID: 0
         changeViewport: 0
-        viewportID: 2
-        time: 60
+        time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
         viewportSize: {x: 0, y: 0}
@@ -1120,6 +944,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -1140,10 +966,10 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       doublageEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+        interlocuteur: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483,
           type: 2}
         emotionNPC: 0
-        text: Ragab In Session !
+        text: '...'
         textEng: 
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
@@ -1161,8 +987,8 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
         viewportID: 0
+        changeViewport: 0
         time: 0
         position: {x: 0, y: 0}
         rotation: {x: 0, y: 0, z: 0}
@@ -1171,6 +997,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -1211,16 +1039,544 @@ MonoBehaviour:
         text: 
         time: 0
       doublageEventViewport:
-        changeViewport: 0
-        viewportID: 1
-        time: 60
-        position: {x: 0, y: 0}
-        rotation: {x: 0, y: 0, z: 180}
-        viewportSize: {x: 1, y: 0}
+        viewportID: 2
+        changeViewport: 1
+        time: 20
+        position: {x: 1100, y: -50}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0.5, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
+          type: 2}
+        emotionNPC: 0
+        text: "Mademoiselle Dor\xE9mi, je perds patience !"
+        textEng: 
+        camStart: {x: 1.2, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0.2, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 20
+        cameraEnd2: {x: -0.2, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 600
+        cameraID: 2
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483,
+          type: 2}
+        emotionNPC: 0
+        text: Euh ... O-Oui.
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 1
+        time: 40
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 1, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 1
+        changeViewport: 1
+        time: 20
+        position: {x: -1100, y: -50}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: Du calme.
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "Allez Dor\xE9mi, on y va."
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 2
+        changeViewport: 1
+        time: 60
+        position: {x: 2000, y: -50}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 1
+        changeViewport: 1
+        time: 60
+        position: {x: -770, y: -50}
+        rotation: {x: 0, y: 0, z: -10}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      doublageEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "(En esp\xE8rant que l'intervention de Bourghi ne la pas trop boulevers\xE9
+          dans sa concentration.)"
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 0
+        changeViewport: 0
+        time: 0
+        position: {x: 0, y: 0}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0, y: 0}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 1
+        changeViewport: 1
+        time: 60
+        position: {x: -2000, y: -50}
+        rotation: {x: 0, y: 0, z: 0}
+        viewportSize: {x: 0.5, y: 1}
+        camViewport: 0
+        camPosition: {x: 0, y: 0, z: 0}
+        camRotation: {x: 0, y: 0, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:

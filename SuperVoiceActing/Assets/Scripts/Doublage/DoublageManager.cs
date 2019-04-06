@@ -190,6 +190,7 @@ namespace VoiceActing
             enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
+            emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
             // Initialisation
 
 

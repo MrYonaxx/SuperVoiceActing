@@ -76,9 +76,34 @@ namespace VoiceActing
             get { return year; }
         }
 
+        ///////////////////////////////////////////////////////////////////////////////////
+        [Space]
+        [Space]
+        [Space]
+        [Header("Battle Data")]
+        [SerializeField]
+        private int comboMax;
+        public int ComboMax
+        {
+            get { return comboMax; }
+            set { comboMax = value; }
+        }
+
+        [SerializeField]
+        [HideLabel]
+        private EmotionStat deck;
+        public EmotionStat Deck
+        {
+            get { return deck; }
+            set { deck = value; }
+        }
 
 
-        // 
+        /////////////////////////////////////////////////////////////////////////////////// 
+        [Space]
+        [Space]
+        [Space]
+        [Header("Management Data")]
         [SerializeField]
         private List<ContractData> contractAvailableDebug = new List<ContractData>();
 

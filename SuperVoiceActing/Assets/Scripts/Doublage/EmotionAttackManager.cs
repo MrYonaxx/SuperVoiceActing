@@ -153,14 +153,14 @@ namespace VoiceActing
         [SerializeField]
         EmotionCardPosition[] emotionCards;
 
-        [Header("Deck")]
-        [SerializeField]
+        /*[Header("Deck")]
+        [SerializeField]*/
         EmotionStat deckEmotion;
 
         [Header("Combo")]
         [SerializeField]
         RectTransform[] comboSlot;
-        [SerializeField]
+        /*[SerializeField]*/
         int comboMax = 3;
 
 
@@ -210,6 +210,17 @@ namespace VoiceActing
             return emoti;
         }
 
+        public void SetDeck(int newComboMax, EmotionStat newDeck)
+        {
+            comboMax = newComboMax;
+            deckEmotion = newDeck;
+
+            comboEmotion = new Emotion[comboMax];
+            comboCardEmotion = new EmotionCard[comboMax];
+            CreateDeck();
+            CreateComboSlot();
+        }
+
         #endregion
 
         #region Functions 
@@ -221,10 +232,10 @@ namespace VoiceActing
         // Initialization
         protected void Start()
         {
-            comboEmotion = new Emotion[comboMax];
+            /*comboEmotion = new Emotion[comboMax];
             comboCardEmotion = new EmotionCard[comboMax];
             CreateDeck();
-            CreateComboSlot();
+            CreateComboSlot();*/
         }
 
         // Eventuellement déplacer la gestion du deck dans n script a part

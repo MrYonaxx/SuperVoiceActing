@@ -14,7 +14,7 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the SkillData class
     /// </summary>
-    [CreateAssetMenu(fileName = "SkillData", menuName = "SkillData", order = 1)]
+    [CreateAssetMenu(fileName = "SkillData", menuName = "Skills/SkillData", order = 1)]
     public class SkillData : ScriptableObject
     {
         [Header("Info")]
@@ -39,50 +39,10 @@ namespace VoiceActing
             get { return descriptionBattle; }
         }
 
-        [Header("Conditions d'Activation")]
 
-        [SerializeField]
-        private bool afterAttack;
-        public bool AfterAttack
-        {
-            get { return afterAttack; }
-        }
 
-        [SerializeField]
-        private bool afterCritical;
-        public bool AfterCritical
-        {
-            get { return afterCritical; }
-        }
 
-        [SerializeField]
-        private bool afterKill;
-        public bool AfterKill
-        {
-            get { return afterKill; }
-        }
-
-        [SerializeField]
-        private EmotionStat phraseType;
-        public EmotionStat PhraseType
-        {
-            get { return phraseType; }
-        }
-
-        [MinMaxSlider(0, 100)]
-        [SerializeField]
-        private Vector2Int hpInterval = new Vector2Int(0,100);
-        public Vector2Int HpInterval
-        {
-            get { return hpInterval; }
-        }
-
-        [SerializeField]
-        private float percentageActivation;
-        public float PercentageActivation
-        {
-            get { return percentageActivation; }
-        }
+        
 
         [Header("Effet")]
         [SerializeField]
@@ -102,10 +62,10 @@ namespace VoiceActing
 
         [HorizontalGroup("buffType")]
         [SerializeField]
-        private bool addTurn;
-        public bool AddTurn
+        private bool addBuffTurn;
+        public bool AddBuffTurn
         {
-            get { return addTurn; }
+            get { return addBuffTurn; }
         }
 
         [SerializeField]

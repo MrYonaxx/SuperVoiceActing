@@ -364,6 +364,28 @@ namespace VoiceActing
         [Space]
         [Space]
 
+        [Header("Product Manager")]
+        /*[SerializeField]
+        private string myVar;
+        public string MyProperty
+        {
+            get { return myVar; }
+        }*/
+
+        [SerializeField]
+        private EnemyAI[] artificialIntelligence;
+        public EnemyAI[] ArtificialIntelligence
+        {
+            get { return artificialIntelligence; }
+        }
+
+        /*[SerializeField]
+        private int duelAI;
+        public int DuelAI
+        {
+            get { return duelAI; }
+        }*/
+
         /*[Header("Dictionnaire")]
         [SerializeField]*/
 
