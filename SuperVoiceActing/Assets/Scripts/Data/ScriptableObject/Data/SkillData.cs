@@ -11,13 +11,32 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
+
+
+    public enum SkillType
+    {
+        Instant,
+        Buff,
+        Special
+    }
+
+    public enum SkillTarget
+    {
+        VoiceActor,
+        VoiceActors,
+        Sentence,
+        Role,
+        Producer,
+        Other
+    }
+
     /// <summary>
     /// Definition of the SkillData class
     /// </summary>
     [CreateAssetMenu(fileName = "SkillData", menuName = "Skills/SkillData", order = 1)]
     public class SkillData : ScriptableObject
     {
-        [Header("Info")]
+        [Title("Info")]
         [SerializeField]
         private string skillName;
         public string SkillName
@@ -41,10 +60,37 @@ namespace VoiceActing
 
 
 
+        [Space]
+        [Space]
 
-        
 
-        [Header("Effet")]
+        [Title("Type")]     
+        [SerializeField]
+        [HorizontalGroup]
+        [HideLabel]
+        private SkillType skillType;
+        public SkillType SkillType
+        {
+            get { return skillType; }
+        }
+
+        [Space]
+        [Space]
+        [Title("Target")]
+        [SerializeField]
+        [HorizontalGroup]
+        [HideLabel]
+        private SkillTarget skillTarget;
+        public SkillTarget SkillTarget
+        {
+            get { return skillTarget; }
+        }
+
+
+        [Space]
+        [Space]
+        [ShowIf("skillType", SkillType.Buff)]
+        [HorizontalGroup("buffType", LabelWidth = 100)]
         [SerializeField]
         private int turnActive;
         public int TurnActive
@@ -52,6 +98,9 @@ namespace VoiceActing
             get { return turnActive; }
         }
 
+        [Space]
+        [Space]
+        [ShowIf("skillType", SkillType.Buff)]
         [HorizontalGroup("buffType")]
         [SerializeField]
         private bool refresh;
@@ -60,6 +109,9 @@ namespace VoiceActing
             get { return refresh; }
         }
 
+        [Space]
+        [Space]
+        [ShowIf("skillType", SkillType.Buff)]
         [HorizontalGroup("buffType")]
         [SerializeField]
         private bool addBuffTurn;
@@ -68,12 +120,21 @@ namespace VoiceActing
             get { return addBuffTurn; }
         }
 
+
+        [Space]
+        [Space]
+
         [SerializeField]
+        [Title("Card Gain")]
         private EmotionStat cardGain;
         public EmotionStat CardGain
         {
             get { return cardGain; }
         }
+
+        [Space]
+
+        [Title("Emotion Stat Gain")]
 
         [SerializeField]
         private EmotionStat emotionStatGainPercentage;
@@ -82,6 +143,7 @@ namespace VoiceActing
             get { return emotionStatGainPercentage; }
         }
 
+        [Space]
         [SerializeField]
         private EmotionStat emotionStatGainFlat;
         public EmotionStat EmotionStatGainFlat
@@ -89,6 +151,9 @@ namespace VoiceActing
             get { return emotionStatGainFlat; }
         }
 
+
+
+        [Space]
         [SerializeField]
         private float emotionStatVariance;
         public float EmotionStatVariance
@@ -96,7 +161,43 @@ namespace VoiceActing
             get { return emotionStatVariance; }
         }
 
-        [HorizontalGroup("hpPercentage")]
+
+        [Space]
+
+        [Title("Emotion Damage")]
+
+        [SerializeField]
+        private EmotionStat emotionDamagePercentage;
+        public EmotionStat EmotionDamagePercentage
+        {
+            get { return emotionDamagePercentage; }
+        }
+
+        [Space]
+        [SerializeField]
+        private EmotionStat emotionDamageFlat;
+        public EmotionStat EmotionDamageFlat
+        {
+            get { return emotionDamageFlat; }
+        }
+
+        [Space]
+        [SerializeField]
+        private float emotionDamageVariance;
+        public float EmotionDamageVariance
+        {
+            get { return emotionStatVariance; }
+        }
+
+
+
+
+
+
+        [Space]
+        [Space]
+
+        [Title("HP Damage")]
         [SerializeField]
         private float hpGainPercentage;
         public float HpGainPercentage
@@ -104,7 +205,6 @@ namespace VoiceActing
             get { return hpGainPercentage; }
         }
 
-        [HorizontalGroup("hpPercentage")]
         [SerializeField]
         private float hpPercentageVariance;
         public float HpPercentageVariance
@@ -112,7 +212,6 @@ namespace VoiceActing
             get { return hpPercentageVariance; }
         }
 
-        [HorizontalGroup("hpFlat")]
         [SerializeField]
         private float hpGainFlat;
         public float HpGainFlat
@@ -120,7 +219,6 @@ namespace VoiceActing
             get { return hpGainFlat; }
         }
 
-        [HorizontalGroup("hpFlat")]
         [SerializeField]
         private float hpFlatVariance;
         public float HpFlatVariance
@@ -128,7 +226,8 @@ namespace VoiceActing
             get { return hpFlatVariance; }
         }
 
-        [HorizontalGroup("turnGain")]
+
+        [Title("Other")]
         [SerializeField]
         private float turnGain;
         public float TurnGain
@@ -136,7 +235,6 @@ namespace VoiceActing
             get { return turnGain; }
         }
 
-        [HorizontalGroup("turnGain")]
         [SerializeField]
         private float turnGainVariance;
         public float TurnGainVariance

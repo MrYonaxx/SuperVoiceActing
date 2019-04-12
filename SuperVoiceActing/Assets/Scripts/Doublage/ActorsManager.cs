@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -27,8 +28,6 @@ namespace VoiceActing
         [SerializeField]
         private List<VoiceActor> actors = new List<VoiceActor>();
 
-        [SerializeField]
-        TextMeshProUGUI[] textCardStats;
 
         [Header("Feedbacks Damage")]
         [SerializeField]
@@ -44,6 +43,41 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textMaxHp;
 
+
+        // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
+        [Title("Stat Card Drawing")]
+        [SerializeField]
+        Color colorStatBonus;
+        [SerializeField]
+        Color colorStatMalus;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardJoy;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardSadness;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardDisgust;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardAnger;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardSurprise;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardSweetness;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardFear;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardTrust;
+        [FoldoutGroup("Cards")]
+        [SerializeField]
+        EmotionCard[] cardNeutral;
+
         private int indexCurrentActor = 0;
         
         #endregion
@@ -54,6 +88,16 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
         
+        public int GetCurrentActorHP()
+        {
+            return actors[indexCurrentActor].Hp;
+        }
+
+        public List<Buff> GetBuffList()
+        {
+            return actors[indexCurrentActor].Buffs;
+        }
+
 
         #endregion
 
@@ -76,11 +120,106 @@ namespace VoiceActing
             DrawActorStat();
         }
 
+        public void ApplyBuff(SkillData buff)
+        {
+            for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
+            {
+                if (actors[indexCurrentActor].Buffs[i].Skillbuff == buff)
+                {
+                    if(buff.Refresh == true)
+                    {
+                        actors[indexCurrentActor].Buffs[i].Turn = buff.TurnActive;
+                    }
+                    else if (buff.AddBuffTurn == true)
+                    {
+                        actors[indexCurrentActor].Buffs[i].Turn += buff.TurnActive;
+                    }
+                    return;
+                }
+            }
+            actors[indexCurrentActor].Buffs.Add(new Buff(buff));
+            DrawBuffIcon();
+        }
+
+        public void DrawBuffIcon()
+        {
+
+        }
+
+
+        public void ModifyActorStat(EmotionStat modifiers)
+        {
+            actors[indexCurrentActor].StatModifier.Add(modifiers);
+            DrawActorStat();
+        }
+
         private void DrawActorStat()
         {
             // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
 
-            textCardStats[0].text = actors[indexCurrentActor].Statistique.Joy.ToString();
+            for(int i = 0; i < 9; i++)
+            {
+                EmotionCard[] pack = null;
+                int newStatValue = 0;
+                int newStatModifier = 0;
+                switch (i)
+                {
+                    case 0: // Joie
+                        pack = cardJoy;
+                        newStatValue = actors[indexCurrentActor].Statistique.Joy;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Joy;
+                        break;
+                    case 1: // Tristesse
+                        pack = cardSadness;
+                        newStatValue = actors[indexCurrentActor].Statistique.Sadness;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Sadness;
+                        break;
+                    case 2: // Dégout
+                        pack = cardDisgust;
+                        newStatValue = actors[indexCurrentActor].Statistique.Disgust;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Disgust;
+                        break;
+                    case 3: // Colère
+                        pack = cardAnger;
+                        newStatValue = actors[indexCurrentActor].Statistique.Anger;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Anger;
+                        break;
+                    case 4: // Surprise
+                        pack = cardSurprise;
+                        newStatValue = actors[indexCurrentActor].Statistique.Surprise;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Surprise;
+                        break;
+                    case 5: // Douceur
+                        pack = cardSweetness;
+                        newStatValue = actors[indexCurrentActor].Statistique.Sweetness;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Sweetness;
+                        break;
+                    case 6: // Peur
+                        pack = cardFear;
+                        newStatValue = actors[indexCurrentActor].Statistique.Fear;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Fear;
+                        break;
+                    case 7: // Confiance
+                        pack = cardTrust;
+                        newStatValue = actors[indexCurrentActor].Statistique.Trust;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Trust;
+                        break;
+                    case 8: // Neutral
+                        pack = cardNeutral;
+                        newStatValue = actors[indexCurrentActor].Statistique.Neutral;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Neutral;
+                        break;
+                }
+
+
+                for(int j = 0; j < pack.Length; j++)
+                {
+                    pack[j].DrawStat(newStatValue, newStatModifier, colorStatBonus, colorStatMalus);
+                }
+            }
+
+            /*textCardStats[0].text = actors[indexCurrentActor].Statistique.Joy.ToString();
+
             textCardStats[1].text = actors[indexCurrentActor].Statistique.Sadness.ToString();
             textCardStats[2].text = actors[indexCurrentActor].Statistique.Disgust.ToString();
             textCardStats[3].text = actors[indexCurrentActor].Statistique.Anger.ToString();
@@ -88,7 +227,7 @@ namespace VoiceActing
             textCardStats[5].text = actors[indexCurrentActor].Statistique.Sweetness.ToString();
             textCardStats[6].text = actors[indexCurrentActor].Statistique.Fear.ToString();
             textCardStats[7].text = actors[indexCurrentActor].Statistique.Trust.ToString();
-            textCardStats[8].text = actors[indexCurrentActor].Statistique.Neutral.ToString();
+            textCardStats[8].text = actors[indexCurrentActor].Statistique.Neutral.ToString();*/
 
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
             textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();

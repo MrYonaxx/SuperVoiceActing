@@ -69,7 +69,36 @@ namespace VoiceActing
         [HideLabel]
         private string memo;
 
-        [HorizontalGroup]
+        [HorizontalGroup("Attack Timing", LabelWidth = 80)]
+        [SerializeField]
+        private bool startPhrase;
+        public bool StartPhrase
+        {
+            get { return startPhrase; }
+        }
+        [HorizontalGroup("Attack Timing")]
+        [SerializeField]
+        private bool startAttack;
+        public bool StartAttack
+        {
+            get { return startAttack; }
+        }
+        [HorizontalGroup("Attack Timing")]
+        [SerializeField]
+        private bool endAttack;
+        public bool EndAttack
+        {
+            get { return endAttack; }
+        }
+        [HorizontalGroup("Attack Timing")]
+        [SerializeField]
+        private bool endPhrase;
+        public bool EndPhrase
+        {
+            get { return endPhrase; }
+        }
+
+        [HorizontalGroup("Condition")]
         [SerializeField]
         private ConditionAI[] conditions;
         public ConditionAI[] Conditions
@@ -77,7 +106,7 @@ namespace VoiceActing
             get { return conditions; }
         }
 
-        [HorizontalGroup]
+        [HorizontalGroup("Condition")]
         [SerializeField]
         private SkillData[] skills;
         public SkillData[] Skills

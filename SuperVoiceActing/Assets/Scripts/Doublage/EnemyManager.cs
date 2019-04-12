@@ -181,6 +181,19 @@ namespace VoiceActing
 
 
 
+        public EmotionStat()
+        {
+            this.joy = 0;
+            this.sadness = 0;
+            this.disgust = 0;
+            this.anger = 0;
+            this.surprise = 0;
+            this.sweetness = 0;
+            this.fear = 0;
+            this.trust = 0;
+            this.neutral = 0;
+        }
+
         public EmotionStat(int jo, int sa, int di, int an, int su, int sw, int fe, int tr)
         {
             this.joy = jo;
@@ -205,6 +218,19 @@ namespace VoiceActing
             this.fear = newStat.Fear;
             this.trust = newStat.Trust;
             this.neutral = (joy + sadness + disgust + anger + surprise + sweetness + fear + trust) / 8;
+        }
+
+        public void Add(EmotionStat addition)
+        {
+            this.joy += addition.joy;
+            this.sadness += addition.sadness;
+            this.disgust += addition.disgust;
+            this.anger += addition.anger;
+            this.surprise += addition.surprise;
+            this.sweetness += addition.sweetness;
+            this.fear += addition.fear;
+            this.trust += addition.trust;
+            this.neutral += addition.neutral;
         }
 
     }
@@ -284,6 +310,12 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+
+        public int GetHp()
+        {
+            return enemyHP;
+        }
 
         public float GetHpPercentage()
         {

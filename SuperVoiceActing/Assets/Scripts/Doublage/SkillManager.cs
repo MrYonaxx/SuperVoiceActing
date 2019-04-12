@@ -9,9 +9,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VoiceActing
 {
+
+    public class Buff
+    {
+        private int turn;
+        public int Turn
+        {
+            get { return turn; }
+            set { turn = value; }
+        }
+
+        private SkillData skillbuff;
+        public SkillData Skillbuff
+        {
+            get { return skillbuff; }
+            set { skillbuff = value; }
+        }
+
+        public Buff(SkillData skill)
+        {
+            skillbuff = skill;
+            turn = skill.TurnActive;
+        }
+    }
+
+
+
     /// <summary>
     /// Definition of the SkillManager class
     /// </summary>
@@ -48,12 +75,33 @@ namespace VoiceActing
         [SerializeField]
         ParticleSystem particleSpeedLines;
 
-        [Header("Managers")]
-        [SerializeField]
+        /*[Header("Managers")]
+        [SerializeField]*/
         CameraController cameraController;
-        [SerializeField]
+        /*[SerializeField]*/
         EmotionAttackManager emotionAttackManager;
 
+
+        [Header("Debug")]
+        [SerializeField]
+        private EmotionStat flatBonus;
+        [SerializeField]
+        private EmotionStat percentageBonus;
+
+
+        [Header("Buff")]
+        // Placer dans les classes respectives
+        List<Buff> buffVoiceActor;
+        // Placer dans les classes respectives
+        List<Buff> buffProducer;
+        // Placer dans les classes respectives
+        List<Buff> buffRole;
+
+
+
+        ActorsManager actorsManager;
+        RoleManager roleManager;
+        EnemyManager enemyManager;
 
 
         private IEnumerator coroutineSkill = null;
@@ -75,6 +123,15 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public void SetManagers(CameraController cC, EmotionAttackManager eAM, ActorsManager aM, RoleManager rM, EnemyManager eM)
+        {
+            cameraController = cC;
+            emotionAttackManager = eAM;
+            actorsManager = aM;
+            roleManager = rM;
+            enemyManager = eM;
+        }
 
         public bool CheckPassiveSkills()
         {
@@ -129,6 +186,7 @@ namespace VoiceActing
                                 textMeshSkillName.text = skill.SkillName;
                                 textMeshSkillDesc.text = skill.DescriptionBattle;
                                 ActorSkillFeedback();
+                                ApplySkill(skill);
                                 return; // On verra pour l'activation de compétence multiple plus tard
                             }
                         }
@@ -201,12 +259,79 @@ namespace VoiceActing
 
 
 
+        public void ApplySkill(SkillData skill)
+        {
+            ApplySkillEffect(skill);
+            if (skill.SkillType == SkillType.Buff)
+            {
+                switch (skill.SkillTarget)
+                {
+                    case SkillTarget.VoiceActor:
+                        actorsManager.ApplyBuff(skill);
+                        break;
+                }
+            }
+        }
 
 
 
 
+        public void ApplySkillEffect(SkillData skill)
+        {
+            int currentHP = 0;
+            float damage = 0;
+            switch (skill.SkillTarget)
+            {
+                case SkillTarget.VoiceActor:
+                    // Damage
+                    currentHP = actorsManager.GetCurrentActorHP();
+                    damage = currentHP * (skill.HpGainPercentage / 100f);
+                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
+                    actorsManager.ActorTakeDamage((int) damage);
 
 
+                    // Stat Gain
+                    actorsManager.ModifyActorStat(skill.EmotionStatGainFlat);
+
+                    // Card Gain
+
+
+                    break;
+                case SkillTarget.Sentence:
+                    // Damage
+                    currentHP = enemyManager.GetHp();
+                    damage = currentHP * (skill.HpGainPercentage / 100f);
+                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
+                    //enemyManager.SetHp(damage);
+
+                    // Modify Resistance
+
+
+                    break;
+            }
+
+            // Other
+
+        }
+
+        public void RemoveSkillEffect(SkillData skill)
+        {
+
+        }
+
+
+        public void CheckBuff(List<Buff> buffs)
+        {
+            for(int i = 0; i < buffs.Count; i++)
+            {
+                buffs[i].Turn -= 1;
+                if(buffs[i].Turn == 0)
+                {
+                    RemoveSkillEffect(buffs[i].Skillbuff);
+                    buffs.RemoveAt(i);
+                }
+            }
+        }
 
 
 

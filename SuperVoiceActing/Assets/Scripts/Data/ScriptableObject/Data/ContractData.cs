@@ -246,7 +246,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [Header("Info")]
+        [Title("Info")]
         [SerializeField]
         private string name;
         public string Name
@@ -352,7 +352,7 @@ namespace VoiceActing
         [Space]
         [Space]
 
-        [Header("Characters")]
+        [Title("Characters")]
         [SerializeField]
         private RoleContractDatabase[] characters;
         public RoleContractDatabase[] Characters
@@ -364,7 +364,7 @@ namespace VoiceActing
         [Space]
         [Space]
 
-        [Header("Product Manager")]
+        [Title("Product Manager")]
         /*[SerializeField]
         private string myVar;
         public string MyProperty
@@ -394,7 +394,7 @@ namespace VoiceActing
         [Space]
         [Space]
 
-        [Header("Text")]
+        [Title("Text")]
         [SerializeField]
         private TextDatabaseContract[] textDataContract;
         public TextDatabaseContract[] TextDataContract

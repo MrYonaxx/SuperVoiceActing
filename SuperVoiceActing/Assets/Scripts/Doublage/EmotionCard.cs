@@ -8,6 +8,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -25,6 +26,21 @@ namespace VoiceActing
         private IEnumerator coroutine = null;
         private RectTransform rectTransform;
         private Image image;
+
+        [SerializeField]
+        TextMeshProUGUI textStat;
+        [SerializeField]
+        Image StatBonus;
+        [SerializeField]
+        Image StatMalus;
+
+
+        private Emotion emotion;
+
+        private int value = 0;
+
+        private float damagePercentage = 0;
+
 
         #endregion
 
@@ -92,6 +108,27 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
+        }
+
+
+
+        public void DrawStat(int baseStat, int newStat, Color bonusStat, Color malusStat)
+        {
+            if (textStat == null)
+                return;
+            if(newStat > 0)
+            {
+                textStat.color = bonusStat;
+            }
+            else if (newStat < 0)
+            {
+                textStat.color = malusStat;
+            }
+            else
+            {
+                textStat.color = Color.white;
+            }
+            textStat.text = (baseStat + newStat).ToString();
         }
 
         #endregion

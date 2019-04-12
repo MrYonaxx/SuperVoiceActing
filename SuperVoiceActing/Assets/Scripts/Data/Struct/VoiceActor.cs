@@ -96,6 +96,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private EmotionStat statModifier;
+        public EmotionStat StatModifier
+        {
+            get { return statModifier; }
+            set { statModifier = value; }
+        }
+
+        [SerializeField]
         private EmotionStat growth;
         public EmotionStat Growth
         {
@@ -171,6 +179,15 @@ namespace VoiceActing
             set { potentials = value; }
         }
 
+        [SerializeField]
+        private List<Buff> buffs;
+        public List<Buff> Buffs
+        {
+            get { return buffs; }
+            set { buffs = value; }
+        }
+
+
         #endregion
 
         #region GettersSetters 
@@ -209,6 +226,7 @@ namespace VoiceActing
             spriteSheets = actorData.SpriteSheets;
 
             statistique = new EmotionStat( actorData.Statistique);
+            statModifier = new EmotionStat();
             growth = new EmotionStat(actorData.Growth);
             currentGrowth = new EmotionStat(actorData.Growth);
 

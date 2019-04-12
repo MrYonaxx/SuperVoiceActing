@@ -12,27 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3aeea74d582ba44a09bba334f6b2b5, type: 3}
   m_Name: BourghiSkill1
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
+  skillName: "Nous perdons du temps, acc\xE9lerez la cadence Mademoiselle Dor\xE9mi."
+  description: "Inflige 10 PV \xE0 l'acteur."
   descriptionBattle: 
-  afterAttack: 0
-  afterCritical: 0
-  afterKill: 0
-  phraseType:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 0
+  skillType: 1
+  skillTarget: 0
   turnActive: 0
   refresh: 0
-  addTurn: 0
+  addBuffTurn: 0
   cardGain:
     neutral: 0
     joy: 0
@@ -64,9 +51,30 @@ MonoBehaviour:
     fear: 0
     trust: 0
   emotionStatVariance: 0
+  emotionDamagePercentage:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  emotionDamageFlat:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  emotionDamageVariance: 0
   hpGainPercentage: 0
   hpPercentageVariance: 0
-  hpGainFlat: 0
+  hpGainFlat: 10
   hpFlatVariance: 0
   turnGain: 0
   turnGainVariance: 0

@@ -191,6 +191,7 @@ namespace VoiceActing
             actorsManager.SetActors(contrat.VoiceActors);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
             emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
+            skillManager.SetManagers(cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             // Initialisation
 
 
@@ -440,6 +441,7 @@ namespace VoiceActing
                 return;
             }
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
+            skillManager.CheckBuff(actorsManager.GetBuffList());
             skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Kill", lastAttack);
         }
 
