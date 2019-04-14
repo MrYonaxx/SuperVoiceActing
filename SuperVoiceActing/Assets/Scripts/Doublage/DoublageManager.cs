@@ -46,6 +46,8 @@ namespace VoiceActing
         [SerializeField]
         protected RoleManager roleManager;
         [SerializeField]
+        protected ProducerManager producerManager;
+        [SerializeField]
         protected SkillManager skillManager;
         [SerializeField]
         protected ResultScreen resultScreenManager;
@@ -596,10 +598,22 @@ namespace VoiceActing
             }
             else
             {
-                NewTurn();
+                CheckProducerAttack("ENDATTACK");
             }
         }
 
+        public void CheckProducerAttack(string phase)
+        {
+            if(producerManager.ProducerDecision(contrat.ArtificialIntelligence, phase) == true)
+            {
+                producerManager.ProducerAttackActivation();
+            }
+            else if (phase == "ENDATTACK")
+            {
+                NewTurn();
+            }
+
+        }
 
         public void HideUIButton()
         {

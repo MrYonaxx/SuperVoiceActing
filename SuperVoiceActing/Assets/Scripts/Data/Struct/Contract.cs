@@ -151,6 +151,14 @@ namespace VoiceActing
             set { expBonus = value; }
         }
 
+
+        [SerializeField]
+        private EnemyAI[] artificialIntelligence;
+        public EnemyAI[] ArtificialIntelligence
+        {
+            get { return artificialIntelligence; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -197,6 +205,8 @@ namespace VoiceActing
 
             this.expGain = data.ExpGain;
             this.expBonus = data.ExpBonus;
+
+            this.artificialIntelligence = data.ArtificialIntelligence;
 
             this.eventData = data.EventData;
 

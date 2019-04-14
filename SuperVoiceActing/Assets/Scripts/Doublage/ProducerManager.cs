@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -22,12 +23,16 @@ namespace VoiceActing
         [SerializeField]
         Animator producerPanel;
 
+        [SerializeField]
+        TextMeshProUGUI skillName;
+
 
         [SerializeField]
         InputController input;
 
         private bool readyToAttack = false;
         private SkillData currentAttack = null;
+        private SkillManager skillManager;
 
         #endregion
 
@@ -38,6 +43,7 @@ namespace VoiceActing
         \* ======================================== */
 
 
+
         #endregion
 
         #region Functions 
@@ -46,7 +52,24 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void ProducerDecision(EnemyAI[] producerAI, string phase)
+        public void ProducerAttackActivation()
+        {
+            producerPanel.gameObject.SetActive(true);
+            input.gameObject.SetActive(true);
+            skillName.text = currentAttack.SkillName;
+        }
+
+        public void ProducerAttackCounter()
+        {
+
+        }
+
+        public void ProducerAttackDisappear()
+        {
+            skillManager.ApplySkill(currentAttack);
+        }
+
+        public bool ProducerDecision(EnemyAI[] producerAI, string phase)
         {
             for(int i = 0; i < producerAI.Length; i++)
             {
@@ -57,11 +80,13 @@ namespace VoiceActing
                         currentAttack = producerAI[i].Skills[Random.Range(0, producerAI[i].Skills.Length)];
                         if (currentAttack != null)
                             readyToAttack = true;
-                        return;
+                        else
+                            readyToAttack = false;
+                        return readyToAttack;
                     }
                 }
             }
-
+            return false;
         }
 
 

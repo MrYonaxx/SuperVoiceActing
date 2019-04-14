@@ -230,6 +230,8 @@ namespace VoiceActing
             growth = new EmotionStat(actorData.Growth);
             currentGrowth = new EmotionStat(actorData.Growth);
 
+            buffs = new List<Buff>();
+
             // Repartition aléatoire
             /*int totalPoint = actorData.GrowthRandom.Joy + actorData.GrowthRandom.Sadness + actorData.GrowthRandom.Disgust +
                              actorData.GrowthRandom.Anger + actorData.GrowthRandom.Surprise + actorData.GrowthRandom.Sweetness +
