@@ -135,24 +135,27 @@ namespace VoiceActing
             if (coroutineRotate != null)
                 StopCoroutine(coroutineRotate);
 
-            if (viewportSetting.Time == 0)
+            if (viewportSetting.ChangeViewport == true)
             {
-                viewport.anchoredPosition = viewportSetting.Position;
-                if(viewportMask != null)
-                    viewportMask.sizeDelta = (initialSize * viewportSetting.ViewportSize);
-                if (viewportOutline != null)
-                    viewportOutline.sizeDelta = viewportSetting.ViewportSize;
-            }
-            else
-            {
-                coroutineMove = MoveViewport(viewportSetting.Position);
-                StartCoroutine(coroutineMove);
-                if (viewportMask != null)
+                if (viewportSetting.Time == 0)
                 {
-                    coroutineViewport = ChangeViewportSize(viewportSetting.ViewportSize, viewportSetting.Time);
-                    StartCoroutine(coroutineViewport);
-                    coroutineRotate = RotateViewport(viewportSetting.Rotation.z, viewportSetting.Time);
-                    StartCoroutine(coroutineRotate);
+                    viewport.anchoredPosition = viewportSetting.Position;
+                    if (viewportMask != null)
+                        viewportMask.sizeDelta = (initialSize * viewportSetting.ViewportSize);
+                    if (viewportOutline != null)
+                        viewportOutline.sizeDelta = viewportSetting.ViewportSize;
+                }
+                else
+                {
+                    coroutineMove = MoveViewport(viewportSetting.Position);
+                    StartCoroutine(coroutineMove);
+                    if (viewportMask != null)
+                    {
+                        coroutineViewport = ChangeViewportSize(viewportSetting.ViewportSize, viewportSetting.Time);
+                        StartCoroutine(coroutineViewport);
+                        coroutineRotate = RotateViewport(viewportSetting.Rotation.z, viewportSetting.Time);
+                        StartCoroutine(coroutineRotate);
+                    }
                 }
             }
 

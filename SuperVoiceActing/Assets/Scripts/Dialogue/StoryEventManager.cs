@@ -85,7 +85,8 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            StartCoroutine(NextNodeCoroutine());
+            if(storyEventData != null)
+                StartCoroutine(NextNodeCoroutine());
             
         }
         
@@ -97,6 +98,11 @@ namespace VoiceActing
         {
             
         }*/
+        public void StartStoryEventData(StoryEventData newStoryEvent)
+        {
+            storyEventData = newStoryEvent;
+            StartCoroutine(NextNodeCoroutine());
+        }
 
 
         private IEnumerator NextNodeCoroutine()

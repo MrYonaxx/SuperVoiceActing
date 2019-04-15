@@ -35,6 +35,8 @@ namespace VoiceActing
         [SerializeField]
         protected GameObject[] popups;
         [SerializeField]
+        protected StoryEventManager storyEventManager;
+        [SerializeField]
         protected string endScene;
 
         [Header("DoublageManager")]

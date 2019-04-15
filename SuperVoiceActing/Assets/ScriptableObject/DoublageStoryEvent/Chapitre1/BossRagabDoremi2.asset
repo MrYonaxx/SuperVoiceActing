@@ -48,9 +48,11 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 10}
         viewportSize: {x: 0.5, y: 1}
         camViewport: 1
-        camPosition: {x: -8.5, y: 2.4, z: 0.3}
+        camPosition: {x: -8.8, y: 2.4, z: 0}
         camRotation: {x: 0, y: -90, z: 0}
         timeCamera: 0
+        changeTextPosition: 1
+        textPosition: {x: -80, y: -250, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -98,9 +100,11 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: -10}
         viewportSize: {x: 0.5, y: 1}
         camViewport: 1
-        camPosition: {x: -9, y: 2.4, z: -0.6}
+        camPosition: {x: -9.1, y: 2.5, z: -0.8}
         camRotation: {x: 0, y: 90, z: 0}
         timeCamera: 0
+        changeTextPosition: 1
+        textPosition: {x: 80, y: -250, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -144,13 +148,15 @@ MonoBehaviour:
         viewportID: 2
         changeViewport: 1
         time: 60
-        position: {x: 750, y: 50}
+        position: {x: 600, y: -50}
         rotation: {x: 0, y: 0, z: 10}
-        viewportSize: {x: 0.5, y: 1}
+        viewportSize: {x: 0.4, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -176,16 +182,16 @@ MonoBehaviour:
         emotionNPC: 0
         text: "Cette prise n'avait aucune \xE9motion, refaissons-la."
         textEng: 
-        camStart: {x: 0, y: 0, z: 0}
+        camStart: {x: 0, y: 0, z: 0.2}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEnd: {x: 0, y: 0, z: -0.2}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 600
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
-        cameraID: 0
+        cameraID: 2
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -202,6 +208,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -253,6 +261,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -296,13 +306,15 @@ MonoBehaviour:
         viewportID: 1
         changeViewport: 1
         time: 60
-        position: {x: -750, y: -50}
+        position: {x: -600, y: -50}
         rotation: {x: 0, y: 0, z: 10}
-        viewportSize: {x: 0.5, y: 1}
+        viewportSize: {x: 0.4, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -328,16 +340,16 @@ MonoBehaviour:
         emotionNPC: 0
         text: Euh pardon ?
         textEng: 
-        camStart: {x: 0, y: 0, z: 0}
+        camStart: {x: 0, y: 0, z: -0.2}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEnd: {x: 0, y: 0, z: 0.2}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 600
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
-        cameraID: 0
+        cameraID: 1
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -354,6 +366,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -379,16 +393,16 @@ MonoBehaviour:
         emotionNPC: 0
         text: "C'est une sc\xE8ne triste je vous rappelle."
         textEng: 
-        camStart: {x: 0, y: 0, z: 0}
+        camStart: {x: 0, y: -0.5, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEnd: {x: 0, y: -0.1, z: 0}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 30
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
+        timeEnd2: 300
+        cameraID: 2
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -405,6 +419,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -430,16 +446,16 @@ MonoBehaviour:
         emotionNPC: 0
         text: Oui, donc la prise me semble correcte.
         textEng: 
-        camStart: {x: 0, y: 0, z: 0}
+        camStart: {x: 0, y: 0.5, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEnd: {x: 0, y: 0.1, z: 0}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 30
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-        timeEnd2: 0
-        cameraID: 0
+        timeEnd2: 300
+        cameraID: 1
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -456,6 +472,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -482,11 +500,11 @@ MonoBehaviour:
         text: "Oh s'il vous pla\xEEt. Ai-je l'air d'avoir vers\xE9 une larme ?"
         textEng: 
         camStart: {x: 0, y: 0, z: 0}
-        camStartRotation: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: -10}
         timeStart: 0
         cameraEnd: {x: 0, y: 0, z: 0}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 600
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
@@ -507,6 +525,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -532,12 +552,12 @@ MonoBehaviour:
         emotionNPC: 0
         text: "(Est-ce que tu ressens des \xE9motion d\xE9j\xE0 ?)"
         textEng: 
-        camStart: {x: 0, y: 0, z: 0}
+        camStart: {x: 0, y: 0, z: 0.2}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEnd: {x: 0, y: 0, z: -0.2}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 600
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
@@ -558,6 +578,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -586,9 +608,9 @@ MonoBehaviour:
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
-        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEnd: {x: 0.4, y: 0, z: 0}
         cameraEndRotation: {x: 0, y: 0, z: 0}
-        timeEnd: 0
+        timeEnd: 600
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
@@ -609,6 +631,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -654,11 +678,13 @@ MonoBehaviour:
         time: 60
         position: {x: 2000, y: 50}
         rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0.5, y: 1}
+        viewportSize: {x: 0.4, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -710,6 +736,60 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
+      doublageEventWait:
+        wait: 0
+      doublageEventDeck:
+        newDeck:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      doublageTutoPopup:
+        popupID: 0
+      doublageEventSound:
+        audio: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      doublageEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        camStart: {x: 0, y: 0, z: 0}
+        camStartRotation: {x: 0, y: 0, z: 0}
+        timeStart: 0
+        cameraEnd: {x: 0, y: 0, z: 0}
+        cameraEndRotation: {x: 0, y: 0, z: 0}
+        timeEnd: 0
+        cameraEnd2: {x: 0, y: 0, z: 0}
+        cameraEnd2Rotation: {x: 0, y: 0, z: 0}
+        timeEnd2: 0
+        cameraID: 0
+      doublageEventTextPopup:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        time: 0
+      doublageEventViewport:
+        viewportID: 1
+        changeViewport: 0
+        time: 0
+        position: {x: -600, y: -50}
+        rotation: {x: 0, y: 0, z: 10}
+        viewportSize: {x: 0.4, y: 1}
+        camViewport: 1
+        camPosition: {x: -5.7, y: 2.5, z: -1}
+        camRotation: {x: 0, y: -90, z: 0}
+        timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -761,6 +841,8 @@ MonoBehaviour:
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:
@@ -806,11 +888,13 @@ MonoBehaviour:
         time: 60
         position: {x: -2000, y: -50}
         rotation: {x: 0, y: 0, z: 0}
-        viewportSize: {x: 0.5, y: 1}
+        viewportSize: {x: 0.4, y: 1}
         camViewport: 0
         camPosition: {x: 0, y: 0, z: 0}
         camRotation: {x: 0, y: 0, z: 0}
         timeCamera: 0
+        changeTextPosition: 0
+        textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
       doublageEventDeck:

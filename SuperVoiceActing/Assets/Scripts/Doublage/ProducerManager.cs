@@ -55,6 +55,7 @@ namespace VoiceActing
         public void ProducerAttackActivation()
         {
             producerPanel.gameObject.SetActive(true);
+            producerPanel.SetTrigger("Appear");
             input.gameObject.SetActive(true);
             skillName.text = currentAttack.SkillName;
         }

@@ -282,10 +282,6 @@ namespace VoiceActing
                 emotionAttackManager.SwitchCardTransformToRessource();
                 reprintText = false;
                 StartCoroutine(CoroutineAttack(10));
-                if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
-                {
-                    ChangeEventPhase();
-                }
                 inputController.gameObject.SetActive(false);
             }
         }
@@ -346,12 +342,18 @@ namespace VoiceActing
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
+                    inputController.gameObject.SetActive(false);
+
+                    if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "ENDPHRASE") == true)
+                    {
+                        producerManager.ProducerAttackActivation();
+                        return;
+                    }
                     
                     indexPhrase += 1;
                     killCount += 1;
                     if (currentLineNumber != null)
                         currentLineNumber.text = (indexPhrase+1).ToString();
-                    inputController.gameObject.SetActive(false);
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
@@ -367,6 +369,7 @@ namespace VoiceActing
                         if (eventManager.CheckStopSession() == true)
                         {
                             ChangeEventPhase();
+                            startLine = false;
                             return;
                         }
                     }
@@ -560,9 +563,16 @@ namespace VoiceActing
 
         public void NewTurn()
         {
-            emotionAttackManager.SwitchCardTransformToBattle();
-            inputController.gameObject.SetActive(true);
-            skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack);
+            if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
+            {
+                ChangeEventPhase();
+            }
+            else
+            {
+                emotionAttackManager.SwitchCardTransformToBattle();
+                inputController.gameObject.SetActive(true);
+                skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack);
+            }
         }
 
         private IEnumerator WaitText()

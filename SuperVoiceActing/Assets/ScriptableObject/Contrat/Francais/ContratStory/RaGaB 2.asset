@@ -69,16 +69,9 @@ MonoBehaviour:
       conditionValue: 0
     skills:
     - {fileID: 11400000, guid: a1311b2c8b1150241b518b99a8ef7134, type: 2}
+    - {fileID: 11400000, guid: 4f5aa0634e6f0aa428dc69101cebc4e1, type: 2}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
-  - memo: 
-    startPhrase: 0
-    startAttack: 0
-    endAttack: 0
-    endPhrase: 0
-    conditions: []
-    skills: []
   textDataContract:
   - textDataCondition:
       all: 1
@@ -91,114 +84,114 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
+        neutral: -30
+        joy: -50
+        sadness: 30
+        disgust: -10
         anger: 0
-        surprise: 0
+        surprise: -30
         sweetness: 0
-        fear: 0
-        trust: 0
+        fear: 50
+        trust: -10
       enemyWeakPoints: []
     - text: Ragab, non, je t'en supplie !
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
+        neutral: -30
+        joy: -50
+        sadness: 50
         disgust: 0
-        anger: 0
-        surprise: 0
+        anger: 10
+        surprise: -30
         sweetness: 0
-        fear: 0
+        fear: 50
         trust: 0
       enemyWeakPoints: []
     - text: Ragab... Dans ce cas, je t'accompagne !
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
+        joy: -30
         sadness: 0
-        disgust: 0
+        disgust: 10
         anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        surprise: 10
+        sweetness: -10
+        fear: 10
+        trust: 50
       enemyWeakPoints: []
     - text: "Le Professeur Boulon m'a donn\xE9 un canon \xE0 moi aussi."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
+        joy: 20
         sadness: 0
         disgust: 0
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
-        trust: 0
+        trust: 20
       enemyWeakPoints: []
     - text: "Il nous l'a toujours cach\xE9, mais avant sa mort il..."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
+        joy: 20
         sadness: 0
         disgust: 0
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
-        trust: 0
+        trust: 20
       enemyWeakPoints: []
     - text: Mais c'est lui ! Il m'a fait promettre que je protegerai la Terre avec
         toi si il le fallait !
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
@@ -206,11 +199,11 @@ MonoBehaviour:
       enemyResistance:
         neutral: 0
         joy: 0
-        sadness: 0
-        disgust: 0
+        sadness: 40
+        disgust: -30
         anger: 0
-        surprise: 0
-        sweetness: 0
+        surprise: -30
+        sweetness: -30
         fear: 0
         trust: 0
       enemyWeakPoints: []
@@ -218,8 +211,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
@@ -227,76 +220,76 @@ MonoBehaviour:
       enemyResistance:
         neutral: 0
         joy: 0
-        sadness: 0
-        disgust: 0
+        sadness: 30
+        disgust: -30
         anger: 0
-        surprise: 0
-        sweetness: 0
+        surprise: -50
+        sweetness: 30
         fear: 0
-        trust: 0
+        trust: 30
       enemyWeakPoints: []
     - text: "Mon v\xE9ritable r\xF4le Ragab c'est de t'accompagner au combat !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
+        joy: 50
+        sadness: -20
+        disgust: -20
+        anger: -20
+        surprise: -20
+        sweetness: 10
         fear: 0
-        trust: 0
+        trust: 50
       enemyWeakPoints: []
     - text: "Je peux t'aider \xE0 combattre Bagar."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
+        joy: 50
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 10
         fear: 0
-        trust: 0
+        trust: 50
       enemyWeakPoints: []
     - text: Oui, je ne reculerai plus Ragab !
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
+        neutral: -30
+        joy: 30
+        sadness: -30
+        disgust: -50
         anger: 0
-        surprise: 0
-        sweetness: 0
+        surprise: -30
+        sweetness: 10
         fear: 0
-        trust: 0
+        trust: 60
       enemyWeakPoints: []
     - text: SUPER RAGAB FORMATION
       textStats:
@@ -310,16 +303,18 @@ MonoBehaviour:
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
+        joy: 70
+        sadness: -100
+        disgust: -100
+        anger: 20
+        surprise: -30
         sweetness: 0
-        fear: 0
-        trust: 0
+        fear: -50
+        trust: 70
       enemyWeakPoints: []
   textData: []
   eventData:
   - {fileID: 11400000, guid: ee279de12da241a42accad17c8304517, type: 2}
   - {fileID: 11400000, guid: 82ec535e09706154bb1f79e6503518cc, type: 2}
+  - {fileID: 11400000, guid: 7e5f5d22a2d5c39489b575a90fc28622, type: 2}
+  - {fileID: 11400000, guid: b1cd8a754616d0d4b84c63a067c98b3d, type: 2}

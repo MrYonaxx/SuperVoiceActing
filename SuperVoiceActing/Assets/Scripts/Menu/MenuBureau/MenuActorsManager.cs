@@ -201,6 +201,13 @@ namespace VoiceActing
             CreateActorsButtonList();
         }
 
+        [ContextMenu("LevelUpCheat")]
+        public void DebugLevelUp()
+        {
+            actorsList[indexActorSelected].LevelUp();
+            DrawActorStat(actorsList[indexActorSelected]);
+        }
+
 
         private void OnEnable()
         {

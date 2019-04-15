@@ -17,7 +17,7 @@ namespace VoiceActing
 
     
     // à fusionner avec stoy Event ? On va dire non pour le moment mais je continue de douter
-
+    
 
     [System.Serializable]
     public class DoublageEventText : DoublageEvent
@@ -79,6 +79,7 @@ namespace VoiceActing
             get { return camStartRotation; }
         }
         [Title("Time")]
+        // -1 pour ne pas set de position initiale
         [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]
