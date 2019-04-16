@@ -175,7 +175,7 @@ namespace VoiceActing
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
             }
-            Debug.Log(voiceActors[0].Name);
+            //Debug.Log(voiceActors[0].Name);
 
         }
 

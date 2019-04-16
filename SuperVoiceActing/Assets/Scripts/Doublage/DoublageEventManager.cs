@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace VoiceActing
 {
@@ -42,6 +43,12 @@ namespace VoiceActing
         [Header("DoublageManager")]
         [SerializeField]
         protected DoublageManager doublageManager;
+
+        [Header("Feedbacks")]
+        [SerializeField]
+        protected Image flashbackTransition;
+        [SerializeField]
+        protected GameObject viewportFlashback; 
 
         protected int indexEvent = -1;
         protected DoublageEventData currentEvent;
@@ -162,6 +169,20 @@ namespace VoiceActing
                     //audioSourceKillPhrase.PlayOneShot(node.Audio);
                     ExecuteEvent();
                 }
+                if (currentNode is DoublageEventLoad)
+                {
+                    DoublageEventLoad node = (DoublageEventLoad) currentNode;
+                    if (node.DoublageEventData != null)
+                    {
+                        currentEvent = node.DoublageEventData;
+                        indexEvent = -1;
+                        ExecuteEvent();
+                    }
+                    else if (node.StoryEventData != null)
+                    {
+                        StartFlashback(node.StoryEventData);
+                    }
+                }
             }
             else // Fin d'event
             {
@@ -206,7 +227,7 @@ namespace VoiceActing
         public bool CheckEvent(Contract contrat, int indexPhrase, bool startLine, float hp)
         {
 
-            for (int i = 0; i < contrat.EventData.Length; i++)
+            for (int i = 0; i < contrat.EventData.Count; i++)
             {
                 if (CheckEventCondition(contrat.EventData[i], indexPhrase, startLine, hp) == true)
                 {
@@ -216,6 +237,7 @@ namespace VoiceActing
                     {
                         textEvent[j].gameObject.SetActive(true);
                     }
+                    contrat.EventData.RemoveAt(i);
                     ExecuteEvent();
                     return true;
                 }
@@ -251,16 +273,49 @@ namespace VoiceActing
 
 
 
+        public void StartFlashback(StoryEventData storyEventData)
+        {
+            storyEventManager.StartStoryEventData(storyEventData);
+            StartCoroutine(TransitionFlashback(true));
+        }
+
+
+
+
+        public void StopFlashback(DoublageEventData doublageEventData)
+        {
+            currentEvent = doublageEventData;
+            indexEvent = -1;
+            ExecuteEvent();
+            StartCoroutine(TransitionFlashback(false));
+        }
 
 
 
 
 
 
+        protected IEnumerator TransitionFlashback(bool appear)
+        {
+            int time = 30;
+            float speed = 1f / time;
+            while(time != 0)
+            {
+                time -= 1;
+                flashbackTransition.color += new Color(0, 0, 0, speed);
+                yield return null;
+            }
+            viewportFlashback.SetActive(appear);
 
-
-
-
+            speed = -speed;
+            time = 45;
+            while (time != 0)
+            {
+                time -= 1;
+                flashbackTransition.color += new Color(0, 0, 0, speed);
+                yield return null;
+            }
+        }
 
 
 

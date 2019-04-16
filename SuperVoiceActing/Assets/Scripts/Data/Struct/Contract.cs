@@ -129,8 +129,8 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private DoublageEventData[] eventData;
-        public DoublageEventData[] EventData
+        private List<DoublageEventData> eventData = new List<DoublageEventData>();
+        public List<DoublageEventData> EventData
         {
             get { return eventData; }
         }
@@ -208,8 +208,11 @@ namespace VoiceActing
 
             this.artificialIntelligence = data.ArtificialIntelligence;
 
-            this.eventData = data.EventData;
-
+            this.eventData = new List<DoublageEventData>(data.EventData.Length);
+            for (int i = 0; i < data.EventData.Length; i++)
+            {
+                eventData.Add(data.EventData[i]);
+            }
             // Select Characters -------------------------------------------------------
             for (int i = 0; i < data.Characters.Length; i++)
             {
@@ -264,7 +267,7 @@ namespace VoiceActing
                         {
                             int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
                             textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
-                            Debug.Log(listTextDataPossibilities[indexRandom].Text);
+                            //Debug.Log(listTextDataPossibilities[indexRandom].Text);
                             listTextDataPossibilities.RemoveAt(indexRandom);
                         }
                     }

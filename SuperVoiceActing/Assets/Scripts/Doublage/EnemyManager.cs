@@ -665,7 +665,7 @@ namespace VoiceActing
             damageText.transform.localScale = new Vector3(1, 1, 1);
             int timeFeedback = 40;
             float speed = (totalDamage / timeFeedback);
-            Debug.Log(speed);
+            //Debug.Log(speed);
             StartCoroutine(DamageTextCoroutine(speed, timeFeedback, 120));
         }
 

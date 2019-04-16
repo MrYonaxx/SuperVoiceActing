@@ -45,6 +45,10 @@ namespace VoiceActing
         [SerializeField]
         CharacterDialogueController[] characters;
 
+        [Header("DoublageEventManager")]
+        [SerializeField]
+        DoublageEventManager doublageEventManager;
+
 
         private IEnumerator coroutineAnimName = null;
 
@@ -130,8 +134,15 @@ namespace VoiceActing
                 if (currentNode is StoryEventLoad)
                 {
                     StoryEventLoad node = (StoryEventLoad) currentNode;
-                    storyEventData = node.GetDataToLoad();
-                    i = -1;
+                    if (node.GetDataToLoad() != null)
+                    {
+                        storyEventData = node.GetDataToLoad();
+                        i = -1;
+                    }
+                    else if (node.GetDoublageEventToLoad() != null)
+                    {
+                        doublageEventManager.StopFlashback(node.GetDoublageEventToLoad());
+                    }
                 }
                 yield return StartCoroutine(currentNode.GetStoryEvent());
                 if (currentNode is StoryEventText)

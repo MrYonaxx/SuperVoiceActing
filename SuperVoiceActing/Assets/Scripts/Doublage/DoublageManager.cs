@@ -274,7 +274,7 @@ namespace VoiceActing
     
                 HideUIButton();
                 lastAttack = emotionAttackManager.GetComboEmotion();
-                Debug.Log(lastAttack[0]);
+                //Debug.Log(lastAttack[0]);
                 textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, textAppearManager.GetWordSelected()), lastAttack);
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.RemoveCard();
@@ -335,20 +335,17 @@ namespace VoiceActing
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
-            /*enemyManager.SetHp(0);
-            indexPhrase = contrat.TextData.Count - 1;
-            killCount = 5;*/
             if (enemyManager.GetHpPercentage() == 0)
             {
                 if (textAppearManager.GetEndLine() == true)
                 {
                     inputController.gameObject.SetActive(false);
 
-                    if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "ENDPHRASE") == true)
+                    /*if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "ENDPHRASE") == true)
                     {
                         producerManager.ProducerAttackActivation();
                         return;
-                    }
+                    }*/
                     
                     indexPhrase += 1;
                     killCount += 1;
@@ -591,8 +588,8 @@ namespace VoiceActing
             }
 
             // Check Si Role Attaque
-            if (enemyManager.GetHpPercentage() != 0)
-                roleManager.SelectAttack();
+            /*if (enemyManager.GetHpPercentage() != 0)
+                roleManager.SelectAttack();*/
 
             while (textAppearManager.GetEndLine() == false)
             {
@@ -614,7 +611,7 @@ namespace VoiceActing
 
         public void CheckProducerAttack(string phase)
         {
-            if(producerManager.ProducerDecision(contrat.ArtificialIntelligence, phase) == true)
+            if(producerManager.ProducerDecision(contrat.ArtificialIntelligence, phase, indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
             {
                 producerManager.ProducerAttackActivation();
             }

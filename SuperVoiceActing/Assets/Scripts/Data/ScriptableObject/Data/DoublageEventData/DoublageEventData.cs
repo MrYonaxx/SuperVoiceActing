@@ -21,7 +21,8 @@ namespace VoiceActing
         Wait,
         Deck,
         Tuto,
-        Sound
+        Sound,
+        Load
     }
 
     [System.Serializable]
@@ -77,6 +78,11 @@ namespace VoiceActing
         [SerializeField]
         [HideLabel]
         public DoublageEventSound doublageEventSound = null;
+
+        [ShowIf("eventNode", DoublageEventNode.Load)]
+        [SerializeField]
+        [HideLabel]
+        public DoublageEventLoad doublageEventLoad = null;
 
 
         public string GetBoxTitle()
@@ -196,6 +202,8 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageTutoPopup;
                 case DoublageEventNode.Sound:
                     return doublageEvent[index].dataBox.doublageEventSound;
+                case DoublageEventNode.Load:
+                    return doublageEvent[index].dataBox.doublageEventLoad;
             }
             return null;
         }

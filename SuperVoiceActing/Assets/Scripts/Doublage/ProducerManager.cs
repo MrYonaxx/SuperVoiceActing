@@ -54,7 +54,7 @@ namespace VoiceActing
 
         public void ProducerAttackActivation()
         {
-            producerPanel.gameObject.SetActive(true);
+            //producerPanel.gameObject.SetActive(true);
             producerPanel.SetTrigger("Appear");
             input.gameObject.SetActive(true);
             skillName.text = currentAttack.SkillName;
@@ -67,16 +67,18 @@ namespace VoiceActing
 
         public void ProducerAttackDisappear()
         {
-            skillManager.ApplySkill(currentAttack);
+            //skillManager.ApplySkill(currentAttack);
+            producerPanel.SetTrigger("Cancel");
+            input.gameObject.SetActive(false);
         }
 
-        public bool ProducerDecision(EnemyAI[] producerAI, string phase)
+        public bool ProducerDecision(EnemyAI[] producerAI, string phase, int line, int turn, float enemyHP)
         {
             for(int i = 0; i < producerAI.Length; i++)
             {
                 if (CheckPhase(producerAI[i], phase) == true)
                 {
-                    if (CheckAICondition(producerAI[i].Conditions) == true)
+                    if (CheckAICondition(producerAI[i].Conditions, line, turn, enemyHP) == true)
                     {
                         currentAttack = producerAI[i].Skills[Random.Range(0, producerAI[i].Skills.Length)];
                         if (currentAttack != null)
@@ -115,7 +117,7 @@ namespace VoiceActing
             return false;
         }
 
-        private bool CheckAICondition(ConditionAI[] conditionAI)
+        private bool CheckAICondition(ConditionAI[] conditionAI, int line, int turn, float enemyHP)
         {
             for(int i = 0; i < conditionAI.Length; i++)
             {
@@ -124,10 +126,16 @@ namespace VoiceActing
                     case AICondition.None:
                         break;
                     case AICondition.Line:
-                        if (CheckVariableCondition(conditionAI[i].MathOperator, 0, 0) == false)
+                        if (CheckVariableCondition(conditionAI[i].MathOperator, line, conditionAI[i].ConditionValue) == false)
                             return false;
                         break;
                     case AICondition.Turn:
+                        if (CheckVariableCondition(conditionAI[i].MathOperator, turn, conditionAI[i].ConditionValue) == false)
+                            return false;
+                        break;
+                    case AICondition.EnemyHP:
+                        if (CheckVariableCondition(conditionAI[i].MathOperator, enemyHP, conditionAI[i].ConditionValue) == false)
+                            return false;
                         break;
                 }
             }

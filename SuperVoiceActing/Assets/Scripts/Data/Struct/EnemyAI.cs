@@ -19,6 +19,7 @@ namespace VoiceActing
         Turn,
         Line,
         VoiceActorHP,
+        EnemyHP,
         Buff,
     }
 
@@ -64,7 +65,7 @@ namespace VoiceActing
     [System.Serializable]
 	public class EnemyAI
 	{
-        [Header("PATTERN")]
+        [Title("PATTERN")]
         [SerializeField]
         [HideLabel]
         private string memo;

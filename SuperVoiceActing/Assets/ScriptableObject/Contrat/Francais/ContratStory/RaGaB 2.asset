@@ -58,18 +58,64 @@ MonoBehaviour:
         fear: 0
         trust: 0
   artificialIntelligence:
-  - memo: 
+  - memo: BOURGHI FIRST ATTACK
     startPhrase: 0
     startAttack: 0
     endAttack: 1
     endPhrase: 0
     conditions:
-    - condition: 0
-      mathOperator: 1
+    - condition: 2
+      mathOperator: 0
+      conditionValue: 1
+    - condition: 4
+      mathOperator: 3
       conditionValue: 0
+    skills:
+    - {fileID: 11400000, guid: 4f5aa0634e6f0aa428dc69101cebc4e1, type: 2}
+  - memo: BOURGHI SECOND ATTACK
+    startPhrase: 0
+    startAttack: 0
+    endAttack: 1
+    endPhrase: 0
+    conditions:
+    - condition: 2
+      mathOperator: 0
+      conditionValue: 2
+    - condition: 4
+      mathOperator: 1
+      conditionValue: 100
+    skills:
+    - {fileID: 11400000, guid: a1311b2c8b1150241b518b99a8ef7134, type: 2}
+  - memo: BOURGHI PHASE 1
+    startPhrase: 0
+    startAttack: 0
+    endAttack: 1
+    endPhrase: 0
+    conditions:
+    - condition: 2
+      mathOperator: 1
+      conditionValue: 5
+    - condition: 2
+      mathOperator: 2
+      conditionValue: 2
     skills:
     - {fileID: 11400000, guid: a1311b2c8b1150241b518b99a8ef7134, type: 2}
     - {fileID: 11400000, guid: 4f5aa0634e6f0aa428dc69101cebc4e1, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+  - memo: BOURGHI PHASE 2
+    startPhrase: 0
+    startAttack: 0
+    endAttack: 1
+    endPhrase: 0
+    conditions:
+    - condition: 2
+      mathOperator: 2
+      conditionValue: 5
+    skills:
+    - {fileID: 11400000, guid: a1311b2c8b1150241b518b99a8ef7134, type: 2}
+    - {fileID: 11400000, guid: 5c406339ab5bd7840a9ef3e41f2b4a29, type: 2}
+    - {fileID: 11400000, guid: 27914accd7a4f1341b94e29b4c0139bd, type: 2}
     - {fileID: 0}
     - {fileID: 0}
   textDataContract:

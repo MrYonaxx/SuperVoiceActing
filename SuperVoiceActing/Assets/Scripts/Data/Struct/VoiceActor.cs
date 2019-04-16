@@ -459,7 +459,7 @@ namespace VoiceActing
                                    statistique.Surprise + statistique.Sweetness + statistique.Fear + statistique.Trust) / 8;
             level += 1;
 
-            Debug.Log("Level : " + level);
+            /*Debug.Log("Level : " + level);
             Debug.Log(statistique.Joy);
             Debug.Log(statistique.Sadness);
             Debug.Log(statistique.Disgust);
@@ -467,7 +467,7 @@ namespace VoiceActing
             Debug.Log(statistique.Surprise);
             Debug.Log(statistique.Sweetness);
             Debug.Log(statistique.Fear);
-            Debug.Log(statistique.Trust);
+            Debug.Log(statistique.Trust);*/
 
         }
 

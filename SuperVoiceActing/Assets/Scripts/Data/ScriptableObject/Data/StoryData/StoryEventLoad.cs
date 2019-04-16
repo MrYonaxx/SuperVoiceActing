@@ -19,10 +19,16 @@ namespace VoiceActing
 
         [SerializeField]
         StoryEventData DataToLoad;
-
         public StoryEventData GetDataToLoad()
         {
             return DataToLoad;
+        }
+
+        [SerializeField]
+        DoublageEventData DoublageEventToLoad;
+        public DoublageEventData GetDoublageEventToLoad()
+        {
+            return DoublageEventToLoad;
         }
 
 

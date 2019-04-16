@@ -255,7 +255,7 @@ namespace VoiceActing
         public void CalculateDamageColor(float percentage)
         {
             coloredCharacterCount = (int) ((textMeshPro.textInfo.characterCount) * (percentage / 100));
-            Debug.Log("Colored Character Count : " + coloredCharacterCount);
+            //Debug.Log("Colored Character Count : " + coloredCharacterCount);
             if (coloredCharacterCount <= 0)
             {
                 coloredCharacterCount = 1;
@@ -510,7 +510,7 @@ namespace VoiceActing
                     // Bug si coloredCharacterCount est un espace donc je check sur 2i mais ça peut ne pas régler à 100% le problème
                     if ((i == coloredCharacterCount-1 || i == coloredCharacterCount) && endDamage == false)
                     {
-                        Debug.Log("Hey");
+                        //Debug.Log("Hey");
                         endDamage = true;
                     }
 
