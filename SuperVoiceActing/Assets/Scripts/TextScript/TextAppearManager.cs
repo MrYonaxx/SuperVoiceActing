@@ -177,6 +177,11 @@ namespace VoiceActing
 
         }
 
+        public void ReprintText()
+        {
+            currentText.ReprintText();
+        }
+
 
 
         private IEnumerator WaitFrame(float time, float damage)

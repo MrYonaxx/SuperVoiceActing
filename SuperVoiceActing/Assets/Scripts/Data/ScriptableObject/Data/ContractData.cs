@@ -371,6 +371,12 @@ namespace VoiceActing
         {
             get { return myVar; }
         }*/
+        [SerializeField]
+        private int producerMP;
+        public int ProducerMP
+        {
+            get { return producerMP; }
+        }
 
         [SerializeField]
         private EnemyAI[] artificialIntelligence;

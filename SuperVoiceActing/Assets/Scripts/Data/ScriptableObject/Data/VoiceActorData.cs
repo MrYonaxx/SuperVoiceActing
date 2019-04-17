@@ -101,7 +101,7 @@ namespace VoiceActing
         [Space]
         [HorizontalGroup("Fourchette")]
         [SerializeField]
-        private int fourchetteMin;
+        private int fourchetteMin = -2;
         public int FourchetteMin
         {
             get { return fourchetteMin; }
@@ -111,7 +111,7 @@ namespace VoiceActing
         [Space]
         [HorizontalGroup("Fourchette")]
         [SerializeField]
-        private int fourchetteMax;
+        private int fourchetteMax = 2;
         public int FourchetteMax
         {
             get { return fourchetteMax; }

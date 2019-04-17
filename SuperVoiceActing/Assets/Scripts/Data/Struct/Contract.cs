@@ -153,6 +153,13 @@ namespace VoiceActing
 
 
         [SerializeField]
+        private int producerMP;
+        public int ProducerMP
+        {
+            get { return producerMP; }
+        }
+
+        [SerializeField]
         private EnemyAI[] artificialIntelligence;
         public EnemyAI[] ArtificialIntelligence
         {
@@ -206,6 +213,7 @@ namespace VoiceActing
             this.expGain = data.ExpGain;
             this.expBonus = data.ExpBonus;
 
+            this.producerMP = data.ProducerMP;
             this.artificialIntelligence = data.ArtificialIntelligence;
 
             this.eventData = new List<DoublageEventData>(data.EventData.Length);

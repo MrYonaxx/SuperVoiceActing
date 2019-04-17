@@ -105,6 +105,7 @@ namespace VoiceActing
 
 
         private IEnumerator coroutineSkill = null;
+        private bool reprintTextEnemy = false;
         Vector3 initialScaleText;
 
         #endregion
@@ -123,6 +124,16 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public bool CheckReprintTextEnemy()
+        {
+            if(reprintTextEnemy == true)
+            {
+                reprintTextEnemy = false;
+                return true;
+            }
+            return false;
+        }
 
         public void SetManagers(CameraController cC, EmotionAttackManager eAM, ActorsManager aM, RoleManager rM, EnemyManager eM)
         {
@@ -300,9 +311,10 @@ namespace VoiceActing
                 case SkillTarget.Sentence:
                     // Damage
                     currentHP = enemyManager.GetHp();
-                    damage = currentHP * (skill.HpGainPercentage / 100f);
+                    //damage = currentHP * (skill.HpGainPercentage / 100f);
                     damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
-                    //enemyManager.SetHp(damage);
+                    enemyManager.SetHp(currentHP - (int) damage);
+                    reprintTextEnemy = true;
 
                     // Modify Resistance
 

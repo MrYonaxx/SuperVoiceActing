@@ -40,6 +40,8 @@ namespace VoiceActing
         [SerializeField]
         protected EmotionAttackManager emotionAttackManager;
         [SerializeField]
+        protected ToneManager toneManager;
+        [SerializeField]
         protected EnemyManager enemyManager;
         [SerializeField]
         protected ActorsManager actorsManager;
@@ -194,6 +196,7 @@ namespace VoiceActing
             eventManager.SetCharactersSprites(contrat.VoiceActors);
             emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
             skillManager.SetManagers(cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
+            producerManager.SetManagers(skillManager, contrat.ProducerMP);
             // Initialisation
 
 
@@ -354,6 +357,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
+                    toneManager.ModifyTone(lastAttack);
                     HideUIButton();
 
                     reprintText = true;
@@ -435,7 +439,6 @@ namespace VoiceActing
                 //FeedbackNewLine();
             }
             inputController.gameObject.SetActive(true);
-            //inputEvent.gameObject.SetActive(false);
             recIcon.SetActive(true);
             if (reprintText == false)
             {
@@ -570,6 +573,13 @@ namespace VoiceActing
                 inputController.gameObject.SetActive(true);
                 skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack);
             }
+            if(skillManager.CheckReprintTextEnemy() == true)
+            {
+                textAppearManager.ReprintText();
+                textAppearManager.ApplyDamage(enemyManager.GetHpPercentage());
+
+            }
+            
         }
 
         private IEnumerator WaitText()

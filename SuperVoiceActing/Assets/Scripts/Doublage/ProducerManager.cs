@@ -34,6 +34,8 @@ namespace VoiceActing
         private SkillData currentAttack = null;
         private SkillManager skillManager;
 
+        private int producerMPMax = 0;
+        private int producerMP = 0;
         #endregion
 
         #region GettersSetters 
@@ -52,6 +54,13 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void SetManagers(SkillManager manager, int mp)
+        {
+            skillManager = manager;
+            producerMPMax = mp;
+            producerMP = mp;
+        }
+
         public void ProducerAttackActivation()
         {
             //producerPanel.gameObject.SetActive(true);
@@ -67,14 +76,15 @@ namespace VoiceActing
 
         public void ProducerAttackDisappear()
         {
-            //skillManager.ApplySkill(currentAttack);
+            skillManager.ApplySkill(currentAttack);
             producerPanel.SetTrigger("Cancel");
             input.gameObject.SetActive(false);
         }
 
         public bool ProducerDecision(EnemyAI[] producerAI, string phase, int line, int turn, float enemyHP)
         {
-            for(int i = 0; i < producerAI.Length; i++)
+            GainMP(1);
+            for (int i = 0; i < producerAI.Length; i++)
             {
                 if (CheckPhase(producerAI[i], phase) == true)
                 {
@@ -82,9 +92,18 @@ namespace VoiceActing
                     {
                         currentAttack = producerAI[i].Skills[Random.Range(0, producerAI[i].Skills.Length)];
                         if (currentAttack != null)
+                        {
                             readyToAttack = true;
+                            if (CheckMP(currentAttack.ProducerCost) == false)
+                            {
+                                readyToAttack = false;
+                            }
+                        }
                         else
+                        {
                             readyToAttack = false;
+                        }
+
                         return readyToAttack;
                     }
                 }
@@ -175,6 +194,34 @@ namespace VoiceActing
         {
             input.gameObject.SetActive(true);
         }
+
+
+
+
+
+        public void GainMP(int mpGain)
+        {
+            producerMP += mpGain;
+            if(producerMP < 0)
+            {
+                producerMP = 0;
+            }
+            else if (producerMP > producerMPMax)
+            {
+                producerMP = producerMPMax;
+            }
+        }
+
+        public bool CheckMP(int mpCost)
+        {
+            if(mpCost > producerMP)
+            {
+                return false;
+            }
+            producerMP -= mpCost;
+            return true;
+        }
+
 
         #endregion
 

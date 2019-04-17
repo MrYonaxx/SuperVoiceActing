@@ -411,7 +411,7 @@ namespace VoiceActing
             }
 
             totalDamage += ApplyWordBonus(totalDamage, word, statActor);
-            totalDamage += Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance);
+            totalDamage += Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance+1);
             if(totalDamage <= 0)
             {
                 totalDamage = 1;

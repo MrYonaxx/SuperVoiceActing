@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 namespace VoiceActing
@@ -30,7 +31,7 @@ namespace VoiceActing
 
         [Header("Transforms")]
         [SerializeField]
-        RectTransform[] toneTransform;
+        Image[] toneTransform;
         
         #endregion
 
@@ -85,15 +86,83 @@ namespace VoiceActing
 
                 }
                 width = multiplier / toneMaxValue;
-                toneTransform[i].anchorMin = new Vector2(startX, 0);
-                toneTransform[i].anchorMax = new Vector2(startX + width, 1);
+                toneTransform[i].rectTransform.anchorMin = new Vector2(startX, 0);
+                toneTransform[i].rectTransform.anchorMax = new Vector2(startX + width, 1);
                 startX += width;
             }
         }
 
         public void ModifyTone(Emotion[] emotions)
         {
+            int addValue = toneAddValue / 8;
+            EmotionStat stat = new EmotionStat(-addValue, -addValue, -addValue, -addValue, -addValue, -addValue, -addValue, -addValue);
+            for(int i = 0; i < emotions.Length; i++)
+            {
+                switch(emotions[i])
+                {
+                    case Emotion.Joie:
+                        toneMultiplier.Joy += toneAddValue;
+                        break;
+                    case Emotion.Tristesse:
+                        toneMultiplier.Sadness += toneAddValue;
+                        break;
+                    case Emotion.Dégoût:
+                        toneMultiplier.Disgust += toneAddValue;
+                        break;
+                    case Emotion.Colère:
+                        toneMultiplier.Anger += toneAddValue;
+                        break;
+                    case Emotion.Surprise:
+                        toneMultiplier.Surprise += toneAddValue;
+                        break;
+                    case Emotion.Douceur:
+                        toneMultiplier.Sweetness += toneAddValue;
+                        break;
+                    case Emotion.Peur:
+                        toneMultiplier.Fear += toneAddValue;
+                        break;
+                    case Emotion.Confiance:
+                        toneMultiplier.Trust += toneAddValue;
+                        break;
+                }
+                toneMultiplier.Add(stat);
+            }
+            DrawTone();
+        }
 
+
+        public void HighlightTone(Emotion emotion, bool isHighlight)
+        {
+            Image toneSelected = null;
+            switch (emotion)
+            {
+                case Emotion.Joie:
+                    break;
+                case Emotion.Tristesse:
+                    break;
+                case Emotion.Dégoût:
+                    break;
+                case Emotion.Colère:
+                    break;
+                case Emotion.Surprise:
+                    break;
+                case Emotion.Douceur:
+                    break;
+                case Emotion.Peur:
+                    break;
+                case Emotion.Confiance:
+                    break;
+            }
+            if(isHighlight == true)
+            {
+                toneSelected.rectTransform.offsetMax = new Vector2(0, 10);
+                toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 1);
+            }
+            else
+            {
+                toneSelected.rectTransform.offsetMax = new Vector2(0, 0);
+                toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 0);
+            }
         }
         
         #endregion

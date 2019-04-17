@@ -242,6 +242,13 @@ namespace VoiceActing
             get { return turnGainVariance; }
         }
 
+        [SerializeField]
+        private int producerCost;
+        public int ProducerCost
+        {
+            get { return producerCost; }
+        }
+
 
 
     } // SkillData class

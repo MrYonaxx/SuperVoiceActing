@@ -57,6 +57,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+  producerMP: 3
   artificialIntelligence:
   - memo: BOURGHI FIRST ATTACK
     startPhrase: 0
@@ -69,7 +70,7 @@ MonoBehaviour:
       conditionValue: 1
     - condition: 4
       mathOperator: 3
-      conditionValue: 0
+      conditionValue: 99
     skills:
     - {fileID: 11400000, guid: 4f5aa0634e6f0aa428dc69101cebc4e1, type: 2}
   - memo: BOURGHI SECOND ATTACK
@@ -252,27 +253,6 @@ MonoBehaviour:
         sweetness: -30
         fear: 0
         trust: 0
-      enemyWeakPoints: []
-    - text: "Oui, quand il m'a cr\xE9\xE9 c'\xE9tait son objectif secret."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 20
-        hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 30
-        disgust: -30
-        anger: 0
-        surprise: -50
-        sweetness: 30
-        fear: 0
-        trust: 30
       enemyWeakPoints: []
     - text: "Mon v\xE9ritable r\xF4le Ragab c'est de t'accompagner au combat !"
       textStats:
