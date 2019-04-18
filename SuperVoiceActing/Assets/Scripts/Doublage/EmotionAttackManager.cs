@@ -174,6 +174,8 @@ namespace VoiceActing
 
         [Header("Feedback")]
         [SerializeField]
+        Animator animatorCombo;
+        [SerializeField]
         Image feedbackSelectCard;
         [SerializeField]
         ParticleSystem particle;
@@ -334,9 +336,10 @@ namespace VoiceActing
             deckEmotion = newDeck;
             CreateDeck();
         }
-        // =============================================================
+        // =========================================================================================================================================
 
-
+        // =========================================================================================================================================
+        // DEPLACEMENT ET FEEDBACK CARTE
 
         // Déplace toutes les cartes
         public void SwitchCardTransformIntro()
@@ -367,6 +370,8 @@ namespace VoiceActing
                         emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j], transitionSpeed);
                 }
             }
+            animatorCombo.SetBool("Appear", true);
+            animatorCombo.SetBool("Attack", false);
         }
 
 
@@ -380,58 +385,53 @@ namespace VoiceActing
                         emotionCards[i].Cards[j].MoveCard(emotionCards[i].TransformRessource, transitionSpeed);
                 }
             }
+            animatorCombo.SetBool("Appear", false);
         }
 
 
 
 
         // sélectionne une carte avec un nom
-        public void SelectCard(string emotion)
+        public EmotionCard SelectCard(string emotion)
         {
             if (comboCount == comboMax)
-                return;
+                return null;
             switch (emotion)
             {
                 case "Joie":
-                    SelectCard(Emotion.Joie);
-                    break;
+                    return SelectCard(Emotion.Joie);
                 case "Tristesse":
-                    SelectCard(Emotion.Tristesse);
-                    break;
+                    return SelectCard(Emotion.Tristesse);
                 case "Dégoût":
-                    SelectCard(Emotion.Dégoût);
-                    break;
+                    return SelectCard(Emotion.Dégoût);
                 case "Colère":
-                    SelectCard(Emotion.Colère);
-                    break;
+                    return SelectCard(Emotion.Colère);
                 case "Surprise":
-                    SelectCard(Emotion.Surprise);
-                    break;
+                    return SelectCard(Emotion.Surprise);
                 case "Douceur":
-                    SelectCard(Emotion.Douceur);
-                    break;
+                    return SelectCard(Emotion.Douceur);
                 case "Peur":
-                    SelectCard(Emotion.Peur);
-                    break;
+                    return SelectCard(Emotion.Peur);
                 case "Confiance":
-                    SelectCard(Emotion.Confiance);
-                    break;
+                    return SelectCard(Emotion.Confiance);
                 case "Neutre":
-                    SelectCard(Emotion.Neutre);
-                    break;
+                    return SelectCard(Emotion.Neutre);
             }
+            return null;
         }
 
         // selectionne une carte et décale l'ordre de 1
-        public void SelectCard(Emotion emotion)
+        public EmotionCard SelectCard(Emotion emotion)
         {
             if (comboCount == comboMax-1)
-                return;
+                return null;
 
             for (int i = 0; i < emotionCards.Length; i++)
             {
                 if (emotionCards[i].Emotion == emotion)
                 {
+                    if (emotionCards[i].Cards[0] == null)
+                        return null;
                     if (emotionCards[i].Cards[0] != null && emotionCards[i].Cards[0].gameObject.activeInHierarchy == true)
                     {
                         emotionCards[i].Cards[0].FeedbackCardSelected(feedbackSelectCard);
@@ -445,26 +445,28 @@ namespace VoiceActing
                     for(int j = 1; j < emotionCards[i].Cards.Length; j++)
                     {
                         if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
-                            {
+                        {
                             emotionCards[i].Cards[j - 1] = emotionCards[i].Cards[j];
                             emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j-1], transitionSpeedCardSelect);
                             emotionCards[i].Cards[j] = null;
                         }
                     }
-                    break;
+                    return comboCardEmotion[comboCount];
                 }
             }
+            return null;
         }
 
 
 
 
         // Retire une carte et décale l'ordre de 1 vers le haut
-        public void RemoveCard()
+        public EmotionCard RemoveCard()
         {
             if (comboCount == -1)
-                return;
+                return null;
             Emotion emotionRemove = comboEmotion[comboCount];
+            EmotionCard card = null;
 
             for (int i = 0; i < emotionCards.Length; i++)
             {
@@ -480,6 +482,7 @@ namespace VoiceActing
                         }
                     }
                     emotionCards[i].Cards[0] = comboCardEmotion[comboCount];
+                    card = comboCardEmotion[comboCount];
                     comboCardEmotion[comboCount].MoveCard(emotionCards[i].CardsPosition[0], transitionSpeedCardSelect);
                     comboCardEmotion[comboCount] = null;               
                     comboEmotion[comboCount] = Emotion.Neutre;
@@ -487,11 +490,17 @@ namespace VoiceActing
                     break;
                 }
             }
+            return card;
         }
 
         public void ResetCard()
         {
 
+        }
+
+        public void CardAttack()
+        {
+            animatorCombo.SetTrigger("Attack");
         }
 
         // ================================================= //

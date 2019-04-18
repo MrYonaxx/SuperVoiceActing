@@ -312,6 +312,7 @@ namespace VoiceActing
 
         private void DrawGaugeInfo(VoiceActor actor)
         {
+            actor.RoleDefense = 8;
             StopAllCoroutines();
             for (int i = 0; i < textStatsActor.Length; i++)
             {
@@ -400,6 +401,7 @@ namespace VoiceActing
                     }
                     else
                     {
+                        actor.RoleDefense -= 1;
                         feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
                         imageStatIcon[i].color = new Color(1, 1, 1);
                         jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);

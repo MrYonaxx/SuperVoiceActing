@@ -233,6 +233,19 @@ namespace VoiceActing
             this.neutral += addition.neutral;
         }
 
+        public void Substract(EmotionStat addition)
+        {
+            this.joy -= addition.joy;
+            this.sadness -= addition.sadness;
+            this.disgust -= addition.disgust;
+            this.anger -= addition.anger;
+            this.surprise -= addition.surprise;
+            this.sweetness -= addition.sweetness;
+            this.fear -= addition.fear;
+            this.trust -= addition.trust;
+            this.neutral -= addition.neutral;
+        }
+
     }
 
 

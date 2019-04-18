@@ -33,6 +33,10 @@ namespace VoiceActing
         bool firstTime = false;
         bool attack = false;
 
+        List<Role> roles;
+
+        int indexCurrentRole = 0;
+
         #endregion
 
         #region GettersSetters 
@@ -41,6 +45,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public int GetRoleAttack()
+        {
+            return roles[indexCurrentRole].Attack;
+        }
 
         #endregion
 
@@ -49,6 +57,14 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public void SetRoles(List<Role> contractRoles)
+        {
+            roles = contractRoles;
+        }
+
+
+
 
         public bool IsAttacking()
         {

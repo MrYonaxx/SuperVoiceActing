@@ -267,8 +267,8 @@ namespace VoiceActing
             return (Random.Range(0, 100) < percentage);
         }
 
-
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// APPLY SKILL
 
         public void ApplySkill(SkillData skill)
         {
@@ -283,9 +283,6 @@ namespace VoiceActing
                 }
             }
         }
-
-
-
 
         public void ApplySkillEffect(SkillData skill)
         {
@@ -302,7 +299,7 @@ namespace VoiceActing
 
 
                     // Stat Gain
-                    actorsManager.ModifyActorStat(skill.EmotionStatGainFlat);
+                    actorsManager.AddActorStat(skill.EmotionStatGainFlat);
 
                     // Card Gain
 
@@ -326,9 +323,45 @@ namespace VoiceActing
 
         }
 
+
+
+
+
+
         public void RemoveSkillEffect(SkillData skill)
         {
+            int currentHP = 0;
+            float damage = 0;
+            switch (skill.SkillTarget)
+            {
+                case SkillTarget.VoiceActor:
+                    // Damage
+                    currentHP = actorsManager.GetCurrentActorHP();
+                    damage = currentHP * (skill.HpGainPercentage / 100f);
+                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
+                    actorsManager.ActorTakeDamage((int)-damage);
 
+
+                    // Stat Gain
+                    actorsManager.SubstractActorStat(skill.EmotionStatGainFlat);
+
+                    // Card Gain
+
+
+                    break;
+                case SkillTarget.Sentence:
+                    // Damage
+                    currentHP = enemyManager.GetHp();
+                    //damage = currentHP * (skill.HpGainPercentage / 100f);
+                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
+                    enemyManager.SetHp(currentHP - (int)damage);
+                    reprintTextEnemy = true;
+
+                    // Modify Resistance
+
+
+                    break;
+            }
         }
 
 

@@ -170,6 +170,14 @@ namespace VoiceActing
             set { damageVariance = value; }
         }
 
+        [SerializeField]
+        private int roleDefense;
+        public int RoleDefense
+        {
+            get { return roleDefense; }
+            set { roleDefense = value; }
+        }
+
 
         [SerializeField]
         private SkillActorData[] potentials;
@@ -220,6 +228,7 @@ namespace VoiceActing
             hpMax = actorData.Hp;
             actorSprite = actorData.ActorSprite;
             damageVariance = actorData.FourchetteMax;
+            roleDefense = 0;
             timbre = actorData.Timbre;
             potentials = actorData.Potentials;
 

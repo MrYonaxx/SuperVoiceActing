@@ -44,6 +44,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private int attack;
+        public int Attack
+        {
+            get { return attack; }
+        }
+
+        [SerializeField]
         private Vector2Int timbre;
         public Vector2Int Timbre
         {
@@ -97,6 +104,8 @@ namespace VoiceActing
             this.name = data.Names[Random.Range(0, data.Names.Length)];
             this.line = Random.Range(data.LineMin, data.LineMax);
             this.fan = Random.Range(data.FanMin, data.FanMax);
+
+            this.attack = Random.Range(data.AtkMin, data.AtkMax);
 
             //!\ à tester 
             this.timbre = new Vector2Int(Random.Range(data.Timbre.x, data.TimbreRand.x), Random.Range(data.Timbre.y, data.TimbreRand.y));

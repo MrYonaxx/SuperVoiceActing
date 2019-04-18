@@ -87,15 +87,17 @@ namespace VoiceActing
 
         private IEnumerator MoveCoroutine(float x, float y, float z, float time)
         {
-            float speedX = (x - this.transform.position.x) / time;
+            /*float speedX = (x - this.transform.position.x) / time;
             float speedY = (y - this.transform.position.y) / time;
-            float speedZ = (z - this.transform.position.z) / time;
+            float speedZ = (z - this.transform.position.z) / time;*/
+            Vector3 speed = new Vector3((x - this.transform.position.x) / time, (y - this.transform.position.y) / time, (z -this.transform.position.z) / time);
             moving = true;
             while (time != 0)
             {
-                this.transform.position += new Vector3(speedX, speedY, speedZ);
-                speedX /= 1.01f;
-                speedY /= 1.01f;
+                this.transform.position += speed;
+                /*speedX /= 1.01f;
+                speedY /= 1.01f;*/
+                speed /= 1.01f;
                 time -= 1;
                 yield return null;
             }

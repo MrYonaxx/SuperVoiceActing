@@ -197,6 +197,7 @@ namespace VoiceActing
             emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
             skillManager.SetManagers(cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
+            roleManager.SetRoles(contrat.Characters);
             // Initialisation
 
 
@@ -250,10 +251,25 @@ namespace VoiceActing
         }
 
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Card =================================================================
+        public void SelectCard(string emotion)
+        {
+            EmotionCard card = emotionAttackManager.SelectCard(emotion);
+            if(card != null)
+                actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+        }
+
+        public void RemoveCard()
+        {
+            EmotionCard card = emotionAttackManager.RemoveCard();
+            if (card != null)
+                actorsManager.RemoveAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+        }
 
 
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // ATTACK =================================================================
         // Tape la phrase si les pv sont pas 0
         public void Attack()
@@ -262,10 +278,10 @@ namespace VoiceActing
             {
                 if (emotionAttackManager.GetComboCount() == -1)
                 {
-                    emotionAttackManager.SelectCard("Neutre");
+                    SelectCard("Neutre");
                     return;
                 }
-                actorsManager.ActorTakeDamage(4);
+                actorsManager.ActorAttackDamage();
                 audioSourceAttack.Play();
                 audioSourceAttack2.Play();
                 turnCount -= 1;
@@ -276,12 +292,11 @@ namespace VoiceActing
                     feedbackLine.SetActive(false);
     
                 HideUIButton();
+
                 lastAttack = emotionAttackManager.GetComboEmotion();
-                //Debug.Log(lastAttack[0]);
                 textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, textAppearManager.GetWordSelected()), lastAttack);
-                emotionAttackManager.RemoveCard();
-                emotionAttackManager.RemoveCard();
-                emotionAttackManager.RemoveCard();
+
+                emotionAttackManager.CardAttack();
                 emotionAttackManager.SwitchCardTransformToRessource();
                 reprintText = false;
                 StartCoroutine(CoroutineAttack(10));
@@ -317,6 +332,79 @@ namespace VoiceActing
 
 
 
+        private IEnumerator WaitText()
+        {
+            int time = 60;
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            yield return null;
+
+            while (textAppearManager.GetEndDamage() == false)
+            {
+                yield return null;
+            }
+
+            // Check Si Role Attaque
+            /*if (enemyManager.GetHpPercentage() != 0)
+                roleManager.SelectAttack();*/
+
+            while (textAppearManager.GetEndLine() == false)
+            {
+                yield return null;
+            }
+
+            // Check si on peut lancer l'attaque sinon nouveau tour pour le joueur
+            if (roleManager.IsAttacking() == true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                cameraController.EnemySkill();
+                roleManager.EnemyAttackActivation();
+            }
+            else
+            {
+                CheckProducerAttack("ENDATTACK");
+            }
+        }
+
+
+        public void CheckProducerAttack(string phase)
+        {
+            if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, phase, indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
+            {
+                producerManager.ProducerAttackActivation();
+            }
+            else if (phase == "ENDATTACK")
+            {
+                NewTurn();
+            }
+        }
+
+        public void NewTurn()
+        {
+            if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
+            {
+                ChangeEventPhase();
+            }
+            else
+            {
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.RemoveCard();
+                emotionAttackManager.SwitchCardTransformToBattle();
+                inputController.gameObject.SetActive(true);
+                skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack);
+            }
+            if (skillManager.CheckReprintTextEnemy() == true)
+            {
+                textAppearManager.ReprintText();
+                textAppearManager.ApplyDamage(enemyManager.GetHpPercentage());
+
+            }
+
+        }
 
 
 
@@ -330,11 +418,7 @@ namespace VoiceActing
 
 
 
-
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Tue la phrase si les pv sont a 0
         public void KillPhrase()
         {
@@ -561,76 +645,7 @@ namespace VoiceActing
 
         }
 
-        public void NewTurn()
-        {
-            if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
-            {
-                ChangeEventPhase();
-            }
-            else
-            {
-                emotionAttackManager.SwitchCardTransformToBattle();
-                inputController.gameObject.SetActive(true);
-                skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack);
-            }
-            if(skillManager.CheckReprintTextEnemy() == true)
-            {
-                textAppearManager.ReprintText();
-                textAppearManager.ApplyDamage(enemyManager.GetHpPercentage());
 
-            }
-            
-        }
-
-        private IEnumerator WaitText()
-        {
-            int time = 60;
-            while (time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
-            yield return null;
-
-            while (textAppearManager.GetEndDamage() == false)
-            {
-                yield return null;
-            }
-
-            // Check Si Role Attaque
-            /*if (enemyManager.GetHpPercentage() != 0)
-                roleManager.SelectAttack();*/
-
-            while (textAppearManager.GetEndLine() == false)
-            {
-                yield return null;
-            }
-
-            // Check si on peut lancer l'attaque sinon nouveau tour pour le joueur
-            if (roleManager.IsAttacking() == true)
-            {
-                yield return new WaitForSeconds(0.1f);
-                cameraController.EnemySkill();
-                roleManager.EnemyAttackActivation();
-            }
-            else
-            {
-                CheckProducerAttack("ENDATTACK");
-            }
-        }
-
-        public void CheckProducerAttack(string phase)
-        {
-            if(producerManager.ProducerDecision(contrat.ArtificialIntelligence, phase, indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
-            {
-                producerManager.ProducerAttackActivation();
-            }
-            else if (phase == "ENDATTACK")
-            {
-                NewTurn();
-            }
-
-        }
 
         public void HideUIButton()
         {

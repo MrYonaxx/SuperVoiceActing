@@ -28,6 +28,10 @@ namespace VoiceActing
         [SerializeField]
         private List<VoiceActor> actors = new List<VoiceActor>();
 
+        [Header("Parameter")]
+        [SerializeField]
+        int defenseStack = 5;
+
 
         [Header("Feedbacks Damage")]
         [SerializeField]
@@ -42,6 +46,14 @@ namespace VoiceActing
         TextMeshProUGUI textCurrentHp;
         [SerializeField]
         TextMeshProUGUI textMaxHp;
+
+        [Space]
+        [SerializeField]
+        Animator animatorDamage;
+        [SerializeField]
+        TextMeshProUGUI textDamage;
+        [SerializeField]
+        RectTransform damagePreviz;
 
 
         // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
@@ -79,6 +91,8 @@ namespace VoiceActing
         EmotionCard[] cardNeutral;
 
         private int indexCurrentActor = 0;
+
+        int attackDamage = 0;
         
         #endregion
 
@@ -147,9 +161,15 @@ namespace VoiceActing
         }
 
 
-        public void ModifyActorStat(EmotionStat modifiers)
+        public void AddActorStat(EmotionStat modifiers)
         {
             actors[indexCurrentActor].StatModifier.Add(modifiers);
+            DrawActorStat();
+        }
+
+        public void SubstractActorStat(EmotionStat modifiers)
+        {
+            actors[indexCurrentActor].StatModifier.Substract(modifiers);
             DrawActorStat();
         }
 
@@ -234,15 +254,46 @@ namespace VoiceActing
 
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void ActorAttackDamage()
+        {
+            animatorDamage.SetTrigger("Attack");
+            ActorTakeDamage(attackDamage);
+            attackDamage = 0;
+            DrawDamagePrevisualization();
+        }
+
+
+
         public void ActorTakeDamage(int damage)
         {
             
             actors[indexCurrentActor].Hp -= damage;
+            if (actors[indexCurrentActor].Hp < 0)
+                actors[indexCurrentActor].Hp = 0;
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
 
             float ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
             healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
-            StartCoroutine(FeedbackHealthBar());
+            if(damage > 0)
+                StartCoroutine(FeedbackHealthBar());
         }
 
         private IEnumerator FeedbackHealthBar(int timeShake = 30, int timeGauge = 180)
@@ -275,6 +326,33 @@ namespace VoiceActing
         public void ShowHealthBar()
         {
             animatorHealthBar.SetBool("Appear", true);
+        }
+
+
+
+
+        public void AddAttackDamage(int roleAttack, float emotionMultiplier)
+        {
+            attackDamage += (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            textDamage.enabled = true;
+            textDamage.text = attackDamage.ToString();
+            DrawDamagePrevisualization();
+            animatorDamage.SetBool("Appear", true);
+        }
+
+        public void RemoveAttackDamage(int roleAttack, float emotionMultiplier)
+        {
+            attackDamage -= (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            //textDamage.enabled = true;
+            textDamage.text = attackDamage.ToString();
+            DrawDamagePrevisualization();
+        }
+
+        public void DrawDamagePrevisualization()
+        {
+            float damagePercentage = (float) attackDamage / actors[indexCurrentActor].Hp;
+            damagePreviz.anchorMin = new Vector2(1 - damagePercentage, 0);
+            damagePreviz.offsetMin = new Vector2(0, 0);
         }
 
         #endregion

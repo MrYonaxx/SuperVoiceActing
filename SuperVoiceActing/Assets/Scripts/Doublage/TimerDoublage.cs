@@ -31,6 +31,11 @@ namespace VoiceActing
         [SerializeField]
         bool active = false;
 
+
+        [SerializeField]
+        Color colorDanger;
+
+
         int turnCount = 0;
         int seconds = 0;
         int minute = 0;
@@ -103,9 +108,23 @@ namespace VoiceActing
         {
             turnCount = newTurn;
             if (turnCount / 10 < 1)
+            {
                 turnDraw = "0" + turnCount.ToString();
+                if(turnCount <= 3)
+                {
+                    textMeshTurnCount.color = colorDanger;
+                    textMeshPro.color = colorDanger;
+                }
+                if (turnCount < 0)
+                {
+                    turnDraw = "00";
+                }
+            }
             else
+            {
                 turnDraw = turnCount.ToString();
+
+            }
             textMeshTurnCount.text = turnDraw;
             animTextMesh.Play("ANIM_TurnDigit");
         }

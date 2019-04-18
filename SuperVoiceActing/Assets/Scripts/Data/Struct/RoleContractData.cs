@@ -86,6 +86,21 @@ namespace VoiceActing
             get { return fanMax; }
         }
 
+        [HorizontalGroup("Atk")]
+        [SerializeField]
+        private int atkMin;
+        public int AtkMin
+        {
+            get { return atkMin; }
+        }
+        [HorizontalGroup("Atk")]
+        [SerializeField]
+        private int atkMax;
+        public int AtkMax
+        {
+            get { return atkMax; }
+        }
+
         [MinMaxSlider(-100, 100)]
         [SerializeField]
         private Vector2Int timbre;

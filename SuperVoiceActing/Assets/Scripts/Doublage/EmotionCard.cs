@@ -39,7 +39,7 @@ namespace VoiceActing
 
         private int value = 0;
 
-        private float damagePercentage = 0;
+        private float damagePercentage = 1;
 
 
         #endregion
@@ -50,6 +50,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public float GetDamagePercentage()
+        {
+            return damagePercentage;
+        }
 
         #endregion
 
