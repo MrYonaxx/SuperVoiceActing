@@ -31,6 +31,10 @@ namespace VoiceActing
         [Header("Parameter")]
         [SerializeField]
         int defenseStack = 5;
+        [SerializeField]
+        float healthCriticalThreshold = 0.3f;
+        [SerializeField]
+        Color healthCriticalColor;
 
 
         [Header("Feedbacks Damage")]
@@ -134,7 +138,7 @@ namespace VoiceActing
             DrawActorStat();
         }
 
-        public void ApplyBuff(SkillData buff)
+        public bool ApplyBuff(SkillData buff)
         {
             for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
             {
@@ -148,11 +152,12 @@ namespace VoiceActing
                     {
                         actors[indexCurrentActor].Buffs[i].Turn += buff.TurnActive;
                     }
-                    return;
+                    return false;
                 }
             }
             actors[indexCurrentActor].Buffs.Add(new Buff(buff));
             DrawBuffIcon();
+            return true;
         }
 
         public void DrawBuffIcon()
@@ -249,6 +254,12 @@ namespace VoiceActing
             textCardStats[7].text = actors[indexCurrentActor].Statistique.Trust.ToString();
             textCardStats[8].text = actors[indexCurrentActor].Statistique.Neutral.ToString();*/
 
+            if(actors[indexCurrentActor].Hp < actors[indexCurrentActor].HpMax * healthCriticalThreshold)
+            {
+                textCurrentHp.color = healthCriticalColor;
+                textMaxHp.color = healthCriticalColor;
+            }
+
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
             textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();
 
@@ -277,6 +288,7 @@ namespace VoiceActing
             animatorDamage.SetTrigger("Attack");
             ActorTakeDamage(attackDamage);
             attackDamage = 0;
+            textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization();
         }
 
@@ -334,7 +346,6 @@ namespace VoiceActing
         public void AddAttackDamage(int roleAttack, float emotionMultiplier)
         {
             attackDamage += (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            textDamage.enabled = true;
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization();
             animatorDamage.SetBool("Appear", true);

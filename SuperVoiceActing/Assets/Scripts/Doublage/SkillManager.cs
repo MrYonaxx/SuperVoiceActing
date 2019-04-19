@@ -272,16 +272,20 @@ namespace VoiceActing
 
         public void ApplySkill(SkillData skill)
         {
-            ApplySkillEffect(skill);
+
             if (skill.SkillType == SkillType.Buff)
             {
                 switch (skill.SkillTarget)
                 {
                     case SkillTarget.VoiceActor:
-                        actorsManager.ApplyBuff(skill);
+                        if(actorsManager.ApplyBuff(skill) == false)
+                        {
+                            return; // Buff deja appliqué donc on applique pas l'effet
+                        }
                         break;
                 }
             }
+            ApplySkillEffect(skill);
         }
 
         public void ApplySkillEffect(SkillData skill)

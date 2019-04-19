@@ -233,6 +233,8 @@ namespace VoiceActing
                 //
                 textIntro.SetActive(false);
                 yield return new WaitForSeconds(1f);
+                ChangeEventPhase();
+                yield return new WaitForSeconds(1f);
                 introBlackScreen.gameObject.SetActive(false);
                 introBlackScreen.enabled = false;
                 audioSourceBattleTheme.enabled = true;
@@ -242,10 +244,11 @@ namespace VoiceActing
                     animatorsIntro[i].enabled = true;
                 }
                 audioSourceSpotlight.Play();
+                cameraController.MoveToInitialPosition(0);
                 yield return new WaitForSeconds(1);
-                cameraController.MoveToInitialPosition(300);
+                //cameraController.MoveToInitialPosition(0);
                 //
-                ChangeEventPhase();
+
             }
             startLine = false;
         }
@@ -366,6 +369,25 @@ namespace VoiceActing
             else
             {
                 CheckProducerAttack("ENDATTACK");
+            }
+        }
+
+        private IEnumerator WaitTextLastLine()
+        {
+            int time = 60;
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            yield return null;
+            while (textAppearManager.GetEndLine() == false)
+            {
+                yield return null;
+            }
+            if (enemyManager.GetHpPercentage() == 0)
+            {
+                EndSession();
             }
         }
 
@@ -677,6 +699,9 @@ namespace VoiceActing
             {
                 return;
             }
+            emotionAttackManager.RemoveCard();
+            emotionAttackManager.RemoveCard();
+            emotionAttackManager.RemoveCard();
             emotionAttackManager.SwitchCardTransformToRessource();
             recIcon.SetActive(false);
             inputController.gameObject.SetActive(false);

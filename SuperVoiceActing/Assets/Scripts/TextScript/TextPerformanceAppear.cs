@@ -47,6 +47,8 @@ namespace VoiceActing
 
         [SerializeField]
         protected Color32 damageColor = new Color32(255, 255, 0, 0);
+        [SerializeField]
+        protected Color32 undamageColor = new Color32(255, 255, 255, 0);
 
 
         protected TMP_Text textMeshPro;
@@ -84,6 +86,7 @@ namespace VoiceActing
             public float offset;
             public float alpha;
             public Vector3 vertexPosition;
+            public Vector3 vertexScale;
             public float angle;
         }
 
@@ -191,7 +194,7 @@ namespace VoiceActing
 
                 Color32[] newVertexColors = textMeshPro.textInfo.meshInfo[materialIndex].colors32;
 
-                Color32 colorAlpha = new Color32(255, 255, 255, 0);
+                Color32 colorAlpha = new Color32(undamageColor.r, undamageColor.g, undamageColor.b, 0);
                 newVertexColors[vertexIndex + 0] = colorAlpha;
                 newVertexColors[vertexIndex + 1] = colorAlpha;
                 newVertexColors[vertexIndex + 2] = colorAlpha;
@@ -334,7 +337,7 @@ namespace VoiceActing
 
                 newVertexColors = textInfo.meshInfo[materialIndex].colors32;
 
-                Color32 colorAlpha = new Color32(255, 255, 255, 0);
+                Color32 colorAlpha = new Color32(undamageColor.r, undamageColor.g, undamageColor.b, 0);
                 newVertexColors[vertexIndex + 0] = colorAlpha;
                 newVertexColors[vertexIndex + 1] = colorAlpha;
                 newVertexColors[vertexIndex + 2] = colorAlpha;
@@ -582,7 +585,7 @@ namespace VoiceActing
             {
                 return new Color32(damageColor.r, damageColor.g, damageColor.b, (byte)vertexAnim[vertexIndex].alpha);
             }
-            return new Color32(255, 255, 255, (byte)vertexAnim[vertexIndex].alpha);
+            return new Color32(undamageColor.r, undamageColor.g, undamageColor.b, (byte)vertexAnim[vertexIndex].alpha);
         }
 
 

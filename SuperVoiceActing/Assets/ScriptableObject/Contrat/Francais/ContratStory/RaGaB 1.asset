@@ -35,6 +35,8 @@ MonoBehaviour:
       lineMax: 221
       fanMin: 12540
       fanMax: 12540
+      atkMin: 0
+      atkMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -66,6 +68,8 @@ MonoBehaviour:
       lineMax: 167
       fanMin: 1473
       fanMax: 1473
+      atkMin: 0
+      atkMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -88,6 +92,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+  producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
@@ -287,7 +292,7 @@ MonoBehaviour:
         fear: -30
         trust: 0
       enemyWeakPoints: []
-    - text: "Tr\xE8s bien alors... Allons-y !"
+    - text: "Tr\xE8s bien alors... Allons-y ! En position !"
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -303,27 +308,6 @@ MonoBehaviour:
         sadness: -50
         disgust: -50
         anger: 10
-        surprise: -30
-        sweetness: -30
-        fear: -50
-        trust: 60
-      enemyWeakPoints: []
-    - text: En position !
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 10
-        sadness: -50
-        disgust: -50
-        anger: 20
         surprise: -30
         sweetness: -30
         fear: -50

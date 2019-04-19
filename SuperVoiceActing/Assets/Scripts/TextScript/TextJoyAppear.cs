@@ -44,7 +44,7 @@ namespace VoiceActing
 
         protected override void InitializeVertex()
         {
-            for (int i = 0; i < 1024; i++)
+            for (int i = 0; i < 255; i++)
             {
                 vertexAnim[i].damage = false;
                 vertexAnim[i].selected = false;
