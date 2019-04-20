@@ -55,6 +55,16 @@ namespace VoiceActing
             return damagePercentage;
         }
 
+        public void SetEmotion(Emotion emo)
+        {
+            emotion = emo;
+        }
+
+        public Emotion GetEmotion()
+        {
+            return emotion;
+        }
+
         #endregion
 
         #region Functions 

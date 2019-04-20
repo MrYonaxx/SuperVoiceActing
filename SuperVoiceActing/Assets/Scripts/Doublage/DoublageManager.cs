@@ -259,15 +259,21 @@ namespace VoiceActing
         public void SelectCard(string emotion)
         {
             EmotionCard card = emotionAttackManager.SelectCard(emotion);
-            if(card != null)
+            if (card != null)
+            {
                 actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                toneManager.HighlightTone(card.GetEmotion(), true);
+            }
         }
 
         public void RemoveCard()
         {
             EmotionCard card = emotionAttackManager.RemoveCard();
             if (card != null)
+            {
                 actorsManager.RemoveAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                toneManager.HighlightTone(card.GetEmotion(), false);
+            }
         }
 
 

@@ -279,7 +279,8 @@ namespace VoiceActing
 
                 for (int j = 0; j < emotionCards[i].Cards.Length; j++)
                 {
-                    if(j < cardNumber)
+                    emotionCards[i].Cards[j].SetEmotion(emotionCards[i].Emotion);
+                    if (j < cardNumber)
                         emotionCards[i].Cards[j].gameObject.SetActive(true);
                     else
                         emotionCards[i].Cards[j].gameObject.SetActive(false);

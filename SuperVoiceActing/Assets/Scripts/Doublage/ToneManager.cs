@@ -137,31 +137,39 @@ namespace VoiceActing
             switch (emotion)
             {
                 case Emotion.Joie:
+                    toneSelected = toneTransform[1];
                     break;
                 case Emotion.Tristesse:
+                    toneSelected = toneTransform[0];
                     break;
                 case Emotion.Dégoût:
+                    toneSelected = toneTransform[2];
                     break;
                 case Emotion.Colère:
+                    toneSelected = toneTransform[3];
                     break;
                 case Emotion.Surprise:
+                    toneSelected = toneTransform[5];
                     break;
                 case Emotion.Douceur:
+                    toneSelected = toneTransform[4];
                     break;
                 case Emotion.Peur:
+                    toneSelected = toneTransform[6];
                     break;
                 case Emotion.Confiance:
+                    toneSelected = toneTransform[7];
                     break;
             }
             if(isHighlight == true)
             {
-                toneSelected.rectTransform.offsetMax = new Vector2(0, 10);
+                toneSelected.rectTransform.offsetMax = new Vector2(0, 15);
                 toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 1);
             }
             else
             {
                 toneSelected.rectTransform.offsetMax = new Vector2(0, 0);
-                toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 0);
+                toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 0.6f);
             }
         }
         
