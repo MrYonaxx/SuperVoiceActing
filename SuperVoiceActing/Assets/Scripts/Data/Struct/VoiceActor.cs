@@ -295,9 +295,11 @@ namespace VoiceActing
             List<int> possibilities = new List<int>(8) { 0, 1, 2, 3, 4, 5, 6, 7 };
             int choiceEmotion = 0;
             choiceEmotion = Random.Range(0, possibilities.Count);
+            Debug.Log(choiceEmotion);
 
             while (pointCumul != 0)
             {
+                //Debug.Log(possibilities[choiceEmotion]);
                 switch (possibilities[choiceEmotion])
                 {
                     case 0:
@@ -338,7 +340,7 @@ namespace VoiceActing
                 {
                     possibilities.RemoveAt(choiceEmotion);
                     choiceEmotion += 1;
-                    if(choiceEmotion > possibilities.Count)
+                    if(choiceEmotion >= possibilities.Count)
                     {
                         choiceEmotion = 0;
                     }

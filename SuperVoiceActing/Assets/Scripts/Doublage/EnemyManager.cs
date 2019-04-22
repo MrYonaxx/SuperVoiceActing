@@ -384,6 +384,7 @@ namespace VoiceActing
         {
             float totalDamage = 0;
             EmotionStat statActor = voiceActor.Statistique;
+            EmotionStat statModifier = voiceActor.StatModifier;
 
             int enemyHPMax = currentTextData.HPMax;
             EmotionStat enemyResistance = currentTextData.EnemyResistance;
@@ -394,31 +395,31 @@ namespace VoiceActing
                 switch(emotions[i])
                 {
                     case Emotion.Neutre:
-                        totalDamage += statActor.Neutral * ((100f + enemyResistance.Neutral) / 100f);
+                        totalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
                         break;
                     case Emotion.Joie:
-                        totalDamage += statActor.Joy * ((100f + enemyResistance.Joy) / 100f);
+                        totalDamage += (statActor.Joy + statModifier.Joy) * ((100f + enemyResistance.Joy) / 100f);
                         break;
                     case Emotion.Tristesse:
-                        totalDamage += statActor.Sadness * ((100f + enemyResistance.Sadness) / 100f);
+                        totalDamage += (statActor.Sadness + statModifier.Sadness) * ((100f + enemyResistance.Sadness) / 100f);
                         break;
                     case Emotion.Dégoût:
-                        totalDamage += statActor.Disgust * ((100f + enemyResistance.Disgust) / 100f);
+                        totalDamage += (statActor.Disgust + statModifier.Disgust) * ((100f + enemyResistance.Disgust) / 100f);
                         break;
                     case Emotion.Colère:
-                        totalDamage += statActor.Anger * ((100f + enemyResistance.Anger) / 100f);
+                        totalDamage += (statActor.Anger + statModifier.Anger) * ((100f + enemyResistance.Anger) / 100f);
                         break;
                     case Emotion.Surprise:
-                        totalDamage += statActor.Surprise * ((100f + enemyResistance.Surprise) / 100f);
+                        totalDamage += (statActor.Surprise + statModifier.Surprise) * ((100f + enemyResistance.Surprise) / 100f);
                         break;
                     case Emotion.Douceur:
-                        totalDamage += statActor.Sweetness * ((100f + enemyResistance.Sweetness) / 100f);
+                        totalDamage += (statActor.Sweetness + statModifier.Sweetness) * ((100f + enemyResistance.Sweetness) / 100f);
                         break;
                     case Emotion.Peur:
-                        totalDamage += statActor.Fear * ((100f + enemyResistance.Fear) / 100f);
+                        totalDamage += (statActor.Fear + statModifier.Fear) * ((100f + enemyResistance.Fear) / 100f);
                         break;
                     case Emotion.Confiance:
-                        totalDamage += statActor.Trust * ((100f + enemyResistance.Trust) / 100f);
+                        totalDamage += (statActor.Trust + statModifier.Trust) * ((100f + enemyResistance.Trust) / 100f);
                         break;
                 }
             }
