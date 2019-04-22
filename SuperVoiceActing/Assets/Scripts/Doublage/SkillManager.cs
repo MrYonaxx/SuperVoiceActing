@@ -107,6 +107,7 @@ namespace VoiceActing
         private IEnumerator coroutineSkill = null;
         private bool reprintTextEnemy = false;
         Vector3 initialScaleText;
+        private bool inSkillAnimation = false;
 
         #endregion
 
@@ -115,7 +116,10 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-
+        public bool InSkillAnimation()
+        {
+            return inSkillAnimation;
+        }
 
         #endregion
 
@@ -149,10 +153,10 @@ namespace VoiceActing
             return false;
         }
 
-        public void CheckSkillCondition(VoiceActor voiceActor, string phase, Emotion[] emotions) 
+        public bool CheckSkillCondition(VoiceActor voiceActor, string phase, Emotion[] emotions) 
         {
             if (emotions == null)
-                return;
+                return false;
             bool next = false;
             for(int i = 0; i < voiceActor.Potentials.Length; i++)
             {
@@ -160,6 +164,13 @@ namespace VoiceActing
                 Debug.Log(skill.SkillName);
                 switch(phase)
                 {
+                    case "Selection":
+                        if (skill.AfterAttack == true)
+                        {
+                            next = true;
+                        }
+                        break;
+
                     case "Attack":
                         if(skill.AfterAttack == true)
                         {
@@ -169,6 +180,13 @@ namespace VoiceActing
 
                     case "Critical":
                         if (skill.AfterCritical == true)
+                        {
+                            next = true;
+                        }
+                        break;
+
+                    case "Counter":
+                        if (skill.AfterAttack == true)
                         {
                             next = true;
                         }
@@ -196,14 +214,16 @@ namespace VoiceActing
                                 textMeshActorName.text = voiceActor.Name;
                                 textMeshSkillName.text = skill.SkillName;
                                 textMeshSkillDesc.text = skill.DescriptionBattle;
+                                inSkillAnimation = true;
                                 ActorSkillFeedback();
                                 ApplySkill(skill);
-                                return; // On verra pour l'activation de compétence multiple plus tard
+                                return true; // On verra pour l'activation de compétence multiple plus tard
                             }
                         }
                     }
                 }
             }
+            return false;
         }
 
         private bool CheckAttackType(Emotion[] emotions, EmotionStat emotionCheck)
@@ -526,7 +546,8 @@ namespace VoiceActing
             textToStop.transform.localScale = initialScaleText;
 
             cameraController.ChangeOrthographicSize(0, 30);
-            
+
+            inSkillAnimation = false;
             if (coroutineSkill != null)
                 StopCoroutine(coroutineSkill);
             coroutineSkill = MoveActorCoroutine(1.02f);

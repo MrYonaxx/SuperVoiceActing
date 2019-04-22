@@ -62,6 +62,8 @@ namespace VoiceActing
 
         private IEnumerator coroutineWaitEndLine = null;
 
+        private Vector3 initialScale = Vector3.zero;
+
         int wordID = 0;
 
         #endregion
@@ -124,9 +126,26 @@ namespace VoiceActing
 
         public void SetPauseText(bool b)
         {
+            if (currentText == null)
+                return;
             currentText.SetPauseText(b);
         }
 
+        public void HideText()
+        {
+            if (initialScale != Vector3.zero)
+                return;
+            initialScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(0, 0, 0);
+        }
+
+        public void ShowText()
+        {
+            if (initialScale == Vector3.zero)
+                return;
+            transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
+            initialScale = Vector3.zero;
+        }
 
 
         public void NewPhrase(string newText, Emotion emotion = Emotion.Neutre, bool startPhrase = false)

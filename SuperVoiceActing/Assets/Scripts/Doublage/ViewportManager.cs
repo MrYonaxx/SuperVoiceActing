@@ -126,6 +126,14 @@ namespace VoiceActing
                 initialSize = viewportMask.sizeDelta;
         }
 
+
+        public void TextCameraEffect(DoublageEventText camEffect)
+        {
+            viewportCam.CinematicCamera(camEffect);
+        }
+
+
+
         public void SetViewportSetting(DoublageEventViewport viewportSetting)
         {
             if (coroutineMove != null)
@@ -169,6 +177,12 @@ namespace VoiceActing
                 viewportText.anchoredPosition = viewportSetting.TextPosition;
             }
         }
+
+
+
+
+
+
 
 
         private IEnumerator MoveViewport(Vector2 targetPosition)

@@ -26,30 +26,45 @@ namespace VoiceActing
         [SerializeField]
         protected InputController inputEvent;
         [SerializeField]
+        protected TextAppearManager mainText;
+        [SerializeField]
         protected ViewportManager[] viewports;
         [SerializeField]
-        protected CameraController[] cameras;
-        [SerializeField]
-        protected CharacterDialogueController[] characters;
-        [SerializeField]
         protected TextPerformanceAppear[] textEvent;
+
+        [Header("Characters")]
         [SerializeField]
-        protected GameObject[] popups;
+        protected CharacterDialogueController characterPrefab;
         [SerializeField]
-        protected StoryEventManager storyEventManager;
+        protected Transform charactersParent;
+        [SerializeField]
+        protected List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
+        [SerializeField]
+        protected Transform[] defaultCharacterTransform;
+
+
+
+        [Header("Tuto & Fin")]
+        /*[SerializeField]
+        protected GameObject[] popups;*/
         [SerializeField]
         protected string endScene;
 
-        [Header("DoublageManager")]
+        [Header("Managers")]
         [SerializeField]
         protected DoublageManager doublageManager;
+        [SerializeField]
+        protected StoryEventManager storyEventManager;
 
         [Header("Feedbacks")]
         [SerializeField]
+        protected Animator animatorBlackBand;
+        [SerializeField]
         protected Image flashbackTransition;
         [SerializeField]
-        protected GameObject viewportFlashback; 
+        protected GameObject viewportFlashback;
 
+        protected bool eventStartLine = false;
         protected int indexEvent = -1;
         protected DoublageEventData currentEvent;
 
@@ -71,7 +86,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        
+
         public void SetCharactersSprites(List<VoiceActor> actorsContract)
         {
             for (int i = 0; i < actorsContract.Count; i++)
@@ -92,28 +107,23 @@ namespace VoiceActing
 
         public virtual void PrintAllText()
         {
-            /*if (textAppearManager.PrintAllText() == false)
-            {
-                return;
-            }*/
             bool checkText = false;
             for (int i = 0; i < textEvent.Length; i++)
             {
-                //a changé, ça c'est chiant
                 if (textEvent[i].PrintAllText() == false)
                     checkText = true;
             }
             if (checkText == true)
                 return;
-            for (int i = 0; i < popups.Length; i++)
+            /*for (int i = 0; i < popups.Length; i++)
             {
                 popups[i].SetActive(false);
-            }
+            }*/
             inputEvent.gameObject.SetActive(false);
             ExecuteEvent();
         }
 
-
+        // =========================================================================================
         private void ExecuteEvent()
         {
             indexEvent += 1;
@@ -125,51 +135,58 @@ namespace VoiceActing
                 {
                     DoublageEventText node = (DoublageEventText)currentNode;
                     inputEvent.gameObject.SetActive(true);
-                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, 0); // Le 0 sert à rien, vire le quand t'aura pas la flemme
+                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text);
                     if(node.CameraID != 0)
-                        cameras[node.CameraID].CinematicCamera(node);
+                        viewports[node.CameraID].TextCameraEffect(node);
                     /*if (playerData.Language == 1)
                         FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.TextEng, node.CameraEffectID);
                     else
                         FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);*/
                 }
-                if (currentNode is DoublageEventViewport)
+
+                else if (currentNode is DoublageEventViewport)
                 {
+                    animatorBlackBand.SetBool("Appear", true);
                     DoublageEventViewport node = (DoublageEventViewport)currentNode;
                     viewports[node.ViewportID].SetViewportSetting(node);
-                    //cameraControllerEvent[node.CameraID].ChangeCameraViewport(node.ViewportX, node.ViewportY, node.ViewportWidth, node.ViewportHeight, node.Time);
                     ExecuteEvent();
                 }
-                if (currentNode is DoublageEventTextPopup)
+
+                else if(currentNode is DoublageEventTextPopup)
                 {
                     DoublageEventTextPopup node = (DoublageEventTextPopup)currentNode;
                     panelPlayer.StartPopup("Ingé son", node.Text);
                     ExecuteEvent();
                 }
-                if (currentNode is DoublageEventWait)
+
+                else if(currentNode is DoublageEventWait)
                 {
                     DoublageEventWait node = (DoublageEventWait)currentNode;
                     StartCoroutine(WaitCoroutine(node.Wait));
                 }
-                if (currentNode is DoublageEventDeck)
+
+                else if(currentNode is DoublageEventDeck)
                 {
                     DoublageEventDeck node = (DoublageEventDeck)currentNode;
                     //emotionAttackManager.ModifiyDeck(node.NewDeck);
                     StartCoroutine(WaitCoroutine(1));
                 }
-                if (currentNode is DoublageEventTutoPopup)
+
+                else if(currentNode is DoublageEventTutoPopup)
                 {
                     DoublageEventTutoPopup node = (DoublageEventTutoPopup)currentNode;
-                    popups[node.PopupID].SetActive(true);
+                    //popups[node.PopupID].SetActive(true);
                     inputEvent.gameObject.SetActive(true);
                 }
-                if (currentNode is DoublageEventSound)
+
+                else if(currentNode is DoublageEventSound)
                 {
                     DoublageEventSound node = (DoublageEventSound)currentNode;
                     //audioSourceKillPhrase.PlayOneShot(node.Audio);
                     ExecuteEvent();
                 }
-                if (currentNode is DoublageEventLoad)
+
+                else if(currentNode is DoublageEventLoad)
                 {
                     DoublageEventLoad node = (DoublageEventLoad) currentNode;
                     if (node.DoublageEventData != null)
@@ -183,22 +200,62 @@ namespace VoiceActing
                         StartFlashback(node.StoryEventData);
                     }
                 }
+
+                else if(currentNode is DoublageEventSetCharacter)
+                {
+                    DoublageEventSetCharacter node = (DoublageEventSetCharacter)currentNode;
+                    characters.Add(Instantiate(characterPrefab, charactersParent));
+                    //charactersMaxLength = 1;
+                    characters[characters.Count-1].SetStoryCharacterData(node.Character);
+                    characters[characters.Count-1].SetTextActing(textEvent[node.ViewportID]);
+                    characters[characters.Count-1].SetFlip(node.FlipX);
+                    if(node.CustomPos == false)
+                    {
+                        characters[characters.Count-1].transform.localPosition = defaultCharacterTransform[node.DefaultPosID].localPosition;
+                        characters[characters.Count-1].transform.localRotation = defaultCharacterTransform[node.DefaultPosID].localRotation;
+                    }
+                    else
+                    {
+                        characters[characters.Count-1].transform.localPosition = node.Position;
+                        characters[characters.Count-1].transform.localRotation = Quaternion.Euler(node.Rotation);
+                    }
+                    ExecuteEvent();
+
+                }
+
+
+
+
             }
             else // Fin d'event
             {
+                animatorBlackBand.SetBool("Appear", false);
                 for (int i = 0; i < textEvent.Length; i++)
                 {
+                    textEvent[i].NewPhrase("");
                     textEvent[i].gameObject.SetActive(false);
                 }
                 if (currentEvent.StopSession == true)
                 {
                     doublageManager.SwitchToDoublage();
-                    doublageManager.SetPhrase();
+                    mainText.SetPauseText(false);
+                    mainText.ShowText();
+                    if(eventStartLine == true)
+                    {
+                        doublageManager.SetPhrase();
+                    }
+                    else
+                    {
+                        doublageManager.NewTurn(true);
+                    }
+
+                    eventStartLine = false;
                 }
-                /*emotionAttackManager.SwitchCardTransformToBattle();
-                SetPhrase();*/
             }
         }
+
+        // =========================================================================================
+
 
         private IEnumerator WaitCoroutine(float time)
         {
@@ -212,10 +269,15 @@ namespace VoiceActing
 
         private CharacterDialogueController FindInterlocutor(StoryCharacterData characterToFind)
         {
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < characters.Count; i++)
             {
                 if (characters[i].GetStoryCharacterData() == characterToFind)
                 {
+                    if (i < 3) // 3 car il y a 3 voice actors
+                    {
+                        mainText.SetPauseText(true);
+                        mainText.HideText();
+                    }
                     return characters[i];
                 }
             }
@@ -235,9 +297,10 @@ namespace VoiceActing
                     currentEvent = contrat.EventData[i];
                     for (int j = 0; j < textEvent.Length; j++)
                     {
-                        textEvent[j].gameObject.SetActive(true);
+                        textEvent[j].gameObject.SetActive(true);                       
                     }
                     contrat.EventData.RemoveAt(i);
+                    eventStartLine = startLine;
                     ExecuteEvent();
                     return true;
                 }

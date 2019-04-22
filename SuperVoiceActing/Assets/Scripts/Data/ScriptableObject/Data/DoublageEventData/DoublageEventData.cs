@@ -22,7 +22,10 @@ namespace VoiceActing
         Deck,
         Tuto,
         Sound,
-        Load
+        Load,
+        Skill,
+        Effect,
+        SetCharacter
     }
 
     [System.Serializable]
@@ -61,19 +64,19 @@ namespace VoiceActing
         [HideLabel]
         public DoublageEventWait doublageEventWait = null;
 
-
+        [HorizontalGroup("Hey")]
         [ShowIf("eventNode", DoublageEventNode.Deck)]
         [SerializeField]
         [HideLabel]
         public DoublageEventDeck doublageEventDeck = null;
 
-
+        [HorizontalGroup("Hey")]
         [ShowIf("eventNode", DoublageEventNode.Tuto)]
         [SerializeField]
         [HideLabel]
         public DoublageEventTutoPopup doublageTutoPopup = null;
 
-
+        [HorizontalGroup("Hey")]
         [ShowIf("eventNode", DoublageEventNode.Sound)]
         [SerializeField]
         [HideLabel]
@@ -83,6 +86,27 @@ namespace VoiceActing
         [SerializeField]
         [HideLabel]
         public DoublageEventLoad doublageEventLoad = null;
+
+
+        [HorizontalGroup("Hey")]
+        [ShowIf("eventNode", DoublageEventNode.Effect)]
+        [SerializeField]
+        [HideLabel]
+        public DoublageEventEffect doublageEventEffect = null;
+
+
+        [HorizontalGroup("Hey")]
+        [ShowIf("eventNode", DoublageEventNode.Skill)]
+        [SerializeField]
+        [HideLabel]
+        public DoublageEventSkill doublageEventSkill = null;
+
+
+        [HorizontalGroup("Hey")]
+        [ShowIf("eventNode", DoublageEventNode.SetCharacter)]
+        [SerializeField]
+        [HideLabel]
+        public DoublageEventSetCharacter doublageEventSetCharacter = null;
 
 
         public string GetBoxTitle()
@@ -97,6 +121,10 @@ namespace VoiceActing
                     return eventNode + " : " + doublageEventViewport.ViewportID.ToString();
                 case DoublageEventNode.Wait:
                     return eventNode + " : " + doublageEventWait.Wait.ToString();
+                case DoublageEventNode.Sound:
+                    return eventNode.ToString(); //+ " : " + doublageEventSound..ToString();
+                case DoublageEventNode.SetCharacter:
+                    return eventNode + " : " + doublageEventSetCharacter.Character.name;
             }
             return null;
         }
@@ -204,6 +232,12 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageEventSound;
                 case DoublageEventNode.Load:
                     return doublageEvent[index].dataBox.doublageEventLoad;
+                case DoublageEventNode.Effect:
+                    return doublageEvent[index].dataBox.doublageEventEffect;
+                case DoublageEventNode.Skill:
+                    return doublageEvent[index].dataBox.doublageEventSkill;
+                case DoublageEventNode.SetCharacter:
+                    return doublageEvent[index].dataBox.doublageEventSetCharacter;
             }
             return null;
         }

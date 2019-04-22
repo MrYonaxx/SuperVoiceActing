@@ -45,8 +45,8 @@ namespace VoiceActing
 
         [SerializeField]
         private TextPerformanceAppear textActing;
-        [SerializeField]
-        private CameraController camera;
+        /*[SerializeField]
+        private CameraController camera;*/
 
 
 
@@ -62,12 +62,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        public void SetPhraseTextacting(string newText, int cameraID)
+        public void SetPhraseTextacting(string newText)
         {
             textActing.NewMouthAnim(this);
             textActing.NewPhrase(newText);
-            /*if (cameraID != 0)
-                camera.CinematicCamera(cameraID);*/
         }
 
         public void SetStoryCharacterData(StoryCharacterData sprites)
@@ -77,9 +75,20 @@ namespace VoiceActing
                 spriteRenderer.sprite = sprites.SpriteNormal[0];
         }
 
+        public void SetTextActing(TextPerformanceAppear textMeshPro)
+        {
+            textActing = textMeshPro;
+        }
+
         public StoryCharacterData GetStoryCharacterData()
         {
             return storyCharacterData;
+        }
+
+
+        public void SetFlip(bool flip)
+        {
+            spriteRenderer.flipX = flip;
         }
 
         #endregion

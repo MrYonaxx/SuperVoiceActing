@@ -33,6 +33,8 @@ namespace VoiceActing
             }
         }
 
+        // ===========================================================================================
+        // Musique
 
         public void PlayMusic(AudioClip music)
         {
@@ -66,31 +68,15 @@ namespace VoiceActing
             audio.volume = 0;
         }
 
-        #region Attributes 
-
-        /* ======================================== *\
-         *               ATTRIBUTES                 *
-        \* ======================================== */
+        // ===========================================================================================
+        // Son
 
 
-        #endregion
+        public void PlaySound(AudioClip sound)
+        {
+            audio.PlayOneShot(sound);
+        }
 
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-
-
-        #endregion
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
-
-        #endregion
 
     } // AudioManager class
 

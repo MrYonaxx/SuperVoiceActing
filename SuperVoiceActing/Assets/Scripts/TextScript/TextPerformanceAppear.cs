@@ -372,7 +372,8 @@ namespace VoiceActing
             InitializeVertex();
             Color32[] newVertexColors = InitializeVertexColor();
 
-            mouth.ActivateMouth();
+            if(mouth != null)
+                mouth.ActivateMouth();
 
             while (true)
             {

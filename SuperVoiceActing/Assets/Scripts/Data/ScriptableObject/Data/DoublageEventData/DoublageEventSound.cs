@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -24,14 +25,25 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        private AudioClip audio;
-        public AudioClip Audio
+        private bool music = false;
+
+        [HideIf("music", true)]
+        [SerializeField]
+        private AudioClip soundClip;
+        public AudioClip SoundClip
         {
-            get { return audio; }
-            set { audio = value; }
+            get { return soundClip; }
         }
 
-        
+        [ShowIf("music", true)]
+        [SerializeField]
+        private AudioClip musicClip;
+        public AudioClip MusicClip
+        {
+            get { return musicClip; }
+        }
+
+
         #endregion
 
 
