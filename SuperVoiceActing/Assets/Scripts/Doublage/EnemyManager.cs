@@ -395,7 +395,8 @@ namespace VoiceActing
                 switch(emotions[i])
                 {
                     case Emotion.Neutre:
-                        totalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
+                        if(i == 0)
+                            totalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
                         break;
                     case Emotion.Joie:
                         totalDamage += (statActor.Joy + statModifier.Joy) * ((100f + enemyResistance.Joy) / 100f);

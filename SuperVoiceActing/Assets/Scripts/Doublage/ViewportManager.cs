@@ -47,6 +47,9 @@ namespace VoiceActing
         [SerializeField]
         CameraController viewportCam;
 
+        [SerializeField]
+        EffectManager effectManager;
+
         private float speedViewport = 1.05f;
         Vector2 initialSize;
 
@@ -245,6 +248,14 @@ namespace VoiceActing
         }
 
         //private void Move
+
+
+
+        public void StartEffect(DoublageEventEffect effectData)
+        {
+            effectManager.StartEffect(effectData);
+        }
+
 
         #endregion
 

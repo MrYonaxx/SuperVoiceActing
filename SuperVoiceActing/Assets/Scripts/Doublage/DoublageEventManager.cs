@@ -224,6 +224,15 @@ namespace VoiceActing
                 }
 
 
+                else if (currentNode is DoublageEventEffect)
+                {
+                    DoublageEventEffect node = (DoublageEventEffect)currentNode;
+                    viewports[node.ViewportID].StartEffect(node);
+                    ExecuteEvent();
+
+                }
+
+
 
 
             }

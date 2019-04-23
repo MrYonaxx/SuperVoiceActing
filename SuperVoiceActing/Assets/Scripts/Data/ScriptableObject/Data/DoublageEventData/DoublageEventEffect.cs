@@ -30,10 +30,24 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private bool active;
+        public bool Active
+        {
+            get { return active; }
+        }
+
+        [SerializeField]
         private int eventTime;
         public int EventTime
         {
             get { return eventTime; }
+        }
+
+        [SerializeField]
+        private int viewportID;
+        public int ViewportID
+        {
+            get { return viewportID; }
         }
 
 
