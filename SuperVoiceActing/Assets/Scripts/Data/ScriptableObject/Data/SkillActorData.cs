@@ -18,7 +18,7 @@ namespace VoiceActing
 
 
 
-        [Header("Conditions d'Activation")]
+        [Title("Conditions d'Activation")]
 
         [SerializeField]
         private bool afterAttack;
@@ -62,6 +62,18 @@ namespace VoiceActing
         {
             get { return percentageActivation; }
         }
+
+        [Space]
+        [Space]
+        [Space]
+        [Title("Animation")]
+        [SerializeField]
+        private bool isMalus;
+        public bool IsMalus
+        {
+            get { return isMalus; }
+        }
+
 
 
     } // SkillActorData class

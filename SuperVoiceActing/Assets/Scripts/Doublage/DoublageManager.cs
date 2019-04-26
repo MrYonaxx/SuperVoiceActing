@@ -338,7 +338,11 @@ namespace VoiceActing
 
             // Attack Feedback ===================================================================
             AttackFeedbackPhase();
-
+            if(turnCount == 0)
+            {
+                StartCoroutine(WaitTextLastLine());
+                yield break;
+            }
             // Wait ==============================================================================
             yield return CoroutineAttack(10);
             yield return WaitFrame(60);
@@ -425,14 +429,11 @@ namespace VoiceActing
         }
 
 
-        /*private IEnumerator WaitTextLastLine()
+        private IEnumerator WaitTextLastLine()
         {
-            int time = 60;
-            while (time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
+            StartCoroutine(FadeVolumeWithPitch(120));
+            yield return CoroutineAttack(10);
+            yield return WaitFrame(60);
             yield return null;
             while (textAppearManager.GetEndLine() == false)
             {
@@ -441,8 +442,10 @@ namespace VoiceActing
             if (enemyManager.GetHpPercentage() == 0)
             {
                 EndSession();
+                yield break;
             }
-        }*/
+            EndSession();
+        }
 
 
         public void NewTurn(bool reprint = false)
@@ -643,9 +646,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-            resultScreen.SetActive(true);
-            resultScreenManager.SetContract(contrat);
-            resultScreenManager.DrawResult(turnCount, killCount);
+            ShowResultScreen();
             yield return new WaitForSeconds(1);
             introBlackScreen.gameObject.SetActive(true);
             textIntro.SetActive(true);
@@ -721,6 +722,13 @@ namespace VoiceActing
             }
         }
 
+        public IEnumerator WaitSkillManager()
+        {
+            while (skillManager.InSkillAnimation() == true)
+            {
+                yield return null;
+            }
+        }
 
 
 
@@ -758,6 +766,25 @@ namespace VoiceActing
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             actorsManager.ShowHealthBar();
+        }
+
+        public void ForceSkill(SkillActorData skill)
+        {
+            skillManager.SetSkillText(actorsManager.GetCurrentActor(), skill);
+            skillManager.ActorSkillFeedback();
+            skillManager.ApplySkill(skill);
+        }
+
+        public void ChangeResultScreenEndScene()
+        {
+
+        }
+
+        public void ShowResultScreen()
+        {
+            resultScreen.SetActive(true);
+            resultScreenManager.SetContract(contrat);
+            resultScreenManager.DrawResult(turnCount, killCount);
         }
 
 

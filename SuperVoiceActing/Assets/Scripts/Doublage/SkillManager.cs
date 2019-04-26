@@ -69,7 +69,7 @@ namespace VoiceActing
         CharacterDialogueController doubleur;
 
         [SerializeField]
-        GameObject animationPotentiel;
+        Animator animationPotentiel;
         [SerializeField]
         GameObject animationSkillName;
         [SerializeField]
@@ -211,10 +211,7 @@ namespace VoiceActing
                             Debug.Log("FinalCheck");
                             if (CheckAttackType(emotions, skill.PhraseType))
                             {
-                                textMeshActorName.text = voiceActor.Name;
-                                textMeshSkillName.text = skill.SkillName;
-                                textMeshSkillDesc.text = skill.DescriptionBattle;
-                                inSkillAnimation = true;
+                                SetSkillText(voiceActor, skill);
                                 ActorSkillFeedback();
                                 ApplySkill(skill);
                                 return true; // On verra pour l'activation de compétence multiple plus tard
@@ -224,6 +221,14 @@ namespace VoiceActing
                 }
             }
             return false;
+        }
+
+        public void SetSkillText(VoiceActor va, SkillActorData skill)
+        {
+            textMeshActorName.text = va.Name;
+            textMeshSkillName.text = skill.SkillName;
+            textMeshSkillDesc.text = skill.DescriptionBattle;
+            animationPotentiel.SetBool("isMalus", skill.IsMalus);
         }
 
         private bool CheckAttackType(Emotion[] emotions, EmotionStat emotionCheck)
@@ -316,8 +321,8 @@ namespace VoiceActing
             {
                 case SkillTarget.VoiceActor:
                     // Damage
-                    currentHP = actorsManager.GetCurrentActorHP();
-                    damage = currentHP * (skill.HpGainPercentage / 100f);
+                    currentHP = actorsManager.GetCurrentActorHPMax();
+                    damage = currentHP * (-skill.HpGainPercentage / 100f);
                     damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
                     actorsManager.ActorTakeDamage((int) damage);
 
@@ -360,7 +365,7 @@ namespace VoiceActing
             {
                 case SkillTarget.VoiceActor:
                     // Damage
-                    currentHP = actorsManager.GetCurrentActorHP();
+                    currentHP = actorsManager.GetCurrentActorHPMax();
                     damage = currentHP * (skill.HpGainPercentage / 100f);
                     damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
                     actorsManager.ActorTakeDamage((int)-damage);
@@ -416,8 +421,10 @@ namespace VoiceActing
 
             // Activation Animation
             animationSkillName.SetActive(false);
-            animationPotentiel.SetActive(true);
+            animationPotentiel.gameObject.SetActive(true);
             textMeshSkillDesc.gameObject.SetActive(false);
+
+            inSkillAnimation = true;
         }
 
         // Appelé par animationPotentiel
@@ -537,7 +544,7 @@ namespace VoiceActing
             doubleur.ChangeOrderInLayer(-2);
 
             // Anim stop
-            animationPotentiel.SetActive(false);
+            animationPotentiel.gameObject.SetActive(false);
             particleSpeedLines.Stop();
 
             // Text

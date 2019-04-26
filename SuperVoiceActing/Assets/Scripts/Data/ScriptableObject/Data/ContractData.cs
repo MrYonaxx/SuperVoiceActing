@@ -425,6 +425,8 @@ namespace VoiceActing
         [Space]
         [Space]
 
+        [Title("Events")]
+
         [SerializeField]
         private DoublageEventData[] eventData;
         public DoublageEventData[] EventData
@@ -432,26 +434,20 @@ namespace VoiceActing
             get { return eventData; }
         }
 
+        [Space]
+        [Space]
+        [Space]
+        [SerializeField]
+        private StoryEventData eventEndContract;
+        public StoryEventData EventEndContract
+        {
+            get { return eventEndContract; }
+        }
+
+
 
         #endregion
 
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-
-
-        #endregion
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
-
-        
-        #endregion
 
     } // ContractData class
 

@@ -232,6 +232,15 @@ namespace VoiceActing
 
                 }
 
+                else if (currentNode is DoublageEventSkill)
+                {
+                    DoublageEventSkill node = (DoublageEventSkill) currentNode;
+                    if(node.Skill is SkillActorData)
+                        doublageManager.ForceSkill((SkillActorData) node.Skill);
+                    StartCoroutine(WaitForceSkill());
+
+                }
+
 
 
 
@@ -266,6 +275,7 @@ namespace VoiceActing
         // =========================================================================================
 
 
+
         private IEnumerator WaitCoroutine(float time)
         {
             while (time != 0)
@@ -273,6 +283,12 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
+            ExecuteEvent();
+        }
+
+        private IEnumerator WaitForceSkill()
+        {
+            yield return doublageManager.WaitSkillManager();
             ExecuteEvent();
         }
 

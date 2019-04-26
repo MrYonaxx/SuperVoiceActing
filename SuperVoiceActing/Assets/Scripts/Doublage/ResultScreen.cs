@@ -21,6 +21,10 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [Header("NextScene")]
+        [SerializeField]
+        private string nextScene = "Bureau";
+
 
         [Header("Text")]
         [SerializeField]
@@ -117,6 +121,11 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+        public void ChangeEndScene(string newEndScene)
+        {
+            nextScene = newEndScene;
+        }
+
         public void SetContract(Contract con)
         {
             contract = con;
@@ -475,7 +484,7 @@ namespace VoiceActing
                 yield return null;
             }
             yokaiDisco.volume = 0;
-            SceneManager.LoadScene("Bureau");
+            SceneManager.LoadScene(nextScene);
 
         }
 

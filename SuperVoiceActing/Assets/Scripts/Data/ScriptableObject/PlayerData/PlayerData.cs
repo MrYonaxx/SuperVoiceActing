@@ -43,7 +43,7 @@ namespace VoiceActing
 
 
 
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
+        [HorizontalGroup("Date")]
         [SerializeField]
         private int week;
         public int Week
@@ -51,7 +51,7 @@ namespace VoiceActing
             get { return week; }
         }
 
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50 )]
+        [HorizontalGroup("Date")]
         [SerializeField]
         private int month;
         public int Month
@@ -59,16 +59,7 @@ namespace VoiceActing
             get { return month; }
         }
 
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
-        [SerializeField]
-        private int season;
-        public int Season
-        {
-            get { return season; }
-        }
-
-
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
+        [HorizontalGroup("Date")]
         [SerializeField]
         private int year;
         public int Year
@@ -76,11 +67,20 @@ namespace VoiceActing
             get { return year; }
         }
 
+        /*[HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
+        [SerializeField]
+        private int season;
+        public int Season
+        {
+            get { return season; }
+        }*/
+
+
         ///////////////////////////////////////////////////////////////////////////////////
         [Space]
         [Space]
         [Space]
-        [Header("Battle Data")]
+        [Title("Battle Data")]
         [SerializeField]
         private int comboMax;
         public int ComboMax
@@ -103,7 +103,7 @@ namespace VoiceActing
         [Space]
         [Space]
         [Space]
-        [Header("Management Data")]
+        [Title("Management Data")]
         [SerializeField]
         private List<ContractData> contractAvailableDebug = new List<ContractData>();
 
@@ -151,6 +151,33 @@ namespace VoiceActing
             set { voiceActors = value; }
         }
 
+        [Space]
+        [Space]
+        [Space]
+        [Title("Events")]
+
+        [SerializeField]
+        private List<StoryEventData> nextStoryEvents;
+
+        public List<StoryEventData> NextStoryEvents
+        {
+            get { return nextStoryEvents; }
+            set { nextStoryEvents = value; }
+        }
+
+        /*[SerializeField]
+        private List<StoryEventData> eventAlea;
+
+        public List<StoryEventData> EventAlea
+        {
+            get { return eventAlea; }
+            set { eventAlea = value; }
+        }*/
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void CreateList()
         {
@@ -175,6 +202,7 @@ namespace VoiceActing
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
             }
+            nextStoryEvents = new List<StoryEventData>();
             //Debug.Log(voiceActors[0].Name);
 
         }

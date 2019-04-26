@@ -37,72 +37,72 @@ namespace VoiceActing
         public DoublageEventNode eventNode;
 
 
-        [HorizontalGroup("Hey")]
+        //[HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Text)]
         [SerializeField]
         [HideLabel]
         public DoublageEventText doublageEventText = null;
 
-
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.TextPopup)]
         [SerializeField]
         [HideLabel]
         public DoublageEventTextPopup doublageEventTextPopup = null;
 
-
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Viewport)]
         [SerializeField]
         [HideLabel]
         public DoublageEventViewport doublageEventViewport = null;
 
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Wait)]
         [SerializeField]
         [HideLabel]
         public DoublageEventWait doublageEventWait = null;
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Deck)]
         [SerializeField]
         [HideLabel]
         public DoublageEventDeck doublageEventDeck = null;
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Tuto)]
         [SerializeField]
         [HideLabel]
         public DoublageEventTutoPopup doublageTutoPopup = null;
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Sound)]
         [SerializeField]
         [HideLabel]
         public DoublageEventSound doublageEventSound = null;
 
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Load)]
         [SerializeField]
         [HideLabel]
         public DoublageEventLoad doublageEventLoad = null;
 
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Effect)]
         [SerializeField]
         [HideLabel]
         public DoublageEventEffect doublageEventEffect = null;
 
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Skill)]
         [SerializeField]
         [HideLabel]
         public DoublageEventSkill doublageEventSkill = null;
 
 
-        [HorizontalGroup("Hey")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.SetCharacter)]
         [SerializeField]
         [HideLabel]

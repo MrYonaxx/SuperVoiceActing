@@ -111,6 +111,11 @@ namespace VoiceActing
             return actors[indexCurrentActor].Hp;
         }
 
+        public int GetCurrentActorHPMax()
+        {
+            return actors[indexCurrentActor].HpMax;
+        }
+
         public List<Buff> GetBuffList()
         {
             return actors[indexCurrentActor].Buffs;

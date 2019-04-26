@@ -145,7 +145,7 @@ namespace VoiceActing
         {
             textMeshProName.text = name;
             textMeshProText.text = text;
-            mouthAnim.ActivateMouth();
+            //mouthAnim.ActivateMouth();
             StartCoroutine(PopupCoroutine());
         }
 
@@ -156,8 +156,8 @@ namespace VoiceActing
             float time = initialTime + textMeshProText.text.Length * letterTime;
             while (time != 0)
             {
-                if (time <= initialTime)
-                    mouthAnim.DesactivateMouth();
+                /*if (time <= initialTime)
+                    mouthAnim.DesactivateMouth();*/
                 time -= 1;
                 yield return null;
             }

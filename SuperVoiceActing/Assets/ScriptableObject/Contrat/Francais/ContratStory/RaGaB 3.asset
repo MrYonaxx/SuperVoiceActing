@@ -35,8 +35,8 @@ MonoBehaviour:
       lineMax: 0
       fanMin: 0
       fanMax: 0
-      atkMin: 12
-      atkMax: 12
+      atkMin: 10
+      atkMax: 10
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -61,6 +61,20 @@ MonoBehaviour:
         trust: 0
   producerMP: 4
   artificialIntelligence:
+  - memo: Bourghi met le gwak
+    startPhrase: 0
+    startAttack: 0
+    endAttack: 1
+    endPhrase: 0
+    conditions:
+    - condition: 4
+      mathOperator: 0
+      conditionValue: 0
+    - condition: 2
+      mathOperator: 0
+      conditionValue: 5
+    skills:
+    - {fileID: 11400000, guid: 5bf2c30020744554e9d5ba00ea21cc98, type: 2}
   - memo: "Bourghi n'attaque pas pour la derni\xE8re ligne"
     startPhrase: 0
     startAttack: 0
@@ -69,7 +83,7 @@ MonoBehaviour:
     conditions:
     - condition: 2
       mathOperator: 0
-      conditionValue: 6
+      conditionValue: 5
     skills:
     - {fileID: 0}
   - memo: 
@@ -235,3 +249,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 55ae74ccb2d8e0541ab2cf973e6e170d, type: 2}
   - {fileID: 11400000, guid: 10072378cd0505d4e9c2a16dd2be11dc, type: 2}
   - {fileID: 11400000, guid: 12367ccbc76913140bce5caf8b004dec, type: 2}
+  - {fileID: 11400000, guid: f0a9fde3b13ae554eb41515c4537d5f0, type: 2}
+  - {fileID: 11400000, guid: 944071a2aa93b02489e63a99db9175b4, type: 2}
+  - {fileID: 11400000, guid: e8f18d24d567949408fcddcf50c179f6, type: 2}
+  - {fileID: 11400000, guid: 5105e6ee5898f9a438bf49a96e6c1f23, type: 2}
+  eventEndContract: {fileID: 0}

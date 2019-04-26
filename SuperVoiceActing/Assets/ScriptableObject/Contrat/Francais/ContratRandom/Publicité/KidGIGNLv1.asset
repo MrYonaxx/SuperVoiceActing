@@ -22,8 +22,8 @@ MonoBehaviour:
   contractType: 3
   salaryMin: 800
   salaryMax: 1200
-  mixingMin: 15
-  mixingMax: 20
+  mixingMin: 0
+  mixingMax: 0
   weekMin: 3
   weekMax: 7
   expGain: 25
@@ -43,6 +43,8 @@ MonoBehaviour:
       lineMax: 20
       fanMin: 0
       fanMax: 20
+      atkMin: 0
+      atkMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -65,6 +67,8 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 3
+  producerMP: 0
+  artificialIntelligence: []
   textDataContract:
   - textDataCondition:
       all: 0
@@ -394,3 +398,4 @@ MonoBehaviour:
           trust: 0
   textData: []
   eventData: []
+  eventEndContract: {fileID: 0}
