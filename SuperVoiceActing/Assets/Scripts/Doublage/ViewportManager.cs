@@ -152,9 +152,12 @@ namespace VoiceActing
                 {
                     viewport.anchoredPosition = viewportSetting.Position;
                     if (viewportMask != null)
+                    {
                         viewportMask.sizeDelta = (initialSize * viewportSetting.ViewportSize);
-                    if (viewportOutline != null)
                         viewportOutline.sizeDelta = viewportSetting.ViewportSize;
+                        coroutineRotate = RotateViewport(viewportSetting.Rotation.z, 1);
+                        StartCoroutine(coroutineRotate);
+                    }
                 }
                 else
                 {

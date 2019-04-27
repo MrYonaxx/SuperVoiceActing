@@ -444,6 +444,29 @@ namespace VoiceActing
             get { return eventEndContract; }
         }
 
+        [SerializeField]
+        private bool changeBGM;
+        public bool ChangeBGM
+        {
+            get { return changeBGM; }
+        }
+
+        [ShowIf("changeBGM", true)]
+        [SerializeField]
+        private AudioClip battleTheme;
+        public AudioClip BattleTheme
+        {
+            get { return battleTheme; }
+        }
+
+        [ShowIf("changeBGM", true)]
+        [SerializeField]
+        private AudioClip victoryTheme;
+        public AudioClip VictoryTheme
+        {
+            get { return victoryTheme; }
+        }
+
 
 
         #endregion

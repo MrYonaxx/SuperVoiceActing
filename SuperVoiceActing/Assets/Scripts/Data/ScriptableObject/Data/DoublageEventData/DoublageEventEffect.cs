@@ -16,7 +16,8 @@ namespace VoiceActing
     {
         Flash,
         Negative,
-        BlurredVision
+        BlurredVision,
+        FadeTotal
     }
 
     [System.Serializable]

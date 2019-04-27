@@ -26,6 +26,10 @@ namespace VoiceActing
 
         [SerializeField]
         private bool music = false;
+        public bool Music
+        {
+            get { return music; }
+        }
 
         [HideIf("music", true)]
         [SerializeField]
@@ -37,10 +41,26 @@ namespace VoiceActing
 
         [ShowIf("music", true)]
         [SerializeField]
+        private bool stopMusic;
+        public bool StopMusic
+        {
+            get { return stopMusic; }
+        }
+
+        [ShowIf("music", true)]
+        [SerializeField]
         private AudioClip musicClip;
         public AudioClip MusicClip
         {
             get { return musicClip; }
+        }
+
+        [ShowIf("music", true)]
+        [SerializeField]
+        private int timeTransition;
+        public int TimeTransition
+        {
+            get { return timeTransition; }
         }
 
 

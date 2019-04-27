@@ -68,6 +68,10 @@ namespace VoiceActing
         protected int indexEvent = -1;
         protected DoublageEventData currentEvent;
 
+        bool clearText = false;
+        bool clearAllText = false;
+        CharacterDialogueController interloc;
+
         #endregion
 
         #region GettersSetters 
@@ -115,6 +119,21 @@ namespace VoiceActing
             }
             if (checkText == true)
                 return;
+
+            if(clearText == true)
+            {
+                clearText = false;
+                interloc.GetTextActing().NewPhrase(" ");
+            }
+
+            if(clearAllText == true)
+            {
+                clearAllText = false;
+                for (int i = 0; i < textEvent.Length; i++)
+                {
+                    textEvent[i].NewPhrase(" ");
+                }
+            }
             /*for (int i = 0; i < popups.Length; i++)
             {
                 popups[i].SetActive(false);
@@ -135,14 +154,21 @@ namespace VoiceActing
                 {
                     DoublageEventText node = (DoublageEventText)currentNode;
                     inputEvent.gameObject.SetActive(true);
-                    FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text);
-                    if(node.CameraID != 0)
+                    interloc = FindInterlocutor(node.Interlocuteur);
+                    if (node.CameraID != 0)
+                    {
                         viewports[node.CameraID].TextCameraEffect(node);
-                    /*if (playerData.Language == 1)
-                        FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.TextEng, node.CameraEffectID);
-                    else
-                        FindInterlocutor(node.Interlocuteur).SetPhraseTextacting(node.Text, node.CameraEffectID);*/
+                    }
+                    if (node.ChangeViewportText == true)
+                    {
+                        interloc.SetTextActing(textEvent[node.CameraID]);
+                    }
+                    clearAllText = node.ClearAllText;
+                    clearText = node.ClearText;
+                    interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
                 }
+
+
 
                 else if (currentNode is DoublageEventViewport)
                 {
@@ -152,6 +178,8 @@ namespace VoiceActing
                     ExecuteEvent();
                 }
 
+
+
                 else if(currentNode is DoublageEventTextPopup)
                 {
                     DoublageEventTextPopup node = (DoublageEventTextPopup)currentNode;
@@ -159,11 +187,15 @@ namespace VoiceActing
                     ExecuteEvent();
                 }
 
+
+
                 else if(currentNode is DoublageEventWait)
                 {
                     DoublageEventWait node = (DoublageEventWait)currentNode;
                     StartCoroutine(WaitCoroutine(node.Wait));
                 }
+
+
 
                 else if(currentNode is DoublageEventDeck)
                 {
@@ -172,6 +204,8 @@ namespace VoiceActing
                     StartCoroutine(WaitCoroutine(1));
                 }
 
+
+
                 else if(currentNode is DoublageEventTutoPopup)
                 {
                     DoublageEventTutoPopup node = (DoublageEventTutoPopup)currentNode;
@@ -179,12 +213,30 @@ namespace VoiceActing
                     inputEvent.gameObject.SetActive(true);
                 }
 
+
+
                 else if(currentNode is DoublageEventSound)
                 {
                     DoublageEventSound node = (DoublageEventSound)currentNode;
-                    //audioSourceKillPhrase.PlayOneShot(node.Audio);
+                    if (node.Music == true)
+                    {
+                        if (node.StopMusic == true)
+                        {
+                            AudioManager.Instance.StopMusic(node.TimeTransition);
+                        }
+                        else
+                        {
+                            AudioManager.Instance.PlayMusic(node.MusicClip, node.TimeTransition);
+                        }
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlaySound(node.SoundClip);
+                    }
                     ExecuteEvent();
                 }
+
+
 
                 else if(currentNode is DoublageEventLoad)
                 {
@@ -200,6 +252,8 @@ namespace VoiceActing
                         StartFlashback(node.StoryEventData);
                     }
                 }
+
+
 
                 else if(currentNode is DoublageEventSetCharacter)
                 {
@@ -224,6 +278,7 @@ namespace VoiceActing
                 }
 
 
+
                 else if (currentNode is DoublageEventEffect)
                 {
                     DoublageEventEffect node = (DoublageEventEffect)currentNode;
@@ -231,6 +286,8 @@ namespace VoiceActing
                     ExecuteEvent();
 
                 }
+
+
 
                 else if (currentNode is DoublageEventSkill)
                 {
@@ -242,6 +299,13 @@ namespace VoiceActing
                 }
 
 
+                else if (currentNode is DoublageEventMoveCharacter)
+                {
+                    DoublageEventMoveCharacter node = (DoublageEventMoveCharacter)currentNode;
+                    FindInterlocutor(node.Character).ModifyCharacter(node);
+                    ExecuteEvent();
+
+                }
 
 
             }

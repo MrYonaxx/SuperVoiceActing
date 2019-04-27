@@ -201,7 +201,11 @@ namespace VoiceActing
             currentText.ReprintText();
         }
 
-
+        // C'est pas clair
+        public void CalculateDamageColor(float damage)
+        {
+            currentText.CalculateDamageColor(damage);
+        }
 
         private IEnumerator WaitFrame(float time, float damage)
         {

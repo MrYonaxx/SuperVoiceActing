@@ -25,7 +25,8 @@ namespace VoiceActing
         Load,
         Skill,
         Effect,
-        SetCharacter
+        SetCharacter,
+        MoveCharacter
     }
 
     [System.Serializable]
@@ -108,6 +109,12 @@ namespace VoiceActing
         [HideLabel]
         public DoublageEventSetCharacter doublageEventSetCharacter = null;
 
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", DoublageEventNode.MoveCharacter)]
+        [SerializeField]
+        [HideLabel]
+        public DoublageEventMoveCharacter doublageEventMoveCharacter = null;
+
 
         public string GetBoxTitle()
         {
@@ -125,6 +132,12 @@ namespace VoiceActing
                     return eventNode.ToString(); //+ " : " + doublageEventSound..ToString();
                 case DoublageEventNode.SetCharacter:
                     return eventNode + " : " + doublageEventSetCharacter.Character.name;
+                case DoublageEventNode.MoveCharacter:
+                    return eventNode + " : " + doublageEventMoveCharacter.Character.name;
+                case DoublageEventNode.Effect:
+                    return eventNode + " : " + doublageEventEffect.EventEffect.ToString();
+                case DoublageEventNode.Skill:
+                    return eventNode + " : " + doublageEventSkill.Skill.name;
             }
             return null;
         }
@@ -238,6 +251,8 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageEventSkill;
                 case DoublageEventNode.SetCharacter:
                     return doublageEvent[index].dataBox.doublageEventSetCharacter;
+                case DoublageEventNode.MoveCharacter:
+                    return doublageEvent[index].dataBox.doublageEventMoveCharacter;
             }
             return null;
         }

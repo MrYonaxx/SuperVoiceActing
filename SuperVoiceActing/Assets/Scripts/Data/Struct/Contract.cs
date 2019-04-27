@@ -166,6 +166,23 @@ namespace VoiceActing
             get { return artificialIntelligence; }
         }
 
+
+
+
+        [SerializeField]
+        private AudioClip battleTheme;
+        public AudioClip BattleTheme
+        {
+            get { return battleTheme; }
+        }
+
+        [SerializeField]
+        private AudioClip victoryTheme;
+        public AudioClip VictoryTheme
+        {
+            get { return victoryTheme; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -215,6 +232,10 @@ namespace VoiceActing
 
             this.producerMP = data.ProducerMP;
             this.artificialIntelligence = data.ArtificialIntelligence;
+
+
+            this.victoryTheme = data.VictoryTheme;
+            this.battleTheme = data.BattleTheme;
 
             this.eventData = new List<DoublageEventData>(data.EventData.Length);
             for (int i = 0; i < data.EventData.Length; i++)

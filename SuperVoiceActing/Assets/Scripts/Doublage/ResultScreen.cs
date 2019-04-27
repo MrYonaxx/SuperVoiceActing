@@ -100,7 +100,7 @@ namespace VoiceActing
         [SerializeField]
         private Animator animatorEndStatScreen;
         [SerializeField]
-        private AudioSource yokaiDisco;
+        private SimpleSpectrum spectrum;
 
         private bool inAnimation = true;
         private int lineDefeated = 0;
@@ -129,7 +129,7 @@ namespace VoiceActing
         public void SetContract(Contract con)
         {
             contract = con;
-
+            spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic(); 
             actorsLevelUp = new bool[contract.VoiceActors.Count];
             for (int i = 0; i < actorsLevelUp.Length; i++)
             {
@@ -468,6 +468,7 @@ namespace VoiceActing
         {
             animatorEndStatScreen.gameObject.SetActive(true);
             animatorEndStatScreen.SetTrigger("End");
+            AudioManager.Instance.StopMusic(90);
             StartCoroutine(StopYokaiDisco());
 
 
@@ -476,14 +477,11 @@ namespace VoiceActing
         private IEnumerator StopYokaiDisco()
         {
             int time = 90;
-            float speed = yokaiDisco.volume / time;
             while(time != 0)
             {
                 time -= 1;
-                yokaiDisco.volume -= speed;
                 yield return null;
             }
-            yokaiDisco.volume = 0;
             SceneManager.LoadScene(nextScene);
 
         }

@@ -30,6 +30,11 @@ namespace VoiceActing
         [SerializeField]
         private MenuActorsManager actorsManagers;
 
+
+        [Header("Sound")]
+        [SerializeField]
+        private AudioClip defaultDekstopTheme;
+
         #endregion
 
         #region GettersSetters 
@@ -53,6 +58,7 @@ namespace VoiceActing
             actorsManagers.SetListActors(playerData.VoiceActors);
             contractManager.SetContractList(playerData.ContractAccepted);
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
+            AudioManager.Instance.PlayMusic(defaultDekstopTheme);
         }
 
 

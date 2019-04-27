@@ -60,6 +60,36 @@ namespace VoiceActing
             get { return textEng; }
         }
 
+
+        [HorizontalGroup("Hey8", LabelWidth = 100)]
+        [SerializeField]
+        private int cameraID;
+        public int CameraID
+        {
+            get { return cameraID; }
+        }
+        [HorizontalGroup("Hey8", LabelWidth = 100)]
+        [SerializeField]
+        private bool clearText;
+        public bool ClearText
+        {
+            get { return clearText; }
+        }
+        [HorizontalGroup("Hey8", LabelWidth = 100)]
+        [SerializeField]
+        private bool clearAllText;
+        public bool ClearAllText
+        {
+            get { return clearAllText; }
+        }
+        [HorizontalGroup("Hey8", LabelWidth = 100)]
+        [SerializeField]
+        private bool changeViewportText;
+        public bool ChangeViewportText
+        {
+            get { return changeViewportText; }
+        }
+
         [Title("Position")]
         [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
@@ -141,12 +171,8 @@ namespace VoiceActing
             get { return timeEnd2; }
         }
 
-        [SerializeField]
-        private int cameraID;
-        public int CameraID
-        {
-            get { return cameraID; }
-        }
+
+
 
     } // DoublageEventText class
 

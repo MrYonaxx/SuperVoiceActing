@@ -16,8 +16,19 @@ namespace VoiceActing
     public class AudioManager : MonoBehaviour
     {
 
+        [SerializeField]
+        private float musicVolumeMax = 1;
+        [SerializeField]
+        private float soundVolumeMax = 1;
+
+        [SerializeField]
+        private AudioSource audioMusic;
+        [SerializeField]
+        private AudioSource audioSound;
+
+
+
         public static AudioManager Instance;
-        private AudioSource audio;
 
         void Awake()
         {
@@ -27,54 +38,94 @@ namespace VoiceActing
             }
             else
             {
-                audio = GetComponent<AudioSource>();
                 Instance = this;
                 DontDestroyOnLoad(this);
             }
         }
 
+
+
+        public AudioSource GetAudioSourceMusic()
+        {
+            return audioMusic;
+        }
+
+
         // ===========================================================================================
         // Musique
 
-        public void PlayMusic(AudioClip music)
+        public void PlayMusic(AudioClip music, int timeFade = 1)
         {
-            audio.clip = music;
-            audio.Play();
-            StartCoroutine(PlayMusicCoroutine(audio));
+            audioMusic.clip = music;
+            audioMusic.Play();
+            StartCoroutine(PlayMusicCoroutine(timeFade));
         }
 
-        private IEnumerator PlayMusicCoroutine(AudioSource audio)
+        private IEnumerator PlayMusicCoroutine(int timeFade)
         {
-            while (audio.volume < 1)
+            if (timeFade <= 0)
+                timeFade = 1;
+            float speedFade = (musicVolumeMax - audioMusic.volume) / timeFade;
+            while (timeFade != 0)
             {
-                audio.volume += 0.01f;
+                timeFade -= 1;
+                audioMusic.volume += speedFade;
                 yield return null;
             }
-            audio.volume = 1;
+            audioMusic.volume = musicVolumeMax;
         }
 
-        public void StopMusic()
+
+
+
+        public void StopMusic(int timeFade = 1)
         {
-            StartCoroutine(StopMusicCoroutine(audio));
+            StartCoroutine(StopMusicCoroutine(timeFade));
         }
 
-        private IEnumerator StopMusicCoroutine(AudioSource audio)
+        private IEnumerator StopMusicCoroutine(int timeFade)
         {
-            while(audio.volume > 0)
+            if (timeFade <= 0)
+                timeFade = 1;
+            float speedFade = audioMusic.volume / timeFade;
+            while (timeFade != 0)
             {
-                audio.volume -= 0.01f;
+                timeFade -= 1;
+                audioMusic.volume -= speedFade;
                 yield return null;
             }
-            audio.volume = 0;
+            audioMusic.volume = 0;
+        }
+
+
+
+        public void StopMusicWithScratch(int time)
+        {
+            StartCoroutine(FadeVolumeWithPitch(time));
+        }
+
+        private IEnumerator FadeVolumeWithPitch(int time)
+        {
+            float speed = audioMusic.volume / time;
+            audioMusic.pitch += 1;
+            while (time != 0)
+            {
+                time -= 1;
+                audioMusic.volume -= speed;
+                yield return null;
+                if (audioMusic.pitch >= 1)
+                    audioMusic.pitch -= 0.01f;
+            }
+            audioMusic.pitch = 1;
         }
 
         // ===========================================================================================
         // Son
 
 
-        public void PlaySound(AudioClip sound)
+        public void PlaySound(AudioClip sound, float volumeMultiplier = 1)
         {
-            audio.PlayOneShot(sound);
+            audioSound.PlayOneShot(sound, volumeMultiplier);
         }
 
 

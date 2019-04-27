@@ -15,7 +15,15 @@ namespace VoiceActing
     public enum EmotionNPC
     {
         Normal,
-        Joyeux
+        Joyeux,
+        Triste,
+        Colere,
+        Degout,
+        Surprise,
+        Douceur,
+        Peur,
+        Confiance,
+        Special
     }
 
     /// <summary>
@@ -38,7 +46,18 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        Sprite[] spriteJoy = null;
+        private Sprite[] spriteJoy;
+        public Sprite[] SpriteJoy
+        {
+            get { return spriteJoy; }
+        }
+
+        [SerializeField]
+        private Sprite[] spriteSpecial;
+        public Sprite[] SpriteSpecial
+        {
+            get { return spriteSpecial; }
+        }
 
         public string GetName()
         {

@@ -29,10 +29,6 @@ namespace VoiceActing
         [SerializeField]
         private GameObject fond;
 
-
-        [SerializeField]
-        private AudioSource music;
-
         [SerializeField]
         GameObject particles;
 
@@ -60,19 +56,9 @@ namespace VoiceActing
             camBureau.TransitionDoublage();
             fond.SetActive(true);
             animatorCamera.enabled = true;
-            StartCoroutine(FadeMusic());
+            AudioManager.Instance.StopMusic(120);
         }
 
-        private IEnumerator FadeMusic(int time = 120)
-        {
-            float speed = music.volume / time;
-            while (time != 0)
-            {
-                time -= 1;
-                music.volume -= speed;
-                yield return null;
-            }
-        }
 
 
         

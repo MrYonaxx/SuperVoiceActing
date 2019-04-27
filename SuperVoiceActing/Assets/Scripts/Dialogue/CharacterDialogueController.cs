@@ -21,7 +21,6 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [Header("CharacterData")]
-
         [SerializeField]
         StoryCharacterData storyCharacterData;
         [SerializeField]
@@ -31,8 +30,6 @@ namespace VoiceActing
 
 
         [Header("Mouth")]
-        /*[SerializeField]
-        MouthAnimation mouth;*/
         [SerializeField]
         float speedMouth = 5;
         [SerializeField]
@@ -42,14 +39,11 @@ namespace VoiceActing
 
 
         [Header("Phase d'Acting")]
-
         [SerializeField]
         private TextPerformanceAppear textActing;
-        /*[SerializeField]
-        private CameraController camera;*/
 
 
-
+        private Sprite[] currentSprites;
 
         IEnumerator mouthCoroutine = null;
 
@@ -62,17 +56,43 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public TextPerformanceAppear GetTextActing()
+        {
+            return textActing;
+        }
+
         public void SetPhraseTextacting(string newText)
         {
             textActing.NewMouthAnim(this);
             textActing.NewPhrase(newText);
         }
 
+        public void SetPhraseEventTextacting(string newText, EmotionNPC emotionNPC)
+        {
+            ChangeEmotion(emotionNPC);
+            textActing.NewMouthAnim(this);
+            textActing.NewPhrase(newText);
+        }
+
+        public void ChangeEmotion(EmotionNPC emotionNPC)
+        {
+            switch(emotionNPC)
+            {
+                case EmotionNPC.Normal:
+                    currentSprites = storyCharacterData.SpriteNormal;
+                    break;
+                case EmotionNPC.Special:
+                    currentSprites = storyCharacterData.SpriteSpecial;
+                    break;
+            }
+        }
+
         public void SetStoryCharacterData(StoryCharacterData sprites)
         {
             storyCharacterData = sprites;
+            currentSprites = storyCharacterData.SpriteNormal;
             if (spriteRenderer != null)
-                spriteRenderer.sprite = sprites.SpriteNormal[0];
+                spriteRenderer.sprite = currentSprites[0];
         }
 
         public void SetTextActing(TextPerformanceAppear textMeshPro)
@@ -114,7 +134,7 @@ namespace VoiceActing
                 StopCoroutine(mouthCoroutine);
 
             if (spriteRenderer != null)
-                spriteRenderer.sprite = storyCharacterData.SpriteNormal[0];
+                spriteRenderer.sprite = currentSprites[0];
 
             if (soundVisualizer != null)
                 soundVisualizer.StopVisualizer();
@@ -126,7 +146,7 @@ namespace VoiceActing
                 StopCoroutine(mouthCoroutine);
 
             if (spriteRenderer != null)
-                spriteRenderer.sprite = storyCharacterData.SpriteNormal[0];
+                spriteRenderer.sprite = currentSprites[0];
 
             if (soundVisualizer != null)
                 soundVisualizer.StopVisualizer();
@@ -144,7 +164,7 @@ namespace VoiceActing
                 if (speed == 0)
                 {
                     i += Random.Range(1, 2);
-                    if (i >= storyCharacterData.SpriteNormal.Length)
+                    if (i >= currentSprites.Length)
                         i = 0;
                     changeMouthSprite(i);
                     speed = speedMouth;
@@ -161,8 +181,8 @@ namespace VoiceActing
                 voice.pitch = Random.Range(0.95f, 1.05f);
                 voice.Play();
             }
-            if (index < storyCharacterData.SpriteNormal.Length)
-                spriteRenderer.sprite = storyCharacterData.SpriteNormal[index];
+            if (index < currentSprites.Length)
+                spriteRenderer.sprite = currentSprites[index];
         }
 
 
@@ -199,7 +219,11 @@ namespace VoiceActing
             }
         }
 
-
+        public void ModifyCharacter(DoublageEventMoveCharacter data)
+        {
+            ChangeOrderInLayer(data.OrderLayer);
+            ChangeTint(data.Color);
+        }
 
         public void ChangeTint(Color newColor)
         {
