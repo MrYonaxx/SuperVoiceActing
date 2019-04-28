@@ -8,6 +8,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -21,6 +23,9 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+
+        [SerializeField]
+        private PlayerData playerData;
 
         // [AssetList(Path = "Plugins/Sirenix/")] pour chopper tout les asset d'un repertoire et remplir automatiquement un truc
         [SerializeField]
@@ -49,6 +54,23 @@ namespace VoiceActing
         [SerializeField]
         MenuContractPreparation menuContractPreparation;
 
+        [Header("MenuInfo")]
+        [SerializeField]
+        TextMeshProUGUI textMoney;
+
+        [SerializeField]
+        TextMeshProUGUI textWeek;
+        [SerializeField]
+        TextMeshProUGUI textMonth;
+        [SerializeField]
+        TextMeshProUGUI textYear;
+        [SerializeField]
+        Image imageSeasonOutline;
+        [SerializeField]
+        Image imageSeason;
+
+        [SerializeField]
+        Sprite[] spriteSeason;
 
         #endregion
 
@@ -89,6 +111,33 @@ namespace VoiceActing
             DrawAvailableContract();
         }
 
+        public void DrawMoney()
+        {
+            textMoney.text = playerData.Money.ToString();
+        }
+
+        public void DrawDate()
+        {
+            textWeek.text = playerData.Date.week.ToString();
+            textMonth.text = playerData.MonthName[playerData.Date.month - 1];
+            textYear.text = playerData.Date.year.ToString();
+            switch(playerData.Season)
+            {
+                case Season.Spring:
+                    imageSeason.sprite = spriteSeason[0];
+                    break;
+                case Season.Summer:
+                    imageSeason.sprite = spriteSeason[1];
+                    break;
+                case Season.Autumn:
+                    imageSeason.sprite = spriteSeason[2];
+                    break;
+                case Season.Winter:
+                    imageSeason.sprite = spriteSeason[3];
+                    break;
+            }
+            imageSeasonOutline.sprite = imageSeason.sprite;
+        }
 
         public void DrawAvailableContract()
         {

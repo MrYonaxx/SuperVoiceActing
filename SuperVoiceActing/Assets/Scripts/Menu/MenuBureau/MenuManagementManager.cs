@@ -55,6 +55,7 @@ namespace VoiceActing
         private void Start()
         {
             playerData.CreateList();
+            contractManager.DrawDate();
             actorsManagers.SetListActors(playerData.VoiceActors);
             contractManager.SetContractList(playerData.ContractAccepted);
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);

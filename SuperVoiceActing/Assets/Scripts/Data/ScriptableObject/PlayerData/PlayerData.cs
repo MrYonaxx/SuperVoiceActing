@@ -12,6 +12,30 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
+
+    public enum Season
+    {
+        Spring,
+        Summer,
+        Autumn,
+        Winter
+    }
+
+
+    public struct Date
+    {
+        public int week;
+        public int month;
+        public int year;
+
+        public Date(int w, int m, int y)
+        {
+            week = w;
+            month = m;
+            year = y;
+        }
+    }
+
     /// <summary>
     /// Definition of the PlayerData class
     /// </summary>
@@ -28,10 +52,7 @@ namespace VoiceActing
         }
 
         [Space]
-        [Space]
-        [Space]
-        [Space]
-        [Space]
+
         [SerializeField]
         private int language;
 
@@ -40,10 +61,40 @@ namespace VoiceActing
             get { return language; }
         }
 
+        [Space]
+        [Space]
+        [Space]
+        [Title("Ressources")]
+
+        [SerializeField]
+        private int startMoney;
+        public int StartMoney
+        {
+            get { return startMoney; }
+        }
+
+        [SerializeField]
+        private int startMaintenance;
+        public int StartMaintenance
+        {
+            get { return startMaintenance; }
+        }
+
+        [Space]
+        [Space]
+        [Space]
+        [Title("Calendar")]
 
 
 
-        [HorizontalGroup("Date")]
+        [SerializeField]
+        private Season startSeason;
+        public Season StartSeason
+        {
+            get { return startSeason; }
+        }
+
+        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
         [SerializeField]
         private int week;
         public int Week
@@ -51,7 +102,7 @@ namespace VoiceActing
             get { return week; }
         }
 
-        [HorizontalGroup("Date")]
+        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
         [SerializeField]
         private int month;
         public int Month
@@ -59,7 +110,7 @@ namespace VoiceActing
             get { return month; }
         }
 
-        [HorizontalGroup("Date")]
+        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
         [SerializeField]
         private int year;
         public int Year
@@ -67,14 +118,52 @@ namespace VoiceActing
             get { return year; }
         }
 
-        /*[HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
-        [SerializeField]
-        private int season;
-        public int Season
-        {
-            get { return season; }
-        }*/
 
+        [Space]
+        [FoldoutGroup("Configuration")]
+        [SerializeField]
+        private int springDate;
+        public int SpringDate
+        {
+            get { return springDate; }
+        }
+        [FoldoutGroup("Configuration")]
+        [SerializeField]
+        private int summerDate;
+        public int SummerDate
+        {
+            get { return summerDate; }
+        }
+        [FoldoutGroup("Configuration")]
+        [SerializeField]
+        private int autumnDate;
+        public int AutumnDate
+        {
+            get { return autumnDate; }
+        }
+        [FoldoutGroup("Configuration")]
+        [SerializeField]
+        private int winterDate;
+        public int WinterDate
+        {
+            get { return winterDate; }
+        }
+        //[FoldoutGroup("Configuration")]
+        [HorizontalGroup("Configuration/hey")]
+        [SerializeField]
+        private string[] monthName;
+        public string[] MonthName
+        {
+            get { return monthName; }
+        }
+        //[FoldoutGroup("Configuration")]
+        [HorizontalGroup("Configuration/hey")]
+        [SerializeField]
+        private int[] monthDate;
+        public int[] MonthDate
+        {
+            get { return monthDate; }
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////
         [Space]
@@ -111,46 +200,9 @@ namespace VoiceActing
         private List<VoiceActorData> voiceActorsDebug = new List<VoiceActorData>();
 
 
-        // Contrat en cours à doubler
-        //[SerializeField]
-        private Contract currentContract;
 
-        public Contract CurrentContract
-        {
-            get { return currentContract; }
-            set { currentContract = value; }
-        }
 
-        // Contrat accepté
-        [SerializeField]
-        private List<Contract> contractAccepted;// = new List<Contract>();
-
-        public List<Contract> ContractAccepted
-        {
-            get { return contractAccepted; }
-            set { contractAccepted = value; }
-        }
-
-        // Contrat Disponible 
-        [SerializeField]
-        private List<Contract> contractAvailable;// = new List<Contract>();
-
-        public List<Contract> ContractAvailable
-        {
-            get { return contractAvailable; }
-            set { contractAvailable = value; }
-        }
-
-        // Liste des Acteurs
-        [SerializeField]
-        private List<VoiceActor> voiceActors;// = new List<VoiceActor>();
-
-        public List<VoiceActor> VoiceActors
-        {
-            get { return voiceActors; }
-            set { voiceActors = value; }
-        }
-
+        /////////////////////////////////////////////////////////////////////////////////// 
         [Space]
         [Space]
         [Space]
@@ -165,15 +217,86 @@ namespace VoiceActing
             set { nextStoryEvents = value; }
         }
 
-        /*[SerializeField]
-        private List<StoryEventData> eventAlea;
 
-        public List<StoryEventData> EventAlea
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        [Title("Debug")]
+
+        // Contrat en cours à doubler
+        //[SerializeField]
+        private Contract currentContract;
+        public Contract CurrentContract
         {
-            get { return eventAlea; }
-            set { eventAlea = value; }
-        }*/
+            get { return currentContract; }
+            set { currentContract = value; }
+        }
 
+        // Contrat accepté
+        [SerializeField]
+        private List<Contract> contractAccepted;
+        public List<Contract> ContractAccepted
+        {
+            get { return contractAccepted; }
+            set { contractAccepted = value; }
+        }
+
+        // Contrat Disponible 
+        [SerializeField]
+        private List<Contract> contractAvailable;
+        public List<Contract> ContractAvailable
+        {
+            get { return contractAvailable; }
+            set { contractAvailable = value; }
+        }
+
+        // Liste des Acteurs
+        [SerializeField]
+        private List<VoiceActor> voiceActors;
+        public List<VoiceActor> VoiceActors
+        {
+            get { return voiceActors; }
+            set { voiceActors = value; }
+        }
+
+        [Title("Debug")]
+        [SerializeField]
+        private int maintenance;
+        public int Maintenance
+        {
+            get { return maintenance; }
+        }
+
+        [SerializeField]
+        private int money;
+        public int Money
+        {
+            get { return money; }
+        }
+
+        [SerializeField]
+        private Date date;
+        public Date Date
+        {
+            get { return date; }
+        }
+
+        [SerializeField]
+        private Season season;
+        public Season Season
+        {
+            get { return season; }
+        }
 
 
 
@@ -201,10 +324,78 @@ namespace VoiceActing
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
+                CreateNewData();
             }
-            nextStoryEvents = new List<StoryEventData>();
+            else
+            {
+                NextWeek();
+            }
+
             //Debug.Log(voiceActors[0].Name);
 
+        }
+
+
+        public void CreateNewData()
+        {
+            nextStoryEvents = new List<StoryEventData>();
+            date = new Date(week, month, year);
+            season = StartSeason;
+            money = startMoney;
+            maintenance = startMaintenance;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public void PayMaintenance()
+        {
+            money -= maintenance;
+        }
+
+        public void NextWeek()
+        {
+            date.week += 1;
+            if (date.week > 52)
+            {
+                date.week = 1;
+                date.month = 1;
+                date.year += 1;
+            }
+            CheckMonth();
+            CheckSeason();
+        }
+
+
+        public void CheckMonth()
+        {
+            if(date.week == monthDate[date.month-1])
+            {
+                date.month += 1;
+                PayMaintenance();
+            }
+        }
+
+        public void CheckSeason()
+        {
+            switch(season)
+            {
+                case Season.Spring:
+                    if(date.week == summerDate)
+                        season = Season.Summer;
+                    break;
+                case Season.Summer:
+                    if (date.week == autumnDate)
+                        season = Season.Autumn;
+                    break;
+                case Season.Autumn:
+                    if (date.week == winterDate)
+                        season = Season.Winter;
+                    break;
+                case Season.Winter:
+                    if (date.week == springDate)
+                        season = Season.Spring;
+                    break;
+            }
         }
 
 
