@@ -49,6 +49,10 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textInfoMixage;
         [SerializeField]
+        TextMeshProUGUI textInfoTotalLine;
+        [SerializeField]
+        TextMeshProUGUI textInfoTotalFan;
+        [SerializeField]
         Animator animatorInfoCharacter;
         [SerializeField]
         PanelContractCharacter[] infoRoles;
@@ -183,17 +187,23 @@ namespace VoiceActing
             textInfoLine.text = listContractAvailable[indexSelected].TotalLine.ToString();
             textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
 
+ 
+
             if(infoRoles.Length < listContractAvailable[indexSelected].Characters.Count)
             {
                 return;
             }
 
+            int sumLine = 0;
+            int sumFan = 0;
             for(int i = 0; i < infoRoles.Length; i++)
             {
                 if (i < listContractAvailable[indexSelected].Characters.Count)
                 {
                     infoRoles[i].gameObject.SetActive(true);
                     infoRoles[i].DrawPanel(listContractAvailable[indexSelected].Characters[i]);
+                    sumLine += listContractAvailable[indexSelected].Characters[i].Line;
+                    sumFan += listContractAvailable[indexSelected].Characters[i].Fan;
                 }
                 else
                 {
@@ -201,6 +211,8 @@ namespace VoiceActing
                 }
             }
 
+            textInfoTotalLine.text = sumLine.ToString();
+            textInfoTotalFan.text = sumFan.ToString();
             /*for (int i = 0; i < listContractAvailable[indexSelected].Characters.Count; i++)
                 infoRoles[i].DrawPanel(listContractAvailable[indexSelected].Characters[i]);*/
 
