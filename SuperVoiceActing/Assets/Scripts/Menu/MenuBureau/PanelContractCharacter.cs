@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -26,6 +27,8 @@ namespace VoiceActing
         TextMeshProUGUI textRoleFan;
         [SerializeField]
         TextMeshProUGUI textRoleLine;
+        [SerializeField]
+        TextMeshProUGUI textRoleCadence;
 
         [Header("")]
 
@@ -41,6 +44,9 @@ namespace VoiceActing
 
         [SerializeField]
         Animator[] animatorsStat;
+
+        [SerializeField]
+        RectTransform[] imageSlider;
 
 
 
@@ -66,6 +72,7 @@ namespace VoiceActing
             textRoleName.text = role.Name;
             textRoleFan.text = role.Fan.ToString();
             textRoleLine.text = role.Line.ToString();
+            textRoleCadence.text = role.Attack.ToString();
 
             int[] bestValues = new int[8];
 
@@ -100,30 +107,45 @@ namespace VoiceActing
                 {
                     if (bestValues[i] == role.BestStat || bestValues[i] == role.SecondBestStat)
                     {
-                        animatorsStat[i].enabled = true;
+                        //animatorsStat[i].enabled = true;
                         textStats[i].color = colorBest;
                     }
                     else
                     {
-                        animatorsStat[i].enabled = false;
+                        //animatorsStat[i].enabled = false;
                         textStats[i].color = colorNormal;
                     }
                 }
                 else
                 {
-                    animatorsStat[i].enabled = false;
+                    //animatorsStat[i].enabled = false;
                     textStats[i].color = colorNormal;
                 }
             }
 
             textStats[0].text = role.CharacterStat.Joy.ToString();
+            imageSlider[0].transform.localScale = new Vector3(role.CharacterStat.Joy / 100f, 1, 1);
+
             textStats[1].text = role.CharacterStat.Sadness.ToString();
+            imageSlider[1].transform.localScale = new Vector3(role.CharacterStat.Sadness / 100f, 1, 1);
+
             textStats[2].text = role.CharacterStat.Disgust.ToString();
+            imageSlider[2].transform.localScale = new Vector3(role.CharacterStat.Disgust / 100f, 1, 1);
+
             textStats[3].text = role.CharacterStat.Anger.ToString();
+            imageSlider[3].transform.localScale = new Vector3(role.CharacterStat.Anger / 100f, 1, 1);
+
             textStats[4].text = role.CharacterStat.Surprise.ToString();
+            imageSlider[4].transform.localScale = new Vector3(role.CharacterStat.Surprise / 100f, 1, 1);
+
             textStats[5].text = role.CharacterStat.Sweetness.ToString();
+            imageSlider[5].transform.localScale = new Vector3(role.CharacterStat.Sweetness / 100f, 1, 1);
+
             textStats[6].text = role.CharacterStat.Fear.ToString();
+            imageSlider[6].transform.localScale = new Vector3(role.CharacterStat.Fear / 100f, 1, 1);
+
             textStats[7].text = role.CharacterStat.Trust.ToString();
+            imageSlider[7].transform.localScale = new Vector3(role.CharacterStat.Trust / 100f, 1, 1);
         }
         
         #endregion

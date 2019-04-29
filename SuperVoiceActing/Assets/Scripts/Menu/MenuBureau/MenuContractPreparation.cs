@@ -32,6 +32,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textContractSalaire;
         [SerializeField]
+        TextMeshProUGUI textContractTotalCost;
+        [SerializeField]
         TextMeshProUGUI textContractLine;
         [SerializeField]
         TextMeshProUGUI textContractLineMax;
@@ -47,6 +49,8 @@ namespace VoiceActing
         TextMeshProUGUI textRoleFan;
         [SerializeField]
         TextMeshProUGUI textRoleLine;
+        [SerializeField]
+        TextMeshProUGUI textRoleCadence;
 
         [Header("InfoActeur")]
         [SerializeField]
@@ -57,6 +61,8 @@ namespace VoiceActing
         TextMeshProUGUI textActorFan;
         [SerializeField]
         TextMeshProUGUI textActorCost;
+        [SerializeField]
+        TextMeshProUGUI textActorCadence;
         [SerializeField]
         TextMeshProUGUI textActorLevel;
         [SerializeField]
@@ -165,6 +171,7 @@ namespace VoiceActing
             menuActorsManager.DrawAuditionTitle(contract.Name);
             DrawContractInfo();
             DrawButtons();
+            DrawTotalCost();
             CheckButtonInSession();
         }
 
@@ -207,6 +214,17 @@ namespace VoiceActing
             DrawRoleInfo();
         }
 
+        private void DrawTotalCost()
+        {
+            int sum = 0;
+            for(int i = 0; i < currentContract.VoiceActors.Count; i++)
+            {
+                if(currentContract.VoiceActors[i] != null) 
+                    sum += (currentContract.VoiceActors[i].Price * currentContract.Characters[i].Line);
+            }
+            textContractTotalCost.text = sum.ToString();
+        }
+
         private void DrawRoleInfo()
         {
             // bug si appelé dans OnEnable(), les buttons sont encore considéré inactive
@@ -214,7 +232,8 @@ namespace VoiceActing
 
             textRoleName.text = currentContract.Characters[indexSelected].Name;
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
-            textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();          
+            textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
+            textRoleCadence.text = currentContract.Characters[indexSelected].Attack.ToString();
 
             if (currentContract.VoiceActors[indexSelected] == null)
             {
@@ -237,6 +256,7 @@ namespace VoiceActing
                 textActorName.text = currentContract.VoiceActors[indexSelected].Name;
                 textActorFan.text = currentContract.VoiceActors[indexSelected].Fan.ToString();
                 textActorCost.text = currentContract.VoiceActors[indexSelected].Price.ToString();
+                textActorCadence.text = "-0 %";
                 textActorLevel.text = currentContract.VoiceActors[indexSelected].Level.ToString();
                 imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].ActorSprite;
             }
@@ -350,6 +370,7 @@ namespace VoiceActing
             DrawRoleInfo();
             animatorFeedbackSpriteAudition.SetTrigger("Feedback");
             listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
+            DrawTotalCost();
             CheckButtonInSession();
         }
 
