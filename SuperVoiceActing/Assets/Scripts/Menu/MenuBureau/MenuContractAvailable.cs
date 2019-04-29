@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
@@ -32,6 +33,8 @@ namespace VoiceActing
         private RectTransform buttonListTransform;
         [SerializeField]
         private Animator animatorSelection;
+        [SerializeField]
+        private RectTransform rectTransformSelection;
         [SerializeField]
         private TextMeshProUGUI textMeshSelection;
 
@@ -363,13 +366,14 @@ namespace VoiceActing
         {
             int time = 10;
             int ratio = indexLimit - scrollSize;
-            float speed = (buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time;
+            Vector2 speed = new Vector2(0,(buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time);
             while (time != 0)
             {
-                buttonListTransform.anchoredPosition -= new Vector2(0, speed);
+                buttonListTransform.anchoredPosition -= speed;
                 time -= 1;
                 yield return null;
             }
+            //animatorSelection.gameObject.tra
 
         }
 

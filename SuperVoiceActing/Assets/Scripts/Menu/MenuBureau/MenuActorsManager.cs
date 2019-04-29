@@ -244,12 +244,20 @@ namespace VoiceActing
             for(int i = 0; i < actorsList.Count; i++)
             {
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level);
+                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax);
             }
             if (indexActorSelected < actorsList.Count)
                 StartCoroutine(WaitEndOfFrame());
 
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
+        }
+
+        public void RedrawActorsButton()
+        {
+            for (int i = 0; i < actorsList.Count; i++)
+            {
+                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax);
+            }
         }
 
         private IEnumerator WaitEndOfFrame()

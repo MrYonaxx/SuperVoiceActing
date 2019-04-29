@@ -363,6 +363,8 @@ namespace VoiceActing
             }
             CheckMonth();
             CheckSeason();
+            ContractNextWeek();
+            VoiceActorWork();
         }
 
 
@@ -395,6 +397,29 @@ namespace VoiceActing
                     if (date.week == springDate)
                         season = Season.Spring;
                     break;
+            }
+        }
+
+        public void ContractNextWeek()
+        {
+            for(int i = 0; i < contractAccepted.Count; i++)
+            {
+                if (contractAccepted[i] != null)
+                {
+                    contractAccepted[i].WeekRemaining -= 1;
+                    if (contractAccepted[i].WeekRemaining == 0)
+                    {
+                        contractAccepted.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
+        public void VoiceActorWork()
+        {
+            for (int i = 0; i < voiceActors.Count; i++)
+            {
+                voiceActors[i].WorkForWeek();
             }
         }
 

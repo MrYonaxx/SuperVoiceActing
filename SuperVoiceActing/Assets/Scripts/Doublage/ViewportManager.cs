@@ -50,7 +50,7 @@ namespace VoiceActing
         [SerializeField]
         EffectManager effectManager;
 
-        private float speedViewport = 1.05f;
+        private float speedViewport = 1.01f;//1.05f;
         Vector2 initialSize;
 
         [Space]
@@ -161,7 +161,7 @@ namespace VoiceActing
                 }
                 else
                 {
-                    coroutineMove = MoveViewport(viewportSetting.Position);
+                    coroutineMove = MoveViewport(viewportSetting.Position, speedViewport + (0.4f * (viewportSetting.Time / 60)));
                     StartCoroutine(coroutineMove);
                     if (viewportMask != null)
                     {
@@ -191,20 +191,20 @@ namespace VoiceActing
 
 
 
-        private IEnumerator MoveViewport(Vector2 targetPosition)
+        private IEnumerator MoveViewport(Vector2 targetPosition, float speedView)
         {
             float transformX = viewport.anchoredPosition.x - targetPosition.x;
             float transformY = viewport.anchoredPosition.y - targetPosition.y;
-            Vector2 speed = new Vector2(transformX - (transformX / speedViewport),
-                                        transformY - (transformY / speedViewport));
+            Vector2 speed = new Vector2(transformX - (transformX / speedView),
+                                        transformY - (transformY / speedView));
 
             while (Mathf.Abs(transformX) > 1 || Mathf.Abs(transformY) > 1)
             {
                 viewport.anchoredPosition -= speed;
-                transformX /= speedViewport;
-                transformY /= speedViewport;
-                speed = new Vector2(transformX - (transformX / speedViewport),
-                                    transformY - (transformY / speedViewport));
+                transformX /= speedView;
+                transformY /= speedView;
+                speed = new Vector2(transformX - (transformX / speedView),
+                                    transformY - (transformY / speedView));
                 yield return null;
             }
             viewport.anchoredPosition = targetPosition;

@@ -28,6 +28,9 @@ namespace VoiceActing
         TextMeshProUGUI actorLevel;
 
         [SerializeField]
+        RectTransform actorHealth;
+
+        [SerializeField]
         Image actorImage;
 
         [SerializeField]
@@ -54,10 +57,11 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawActor(string name, int level)
+        public void DrawActor(string name, int level, float hpPercentage)
         {
             actorName.text = name;
             actorLevel.text = "Lv." + level;
+            actorHealth.transform.localScale = new Vector3(hpPercentage, 1, 1);
         }
 
         public void SelectButton()

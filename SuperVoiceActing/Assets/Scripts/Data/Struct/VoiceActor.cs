@@ -196,6 +196,14 @@ namespace VoiceActing
         }
 
 
+        [SerializeField]
+        private bool availability;
+        public bool Availability
+        {
+            get { return availability; }
+            set { availability = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -240,6 +248,7 @@ namespace VoiceActing
             currentGrowth = new EmotionStat(actorData.Growth);
 
             buffs = new List<Buff>();
+            availability = true;
 
             // Repartition aléatoire
             /*int totalPoint = actorData.GrowthRandom.Joy + actorData.GrowthRandom.Sadness + actorData.GrowthRandom.Disgust +
@@ -470,19 +479,41 @@ namespace VoiceActing
                                    statistique.Surprise + statistique.Sweetness + statistique.Fear + statistique.Trust) / 8;
             level += 1;
 
-            /*Debug.Log("Level : " + level);
-            Debug.Log(statistique.Joy);
-            Debug.Log(statistique.Sadness);
-            Debug.Log(statistique.Disgust);
-            Debug.Log(statistique.Anger);
-            Debug.Log(statistique.Surprise);
-            Debug.Log(statistique.Sweetness);
-            Debug.Log(statistique.Fear);
-            Debug.Log(statistique.Trust);*/
-
         }
 
 
+        public void WorkForWeek()
+        {
+            // Si le comédien était indisponible il revient full
+            if (availability == false)
+            {
+                hp = hpMax;
+                availability = true;
+                return;
+            }
+
+            // Si le comédien est dans le mal il passe indisponible
+            if (hp <= (hpMax * 0.25f))
+            {
+                availability = false;
+                return;
+            }
+
+            //Chance de trouver du travail dépendant du nombre de fan
+            int chanceWork = 15;
+            int random = Random.Range(0, 100);
+
+            // Le comédien travaille
+            if(random <= chanceWork)
+            {
+                hp -= (int) (hpMax * Random.Range(0.1f,0.2f));
+            }
+            else // le comédien fais des trucs
+            {
+                hp += (int)(hpMax * Random.Range(-0.05f, 0.05f));
+            }
+            hp = Mathf.Clamp(hp, 0, hpMax);
+        }
 
 
 

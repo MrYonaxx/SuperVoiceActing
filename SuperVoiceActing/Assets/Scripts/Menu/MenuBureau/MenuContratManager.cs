@@ -63,6 +63,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textMonth;
         [SerializeField]
+        TextMeshProUGUI textNextMonth;
+        [SerializeField]
         TextMeshProUGUI textYear;
         [SerializeField]
         Image imageSeasonOutline;
@@ -121,7 +123,8 @@ namespace VoiceActing
             textWeek.text = playerData.Date.week.ToString();
             textMonth.text = playerData.MonthName[playerData.Date.month - 1];
             textYear.text = playerData.Date.year.ToString();
-            switch(playerData.Season)
+            textNextMonth.text = (playerData.MonthDate[playerData.Date.month - 1] - playerData.Date.week).ToString();
+            switch (playerData.Season)
             {
                 case Season.Spring:
                     imageSeason.sprite = spriteSeason[0];
