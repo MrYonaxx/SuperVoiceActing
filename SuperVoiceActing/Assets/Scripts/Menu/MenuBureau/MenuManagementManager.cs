@@ -30,6 +30,9 @@ namespace VoiceActing
         [SerializeField]
         private MenuActorsManager actorsManagers;
 
+        [Header("a")]
+        [SerializeField]
+        private MenuNextWeek menuNextWeek;
 
         [Header("Sound")]
         [SerializeField]
@@ -60,6 +63,7 @@ namespace VoiceActing
             contractManager.SetContractList(playerData.ContractAccepted);
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
             AudioManager.Instance.PlayMusic(defaultDekstopTheme);
+            menuNextWeek.StartNextWeek();
         }
 
 

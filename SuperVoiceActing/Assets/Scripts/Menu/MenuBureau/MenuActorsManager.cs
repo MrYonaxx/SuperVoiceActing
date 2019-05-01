@@ -634,6 +634,7 @@ namespace VoiceActing
             if(indexActorSelected <= -1)
             {
                 indexActorSelected = buttonsActors.Count-1;
+                StopRepeat();
             }
 
             buttonsActors[indexActorSelected].SelectButton();
@@ -656,6 +657,7 @@ namespace VoiceActing
             if (indexActorSelected >= buttonsActors.Count)
             {
                 indexActorSelected = 0;
+                StopRepeat();
             }
 
             buttonsActors[indexActorSelected].SelectButton();
@@ -705,20 +707,25 @@ namespace VoiceActing
 
         private void MoveScrollRect()
         {
-            if(coroutineScroll != null)
-            {
-                StopCoroutine(coroutineScroll);
-            }
+
             if (indexActorSelected > indexActorLimit)
             {
                 indexActorLimit = indexActorSelected;
                 coroutineScroll = MoveScrollRectCoroutine();
+                if (coroutineScroll != null)
+                {
+                    StopCoroutine(coroutineScroll);
+                }
                 StartCoroutine(coroutineScroll);
             }
-            else if (indexActorSelected < indexActorLimit - scrollSize)
+            else if (indexActorSelected < indexActorLimit - scrollSize+1)
             {
-                indexActorLimit = indexActorSelected + scrollSize;
+                indexActorLimit = indexActorSelected + scrollSize-1;
                 coroutineScroll = MoveScrollRectCoroutine();
+                if (coroutineScroll != null)
+                {
+                    StopCoroutine(coroutineScroll);
+                }
                 StartCoroutine(coroutineScroll);
             }
             
@@ -726,22 +733,23 @@ namespace VoiceActing
 
         private IEnumerator MoveScrollRectCoroutine()
         {
-            int time = 10;
+            float time = 10f;
             int ratio = indexActorLimit - scrollSize;
-            //if (ratio != 0) {
             float speed = (buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time;
             while (time != 0)
             {
+                animatorSelection.transform.position = buttonsActors[indexActorSelected].transform.position;
                 buttonListTransform.anchoredPosition -= new Vector2(0, speed);
                 time -= 1;
                 yield return null;
             }
+            animatorSelection.transform.position = buttonsActors[indexActorSelected].transform.position;
             //}
             /*if(indexActorLimit == scrollSize)
             {
 
             }*/
-            
+
         }
         
         #endregion

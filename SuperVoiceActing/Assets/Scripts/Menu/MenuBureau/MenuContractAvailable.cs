@@ -273,6 +273,7 @@ namespace VoiceActing
             if (indexSelected <= -1)
             {
                 indexSelected = buttonsContracts.Count - 1;
+                StopRepeat();
             }
             MoveScrollRect();
             SelectButton();
@@ -296,6 +297,7 @@ namespace VoiceActing
             if (indexSelected >= buttonsContracts.Count)
             {
                 indexSelected = 0;
+                StopRepeat();
             }
             MoveScrollRect();
             SelectButton();
@@ -343,20 +345,24 @@ namespace VoiceActing
 
         private void MoveScrollRect()
         {
-            if (coroutineScroll != null)
-            {
-                StopCoroutine(coroutineScroll);
-            }
             if (indexSelected > indexLimit)
             {
                 indexLimit = indexSelected;
                 coroutineScroll = MoveScrollRectCoroutine();
+                if (coroutineScroll != null)
+                {
+                    StopCoroutine(coroutineScroll);
+                }
                 StartCoroutine(coroutineScroll);
             }
-            else if (indexSelected < indexLimit - scrollSize)
+            else if (indexSelected < indexLimit - scrollSize+1)
             {
-                indexLimit = indexSelected + scrollSize;
+                indexLimit = indexSelected + scrollSize-1;
                 coroutineScroll = MoveScrollRectCoroutine();
+                if (coroutineScroll != null)
+                {
+                    StopCoroutine(coroutineScroll);
+                }
                 StartCoroutine(coroutineScroll);
             }
 
@@ -364,16 +370,18 @@ namespace VoiceActing
 
         private IEnumerator MoveScrollRectCoroutine()
         {
-            int time = 10;
+            float time = 10f;
             int ratio = indexLimit - scrollSize;
             Vector2 speed = new Vector2(0,(buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time);
             while (time != 0)
             {
+                animatorSelection.gameObject.transform.position = buttonsContracts[indexSelected].transform.position;
                 buttonListTransform.anchoredPosition -= speed;
                 time -= 1;
                 yield return null;
             }
-            //animatorSelection.gameObject.tra
+            animatorSelection.gameObject.transform.position = buttonsContracts[indexSelected].transform.position;
+            //animatorSelection.gameObject.transform.position = new Vector3(buttonsContracts[indexSelected].transform.position.x, buttonsContracts[indexSelected].transform.position.y - buttonListTransform.anchoredPosition.y, buttonsContracts[indexSelected].transform.position.z);
 
         }
 
