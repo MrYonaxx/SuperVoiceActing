@@ -229,7 +229,7 @@ namespace VoiceActing
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
             {
                 yield return new WaitForSeconds(1);
-                introText.SetPhraseTextacting("25 Février");
+                introText.SetPhraseTextacting(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
                 yield return new WaitForSeconds(1.5f);
                 introText.SetPhraseTextacting(contrat.Name);
                 yield return new WaitForSeconds(3);

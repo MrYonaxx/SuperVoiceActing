@@ -50,7 +50,7 @@ namespace VoiceActing
         [SerializeField]
         EffectManager effectManager;
 
-        private float speedViewport = 1.01f;//1.05f;
+        private float speedViewport = 1.05f;//1.05f;
         Vector2 initialSize;
 
         [Space]
@@ -161,7 +161,7 @@ namespace VoiceActing
                 }
                 else
                 {
-                    coroutineMove = MoveViewport(viewportSetting.Position, speedViewport + (0.4f * (viewportSetting.Time / 60)));
+                    coroutineMove = MoveViewport(viewportSetting.Position, speedViewport);//speedViewport + (0.4f * (viewportSetting.Time / 60)));
                     StartCoroutine(coroutineMove);
                     if (viewportMask != null)
                     {
