@@ -183,6 +183,7 @@ namespace VoiceActing
         protected virtual void Start()
         {
             contrat = playerData.CurrentContract;
+            indexPhrase = contrat.CurrentLine;
             if(contrat == null)
             {
                 if (contratData != null)

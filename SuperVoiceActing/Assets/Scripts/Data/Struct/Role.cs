@@ -11,6 +11,18 @@ using UnityEngine;
 
 namespace VoiceActing
 {
+
+    public enum RoleType
+    {
+        Protagoniste,
+        Antagoniste,
+        Enfant,
+        Vieux,
+
+        VoixOff
+    }
+
+
 	public class Role
 	{
         #region Attributes 
@@ -81,6 +93,21 @@ namespace VoiceActing
         }
 
 
+        [SerializeField]
+        private int roleScore;
+        public int RoleScore
+        {
+            get { return roleScore; }
+            set { roleScore = value; }
+        }
+
+        [SerializeField]
+        private int rolePerformance;
+        public int RolePerformance
+        {
+            get { return rolePerformance; }
+            set { rolePerformance = value; }
+        }
 
         #endregion
 
@@ -111,6 +138,7 @@ namespace VoiceActing
             this.timbre = new Vector2Int(Random.Range(data.Timbre.x, data.TimbreRand.x), Random.Range(data.Timbre.y, data.TimbreRand.y));
             //!\ à tester 
 
+
             this.characterStat = new EmotionStat
                                  (
                                     Random.Range(data.CharacterStatMin.Joy, data.CharacterStatMax.Joy),
@@ -123,7 +151,8 @@ namespace VoiceActing
                                     Random.Range(data.CharacterStatMin.Trust, data.CharacterStatMax.Trust)
                                  );
 
-
+            this.roleScore = 0;
+            this.rolePerformance = 0;
 
             int[] bestValues = new int[8];
 

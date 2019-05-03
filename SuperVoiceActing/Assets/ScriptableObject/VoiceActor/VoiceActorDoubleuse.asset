@@ -16,7 +16,7 @@ MonoBehaviour:
   fan: 0
   price: 0
   level: 1
-  hp: 0
+  hp: 100
   timbre: {x: -6, y: 6}
   statistique:
     neutral: 10
@@ -28,14 +28,7 @@ MonoBehaviour:
     sweetness: 10
     fear: 10
     trust: 20
-  fourchetteMin: -2
-  fourchetteMax: 2
-  relation: 0
-  potentials: []
-  hasVariation: 0
-  levelVariation: 0
-  hpVariation: 0
-  statistiqueVariation:
+  growth:
     neutral: 0
     joy: 0
     sadness: 0
@@ -45,5 +38,22 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
+  growthRandom:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  fourchetteMin: -2
+  fourchetteMax: 2
+  relation: 0
+  potentials: []
   voice: {fileID: 0}
   actorSprite: {fileID: 21300000, guid: d826a01c4ba71a14795b236c67d23b0c, type: 3}
+  actorIcon: {fileID: 0}
+  actorContractIcon: {fileID: 0}
+  spriteSheets: {fileID: 0}

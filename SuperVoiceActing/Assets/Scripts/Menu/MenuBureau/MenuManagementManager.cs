@@ -59,6 +59,7 @@ namespace VoiceActing
         {
             playerData.CreateList();
             contractManager.DrawDate();
+            contractManager.DrawMoney();
             actorsManagers.SetListActors(playerData.VoiceActors);
             contractManager.SetContractList(playerData.ContractAccepted);
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
