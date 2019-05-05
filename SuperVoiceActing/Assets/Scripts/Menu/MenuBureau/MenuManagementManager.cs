@@ -33,6 +33,8 @@ namespace VoiceActing
         [Header("a")]
         [SerializeField]
         private MenuNextWeek menuNextWeek;
+        [SerializeField]
+        private MenuContractEnd menuContractEnd;
 
         [Header("Sound")]
         [SerializeField]
@@ -60,13 +62,47 @@ namespace VoiceActing
             playerData.CreateList();
             contractManager.DrawDate();
             contractManager.DrawMoney();
-            actorsManagers.SetListActors(playerData.VoiceActors);
-            contractManager.SetContractList(playerData.ContractAccepted);
-            contractAvailable.SetContractAvailable(playerData.ContractAvailable);
             AudioManager.Instance.PlayMusic(defaultDekstopTheme);
+            actorsManagers.SetListActors(playerData.VoiceActors);
+            contractAvailable.SetContractAvailable(playerData.ContractAvailable);
             menuNextWeek.StartNextWeek();
+
+
+
+
         }
 
+
+        // Appelé après l'anim de next Week
+        public void CheckContractDone()
+        {
+            if (menuContractEnd.CheckContractDone(playerData) == true)
+            {
+                // Stop Input
+                menuContractEnd.gameObject.SetActive(true);
+                menuContractEnd.DrawAllContracts();
+            }
+            else
+            {
+                contractManager.gameObject.SetActive(true);
+                CheckMoneyGain();
+            }
+            contractManager.SetContractList(playerData.ContractAccepted);
+        }
+
+        public void CheckMoneyGain()
+        {
+
+        }
+
+        // Appelé après l'anim des contrats
+        public void EndContractDone()
+        {
+            menuContractEnd.EndContractDone();
+            contractManager.gameObject.SetActive(true);
+            menuContractEnd.gameObject.SetActive(false);
+            CheckMoneyGain();
+        }
 
         /*public void SaveToPlayerData()
         {

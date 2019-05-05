@@ -272,8 +272,8 @@ namespace VoiceActing
             indexSelected -= 1;
             if (indexSelected <= -1)
             {
+                //StopRepeat();
                 indexSelected = buttonsContracts.Count - 1;
-                StopRepeat();
             }
             MoveScrollRect();
             SelectButton();
@@ -296,8 +296,8 @@ namespace VoiceActing
             indexSelected += 1;
             if (indexSelected >= buttonsContracts.Count)
             {
+                //StopRepeat();
                 indexSelected = 0;
-                StopRepeat();
             }
             MoveScrollRect();
             SelectButton();

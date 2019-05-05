@@ -106,6 +106,27 @@ namespace VoiceActing
         }
 
 
+
+        [SerializeField]
+        private int score;
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
+        }
+
+        [SerializeField]
+        private int highScore;
+        public int HighScore
+        {
+            get { return highScore; }
+            set { highScore = value; }
+        }
+
+
+
+
+
         [SerializeField]
         private List<Role> characters = new List<Role>();
         public List<Role> Characters
@@ -226,6 +247,9 @@ namespace VoiceActing
             this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
             this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax+1);
             this.totalMixing = Random.Range(data.MixingMin, data.MixingMax+1);
+
+            this.score = 0;
+            this.highScore = 0; // Là on met des algo
 
             this.expGain = data.ExpGain;
             this.expBonus = data.ExpBonus;

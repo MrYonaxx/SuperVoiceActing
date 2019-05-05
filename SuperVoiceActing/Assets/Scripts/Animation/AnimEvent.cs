@@ -8,6 +8,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -23,18 +24,14 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        UnityEvent unityEvent; 
-        
-        #endregion
+        UnityEvent unityEvent;
 
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-        
+        [FoldoutGroup("")]
+        [SerializeField]
+        UnityEvent unityEvent2;
 
         #endregion
+
 
         #region Functions 
 
@@ -46,7 +43,12 @@ namespace VoiceActing
         {
             unityEvent.Invoke();
         }
-        
+
+        public void CallEvent2()
+        {
+            unityEvent2.Invoke();
+        }
+
         #endregion
 
     } // AnimEvent class

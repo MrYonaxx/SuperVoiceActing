@@ -634,7 +634,7 @@ namespace VoiceActing
             if(indexActorSelected <= -1)
             {
                 indexActorSelected = buttonsActors.Count-1;
-                StopRepeat();
+                //StopRepeat();
             }
 
             buttonsActors[indexActorSelected].SelectButton();
@@ -657,7 +657,7 @@ namespace VoiceActing
             if (indexActorSelected >= buttonsActors.Count)
             {
                 indexActorSelected = 0;
-                StopRepeat();
+                //StopRepeat();
             }
 
             buttonsActors[indexActorSelected].SelectButton();

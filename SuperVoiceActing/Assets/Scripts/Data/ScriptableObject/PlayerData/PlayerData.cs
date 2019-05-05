@@ -424,20 +424,7 @@ namespace VoiceActing
         }
 
 
-        public void CheckContractDone()
-        {
 
-            for(int i = 0; i < contractAccepted.Count; i++)
-            {
-                if(contractAccepted[i].CurrentLine == contractAccepted[i].TotalLine)
-                {
-                    if (contractAccepted[i].CurrentMixing == contractAccepted[i].TotalMixing)
-                    {
-
-                    }
-                }
-            }
-        }
 
 
 

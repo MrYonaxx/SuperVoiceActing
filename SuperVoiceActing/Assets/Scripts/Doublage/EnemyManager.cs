@@ -316,6 +316,11 @@ namespace VoiceActing
 
         Animator damageTextAnimator;
 
+
+
+
+        int lastAttackScore = 0;
+
         #endregion
 
         #region GettersSetters 
@@ -347,6 +352,11 @@ namespace VoiceActing
         public void SetVoiceActor(VoiceActor va)
         {
             voiceActor = va;
+        }
+
+        public int GetLastAttackScore()
+        {
+            return lastAttackScore;
         }
 
         #endregion
@@ -382,6 +392,8 @@ namespace VoiceActing
 
         public float DamagePhrase(Emotion[] emotions, int word)
         {
+            int multiplier = 0;
+            int comboSize = emotions.Length;
             float totalDamage = 0;
             EmotionStat statActor = voiceActor.Statistique;
             EmotionStat statModifier = voiceActor.StatModifier;
@@ -395,35 +407,52 @@ namespace VoiceActing
                 switch(emotions[i])
                 {
                     case Emotion.Neutre:
-                        if(i == 0)
+                        if (i == 0)
+                        {
                             totalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
+                            multiplier += enemyResistance.Neutral;
+                        }
+                        else
+                        {
+                            comboSize -= 1;
+                        }
                         break;
                     case Emotion.Joie:
                         totalDamage += (statActor.Joy + statModifier.Joy) * ((100f + enemyResistance.Joy) / 100f);
+                        multiplier += enemyResistance.Joy;
                         break;
                     case Emotion.Tristesse:
                         totalDamage += (statActor.Sadness + statModifier.Sadness) * ((100f + enemyResistance.Sadness) / 100f);
+                        multiplier += enemyResistance.Sadness;
                         break;
                     case Emotion.Dégoût:
                         totalDamage += (statActor.Disgust + statModifier.Disgust) * ((100f + enemyResistance.Disgust) / 100f);
+                        multiplier += enemyResistance.Disgust;
                         break;
                     case Emotion.Colère:
                         totalDamage += (statActor.Anger + statModifier.Anger) * ((100f + enemyResistance.Anger) / 100f);
+                        multiplier += enemyResistance.Anger;
                         break;
                     case Emotion.Surprise:
                         totalDamage += (statActor.Surprise + statModifier.Surprise) * ((100f + enemyResistance.Surprise) / 100f);
+                        multiplier += enemyResistance.Surprise;
                         break;
                     case Emotion.Douceur:
                         totalDamage += (statActor.Sweetness + statModifier.Sweetness) * ((100f + enemyResistance.Sweetness) / 100f);
+                        multiplier += enemyResistance.Sweetness;
                         break;
                     case Emotion.Peur:
                         totalDamage += (statActor.Fear + statModifier.Fear) * ((100f + enemyResistance.Fear) / 100f);
+                        multiplier += enemyResistance.Fear;
                         break;
                     case Emotion.Confiance:
                         totalDamage += (statActor.Trust + statModifier.Trust) * ((100f + enemyResistance.Trust) / 100f);
+                        multiplier += enemyResistance.Trust;
                         break;
                 }
             }
+            multiplier = multiplier / comboSize;
+
 
             totalDamage += ApplyWordBonus(totalDamage, word, statActor);
             totalDamage += Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance+1);
@@ -431,6 +460,9 @@ namespace VoiceActing
             {
                 totalDamage = 1;
             }
+
+            lastAttackScore = multiplier + (int)(totalDamage / 10);
+
             enemyHP -= (int) totalDamage;
             if (enemyHP < 0)
                 enemyHP = 0;
@@ -440,7 +472,7 @@ namespace VoiceActing
 
             PrintDamage(totalDamage);
 
-            Debug.Log(totalDamage);
+            //Debug.Log(totalDamage);
             float percentage = 0;
             if (currentTextData.HPMax != 0)
             {
@@ -448,6 +480,7 @@ namespace VoiceActing
             }           
             return 100 - percentage;
         }
+
 
         private float ApplyWordBonus(float totalDamage, int word, EmotionStat statActor)
         {
@@ -488,6 +521,17 @@ namespace VoiceActing
             }
             return bonusDamage;
         }
+
+
+        //
+
+
+
+
+
+
+
+
 
 
 

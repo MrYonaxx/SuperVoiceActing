@@ -521,6 +521,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     toneManager.ModifyTone(lastAttack);
+                    roleManager.AddScorePerformance(enemyManager.GetLastAttackScore());
                     HideUIButton();
 
                     // Nouvelle Phrase

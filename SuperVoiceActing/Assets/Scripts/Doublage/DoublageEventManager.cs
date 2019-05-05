@@ -63,6 +63,14 @@ namespace VoiceActing
         protected Image flashbackTransition;
         [SerializeField]
         protected GameObject viewportFlashback;
+        [SerializeField]
+        protected GameObject panelFlashback;
+
+
+
+
+
+
 
         protected bool eventStartLine = false;
         protected int indexEvent = -1;
@@ -427,6 +435,7 @@ namespace VoiceActing
 
         public void StartFlashback(StoryEventData storyEventData)
         {
+            panelFlashback.SetActive(true);
             storyEventManager.StartStoryEventData(storyEventData);
             StartCoroutine(TransitionFlashback(true));
         }
@@ -467,6 +476,7 @@ namespace VoiceActing
                 flashbackTransition.color += new Color(0, 0, 0, speed);
                 yield return null;
             }
+            panelFlashback.SetActive(appear);
         }
 
 

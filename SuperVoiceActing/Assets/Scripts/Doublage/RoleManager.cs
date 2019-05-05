@@ -65,6 +65,12 @@ namespace VoiceActing
 
 
 
+        public void AddScorePerformance(int lastAttackScore)
+        {
+            roles[indexCurrentRole].RolePerformance += lastAttackScore;
+        }
+
+
 
         public bool IsAttacking()
         {

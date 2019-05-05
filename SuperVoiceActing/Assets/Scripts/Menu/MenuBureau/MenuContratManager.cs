@@ -55,8 +55,6 @@ namespace VoiceActing
         MenuContractPreparation menuContractPreparation;
 
         [Header("MenuInfo")]
-        [SerializeField]
-        TextMeshProUGUI textMoney;
 
         [SerializeField]
         TextMeshProUGUI textWeek;
@@ -73,6 +71,12 @@ namespace VoiceActing
 
         [SerializeField]
         Sprite[] spriteSeason;
+
+        [Header("MenuMoney")]
+        [SerializeField]
+        TextMeshProUGUI textMoney;
+        [SerializeField]
+        TextMeshProUGUI textMoneyLabel;
 
         #endregion
 
