@@ -414,17 +414,6 @@ namespace VoiceActing
         [Space]
         [Space]
 
-        [SerializeField]
-        private TextData[] textData;
-        public TextData[] TextData
-        {
-            get { return textData; }
-        }
-
-        [Space]
-        [Space]
-        [Space]
-
         [Title("Events")]
 
         [SerializeField]

@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,8 +13,85 @@ MonoBehaviour:
   m_Name: ContratTutoriel2
   m_EditorClassIdentifier: 
   name: 
+  contractTitle: []
+  level: 0
+  contractType: 0
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 0
+  weekMax: 0
+  expGain: 0
+  expBonus: 0
+  description: []
+  characters: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 25
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: J'ai pu rencontrer des gens extraordinaires !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 100
+        hpMax: 100
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
   textData:
-  - hpMax: 25
+  - interlocuteur: 0
+    hpMax: 25
     text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
     enemyResistance:
       neutral: -100
@@ -26,7 +104,8 @@ MonoBehaviour:
       fear: 0
       trust: 0
     enemyWeakPoints: []
-  - hpMax: 100
+  - interlocuteur: 0
+    hpMax: 100
     text: J'ai pu rencontrer des gens extraordinaires !
     enemyResistance:
       neutral: -100
@@ -57,3 +136,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c923d71ca8153248a5d2bff5a2d327e, type: 2}
   - {fileID: 11400000, guid: 95dde05f8af8a8546b5cbd83c310def8, type: 2}
   - {fileID: 11400000, guid: 95c225ff7772c654f8d92e87c0116e98, type: 2}
+  eventEndContract: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}

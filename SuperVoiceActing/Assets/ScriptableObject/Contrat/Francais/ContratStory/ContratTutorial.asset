@@ -13,64 +13,98 @@ MonoBehaviour:
   m_Name: ContratTutorial
   m_EditorClassIdentifier: 
   name: Tutoriel
+  contractTitle: []
   level: 0
   contractType: 0
   salaryMin: 0
   salaryMax: 0
   mixingMin: 0
   mixingMax: 0
+  weekMin: 0
+  weekMax: 0
+  expGain: 0
+  expBonus: 0
+  description: []
   characters:
   - mainCharacter: 0
+    optional: 0
     charactersProfil: []
-  - mainCharacter: 0
-    charactersProfil: []
+  producerMP: 0
+  artificialIntelligence: []
   textDataContract:
-  - nbPhraseMin: 0
-    nbPhraseMax: 0
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictionnaryCondition: 
     textDataPossible:
-    - interlocuteurID: 0
-      hpMin: 0
-      hpMax: 0
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: 
+    - text: Test.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 10
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 100
+        sadness: 100
+        disgust: 100
+        anger: 100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: -100
       enemyWeakPoints: []
-    - interlocuteurID: 0
-      hpMin: 0
-      hpMax: 0
-      atkMin: 0
-      atkMax: 0
-      evadeMin: 0
-      evadeMax: 0
-      text: 
+    - text: Ecoute les lamentations de mon coeur ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 10
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: -100
+        sadness: 100
+        disgust: -100
+        anger: -100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: -100
       enemyWeakPoints: []
-  - nbPhraseMin: 0
-    nbPhraseMax: 0
-    textDataPossible: []
+    - text: "Ces tests commencent \xE0 m'\xE9nerver !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 10
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: -100
+        anger: 100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: -100
+      enemyWeakPoints: []
   textData:
-  - hpMax: 10
+  - interlocuteur: 0
+    hpMax: 10
     text: Test.
     enemyResistance:
       neutral: 0
@@ -83,7 +117,8 @@ MonoBehaviour:
       fear: -100
       trust: -100
     enemyWeakPoints: []
-  - hpMax: 10
+  - interlocuteur: 0
+    hpMax: 10
     text: Ecoute les lamentations de mon coeur ...
     enemyResistance:
       neutral: 0
@@ -96,7 +131,8 @@ MonoBehaviour:
       fear: -100
       trust: -100
     enemyWeakPoints: []
-  - hpMax: 10
+  - interlocuteur: 0
+    hpMax: 10
     text: "Ces tests commencent \xE0 m'\xE9nerver !"
     enemyResistance:
       neutral: 0
@@ -117,3 +153,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bb1251f4df39e14c80b3179dfcc90e6, type: 2}
   - {fileID: 11400000, guid: e9b33a8b7c8ac9944a7bf444680a6e0d, type: 2}
   - {fileID: 11400000, guid: 15ba020f48e61ad4c98d1919c1f2338d, type: 2}
+  eventEndContract: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}

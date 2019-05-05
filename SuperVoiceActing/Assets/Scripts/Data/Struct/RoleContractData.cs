@@ -101,7 +101,7 @@ namespace VoiceActing
             get { return atkMax; }
         }
 
-        [MinMaxSlider(-100, 100)]
+        [MinMaxSlider(-10, 10)]
         [SerializeField]
         private Vector2Int timbre;
         public Vector2Int Timbre
@@ -110,7 +110,7 @@ namespace VoiceActing
             set { timbre = value; }
         }
 
-        [MinMaxSlider(-100, 100)]
+        [MinMaxSlider(-10, 10)]
         [SerializeField]
         private Vector2Int timbreRand;
         public Vector2Int TimbreRand
@@ -118,7 +118,7 @@ namespace VoiceActing
             get { return timbre; }
             set { timbre = value; }
         }
-
+        [HideLabel]
         [SerializeField]
         private EmotionStat characterStatMin;
         public EmotionStat CharacterStatMin
@@ -126,6 +126,7 @@ namespace VoiceActing
             get { return characterStatMin; }
             set { characterStatMin = value; }
         }
+        [HideLabel]
         [SerializeField]
         private EmotionStat characterStatMax;
         public EmotionStat CharacterStatMax

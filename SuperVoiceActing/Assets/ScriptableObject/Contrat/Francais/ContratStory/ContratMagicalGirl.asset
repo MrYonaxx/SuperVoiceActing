@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,133 +13,199 @@ MonoBehaviour:
   m_Name: ContratMagicalGirl
   m_EditorClassIdentifier: 
   name: MagicalGirl
-  textData:
-  - hpMax: 0
-    text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
-    enemyResistance:
-      neutral: 100
-      joy: 50
-      sadness: 50
-      disgust: -50
-      anger: -50
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
-  - hpMax: 0
-    text: "J'\xE9tais si heureuse de commencer cette nouvelle ann\xE9e !"
-    enemyResistance:
-      neutral: 100
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
-  - hpMax: 20
-    text: "Mais en r\xE9alit\xE9 tout a bascul\xE9 ce jour l\xE0 ..."
-    enemyResistance:
-      neutral: 0
-      joy: -50
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
-  - hpMax: 0
-    text: "\xC0 pr\xE9sent mon quotidien me place face \xE0 tout les dangers."
-    enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
-  - hpMax: 20
-    text: "Je dois affronter d'horribles cr\xE9atures ..."
-    enemyResistance:
-      neutral: 0
-      joy: -50
-      sadness: 50
-      disgust: 100
-      anger: 50
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 3
-      weakPointStat:
+  contractTitle: []
+  level: 0
+  contractType: 0
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 0
+  weekMax: 0
+  expGain: 0
+  expBonus: 0
+  description: []
+  characters: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictionnaryCondition: 
+    textDataPossible:
+    - text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 100
+        joy: 50
+        sadness: 50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "J'\xE9tais si heureuse de commencer cette nouvelle ann\xE9e !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 100
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Mais en r\xE9alit\xE9 tout a bascul\xE9 ce jour l\xE0 ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "\xC0 pr\xE9sent mon quotidien me place face \xE0 tout les dangers."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 20
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-  - hpMax: 20
-    text: "Et pourtant je ne regrette pas ce qu'il m'est arriv\xE9."
-    enemyResistance:
-      neutral: -20
-      joy: 80
-      sadness: -50
-      disgust: -50
-      anger: -50
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 4
-      weakPointStat:
-        neutral: 0
-        joy: 20
-        sadness: 20
         disgust: 0
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-    - wordIndex: 5
-      weakPointStat:
+      enemyWeakPoints: []
+    - text: "Je dois affronter d'horribles cr\xE9atures ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
-        joy: 20
-        sadness: 20
-        disgust: 0
-        anger: 0
+        joy: -50
+        sadness: 50
+        disgust: 100
+        anger: 50
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-  - hpMax: 20
-    text: J'ai pu rencontrer des gens extraordinaires !
-    enemyResistance:
-      neutral: 0
-      joy: 50
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 2
-      weakPointStat:
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "Et pourtant je ne regrette pas ce qu'il m'est arriv\xE9."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: -20
+        joy: 80
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: J'ai pu rencontrer des gens extraordinaires !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
         joy: 50
         sadness: 0
@@ -148,10 +215,42 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-    - wordIndex: 5
-      weakPointStat:
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "Et ils m'ont appris \xE0 sourire."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
-        joy: 50
+        joy: 100
         sadness: 0
         disgust: 0
         anger: 0
@@ -159,45 +258,29 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-  - hpMax: 20
-    text: "Et ils m'ont appris \xE0 sourire."
-    enemyResistance:
-      neutral: 0
-      joy: 100
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 5
-      weakPointStat:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-  - hpMax: 20
-    text: "\xC0 pleurer."
-    enemyResistance:
-      neutral: 0
-      joy: 50
-      sadness: 100
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 1
-      weakPointStat:
+      enemyWeakPoints:
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "\xC0 pleurer."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
         joy: 0
         sadness: 100
@@ -207,21 +290,29 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-  - hpMax: 20
-    text: "\xC0 m'\xE9nerver."
-    enemyResistance:
-      neutral: 0
-      joy: 50
-      sadness: 0
-      disgust: 0
-      anger: 100
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 1
-      weakPointStat:
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "\xC0 m'\xE9nerver."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
         joy: 0
         sadness: 0
@@ -231,67 +322,103 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-  - hpMax: 20
-    text: "\xC0 \xEAtre d\xE9go\xFBt\xE9."
-    enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 100
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 2
-      weakPointStat:
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "\xC0 \xEAtre d\xE9go\xFBt\xE9."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 50
+        disgust: 100
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-  - hpMax: 30
-    text: Ce sont ces sentiments qui me permettent de me relever.
-    enemyResistance:
-      neutral: 0
-      joy: 50
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 200
-    enemyWeakPoints:
-    - wordIndex: 3
-      weakPointStat:
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: Ce sont ces sentiments qui me permettent de me relever.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 30
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
         neutral: 0
-        joy: 0
+        joy: 50
         sadness: 0
         disgust: 0
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
-        trust: 0
-  - hpMax: 20
-    text: Et qui guide mon bras pour vaincre le mal !
-    enemyResistance:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 50
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 200
-    enemyWeakPoints: []
+        trust: 200
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: Et qui guide mon bras pour vaincre le mal !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 200
+      enemyWeakPoints: []
   eventData:
   - {fileID: 11400000, guid: 6b8caf436e1ddb840b3a8598206574f7, type: 2}
   - {fileID: 11400000, guid: 851f1015c85d1734295558efe3f5f049, type: 2}
@@ -299,3 +426,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0029a813278b0864892f5b4843738c54, type: 2}
   - {fileID: 11400000, guid: fe95d75086459ee45b38ef4be3c16f72, type: 2}
   - {fileID: 11400000, guid: ae5e7bc5fac28f04c97a8ab4cdbe2c26, type: 2}
+  eventEndContract: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
