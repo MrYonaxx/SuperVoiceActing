@@ -40269,7 +40269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 1c7907ef99e7b76478510af20a83fbd9, type: 2}
-  contractDatabase: []
   buttonContractAccepted:
   - {fileID: 1077950420}
   - {fileID: 1852894818}
@@ -40288,8 +40287,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 040b11c0be6d8db4099ec31a8c7478a4, type: 3}
   - {fileID: 21300000, guid: 76ca59d3cc6109d428067d2b4e46841b, type: 3}
   - {fileID: 21300000, guid: 35d047a90f20c8e46b19e51324e19c2a, type: 3}
-  textMoney: {fileID: 1283092421}
-  textMoneyLabel: {fileID: 0}
 --- !u!1 &664483533
 GameObject:
   m_ObjectHideFlags: 0
@@ -43594,6 +43591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 711787013}
   - component: {fileID: 711787014}
+  - component: {fileID: 711787015}
   m_Layer: 5
   m_Name: PanelMoney
   m_TagString: Untagged
@@ -43641,6 +43639,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &711787015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711787012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3fad2d3fe846043b8e4b288249b21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyPanel: {fileID: 711787014}
+  textMoney: {fileID: 1283092421}
+  textMoneyGain: {fileID: 1145066582}
+  textMoneyGainLabel: {fileID: 156777106}
+  colorMoneyGain: {r: 0, g: 0.78431374, b: 0, a: 1}
+  colorMoneyLoss: {r: 1, g: 0, b: 0.078431375, a: 1}
 --- !u!1 &712078615
 GameObject:
   m_ObjectHideFlags: 0
@@ -45616,6 +45632,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 896691946}
         m_MethodName: RedrawActorsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1902061462}
+        m_MethodName: CheckMoneyGain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51493,6 +51520,7 @@ MonoBehaviour:
   textContractBonusMoney: {fileID: 719743536}
   textContractTotalMoney: {fileID: 434993449}
   textScoreTotal: {fileID: 1619731557}
+  moneyManager: {fileID: 711787015}
 --- !u!1 &843535851
 GameObject:
   m_ObjectHideFlags: 0
@@ -122953,6 +122981,7 @@ MonoBehaviour:
   contractManager: {fileID: 661692377}
   contractAvailable: {fileID: 1202492110}
   actorsManagers: {fileID: 896691946}
+  moneyManager: {fileID: 711787015}
   menuNextWeek: {fileID: 1201443038}
   menuContractEnd: {fileID: 841162842}
   defaultDekstopTheme: {fileID: 8300000, guid: ac8ba8de97a3f8d41a22b7bffcc924ea, type: 3}

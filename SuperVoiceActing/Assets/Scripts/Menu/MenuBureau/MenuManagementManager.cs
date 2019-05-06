@@ -11,7 +11,8 @@ using UnityEngine;
 
 namespace VoiceActing
 {
-	public class MenuManagementManager : MonoBehaviour
+
+    public class MenuManagementManager : MonoBehaviour
 	{
         #region Attributes 
 
@@ -29,6 +30,8 @@ namespace VoiceActing
         private MenuContractAvailable contractAvailable;
         [SerializeField]
         private MenuActorsManager actorsManagers;
+        [SerializeField]
+        private MenuContractMoney moneyManager;
 
         [Header("a")]
         [SerializeField]
@@ -59,16 +62,14 @@ namespace VoiceActing
 
         private void Start()
         {
+            moneyManager.DrawMoney(playerData.Money);
             playerData.CreateList();
+            //moneyManager.AddSalaryDatas("Entretien", )
             contractManager.DrawDate();
-            contractManager.DrawMoney();
             AudioManager.Instance.PlayMusic(defaultDekstopTheme);
             actorsManagers.SetListActors(playerData.VoiceActors);
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
             menuNextWeek.StartNextWeek();
-
-
-
 
         }
 
@@ -92,6 +93,13 @@ namespace VoiceActing
 
         public void CheckMoneyGain()
         {
+            if (playerData.Date.week == playerData.MonthDate[playerData.Date.month - 2]) // Nouveau mois
+            {
+                Debug.Log(playerData.Date.week);
+                moneyManager.AddSalaryDatas("Entretien", -playerData.Maintenance);
+            }
+
+            moneyManager.DrawMoneyGain();
 
         }
 
@@ -104,10 +112,6 @@ namespace VoiceActing
             CheckMoneyGain();
         }
 
-        /*public void SaveToPlayerData()
-        {
-
-        }*/
 
         #endregion
 

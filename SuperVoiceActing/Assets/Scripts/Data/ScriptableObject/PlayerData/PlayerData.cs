@@ -275,6 +275,7 @@ namespace VoiceActing
         public int Maintenance
         {
             get { return maintenance; }
+            set { maintenance = value; }
         }
 
         [SerializeField]
@@ -282,6 +283,7 @@ namespace VoiceActing
         public int Money
         {
             get { return money; }
+            set { money = value; }
         }
 
         [SerializeField]

@@ -40,6 +40,11 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textScoreTotal;
 
+        [SerializeField]
+        private MenuContractMoney moneyManager;
+
+        int totalRevenu = 0;
+
 
         List<Contract> contractsEnd = new List<Contract>();
 
@@ -135,7 +140,7 @@ namespace VoiceActing
                 finalScore += contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance;
             }
             contract.Score = finalScore;
-
+            totalRevenu += contract.Money;
         }
 
         public bool CheckContractDone(PlayerData playerData)
@@ -152,6 +157,7 @@ namespace VoiceActing
                             b = true;
                             contractsEnd.Add(playerData.ContractAccepted[i]);
                             CalculTotalScore(playerData.ContractAccepted[i]);
+                            playerData.Money += playerData.ContractAccepted[i].Money;
                             playerData.ContractAccepted.RemoveAt(i);
                             playerData.ContractAccepted.Add(null);
                         }
@@ -209,7 +215,11 @@ namespace VoiceActing
             inputController.SetActive(false);
             contractsEnd.RemoveAt(0);
             if(contractsEnd.Count == 0)
+            {
                 animatorEnd.SetTrigger("Disappear");
+                moneyManager.AddSalaryDatas("Revenu", totalRevenu);
+            }
+
             else
                 animatorEnd.SetTrigger("Slide");
 

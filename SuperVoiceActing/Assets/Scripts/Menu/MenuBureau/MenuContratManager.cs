@@ -13,6 +13,8 @@ using TMPro;
 
 namespace VoiceActing
 {
+
+
     /// <summary>
     /// Definition of the MenuContratManager class
     /// </summary>
@@ -28,14 +30,11 @@ namespace VoiceActing
         private PlayerData playerData;
 
         // [AssetList(Path = "Plugins/Sirenix/")] pour chopper tout les asset d'un repertoire et remplir automatiquement un truc
-        [SerializeField]
-        private ContractData[] contractDatabase;
+        //[SerializeField]
+        //private ContractData[] contractDatabase;
 
         [SerializeField]
         private List<Contract> contractAcceptedList = new List<Contract>(3);
-
-        /*[SerializeField]
-        private List<Contract> contractAvailableList = new List<Contract>(5);*/
 
         [Header("Prefab")]
 
@@ -72,11 +71,6 @@ namespace VoiceActing
         [SerializeField]
         Sprite[] spriteSeason;
 
-        [Header("MenuMoney")]
-        [SerializeField]
-        TextMeshProUGUI textMoney;
-        [SerializeField]
-        TextMeshProUGUI textMoneyLabel;
 
         #endregion
 
@@ -117,10 +111,6 @@ namespace VoiceActing
             DrawAvailableContract();
         }
 
-        public void DrawMoney()
-        {
-            textMoney.text = playerData.Money.ToString();
-        }
 
         public void DrawDate()
         {
