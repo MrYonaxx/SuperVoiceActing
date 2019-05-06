@@ -198,44 +198,66 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 10
+        hpMax: 10
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        neutral: -50
+        joy: -30
+        sadness: -50
+        disgust: 50
+        anger: 100
         surprise: 0
-        sweetness: 0
+        sweetness: -100
         fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
     - text: Surtout la lessive de la marque Ariole !
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
+        neutral: -50
         joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        sadness: -50
+        disgust: 50
+        anger: 100
         surprise: 0
-        sweetness: 0
+        sweetness: -100
         fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 6
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -247,23 +269,34 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
+        neutral: -50
+        joy: -30
         sadness: 0
-        disgust: 0
-        anger: 0
+        disgust: 100
+        anger: 50
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        sweetness: -50
+        fear: -30
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
     - text: "Qui illumine vos v\xEAtements et votre vie."
       textStats:
         interlocuteurID: 0
@@ -318,23 +351,34 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 10
+        hpMax: 10
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        neutral: -50
+        joy: -50
+        sadness: -30
+        disgust: 50
+        anger: 100
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        sweetness: -100
+        fear: -30
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -346,29 +390,40 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
+        neutral: -50
+        joy: -50
+        sadness: 10
+        disgust: 50
+        anger: 50
+        surprise: 50
         sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        fear: 50
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
     - text: "La lessive Ariole, pour des v\xEAtements d'un blanc ... Eclatant."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
@@ -377,13 +432,35 @@ MonoBehaviour:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 0
-        anger: 0
+        disgust: 20
+        anger: 20
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 8
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
   eventData: []
   eventEndContract: {fileID: 0}
   changeBGM: 0
