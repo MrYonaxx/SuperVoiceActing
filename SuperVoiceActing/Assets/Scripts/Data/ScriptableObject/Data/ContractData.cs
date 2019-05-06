@@ -19,6 +19,16 @@ namespace VoiceActing
         Autre
     }
 
+    [System.Serializable]
+    public class ContractDictionnary
+    {
+        [SerializeField]
+        public string nameID;
+
+        [SerializeField]
+        public string[] namesDictionnary;
+    }
+
     // TextDataCondition Contract ===================================================================
     [System.Serializable]
     public class TextDataCondition
@@ -69,14 +79,25 @@ namespace VoiceActing
         {
             get { return characterCondition; }
         }*/
-        [HorizontalGroup("Dictionnary", LabelWidth = 0, Width = 150)]
+
+        [HorizontalGroup("Dictionnary", LabelWidth = 100, Width = 100)]
         [ShowIf("condition")]
         [SerializeField]
         [HideLabel]
-        private string dictionnaryCondition;
-        public string DictionnaryCondition
+        private string dictID;
+        public string DictID
         {
-            get { return dictionnaryCondition; }
+            get { return dictID; }
+        }
+
+        [HorizontalGroup("Dictionnary2", LabelWidth = 100, Width = 100)]
+        [ShowIf("condition")]
+        [SerializeField]
+        [HideLabel]
+        private string dictCondition;
+        public string DictCondition
+        {
+            get { return dictCondition; }
         }
     }
 
@@ -254,13 +275,6 @@ namespace VoiceActing
             get { return name; }
         }
 
-        [SerializeField]
-        private string[] contractTitle;
-        public string[] ContractTitle
-        {
-            get { return contractTitle; }
-        }
-
         [HorizontalGroup("Level")]
         [SerializeField]
         private int level;
@@ -339,7 +353,23 @@ namespace VoiceActing
         }
 
         [Space]
+        [SerializeField]
+        private string[] contractTitle;
+        public string[] ContractTitle
+        {
+            get { return contractTitle; }
+        }
 
+
+        [HorizontalGroup("Dictionnaire")]
+        [SerializeField]
+        ContractDictionnary[] contractDictionnary;
+        public ContractDictionnary[] ContractDictionnary
+        {
+            get { return contractDictionnary; }
+        }
+
+        [HorizontalGroup("Dictionnaire")]
         [TextArea]
         [SerializeField]
         private string[] description;
@@ -392,8 +422,6 @@ namespace VoiceActing
             get { return duelAI; }
         }*/
 
-        /*[Header("Dictionnaire")]
-        [SerializeField]*/
 
 
         [Space]

@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace VoiceActing
 {
@@ -231,8 +232,26 @@ namespace VoiceActing
             this.name = name;
         }
 
+        private string StringReplace(string stringB, Dictionary<string, string> dict)
+        {
+            foreach (string k in dict.Keys)
+            {
+                stringB = stringB.Replace(k, dict[k]);
+            }
+            return stringB;
+        }
+
+        private void StringBuilderReplace(StringBuilder stringB, Dictionary<string, string> dict)
+        {
+            foreach (string k in dict.Keys)
+            {
+                stringB.Replace(k, dict[k]);
+            }
+        }
+
         public Contract(ContractData data)
         {
+
             if (data.ContractTitle.Length == 0)
                 this.name = data.Name;
             else
@@ -266,7 +285,28 @@ namespace VoiceActing
             {
                 eventData.Add(data.EventData[i]);
             }
-            // Select Characters -------------------------------------------------------
+
+
+            // Dictionary ------------------------------------------------------------------------
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            if (data.ContractDictionnary.Length != 0)
+            {
+                for (int i = 0; i < data.ContractDictionnary.Length; i++)
+                {
+                    dictionary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
+                }
+                this.name = StringReplace(this.name, dictionary);
+                this.description = StringReplace(this.description, dictionary);
+                //StringBuilderReplace(new StringBuilder(this.name, this.name.Length * 2), dictionary);
+                //StringBuilderReplace(new StringBuilder(this.description, this.description.Length * 2), dictionary);
+            }
+            // Dictionary ------------------------------------------------------------------------
+
+
+
+
+
+            // Select Characters --------------------------------------------------------------------------------------------------------------
             for (int i = 0; i < data.Characters.Length; i++)
             {
                 if (data.Characters[i].Optional == true)
@@ -291,16 +331,27 @@ namespace VoiceActing
                 voiceActors.Add(null);
             }
 
-            // Select TextData -------------------------------------------------------
+            // Select TextData --------------------------------------------------------------------------------------------------------------
 
             for (int i = 0; i < data.TextDataContract.Length; i++)
             {
+                if (data.TextDataContract[i].TextDataCondition.Condition == true)
+                {
+                    if (data.TextDataContract[i].TextDataCondition.DictCondition != dictionary[data.TextDataContract[i].TextDataCondition.DictID])
+                    {
+                        continue;
+                    }
+                }
+
                 if (data.TextDataContract[i].TextDataCondition.All == true)
                 {
                     // Selection all
                     for (int j = 0; j < data.TextDataContract[i].TextDataPossible.Length; j++)
                     {
                         textData.Add(new TextData(data.TextDataContract[i].TextDataPossible[j]));
+                        textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
+                        /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);
+                        Debug.Log(textData[textData.Count - 1].Text);*/
                     }
                 }
                 else
@@ -320,13 +371,17 @@ namespace VoiceActing
                         {
                             int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
                             textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
-                            //Debug.Log(listTextDataPossibilities[indexRandom].Text);
+                            textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
+                            /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);
+                            Debug.Log(listTextDataPossibilities[indexRandom].Text);*/
                             listTextDataPossibilities.RemoveAt(indexRandom);
                         }
                     }
                 }
             }
             totalLine = textData.Count;
+
+
 
         }
 
