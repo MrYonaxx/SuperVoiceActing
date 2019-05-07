@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: FilmEtudiantLv1
   m_EditorClassIdentifier: 
-  name: Film
-  contractTitle: []
+  name: "Film \xE9tudiant"
   level: 2
   contractType: 0
   salaryMin: 750
@@ -24,6 +23,9 @@ MonoBehaviour:
   weekMax: 6
   expGain: 40
   expBonus: 0
+  contractTitle:
+  - "Projet de fin d'\xE9tude"
+  contractDictionnary: []
   description:
   - "Nous sommes des \xE9tudiants en derni\xE8re ann\xE9e d'animation et nous aimerions
     un(e) com\xE9dienne de doublage \"professionnels\" pour notre court-m\xE9trage.
@@ -64,7 +66,6 @@ MonoBehaviour:
         trust: 20
   producerMP: 0
   artificialIntelligence: []
-  contractDictionnary: []
   textDataContract:
   - textDataCondition:
       all: 0
@@ -78,64 +79,64 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 30
       enemyWeakPoints: []
     - text: "Il \xE9tait une fois dans le royaume de S\xE9nak"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 30
       enemyWeakPoints: []
     - text: "Il \xE9tait une fois dans une lointaine contr\xE9e."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 30
       enemyWeakPoints: []
   - textDataCondition:
       all: 0
@@ -149,43 +150,43 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 40
       enemyWeakPoints: []
     - text: Un noble jeune homme courageux.
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 40
       enemyWeakPoints: []
   - textDataCondition:
       all: 1
@@ -199,22 +200,22 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
+        neutral: 10
+        joy: 20
+        sadness: -30
+        disgust: -30
         anger: 0
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        sweetness: 10
+        fear: 30
+        trust: 30
       enemyWeakPoints: []
   - textDataCondition:
       all: 1
@@ -228,22 +229,22 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 20
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        neutral: 10
+        joy: 20
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 20
+        sweetness: 10
+        fear: 10
+        trust: 30
       enemyWeakPoints: []
   - textDataCondition:
       all: 0
@@ -257,22 +258,22 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 10
+        hpMax: 12
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
+        joy: 20
+        sadness: -30
+        disgust: -30
+        anger: 10
+        surprise: 10
         sweetness: 0
-        fear: 0
-        trust: 0
+        fear: -20
+        trust: 40
       enemyWeakPoints: []
   - textDataCondition:
       all: 0
