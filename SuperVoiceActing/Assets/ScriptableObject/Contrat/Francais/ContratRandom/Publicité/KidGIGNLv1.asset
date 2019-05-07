@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: KidGIGNLv1
   m_EditorClassIdentifier: 
   name: Kid GIGN
-  contractTitle:
-  - Kid GIGN
-  - Action Kids
-  - Action Kids +
-  - Super Kids
   level: 1
   contractType: 3
   salaryMin: 1600
@@ -28,6 +23,12 @@ MonoBehaviour:
   weekMax: 7
   expGain: 25
   expBonus: 50
+  contractTitle:
+  - Kid GIGN
+  - Action Kids
+  - Action Kids+
+  - Super Kids
+  contractDictionnary: []
   description:
   - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
     un nouveau produit de la licence."
@@ -75,7 +76,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Paris est menac\xE9 ..."
       textStats:
@@ -156,7 +158,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Mais qui voil\xE0 !? Les Kids GIGN !!!"
       textStats:
@@ -184,7 +187,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "\xC0 bord de leur vaisseau toupie !?"
       textStats:
@@ -223,7 +227,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Et avec une nouvelle arme !?
       textStats:
@@ -273,7 +278,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Un canon proto-alpha-IV !!!
       textStats:
@@ -312,7 +318,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Ils repoussent les menaces anti-gouvernementales.
       textStats:
@@ -362,7 +369,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Les jouets Kids GIGN ne conviennent pas aux enfants de moins de 14 ans.
       textStats:
@@ -396,7 +404,6 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  textData: []
   eventData: []
   eventEndContract: {fileID: 0}
   changeBGM: 0
