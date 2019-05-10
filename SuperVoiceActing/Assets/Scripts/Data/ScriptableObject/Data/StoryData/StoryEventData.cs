@@ -27,10 +27,12 @@ namespace VoiceActing
     {
         //[Header("====================================================================================================================================")]
         [FoldoutGroup("$eventNode")]
+        [HorizontalGroup("Hey")]
         [HideLabel]
         public StoryEventNode eventNode;
 
-        [FoldoutGroup("$eventNode")]
+        //[FoldoutGroup("$eventNode")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.Text)]
         [SerializeField]
         [HideLabel]
