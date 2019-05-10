@@ -7,6 +7,8 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -17,31 +19,62 @@ namespace VoiceActing
     public class StoryEventMoveCharacter : StoryEvent
     {
 
+        [HorizontalGroup("Interlocuteur")]
+        [HideLabel]
         [SerializeField]
-        StoryCharacterData characterToMove;
+        private StoryCharacterData characterToMove;
+        public StoryCharacterData CharacterToMove
+        {
+            get { return characterToMove; }
+        }
 
+        [HorizontalGroup("Interlocuteur", LabelWidth = 100)]
         [SerializeField]
         float time = 60;
 
         [SerializeField]
-        Vector3 newPosition;
-        [SerializeField]
-        Vector3 newRotation;
-        [SerializeField]
-        Vector3 newScale;
+        private Vector3 newPosition = new Vector3(0, -5.2f, 0);
+        public Vector3 NewPosition
+        {
+            get { return newPosition; }
+        }
 
         [SerializeField]
+        Vector3 newRotation;
+        public Vector3 NewRotation
+        {
+            get { return newRotation; }
+        }
+
+        [SerializeField]
+        Vector3 newScale = new Vector3(0.45f,0.45f,0.45f);
+        public Vector3 NewScale
+        {
+            get { return newScale; }
+        }
+
+        [HorizontalGroup("Advanced", LabelWidth = 70)]
+        [SerializeField]
         bool fadeIn = false;
+
+        [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]
         bool fadeOut = false;
+
+        [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]
         bool waitEnd = false;
 
         CharacterDialogueController character;
 
-        public void SetNode(CharacterDialogueController[] charactersEvent)
+
+
+
+
+
+        public void SetNode(List<CharacterDialogueController> charactersEvent)
         {
-            for (int i = 0; i < charactersEvent.Length; i++)
+            for (int i = 0; i < charactersEvent.Count; i++)
             {
                 if (charactersEvent[i].GetStoryCharacterData() == characterToMove)
                 {

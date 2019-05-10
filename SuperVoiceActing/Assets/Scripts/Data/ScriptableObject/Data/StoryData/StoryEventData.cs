@@ -26,8 +26,7 @@ namespace VoiceActing
     public class StoryEventDataNode
     {
         //[Header("====================================================================================================================================")]
-        [FoldoutGroup("$eventNode")]
-        [HorizontalGroup("Hey")]
+        [HorizontalGroup("Hey", Width = 0.2f)]
         [HideLabel]
         public StoryEventNode eventNode;
 
@@ -38,33 +37,69 @@ namespace VoiceActing
         [HideLabel]
         public StoryEventText storyEventText = null;
 
-        [FoldoutGroup("$eventNode")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.Wait)]
         [SerializeField]
+        [HideLabel]
         public StoryEventWait storyEventWait = null;
 
-        [FoldoutGroup("$eventNode")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.MoveCharacter)]
         [SerializeField]
+        [HideLabel]
         public StoryEventMoveCharacter storyEventMoveCharacter = null;
 
-        [FoldoutGroup("$eventNode")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.SceneLoader)]
         [SerializeField]
+        [HideLabel]
         public StoryEventSceneLoader storyEventSceneLoader = null;
 
-        [FoldoutGroup("$eventNode")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.LoadEvent)]
         [SerializeField]
+        [HideLabel]
         public StoryEventLoad storyEventLoadEvent = null;
 
-        [FoldoutGroup("$eventNode")]
+        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.Music)]
         [SerializeField]
+        [HideLabel]
         public StoryEventMusic storyEventMusic = null;
 
+
+
+        public string GetBoxTitle()
+        {
+            switch (eventNode)
+            {
+                case StoryEventNode.Text:
+                    return eventNode + " : " + storyEventText.Text;
+                case StoryEventNode.Wait:
+                    return eventNode + " : " + storyEventWait.Time.ToString();
+                case StoryEventNode.MoveCharacter:
+                    return eventNode + " : " + storyEventMoveCharacter.CharacterToMove.name;
+            }
+            return null;
+        }
     }
 
+    [System.Serializable]
+    public class StoryEventDataBox
+    {
+        [FoldoutGroup("$name")]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventDataNode dataBox;
+
+        private string name = " ";
+
+        public void SetTitle()
+        {
+            name = dataBox.GetBoxTitle();
+        }
+
+    }
 
     /// <summary>
     /// Definition of the StoryEventData class
@@ -72,8 +107,27 @@ namespace VoiceActing
     [CreateAssetMenu(fileName = "StoryEventData", menuName = "StoryEvent", order = 1)]
     public class StoryEventData : ScriptableObject
     {
+        [Title("Scene Info")]
         [SerializeField]
-        StoryEventDataNode[] eventNodes;
+        Sprite background;
+        public Sprite Background
+        {
+            get { return background; }
+        }
+
+
+        [SerializeField]
+        StoryEventMoveCharacter[] characters;
+        public StoryEventMoveCharacter[] Characters
+        {
+            get { return characters; }
+        }
+
+
+        [Space]
+        [Title("Event")]
+        [SerializeField]
+        StoryEventDataBox[] eventNodes;
 
 
 
@@ -82,22 +136,31 @@ namespace VoiceActing
             if (index == eventNodes.Length)
                 return null;
 
-            switch (eventNodes[index].eventNode)
+            switch (eventNodes[index].dataBox.eventNode)
             {
                 case StoryEventNode.Text:
-                    return eventNodes[index].storyEventText;
+                    return eventNodes[index].dataBox.storyEventText;
                 case StoryEventNode.Wait:
-                    return eventNodes[index].storyEventWait;
+                    return eventNodes[index].dataBox.storyEventWait;
                 case StoryEventNode.MoveCharacter:
-                    return eventNodes[index].storyEventMoveCharacter;
+                    return eventNodes[index].dataBox.storyEventMoveCharacter;
                 case StoryEventNode.SceneLoader:
-                    return eventNodes[index].storyEventSceneLoader;
+                    return eventNodes[index].dataBox.storyEventSceneLoader;
                 case StoryEventNode.LoadEvent:
-                    return eventNodes[index].storyEventLoadEvent;
+                    return eventNodes[index].dataBox.storyEventLoadEvent;
                 case StoryEventNode.Music:
-                    return eventNodes[index].storyEventMusic;
+                    return eventNodes[index].dataBox.storyEventMusic;
             }
             return null;
+        }
+
+        [Button]
+        private void SetTitles()
+        {
+            for (int i = 0; i < eventNodes.Length; i++)
+            {
+                eventNodes[i].SetTitle();
+            }
         }
 
 
