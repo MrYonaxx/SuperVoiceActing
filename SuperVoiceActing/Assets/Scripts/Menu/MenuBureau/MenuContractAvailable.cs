@@ -22,10 +22,6 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [Header("Database")]
-        [SerializeField]
-        private ContractData[] contractDatabase;
-
         [Header("Prefab")]
         [SerializeField]
         private ButtonContratAvailable buttonPrefab;

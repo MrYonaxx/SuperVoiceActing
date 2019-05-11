@@ -16,10 +16,11 @@ namespace VoiceActing
     {
         Text,
         Wait,
+        Effect,
         MoveCharacter,
+        Music,
         SceneLoader,
         LoadEvent,
-        Music
     }
 
     [System.Serializable]
@@ -42,6 +43,12 @@ namespace VoiceActing
         [SerializeField]
         [HideLabel]
         public StoryEventWait storyEventWait = null;
+
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", StoryEventNode.Effect)]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventEffect storyEventEffect = null;
 
         [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.MoveCharacter)]
@@ -77,6 +84,8 @@ namespace VoiceActing
                     return eventNode + " : " + storyEventText.Text;
                 case StoryEventNode.Wait:
                     return eventNode + " : " + storyEventWait.Time.ToString();
+                case StoryEventNode.Effect:
+                    return eventNode + " : " + storyEventEffect.EventEffect.ToString();
                 case StoryEventNode.MoveCharacter:
                     return eventNode + " : " + storyEventMoveCharacter.CharacterToMove.name;
             }
@@ -142,6 +151,8 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventText;
                 case StoryEventNode.Wait:
                     return eventNodes[index].dataBox.storyEventWait;
+                case StoryEventNode.Effect:
+                    return eventNodes[index].dataBox.storyEventEffect;
                 case StoryEventNode.MoveCharacter:
                     return eventNodes[index].dataBox.storyEventMoveCharacter;
                 case StoryEventNode.SceneLoader:

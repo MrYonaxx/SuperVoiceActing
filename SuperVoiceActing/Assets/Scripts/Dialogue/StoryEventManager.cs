@@ -54,6 +54,10 @@ namespace VoiceActing
 
         List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
 
+        [Title("Story Effect")]
+        [SerializeField]
+        StoryEventEffectManager storyEventEffectManager;
+
         [Title("DoublageEventManager (Acting only)")]
         [SerializeField]
         DoublageEventManager doublageEventManager;
@@ -174,6 +178,13 @@ namespace VoiceActing
                     {
                         doublageEventManager.StopFlashback(node.GetDoublageEventToLoad());
                     }
+                }
+
+
+                else if (currentNode is StoryEventEffect)
+                {
+                    StoryEventEffect node = (StoryEventEffect)currentNode;
+                    node.SetNode(storyEventEffectManager);
                 }
                 // ==============================================================================================================================
 

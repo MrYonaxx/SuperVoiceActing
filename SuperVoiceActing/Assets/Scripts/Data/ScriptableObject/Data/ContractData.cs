@@ -455,12 +455,22 @@ namespace VoiceActing
         [Space]
         [Space]
         [SerializeField]
+        private StoryEventData eventAcceptedContract;
+        public StoryEventData EventAcceptedContract
+        {
+            get { return eventAcceptedContract; }
+        }
+
+        [SerializeField]
         private StoryEventData eventEndContract;
         public StoryEventData EventEndContract
         {
             get { return eventEndContract; }
         }
 
+        [Space]
+        [Space]
+        [Space]
         [SerializeField]
         private bool changeBGM;
         public bool ChangeBGM

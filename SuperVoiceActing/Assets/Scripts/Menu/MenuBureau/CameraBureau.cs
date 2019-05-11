@@ -149,39 +149,53 @@ namespace VoiceActing
                     return;
 
             }
-
+            /*
             if (Input.GetAxis("ControllerRightHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
             {
-                position += 1;
-                if (position == transforms.Length)
-                    position -= 1;
-
-                if (zoomed == false)
-                    ModifyAnglePosition(4);
-                else
-                    ModifyAnglePosition(0);
-                MoveToCamera();
-
-                inputRightStickEnter = true;
+                MoveCameraRight();
             }
             else if (Input.GetAxis("ControllerRightHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
             {
-                position -= 1;
-                if (position == -1)
-                    position += 1;
-
-                if (zoomed == false)
-                    ModifyAnglePosition(4);
-                else
-                    ModifyAnglePosition(0);
-                MoveToCamera();
-
-                inputRightStickEnter = true;
-            }
+                MoveCameraLeft();
+            }*/
         }
 
 
+        public void MoveCameraRight()
+        {
+            if (inputRightStickEnter == true)
+                return;
 
+            position += 1;
+            if (position == transforms.Length)
+                position -= 1;
+
+            if (zoomed == false)
+                ModifyAnglePosition(4);
+            else
+                ModifyAnglePosition(0);
+            MoveToCamera();
+
+            inputRightStickEnter = true;
+        }
+
+        public void MoveCameraLeft()
+        {
+            if (inputRightStickEnter == true)
+                return;
+
+            position -= 1;
+            if (position == -1)
+                position += 1;
+
+            if (zoomed == false)
+                ModifyAnglePosition(4);
+            else
+                ModifyAnglePosition(0);
+            MoveToCamera();
+
+            inputRightStickEnter = true;
+        }
 
 
         private void FreeCamera()
@@ -381,6 +395,10 @@ namespace VoiceActing
 
         }
 
+        public void HideHUD()
+        {
+            animatorHUD.SetTrigger("Hide");
+        }
 
 
         public void TransitionDoublage()

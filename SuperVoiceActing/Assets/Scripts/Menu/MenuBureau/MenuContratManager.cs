@@ -71,6 +71,12 @@ namespace VoiceActing
         [SerializeField]
         Sprite[] spriteSeason;
 
+        [Header("EventPhone")]
+        [SerializeField]
+        GameObject phoneObject;
+        [SerializeField]
+        StoryEventManager storyEventManager;
+
 
         #endregion
 
@@ -96,14 +102,6 @@ namespace VoiceActing
             //animatorMenu.disabled = false
         }
 
-
-        private void Start()
-        {
-            /*contractAcceptedList.Add(null);
-            contractAcceptedList.Add(null);
-            contractAcceptedList.Add(null);
-            DrawAvailableContract();*/
-        }
 
         public void SetContractList(List<Contract> contracts)
         {
@@ -166,11 +164,33 @@ namespace VoiceActing
                 {
                     contractAcceptedList[i] = newContract;
                     DrawAvailableContract();
+                    CheckEventWhenAccepted(newContract);
                     return true;
                 }
             }
             return false;
         }
+
+
+        public void CheckEventWhenAccepted(Contract newContract)
+        {
+            if(newContract.StoryEventWhenAccepted != null)
+            {
+                phoneObject.SetActive(true);
+                storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
+            }
+        }
+
+
+
+
+
+
+
+
+        // SELECTION UI
+        // =================================================================================================================================
+
 
         public void Validate()
         {
@@ -216,6 +236,14 @@ namespace VoiceActing
             }
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
+
+
+
+
+
+
+
+
 
         private void SwitchToMenuContractAvailable()
         {
