@@ -17,11 +17,12 @@ namespace VoiceActing
     [System.Serializable]
     public class StoryEventText : StoryEvent
     {
-        [HorizontalGroup("Interlocuteur", LabelWidth = 100)]
+        [HorizontalGroup("Interlocuteur")]
         [SerializeField]
+        [HideLabel]
         StoryCharacterData interlocuteur;
 
-        [HorizontalGroup("Interlocuteur", Width = 200)]
+        [HorizontalGroup("Interlocuteur")]
         [SerializeField]
         [HideLabel]
         EmotionNPC emotionNPC;
@@ -30,7 +31,11 @@ namespace VoiceActing
         [SerializeField]
         [TextArea(2,2)]
         [HideLabel]
-        string text = null;
+        private string text = null;
+        public string Text
+        {
+            get { return text;  }
+        }
 
         [TabGroup("ParentGroup", "TexteEng")]
         [SerializeField]
@@ -39,15 +44,15 @@ namespace VoiceActing
         string textEng = null;
 
 
-        [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200, PaddingRight = 20)]
+        [HorizontalGroup("Option Avancées", LabelWidth = 50)]
         [SerializeField]
         float mouthSpeed = 1;
 
-        [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200)]
+        [HorizontalGroup("Option Avancées", LabelWidth = 50)]
         [SerializeField]
         bool forceSkip = false;
 
-        [HorizontalGroup("Option Avancées", LabelWidth = 120, Width = 200)]
+        [HorizontalGroup("Option Avancées", LabelWidth = 120)]
         [SerializeField]
         bool ignorePlayerInput = false;
 
@@ -56,7 +61,7 @@ namespace VoiceActing
 
 
 
-        protected TextMeshPro textMeshPro;
+        protected TextMeshProUGUI textMeshPro;
         protected CharacterDialogueController characterDialogue;
         protected GameObject nextButton;
 
@@ -82,11 +87,11 @@ namespace VoiceActing
             return interlocuteur;
         }
 
-        public void SetNode(TextMeshPro textMesh, CharacterDialogueController[] charactersEvent, GameObject next)
+        public void SetNode(TextMeshProUGUI textMesh, List<CharacterDialogueController> charactersEvent, GameObject next)
         {
             textMeshPro = textMesh;
             nextButton = next;
-            for (int i = 0; i < charactersEvent.Length; i++)
+            for (int i = 0; i < charactersEvent.Count; i++)
             {
                 if (charactersEvent[i].GetStoryCharacterData() == interlocuteur)
                 {
@@ -127,6 +132,12 @@ namespace VoiceActing
                         break;
                     case "Print":
                         textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.linkInfo[i].linkTextLength;
+                        break;
+                    case "Shake":
+                        //textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.linkInfo[i].linkTextLength;
+                        break;
+                    case "Flash":
+                        //textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.linkInfo[i].linkTextLength;
                         break;
                     default:
                         break;

@@ -6,8 +6,11 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -21,31 +24,37 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Event")]
+        [Title("Event")]
         [SerializeField]
         StoryEventData storyEventData;
 
-        [Header("Player")]
+        [Title("Player")]
         [SerializeField]
         PlayerData playerData;
 
-        [Header("EventText")]
+        [Title("EventText")]
         [SerializeField]
-        TextMeshPro textMeshPro;
+        Image imageBackground;
+        [SerializeField]
+        TextMeshProUGUI textMeshPro;
         [SerializeField]
         GameObject next;
         [SerializeField]
         Animator animName;
         [SerializeField]
-        TextMeshPro textName;
-        [SerializeField]
+        TextMeshProUGUI textName;
+        /*[SerializeField]
         AudioSource audioSourceText;
-
-        [Header("Characters")]
+        */
+        [Title("Characters")]
         [SerializeField]
-        CharacterDialogueController[] characters;
+        CharacterDialogueController characterPrefab;
+        [SerializeField]
+        Transform transformCharacter;
 
-        [Header("DoublageEventManager")]
+        List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
+
+        [Title("DoublageEventManager (Acting only)")]
         [SerializeField]
         DoublageEventManager doublageEventManager;
 
@@ -89,8 +98,11 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
-            if(storyEventData != null)
+            if (storyEventData != null)
+            {
+                CreateScene();
                 StartCoroutine(NextNodeCoroutine());
+            }
             
         }
         
@@ -102,6 +114,21 @@ namespace VoiceActing
         {
             
         }*/
+
+        public void CreateScene()
+        {
+            imageBackground.sprite = storyEventData.Background;
+            for(int i = 0; i < storyEventData.Characters.Length; i++)
+            {
+                characters.Add(Instantiate(characterPrefab, transformCharacter));
+                characters[characters.Count - 1].SetStoryCharacterData(storyEventData.Characters[i].CharacterToMove);
+                characters[characters.Count - 1].transform.position = storyEventData.Characters[i].NewPosition;
+                characters[characters.Count - 1].transform.localScale = storyEventData.Characters[i].NewScale;
+                characters[characters.Count - 1].transform.eulerAngles = storyEventData.Characters[i].NewRotation;
+            }
+        }
+
+
         public void StartStoryEventData(StoryEventData newStoryEvent)
         {
             storyEventData = newStoryEvent;
@@ -115,6 +142,8 @@ namespace VoiceActing
             if (currentNode != null)
             {
                 HideName();
+
+                // ==============================================================================================================================
                 if (currentNode is StoryEventText)
                 {
                     StoryEventText node = (StoryEventText) currentNode;
@@ -122,7 +151,8 @@ namespace VoiceActing
                     node.SetNode(textMeshPro, characters, next);
                     DrawName(node.GetInterlocuteur());
                 }
-                if (currentNode is StoryEventMoveCharacter)
+
+                else if (currentNode is StoryEventMoveCharacter)
                 {
                     StoryEventMoveCharacter node = (StoryEventMoveCharacter)currentNode;
                     node.SetNode(characters);
@@ -131,7 +161,8 @@ namespace VoiceActing
                         StartCoroutine(node.MoveCoroutine());
                     }
                 }
-                if (currentNode is StoryEventLoad)
+
+                else if (currentNode is StoryEventLoad)
                 {
                     StoryEventLoad node = (StoryEventLoad) currentNode;
                     if (node.GetDataToLoad() != null)
@@ -144,10 +175,13 @@ namespace VoiceActing
                         doublageEventManager.StopFlashback(node.GetDoublageEventToLoad());
                     }
                 }
+                // ==============================================================================================================================
+
+
                 yield return StartCoroutine(currentNode.GetStoryEvent());
                 if (currentNode is StoryEventText)
                 {
-                    audioSourceText.Play();
+                    //audioSourceText.Play();
                 }
                 i += 1;
                 StartCoroutine(NextNodeCoroutine());

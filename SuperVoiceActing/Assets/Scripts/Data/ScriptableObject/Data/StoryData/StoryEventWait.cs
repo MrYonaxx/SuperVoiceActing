@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -15,7 +16,12 @@ namespace VoiceActing
     public class StoryEventWait : StoryEvent
     {
         [SerializeField]
+        [HideLabel]
         float time = 60;
+        public float Time
+        {
+            get { return time; }
+        }
 
         protected override IEnumerator StoryEventCoroutine()
         {
