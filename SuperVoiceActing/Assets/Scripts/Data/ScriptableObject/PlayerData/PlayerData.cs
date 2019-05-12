@@ -202,26 +202,6 @@ namespace VoiceActing
 
 
 
-        /////////////////////////////////////////////////////////////////////////////////// 
-        [Space]
-        [Space]
-        [Space]
-        [Title("Events")]
-
-        [SerializeField]
-        private List<StoryEventData> nextStoryEvents;
-
-        public List<StoryEventData> NextStoryEvents
-        {
-            get { return nextStoryEvents; }
-            set { nextStoryEvents = value; }
-        }
-
-
-
-
-
-
 
 
 
@@ -270,6 +250,22 @@ namespace VoiceActing
         }
 
         [Title("Debug")]
+        [SerializeField]
+        private List<StoryEventData> nextStoryEvents;
+        public List<StoryEventData> NextStoryEvents
+        {
+            get { return nextStoryEvents; }
+            set { nextStoryEvents = value; }
+        }
+
+        [SerializeField]
+        private List<StoryEventData> nextDekstopStoryEvents;
+        public List<StoryEventData> NextDekstopStoryEvents
+        {
+            get { return nextDekstopStoryEvents; }
+            set { nextDekstopStoryEvents = value; }
+        }
+
         [SerializeField]
         private int maintenance;
         public int Maintenance

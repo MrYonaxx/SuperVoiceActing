@@ -144,6 +144,14 @@ namespace VoiceActing
                 }
             }
 
+            if(actualText[0] == '(')
+            {
+                textMeshPro.color = new Color(0.8f, 0.8f, 1);
+            }
+            else
+            {
+                textMeshPro.color = new Color(1, 1, 1);
+            }
 
             while (true)
             {

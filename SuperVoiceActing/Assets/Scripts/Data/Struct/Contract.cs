@@ -192,6 +192,23 @@ namespace VoiceActing
 
 
         [SerializeField]
+        private StoryEventData storyEventWhenAccepted;
+        public StoryEventData StoryEventWhenAccepted
+        {
+            get { return storyEventWhenAccepted; }
+        }
+        [SerializeField]
+        private StoryEventData storyEventWhenEnd;
+        public StoryEventData StoryEventWhenEnd
+        {
+            get { return storyEventWhenEnd; }
+        }
+
+
+
+
+
+        [SerializeField]
         private AudioClip battleTheme;
         public AudioClip BattleTheme
         {
@@ -275,6 +292,12 @@ namespace VoiceActing
 
             this.producerMP = data.ProducerMP;
             this.artificialIntelligence = data.ArtificialIntelligence;
+
+
+
+            this.storyEventWhenAccepted = data.EventAcceptedContract;
+            this.storyEventWhenEnd = data.EventEndContract;
+
 
 
             this.victoryTheme = data.VictoryTheme;

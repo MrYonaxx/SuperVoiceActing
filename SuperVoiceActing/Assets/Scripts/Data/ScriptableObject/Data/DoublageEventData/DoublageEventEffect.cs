@@ -15,9 +15,12 @@ namespace VoiceActing
     public enum EventEffect
     {
         Flash,
+        Shake,
+        BigShake,
         Negative,
         BlurredVision,
-        FadeTotal
+        FadeTotal,
+        ShakePlayer
     }
 
     [System.Serializable]

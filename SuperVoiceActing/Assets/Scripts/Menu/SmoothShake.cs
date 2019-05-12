@@ -52,6 +52,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+
         protected void Start()
         {
             originX = this.transform.localPosition.x;
