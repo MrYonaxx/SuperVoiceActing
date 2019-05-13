@@ -74,6 +74,15 @@ namespace VoiceActing
         }
 
 
+        // Appelé par la manip de debug pour réafficher les listes
+        public void RefreshData()
+        {
+            //actorsManagers.SetListActors(playerData.VoiceActors);
+            contractAvailable.DestroyButtonList();
+            contractAvailable.SetContractAvailable(playerData.ContractAvailable);
+        }
+
+
         // Appelé après l'anim de next Week
         public void CheckContractDone()
         {

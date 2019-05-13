@@ -18,7 +18,6 @@ namespace VoiceActing
         Antagoniste,
         Enfant,
         Vieux,
-
         VoixOff
     }
 
@@ -109,6 +108,15 @@ namespace VoiceActing
             set { rolePerformance = value; }
         }
 
+
+        [SerializeField]
+        private string characterLock;
+        public string CharacterLock
+        {
+            get { return characterLock; }
+            set { characterLock = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -153,6 +161,9 @@ namespace VoiceActing
 
             this.roleScore = 0;
             this.rolePerformance = 0;
+
+            if(data.ActorLocked != null)
+                this.characterLock = data.ActorLocked.Name;
 
             int[] bestValues = new int[8];
 

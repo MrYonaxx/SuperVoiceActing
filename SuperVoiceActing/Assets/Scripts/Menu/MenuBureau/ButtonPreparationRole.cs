@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -41,6 +42,12 @@ namespace VoiceActing
         [SerializeField]
         GameObject panelNoActor;
 
+        [SerializeField]
+        Image buttonRole;
+
+        Color roleLocked = new Color(1, 0, 0);
+        Color roleUnlocked = new Color(1, 1, 1);
+
         #endregion
 
         #region GettersSetters 
@@ -60,6 +67,7 @@ namespace VoiceActing
 
         public void DrawButton(Role role, VoiceActor voiceActor)
         {
+            buttonRole.color = roleUnlocked;
             textRoleName.text = role.Name;
             if(voiceActor != null)
             {
@@ -74,6 +82,10 @@ namespace VoiceActing
 
         public void DrawActor(Role role, VoiceActor voiceActor)
         {
+            if(role.CharacterLock != null)
+            {
+                buttonRole.color = roleLocked;
+            }
             panelNoActor.SetActive(false);
             panelActor.SetActive(true);
             textActorName.text = voiceActor.Name;

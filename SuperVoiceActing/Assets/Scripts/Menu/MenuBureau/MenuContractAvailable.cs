@@ -138,6 +138,15 @@ namespace VoiceActing
             CreateListButton();
         }
 
+        public void DestroyButtonList()
+        {
+            for (int i = 0; i < buttonsContracts.Count; i++)
+            {
+                Destroy(buttonsContracts[i].gameObject);
+            }
+            buttonsContracts.Clear();
+        }
+
         private void CreateListButton()
         {
             for(int i = 0; i < listContractAvailable.Count; i++)

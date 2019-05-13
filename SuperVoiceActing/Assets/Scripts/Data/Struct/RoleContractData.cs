@@ -46,8 +46,8 @@ namespace VoiceActing
     [System.Serializable]
     public class RoleContractData
     {
-        [Header("CharacterData")]
-
+        [HorizontalGroup("Data")]
+        [VerticalGroup("Data/Left")]
         [SerializeField]
         private string[] names;
         public string[] Names
@@ -56,14 +56,15 @@ namespace VoiceActing
             set { names = value; }
         }
 
-        [HorizontalGroup("Line")]
+        [VerticalGroup("Data/Middle")]
         [SerializeField]
         private int lineMin;
         public int LineMin
         {
             get { return lineMin; }
         }
-        [HorizontalGroup("Line")]
+        [VerticalGroup("Data/Right")]
+        [HideLabel]
         [SerializeField]
         private int lineMax;
         public int LineMax
@@ -71,14 +72,15 @@ namespace VoiceActing
             get { return lineMax; }
         }
 
-        [HorizontalGroup("Fan")]
+        [VerticalGroup("Data/Middle")]
         [SerializeField]
         private int fanMin;
         public int FanMin
         {
             get { return fanMin; }
         }
-        [HorizontalGroup("Fan")]
+        [VerticalGroup("Data/Right")]
+        [HideLabel]
         [SerializeField]
         private int fanMax;
         public int FanMax
@@ -86,14 +88,15 @@ namespace VoiceActing
             get { return fanMax; }
         }
 
-        [HorizontalGroup("Atk")]
+        [VerticalGroup("Data/Middle")]
         [SerializeField]
         private int atkMin;
         public int AtkMin
         {
             get { return atkMin; }
         }
-        [HorizontalGroup("Atk")]
+        [VerticalGroup("Data/Right")]
+        [HideLabel]
         [SerializeField]
         private int atkMax;
         public int AtkMax
@@ -103,36 +106,50 @@ namespace VoiceActing
 
         [MinMaxSlider(-10, 10)]
         [SerializeField]
+        [HorizontalGroup("Timbre")]
+        [HideLabel]
         private Vector2Int timbre;
         public Vector2Int Timbre
         {
             get { return timbre; }
-            set { timbre = value; }
         }
 
         [MinMaxSlider(-10, 10)]
         [SerializeField]
+        [HorizontalGroup("Timbre")]
+        [HideLabel]
         private Vector2Int timbreRand;
         public Vector2Int TimbreRand
         {
             get { return timbre; }
-            set { timbre = value; }
         }
+
+
+
+        [TabGroup("Stat")]
         [HideLabel]
         [SerializeField]
         private EmotionStat characterStatMin;
         public EmotionStat CharacterStatMin
         {
             get { return characterStatMin; }
-            set { characterStatMin = value; }
         }
+        [TabGroup("Stat")]
         [HideLabel]
         [SerializeField]
         private EmotionStat characterStatMax;
         public EmotionStat CharacterStatMax
         {
             get { return characterStatMax; }
-            set { characterStatMax = value; }
+        }
+
+
+        [TabGroup("VoiceActors")]
+        [SerializeField]
+        private VoiceActorData actorLocked;
+        public VoiceActorData ActorLocked
+        {
+            get { return actorLocked; }
         }
 
     }

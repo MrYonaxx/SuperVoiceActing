@@ -86,6 +86,12 @@ namespace VoiceActing
         [Title("Calendar")]
 
 
+        [SerializeField]
+        private GameTimelineData gameTimeline;
+        public GameTimelineData GameTimeline
+        {
+            get { return gameTimeline; }
+        }
 
         [SerializeField]
         private Season startSeason;
@@ -240,6 +246,24 @@ namespace VoiceActing
             set { contractAvailable = value; }
         }
 
+        // Contrat Gacha
+        [SerializeField]
+        private List<ContractData> contractGacha;
+        public List<ContractData> ContractGacha
+        {
+            get { return contractGacha; }
+            set { contractGacha = value; }
+        }
+
+        // Contrat Gacha qui sont en standby et qui ne peuvent pas être tiré
+        [SerializeField]
+        private List<ContractData> contractGachaCooldown;
+        public List<ContractData> ContractGachaCooldown
+        {
+            get { return contractGachaCooldown; }
+            set { contractGachaCooldown = value; }
+        }
+
         // Liste des Acteurs
         [SerializeField]
         private List<VoiceActor> voiceActors;
@@ -302,7 +326,7 @@ namespace VoiceActing
 
         public void CreateList()
         {
-            if(voiceActors == null && contractAvailable == null)
+            if (voiceActors == null && contractAvailable == null)
             {
                 currentContract = null;
 
@@ -323,6 +347,8 @@ namespace VoiceActing
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
                 CreateNewData();
+                CheckTimeline();
+                GachaContract();
             }
             else
             {
@@ -336,6 +362,8 @@ namespace VoiceActing
 
         public void CreateNewData()
         {
+            contractGacha = new List<ContractData>();
+            //contractGachaCooldown 
             nextStoryEvents = new List<StoryEventData>();
             date = new Date(week, month, year);
             season = StartSeason;
@@ -363,12 +391,14 @@ namespace VoiceActing
             CheckSeason();
             ContractNextWeek();
             VoiceActorWork();
+            CheckTimeline();
+            GachaContract();
         }
 
 
         public void CheckMonth()
         {
-            if(date.week == monthDate[date.month-1])
+            if (date.week == monthDate[date.month - 1])
             {
                 date.month += 1;
                 PayMaintenance();
@@ -377,10 +407,10 @@ namespace VoiceActing
 
         public void CheckSeason()
         {
-            switch(season)
+            switch (season)
             {
                 case Season.Spring:
-                    if(date.week == summerDate)
+                    if (date.week == summerDate)
                         season = Season.Summer;
                     break;
                 case Season.Summer:
@@ -400,7 +430,7 @@ namespace VoiceActing
 
         public void ContractNextWeek()
         {
-            for(int i = 0; i < contractAccepted.Count; i++)
+            for (int i = 0; i < contractAccepted.Count; i++)
             {
                 if (contractAccepted[i] != null)
                 {
@@ -422,10 +452,51 @@ namespace VoiceActing
         }
 
 
+        public void CheckTimeline()
+        {
+            for (int i = 0; i < gameTimeline.ContractTimeline[date.week].contractsData.addContracts.Length; i++)
+            {
+                contractAvailable.Add(new Contract(gameTimeline.ContractTimeline[date.week].contractsData.addContracts[i]));
+            }
+
+            for (int i = 0; i < gameTimeline.ContractRandomTimeline[date.week].contractsData.addContracts.Length; i++)
+            {
+                contractGacha.Add(gameTimeline.ContractRandomTimeline[date.week].contractsData.addContracts[i]);
+            }
+        }
+
+
+        public void GachaContract()
+        {
+            int nbContract = 0;
+            if (contractAvailable.Count == 0)
+            {
+                nbContract = Random.Range(1, 4);
+            }
+            else if (contractAvailable.Count <= 3)
+            {
+                nbContract = Random.Range(0, 4);
+            }
+            else if (contractAvailable.Count <= 6)
+            {
+                nbContract = Random.Range(0, 3);
+            }
+            else if (contractAvailable.Count > 6)
+            {
+                nbContract = Random.Range(0, 2);
+            }
+
+
+            if (contractGacha.Count != 0)
+            {
+                for (int i = 0; i < nbContract; i++)
+                {
+                    contractAvailable.Add(new Contract(contractGacha[Random.Range(0, contractGacha.Count)]));
+                }
+            }
 
 
 
-
-    } // PlayerData class
-
+        } // PlayerData class
+    }
 } // #PROJECTNAME# namespace

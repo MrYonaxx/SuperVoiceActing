@@ -494,6 +494,13 @@ namespace VoiceActing
             get { return victoryTheme; }
         }
 
+        [SerializeField]
+        private bool sessionLock;
+        public bool SessionLock
+        {
+            get { return sessionLock; }
+        }
+
 
 
         #endregion

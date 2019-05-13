@@ -360,6 +360,10 @@ namespace VoiceActing
 
         public void Validate()
         {
+            if(currentContract.Characters[indexSelected].CharacterLock != null)
+            {
+                return;
+            }
             menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
             cameraManager.MoveToCamera(1);
         }

@@ -165,6 +165,7 @@ namespace VoiceActing
                     contractAcceptedList[i] = newContract;
                     DrawAvailableContract();
                     CheckEventWhenAccepted(newContract);
+                    CheckCharacterLock(newContract);
                     return true;
                 }
             }
@@ -178,6 +179,25 @@ namespace VoiceActing
             {
                 phoneObject.SetActive(true);
                 storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
+            }
+        }
+
+        public void CheckCharacterLock(Contract newContract)
+        {
+            for(int i = 0; i < newContract.Characters.Count; i++)
+            {
+                if(newContract.Characters[i].CharacterLock != null)
+                {
+                    // On cherche l'acteur dans le monde
+                    for(int j = 0; j < playerData.VoiceActors.Count; j++)
+                    {
+                        if(newContract.Characters[i].CharacterLock == playerData.VoiceActors[j].Name)
+                        {
+                            newContract.VoiceActors[i] = playerData.VoiceActors[j];
+                            continue;
+                        }
+                    }
+                }
             }
         }
 

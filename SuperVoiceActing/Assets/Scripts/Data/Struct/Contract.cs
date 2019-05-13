@@ -206,6 +206,12 @@ namespace VoiceActing
 
 
 
+        [SerializeField]
+        private bool sessionLock;
+        public bool SessionLock
+        {
+            get { return sessionLock; }
+        }
 
 
         [SerializeField]
@@ -298,7 +304,7 @@ namespace VoiceActing
             this.storyEventWhenAccepted = data.EventAcceptedContract;
             this.storyEventWhenEnd = data.EventEndContract;
 
-
+            this.sessionLock = data.SessionLock;
 
             this.victoryTheme = data.VictoryTheme;
             this.battleTheme = data.BattleTheme;

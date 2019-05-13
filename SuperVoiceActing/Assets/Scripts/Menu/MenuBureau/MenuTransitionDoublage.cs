@@ -55,7 +55,8 @@ namespace VoiceActing
             particles.SetActive(false);
             camBureau.TransitionDoublage();
             fond.SetActive(true);
-            animatorCamera.enabled = true;
+            animatorCamera.SetTrigger("Transition");
+            //animatorCamera.enabled = true;
             AudioManager.Instance.StopMusic(120);
         }
 

@@ -32,13 +32,20 @@ namespace VoiceActing
         [FoldoutGroup("$name")]
         [SerializeField]
         [HideLabel]
-        public GameTimelineContractData addContracts;
+        public GameTimelineContractData contractsData;
 
         string name;
 
         public void SetTitle(int i)
         {
             name = "Semaine " + i;
+            if (contractsData.addContracts != null)
+            {
+                if (contractsData.addContracts.Length != 0)
+                {
+                    name += " | Contrat " + contractsData.addContracts.Length;
+                }
+            }
         }
     }
 
@@ -49,15 +56,24 @@ namespace VoiceActing
 	{
         [TabGroup("Contract")]
         [Space]
-        [Title("Contrat du scénario et quête annexe")]
+        [Title("Contrat ajoutés directement aux contrats disponibles")]
         [SerializeField]
         private GameTimelineContractBox[] contractTimeline;
+        public GameTimelineContractBox[] ContractTimeline
+        {
+            get { return contractTimeline; }
+        }
+
 
         [TabGroup("RandomContract")]
         [Space]
-        [Title("Contrat Random")]
+        [Title("Contrat ajoutés à la liste de contrat pouvant apparaitre dans les contrats disponibles")]
         [SerializeField]
         private GameTimelineContractBox[] contractRandomTimeline;
+        public GameTimelineContractBox[] ContractRandomTimeline
+        {
+            get { return contractRandomTimeline; }
+        }
 
         [TabGroup("Events")]
         [Space]
@@ -71,6 +87,8 @@ namespace VoiceActing
         [SerializeField]
         private GameTimelineContractData[] voiceActorTimeline;
 
+
+
         [Button]
         private void SetTitles()
         {
@@ -79,7 +97,24 @@ namespace VoiceActing
                 contractTimeline[i].SetTitle(i);
             }
 
+            for (int i = 0; i < contractRandomTimeline.Length; i++)
+            {
+                contractRandomTimeline[i].SetTitle(i);
+            }
         }
+
+
+        /*public ContractData[] GetContracts(int week)
+        {
+            if(contractTimeline[week].addContracts.addContracts != null)
+            {
+                if (contractTimeline[week].addContracts.addContracts.Length != 0)
+                    return contractTimeline[week].addContracts.addContracts;
+
+            }
+            return null;
+        }*/
+
 
     } // GameTimelineData class
 	
