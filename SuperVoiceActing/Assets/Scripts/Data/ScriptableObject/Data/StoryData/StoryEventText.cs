@@ -115,6 +115,7 @@ namespace VoiceActing
 
 
             textMeshPro.text = actualText;
+            textMeshPro.maxVisibleCharacters = 0;
 
             yield return null;
 

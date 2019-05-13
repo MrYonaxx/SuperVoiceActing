@@ -475,7 +475,7 @@ namespace VoiceActing
             }
             else if (contractAvailable.Count <= 3)
             {
-                nbContract = Random.Range(0, 4);
+                nbContract = Random.Range(1, 4);
             }
             else if (contractAvailable.Count <= 6)
             {

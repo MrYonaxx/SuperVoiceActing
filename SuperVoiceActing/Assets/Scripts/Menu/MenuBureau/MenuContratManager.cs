@@ -179,6 +179,7 @@ namespace VoiceActing
             {
                 phoneObject.SetActive(true);
                 storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
+                this.gameObject.SetActive(false);
             }
         }
 

@@ -366,14 +366,14 @@ namespace VoiceActing
         private IEnumerator OrthographicSizeTransition(float addValue)
         {
             float time = 20;
-            float rate = ((70 + addValue) - camera.fieldOfView) / 20;
+            float rate = ((65 + addValue) - camera.fieldOfView) / 20;
             while (time != 0)
             {
                 camera.fieldOfView += rate;
                 time -= 1;
                 yield return null;
             }
-            camera.fieldOfView = 70 + addValue;
+            camera.fieldOfView = 65 + addValue;
             orthographicCoroutine = null;
         }
 
