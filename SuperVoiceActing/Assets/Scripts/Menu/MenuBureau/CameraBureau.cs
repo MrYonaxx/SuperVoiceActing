@@ -33,6 +33,9 @@ namespace VoiceActing
         SmoothShake smoothShakeCamera;
 
         [SerializeField]
+        Transform transformToRotate;
+
+        [SerializeField]
         Transform[] transforms;
         [SerializeField]
         GameObject[] screenManager;
@@ -223,19 +226,19 @@ namespace VoiceActing
             {
                 speedX = 0;
             }
-            this.transform.eulerAngles += new Vector3(speedX * speed, speedY * speed, 0);
-            float angleX = this.transform.eulerAngles.x;
+            transformToRotate.eulerAngles += new Vector3(speedX * speed, speedY * speed, 0);
+            float angleX = transformToRotate.eulerAngles.x;
             angleX = (angleX > 180) ? angleX - 360 : angleX;
-            float angleY = this.transform.eulerAngles.y;
+            float angleY = transformToRotate.eulerAngles.y;
             angleY = (angleY > 180) ? angleY - 360 : angleY;
-            this.transform.eulerAngles = new Vector3(Mathf.Clamp(angleX, -30f, 10f), Mathf.Clamp(angleY, -45f, 45f), this.transform.eulerAngles.z);
+            transformToRotate.eulerAngles = new Vector3(Mathf.Clamp(angleX, -30f, 10f), Mathf.Clamp(angleY, -45f, 45f), transformToRotate.eulerAngles.z);
         }
 
 
         private void ModifyAnglePosition(float range)
         {
             transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-range, range));
-            this.transform.SetParent(transforms[position]);
+            transformToRotate.SetParent(transforms[position]);
         }
 
 
@@ -269,9 +272,9 @@ namespace VoiceActing
             float ratioY = 0;
             float ratioZ = 0;
 
-            while (this.transform.localPosition != Vector3.zero || this.transform.localEulerAngles != Vector3.zero)
+            while (transformToRotate.localPosition != Vector3.zero || transformToRotate.localEulerAngles != Vector3.zero)
             {
-                angleX = this.transform.localEulerAngles.x;
+                angleX = transformToRotate.localEulerAngles.x;
                 if (angleX > 1 && angleX < 359)
                 {
                     ratioX = 0;
@@ -292,7 +295,7 @@ namespace VoiceActing
                     angleX = 0;
                 }
 
-                angleY = this.transform.localEulerAngles.y;
+                angleY = transformToRotate.localEulerAngles.y;
                 if (angleY > 1 && angleY < 359)
                 {
                     ratioY = 0;
@@ -314,7 +317,7 @@ namespace VoiceActing
                 }
 
 
-                angleZ = this.transform.localEulerAngles.z;
+                angleZ = transformToRotate.localEulerAngles.z;
                 if (angleZ > 1 && angleZ < 359)
                 {
                     ratioZ = 0;
@@ -334,13 +337,13 @@ namespace VoiceActing
                 {
                     angleZ = 0;
                 }
-                this.transform.localEulerAngles += new Vector3(angleX, angleY, angleZ);
-                this.transform.localPosition /= speedCoroutine;
-                if(Mathf.Abs(this.transform.localPosition.x) < 0.01f &&
-                   Mathf.Abs(this.transform.localPosition.y) < 0.01f &&
-                   Mathf.Abs(this.transform.localPosition.z) < 0.01f)
+                transformToRotate.localEulerAngles += new Vector3(angleX, angleY, angleZ);
+                transformToRotate.localPosition /= speedCoroutine;
+                if(Mathf.Abs(transformToRotate.localPosition.x) < 0.01f &&
+                   Mathf.Abs(transformToRotate.localPosition.y) < 0.01f &&
+                   Mathf.Abs(transformToRotate.localPosition.z) < 0.01f)
                 {
-                    this.transform.localPosition = Vector3.zero;
+                    transformToRotate.localPosition = Vector3.zero;
                 }
 
 
