@@ -43,6 +43,7 @@ namespace VoiceActing
         private TextPerformanceAppear textActing;
 
 
+        bool speak = false;
         private Sprite[] currentSprites;
 
         IEnumerator mouthCoroutine = null;
@@ -95,6 +96,13 @@ namespace VoiceActing
                 spriteRenderer.sprite = currentSprites[0];
         }
 
+        public void LoadCharacterDataSprites()
+        {
+            currentSprites = storyCharacterData.SpriteNormal;
+            if (spriteRenderer != null)
+                spriteRenderer.sprite = currentSprites[0];
+        }
+
         public void SetTextActing(TextPerformanceAppear textMeshPro)
         {
             textActing = textMeshPro;
@@ -118,8 +126,9 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-        public void ActivateMouth(float speed = -1)
+        public void ActivateMouth(float speed = -1, bool noSpeak = false)
         {
+            speak = noSpeak;
             if (speed != -1)
                 speedMouth = speed;
             if (mouthCoroutine != null)
@@ -181,6 +190,8 @@ namespace VoiceActing
                 voice.pitch = Random.Range(0.95f, 1.05f);
                 voice.Play();
             }
+            if (speak == true)
+                return;
             if (index < currentSprites.Length)
                 spriteRenderer.sprite = currentSprites[index];
         }

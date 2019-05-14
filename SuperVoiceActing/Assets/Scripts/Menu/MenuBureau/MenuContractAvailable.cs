@@ -256,6 +256,7 @@ namespace VoiceActing
         {
             yield return new WaitForSeconds(time);
             SwitchToMenuContractManager();
+            menuContractManager.CheckPhoneEvent();
         }
 
         public void ShowCharacterInfo()
