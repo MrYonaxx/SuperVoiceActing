@@ -122,7 +122,17 @@ namespace VoiceActing
             textMeshPro.maxVisibleCharacters = 0;
 
             if (characterDialogue != null)
-                characterDialogue.ActivateMouth(mouthSpeed + 7);
+            {
+                if (mouthSpeed <= -1)
+                {
+                    characterDialogue.ActivateMouth(mouthSpeed + 7, true);
+                    //mouthSpeed *= -1;
+                }
+                else
+                {
+                    characterDialogue.ActivateMouth(mouthSpeed + 7);
+                }
+            }
 
             for (int i = 0; i < textMeshPro.textInfo.linkCount; i++)
             {
@@ -157,7 +167,7 @@ namespace VoiceActing
             while (true)
             {
                 // print
-                if (actualTime == mouthSpeed && textMeshPro.maxVisibleCharacters < actualText.Length)
+                if (actualTime == Mathf.Abs(mouthSpeed) && textMeshPro.maxVisibleCharacters < actualText.Length)
                 {
                     if (CheckPause() == false)
                     {

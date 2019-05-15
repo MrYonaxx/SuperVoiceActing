@@ -11,6 +11,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 namespace VoiceActing
 {
@@ -52,15 +53,22 @@ namespace VoiceActing
         [SerializeField]
         Transform transformCharacter;
 
+        [SerializeField]
         List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
 
         [Title("Story Effect")]
         [SerializeField]
         StoryEventEffectManager storyEventEffectManager;
 
+        [FoldoutGroup("Optionnel")]
         [Title("DoublageEventManager (Acting only)")]
         [SerializeField]
         DoublageEventManager doublageEventManager;
+
+        [FoldoutGroup("Optionnel")]
+        [Title("PhoneCall")]
+        [SerializeField]
+        UnityEvent unityEvent;
 
 
         private IEnumerator coroutineAnimName = null;
@@ -135,6 +143,7 @@ namespace VoiceActing
 
         public void StartStoryEventData(StoryEventData newStoryEvent)
         {
+            i = 0;
             storyEventData = newStoryEvent;
             StartCoroutine(NextNodeCoroutine());
         }
@@ -196,6 +205,10 @@ namespace VoiceActing
                 }
                 i += 1;
                 StartCoroutine(NextNodeCoroutine());
+            }
+            else
+            {
+                unityEvent.Invoke();
             }
         }
 

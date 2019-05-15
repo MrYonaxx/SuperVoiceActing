@@ -52,6 +52,8 @@ namespace VoiceActing
         MenuContractAvailable menuContractAvailable;
         [SerializeField]
         MenuContractPreparation menuContractPreparation;
+        [SerializeField]
+        MenuManagementManager menuManagementManager;
 
         [Header("MenuInfo")]
 
@@ -76,6 +78,9 @@ namespace VoiceActing
         GameObject phoneObject;
         [SerializeField]
         StoryEventManager storyEventManager;
+
+
+        bool eventPhone = false;
 
 
         #endregion
@@ -179,7 +184,9 @@ namespace VoiceActing
             {
                 phoneObject.SetActive(true);
                 storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
-                this.gameObject.SetActive(false);
+                eventPhone = true;
+                //menuManagementManager.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
             }
         }
 
@@ -278,6 +285,15 @@ namespace VoiceActing
             menuContractPreparation.gameObject.SetActive(true);
             animatorMenu.SetBool("Appear", false);
             this.gameObject.SetActive(false);
+        }
+
+        public void CheckPhoneEvent()
+        {
+            if(eventPhone == true)
+            {
+                this.gameObject.SetActive(false);
+                eventPhone = false;
+            }
         }
 
 

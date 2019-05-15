@@ -441,6 +441,14 @@ namespace VoiceActing
                     }
                 }
             }
+            for (int i = 0; i < contractAvailable.Count; i++)
+            {
+                contractAvailable[i].WeekRemaining -= 1;
+                if (contractAvailable[i].WeekRemaining == 0)
+                {
+                    contractAvailable.RemoveAt(i);
+                }
+            }
         }
 
         public void VoiceActorWork()
