@@ -20,7 +20,9 @@ namespace VoiceActing
         Negative,
         BlurredVision,
         FadeTotal,
-        ShakePlayer
+        ShakePlayer,
+        Tint,
+        FadeOut
     }
 
     [System.Serializable]

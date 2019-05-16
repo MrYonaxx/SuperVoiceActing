@@ -200,7 +200,12 @@ namespace VoiceActing
 
 
 
-
+        public void FadeCharacter(bool fade, float time)
+        {
+            if (eyesScript != null)
+                eyesScript.StartBlink();
+            StartCoroutine(Fade(fade, time));
+        }
 
         public void FadeIn(float time)
         {

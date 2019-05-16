@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: RaGaB 1
   m_EditorClassIdentifier: 
   name: 'Ragab VII : Wing of Destruction'
-  contractTitle: []
   level: 0
   contractType: 2
   salaryMin: 12000
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
   description: []
   characters:
   - mainCharacter: 1
@@ -59,6 +60,7 @@ MonoBehaviour:
         sweetness: 8
         fear: 6
         trust: 20
+      actorLocked: {fileID: 0}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
@@ -92,6 +94,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      actorLocked: {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -100,7 +103,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Miss Ragab cette fois c'est la derni\xE8re ligne droite..."
       textStats:
@@ -334,12 +338,13 @@ MonoBehaviour:
         fear: -50
         trust: 70
       enemyWeakPoints: []
-  textData: []
   eventData:
   - {fileID: 11400000, guid: 0f632e062af23d848b85f9f1b0c3208e, type: 2}
   - {fileID: 11400000, guid: dd55ed0e06483bf4ba93f8026bf03960, type: 2}
   - {fileID: 11400000, guid: dec896b6c72b78f4f933f68e658f8e30, type: 2}
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0

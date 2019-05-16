@@ -31,6 +31,11 @@ namespace VoiceActing
         [SerializeField]
         Image flashImage;
 
+        [SerializeField]
+        Image tintImage;
+
+        [SerializeField]
+        Image fadeImage;
 
         #endregion
 
@@ -93,6 +98,51 @@ namespace VoiceActing
                 flashImage.color -= speed;
             }
             flashImage.color = new Color(1, 1, 1, 0);
+        }
+
+
+
+
+        [ContextMenu("Tint")]
+        public void Tint(Color color, int time)
+        {
+            StartCoroutine(TintCoroutine(color, time));
+        }
+
+        private IEnumerator TintCoroutine(Color color, int time)
+        {
+            Color speed = new Color(color.r - tintImage.color.r / time, color.g - tintImage.color.g / time, 
+                                    color.b - tintImage.color.b / time, color.a - tintImage.color.a / time);
+            while (time != 0)
+            {
+                time -= 1;
+                tintImage.color += speed;
+                yield return null;
+            }
+            tintImage.color = color;
+        }
+
+
+
+
+
+        [ContextMenu("Fade")]
+        public void Fade(bool b, int time)
+        {
+            StartCoroutine(FadeCoroutine(b, 25));
+        }
+
+        private IEnumerator FadeCoroutine(bool b, int time)
+        {
+            Color speed = new Color(0, 0, 0, 1f / time);
+            if(b == false)
+                speed = new Color(0, 0, 0, -1f / time);
+            while (time != 0)
+            {
+                time -= 1;
+                fadeImage.color += speed;
+                yield return null;
+            }
         }
 
         #endregion

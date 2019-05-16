@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ContratTutorial
   m_EditorClassIdentifier: 
   name: Tutoriel
-  contractTitle: []
   level: 0
   contractType: 0
   salaryMin: 0
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
   description: []
   characters:
   - mainCharacter: 0
@@ -37,7 +38,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Test.
       textStats:
@@ -102,49 +104,6 @@ MonoBehaviour:
         fear: -100
         trust: -100
       enemyWeakPoints: []
-  textData:
-  - interlocuteur: 0
-    hpMax: 10
-    text: Test.
-    enemyResistance:
-      neutral: 0
-      joy: 100
-      sadness: 100
-      disgust: 100
-      anger: 100
-      surprise: -100
-      sweetness: -100
-      fear: -100
-      trust: -100
-    enemyWeakPoints: []
-  - interlocuteur: 0
-    hpMax: 10
-    text: Ecoute les lamentations de mon coeur ...
-    enemyResistance:
-      neutral: 0
-      joy: -100
-      sadness: 100
-      disgust: -100
-      anger: -100
-      surprise: -100
-      sweetness: -100
-      fear: -100
-      trust: -100
-    enemyWeakPoints: []
-  - interlocuteur: 0
-    hpMax: 10
-    text: "Ces tests commencent \xE0 m'\xE9nerver !"
-    enemyResistance:
-      neutral: 0
-      joy: -100
-      sadness: -100
-      disgust: -100
-      anger: 100
-      surprise: -100
-      sweetness: -100
-      fear: -100
-      trust: -100
-    enemyWeakPoints: []
   eventData:
   - {fileID: 11400000, guid: ff8f4276aac2d7841b0cd0a67382617f, type: 2}
   - {fileID: 11400000, guid: ae8693b7cc0d9e54fb35b46258043cf4, type: 2}
@@ -153,7 +112,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bb1251f4df39e14c80b3179dfcc90e6, type: 2}
   - {fileID: 11400000, guid: e9b33a8b7c8ac9944a7bf444680a6e0d, type: 2}
   - {fileID: 11400000, guid: 15ba020f48e61ad4c98d1919c1f2338d, type: 2}
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0

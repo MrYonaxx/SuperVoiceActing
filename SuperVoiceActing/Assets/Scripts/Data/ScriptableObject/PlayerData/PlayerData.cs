@@ -435,7 +435,7 @@ namespace VoiceActing
                 if (contractAccepted[i] != null)
                 {
                     contractAccepted[i].WeekRemaining -= 1;
-                    if (contractAccepted[i].WeekRemaining == 0)
+                    if (contractAccepted[i].WeekRemaining <= 0)
                     {
                         contractAccepted.RemoveAt(i);
                     }
@@ -444,7 +444,7 @@ namespace VoiceActing
             for (int i = 0; i < contractAvailable.Count; i++)
             {
                 contractAvailable[i].WeekRemaining -= 1;
-                if (contractAvailable[i].WeekRemaining == 0)
+                if (contractAvailable[i].WeekRemaining <= 0)
                 {
                     contractAvailable.RemoveAt(i);
                 }

@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -19,6 +20,7 @@ namespace VoiceActing
     {
 
         [SerializeField]
+        [HideLabel]
         private EmotionStat newDeck;
         public EmotionStat NewDeck
         {

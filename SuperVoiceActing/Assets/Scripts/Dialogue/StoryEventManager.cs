@@ -137,6 +137,7 @@ namespace VoiceActing
                 characters[characters.Count - 1].transform.position = storyEventData.Characters[i].NewPosition;
                 characters[characters.Count - 1].transform.localScale = storyEventData.Characters[i].NewScale;
                 characters[characters.Count - 1].transform.eulerAngles = storyEventData.Characters[i].NewRotation;
+                characters[characters.Count - 1].FadeCharacter(storyEventData.Characters[i].FadeIn, 1);
             }
         }
 
@@ -181,6 +182,7 @@ namespace VoiceActing
                     if (node.GetDataToLoad() != null)
                     {
                         storyEventData = node.GetDataToLoad();
+                        CreateScene();
                         i = -1;
                     }
                     else if (node.GetDoublageEventToLoad() != null)

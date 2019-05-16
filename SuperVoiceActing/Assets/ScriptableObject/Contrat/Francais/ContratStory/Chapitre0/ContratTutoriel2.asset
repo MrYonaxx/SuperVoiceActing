@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ContratTutoriel2
   m_EditorClassIdentifier: 
   name: 
-  contractTitle: []
   level: 0
   contractType: 0
   salaryMin: 0
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
   description: []
   characters: []
   producerMP: 0
@@ -34,7 +35,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
       textStats:
@@ -89,46 +91,6 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-  textData:
-  - interlocuteur: 0
-    hpMax: 25
-    text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
-    enemyResistance:
-      neutral: -100
-      joy: 0
-      sadness: -100
-      disgust: -100
-      anger: -100
-      surprise: -100
-      sweetness: 0
-      fear: 0
-      trust: 0
-    enemyWeakPoints: []
-  - interlocuteur: 0
-    hpMax: 100
-    text: J'ai pu rencontrer des gens extraordinaires !
-    enemyResistance:
-      neutral: -100
-      joy: 0
-      sadness: -100
-      disgust: -100
-      anger: -100
-      surprise: -90
-      sweetness: -90
-      fear: 0
-      trust: 0
-    enemyWeakPoints:
-    - wordIndex: 5
-      weakPointStat:
-        neutral: 0
-        joy: 900
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
   eventData:
   - {fileID: 11400000, guid: 13fb34b8b0f098c4091b6bda73cceb38, type: 2}
   - {fileID: 11400000, guid: 5444d47534f94044b8b3ee0a788007c7, type: 2}
@@ -136,7 +98,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c923d71ca8153248a5d2bff5a2d327e, type: 2}
   - {fileID: 11400000, guid: 95dde05f8af8a8546b5cbd83c310def8, type: 2}
   - {fileID: 11400000, guid: 95c225ff7772c654f8d92e87c0116e98, type: 2}
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0

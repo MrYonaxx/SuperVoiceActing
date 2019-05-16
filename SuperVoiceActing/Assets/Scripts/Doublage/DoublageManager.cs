@@ -793,6 +793,14 @@ namespace VoiceActing
             actorsManager.ShowHealthBar();
         }
 
+
+        public void ModifyDeck(EmotionStat addDeck)
+        {
+            playerData.Deck.Add(addDeck);
+            emotionAttackManager.ModifiyDeck(addDeck);
+        }
+
+
         public void ForceSkill(SkillActorData skill)
         {
             skillManager.SetSkillText(actorsManager.GetCurrentActor(), skill);
