@@ -81,11 +81,11 @@ namespace VoiceActing
         [SerializeField]
         private GameTimelineContractData[] eventsTimeline;
 
-        [TabGroup("VoiceActors")]
+        /*[TabGroup("VoiceActors")]
         [Space]
         [Title("Comédiens")]
         [SerializeField]
-        private GameTimelineContractData[] voiceActorTimeline;
+        private GameTimelineContractData[] voiceActorTimeline;*/
 
 
 

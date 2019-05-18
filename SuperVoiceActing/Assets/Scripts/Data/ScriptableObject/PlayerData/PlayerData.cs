@@ -177,20 +177,20 @@ namespace VoiceActing
         [Space]
         [Title("Battle Data")]
         [SerializeField]
-        private int comboMax;
-        public int ComboMax
+        private int initialComboMax;
+        public int InitialComboMax
         {
-            get { return comboMax; }
-            set { comboMax = value; }
+            get { return initialComboMax; }
+            set { initialComboMax = value; }
         }
 
         [SerializeField]
         [HideLabel]
-        private EmotionStat deck;
-        public EmotionStat Deck
+        private EmotionStat initialDeck;
+        public EmotionStat InitialDeck
         {
-            get { return deck; }
-            set { deck = value; }
+            get { return initialDeck; }
+            set { initialDeck = value; }
         }
 
 
@@ -205,9 +205,13 @@ namespace VoiceActing
         [SerializeField]
         private List<VoiceActorData> voiceActorsDebug = new List<VoiceActorData>();
 
+        [SerializeField]
+        private List<VoiceActorData> voiceActorsGachaDebug = new List<VoiceActorData>();
 
 
 
+        [SerializeField]
+        private List<StoryEventData> initialTutoEvent = new List<StoryEventData>();
 
 
 
@@ -264,6 +268,9 @@ namespace VoiceActing
             set { contractGachaCooldown = value; }
         }
 
+
+
+
         // Liste des Acteurs
         [SerializeField]
         private List<VoiceActor> voiceActors;
@@ -272,6 +279,17 @@ namespace VoiceActing
             get { return voiceActors; }
             set { voiceActors = value; }
         }
+
+        [SerializeField]
+        private List<VoiceActor> voiceActorsGacha;
+        public List<VoiceActor> VoiceActorsGacha
+        {
+            get { return voiceActorsGacha; }
+            set { voiceActorsGacha = value; }
+        }
+
+
+
 
         [Title("Debug")]
         [SerializeField]
@@ -283,12 +301,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<StoryEventData> nextDekstopStoryEvents;
-        public List<StoryEventData> NextDekstopStoryEvents
+        private List<StoryEventData> tutoEvent;
+        public List<StoryEventData> TutoEvent
         {
-            get { return nextDekstopStoryEvents; }
-            set { nextDekstopStoryEvents = value; }
+            get { return tutoEvent; }
+            set { tutoEvent = value; }
         }
+
+
 
         [SerializeField]
         private int maintenance;
@@ -322,6 +342,24 @@ namespace VoiceActing
 
 
 
+        [SerializeField]
+        private int comboMax;
+        public int ComboMax
+        {
+            get { return comboMax; }
+            set { comboMax = value; }
+        }
+
+        [SerializeField]
+        [HideLabel]
+        private EmotionStat deck;
+        public EmotionStat Deck
+        {
+            get { return deck; }
+            set { deck = value; }
+        }
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void CreateList()
@@ -336,10 +374,24 @@ namespace VoiceActing
                     voiceActors.Add(new VoiceActor(voiceActorsDebug[i]));
                 }
 
+                voiceActorsGacha = new List<VoiceActor>(voiceActorsGachaDebug.Count);
+                for (int i = 0; i < voiceActorsGachaDebug.Count; i++)
+                {
+                    voiceActorsGacha.Add(new VoiceActor(voiceActorsGachaDebug[i]));
+                }
+
+
                 contractAvailable = new List<Contract>(contractAvailableDebug.Count);
                 for (int i = 0; i < contractAvailableDebug.Count; i++)
                 {
                     contractAvailable.Add(new Contract(contractAvailableDebug[i]));
+                }
+
+
+                tutoEvent = new List<StoryEventData>(initialTutoEvent.Count);
+                for (int i = 0; i < initialTutoEvent.Count; i++)
+                {
+                    tutoEvent.Add(initialTutoEvent[i]);
                 }
 
                 contractAccepted = new List<Contract>(3);
@@ -369,6 +421,8 @@ namespace VoiceActing
             season = StartSeason;
             money = startMoney;
             maintenance = startMaintenance;
+            deck = new EmotionStat(initialDeck);
+            comboMax = initialComboMax;
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -479,7 +533,7 @@ namespace VoiceActing
             int nbContract = 0;
             if (contractAvailable.Count == 0)
             {
-                nbContract = Random.Range(1, 4);
+                nbContract = Random.Range(2, 4);
             }
             else if (contractAvailable.Count <= 3)
             {
@@ -502,9 +556,141 @@ namespace VoiceActing
                     contractAvailable.Add(new Contract(contractGacha[Random.Range(0, contractGacha.Count)]));
                 }
             }
+        } 
 
 
 
-        } // PlayerData class
+
+
+
+        public VoiceActor GachaVoiceActors(Role role)
+        {
+            int playerRank = 1;
+            int[] randomDraw = new int[voiceActorsGacha.Count];
+            int currentMaxValue = 0;
+
+            // Calculate Actor Draw Chances
+            for(int i = 0; i < voiceActorsGacha.Count; i++)
+            {
+                if(voiceActorsGacha[i].Level > playerRank + 3)
+                {
+                    randomDraw[i] = -1;
+                    currentMaxValue += CalculateVoiceActorGachaScore(role, voiceActorsGacha[i]);
+                    randomDraw[i] = currentMaxValue;
+                }
+                else
+                {
+                    currentMaxValue += CalculateVoiceActorGachaScore(role, voiceActorsGacha[i]);
+                    randomDraw[i] = currentMaxValue;
+                }
+            }
+
+            // Draw
+            int draw = Random.Range(0, currentMaxValue);
+            Debug.Log(draw);
+            for (int i = 0; i < randomDraw.Length; i++)
+            {
+                if(draw < randomDraw[i])
+                {
+                    Debug.Log(voiceActorsGacha[i].Name);
+                    if(!voiceActors.Contains(voiceActorsGacha[i]))
+                        voiceActors.Add(voiceActorsGacha[i]);
+                    return voiceActorsGacha[i];
+                }
+            }
+            return null;
+        }
+
+        private int CalculateVoiceActorGachaScore(Role role, VoiceActor va)
+        {
+            int finalScore = 1;
+
+            int statRole = 0;
+            int statActor = 0;
+            int multiplier = 1;
+
+            int statGain = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                multiplier = 1;
+                statGain = 0;
+                switch (i)
+                {
+                    case 0:
+                        statRole = role.CharacterStat.Joy;
+                        statActor = va.Statistique.Joy;
+                        break;
+                    case 1:
+                        statRole = role.CharacterStat.Sadness;
+                        statActor = va.Statistique.Sadness;
+                        break;
+                    case 2:
+                        statRole = role.CharacterStat.Disgust;
+                        statActor = va.Statistique.Disgust;
+                        break;
+                    case 3:
+                        statRole = role.CharacterStat.Anger;
+                        statActor = va.Statistique.Anger;
+                        break;
+                    case 4:
+                        statRole = role.CharacterStat.Surprise;
+                        statActor = va.Statistique.Surprise;
+                        break;
+                    case 5:
+                        statRole = role.CharacterStat.Sweetness;
+                        statActor = va.Statistique.Sweetness;
+                        break;
+                    case 6:
+                        statRole = role.CharacterStat.Fear;
+                        statActor = va.Statistique.Fear;
+                        break;
+                    case 7:
+                        statRole = role.CharacterStat.Trust;
+                        statActor = va.Statistique.Trust;
+                        break;
+
+                }
+
+                if(statRole == role.BestStat)
+                {
+                    multiplier = 100;
+                }
+                else if(statRole == role.SecondBestStat)
+                {
+                    multiplier = 80;
+                }
+
+                if (statRole == statActor) // Si stat équivalente c'est la folie
+                {
+                    statGain = 20;
+                }
+                else if (statRole < statActor)
+                {
+                    statGain = 20 - Mathf.Abs(statActor - statRole);
+                    if (statGain < 0)
+                        statGain = 0;
+                    statGain += 1;
+                    if (statGain == 1 && multiplier != 1)
+                        multiplier /= 2;
+                }
+                else if (statRole > statActor)
+                {
+                    statGain = 5 - Mathf.Abs(statRole - statActor);
+                    if (statGain < 0)
+                        statGain = 0;
+                    if (multiplier != 1)
+                        multiplier /= 2;
+                }
+                statGain *= multiplier;
+                finalScore += statGain;
+            }
+            Debug.Log(va.Name + " | " + finalScore);
+            return finalScore;
+        }
+
+
+
+        // PlayerData class
     }
 } // #PROJECTNAME# namespace
