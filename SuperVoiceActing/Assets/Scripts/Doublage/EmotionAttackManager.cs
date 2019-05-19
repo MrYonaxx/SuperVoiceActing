@@ -332,7 +332,7 @@ namespace VoiceActing
 
         public void ModifiyDeck(EmotionStat newDeck)
         {
-            deckEmotion = newDeck;
+            //deckEmotion.Add(newDeck);
             CreateDeck();
         }
         // =========================================================================================================================================

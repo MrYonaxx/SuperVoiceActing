@@ -1,0 +1,388 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: EntrepriseEkavoxStory
+  m_EditorClassIdentifier: 
+  name: Entreprise Ekavox
+  level: 1
+  contractType: 0
+  salaryMin: 1250
+  salaryMax: 3000
+  mixingMin: 5
+  mixingMax: 10
+  weekMin: 6
+  weekMax: 9
+  expGain: 20
+  expBonus: 50
+  contractTitle: []
+  contractDictionnary: []
+  description:
+  - "Nous r\xE9alisons un film \xE0 l'attention de nos employ\xE9s pour notre Entreprise
+    Ekavox."
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Narrateur
+      lineMin: 12
+      lineMax: 60
+      fanMin: 0
+      fanMax: 0
+      atkMin: 4
+      atkMax: 4
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 3
+        sadness: 0
+        disgust: 2
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 6
+        trust: 3
+      characterStatMax:
+        neutral: 0
+        joy: 7
+        sadness: 0
+        disgust: 5
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 9
+        trust: 7
+      actorLocked: {fileID: 0}
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "L'ins\xE9curit\xE9 ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 12
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -50
+        sweetness: -50
+        fear: 50
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 0
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: Les carries ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 12
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -50
+        sweetness: 0
+        fear: 50
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Elles entrainent la peur dans nos coeurs ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 10
+        surprise: -30
+        sweetness: 0
+        fear: 60
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 6
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: Il arrive qu'elles provoquent la mort.
+      textStats:
+        interlocuteurID: 0
+        linked: 2
+        hpMin: 15
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 0
+        surprise: -20
+        sweetness: -50
+        fear: 100
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 5
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "La mort de la dignit\xE9"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 17
+        hpMax: 20
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -20
+        sweetness: 0
+        fear: 100
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Eh oui, \xEAtre au travail, ne signifie pas d\xE9laisser son hygi\xE8ne
+        dentaire !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 25
+        hpMax: 30
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 30
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "C'est pourquoi chez Ekavox, nous nous engageons \xE0 accorder 10 minutes
+        ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 25
+        hpMax: 31
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 0
+      enemyWeakPoints: []
+    - text: '...Au brossage de dents de toutes l''entreprise !'
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 23
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 30
+        sweetness: 0
+        fear: -50
+        trust: 30
+      enemyWeakPoints: []
+    - text: "Les 30 minutes de repas seront donc consacr\xE9es \xE0 30% au brossage
+        de dents !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 25
+        hpMax: 32
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints: []
+  eventData:
+  - {fileID: 11400000, guid: 60354efe6c241734dbd7544a43f1045b, type: 2}
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

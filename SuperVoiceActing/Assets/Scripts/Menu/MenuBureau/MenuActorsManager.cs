@@ -22,8 +22,6 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         // Pour les tests
-        [SerializeField]
-        private List<VoiceActorData> debugList;
 
 
         private List<VoiceActor> actorsList = new List<VoiceActor>();
@@ -153,6 +151,8 @@ namespace VoiceActing
         CameraBureau cameraManager;
         [SerializeField]
         MenuContractPreparation menuContractPreparation;
+        [SerializeField]
+        MenuActorsAudition menuActorsAudition;
 
         private List<ButtonVoiceActor> buttonsActors = new List<ButtonVoiceActor>();
 
@@ -191,8 +191,6 @@ namespace VoiceActing
         protected virtual void Start()
         {
             indexActorLimit = scrollSize;
-            //CreateFromDebugList();
-            //CreateActorsButtonList();
         }
 
         public void SetListActors(List<VoiceActor> list)
@@ -228,16 +226,6 @@ namespace VoiceActing
             auditionIndication.SetActive(false);
         }
 
-        private void CreateFromDebugList()
-        {
-            if(debugList != null)
-            {
-                for(int i = 0; i < debugList.Count; i++)
-                {
-                    actorsList.Add(new VoiceActor(debugList[i]));
-                }
-            }
-        }
 
         private void CreateActorsButtonList()
         {
@@ -250,6 +238,17 @@ namespace VoiceActing
                 StartCoroutine(WaitEndOfFrame());
 
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
+        }
+
+
+        public void DestroyButtonList()
+        {
+            for (int i = 0; i < buttonsActors.Count; i++)
+            {
+                Destroy(buttonsActors[i].gameObject);
+            }
+            buttonsActors.Clear();
+            CreateActorsButtonList();
         }
 
         public void RedrawActorsButton()
@@ -265,7 +264,7 @@ namespace VoiceActing
             yield return new WaitForEndOfFrame();
             DrawActorStat(actorsList[indexActorSelected]);
             buttonsActors[indexActorSelected].SelectButton();
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
 
         private void DrawActorStat(VoiceActor actor)
@@ -563,7 +562,10 @@ namespace VoiceActing
             textRoleCostEstimate.text = (auditionRole.Line * actorsList[indexActorSelected].Price).ToString();
         }
 
-
+        public void Audition()
+        {
+            menuActorsAudition.Audition(auditionRole);
+        }
 
 
 

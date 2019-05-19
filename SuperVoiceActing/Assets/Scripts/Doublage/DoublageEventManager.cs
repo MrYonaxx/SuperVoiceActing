@@ -208,7 +208,7 @@ namespace VoiceActing
                 else if(currentNode is DoublageEventDeck)
                 {
                     DoublageEventDeck node = (DoublageEventDeck)currentNode;
-                    //emotionAttackManager.ModifiyDeck(node.NewDeck);
+                    doublageManager.ModifyDeck(node.NewDeck);
                     StartCoroutine(WaitCoroutine(1));
                 }
 

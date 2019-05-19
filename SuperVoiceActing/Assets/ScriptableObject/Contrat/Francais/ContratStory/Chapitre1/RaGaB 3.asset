@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: RaGaB 3
   m_EditorClassIdentifier: 
   name: Ragab - Allez Nagais
-  contractTitle: []
   level: 0
   contractType: 0
   salaryMin: 0
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
   description: []
   characters:
   - mainCharacter: 1
@@ -59,6 +60,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      actorLocked: {fileID: 0}
   producerMP: 4
   artificialIntelligence:
   - memo: Bourghi met le gwak
@@ -116,7 +118,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Argh ... j'ai... j'ai perdu ?
       textStats:
@@ -244,7 +247,6 @@ MonoBehaviour:
         fear: -90
         trust: 0
       enemyWeakPoints: []
-  textData: []
   eventData:
   - {fileID: 11400000, guid: 55ae74ccb2d8e0541ab2cf973e6e170d, type: 2}
   - {fileID: 11400000, guid: 10072378cd0505d4e9c2a16dd2be11dc, type: 2}
@@ -254,7 +256,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8f18d24d567949408fcddcf50c179f6, type: 2}
   - {fileID: 11400000, guid: 5105e6ee5898f9a438bf49a96e6c1f23, type: 2}
   - {fileID: 11400000, guid: 34c97c9ae51203a4cb9f23fe457fa1e8, type: 2}
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 1
   battleTheme: {fileID: 8300000, guid: cee3a9c1a0b21864eb37fd27c9519cb9, type: 3}
   victoryTheme: {fileID: 8300000, guid: bd4e94e27f83d4676be0451c9a041fcb, type: 3}
+  sessionLock: 0

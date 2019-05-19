@@ -155,6 +155,7 @@ namespace VoiceActing
                 }
             }
 
+
             if(actualText[0] == '(')
             {
                 textMeshPro.color = new Color(0.8f, 0.8f, 1);

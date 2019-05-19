@@ -56,6 +56,10 @@ namespace VoiceActing
         [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]
         bool fadeIn = false;
+        public bool FadeIn
+        {
+            get { return fadeIn; }
+        }
 
         [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]

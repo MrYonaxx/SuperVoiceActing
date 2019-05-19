@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: RaGaB 2
   m_EditorClassIdentifier: 
   name: Ragab - Doremi
-  contractTitle: []
   level: 0
   contractType: 0
   salaryMin: 0
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
   description: []
   characters:
   - mainCharacter: 1
@@ -59,6 +60,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      actorLocked: {fileID: 0}
   producerMP: 3
   artificialIntelligence:
   - memo: BOURGHI FIRST ATTACK
@@ -127,7 +129,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Ragab, tu es bless\xE9 tu ne feras pas le poids face \xE0 Bhaguar !"
       textStats:
@@ -340,9 +343,14 @@ MonoBehaviour:
         fear: -50
         trust: 70
       enemyWeakPoints: []
-  textData: []
   eventData:
   - {fileID: 11400000, guid: ee279de12da241a42accad17c8304517, type: 2}
   - {fileID: 11400000, guid: 82ec535e09706154bb1f79e6503518cc, type: 2}
   - {fileID: 11400000, guid: 7e5f5d22a2d5c39489b575a90fc28622, type: 2}
   - {fileID: 11400000, guid: b1cd8a754616d0d4b84c63a067c98b3d, type: 2}
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

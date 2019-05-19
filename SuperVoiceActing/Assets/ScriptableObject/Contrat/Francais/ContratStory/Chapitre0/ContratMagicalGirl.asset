@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ContratMagicalGirl
   m_EditorClassIdentifier: 
   name: MagicalGirl
-  contractTitle: []
   level: 0
   contractType: 0
   salaryMin: 0
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
   description: []
   characters: []
   producerMP: 0
@@ -34,7 +35,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
       textStats:
@@ -426,7 +428,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0029a813278b0864892f5b4843738c54, type: 2}
   - {fileID: 11400000, guid: fe95d75086459ee45b38ef4be3c16f72, type: 2}
   - {fileID: 11400000, guid: ae5e7bc5fac28f04c97a8ab4cdbe2c26, type: 2}
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0
