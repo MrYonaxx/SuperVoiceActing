@@ -104,9 +104,15 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
-            //animatorMenu.disabled = false
         }
 
+        public void StartPhoneEvent()
+        {
+            phoneObject.SetActive(true);
+            storyEventManager.StartStoryEventData(playerData.PhoneStoryEvents[0]);
+            playerData.PhoneStoryEvents.RemoveAt(0);
+            this.gameObject.SetActive(false);
+        }
 
         public void SetContractList(List<Contract> contracts)
         {
@@ -185,8 +191,6 @@ namespace VoiceActing
                 phoneObject.SetActive(true);
                 storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
                 eventPhone = true;
-                //menuManagementManager.gameObject.SetActive(false);
-                //this.gameObject.SetActive(false);
             }
         }
 
@@ -228,8 +232,8 @@ namespace VoiceActing
             }
             else
             {
-                menuContractPreparation.SetContract(contractAcceptedList[indexAcceptedList]);
                 SwitchToMenuContractPreparation();
+                menuContractPreparation.SetContract(contractAcceptedList[indexAcceptedList]);
             }
         }
 

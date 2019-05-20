@@ -202,6 +202,9 @@ namespace VoiceActing
             }
 
             menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+            listButtonRoles[0].SelectButton();
+            indexSelected = 0;
+            DrawRoleInfo();
             //StartCoroutine(WaitEndOfFrame());
 
         }

@@ -129,7 +129,7 @@ namespace VoiceActing
         [ContextMenu("Fade")]
         public void Fade(bool b, int time)
         {
-            StartCoroutine(FadeCoroutine(b, 25));
+            StartCoroutine(FadeCoroutine(b, time));
         }
 
         private IEnumerator FadeCoroutine(bool b, int time)
@@ -143,6 +143,10 @@ namespace VoiceActing
                 fadeImage.color += speed;
                 yield return null;
             }
+            if (b == false)
+                fadeImage.color = new Color(0, 0, 0, 0);
+            else
+                fadeImage.color = new Color(0, 0, 0, 1);
         }
 
         #endregion

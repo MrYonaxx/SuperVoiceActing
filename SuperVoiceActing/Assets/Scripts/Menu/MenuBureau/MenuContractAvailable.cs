@@ -118,18 +118,13 @@ namespace VoiceActing
             animatorMenu.gameObject.SetActive(true);
             if (listContractAvailable.Count != 0)
                 SelectButton();
-            //indexSelected = 0;
-            //SelectButton();
+            else
+                StartCoroutine(WaitEndOfFrame());
         }
 
         private void Start()
         {
             indexLimit = scrollSize;
-            /*for(int i = 0; i < contractDatabase.Length; i++)
-            {
-                listContractAvailable.Add(new Contract(contractDatabase[i]));
-            }
-            CreateListButton();*/
         }
 
         public void SetContractAvailable(List<Contract> list)
@@ -154,6 +149,8 @@ namespace VoiceActing
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
                 buttonsContracts[i].DrawButton(listContractAvailable[i].Name);
             }
+            /*animatorSelection.transform.position = buttonListTransform.position;
+            textMeshSelection.text = listContractAvailable[0].Name;*/
             //StartCoroutine(WaitEndOfFrame());
         }
 

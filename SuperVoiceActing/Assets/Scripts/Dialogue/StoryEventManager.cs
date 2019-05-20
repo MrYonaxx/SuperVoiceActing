@@ -118,26 +118,43 @@ namespace VoiceActing
             
         }
         
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        /*protected void Update()
-        {
-            
-        }*/
 
         public void CreateScene()
         {
+            for(int i = 0; i < characters.Count; i++)
+            {
+                Destroy(characters[i].gameObject);
+            }
+            characters.Clear();
             imageBackground.sprite = storyEventData.Background;
             for(int i = 0; i < storyEventData.Characters.Length; i++)
             {
                 characters.Add(Instantiate(characterPrefab, transformCharacter));
                 characters[characters.Count - 1].SetStoryCharacterData(storyEventData.Characters[i].CharacterToMove);
-                characters[characters.Count - 1].transform.position = storyEventData.Characters[i].NewPosition;
+                characters[characters.Count - 1].transform.localPosition = storyEventData.Characters[i].NewPosition;
                 characters[characters.Count - 1].transform.localScale = storyEventData.Characters[i].NewScale;
                 characters[characters.Count - 1].transform.eulerAngles = storyEventData.Characters[i].NewRotation;
                 characters[characters.Count - 1].FadeCharacter(storyEventData.Characters[i].FadeIn, 1);
+            }
+        }
+
+
+        public void CreateScene(StoryEventData newStoryEvent)
+        {
+            for (int i = 0; i < characters.Count; i++)
+            {
+                Destroy(characters[i].gameObject);
+            }
+            characters.Clear();
+            imageBackground.sprite = newStoryEvent.Background;
+            for (int i = 0; i < newStoryEvent.Characters.Length; i++)
+            {
+                characters.Add(Instantiate(characterPrefab, transformCharacter));
+                characters[characters.Count - 1].SetStoryCharacterData(newStoryEvent.Characters[i].CharacterToMove);
+                characters[characters.Count - 1].transform.localPosition = newStoryEvent.Characters[i].NewPosition;
+                characters[characters.Count - 1].transform.localScale = newStoryEvent.Characters[i].NewScale;
+                characters[characters.Count - 1].transform.eulerAngles = newStoryEvent.Characters[i].NewRotation;
+                characters[characters.Count - 1].FadeCharacter(newStoryEvent.Characters[i].FadeIn, 1);
             }
         }
 
@@ -149,6 +166,13 @@ namespace VoiceActing
             StartCoroutine(NextNodeCoroutine());
         }
 
+        public void StartStoryEventDataWithScene(StoryEventData newStoryEvent)
+        {
+            i = 0;
+            storyEventData = newStoryEvent;
+            CreateScene();
+            StartCoroutine(NextNodeCoroutine());
+        }
 
         private IEnumerator NextNodeCoroutine()
         {

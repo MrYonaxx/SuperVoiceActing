@@ -50,6 +50,59 @@ namespace VoiceActing
     }
 
 
+
+
+
+
+    [System.Serializable]
+    public class GameTimelineEventtData
+    {
+
+        [HorizontalGroup("Hey", PaddingLeft = 50)]
+        [SerializeField]
+        public StoryEventData[] eventsPhone;
+
+        [HorizontalGroup("Hey")]
+        [SerializeField]
+        public StoryEventData[] eventStartWeek;
+
+        [HorizontalGroup("Hey", PaddingRight = 50)]
+        [SerializeField]
+        public StoryEventData[] eventEndWeek;
+    }
+
+
+    [System.Serializable]
+    public class GameTimelineEventBox
+    {
+        [FoldoutGroup("$name")]
+        [SerializeField]
+        [HideLabel]
+        public GameTimelineEventtData eventData;
+
+        string name;
+
+        public void SetTitle(int i)
+        {
+            name = "Semaine " + i;
+            if (eventData.eventStartWeek != null)
+            {
+                if (eventData.eventStartWeek.Length != 0)
+                {
+                    name += " | Start " + eventData.eventStartWeek.Length;
+                }
+            }
+            if (eventData.eventEndWeek != null)
+            {
+                if (eventData.eventEndWeek.Length != 0)
+                {
+                    name += " | End " + eventData.eventEndWeek.Length;
+                }
+            }
+        }
+    }
+
+
     [System.Serializable]
     [CreateAssetMenu(fileName = "TimelineEventData", menuName = "TimelineEvents", order = 1)]
     public class GameTimelineData : ScriptableObject
@@ -79,14 +132,11 @@ namespace VoiceActing
         [Space]
         [Title("Event")]
         [SerializeField]
-        private GameTimelineContractData[] eventsTimeline;
-
-        /*[TabGroup("VoiceActors")]
-        [Space]
-        [Title("Comédiens")]
-        [SerializeField]
-        private GameTimelineContractData[] voiceActorTimeline;*/
-
+        private GameTimelineEventBox[] eventsTimeline;
+        public GameTimelineEventBox[] EventsTimeline
+        {
+            get { return eventsTimeline; }
+        }
 
 
         [Button]
@@ -100,6 +150,12 @@ namespace VoiceActing
             for (int i = 0; i < contractRandomTimeline.Length; i++)
             {
                 contractRandomTimeline[i].SetTitle(i);
+            }
+
+
+            for (int i = 0; i < eventsTimeline.Length; i++)
+            {
+                eventsTimeline[i].SetTitle(i);
             }
         }
 
