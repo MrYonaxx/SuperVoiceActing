@@ -111,8 +111,8 @@ namespace VoiceActing
 
         private IEnumerator TintCoroutine(Color color, int time)
         {
-            Color speed = new Color(color.r - tintImage.color.r / time, color.g - tintImage.color.g / time, 
-                                    color.b - tintImage.color.b / time, color.a - tintImage.color.a / time);
+            Color speed = new Color((color.r - tintImage.color.r) / time, (color.g - tintImage.color.g) / time, 
+                                    (color.b - tintImage.color.b) / time, (color.a - tintImage.color.a) / time);
             while (time != 0)
             {
                 time -= 1;

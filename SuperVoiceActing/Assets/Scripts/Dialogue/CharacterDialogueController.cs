@@ -82,6 +82,9 @@ namespace VoiceActing
                 case EmotionNPC.Normal:
                     currentSprites = storyCharacterData.SpriteNormal;
                     break;
+                case EmotionNPC.Joyeux:
+                    currentSprites = storyCharacterData.SpriteJoy;
+                    break;
                 case EmotionNPC.Special:
                     currentSprites = storyCharacterData.SpriteSpecial;
                     break;
@@ -207,6 +210,7 @@ namespace VoiceActing
             StartCoroutine(Fade(fade, time));
         }
 
+        // Apparaitre
         public void FadeIn(float time)
         {
             if(eyesScript != null)
@@ -214,6 +218,7 @@ namespace VoiceActing
             StartCoroutine(Fade(true, time));
         }
 
+        // Disparaitre
         public void FadeOut(float time)
         {
             if (eyesScript != null)
@@ -233,6 +238,10 @@ namespace VoiceActing
                 spriteRenderer.color += new Color(0, 0, 0, alphaSpeed);
                 yield return null;
             }
+            if(appear == false)
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
+            else
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
         }
 
         public void ModifyCharacter(DoublageEventMoveCharacter data)

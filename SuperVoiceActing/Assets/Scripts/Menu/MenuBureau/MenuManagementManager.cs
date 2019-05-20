@@ -75,13 +75,14 @@ namespace VoiceActing
             moneyManager.DrawMoney(playerData.Money);
             playerData.CreateList();
             contractManager.DrawDate();
-            actorsManagers.SetListActors(playerData.VoiceActors);
+
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
 
 
             if(playerData.NextStoryEventsStartWeek.Count == 0)
             {
                 AudioManager.Instance.PlayMusic(defaultDekstopTheme);
+                actorsManagers.SetListActors(playerData.VoiceActors);
             }
             else
             {
@@ -131,8 +132,10 @@ namespace VoiceActing
         {
             if (playerData.NextStoryEventsStartWeek.Count == 0)
             {
+                AudioManager.Instance.PlayMusic(defaultDekstopTheme);
                 storyEventPrefab.SetActive(false);
                 storyEventTexture.SetActive(false);
+                actorsManagers.SetListActors(playerData.VoiceActors);
                 menuNextWeek.SkipTransition();
             }
             else

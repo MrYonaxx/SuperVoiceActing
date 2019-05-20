@@ -12,15 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
   m_Name: Event1-3
   m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  characters: []
+  background: {fileID: 21300000, guid: c4f9ae483abccf2449340d34bc35762b, type: 3}
+  characters:
+  - characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
+    time: 60
+    newPosition: {x: 0, y: -5.2, z: 0}
+    newRotation: {x: 0, y: 0, z: 0}
+    newScale: {x: 0.45, y: 0.45, z: 0.45}
+    fadeIn: 0
+    fadeOut: 1
+    waitEnd: 0
+  - characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990, type: 2}
+    time: 60
+    newPosition: {x: 10, y: -5.2, z: 0}
+    newRotation: {x: 0, y: 0, z: 0}
+    newScale: {x: 0.45, y: 0.45, z: 0.45}
+    fadeIn: 0
+    fadeOut: 1
+    waitEnd: 0
   eventNodes:
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: "(Ok, [Nom], on a ptet un coup \xE0 jouer.)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -49,8 +65,323 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: "(Ragab est une grosse s\xE9rie, si j'arrive \xE0 avoir le job, on va
+          pouvoir concr\xE9tiser l'essai.)"
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: <color="yellow">*Ding* *Ding*</color>
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        time: 120
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 1
+        fadeOut: 0
+        waitEnd: 1
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: "Bwahaha ! Vous \xEAtes [Directeur Artistique] ?"
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: "(C'est lui l'\xE9diteur de Ragab ?)"
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "Oui et vous \xEAtes ?"
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Hahaha ! J'aurai cru qu'un directeur de doublage reconnaitrait ma voix.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Mais j'vous en veut pas, des voix plus talentueuses que moi y'en a un
+          paquet.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 2
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -83,8 +414,908 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Je suis la voix de Ragab !
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Bocca "Boss" Nagais
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: (Wow.)
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: Ha, ravi de vous rencontrer Mr. Nagais.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Appelez moi Boss tout simplement
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: "(Quel \xE9go)"
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "Mais je pensais avoir rendez-vous avec l'\xE9diteur en charge de la
+          licence."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: "Ah, vous en faites pas, il va arriver \xE0 9h p\xE9tante."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Donc dans quelques secondes ...
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: <color="yellow">*Ding* *Ding*</color>
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        time: 180
+        newPosition: {x: -2, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        time: 180
+        newPosition: {x: 4, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 1
+        fadeOut: 0
+        waitEnd: 1
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: Ah, Mr. [Directeur Artistique].
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: "Vous \xEAtes \xE0 l'heure, c'est une qualit\xE9."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: Bonjour ..?
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: Antoine Bourghi.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: Mais ce sera Monsieur Bourghi pour vous.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: "Et ...<link=Pause></link> Bonjour Mr. Bocca, qu'elle est la raison
+          de votre pr\xE9sence."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        time: 1
+        newPosition: {x: -2, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 180, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: "Hahaha, je viens voir mon prochain \xE9diteur."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: Hmmm.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        emotionNPC: 1
+        text: Mais je vous laisse discuter affaire ensemble.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+          type: 2}
+        time: 120
+        newPosition: {x: 10, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 180, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 1
+        waitEnd: 1
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 1
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -117,8 +1348,325 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 1
+        text: Dans tout les cas Mr. [Directeur Artistique]
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        time: 120
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 1
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 1
+        text: "Comme vous le savez, je viens m'entretenir avec vous\nau sujet de la
+          derni\xE8re d\xE9clinaison de notre franchise de\njeu vid\xE9o Ragab."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 1
+        text: Nous avons donc ... heum ... <link=Pause></link>"choisi" votre studio
+          pour l'enregistrement des voix.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 1
+        text: Voici le contrat, il ne vous reste plus qu'a signer.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
+        emotionNPC: 0
+        text: "Euh ... je n'ai rien accept\xE9 encore."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
+        emotionNPC: 0
+        text: Oh oui, je vous laisse lire le contrat.
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: (...)
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+  - dataBox:
+      eventNode: 2
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -151,12 +1699,16 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: "(Wow ! C'est vraiment bien pay\xE9 !)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -185,12 +1737,16 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: (Mais il y a comme anguille sous roche.)
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -219,12 +1775,16 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: (Hmmm ...)
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -253,12 +1813,16 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: "(Pourtant tout \xE0 l'air en ordre, je ne vois pas d'arnaque.)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -287,12 +1851,16 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: "(Les d\xE9lais ont l'airs raisonnable contrairement \xE0 Princess Muffin.)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -321,12 +1889,18 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: 
+        text: "(Mais ce type ne me reviens pas.<link=Pause></link>\nIl est d\xE9j\xE0
+          pr\xEAt \xE0 partir avec un contrat sign\xE9 alors que je n'ai rien accept\xE9
+          encore ...)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -355,12 +1929,17 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
+          type: 2}
         emotionNPC: 0
-        text: 
+        text: "Avant de signer j'ai quelques questions \xE0 vous poser."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -389,12 +1968,17 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+          type: 2}
         emotionNPC: 0
-        text: 
+        text: '*Soupir*<link=Pause></link> Allez-y.'
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -423,8 +2007,12 @@ MonoBehaviour:
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
   - dataBox:
-      eventNode: 0
+      eventNode: 6
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -452,1198 +2040,12 @@ MonoBehaviour:
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
+        DataToLoad: {fileID: 11400000, guid: 9948bbae5d157904f92457cad115f66e, type: 2}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
+      storyEventPlayerData:
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}

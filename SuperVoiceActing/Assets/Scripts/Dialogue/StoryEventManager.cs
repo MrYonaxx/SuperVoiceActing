@@ -221,6 +221,12 @@ namespace VoiceActing
                     StoryEventEffect node = (StoryEventEffect)currentNode;
                     node.SetNode(storyEventEffectManager);
                 }
+
+                else if (currentNode is StoryEventPlayerData)
+                {
+                    StoryEventPlayerData node = (StoryEventPlayerData)currentNode;
+                    node.SetNode(playerData);
+                }
                 // ==============================================================================================================================
 
 

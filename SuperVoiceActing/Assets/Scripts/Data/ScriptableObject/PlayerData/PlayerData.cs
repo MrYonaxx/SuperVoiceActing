@@ -523,7 +523,7 @@ namespace VoiceActing
                     contractAccepted[i].WeekRemaining -= 1;
                     if (contractAccepted[i].WeekRemaining <= 0)
                     {
-                        contractAccepted.RemoveAt(i);
+                        contractAccepted[i] = null;
                     }
                 }
             }

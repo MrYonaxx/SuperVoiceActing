@@ -110,8 +110,8 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private string characterLock;
-        public string CharacterLock
+        private VoiceActorData characterLock;
+        public VoiceActorData CharacterLock
         {
             get { return characterLock; }
             set { characterLock = value; }
@@ -163,7 +163,7 @@ namespace VoiceActing
             this.rolePerformance = 0;
 
             if(data.ActorLocked != null)
-                this.characterLock = data.ActorLocked.Name;
+                this.characterLock = data.ActorLocked;
 
             int[] bestValues = new int[8];
 
