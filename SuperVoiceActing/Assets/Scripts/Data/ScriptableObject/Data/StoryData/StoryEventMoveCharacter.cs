@@ -111,8 +111,8 @@ namespace VoiceActing
         {
             // Initialization
             float actualTime = time;
-            float speedX = (newPosition.x - character.transform.position.x) / actualTime;
-            float speedY = (newPosition.y - character.transform.position.y) / actualTime;
+            float speedX = (newPosition.x - character.transform.localPosition.x) / actualTime;
+            float speedY = (newPosition.y - character.transform.localPosition.y) / actualTime;
             float speedRotateY = (newRotation.y - character.transform.eulerAngles.y) / actualTime;
             if (fadeIn == true)
             {
@@ -126,7 +126,7 @@ namespace VoiceActing
 
             while (actualTime != 0)
             {
-                character.transform.position += new Vector3(speedX, speedY, 0);
+                character.transform.localPosition += new Vector3(speedX, speedY, 0);
                 character.transform.eulerAngles += new Vector3(0, speedRotateY, 0);
                 actualTime -= 1;
                 yield return null;

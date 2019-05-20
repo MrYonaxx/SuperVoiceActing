@@ -38,6 +38,8 @@ namespace VoiceActing
         [Space]
         [Space]
         [SerializeField]
+        Animator skipAnimator;
+        [SerializeField]
         Animator selection;
         [SerializeField]
         RectTransform weeks;
@@ -80,6 +82,11 @@ namespace VoiceActing
                 return playerData.Date.month - 3;
         }
 
+
+        public void SkipTransition()
+        {
+            skipAnimator.SetTrigger("Skip");
+        }
 
 
         public void StartNextWeek()

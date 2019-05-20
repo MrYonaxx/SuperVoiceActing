@@ -184,7 +184,28 @@ namespace VoiceActing
                 // Check Input
                 if (ignorePlayerInput == false)
                 {
-                    if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == actualText.Length)
+                    if (Input.GetButton("ControllerB") && textMeshPro.maxVisibleCharacters == actualText.Length)
+                    {
+                        actualTime = 0;
+                        textMeshPro.maxVisibleCharacters = 0;
+                        textMeshPro.text = "";
+                        nextButton.SetActive(false);
+                        break;
+                    }
+                    else if (Input.GetButton("ControllerB"))
+                    {
+                        actualTime = 0;
+                        if (CheckSkipPause() == false)
+                        {
+                            textMeshPro.maxVisibleCharacters = actualText.Length;
+                            if (characterDialogue != null)
+                                characterDialogue.StopMouth();
+                            nextButton.SetActive(true);
+                        }
+                        yield return null;
+                        yield return null;
+                    }
+                    else if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == actualText.Length)
                     {
                         actualTime = 0;
                         textMeshPro.maxVisibleCharacters = 0;

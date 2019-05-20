@@ -300,6 +300,23 @@ namespace VoiceActing
             set { nextStoryEvents = value; }
         }
 
+
+        [SerializeField]
+        private List<StoryEventData> nextStoryEventsStartWeek;
+        public List<StoryEventData> NextStoryEventsStartWeek
+        {
+            get { return nextStoryEventsStartWeek; }
+            set { nextStoryEventsStartWeek = value; }
+        }
+
+        [SerializeField]
+        private List<StoryEventData> phoneStoryEvents;
+        public List<StoryEventData> PhoneStoryEvents
+        {
+            get { return phoneStoryEvents; }
+            set { phoneStoryEvents = value; }
+        }
+
         [SerializeField]
         private List<StoryEventData> tutoEvent;
         public List<StoryEventData> TutoEvent
@@ -360,7 +377,19 @@ namespace VoiceActing
         }
 
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [SerializeField]
+        private bool isNextWeek;
+        public bool IsNextWeek
+        {
+            get { return isNextWeek; }
+            set { isNextWeek = value; }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void CreateList()
         {
@@ -399,15 +428,14 @@ namespace VoiceActing
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
                 CreateNewData();
-                CheckTimeline();
+                CheckContractTimeline();
+                CheckEventsTimeline();
                 GachaContract();
             }
             else
             {
                 NextWeek();
             }
-
-            //Debug.Log(voiceActors[0].Name);
 
         }
 
@@ -417,12 +445,15 @@ namespace VoiceActing
             contractGacha = new List<ContractData>();
             //contractGachaCooldown 
             nextStoryEvents = new List<StoryEventData>();
+            nextStoryEventsStartWeek = new List<StoryEventData>();
+            phoneStoryEvents = new List<StoryEventData>();
             date = new Date(week, month, year);
             season = StartSeason;
             money = startMoney;
             maintenance = startMaintenance;
             deck = new EmotionStat(initialDeck);
             comboMax = initialComboMax;
+            isNextWeek = false;
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -445,7 +476,8 @@ namespace VoiceActing
             CheckSeason();
             ContractNextWeek();
             VoiceActorWork();
-            CheckTimeline();
+            CheckContractTimeline();
+            CheckEventsTimeline();
             GachaContract();
         }
 
@@ -514,7 +546,7 @@ namespace VoiceActing
         }
 
 
-        public void CheckTimeline()
+        public void CheckContractTimeline()
         {
             for (int i = 0; i < gameTimeline.ContractTimeline[date.week].contractsData.addContracts.Length; i++)
             {
@@ -524,6 +556,25 @@ namespace VoiceActing
             for (int i = 0; i < gameTimeline.ContractRandomTimeline[date.week].contractsData.addContracts.Length; i++)
             {
                 contractGacha.Add(gameTimeline.ContractRandomTimeline[date.week].contractsData.addContracts[i]);
+            }
+
+        }
+
+        public void CheckEventsTimeline()
+        {
+            for (int i = 0; i < gameTimeline.EventsTimeline[date.week].eventData.eventsPhone.Length; i++)
+            {
+                phoneStoryEvents.Add(gameTimeline.EventsTimeline[date.week].eventData.eventsPhone[i]);
+            }
+
+            for (int i = 0; i < gameTimeline.EventsTimeline[date.week].eventData.eventStartWeek.Length; i++)
+            {
+                nextStoryEventsStartWeek.Add(gameTimeline.EventsTimeline[date.week].eventData.eventStartWeek[i]);
+            }
+
+            for (int i = 0; i < gameTimeline.EventsTimeline[date.week].eventData.eventEndWeek.Length; i++)
+            {
+                nextStoryEvents.Add(gameTimeline.EventsTimeline[date.week].eventData.eventEndWeek[i]);
             }
         }
 

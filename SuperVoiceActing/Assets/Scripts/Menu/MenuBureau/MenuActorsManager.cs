@@ -264,7 +264,7 @@ namespace VoiceActing
             yield return new WaitForEndOfFrame();
             DrawActorStat(actorsList[indexActorSelected]);
             buttonsActors[indexActorSelected].SelectButton();
-            //this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
         private void DrawActorStat(VoiceActor actor)

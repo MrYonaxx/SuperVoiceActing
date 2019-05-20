@@ -815,6 +815,8 @@ namespace VoiceActing
 
         public void ShowResultScreen()
         {
+            if (playerData.NextStoryEvents.Count != 0)
+                resultScreenManager.ChangeEndScene("EventScene");
             resultScreen.SetActive(true);
             resultScreenManager.SetContract(contrat);
             resultScreenManager.DrawResult(turnCount, killCount);
