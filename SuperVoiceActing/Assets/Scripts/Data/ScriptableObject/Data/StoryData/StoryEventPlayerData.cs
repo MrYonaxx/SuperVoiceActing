@@ -14,25 +14,56 @@ namespace VoiceActing
     [System.Serializable]
 	public class StoryEventPlayerData : StoryEvent
 	{
-
+        [SerializeField]
+        ContractData currentContract;
         [SerializeField]
         ContractData contractToAdd;
         [SerializeField]
         StoryEventData eventToAdd;
         [SerializeField]
+        StoryEventData eventEndToAdd;
+        [SerializeField]
         VoiceActorData voiceActorToAdd;
 
         public void SetNode(PlayerData playerData)
         {
-            for(int i = 0; i < playerData.ContractAccepted.Count; i++)
+
+
+            if(currentContract != null)
             {
-                if(playerData.ContractAccepted[i] == null)
+                playerData.CurrentContract = new Contract(currentContract);
+                CheckCharacterLock(playerData, playerData.CurrentContract);
+            }
+
+
+
+            if (contractToAdd != null)
+            {
+                for (int i = 0; i < playerData.ContractAccepted.Count; i++)
                 {
-                    playerData.ContractAccepted[i] = new Contract(contractToAdd);
-                    CheckCharacterLock(playerData, playerData.ContractAccepted[i]);
-                    break;
+                    if (playerData.ContractAccepted[i] == null)
+                    {
+                        playerData.ContractAccepted[i] = new Contract(contractToAdd);
+                        CheckCharacterLock(playerData, playerData.ContractAccepted[i]);
+                        break;
+                    }
                 }
             }
+
+
+
+            if (eventToAdd != null)
+            {
+                playerData.NextStoryEventsStartWeek.Add(eventToAdd);
+            }
+
+
+            if (eventEndToAdd != null)
+            {
+                playerData.NextStoryEvents.Add(eventEndToAdd);
+            }
+
+
         }
 
         public void CheckCharacterLock(PlayerData playerData, Contract newContract)

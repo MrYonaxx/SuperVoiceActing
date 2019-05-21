@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -29,6 +30,8 @@ namespace VoiceActing
     public class DoublageEventEffect : DoublageEvent
 	{
         [SerializeField]
+        [HideLabel]
+        [HorizontalGroup("Key", Width = 145, LabelWidth = 100)]
         private EventEffect eventEffect;
         public EventEffect EventEffect
         {
@@ -36,6 +39,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        [HorizontalGroup("Key", Width = 100, LabelWidth = 100)]
         private bool active;
         public bool Active
         {
@@ -43,6 +47,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        [HorizontalGroup("Zey", Width = 100, LabelWidth = 100)]
         private int eventTime;
         public int EventTime
         {
@@ -50,6 +55,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        [HorizontalGroup("Zey", Width = 100, LabelWidth = 100)]
         private int viewportID;
         public int ViewportID
         {

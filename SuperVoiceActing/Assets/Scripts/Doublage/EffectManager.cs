@@ -34,6 +34,9 @@ namespace VoiceActing
         {
             switch(effectData.EventEffect)
             {
+                case EventEffect.Flash:
+                    Flash();
+                    break;
                 case EventEffect.Negative:
                     negativeEffect.SetActive(effectData.Active);
                     break;
@@ -45,6 +48,27 @@ namespace VoiceActing
                     break;
             }
         }
+
+
+
+        public void Flash()
+        {
+            StartCoroutine(FlashCoroutine(25));
+        }
+
+        private IEnumerator FlashCoroutine(int time)
+        {
+            Color speed = new Color(0, 0, 0, 1f / time);
+            flashEffect.color = new Color(1, 1, 1, 1);
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+                flashEffect.color -= speed;
+            }
+            flashEffect.color = new Color(1, 1, 1, 0);
+        }
+
 
 
 

@@ -23,8 +23,11 @@ namespace VoiceActing
 
         protected override IEnumerator StoryEventCoroutine()
         {
-            yield return null;
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
         }
 
     } // StoryEventSceneLoader class

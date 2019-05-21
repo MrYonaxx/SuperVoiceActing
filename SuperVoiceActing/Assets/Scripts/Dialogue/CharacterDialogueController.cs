@@ -176,9 +176,12 @@ namespace VoiceActing
                 if (speed == 0)
                 {
                     i += Random.Range(1, 2);
-                    if (i >= currentSprites.Length)
-                        i = 0;
-                    changeMouthSprite(i);
+                    if (currentSprites != null)
+                    {
+                        if (i >= currentSprites.Length)
+                            i = 0;
+                        changeMouthSprite(i);
+                    }
                     speed = speedMouth;
                     if (soundVisualizer != null)
                         soundVisualizer.SetVisualizer();

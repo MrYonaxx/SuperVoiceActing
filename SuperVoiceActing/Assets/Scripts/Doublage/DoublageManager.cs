@@ -675,10 +675,10 @@ namespace VoiceActing
             yield return new WaitForSeconds(1);
             introBlackScreen.gameObject.SetActive(true);
             textIntro.SetActive(true);
-            introText.SetPhraseTextacting("We did it everyone !");
+            //introText.SetPhraseTextacting("We did it everyone !");
             yield return new WaitForSeconds(2);
-            introText.SetPhraseTextacting("Enregistrement terminé !");
-            yield return new WaitForSeconds(99);
+            //introText.SetPhraseTextacting("Enregistrement terminé !");
+            //yield return new WaitForSeconds(99);
 
         }
 
