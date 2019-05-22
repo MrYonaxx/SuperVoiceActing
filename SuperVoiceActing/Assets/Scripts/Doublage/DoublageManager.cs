@@ -196,7 +196,7 @@ namespace VoiceActing
             if (maxLineNumber != null)
                 maxLineNumber.text = (contrat.TextData.Count).ToString();
             if (currentLineNumber != null)
-                currentLineNumber.text = (indexPhrase + 1).ToString();
+                currentLineNumber.text = (indexPhrase).ToString();
             StartCoroutine(IntroductionSequence());
         }
 
@@ -516,7 +516,7 @@ namespace VoiceActing
                     indexPhrase += 1;
                     killCount += 1;
                     if (currentLineNumber != null)
-                        currentLineNumber.text = (indexPhrase+1).ToString();
+                        currentLineNumber.text = (indexPhrase).ToString();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
                     emotionAttackManager.RemoveCard();
@@ -815,6 +815,11 @@ namespace VoiceActing
 
         public void ShowResultScreen()
         {
+            if (indexPhrase == playerData.CurrentContract.TotalLine)
+            {
+                if (playerData.CurrentContract.StoryEventWhenEnd != null)
+                    playerData.NextStoryEvents.Add(playerData.CurrentContract.StoryEventWhenEnd);
+            }
             if (playerData.NextStoryEvents.Count != 0)
                 resultScreenManager.ChangeEndScene("EventScene");
             resultScreen.SetActive(true);

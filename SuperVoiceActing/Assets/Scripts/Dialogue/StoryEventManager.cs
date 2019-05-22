@@ -70,7 +70,7 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent unityEvent;
 
-
+        private IEnumerator coroutineStory = null;
         private IEnumerator coroutineAnimName = null;
 
         StoryEvent currentNode;
@@ -98,17 +98,17 @@ namespace VoiceActing
         /// <summary>
         /// Awake is called when the script instance is being loaded.
         /// </summary>
-        protected void Awake()
+        /*protected void Awake()
         {
             
-        }
+        }*/
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
         /// </summary>
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             if (storyEventData != null)
             {

@@ -452,7 +452,7 @@ namespace VoiceActing
         public void StartFlashback(StoryEventData storyEventData)
         {
             panelFlashback.SetActive(true);
-            storyEventManager.StartStoryEventData(storyEventData);
+            storyEventManager.StartStoryEventDataWithScene(storyEventData);
             StartCoroutine(TransitionFlashback(true));
         }
 

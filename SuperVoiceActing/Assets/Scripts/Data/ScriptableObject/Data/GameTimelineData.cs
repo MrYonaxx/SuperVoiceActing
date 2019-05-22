@@ -85,6 +85,13 @@ namespace VoiceActing
         public void SetTitle(int i)
         {
             name = "Semaine " + i;
+            if (eventData.eventsPhone != null)
+            {
+                if (eventData.eventsPhone.Length != 0)
+                {
+                    name += " | Phone " + eventData.eventsPhone.Length;
+                }
+            }
             if (eventData.eventStartWeek != null)
             {
                 if (eventData.eventStartWeek.Length != 0)
