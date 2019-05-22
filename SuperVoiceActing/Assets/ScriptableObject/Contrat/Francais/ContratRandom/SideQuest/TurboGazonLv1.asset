@@ -1,0 +1,395 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: TurboGazonLv1
+  m_EditorClassIdentifier: 
+  name: TurboGazon
+  level: 0
+  contractType: 0
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 0
+  weekMax: 0
+  expGain: 0
+  expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
+  description:
+  - "Bonjour, je recherche un studio de doublage avec \"peu\" d'exp\xE9rience pour
+    s'occuper de ma publicit\xE9. La pub se veut cool."
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Narrateur
+      lineMin: 20
+      lineMax: 30
+      fanMin: 0
+      fanMax: 0
+      atkMin: 5
+      atkMax: 5
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 4
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 8
+        sweetness: 0
+        fear: 0
+        trust: 4
+      characterStatMax:
+        neutral: 0
+        joy: 6
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 10
+        sweetness: 0
+        fear: 0
+        trust: 7
+      actorLocked: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Le jardin est dans un \xE9tat d\xE9sastreux."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 2
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Les mauvaises herbes ont m\xEAme attir\xE9 des animaux sauvages."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Celles-ci sont tellement hautes que les enfants ont perdu leur ballon...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Si on ne trouve pas une tondeuse digne de ce nom, je crois que l'herbe
+        rentrera par les fen\xEAtres."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Mais c'est sans compter l'aide de la tondeuse TURBO GAZON !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Waouh ! Je n'en reviens PAS !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Avec cette tondeuse r\xE9volutionnaire, plus de probl\xE8mes de mauvaise
+        herbe !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 2
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "La poigne et les suspensions intelligente permettent un contr\xF4le tr\xE8s
+        pr\xE9cis"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Son moteur thermique surpasse celle d'une moto !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 2
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "En quelques minutes, c'est termin\xE9 !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Quoi !? Elle peut m\xEAme drifter !?"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Turbo gazon, la tondeuse du futur et au-del\xE0 !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  eventData: []
+  eventAcceptedContract: {fileID: 11400000, guid: 27dbb406e90a51e4e9d327cac9bbabf1,
+    type: 2}
+  eventEndContract: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

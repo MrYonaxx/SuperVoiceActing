@@ -111,6 +111,10 @@ namespace VoiceActing
         {
             // Initialization
             float actualTime = time;
+            if (Input.GetButton("ControllerB"))
+            {
+                actualTime = 1;
+            }
             float speedX = (newPosition.x - character.transform.localPosition.x) / actualTime;
             float speedY = (newPosition.y - character.transform.localPosition.y) / actualTime;
             float speedRotateY = (newRotation.y - character.transform.eulerAngles.y) / actualTime;

@@ -200,7 +200,7 @@ namespace VoiceActing
                     listButtonRoles[i].gameObject.SetActive(false);
                 }
             }
-
+            indexSelected = 0;
             menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
             listButtonRoles[0].SelectButton();
             indexSelected = 0;

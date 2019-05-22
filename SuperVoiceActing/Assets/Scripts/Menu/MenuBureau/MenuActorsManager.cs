@@ -235,7 +235,13 @@ namespace VoiceActing
                 buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax);
             }
             if (indexActorSelected < actorsList.Count)
-                StartCoroutine(WaitEndOfFrame());
+            {
+                //StartCoroutine(WaitEndOfFrame());
+                DrawActorStat(actorsList[indexActorSelected]);
+                buttonsActors[indexActorSelected].SelectButton();
+                StopAllCoroutines();
+                //this.gameObject.SetActive(false);
+            }
 
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
         }

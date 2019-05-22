@@ -203,11 +203,17 @@ namespace VoiceActing
                     // On cherche l'acteur dans le monde
                     for(int j = 0; j < playerData.VoiceActors.Count; j++)
                     {
-                        if(newContract.Characters[i].CharacterLock == playerData.VoiceActors[j].Name)
+                        if(newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].Name)
                         {
                             newContract.VoiceActors[i] = playerData.VoiceActors[j];
                             continue;
                         }
+                    }
+                    // Si l'acteur n'est pas dans la liste, on l'invoque
+                    if (newContract.VoiceActors[i] == null)
+                    {
+                        playerData.VoiceActors.Add(new VoiceActor(newContract.Characters[i].CharacterLock));
+                        newContract.VoiceActors[i] = playerData.VoiceActors[playerData.VoiceActors.Count - 1];
                     }
                 }
             }

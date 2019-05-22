@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace VoiceActing
@@ -316,6 +317,19 @@ namespace VoiceActing
                 }
 
 
+
+
+                else if (currentNode is DoublageEventResultScreen)
+                {
+                    DoublageEventResultScreen node = (DoublageEventResultScreen)currentNode;
+                    if (node.LoadScene != null)
+                        SceneManager.LoadScene(node.LoadScene, LoadSceneMode.Single);
+                    else
+                        doublageManager.ShowResultScreen();
+
+                }
+
+
             }
             else // Fin d'event
             {
@@ -368,6 +382,8 @@ namespace VoiceActing
         {
             for (int i = 0; i < characters.Count; i++)
             {
+                if (characters[i].gameObject.activeInHierarchy == false)
+                    continue;
                 if (characters[i].GetStoryCharacterData() == characterToFind)
                 {
                     if (i < 3) // 3 car il y a 3 voice actors

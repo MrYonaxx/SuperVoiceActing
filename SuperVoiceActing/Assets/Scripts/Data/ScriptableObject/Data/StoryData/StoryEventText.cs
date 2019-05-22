@@ -132,6 +132,7 @@ namespace VoiceActing
                 {
                     characterDialogue.ActivateMouth(mouthSpeed + 7);
                 }
+                characterDialogue.ChangeEmotion(emotionNPC);
             }
 
             for (int i = 0; i < textMeshPro.textInfo.linkCount; i++)

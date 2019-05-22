@@ -56693,7 +56693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &896691945
 Transform:
   m_ObjectHideFlags: 0
@@ -71642,6 +71642,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1902061462}
+    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CheckNextStartEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4043226789119150, guid: ce1ac09c93c45904d96fc03fd768a409, type: 3}
       propertyPath: m_LocalPosition.x
       value: 100
@@ -71691,36 +71721,6 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: dd1651408519f0b4e8d18f1f1f1d82b6, type: 2}
-    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
-        type: 3}
-      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
-        type: 3}
-      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
-        type: 3}
-      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
-        type: 3}
-      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1902061462}
-    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
-        type: 3}
-      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckNextStartEvent
-      objectReference: {fileID: 0}
-    - target: {fileID: 114435631555320936, guid: ce1ac09c93c45904d96fc03fd768a409,
-        type: 3}
-      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 81737338779874044, guid: ce1ac09c93c45904d96fc03fd768a409,
         type: 3}
       propertyPath: m_Enabled
@@ -76786,6 +76786,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1902061462}
         m_MethodName: CheckContractDone
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1743682689}
+        m_MethodName: StartTuto
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
