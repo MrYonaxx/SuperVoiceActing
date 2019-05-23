@@ -308,7 +308,10 @@ namespace VoiceActing
                 if (i < firstCharacter || lastCharacter < i)
                     vertexAnim[i].selected = false;
                 else
+                {
                     vertexAnim[i].selected = true;
+                }
+                
             }
         }
 
@@ -467,10 +470,12 @@ namespace VoiceActing
                     Vector3 position = ModifyPosition(i);
                     Vector3 eulerAngle = ModifyRotation(i);
                     Vector3 scale = ModifyScale(i);
-                        
 
 
-                    if(vertexAnim[i].selected == true)
+
+
+
+                    if (vertexAnim[i].selected == true)
                     {
                         matrix = Matrix4x4.TRS(position, Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z), scale + new Vector3(size, size, size));
                     }
