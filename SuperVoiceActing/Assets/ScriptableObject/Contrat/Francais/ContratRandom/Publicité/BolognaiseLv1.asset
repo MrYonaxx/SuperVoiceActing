@@ -26,14 +26,515 @@ MonoBehaviour:
   contractTitle: []
   contractDictionnary: []
   description: []
-  characters: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Chef cuisto
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
-  textDataContract: []
-  eventData: []
+  textDataContract:
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "En temps que grand cuisinier, j'aime relever des d\xE9fis."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: 0
+        surprise: -50
+        sweetness: 30
+        fear: -100
+        trust: 70
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Une des meilleures choses que j'ai go\xFBt\xE9 dans ma vie sont les spaghettis
+        de ma Mama !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 30
+        disgust: -90
+        anger: -50
+        surprise: 40
+        sweetness: 60
+        fear: -100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 12
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "L'ardente saveur du coulis de tomates fra\xEEches !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 40
+        sweetness: 40
+        fear: -50
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 0
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "La viande de pays d'une qualit\xE9 unique !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 70
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 40
+        sweetness: 40
+        fear: -50
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 7
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Le subtil go\xFBt du basilique !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 70
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 50
+        sweetness: 40
+        fear: -50
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Et si... Je pouvais retranscrire ce go\xFBt unique !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 70
+        sweetness: 40
+        fear: 10
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 4
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Avec des nouilles instantan\xE9es !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 60
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 100
+        sweetness: 30
+        fear: 20
+        trust: 60
+      enemyWeakPoints:
+      - wordIndex: 3
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "L'id\xE9e est folle mais je l'ai fait !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 70
+        sweetness: 30
+        fear: 20
+        trust: 60
+      enemyWeakPoints:
+      - wordIndex: 2
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Avec les nouilles instantan\xE9es Bolognaise, les saveurs de la m\xE9dit\xE9ran\xE9e
+        sont retrouv\xE9es !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 50
+        sweetness: 30
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 6
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "En plus, plus besoin d'acheter du parmesan, il est d\xE9j\xE0 dans la
+        sauce !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -90
+        anger: -50
+        surprise: 70
+        sweetness: 30
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 9
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Aussi bon, que celui pr\xE9par\xE9 par la mama, \xE0 la sueur de son
+        front !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 70
+        sadness: -20
+        disgust: -90
+        anger: 0
+        surprise: 50
+        sweetness: 30
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  eventData:
+  - {fileID: 11400000, guid: 0f632e062af23d848b85f9f1b0c3208e, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
-  changeBGM: 0
-  battleTheme: {fileID: 0}
-  victoryTheme: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: 757623091b1cbaa4fb24a07d8c9b4a90, type: 3}
+  victoryTheme: {fileID: 8300000, guid: d2a6a66e3dcdd9a43baaed626e0a9ef8, type: 3}
   sessionLock: 0
