@@ -12,25 +12,334 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: VoitureLv1
   m_EditorClassIdentifier: 
-  name: 
-  level: 0
+  name: Nouvelle voiture [Nom]
+  level: 1
   contractType: 0
-  salaryMin: 0
-  salaryMax: 0
+  salaryMin: 2000
+  salaryMax: 3000
   mixingMin: 0
   mixingMax: 0
-  weekMin: 0
-  weekMax: 0
-  expGain: 0
+  weekMin: 3
+  weekMax: 4
+  expGain: 25
   expBonus: 0
   contractTitle: []
-  contractDictionnary: []
-  description: []
-  characters: []
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Panther
+    - Khiruul
+    - Liberty
+    - Redemption
+  description:
+  - "La publicit\xE9 de notre nouvelle voiture [Nom], cependant nous souhaitons aborder
+    le propos avec un th\xE8me plus touchant."
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - "P\xE8re"
+      lineMin: 20
+      lineMax: 50
+      fanMin: 0
+      fanMax: 0
+      atkMin: 6
+      atkMax: 12
+      timbre: {x: 3, y: 10}
+      timbreRand: {x: 3, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 5
+        sadness: 10
+        disgust: 5
+        anger: 1
+        surprise: 1
+        sweetness: 0
+        fear: 0
+        trust: 1
+      characterStatMax:
+        neutral: 0
+        joy: 7
+        sadness: 14
+        disgust: 7
+        anger: 3
+        surprise: 2
+        sweetness: 0
+        fear: 0
+        trust: 3
+      actorLocked: {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
-  textDataContract: []
-  eventData: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Rapide ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints: []
+    - text: Audacieuse ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints: []
+    - text: Et dangereuse ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "C'est comme \xE7a ... comme \xE7a que je l'ai perdu."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 18
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 40
+        anger: 0
+        surprise: -80
+        sweetness: -25
+        fear: 0
+        trust: -80
+      enemyWeakPoints: []
+    - text: "C'est comme \xE7a ... comme \xE7a qu'elle m'a quitt\xE9."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 40
+        anger: 0
+        surprise: -80
+        sweetness: -25
+        fear: 0
+        trust: -80
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Est-ce que je regrette ?
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
+      enemyWeakPoints:
+      - wordIndex: 0
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+    - text: "Bien s\xFBr."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 17
+        hpMax: 21
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints: []
+    - text: "Est-ce que je souhaite retourner en arri\xE8re ?"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 25
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
+      enemyWeakPoints: []
+    - text: Evidemment.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 17
+        hpMax: 21
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints: []
+    - text: "Mais c'est pour \xE7a que je continuerai de conduire."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 26
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 10
+        fear: -50
+        trust: 0
+      enemyWeakPoints: []
+    - text: Pour elle, et son sourire.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 18
+        hpMax: 22
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
+        disgust: -80
+        anger: -80
+        surprise: -80
+        sweetness: 50
+        fear: -80
+        trust: 0
+      enemyWeakPoints: []
+  eventData:
+  - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0

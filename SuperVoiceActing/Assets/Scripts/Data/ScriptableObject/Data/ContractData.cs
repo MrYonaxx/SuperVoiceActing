@@ -354,7 +354,6 @@ namespace VoiceActing
         }
 
         [Space]
-        [GUIColor(1f, 0f, 0f, 1f)]
         [SerializeField]
         private string[] contractTitle;
         public string[] ContractTitle
