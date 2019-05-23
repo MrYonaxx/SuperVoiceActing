@@ -116,6 +116,7 @@ namespace VoiceActing
         }
 
         [HorizontalGroup("Hey")]
+        [GUIColor(1f, 1f, 1f, 1f)]
         [SerializeField]
         private TextDataContract[] textDataPossible;
         public TextDataContract[] TextDataPossible
@@ -353,6 +354,7 @@ namespace VoiceActing
         }
 
         [Space]
+        [GUIColor(1f, 0f, 0f, 1f)]
         [SerializeField]
         private string[] contractTitle;
         public string[] ContractTitle
@@ -383,6 +385,7 @@ namespace VoiceActing
         [Space]
 
         [Title("Characters")]
+        [GUIColor(1f, 0.9f, 0.9f, 1f)]
         [SerializeField]
         private RoleContractDatabase[] characters;
         public RoleContractDatabase[] Characters
@@ -429,6 +432,7 @@ namespace VoiceActing
         [Space]
 
         [Title("Text")]
+        [GUIColor(0.92f, 0.92f, 1f, 1f)]
         [SerializeField]
         private TextDatabaseContract[] textDataContract;
         public TextDatabaseContract[] TextDataContract
