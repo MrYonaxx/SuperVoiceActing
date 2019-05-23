@@ -33,6 +33,7 @@ namespace VoiceActing
             set { optional = value; }
         }
 
+        [GUIColor(1f, 1f, 1f, 1f)]
         [SerializeField]
         private RoleContractData[] charactersProfil;
         public RoleContractData[] CharactersProfil
