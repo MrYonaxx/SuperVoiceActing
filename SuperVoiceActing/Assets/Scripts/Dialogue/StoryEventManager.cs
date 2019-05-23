@@ -58,6 +58,8 @@ namespace VoiceActing
 
         [Title("Story Effect")]
         [SerializeField]
+        StoryEventChoiceManager storyEventChoiceManager;
+        [SerializeField]
         StoryEventEffectManager storyEventEffectManager;
 
         [FoldoutGroup("Optionnel")]
@@ -227,6 +229,10 @@ namespace VoiceActing
                     StoryEventPlayerData node = (StoryEventPlayerData)currentNode;
                     node.SetNode(playerData);
                 }
+                else if (currentNode is StoryEventChoices)
+                {
+                    storyEventChoiceManager.DrawChoices((StoryEventChoices)currentNode);
+                }
                 // ==============================================================================================================================
 
 
@@ -244,6 +250,13 @@ namespace VoiceActing
             }
         }
 
+
+        public void LoadNewStoryEvent(StoryEventData data)
+        {
+            storyEventData = data;
+            //CreateScene();
+            i = -1;
+        }
 
         private void DrawName(StoryCharacterData interlocuteur)
         {

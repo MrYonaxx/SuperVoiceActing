@@ -21,7 +21,8 @@ namespace VoiceActing
         Music,
         SceneLoader,
         LoadEvent,
-        PlayerData
+        PlayerData,
+        Choices
     }
 
     [System.Serializable]
@@ -81,6 +82,12 @@ namespace VoiceActing
         [HideLabel]
         public StoryEventPlayerData storyEventPlayerData = null;
 
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", StoryEventNode.Choices)]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventChoices storyEventChoices = null;
+
 
 
         public string GetBoxTitle()
@@ -96,6 +103,8 @@ namespace VoiceActing
                 case StoryEventNode.MoveCharacter:
                     return eventNode + " : " + storyEventMoveCharacter.CharacterToMove.name;
                 case StoryEventNode.PlayerData:
+                    return eventNode.ToString();
+                case StoryEventNode.Choices:
                     return eventNode.ToString();
             }
             return null;
@@ -172,6 +181,8 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventMusic;
                 case StoryEventNode.PlayerData:
                     return eventNodes[index].dataBox.storyEventPlayerData;
+                case StoryEventNode.Choices:
+                    return eventNodes[index].dataBox.storyEventChoices;
             }
             return null;
         }
