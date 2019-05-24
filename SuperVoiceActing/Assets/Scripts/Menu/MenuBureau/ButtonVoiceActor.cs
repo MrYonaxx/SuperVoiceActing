@@ -76,6 +76,13 @@ namespace VoiceActing
             buttonImage.color = colorUnSelected;
         }
 
+        public void DrawAudition()
+        {
+            actorName.text = "Audition";
+            actorImage.gameObject.SetActive(false);
+            actorLevel.gameObject.SetActive(false);
+        }
+
         #endregion
 
     } // ButtonVoiceActor class

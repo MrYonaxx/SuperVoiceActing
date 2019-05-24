@@ -353,7 +353,15 @@ namespace VoiceActing
         }
 
 
-
+        public void ChangeOrthographicSize(float addValue, int time)
+        {
+            if (orthographicCoroutine != null)
+            {
+                StopCoroutine(orthographicCoroutine);
+            }
+            orthographicCoroutine = OrthographicSizeTransition(addValue, time);
+            StartCoroutine(OrthographicSizeTransition(addValue, time));
+        }
 
 
         public void ChangeOrthographicSize(float addValue)
@@ -366,10 +374,9 @@ namespace VoiceActing
             StartCoroutine(OrthographicSizeTransition(addValue));
         }
 
-        private IEnumerator OrthographicSizeTransition(float addValue)
+        private IEnumerator OrthographicSizeTransition(float addValue, float time = 20)
         {
-            float time = 20;
-            float rate = ((65 + addValue) - camera.fieldOfView) / 20;
+            float rate = ((65 + addValue) - camera.fieldOfView) / time;
             while (time != 0)
             {
                 camera.fieldOfView += rate;
@@ -400,7 +407,10 @@ namespace VoiceActing
 
         public void HideHUD()
         {
-            animatorHUD.SetTrigger("Hide");
+            if (zoomed == false)
+            {
+                animatorHUD.SetTrigger("Hide");
+            }
         }
 
 
@@ -409,8 +419,8 @@ namespace VoiceActing
             if (zoomed == false)
             {
                 ChangeOrthographicSize(-30);
+                animatorHUD.SetTrigger("Hide");
             }
-            animatorHUD.SetTrigger("Hide");
         }
 
         public void GoToDoublage()

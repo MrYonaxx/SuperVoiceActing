@@ -617,7 +617,7 @@ namespace VoiceActing
         public VoiceActor GachaVoiceActors(Role role)
         {
             int playerRank = 1;
-            int[] randomDraw = new int[voiceActorsGacha.Count];
+            int[] randomDraw = new int[voiceActorsGacha.Count + voiceActors.Count];
             int currentMaxValue = 0;
 
             // Calculate Actor Draw Chances
@@ -626,8 +626,6 @@ namespace VoiceActing
                 if(voiceActorsGacha[i].Level > playerRank + 3)
                 {
                     randomDraw[i] = -1;
-                    currentMaxValue += CalculateVoiceActorGachaScore(role, voiceActorsGacha[i]);
-                    randomDraw[i] = currentMaxValue;
                 }
                 else
                 {
@@ -636,23 +634,40 @@ namespace VoiceActing
                 }
             }
 
+            // Calculate Actor Draw Chances
+            for (int i = 0; i < voiceActors.Count; i++)
+            {
+                currentMaxValue += CalculateVoiceActorGachaScore(role, voiceActors[i], 0.5f);
+                randomDraw[voiceActorsGacha.Count + i] = currentMaxValue;
+            }
+
             // Draw
             int draw = Random.Range(0, currentMaxValue);
+            VoiceActor result;
             Debug.Log(draw);
             for (int i = 0; i < randomDraw.Length; i++)
             {
                 if(draw < randomDraw[i])
                 {
-                    Debug.Log(voiceActorsGacha[i].Name);
-                    if(!voiceActors.Contains(voiceActorsGacha[i]))
+                    if (i < voiceActorsGacha.Count)
+                    {
+                        Debug.Log(voiceActorsGacha[i].Name);
                         voiceActors.Add(voiceActorsGacha[i]);
-                    return voiceActorsGacha[i];
+                        result = voiceActorsGacha[i];
+                        voiceActorsGacha.RemoveAt(i);
+                        return result;
+                    }
+                    else
+                    {
+                        result = voiceActors[i - voiceActorsGacha.Count];
+                        return result;
+                    }
                 }
             }
             return null;
         }
 
-        private int CalculateVoiceActorGachaScore(Role role, VoiceActor va)
+        private int CalculateVoiceActorGachaScore(Role role, VoiceActor va, float finalMultiplier = 1)
         {
             int finalScore = 1;
 
@@ -737,7 +752,7 @@ namespace VoiceActing
                 finalScore += statGain;
             }
             Debug.Log(va.Name + " | " + finalScore);
-            return finalScore;
+            return (int) (finalScore * finalMultiplier);
         }
 
 

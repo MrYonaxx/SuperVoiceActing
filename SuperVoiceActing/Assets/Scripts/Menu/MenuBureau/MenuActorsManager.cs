@@ -140,7 +140,7 @@ namespace VoiceActing
         private int currentRepeatInterval = -1;
         private int lastDirection = 0; // 2 c'est bas, 8 c'est haut (voir numpad)
         public int indexActorLimit = 0;
-        public int indexActorSelected = 0;
+        public int indexActorSelected = -1;
         private IEnumerator coroutineScroll = null;
         // Menu Input
         // ===========================
@@ -162,7 +162,7 @@ namespace VoiceActing
         private bool gaugeCursorMode = false;
 
 
-
+        private bool firstDraw = true;
 
 
         #endregion
@@ -218,7 +218,16 @@ namespace VoiceActing
             {
                 auditionIndication.SetActive(false);
             }
-                
+
+
+
+            if (indexActorSelected >= actorsList.Count || indexActorSelected == -1)
+            {
+                indexActorSelected = 0;
+            }
+            buttonsActors[indexActorSelected].SelectButton();
+            DrawActorStat(actorsList[indexActorSelected]);
+
         }
 
         private void OnDisable()
@@ -236,14 +245,24 @@ namespace VoiceActing
             }
             if (indexActorSelected < actorsList.Count)
             {
-                //StartCoroutine(WaitEndOfFrame());
                 DrawActorStat(actorsList[indexActorSelected]);
-                buttonsActors[indexActorSelected].SelectButton();
-                StopAllCoroutines();
-                //this.gameObject.SetActive(false);
             }
 
+
+
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
+        }
+
+        public void CreateAuditionButton()
+        {
+            buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
+            buttonsActors[buttonsActors.Count - 1].DrawAudition();
+        }
+
+        public void DestroyAuditionButton()
+        {
+            Destroy(buttonsActors[buttonsActors.Count-1].gameObject);
+            buttonsActors.RemoveAt(buttonsActors.Count - 1);
         }
 
 
@@ -265,19 +284,23 @@ namespace VoiceActing
             }
         }
 
-        private IEnumerator WaitEndOfFrame()
-        {
-            yield return new WaitForEndOfFrame();
-            DrawActorStat(actorsList[indexActorSelected]);
-            buttonsActors[indexActorSelected].SelectButton();
-            this.gameObject.SetActive(false);
-        }
-
         private void DrawActorStat(VoiceActor actor)
         {
             animatorSelection.transform.position = buttonsActors[indexActorSelected].transform.position;
-            textMeshSelection.text = actor.Name;
             animatorSelection.SetTrigger("Active");
+
+            if (actor == null)
+            {
+                SetActorGaugeToZero();
+                menuActorsAudition.DrawAuditionPanel(true);
+                return;
+            }
+            else
+            {
+                menuActorsAudition.DrawAuditionPanel(false);
+            }
+
+            textMeshSelection.text = actor.Name;
 
             statImageActorAnimator.SetTrigger("AppearAnim");          
             statImageActor.sprite = actor.ActorSprite;
@@ -315,11 +338,22 @@ namespace VoiceActing
                 }
             }
 
-            DrawGaugeInfo(actor);
+            if (firstDraw == true)
+            {
+                //SetActorGaugeToZero();
+                firstDraw = false;
+            }
+            else
+            {
+                DrawGaugeInfo(actor);
+            }
 
             if(auditionMode == true)
                 CalculateAudtionEstimate();
         }
+
+
+
 
 
 
@@ -506,6 +540,80 @@ namespace VoiceActing
 
 
 
+        public IEnumerator GachaEffect()
+        {
+            int time = 10; // l même time que gaugeCourtine sinon bug
+            while (true)
+            {
+                if (gaugeCursorMode == false)
+                {
+                    for (int i = 0; i < textStatsActor.Length; i++)
+                    {
+                        textStatsActor[i].text = Random.Range(1, 99).ToString();
+                        if (time == 10)
+                            StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], Random.Range(1, 99) / 100f));
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < textStatsActor.Length; i++)
+                    {
+                        textStatsActor2[i].text = Random.Range(1, 99).ToString();
+                        if (time == 10)
+                            StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], Random.Range(1, 99) / 100f));
+                    }
+                }
+                time -= 1;
+                if (time == 0)
+                    time = 10;
+                yield return null;
+            }
+        }
+
+        public void StopGachaEffect(VoiceActor va)
+        {
+            StopAllCoroutines();
+            DrawGaugeInfo(va);
+        }
+
+
+        private void SetActorGaugeToZero()
+        {
+            if (gaugeCursorMode == false)
+            {
+                for (int i = 0; i < textStatsActor.Length; i++)
+                {
+                    textStatsActor[i].text = "0";
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], 0 / 100f));
+                    feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
+                    imageStatIcon[i].color = new Color(1, 1, 1);
+                    jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < textStatsActor.Length; i++)
+                {
+                    textStatsActor2[i].text = "0";
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], 0 / 100f));
+                    feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
+                    imageStatIcon[i].color = new Color(1, 1, 1);
+                    jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
+                }
+            }
+        }
+
+        public void RedrawButtonAfterAudition()
+        {
+            DestroyAuditionButton();
+            DestroyButtonList();
+            CreateAuditionButton();
+            buttonsActors[indexActorSelected].SelectButton();
+            //DrawActorStat(actorsList[indexActorSelected]);
+        }
+
+
 
 
         // =======================================================================
@@ -514,9 +622,15 @@ namespace VoiceActing
         public void AuditionMode(bool b, Role roleToAudition)
         {
             if (auditionMode == false && b == true)
+            {
                 ChangeStatForAudition(false);
+                CreateAuditionButton();
+            }
             else if (auditionMode == true && b == false)
+            {
                 ChangeStatForAudition(true);
+                DestroyAuditionButton();
+            }
 
             auditionMode = b;
 
@@ -565,7 +679,11 @@ namespace VoiceActing
 
         private void CalculateAudtionEstimate()
         {
-            textRoleCostEstimate.text = (auditionRole.Line * actorsList[indexActorSelected].Price).ToString();
+            textRoleCostEstimate.gameObject.SetActive(true);
+            if (indexActorSelected != buttonsActors.Count - 1)
+                textRoleCostEstimate.text = (auditionRole.Line * actorsList[indexActorSelected].Price).ToString();
+            else
+                textRoleCostEstimate.gameObject.SetActive(false);
         }
 
         public void Audition()
@@ -576,11 +694,21 @@ namespace VoiceActing
 
 
 
+
+
+
         // ==================================================================================
         // Commandes
 
         public void Validate()
         {
+            if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
+            {
+                StartCoroutine(GachaEffect());
+                menuActorsAudition.AnimAudition(auditionRole);
+                return;
+            }
+
             if (auditionMode == false)
                 return;
 
@@ -626,6 +754,8 @@ namespace VoiceActing
                 DrawGaugeRoleInfo();
         }
 
+
+
         public void SelectActorUp()
         {
             if(lastDirection != 8)
@@ -646,7 +776,15 @@ namespace VoiceActing
             }
 
             buttonsActors[indexActorSelected].SelectButton();
-            DrawActorStat(actorsList[indexActorSelected]);
+            if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
+            {
+                DrawActorStat(null);
+            }
+            else
+            {
+                DrawActorStat(actorsList[indexActorSelected]);
+            }
+
             MoveScrollRect();
         }
 
@@ -669,7 +807,16 @@ namespace VoiceActing
             }
 
             buttonsActors[indexActorSelected].SelectButton();
-            DrawActorStat(actorsList[indexActorSelected]);
+            if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
+            {
+                DrawActorStat(null);
+            }
+            else
+            {
+                DrawActorStat(actorsList[indexActorSelected]);
+            }
+            
+
             MoveScrollRect();
 
         }
