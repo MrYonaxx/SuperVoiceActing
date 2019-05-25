@@ -116,10 +116,9 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
-            if (listContractAvailable.Count != 0)
-                SelectButton();
-            else
-                StartCoroutine(WaitEndOfFrame());
+            SelectButton();
+            /*if (listContractAvailable.Count != 0)
+                SelectButton();*/
         }
 
         private void Start()
@@ -149,16 +148,13 @@ namespace VoiceActing
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
                 buttonsContracts[i].DrawButton(listContractAvailable[i].Name);
             }
-            /*animatorSelection.transform.position = buttonListTransform.position;
-            textMeshSelection.text = listContractAvailable[0].Name;*/
-            //StartCoroutine(WaitEndOfFrame());
         }
 
-        private IEnumerator WaitEndOfFrame()
+        /*private IEnumerator WaitEndOfFrame()
         {
             yield return new WaitForEndOfFrame();
             SelectButton();
-        }
+        }*/
 
         private void RedrawListButton()
         {

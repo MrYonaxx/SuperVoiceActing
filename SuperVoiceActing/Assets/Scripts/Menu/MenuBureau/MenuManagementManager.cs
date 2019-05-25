@@ -203,6 +203,42 @@ namespace VoiceActing
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void PlayDekstopTheme()
+        {
+            AudioManager.Instance.PlayMusic(defaultDekstopTheme);
+        }
+
+
         #endregion
 
     } // MenuManagementManager class
