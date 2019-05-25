@@ -36,6 +36,23 @@ namespace VoiceActing
         }
     }
 
+    public struct ContractCooldown
+    {
+        public ContractData contract;
+        public int cooldown;
+
+        public ContractCooldown(ContractData cd, int c)
+        {
+            contract = cd;
+            cooldown = c;
+        }
+
+        public void Decrease()
+        {
+            cooldown -= 1;
+        }
+    }
+
     /// <summary>
     /// Definition of the PlayerData class
     /// </summary>
@@ -261,8 +278,8 @@ namespace VoiceActing
 
         // Contrat Gacha qui sont en standby et qui ne peuvent pas être tiré
         [SerializeField]
-        private List<ContractData> contractGachaCooldown;
-        public List<ContractData> ContractGachaCooldown
+        private List<ContractCooldown> contractGachaCooldown;
+        public List<ContractCooldown> ContractGachaCooldown
         {
             get { return contractGachaCooldown; }
             set { contractGachaCooldown = value; }
@@ -443,7 +460,7 @@ namespace VoiceActing
         public void CreateNewData()
         {
             contractGacha = new List<ContractData>();
-            //contractGachaCooldown 
+            contractGachaCooldown = new List<ContractCooldown>();
             nextStoryEvents = new List<StoryEventData>();
             nextStoryEventsStartWeek = new List<StoryEventData>();
             phoneStoryEvents = new List<StoryEventData>();
@@ -478,6 +495,7 @@ namespace VoiceActing
             VoiceActorWork();
             CheckContractTimeline();
             CheckEventsTimeline();
+            CheckContractCooldown();
             GachaContract();
         }
 
@@ -604,13 +622,26 @@ namespace VoiceActing
             {
                 for (int i = 0; i < nbContract; i++)
                 {
-                    contractAvailable.Add(new Contract(contractGacha[Random.Range(0, contractGacha.Count)]));
+                    int rand = Random.Range(0, contractGacha.Count);
+                    contractAvailable.Add(new Contract(contractGacha[rand]));
+                    contractGachaCooldown.Add(new ContractCooldown(contractGacha[rand], contractAvailable[contractAvailable.Count - 1].WeekRemaining));
+                    contractGacha.Remove(contractGacha[rand]);
                 }
             }
-        } 
+        }
 
-
-
+        public void CheckContractCooldown()
+        {
+            for (int i = 0; i < contractGachaCooldown.Count; i++)
+            {
+                contractGachaCooldown[i].Decrease();
+                if (contractGachaCooldown[i].cooldown <= 0)
+                {
+                    contractGacha.Add(contractGachaCooldown[i].contract);
+                    contractGachaCooldown.RemoveAt(i);
+                }
+            }
+        }
 
 
 
