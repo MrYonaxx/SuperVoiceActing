@@ -57,7 +57,7 @@ namespace VoiceActing
     /// Definition of the PlayerData class
     /// </summary>
     /// 
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "PlayerData", order = 1)]
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "PlayerData/PlayerData", order = 1)]
     public class PlayerData : ScriptableObject
     {
 

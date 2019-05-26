@@ -385,6 +385,7 @@ namespace VoiceActing
 
             for (int i = 0; i < particleFeedbacks.Length; i++)
             {
+                particleFeedbacks[i].gameObject.SetActive(true);
                 particleFeedbacks[i].Play();
             }
             return 0;
@@ -630,9 +631,14 @@ namespace VoiceActing
                         break;
                 }
                 if (colorEmotion == Color.white && i > 0)
-                    return;
+                {
+                    particleFeedbacks[i].gameObject.SetActive(false);
+                }
                 else
                 {
+                    particleFeedbacks[i].gameObject.SetActive(true);
+                    /*var particleColor = particleFeedbacks[i].main;
+                    particleColor.startColor = colorEmotion;*/
                     for (int j = i; j < particleFeedbacks.Length; j++)
                     {
                         var particleColor = particleFeedbacks[j].main;

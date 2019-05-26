@@ -292,6 +292,7 @@ namespace VoiceActing
             if (actor == null)
             {
                 SetActorGaugeToZero();
+                textMeshSelection.text = "Audition";
                 menuActorsAudition.DrawAuditionPanel(true);
                 return;
             }

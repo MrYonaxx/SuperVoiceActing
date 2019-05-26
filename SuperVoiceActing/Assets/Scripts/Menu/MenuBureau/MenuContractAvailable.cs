@@ -40,6 +40,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textInfoType;
         [SerializeField]
+        TextMeshProUGUI textInfoCharacterNumber;
+        [SerializeField]
         TextMeshProUGUI textInfoMoney;
         [SerializeField]
         TextMeshProUGUI textInfoWeek;
@@ -184,6 +186,7 @@ namespace VoiceActing
 
         private void DrawInfo()
         {
+            textInfoCharacterNumber.text = listContractAvailable[indexSelected].Characters.Count.ToString();
             textInfoTitle.text = listContractAvailable[indexSelected].Name;
             textInfoWeek.text = listContractAvailable[indexSelected].WeekRemaining.ToString();
             textInfoMoney.text = listContractAvailable[indexSelected].Money.ToString();

@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -153,15 +154,15 @@ namespace VoiceActing
         [SerializeField]
         EmotionCardPosition[] emotionCards;
 
-        /*[Header("Deck")]
-        [SerializeField]*/
-        EmotionStat deckEmotion;
+        [SerializeField]
+        EmotionComboData emotionComboData;
+
+        
 
         [Header("Combo")]
         [SerializeField]
         RectTransform[] comboSlot;
-        /*[SerializeField]*/
-        int comboMax = 3;
+        
 
 
         [Header("Transtions")]
@@ -176,15 +177,19 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorCombo;
         [SerializeField]
+        TextMeshProUGUI textComboName;
+        [SerializeField]
         Image feedbackSelectCard;
         [SerializeField]
         ParticleSystem particle;
         [SerializeField]
         Image haloEmotion;
 
+        EmotionStat deckEmotion;
         EmotionCard[] comboCardEmotion;
         Emotion[] comboEmotion;
         int comboCount = -1;
+        int comboMax = 3;
         private IEnumerator transitionCoroutine = null;
 
         #endregion
@@ -294,6 +299,11 @@ namespace VoiceActing
                     comboSlot[i].gameObject.SetActive(true);
                 else
                     comboSlot[i].gameObject.SetActive(false);
+            }
+            if (comboSlot.Length == 2)
+            {
+                comboSlot[0].anchoredPosition += new Vector2(-75, 0);
+                comboSlot[1].anchoredPosition += new Vector2(-75, 0);
             }
         }
 
@@ -450,6 +460,7 @@ namespace VoiceActing
                             emotionCards[i].Cards[j] = null;
                         }
                     }
+                    DrawComboName();
                     return comboCardEmotion[comboCount];
                 }
             }
@@ -486,6 +497,7 @@ namespace VoiceActing
                     comboCardEmotion[comboCount] = null;               
                     comboEmotion[comboCount] = Emotion.Neutre;
                     comboCount -= 1;
+                    DrawComboName();
                     break;
                 }
             }
@@ -500,6 +512,51 @@ namespace VoiceActing
         public void CardAttack()
         {
             animatorCombo.SetTrigger("Attack");
+        }
+
+        public void DrawComboName()
+        {
+            if (comboEmotion.Length == 0 || comboEmotion[0] == Emotion.Neutre)
+                textComboName.gameObject.SetActive(false);
+            else
+            {
+                int[] emotions = { 0, 0, 0 };
+                for (int i = 0; i < comboEmotion.Length; i++)
+                {
+                    int emotion = 0;
+                    switch (comboEmotion[i])
+                    {
+                        case Emotion.Joie:
+                            emotion = 1;
+                            break;
+                        case Emotion.Tristesse:
+                            emotion = 2;
+                            break;
+                        case Emotion.Dégoût:
+                            emotion = 3;
+                            break;
+                        case Emotion.Colère:
+                            emotion = 4;
+                            break;
+                        case Emotion.Surprise:
+                            emotion = 5;
+                            break;
+                        case Emotion.Douceur:
+                            emotion = 6;
+                            break;
+                        case Emotion.Peur:
+                            emotion = 7;
+                            break;
+                        case Emotion.Confiance:
+                            emotion = 8;
+                            break;
+                    }
+                    emotions[i] = emotion;
+                }
+                textComboName.gameObject.SetActive(true);
+                textComboName.text = emotionComboData.GetName(emotions[0], emotions[1], emotions[2]);
+            }
+            
         }
 
         // ================================================= //

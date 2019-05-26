@@ -646,18 +646,19 @@ namespace VoiceActing
             textInfo = textMeshPro.textInfo;
             //Matrix4x4 matrix;
             TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
+            Vector3 scale = new Vector3(1f, 1f, 1f);
 
             float[] randomParameter = new float[characterCount];
             for (int i = 0; i < characterCount; i++)
             {
-                randomParameter[i] = Random.Range(0.01f, 0.2f);
+                randomParameter[i] = Random.Range(0.01f, 0.1f);//0.2f
             }
             
             float coef = 0;
 
             while (time != 0)
             {
-
+                scale += new Vector3(0.001f, 0.001f, 0.001f);
                 for (int i = 0; i < characterCount; i++)
                 {
                     TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
@@ -672,10 +673,14 @@ namespace VoiceActing
 
                     Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
 
+                    Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, 0), scale);
+                    MoveVertices(destinationVertices, vertexIndex, matrix);
+
                     destinationVertices[vertexIndex + 0] += offset;
                     destinationVertices[vertexIndex + 1] += offset;
                     destinationVertices[vertexIndex + 2] += offset;
                     destinationVertices[vertexIndex + 3] += offset;
+
 
                 }
                 coef += 0.01f;

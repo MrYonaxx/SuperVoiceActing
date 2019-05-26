@@ -176,21 +176,52 @@ namespace VoiceActing
         \* ======================================== */
 
 
+        public void CheckCharacterLock(Contract newContract)
+        {
+            for (int i = 0; i < newContract.Characters.Count; i++)
+            {
+                if (newContract.Characters[i].CharacterLock != null)
+                {
+                    // On cherche l'acteur dans le monde
+                    for (int j = 0; j < playerData.VoiceActors.Count; j++)
+                    {
+                        if (newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].Name)
+                        {
+                            newContract.VoiceActors[i] = playerData.VoiceActors[j];
+                            continue;
+                        }
+                    }
+                    // Si l'acteur n'est pas dans la liste, on l'invoque
+                    if (newContract.VoiceActors[i] == null)
+                    {
+                        playerData.VoiceActors.Add(new VoiceActor(newContract.Characters[i].CharacterLock));
+                        newContract.VoiceActors[i] = playerData.VoiceActors[playerData.VoiceActors.Count - 1];
+                    }
+                }
+            }
+        }
+
+
+
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
         /// </summary>
         protected virtual void Start()
         {
-            contrat = playerData.CurrentContract;
-            indexPhrase = contrat.CurrentLine;
+            contrat = playerData.CurrentContract;           
             if(contrat == null)
             {
                 if (contratData != null)
                 {
+                    playerData.CreateList();
                     contrat = new Contract(contratData); // Pour Debug
+                    CheckCharacterLock(contrat);
                 }
             }
+            indexPhrase = contrat.CurrentLine;
             if (timer != null)
                 timer.SetTurn(turnCount);
             if (maxLineNumber != null)
@@ -218,6 +249,7 @@ namespace VoiceActing
             skillManager.SetManagers(cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetRoles(contrat.Characters);
+            toneManager.DrawTone();
             // Initialisation
 
             if(contrat.BattleTheme != null)
@@ -230,7 +262,7 @@ namespace VoiceActing
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
             {
                 yield return new WaitForSeconds(1);
-                introText.SetPhraseTextacting(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
+                //introText.SetPhraseTextacting(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
                 yield return new WaitForSeconds(1.5f);
                 introText.SetPhraseTextacting(contrat.Name);
                 yield return new WaitForSeconds(3);
@@ -424,9 +456,9 @@ namespace VoiceActing
             {
                 yield break;
             }
-            cameraController.ChangeOrthographicSize(-1, time);
+            cameraController.ChangeOrthographicSize(-2, time);
             yield return WaitFrame(time);
-            cameraController.ChangeOrthographicSize(2, time*2);
+            cameraController.ChangeOrthographicSize(4, time*2);
             yield return WaitFrame(time * 2);
             cameraController.ChangeOrthographicSize(0, time*6);
         }
