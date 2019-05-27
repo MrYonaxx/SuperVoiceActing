@@ -44,6 +44,10 @@ namespace VoiceActing
         Animator animName;
         [SerializeField]
         TextMeshProUGUI textName;
+        [SerializeField]
+        TextMeshProUGUI textDate;
+        [SerializeField]
+        TextMeshProUGUI textLocation;
         /*[SerializeField]
         AudioSource audioSourceText;
         */
@@ -123,7 +127,8 @@ namespace VoiceActing
 
         public void CreateScene()
         {
-            for(int i = 0; i < characters.Count; i++)
+            textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
+            for (int i = 0; i < characters.Count; i++)
             {
                 Destroy(characters[i].gameObject);
             }
@@ -143,6 +148,7 @@ namespace VoiceActing
 
         public void CreateScene(StoryEventData newStoryEvent)
         {
+            textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
             for (int i = 0; i < characters.Count; i++)
             {
                 Destroy(characters[i].gameObject);

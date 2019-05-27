@@ -129,7 +129,8 @@ namespace VoiceActing
         public void SetContract(Contract con)
         {
             contract = con;
-            spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic(); 
+            spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
+            spectrum.enabled = true;
             actorsLevelUp = new bool[contract.VoiceActors.Count];
             for (int i = 0; i < actorsLevelUp.Length; i++)
             {

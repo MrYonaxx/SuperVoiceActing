@@ -86,6 +86,13 @@ namespace VoiceActing
             }
         }
 
+        protected void OnEnable()
+        {
+            if(coroutine != null)
+                StopCoroutine(coroutine);
+            moving = false;
+        }
+
         private IEnumerator MoveCoroutine(float x, float y, float z, float time)
         {
             /*float speedX = (x - this.transform.position.x) / time;

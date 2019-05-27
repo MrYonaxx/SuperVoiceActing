@@ -309,6 +309,13 @@ namespace VoiceActing
         [SerializeField]
         ParticleSystem[] particleCritical;
 
+        [HorizontalGroup]
+        [SerializeField]
+        float[] damageLevel;
+        [HorizontalGroup]
+        [SerializeField]
+        Color[] damageColorLevel;
+
         [SerializeField]
         GameObject criticalFeedback;
         [SerializeField]
@@ -396,21 +403,24 @@ namespace VoiceActing
             int multiplier = 0;
             int comboSize = emotions.Length;
             float totalDamage = 0;
+            float normalDamage = 0;
             EmotionStat statActor = voiceActor.Statistique;
             EmotionStat statModifier = voiceActor.StatModifier;
 
             int enemyHPMax = currentTextData.HPMax;
             EmotionStat enemyResistance = currentTextData.EnemyResistance;
+            Color colorEmotion = Color.white;
 
-            for(int i = 0; i < emotions.Length; i++)
+            for (int i = 0; i < emotions.Length; i++)
             {
 
                 switch(emotions[i])
                 {
                     case Emotion.Neutre:
+                        colorEmotion = Color.white;
                         if (i == 0)
                         {
-                            totalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
+                            normalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
                             multiplier += enemyResistance.Neutral;
                         }
                         else
@@ -419,42 +429,70 @@ namespace VoiceActing
                         }
                         break;
                     case Emotion.Joie:
-                        totalDamage += (statActor.Joy + statModifier.Joy) * ((100f + enemyResistance.Joy) / 100f);
+                        colorEmotion = Color.yellow;
+                        normalDamage += (statActor.Joy + statModifier.Joy);
                         multiplier += enemyResistance.Joy;
                         break;
                     case Emotion.Tristesse:
-                        totalDamage += (statActor.Sadness + statModifier.Sadness) * ((100f + enemyResistance.Sadness) / 100f);
+                        colorEmotion = Color.blue;
+                        normalDamage += (statActor.Sadness + statModifier.Sadness);
                         multiplier += enemyResistance.Sadness;
                         break;
                     case Emotion.Dégoût:
-                        totalDamage += (statActor.Disgust + statModifier.Disgust) * ((100f + enemyResistance.Disgust) / 100f);
+                        colorEmotion = Color.green;
+                        normalDamage += (statActor.Disgust + statModifier.Disgust);
                         multiplier += enemyResistance.Disgust;
                         break;
                     case Emotion.Colère:
-                        totalDamage += (statActor.Anger + statModifier.Anger) * ((100f + enemyResistance.Anger) / 100f);
+                        colorEmotion = Color.red;
+                        normalDamage += (statActor.Anger + statModifier.Anger);
                         multiplier += enemyResistance.Anger;
                         break;
                     case Emotion.Surprise:
-                        totalDamage += (statActor.Surprise + statModifier.Surprise) * ((100f + enemyResistance.Surprise) / 100f);
+                        colorEmotion = new Color(0.9f, 0.55f, 0.3f);
+                        normalDamage += (statActor.Surprise + statModifier.Surprise);
                         multiplier += enemyResistance.Surprise;
                         break;
                     case Emotion.Douceur:
-                        totalDamage += (statActor.Sweetness + statModifier.Sweetness) * ((100f + enemyResistance.Sweetness) / 100f);
+                        colorEmotion = new Color(0.88f, 0.58f, 0.9f);
+                        normalDamage += (statActor.Sweetness + statModifier.Sweetness);
                         multiplier += enemyResistance.Sweetness;
                         break;
                     case Emotion.Peur:
-                        totalDamage += (statActor.Fear + statModifier.Fear) * ((100f + enemyResistance.Fear) / 100f);
+                        colorEmotion = Color.black;
+                        normalDamage += (statActor.Fear + statModifier.Fear);
                         multiplier += enemyResistance.Fear;
                         break;
                     case Emotion.Confiance:
-                        totalDamage += (statActor.Trust + statModifier.Trust) * ((100f + enemyResistance.Trust) / 100f);
+                        colorEmotion = Color.white;
+                        normalDamage += (statActor.Trust + statModifier.Trust);
                         multiplier += enemyResistance.Trust;
                         break;
                 }
+
+                if (colorEmotion == Color.white && i > 0)
+                {
+                    particleFeedbacks[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    particleFeedbacks[i].gameObject.SetActive(true);
+                    for (int j = i; j < particleFeedbacks.Length; j++)
+                    {
+                        var particleColor = particleFeedbacks[j].main;
+                        particleColor.startColor = colorEmotion;
+                    }
+                }
             }
+
+
+
+
+
+
             multiplier = multiplier / comboSize;
 
-
+            totalDamage = normalDamage * ((100 + multiplier) / 100f);
             totalDamage += ApplyWordBonus(totalDamage, word, statActor);
             totalDamage += Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance+1);
             if(totalDamage <= 0)
@@ -471,9 +509,8 @@ namespace VoiceActing
             ChangeParticleAttack(emotions);
             ChangeHaloEmotion(emotions);
 
-            PrintDamage(totalDamage);
+            PrintDamage(totalDamage, normalDamage);
 
-            //Debug.Log(totalDamage);
             float percentage = 0;
             if (currentTextData.HPMax != 0)
             {
@@ -486,14 +523,14 @@ namespace VoiceActing
         private float ApplyWordBonus(float totalDamage, int word, EmotionStat statActor)
         {
             float bonusDamage = 0;
-            float[] allDamages = new float[9];
-            allDamages[0] = totalDamage;
+            //float[] allDamages = new float[9];
+            //allDamages[0] = totalDamage;
             WeakPoint[] enemyWeakPoints = currentTextData.EnemyWeakPoints;
             for (int i = 0; i < enemyWeakPoints.Length; i++)
             {
                 if (word == enemyWeakPoints[i].WordIndex)
                 {
-                    bonusDamage += statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
+                    /*bonusDamage += statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
                     allDamages[1] = statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
                     bonusDamage += statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
                     allDamages[2] = statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
@@ -509,9 +546,10 @@ namespace VoiceActing
                     bonusDamage += statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
                     allDamages[7] = statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
                     bonusDamage += statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
-                    allDamages[8] = statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
+                    allDamages[8] = statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);*/
+                    bonusDamage = totalDamage * 0.2f;
 
-                    Debug.Log("Weakpoint");
+                    //Debug.Log("Weakpoint");
                     if (criticalFeedback != null)
                     {
                         criticalFeedback.SetActive(true);
@@ -595,7 +633,7 @@ namespace VoiceActing
 
         private void ChangeParticleAttack(Emotion[] emotions)
         {
-            if (particleFeedbacks == null)
+            /*if (particleFeedbacks == null)
                 return;
             Color colorEmotion;
             for (int i = 0; i < emotions.Length; i++)
@@ -637,17 +675,15 @@ namespace VoiceActing
                 else
                 {
                     particleFeedbacks[i].gameObject.SetActive(true);
-                    /*var particleColor = particleFeedbacks[i].main;
-                    particleColor.startColor = colorEmotion;*/
                     for (int j = i; j < particleFeedbacks.Length; j++)
                     {
                         var particleColor = particleFeedbacks[j].main;
                         particleColor.startColor = colorEmotion;
                     }
                 }
-            }
+            }*/
 
-            for (int i = 0; i < particleFeedbacks.Length-1; i++)
+            for (int i = 0; i < particleFeedbacks.Length-2; i++)
             {
                 particleFeedbacks[i].Play();
             }
@@ -721,7 +757,7 @@ namespace VoiceActing
             haloCurrentEmotion.color = new Color(0, 0, 0, 0);
         }
 
-        private void PrintDamage(float totalDamage)
+        private void PrintDamage(float totalDamage, float normalDamage)
         {
             if (damageText == null)
                 return;
@@ -730,11 +766,10 @@ namespace VoiceActing
             damageText.transform.localScale = new Vector3(1, 1, 1);
             int timeFeedback = 40;
             float speed = (totalDamage / timeFeedback);
-            //Debug.Log(speed);
-            StartCoroutine(DamageTextCoroutine(speed, timeFeedback, 120));
+            StartCoroutine(DamageTextCoroutine(normalDamage, speed, timeFeedback, 120));
         }
 
-        private IEnumerator DamageTextCoroutine(float speed, int timeFeedback, int time)
+        private IEnumerator DamageTextCoroutine(float normalDamage, float speed, int timeFeedback, int time)
         {
             float currentDamage = 0;
             while (time != 0)
@@ -744,6 +779,7 @@ namespace VoiceActing
                 {
                     timeFeedback -= 1;
                     currentDamage += speed;
+                    ChangeTextColor(normalDamage, currentDamage);
                     damageText.text = ((int)currentDamage).ToString();
                 }
                 else if (timeFeedback == 0)
@@ -755,6 +791,19 @@ namespace VoiceActing
             damageText.text = "";
             damageTextAnimator.enabled = false;
             damageText.gameObject.SetActive(false);
+        }
+
+
+        private void ChangeTextColor(float normalDamage, float currentDamage)
+        {
+            for(int i = 0; i < damageLevel.Length; i++)
+            {
+                if((currentDamage / normalDamage) <= damageLevel[i])
+                {
+                    damageText.color = damageColorLevel[i];
+                    return;
+                }
+            }
         }
 
         #endregion

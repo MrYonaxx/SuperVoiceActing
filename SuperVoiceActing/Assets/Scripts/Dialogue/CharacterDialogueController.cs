@@ -62,6 +62,11 @@ namespace VoiceActing
             return textActing;
         }
 
+        public SpriteRenderer GetSpriteRenderer()
+        {
+            return spriteRenderer;
+        }
+
         public void SetPhraseTextacting(string newText)
         {
             textActing.NewMouthAnim(this);

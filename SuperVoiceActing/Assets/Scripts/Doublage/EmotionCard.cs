@@ -82,7 +82,7 @@ namespace VoiceActing
         public void MoveCard(RectTransform newTransform, float speed)
         {
             this.transform.SetParent(newTransform);
-
+            rectTransform.localScale = new Vector3(1, 1, 1);
             if (coroutine != null)
                 StopCoroutine(coroutine);
 
@@ -92,11 +92,12 @@ namespace VoiceActing
 
         private IEnumerator MoveToOrigin(float speed)
         {
-            while (this.rectTransform.anchoredPosition != Vector2.zero)
+            while (rectTransform.anchoredPosition != Vector2.zero)
             {
-                this.rectTransform.anchoredPosition /= speed;
+                rectTransform.anchoredPosition /= speed;
                 yield return null;
             }
+            rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
             coroutine = null;
         }
 

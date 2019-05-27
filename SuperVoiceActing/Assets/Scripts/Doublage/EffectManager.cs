@@ -41,6 +41,7 @@ namespace VoiceActing
                     negativeEffect.SetActive(effectData.Active);
                     break;
                 case EventEffect.BlurredVision:
+                    Flash();
                     blurredEffect.SetActive(effectData.Active);
                     break;
                 case EventEffect.FadeTotal:
@@ -50,9 +51,22 @@ namespace VoiceActing
         }
 
 
+        public void BlurScreen(bool b)
+        {
+            blurredEffect.SetActive(b);
+        }
+
+        public void NegativeScreen(bool b)
+        {
+            negativeEffect.SetActive(b);
+        }
+
+
+
 
         public void Flash()
         {
+            flashEffect.gameObject.SetActive(true);
             StartCoroutine(FlashCoroutine(25));
         }
 
@@ -67,6 +81,7 @@ namespace VoiceActing
                 flashEffect.color -= speed;
             }
             flashEffect.color = new Color(1, 1, 1, 0);
+            flashEffect.gameObject.SetActive(false);
         }
 
 

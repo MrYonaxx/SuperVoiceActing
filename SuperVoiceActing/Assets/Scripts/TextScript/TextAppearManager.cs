@@ -131,6 +131,11 @@ namespace VoiceActing
             currentText.SetPauseText(b);
         }
 
+        public void SetLetterSpeed(int newValue)
+        {
+            currentText.SetLetterSpeed(newValue);
+        }
+
         public void HideText()
         {
             if (initialScale != Vector3.zero)

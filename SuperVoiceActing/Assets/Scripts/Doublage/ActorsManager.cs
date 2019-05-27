@@ -58,6 +58,8 @@ namespace VoiceActing
         TextMeshProUGUI textDamage;
         [SerializeField]
         RectTransform damagePreviz;
+        [SerializeField]
+        EffectManager effectManagerDeath;
 
 
         // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
@@ -114,6 +116,11 @@ namespace VoiceActing
         public int GetCurrentActorHPMax()
         {
             return actors[indexCurrentActor].HpMax;
+        }
+
+        public int GetCurrentActorIndex()
+        {
+            return indexCurrentActor;
         }
 
         public List<Buff> GetBuffList()
@@ -309,12 +316,22 @@ namespace VoiceActing
 
             float ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
             healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
-            if(damage > 0)
+            if (actors[indexCurrentActor].Hp < actors[indexCurrentActor].HpMax * healthCriticalThreshold)
+            {
+                textCurrentHp.color = healthCriticalColor;
+                textMaxHp.color = healthCriticalColor;
+            }
+            if (damage > 0)
                 StartCoroutine(FeedbackHealthBar());
         }
 
         private IEnumerator FeedbackHealthBar(int timeShake = 30, int timeGauge = 180)
         {
+            if (actors[indexCurrentActor].Hp == 0)
+            {
+                effectManagerDeath.NegativeScreen(true);
+                effectManagerDeath.Flash();
+            }
             float intensity = 100;
             Vector2 origin = healthBar.anchoredPosition;
             while (timeShake != 0)
@@ -332,6 +349,11 @@ namespace VoiceActing
                 timeGauge -= 1;
                 healthContentProgression.transform.localScale += speed;
                 yield return null;
+            }
+            if (actors[indexCurrentActor].Hp == 0)
+            {
+                effectManagerDeath.NegativeScreen(false);
+                effectManagerDeath.Flash();
             }
             //animatorHealthBar.SetBool("Appear", false);
         }
@@ -366,10 +388,44 @@ namespace VoiceActing
 
         public void DrawDamagePrevisualization()
         {
+            if (actors[indexCurrentActor].Hp <= 0)
+                return;
             float damagePercentage = (float) attackDamage / actors[indexCurrentActor].Hp;
             damagePreviz.anchorMin = new Vector2(1 - damagePercentage, 0);
             damagePreviz.offsetMin = new Vector2(0, 0);
+
+            if (damagePercentage >= 1)
+            {
+                effectManagerDeath.BlurScreen(true);
+            }
+            else
+            {
+                effectManagerDeath.BlurScreen(false);
+            }
         }
+
+
+
+        public IEnumerator DeathCoroutine(Transform character)
+        {
+            int time = 100;
+            while (time != 0)
+            {
+                character.eulerAngles += new Vector3(0, 0, 0.1f);
+                time -= 1;
+                yield return null;
+            }
+            time = 20;
+            effectManagerDeath.TotalFade(true, time);
+            while (time != 0)
+            {
+                character.eulerAngles += new Vector3(0, 0, 0.1f);
+                time -= 1;
+                yield return null;
+            }
+            effectManagerDeath.TotalFade(false, 120);
+        }
+
 
         #endregion
 

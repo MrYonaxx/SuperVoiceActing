@@ -244,6 +244,7 @@ namespace VoiceActing
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
+            actorsManager.ActorTakeDamage(0);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
             emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
             skillManager.SetManagers(cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
@@ -364,6 +365,11 @@ namespace VoiceActing
 
             lastAttack = emotionAttackManager.GetComboEmotion();
             textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, textAppearManager.GetWordSelected()), lastAttack);
+            if(actorsManager.GetCurrentActorHP() == 0)
+            {
+                AudioManager.Instance.StopMusic(300);
+                textAppearManager.SetLetterSpeed(12);
+            }
 
             emotionAttackManager.CardAttack();
             emotionAttackManager.SwitchCardTransformToRessource();
@@ -405,6 +411,28 @@ namespace VoiceActing
             while (textAppearManager.GetEndLine() == false)
             {
                 yield return null;
+            }
+
+            // Check Dead ========================================================================
+            if (actorsManager.GetCurrentActorHP() == 0)
+            {
+                yield return new WaitForSeconds(1f);
+                yield return actorsManager.DeathCoroutine(eventManager.GetCharacterSprites(actorsManager.GetCurrentActorIndex()));
+                AudioManager.Instance.PlaySound(audioClipSpotlight);
+                introBlackScreen.gameObject.SetActive(true);
+                introBlackScreen.enabled = true;
+                introBlackScreen.color = new Color(0, 0, 0, 1);
+                textIntro.SetActive(true);
+                introText.SetPhraseTextacting(" ");
+                yield return new WaitForSeconds(1f);
+                introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name + " ?");
+                yield return new WaitForSeconds(3f);
+                introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name + " !");
+                yield return new WaitForSeconds(3f);
+                introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name.ToUpper() + " !");
+                yield return new WaitForSeconds(3f);
+                ShowResultScreen();
+                yield break;
             }
 
             // Check Role Attack =================================================================

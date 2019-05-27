@@ -129,6 +129,11 @@ namespace VoiceActing
             particlesLineDead2 = par3;
         }
 
+        public void SetLetterSpeed(int newValue)
+        {
+            letterInterval = newValue;
+        }
+
 
 
         #endregion
