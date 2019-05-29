@@ -108,6 +108,14 @@ namespace VoiceActing
             set { rolePerformance = value; }
         }
 
+        [SerializeField]
+        private int roleBestScore;
+        public int RoleBestScore
+        {
+            get { return roleBestScore; }
+            set { roleBestScore = value; }
+        }
+
 
         [SerializeField]
         private VoiceActorData characterLock;

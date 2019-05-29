@@ -568,7 +568,48 @@ namespace VoiceActing
 
 
 
+        public int GetBestMultiplier()
+        {
+            int bestStat = 0;
+            int currentStat = 0;
+            for (int i = 0; i < 9; i++)
+            {
 
+                switch (i)
+                {
+                    case 0:
+                        currentStat = currentTextData.EnemyResistance.Neutral;
+                        break;
+                    case 1:
+                        currentStat = currentTextData.EnemyResistance.Joy;
+                        break;
+                    case 2:
+                        currentStat = currentTextData.EnemyResistance.Sadness;
+                        break;
+                    case 3:
+                        currentStat = currentTextData.EnemyResistance.Disgust;
+                        break;
+                    case 4:
+                        currentStat = currentTextData.EnemyResistance.Anger;
+                        break;
+                    case 5:
+                        currentStat = currentTextData.EnemyResistance.Surprise;
+                        break;
+                    case 6:
+                        currentStat = currentTextData.EnemyResistance.Sweetness;
+                        break;
+                    case 7:
+                        currentStat = currentTextData.EnemyResistance.Fear;
+                        break;
+                    case 8:
+                        currentStat = currentTextData.EnemyResistance.Trust;
+                        break;
+                }
+                if (currentStat > bestStat)
+                    bestStat = currentStat;
+            }
+            return bestStat;
+        }
 
 
 

@@ -65,9 +65,10 @@ namespace VoiceActing
 
 
 
-        public void AddScorePerformance(int lastAttackScore)
+        public void AddScorePerformance(int lastAttackScore, int lastBestScore)
         {
             roles[indexCurrentRole].RolePerformance += lastAttackScore;
+            roles[indexCurrentRole].RoleBestScore += lastBestScore;
         }
 
 

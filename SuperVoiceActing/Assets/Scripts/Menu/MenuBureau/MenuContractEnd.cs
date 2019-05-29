@@ -61,6 +61,7 @@ namespace VoiceActing
             int totalScore = 0;
 
             int statGain = 0;
+            int multiplier;
 
             for(int i = 0; i < 8; i++)
             {
@@ -102,6 +103,13 @@ namespace VoiceActing
 
                 }
 
+                if (statRole == role.BestStat)
+                    multiplier = 3;
+                else if (statRole == role.SecondBestStat)
+                    multiplier = 2;
+                else
+                    multiplier = 1;
+
                 if(statRole == statActor) // Si stat équivalente c'est la folie
                 {
                     statGain = (statRole * 3);
@@ -120,12 +128,16 @@ namespace VoiceActing
                         statGain = statActor;
                     statGain = statRole + (statRole - statGain);
                 }
-                Debug.Log(statGain);
-                totalScore += statGain;
+                Debug.Log(statGain * multiplier);
+                totalScore += statGain * multiplier;
+
+                // Calculate Theoric Max
+                role.RoleBestScore += (statRole * 3);
             }
             Debug.Log("Score " + role.Name + " : " + totalScore);
             Debug.Log("Score Performance" + role.Name + " : " + role.RolePerformance);
             role.RoleScore = totalScore;
+
 
         }
         
@@ -133,14 +145,19 @@ namespace VoiceActing
         public void CalculTotalScore(Contract contract)
         {
             int finalScore = 0;
+            int finalHighScore = 0;
             for(int i = 0; i < contract.Characters.Count; i++)
             {
                 contract.Characters[i].RolePerformance /= contract.TotalLine;
+                contract.Characters[i].RoleBestScore /= contract.TotalLine; // Vu que je divise ici, si j'ajoute du score d'une autre source que le combat les calculs sont faussés
                 CalculateRoleScore(contract.Characters[i], contract.VoiceActors[i]);
                 finalScore += contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance;
+                finalHighScore += contract.Characters[i].RoleBestScore;
             }
             contract.Score = finalScore;
+            contract.HighScore = finalHighScore;
             totalRevenu += contract.Money;
+            CalculateContractReward(contract);
         }
 
         public bool CheckContractDone(PlayerData playerData)
@@ -174,9 +191,31 @@ namespace VoiceActing
 
         // ========================================================================
 
-        public void CalculateContractReward()
+        public void CalculateContractReward(Contract contract)
         {
-
+            float bonusMoney = 0;
+            if (contract.Score < contract.HighScore * 0.2f) // Catastrophique à réfaire
+            {
+                textScoreTotal.text = "Catastrophique ...";
+                bonusMoney = -contract.Money * 0.5f;
+            }
+            else if (contract.Score < contract.HighScore * 0.5f) // Malus
+            {
+                textScoreTotal.text = "Mauvais.";
+                bonusMoney = contract.Money * (0.3f - ((contract.Score / contract.HighScore) - 0.2f));
+            }
+            else if (contract.Score < contract.HighScore * 0.7f) // Rien de spécial
+            {
+                textScoreTotal.text = "Bon.";
+                bonusMoney = 0;
+            }
+            else if (contract.Score < contract.HighScore) // Bonus
+            {
+                textScoreTotal.text = "SUPER !";
+                bonusMoney = contract.Money * ((contract.Score / contract.HighScore) - 0.7f);
+            }          
+            totalRevenu += (int) bonusMoney;
+            contract.Money += (int) bonusMoney;
 
         }
 
@@ -205,9 +244,9 @@ namespace VoiceActing
         {
             textContractTitle.text = contract.Name;
             textContractBaseMoney.text = contract.Money.ToString();
-            textContractBonusMoney.text = "0";
+            //textContractBonusMoney.text = "0";
             textContractTotalMoney.text = contract.Money.ToString();
-            textScoreTotal.text = contract.Score.ToString();
+            textScoreTotal.text = contract.Score.ToString() + " / " + contract.HighScore;
         }
 
         public void NextContract()
