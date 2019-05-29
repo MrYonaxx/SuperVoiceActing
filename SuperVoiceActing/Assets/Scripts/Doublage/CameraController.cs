@@ -58,7 +58,7 @@ namespace VoiceActing
 
         private IEnumerator cinematicCoroutine;
 
-        float speedMovement = 0.75f;
+        float speedMovement = 0.5f;
 
         #endregion
 
