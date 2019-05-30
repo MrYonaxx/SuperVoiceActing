@@ -73,6 +73,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        [HideLabel]
         private EmotionStat statistique;
         public EmotionStat Statistique
         {
@@ -81,6 +82,7 @@ namespace VoiceActing
 
         [Space]
         [SerializeField]
+        [HideLabel]
         private EmotionStat growth;
         public EmotionStat Growth
         {
@@ -89,6 +91,7 @@ namespace VoiceActing
 
         [Space]
         [SerializeField]
+        [HideLabel]
         private EmotionStat growthRandom;
         public EmotionStat GrowthRandom
         {

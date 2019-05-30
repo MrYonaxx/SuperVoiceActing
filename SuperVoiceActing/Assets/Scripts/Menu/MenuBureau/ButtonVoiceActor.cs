@@ -29,6 +29,8 @@ namespace VoiceActing
 
         [SerializeField]
         RectTransform actorHealth;
+        [SerializeField]
+        RectTransform rectTransform;
 
         [SerializeField]
         Image actorImage;
@@ -39,6 +41,7 @@ namespace VoiceActing
         Color colorSelected;
         [SerializeField]
         Color colorUnSelected;
+
 
         #endregion
 
@@ -56,6 +59,7 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
 
         public void DrawActor(string name, int level, float hpPercentage)
         {
@@ -81,6 +85,11 @@ namespace VoiceActing
             actorName.text = "Audition";
             actorImage.gameObject.SetActive(false);
             actorLevel.gameObject.SetActive(false);
+        }
+
+        public Vector2 GetAnchoredPosition()
+        {
+            return rectTransform.anchoredPosition;
         }
 
         #endregion

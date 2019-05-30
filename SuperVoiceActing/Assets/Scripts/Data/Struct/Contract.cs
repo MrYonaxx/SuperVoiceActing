@@ -43,6 +43,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private ContractType contractType;
+        public ContractType ContractType
+        {
+            get { return contractType; }
+        }
+
+        [SerializeField]
         private int level;
         public int Level
         {
@@ -56,6 +63,13 @@ namespace VoiceActing
         {
             get { return money; }
             set { money = value; }
+        }
+        [SerializeField]
+        private int moneyBonus;
+        public int MoneyBonus
+        {
+            get { return moneyBonus; }
+            set { moneyBonus = value; }
         }
 
 
@@ -124,7 +138,13 @@ namespace VoiceActing
             set { highScore = value; }
         }
 
-
+        [SerializeField]
+        private Sprite iconSprite;
+        public Sprite IconSprite
+        {
+            get { return iconSprite; }
+            set { iconSprite = value; }
+        }
 
 
 
@@ -284,6 +304,9 @@ namespace VoiceActing
                 this.description = " ";
             else
                 this.description = data.Description[Random.Range(0, data.Description.Length)];
+
+            this.contractType = data.ContractType;
+            this.iconSprite = null;
 
             this.level = data.Level;
             this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine

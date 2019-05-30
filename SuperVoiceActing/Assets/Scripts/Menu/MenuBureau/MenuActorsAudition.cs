@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -42,6 +43,14 @@ namespace VoiceActing
         [SerializeField]
         GameObject auditionMicro;
 
+
+        [SerializeField]
+        Slider sliderBudget;
+        [SerializeField]
+        TextMeshProUGUI textBudget;
+        [SerializeField]
+        int budgetInitialValue;
+
         [SerializeField]
         Image actorsSprite;
 
@@ -57,6 +66,7 @@ namespace VoiceActing
         InputController inputAudition;
 
         VoiceActor va;
+        int budget;
 
         #endregion
 
@@ -74,6 +84,11 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+        public string GetAuditionName()
+        {
+            return va.Name;
+        }
+
 
         public void Audition(Role role)
         {
@@ -125,6 +140,32 @@ namespace VoiceActing
             AudioManager.Instance.PlaySound(auditionSpotlight);
         }
 
+
+
+        public void IncreaseBudget()
+        {
+            sliderBudget.value += 1;
+            budget = budgetInitialValue * (int)sliderBudget.value;
+            textBudget.text = budget.ToString();
+        }
+
+        public void ReduceBudget()
+        {
+            sliderBudget.value -= 1;
+            budget = budgetInitialValue * (int)sliderBudget.value;
+            textBudget.text = budget.ToString();
+        }
+
+        public bool CheckCost()
+        {
+            if(playerData.Money >= budget)
+            {
+                playerData.Money -= budget;
+                return true;
+            }
+            return false;
+
+        }
 
 
         #endregion

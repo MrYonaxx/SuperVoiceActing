@@ -481,7 +481,7 @@ namespace VoiceActing
         }
 
 
-        public void WorkForWeek()
+        public void WorkForWeek(ExperienceCurveData experienceCurve)
         {
             // Si le comédien était indisponible il revient full
             if (availability == false)
@@ -506,6 +506,13 @@ namespace VoiceActing
             if(random <= chanceWork)
             {
                 hp -= (int) (hpMax * Random.Range(0.1f,0.2f));
+                experience = experience + (int) (experienceCurve.ExperienceCurve[level] * Random.Range(0.1f, 0.3f));
+                nextEXP = experienceCurve.ExperienceCurve[level] - experience;
+                if (nextEXP <= 0)
+                {
+                    LevelUp();
+                    nextEXP = experienceCurve.ExperienceCurve[level];
+                }
             }
             else // le comédien fais des trucs
             {

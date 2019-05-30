@@ -156,7 +156,6 @@ namespace VoiceActing
             }
             contract.Score = finalScore;
             contract.HighScore = finalHighScore;
-            totalRevenu += contract.Money;
             CalculateContractReward(contract);
         }
 
@@ -174,7 +173,7 @@ namespace VoiceActing
                             b = true;
                             contractsEnd.Add(playerData.ContractAccepted[i]);
                             CalculTotalScore(playerData.ContractAccepted[i]);
-                            playerData.Money += playerData.ContractAccepted[i].Money;
+                            playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
                             playerData.ContractAccepted.RemoveAt(i);
                             playerData.ContractAccepted.Add(null);
                         }
@@ -209,13 +208,13 @@ namespace VoiceActing
                 textScoreTotal.text = "Bon.";
                 bonusMoney = 0;
             }
-            else if (contract.Score < contract.HighScore) // Bonus
+            else // Bonus
             {
                 textScoreTotal.text = "SUPER !";
                 bonusMoney = contract.Money * ((contract.Score / contract.HighScore) - 0.7f);
             }          
-            totalRevenu += (int) bonusMoney;
-            contract.Money += (int) bonusMoney;
+            totalRevenu += contract.Money + (int)bonusMoney;
+            contract.MoneyBonus = (int) bonusMoney;
 
         }
 
@@ -244,8 +243,8 @@ namespace VoiceActing
         {
             textContractTitle.text = contract.Name;
             textContractBaseMoney.text = contract.Money.ToString();
-            //textContractBonusMoney.text = "0";
-            textContractTotalMoney.text = contract.Money.ToString();
+            textContractBonusMoney.text = contract.MoneyBonus.ToString();
+            textContractTotalMoney.text = (contract.Money + contract.MoneyBonus).ToString();
             textScoreTotal.text = contract.Score.ToString() + " / " + contract.HighScore;
         }
 

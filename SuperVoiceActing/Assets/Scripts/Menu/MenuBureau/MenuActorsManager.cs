@@ -28,6 +28,9 @@ namespace VoiceActing
 
         private List<VoiceActor> actorsSortList = new List<VoiceActor>();
 
+        /*[SerializeField]
+        private ExperienceCurveData experience;*/
+
         [Header("Prefab")]
         [SerializeField]
         private RectTransform buttonListTransform;
@@ -51,6 +54,8 @@ namespace VoiceActing
         private TextMeshProUGUI statNameActor;
         [SerializeField]
         private TextMeshProUGUI statLevelActor;
+        [SerializeField]
+        private TextMeshProUGUI statLevelNext;
         [SerializeField]
         private TextMeshProUGUI statLevelActorSelection;
         [SerializeField]
@@ -164,6 +169,8 @@ namespace VoiceActing
 
         private bool firstDraw = true;
 
+        //private RectTransform rectTransformSelection;
+
 
         #endregion
 
@@ -190,6 +197,7 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
+            //rectTransformSelection = animatorSelection.GetComponent<RectTransform>();
             indexActorLimit = scrollSize;
         }
 
@@ -319,6 +327,7 @@ namespace VoiceActing
             statNameStylishActor.transform.eulerAngles = statNameActor.transform.eulerAngles;
 
             statLevelActor.text = actor.Level.ToString();
+            statLevelNext.text = actor.NextEXP.ToString();
             statLevelActorSelection.text = "Lv. " + actor.Level.ToString();
             statFanActor.text = actor.Fan.ToString();
             statPriceActor.text = actor.Price.ToString();
@@ -610,8 +619,31 @@ namespace VoiceActing
             DestroyAuditionButton();
             DestroyButtonList();
             CreateAuditionButton();
-            buttonsActors[indexActorSelected].SelectButton();
+            string newActorName = menuActorsAudition.GetAuditionName();
+            for(int i = 0; i < actorsList.Count; i++)
+            {
+                if(actorsList[i].Name == newActorName)
+                {
+                    Debug.Log("allo");
+                    indexActorSelected = i;
+                    buttonsActors[indexActorSelected].SelectButton();
+                    textMeshSelection.text = newActorName;
+                    StartCoroutine(SelectionCoroutine());
+                    /*rectTransformSelection.anchoredPosition = new Vector2(500, buttonsActors[indexActorSelected].GetAnchoredPosition());
+                    Debug.Log(buttonsActors[indexActorSelected].GetAnchoredPosition());*/
+                    //DrawActorStat(actorsList[i]);
+                    return;
+                }
+            }
+            //buttonsActors[indexActorSelected].SelectButton();
             //DrawActorStat(actorsList[indexActorSelected]);
+        }
+
+        private IEnumerator SelectionCoroutine()
+        {
+            yield return new WaitForEndOfFrame();
+            DrawActorStat(actorsList[indexActorSelected]);
+            //animatorSelection.transform.position = buttonsActors[indexActorSelected].transform.position;
         }
 
 
@@ -705,8 +737,11 @@ namespace VoiceActing
         {
             if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
             {
-                StartCoroutine(GachaEffect());
-                menuActorsAudition.AnimAudition(auditionRole);
+                if(menuActorsAudition.CheckCost() == true)
+                {
+                    StartCoroutine(GachaEffect());
+                    menuActorsAudition.AnimAudition(auditionRole);                   
+                }
                 return;
             }
 
@@ -753,6 +788,22 @@ namespace VoiceActing
             DrawActorStat(actorsList[indexActorSelected]);
             if (auditionMode == true)
                 DrawGaugeRoleInfo();
+        }
+
+        public void IncreaseAuditionBudget()
+        {
+            if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
+            {
+                menuActorsAudition.IncreaseBudget();
+            }
+        }
+
+        public void ReduceAuditionBudget()
+        {
+            if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
+            {
+                menuActorsAudition.ReduceBudget();
+            }
         }
 
 

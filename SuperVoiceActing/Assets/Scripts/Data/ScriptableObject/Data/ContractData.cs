@@ -16,6 +16,7 @@ namespace VoiceActing
         Film,
         Serie,
         JeuVideo,
+        Publicite,
         Autre
     }
 

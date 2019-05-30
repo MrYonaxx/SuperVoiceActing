@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 
 namespace VoiceActing
@@ -33,6 +34,16 @@ namespace VoiceActing
         private RectTransform rectTransformSelection;
         [SerializeField]
         private TextMeshProUGUI textMeshSelection;
+        [SerializeField]
+        private Image iconSelection;
+
+        [HorizontalGroup]
+        [SerializeField]
+        private string[] iconName;
+        [HorizontalGroup]
+        [SerializeField]
+        private Sprite[] iconSprites;
+
 
         [Header("InfoPanel")]
         [SerializeField]
@@ -119,8 +130,14 @@ namespace VoiceActing
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
             SelectButton();
-            /*if (listContractAvailable.Count != 0)
-                SelectButton();*/
+            if (listContractAvailable.Count == 0) {
+                animatorSelection.gameObject.SetActive(false);
+                DrawInfoZero();
+            }
+            else
+            {
+                animatorSelection.gameObject.SetActive(true);
+            }
         }
 
         private void Start()
@@ -148,15 +165,11 @@ namespace VoiceActing
             for(int i = 0; i < listContractAvailable.Count; i++)
             {
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
-                buttonsContracts[i].DrawButton(listContractAvailable[i].Name);
+                SetContractsIcons(listContractAvailable[i]);
+                buttonsContracts[i].DrawButton(listContractAvailable[i].Name, listContractAvailable[i].IconSprite);
             }
         }
 
-        /*private IEnumerator WaitEndOfFrame()
-        {
-            yield return new WaitForEndOfFrame();
-            SelectButton();
-        }*/
 
         private void RedrawListButton()
         {
@@ -171,6 +184,30 @@ namespace VoiceActing
             //animatorMenu.gameObject.SetActive(false);
         }
 
+
+
+        public void SetContractsIcons(Contract contract)
+        {
+            if (contract.IconSprite == null)
+            {
+                switch (contract.ContractType)
+                {
+                    case ContractType.Film:
+                        contract.IconSprite = iconSprites[0];
+                        break;
+                    case ContractType.Publicite:
+                        contract.IconSprite = iconSprites[1];
+                        break;
+                    case ContractType.Serie:
+                        contract.IconSprite = iconSprites[2];
+                        break;
+                }
+            }
+        }
+
+
+
+
         private void SelectButton()
         {
             if(indexSelected >= buttonsContracts.Count)
@@ -179,10 +216,32 @@ namespace VoiceActing
             }
             animatorSelection.transform.position = buttonsContracts[indexSelected].transform.position;
             textMeshSelection.text = listContractAvailable[indexSelected].Name;
+            iconSelection.sprite = listContractAvailable[indexSelected].IconSprite;
+
             animatorSelection.SetTrigger("Active");
             animatorPanelContract.SetTrigger("Feedback");
+
             DrawInfo();
         }
+
+
+        private void DrawInfoZero()
+        {
+            textInfoCharacterNumber.text = " ";
+            textInfoTitle.text = " ";
+            textInfoWeek.text = " ";
+            textInfoMoney.text = " ";
+            textInfoLine.text = " ";
+            textInfoMixage.text = " ";
+            textInfoDescription.text = " ";
+            textInfoTotalLine.text = " ";
+            textInfoTotalFan.text = " ";
+            for (int i = 0; i < infoRoles.Length; i++)
+                infoRoles[i].gameObject.SetActive(false);
+
+        }
+
+
 
         private void DrawInfo()
         {
@@ -193,6 +252,20 @@ namespace VoiceActing
             textInfoLine.text = listContractAvailable[indexSelected].TotalLine.ToString();
             textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
             textInfoDescription.text = listContractAvailable[indexSelected].Description;
+
+            switch(listContractAvailable[indexSelected].ContractType)
+            {
+                case ContractType.Film:
+                    textInfoType.text = "Film";
+                    break;
+                case ContractType.Publicite:
+                    textInfoType.text = "Publicité";
+                    break;
+                case ContractType.Serie:
+                    textInfoType.text = "Série";
+                    break;
+            }
+
 
 
 
@@ -221,8 +294,6 @@ namespace VoiceActing
 
             textInfoTotalLine.text = sumLine.ToString();
             textInfoTotalFan.text = sumFan.ToString();
-            /*for (int i = 0; i < listContractAvailable[indexSelected].Characters.Count; i++)
-                infoRoles[i].DrawPanel(listContractAvailable[indexSelected].Characters[i]);*/
 
         }
 

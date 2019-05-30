@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -22,6 +23,8 @@ namespace VoiceActing
 
         [SerializeField]
         TextMeshProUGUI contractTitle;
+        [SerializeField]
+        Image iconSprite;
 
         #endregion
 
@@ -40,9 +43,10 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawButton(string name)
+        public void DrawButton(string name, Sprite icon)
         {
             contractTitle.text = name;
+            iconSprite.sprite = icon;
         }
 
         #endregion

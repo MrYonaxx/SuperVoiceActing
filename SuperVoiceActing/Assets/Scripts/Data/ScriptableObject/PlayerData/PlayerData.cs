@@ -36,7 +36,8 @@ namespace VoiceActing
         }
     }
 
-    public struct ContractCooldown
+    [System.Serializable]
+    public class ContractCooldown
     {
         public ContractData contract;
         public int cooldown;
@@ -45,11 +46,6 @@ namespace VoiceActing
         {
             contract = cd;
             cooldown = c;
-        }
-
-        public void Decrease()
-        {
-            cooldown -= 1;
         }
     }
 
@@ -95,6 +91,14 @@ namespace VoiceActing
         public int StartMaintenance
         {
             get { return startMaintenance; }
+        }
+
+
+        [SerializeField]
+        private ExperienceCurveData experienceCurve;
+        public ExperienceCurveData ExperienceCurve
+        {
+            get { return experienceCurve; }
         }
 
         [Space]
@@ -394,13 +398,13 @@ namespace VoiceActing
         }
 
 
-        [SerializeField]
+        /*[SerializeField]
         private bool isNextWeek;
         public bool IsNextWeek
         {
             get { return isNextWeek; }
             set { isNextWeek = value; }
-        }
+        }*/
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -470,7 +474,6 @@ namespace VoiceActing
             maintenance = startMaintenance;
             deck = new EmotionStat(initialDeck);
             comboMax = initialComboMax;
-            isNextWeek = false;
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -539,6 +542,10 @@ namespace VoiceActing
                 if (contractAccepted[i] != null)
                 {
                     contractAccepted[i].WeekRemaining -= 1;
+                    if(contractAccepted[i].CurrentLine == contractAccepted[i].TotalLine)
+                    {
+                        continue;
+                    }
                     if (contractAccepted[i].WeekRemaining <= 0)
                     {
                         contractAccepted[i] = null;
@@ -559,7 +566,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < voiceActors.Count; i++)
             {
-                voiceActors[i].WorkForWeek();
+                voiceActors[i].WorkForWeek(experienceCurve);
             }
         }
 
@@ -623,8 +630,9 @@ namespace VoiceActing
                 for (int i = 0; i < nbContract; i++)
                 {
                     int rand = Random.Range(0, contractGacha.Count);
-                    contractAvailable.Add(new Contract(contractGacha[rand]));
-                    contractGachaCooldown.Add(new ContractCooldown(contractGacha[rand], contractAvailable[contractAvailable.Count - 1].WeekRemaining));
+                    Contract contractSelected = new Contract(contractGacha[rand]);
+                    contractAvailable.Add(contractSelected);
+                    contractGachaCooldown.Add(new ContractCooldown(contractGacha[rand], contractGacha[rand].WeekMax));
                     contractGacha.Remove(contractGacha[rand]);
                 }
             }
@@ -634,7 +642,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < contractGachaCooldown.Count; i++)
             {
-                contractGachaCooldown[i].Decrease();
+                contractGachaCooldown[i].cooldown -= 1;
                 if (contractGachaCooldown[i].cooldown <= 0)
                 {
                     contractGacha.Add(contractGachaCooldown[i].contract);

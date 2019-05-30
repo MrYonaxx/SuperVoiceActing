@@ -35,6 +35,8 @@ namespace VoiceActing
         [SerializeField]
         private TextMeshProUGUI textCurrentLine;
         [SerializeField]
+        private TextMeshProUGUI textLineDefeated;
+        [SerializeField]
         private TextMeshProUGUI textMaxLine;
 
         [SerializeField]
@@ -148,6 +150,7 @@ namespace VoiceActing
             textName.text = contract.Name;
             textSessionNumber.text = contract.SessionNumber.ToString();
             textCurrentLine.text = contract.CurrentLine.ToString();
+            textLineDefeated.text = lineDefeated.ToString();
             textMaxLine.text = contract.TotalLine.ToString();
 
             textTurn.text = (15-numberTurn).ToString();
