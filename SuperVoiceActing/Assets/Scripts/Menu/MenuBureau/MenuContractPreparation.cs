@@ -66,6 +66,12 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textActorLevel;
         [SerializeField]
+        TextMeshProUGUI textActorPV;
+        [SerializeField]
+        TextMeshProUGUI textActorPVMax;
+        [SerializeField]
+        RectTransform transformGaugeHP;
+        [SerializeField]
         Image imageActorSprite;
 
         [Header("PanelFinal")]
@@ -82,7 +88,7 @@ namespace VoiceActing
 
         [Header("InSession")]
         [SerializeField]
-        GameObject inSessionObject;
+        Animator inSessionObject;
         [SerializeField]
         MenuTransitionDoublage menuTransitionDoublage;
 
@@ -152,8 +158,6 @@ namespace VoiceActing
         {
             animatorMenu.SetBool("Appear", true);
             animatorMenu.gameObject.SetActive(true);
-            //listButtonRoles[0].SelectButton();
-            //indexSelected = 0;
         }
 
         public void SwitchToMenuContractManager()
@@ -163,6 +167,7 @@ namespace VoiceActing
             menuContractManager.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
             animatorMenu.SetBool("Appear", false);
+            inSessionObject.SetTrigger("Disappear");
         }
 
         public void SetContract(Contract contract)
@@ -253,7 +258,7 @@ namespace VoiceActing
 
         private void DrawActorInfo(bool hasActor)
         {
-            panelActor.SetActive(hasActor);
+            //panelActor.SetActive(hasActor);
             if (hasActor == true)
             {
                 textActorName.text = currentContract.VoiceActors[indexSelected].Name;
@@ -261,7 +266,24 @@ namespace VoiceActing
                 textActorCost.text = currentContract.VoiceActors[indexSelected].Price.ToString();
                 textActorCadence.text = "-0 %";
                 textActorLevel.text = currentContract.VoiceActors[indexSelected].Level.ToString();
+                textActorPV.text = currentContract.VoiceActors[indexSelected].Hp.ToString();
+                textActorPVMax.text = currentContract.VoiceActors[indexSelected].HpMax.ToString();
+                transformGaugeHP.localScale = new Vector3((float)currentContract.VoiceActors[indexSelected].Hp / currentContract.VoiceActors[indexSelected].HpMax, 1, 1);
+                imageActorSprite.enabled = true;
                 imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].ActorSprite;
+            }
+            else
+            {
+                textActorName.text = " - ";
+                textActorFan.text = " - ";
+                textActorCost.text = " - ";
+                textActorCadence.text = " - ";
+                textActorLevel.text = " - ";
+                textActorPV.text = " - ";
+                textActorPVMax.text = " - ";
+                transformGaugeHP.localScale = new Vector3(0, 1, 1);
+                imageActorSprite.enabled = false;
+
             }
         }
 
@@ -388,20 +410,13 @@ namespace VoiceActing
                 if (currentContract.VoiceActors[i] == null)
                 {
                     inSessionPossible = false;
-                    inSessionObject.SetActive(false);
+                    inSessionObject.gameObject.SetActive(false);
                     return;
                 }
             }
             inSessionPossible = true;
-            /*if(currentContract.VoiceActors.Count == currentContract.Characters.Count)
-            {
-                inSessionPossible = true;
-            }
-            else
-            {
-                inSessionPossible = false;
-            }*/
-            inSessionObject.SetActive(true);
+            inSessionObject.gameObject.SetActive(true);
+            inSessionObject.SetTrigger("Appear");
         }
 
         public void InSession()
@@ -410,6 +425,7 @@ namespace VoiceActing
                 return;
             playerData.CurrentContract = currentContract;
             menuTransitionDoublage.StartTransition();
+            inSessionObject.SetTrigger("Selection");
         }
 
 
