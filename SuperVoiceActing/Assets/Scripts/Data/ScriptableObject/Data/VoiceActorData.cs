@@ -146,39 +146,6 @@ namespace VoiceActing
 
 
 
-        [Space]
-        /*[Header("Stat Variation")]
-        [SerializeField]
-        bool hasVariation = false;
-
-        [SerializeField]
-        [ShowIf("hasVariation", true)]
-        private int levelVariation;
-        public int LevelVariation
-        {
-            get { return levelVariation; }
-            set { levelVariation = value; }
-        }
-
-
-        [SerializeField]
-        [ShowIf("hasVariation", true)]
-        private int hpVariation;
-        public int HpVariation
-        {
-            get { return hpVariation; }
-            set { hpVariation = value; }
-        }
-
-        [SerializeField]
-        [ShowIf("hasVariation", true)]
-        private EmotionStat statistiqueVariation;
-        public EmotionStat StatistiqueVariation
-        {
-            get { return statistiqueVariation; }
-            set { statistiqueVariation = value; }
-        }*/
-
 
         [Space]
         [Header("Graphics")]

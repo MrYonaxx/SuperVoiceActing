@@ -28,6 +28,10 @@ namespace VoiceActing
 
         private IEnumerator coroutine = null;
 
+        private IEnumerator coroutineMove = null;
+
+        float[] lineInitialPositions = null;
+
         #endregion
 
         #region GettersSetters 
@@ -55,7 +59,6 @@ namespace VoiceActing
 
         public void FeedbackLinesMenu()
         {
-            //SetNewLineAngle();
             if (coroutine != null)
             {
                 StopCoroutine(coroutine);
@@ -66,14 +69,44 @@ namespace VoiceActing
 
         public void SuperFeedbackLinesMenu()
         {
-            //SetNewLineAngle();
             if (coroutine != null)
             {
                 StopCoroutine(coroutine);
             }
-            coroutine = RotateCameraCoroutine(25, 180);
+            coroutine = RotateCameraCoroutine(26, 180);
             StartCoroutine(coroutine);
         }
+
+        public void FeedbackLinesAppearFromRight()
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            if (coroutineMove != null)
+            {
+                StopCoroutine(coroutineMove);
+            }
+            coroutineMove = MoveCoroutineFromRight(200, 1.01f);
+            StartCoroutine(coroutineMove);
+        }
+
+
+        public void FeedbackLinesAppearFromLeft()
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            if (coroutineMove != null)
+            {
+                StopCoroutine(coroutineMove);
+            }
+            coroutineMove = MoveCoroutineFromRight(-200, 1.01f);
+            StartCoroutine(coroutineMove);
+        }
+
+
 
 
 
@@ -126,6 +159,49 @@ namespace VoiceActing
             }
             coroutine = RotateCameraCoroutine(500, 10);
             StartCoroutine(coroutine);
+        }
+
+
+        private IEnumerator MoveCoroutineFromRight(float distance, float speed)
+        {
+            if (lineInitialPositions == null)
+            {
+                lineInitialPositions = new float[lines.Length];
+            }
+            else
+            {
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i].transform.position = new Vector3(lineInitialPositions[i], lines[i].transform.position.y, lines[i].transform.position.z);
+                }
+            }
+
+            //float distance = 200f;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                lineInitialPositions[i] = lines[i].transform.position.x;
+                lines[i].transform.position += new Vector3(distance, 0, 0);
+                if(distance > 0)
+                    lines[i].transform.localEulerAngles = new Vector3(0, 0, 20);
+                else
+                    lines[i].transform.localEulerAngles = new Vector3(0, 0, -20);
+            }
+
+            coroutine = RotateCameraCoroutine(200, 10);
+            StartCoroutine(coroutine);
+
+            //int time = 60;
+            while (Mathf.Abs(distance) > 0.1f)
+            {
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i].transform.position = new Vector3(lineInitialPositions[i] + distance, lines[i].transform.position.y, lines[i].transform.position.z);
+                    distance /= speed;
+                }
+                //time -= 1;
+                yield return null;
+            }
+
         }
 
 

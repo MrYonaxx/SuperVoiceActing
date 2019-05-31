@@ -98,7 +98,7 @@ namespace VoiceActing
                 if (zoomed == false)
                 {
                     animatorHUD.SetTrigger("Hide");
-                    ModifyAnglePosition(0);
+                    //ModifyAnglePosition(0);
                     MoveToCamera();
                     ChangeOrthographicSize(-30);
                     smoothShakeCamera.enabled = false;
@@ -235,8 +235,15 @@ namespace VoiceActing
         }
 
 
+
+
+
+
         private void ModifyAnglePosition(float range)
         {
+            /*if(range == 0)
+                transforms[position].eulerAngles = new Vector3(0, 0, 0);
+            else*/
             transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-range, range));
             transformToRotate.SetParent(transforms[position]);
         }
@@ -275,7 +282,7 @@ namespace VoiceActing
             while (transformToRotate.localPosition != Vector3.zero || transformToRotate.localEulerAngles != Vector3.zero)
             {
                 angleX = transformToRotate.localEulerAngles.x;
-                if (angleX > 1 && angleX < 359)
+                if (angleX > 0.01f && angleX < 359.99f)
                 {
                     ratioX = 0;
                     if (angleX > 180)
@@ -296,7 +303,7 @@ namespace VoiceActing
                 }
 
                 angleY = transformToRotate.localEulerAngles.y;
-                if (angleY > 1 && angleY < 359)
+                if (angleY > 0.01f && angleY < 359.99f)
                 {
                     ratioY = 0;
                     if (angleY > 180)
@@ -318,7 +325,7 @@ namespace VoiceActing
 
 
                 angleZ = transformToRotate.localEulerAngles.z;
-                if (angleZ > 1 && angleZ < 359)
+                if (angleZ > 0.01f && angleZ < 359.99f)
                 {
                     ratioZ = 0;
                     if (angleZ > 180)
@@ -345,10 +352,16 @@ namespace VoiceActing
                 {
                     transformToRotate.localPosition = Vector3.zero;
                 }
+                if (angleX == 0 && angleY == 0 && angleZ == 0)
+                {
+                    transformToRotate.localEulerAngles = Vector3.zero;
+                }
 
 
                 yield return null;
             }
+            /*transformToRotate.localEulerAngles = Vector3.zero;
+            Debug.Log("tamere");*/
             coroutine = null;
         }
 

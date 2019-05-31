@@ -48,10 +48,17 @@ namespace VoiceActing
         Color colorMoneyGain;
         [SerializeField]
         Color colorMoneyLoss;
+        [SerializeField]
+        Color colorMoneyEstimate;
+
+        [Header("Clone")]
+        [SerializeField]
+        MenuContractMoney[] menuContractMoneys;
 
         List<SalaryData> salaryDatas = new List<SalaryData>();
         int currentMoney = 0;
         int moneyGain = 0;
+        bool estimateMode = false;
 
 
         #endregion
@@ -71,6 +78,12 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void AddSalaryFast(int money)
+        {
+            moneyGain = money;
+        }
+
+
         public void AddSalaryDatas(string label, int money)
         {
             if(money == 0)
@@ -80,10 +93,20 @@ namespace VoiceActing
             salaryDatas.Add(new SalaryData(label, money));
         }
 
+        public void DrawMoneyOnce(int money)
+        {
+            currentMoney = money;
+            textMoney.text = currentMoney.ToString();
+        }
+
         public void DrawMoney(int money)
         {
             currentMoney = money;
             textMoney.text = currentMoney.ToString();
+            for(int i = 0; i < menuContractMoneys.Length; i++)
+            {
+                menuContractMoneys[i].DrawMoneyOnce(currentMoney);
+            }
         }
 
         public void UpdateMoney()
@@ -107,6 +130,48 @@ namespace VoiceActing
             else
                 textMoneyGain.color = colorMoneyGain;
             salaryDatas.RemoveAt(0);
+        }
+
+
+        public void ActivateEstimate()
+        {
+            if (estimateMode == false)
+            {
+                moneyPanel.SetTrigger("Estimate");
+                textMoneyGainLabel.text = "Estimation";
+                estimateMode = true;
+            }
+        }
+
+        public void DrawEstimate(int cost)
+        {
+            if (cost < 0)
+            {
+                textMoneyGain.color = colorMoneyLoss;
+                textMoneyGainLabel.text = "Prix";
+            }
+            else
+            {
+                textMoneyGain.color = colorMoneyEstimate;
+                textMoneyGainLabel.text = "Estimation";
+            }
+
+            textMoneyGain.text = cost.ToString();
+        }
+
+        public void DesactivateEstimate()
+        {
+            if (estimateMode == true)
+            {
+                moneyPanel.SetTrigger("EstimateHide");
+                estimateMode = false;
+            }
+        }
+
+        public void AuditionFeedback()
+        {
+            moneyPanel.SetTrigger("Audition");
+            estimateMode = false;
         }
 
         #endregion

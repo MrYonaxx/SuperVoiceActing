@@ -51,6 +51,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textInfoType;
         [SerializeField]
+        Image iconInfoType;
+        [SerializeField]
         TextMeshProUGUI textInfoCharacterNumber;
         [SerializeField]
         TextMeshProUGUI textInfoMoney;
@@ -84,6 +86,8 @@ namespace VoiceActing
         // ===========================
         // Menu Input (Sans doute mettre dans une classe parent mais flemme)
         [Header("Menu Input")]
+        [SerializeField]
+        private InputController inputController;
         [SerializeField]
         private int scrollSize = 8;
         [SerializeField]
@@ -138,6 +142,7 @@ namespace VoiceActing
             {
                 animatorSelection.gameObject.SetActive(true);
             }
+            inputController.gameObject.SetActive(true);
         }
 
         private void Start()
@@ -265,6 +270,7 @@ namespace VoiceActing
                     textInfoType.text = "Série";
                     break;
             }
+            iconInfoType.sprite = listContractAvailable[indexSelected].IconSprite;
 
 
 
@@ -321,6 +327,7 @@ namespace VoiceActing
 
         private IEnumerator WaitValidate(float time)
         {
+            inputController.gameObject.SetActive(false);
             yield return new WaitForSeconds(time);
             SwitchToMenuContractManager();
             menuContractManager.CheckPhoneEvent();

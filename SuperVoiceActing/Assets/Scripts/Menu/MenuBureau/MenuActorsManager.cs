@@ -40,6 +40,8 @@ namespace VoiceActing
         private Animator animatorSelection;
         [SerializeField]
         private TextMeshProUGUI textMeshSelection;
+        [SerializeField]
+        private Image imageButtonSelection;
 
         [Header("Info Panel")]
         [SerializeField]
@@ -66,6 +68,10 @@ namespace VoiceActing
         private TextMeshProUGUI statCurrentHpActor;
         [SerializeField]
         private TextMeshProUGUI statMaxHpActor;
+        [SerializeField]
+        private TextMeshProUGUI textUnavailable;
+        [SerializeField]
+        private TextMeshProUGUI textUnavailableReason;
         [SerializeField]
         private RectTransform statHpGauge;
         [SerializeField]
@@ -120,6 +126,10 @@ namespace VoiceActing
         TextMeshProUGUI textRoleLine;
         [SerializeField]
         TextMeshProUGUI textRoleCostEstimate;
+        [SerializeField]
+        Image imageContractIcon;
+        [SerializeField]
+        MenuContractMoney menuContractMoney;
 
         [Header("Feedbacks")]
         [SerializeField]
@@ -132,6 +142,8 @@ namespace VoiceActing
         // ===========================
         // Menu Input
         [Header("Menu Input")]
+        [SerializeField]
+        private InputController inputController;
         [SerializeField]
         private int scrollSize = 11;
         [SerializeField]
@@ -214,16 +226,21 @@ namespace VoiceActing
             DrawActorStat(actorsList[indexActorSelected]);
         }
 
-
         private void OnEnable()
         {
             if (auditionMode == true)
             {
                 auditionIndication.SetActive(true);
+                imageButtonSelection.gameObject.SetActive(true);
+                statLevelActorSelection.gameObject.SetActive(false);
+                menuContractMoney.ActivateEstimate();
                 DrawGaugeRoleInfo();
             }
             else
             {
+                menuContractMoney.DesactivateEstimate();
+                statLevelActorSelection.gameObject.SetActive(true);
+                imageButtonSelection.gameObject.SetActive(false);
                 auditionIndication.SetActive(false);
             }
 
@@ -235,6 +252,7 @@ namespace VoiceActing
             }
             buttonsActors[indexActorSelected].SelectButton();
             DrawActorStat(actorsList[indexActorSelected]);
+            inputController.gameObject.SetActive(true);
 
         }
 
@@ -302,6 +320,11 @@ namespace VoiceActing
                 SetActorGaugeToZero();
                 textMeshSelection.text = "Audition";
                 menuActorsAudition.DrawAuditionPanel(true);
+                imageButtonSelection.gameObject.SetActive(true);
+                statLevelActorSelection.gameObject.SetActive(false);
+                textUnavailable.gameObject.SetActive(false);
+                menuContractMoney.ActivateEstimate();
+                menuContractMoney.DrawEstimate(-menuActorsAudition.GetBudget());
                 return;
             }
             else
@@ -311,7 +334,33 @@ namespace VoiceActing
 
             textMeshSelection.text = actor.Name;
 
-            statImageActorAnimator.SetTrigger("AppearAnim");          
+            if (actor.Availability == true)
+            {
+                statImageActorAnimator.SetTrigger("AppearAnim");
+                textUnavailable.gameObject.SetActive(false);
+                if(auditionMode == true)
+                {
+                    imageButtonSelection.gameObject.SetActive(true);
+                    statLevelActorSelection.gameObject.SetActive(false);
+                    CalculateAudtionEstimate();
+                }
+            }
+            else
+            {
+                statImageActorAnimator.SetTrigger("Unavailable");
+                textUnavailable.gameObject.SetActive(true);
+                textUnavailableReason.text = SetActorAbsentReason(actor.ActorMentalState);
+                imageButtonSelection.gameObject.SetActive(false);
+                statLevelActorSelection.gameObject.SetActive(true);
+                menuContractMoney.DesactivateEstimate();
+            }
+
+
+
+
+
+
+
             statImageActor.sprite = actor.ActorSprite;
             statOutlineImageActor.sprite = actor.ActorSprite;
             statImageActor.SetNativeSize();
@@ -339,31 +388,32 @@ namespace VoiceActing
             for(int i = 0; i < statSkillsActor.Length; i++)
             {
                 if (i < actor.Potentials.Length)
-                {
                     statSkillsActor[i].text = actor.Potentials[i].SkillName;
-                }
                 else
-                {
                     statSkillsActor[i].text = " ";
-                }
             }
 
             if (firstDraw == true)
-            {
-                //SetActorGaugeToZero();
                 firstDraw = false;
-            }
             else
-            {
                 DrawGaugeInfo(actor);
-            }
 
-            if(auditionMode == true)
-                CalculateAudtionEstimate();
         }
 
 
-
+        private string SetActorAbsentReason(VoiceActorState voiceActorState)
+        {
+            switch(voiceActorState)
+            {
+                case VoiceActorState.Absent:
+                    return "Absent";
+                case VoiceActorState.Dead:
+                    return "Hopital";
+                case VoiceActorState.Tired:
+                    return "Repos";
+            }
+            return null;
+        }
 
 
 
@@ -702,21 +752,28 @@ namespace VoiceActing
             textRoleName.text = role.Name;
             textRoleFan.text = role.Fan.ToString();
             textRoleLine.text = role.Line.ToString();
-            CalculateAudtionEstimate();
+            if(indexActorSelected != buttonsActors.Count - 1)
+                CalculateAudtionEstimate();
         }
 
         public void DrawAuditionTitle(string title)
         {
             textContractName.text = title;
         }
+        public void DrawAuditionIcon(Sprite icon)
+        {
+            imageContractIcon.sprite = icon;
+        }
 
         private void CalculateAudtionEstimate()
         {
-            textRoleCostEstimate.gameObject.SetActive(true);
-            if (indexActorSelected != buttonsActors.Count - 1)
-                textRoleCostEstimate.text = (auditionRole.Line * actorsList[indexActorSelected].Price).ToString();
-            else
-                textRoleCostEstimate.gameObject.SetActive(false);
+            menuContractMoney.ActivateEstimate();
+            menuContractMoney.DrawEstimate(auditionRole.Line * actorsList[indexActorSelected].Price);
+        }
+
+        public void DrawBudgetAudition()
+        {
+            menuContractMoney.DrawEstimate(-menuActorsAudition.GetBudget());
         }
 
         public void Audition()
@@ -740,7 +797,9 @@ namespace VoiceActing
                 if(menuActorsAudition.CheckCost() == true)
                 {
                     StartCoroutine(GachaEffect());
-                    menuActorsAudition.AnimAudition(auditionRole);                   
+                    menuActorsAudition.AnimAudition(auditionRole);
+                    menuContractMoney.AddSalaryFast(-menuActorsAudition.GetBudget());
+                    menuContractMoney.AuditionFeedback();
                 }
                 return;
             }
@@ -757,6 +816,7 @@ namespace VoiceActing
 
         private IEnumerator WaitFeedback()
         {
+            inputController.gameObject.SetActive(false);
             int time = 20;
             while (time != 0)
             {

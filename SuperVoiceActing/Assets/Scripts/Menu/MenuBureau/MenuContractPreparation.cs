@@ -30,6 +30,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textContractTitle;
         [SerializeField]
+        Image imageContractIcon;
+        [SerializeField]
         TextMeshProUGUI textContractSalaire;
         [SerializeField]
         TextMeshProUGUI textContractTotalCost;
@@ -105,6 +107,8 @@ namespace VoiceActing
         MenuContratManager menuContractManager;
         [SerializeField]
         MenuActorsManager menuActorsManager;
+        [SerializeField]
+        MenuContractMoney menuContractMoney;
 
         [Header("Feedbacks")]
         [SerializeField]
@@ -174,15 +178,17 @@ namespace VoiceActing
         {
             currentContract = contract;
             menuActorsManager.DrawAuditionTitle(contract.Name);
+            menuActorsManager.DrawAuditionIcon(contract.IconSprite);
             DrawContractInfo();
             DrawButtons();
-            DrawTotalCost();
+            textContractTotalCost.text = GetTotalCost().ToString();
             CheckButtonInSession();
         }
 
         private void DrawContractInfo()
         {
             textContractTitle.text = currentContract.Name;
+            imageContractIcon.sprite = currentContract.IconSprite;
             textContractSalaire.text = currentContract.Money.ToString();
             textContractLine.text = currentContract.CurrentLine.ToString();
             textContractLineMax.text = currentContract.TotalLine.ToString();
@@ -222,7 +228,7 @@ namespace VoiceActing
             DrawRoleInfo();
         }
 
-        private void DrawTotalCost()
+        private int GetTotalCost()
         {
             int sum = 0;
             for(int i = 0; i < currentContract.VoiceActors.Count; i++)
@@ -230,7 +236,8 @@ namespace VoiceActing
                 if(currentContract.VoiceActors[i] != null) 
                     sum += (currentContract.VoiceActors[i].Price * currentContract.Characters[i].Line);
             }
-            textContractTotalCost.text = sum.ToString();
+            return sum;
+            //textContractTotalCost.text = sum.ToString();
         }
 
         private void DrawRoleInfo()
@@ -399,7 +406,7 @@ namespace VoiceActing
             DrawRoleInfo();
             animatorFeedbackSpriteAudition.SetTrigger("Feedback");
             listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
-            DrawTotalCost();
+            textContractTotalCost.text = GetTotalCost().ToString();
             CheckButtonInSession();
         }
 
@@ -423,6 +430,11 @@ namespace VoiceActing
         {
             if (inSessionPossible == false)
                 return;
+
+            menuContractMoney.AddSalaryDatas("Acteur(s)", -GetTotalCost());
+            menuContractMoney.DrawMoneyGain();
+            playerData.Money -= GetTotalCost();
+
             playerData.CurrentContract = currentContract;
             menuTransitionDoublage.StartTransition();
             inSessionObject.SetTrigger("Selection");

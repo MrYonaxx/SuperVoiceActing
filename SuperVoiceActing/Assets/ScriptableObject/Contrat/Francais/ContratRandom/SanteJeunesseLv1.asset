@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: SanteJeunesseLv1
   m_EditorClassIdentifier: 
   name: "Sant\xE9 pr\xE9vention jeunesse"
-  contractTitle: []
   level: 1
-  contractType: 0
+  contractType: 3
   salaryMin: 2000
   salaryMax: 2500
   mixingMin: 0
@@ -24,6 +23,8 @@ MonoBehaviour:
   weekMax: 8
   expGain: 20
   expBonus: 50
+  contractTitle: []
+  contractDictionnary: []
   description:
   - "Dans le cadre du programme de pr\xE9vention de sant\xE9 chez les jeunes, nous
     recherchons un studio pour r\xE9aliser le voice-over de notre nouvelle publicit\xE9."
@@ -61,6 +62,7 @@ MonoBehaviour:
         sweetness: 15
         fear: 0
         trust: 0
+      actorLocked: {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -69,7 +71,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: Pour bien grandir ...
       textStats:
@@ -108,7 +111,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 2
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Mange au moins 5 fruits et l\xE9gumes par jour."
       textStats:
@@ -190,7 +194,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Pour \xEAtre en forme ..."
       textStats:
@@ -229,7 +234,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 2
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "D\xE9pense-toi bien !"
       textStats:
@@ -318,7 +324,9 @@ MonoBehaviour:
           fear: 0
           trust: 0
   eventData: []
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0

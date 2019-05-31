@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chipsala [Nom]
   level: 2
-  contractType: 0
+  contractType: 3
   salaryMin: 3000
   salaryMax: 5000
   mixingMin: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
         sweetness: 12
         fear: 0
         trust: 2
+      actorLocked: {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -333,7 +334,9 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints: []
   eventData: []
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0

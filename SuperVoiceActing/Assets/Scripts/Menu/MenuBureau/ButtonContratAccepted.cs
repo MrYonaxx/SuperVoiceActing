@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace VoiceActing
@@ -50,6 +51,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI contractMixage;
         [SerializeField]
+        Image contractIcon;
+        [SerializeField]
         RectTransform gaugeLine;
 
         bool isButtonAddContract = false;
@@ -82,6 +85,7 @@ namespace VoiceActing
             contractMixage.text = contract.CurrentMixing + " / " + contract.TotalMixing;
             contractWeekRemaining.text = contract.WeekRemaining.ToString();
             contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
+            contractIcon.sprite = contract.IconSprite;
             gaugeLine.transform.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), gaugeLine.transform.localScale.y, gaugeLine.transform.localScale.z);
         }
 

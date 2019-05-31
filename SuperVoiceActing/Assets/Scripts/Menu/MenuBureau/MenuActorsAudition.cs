@@ -84,6 +84,12 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public int GetBudget()
+        {
+            return budget;
+        }
+
         public string GetAuditionName()
         {
             return va.Name;
@@ -105,7 +111,9 @@ namespace VoiceActing
 
             auditionMicro.SetActive(b);
             auditionInfo.SetActive(b);
-
+            budget = budgetInitialValue * (int)sliderBudget.value;
+            textBudget.text = budget.ToString();
+            menuActorsManager.DrawBudgetAudition();
             if (b == true)
                 actorsSprite.enabled = false;
             else
@@ -147,6 +155,7 @@ namespace VoiceActing
             sliderBudget.value += 1;
             budget = budgetInitialValue * (int)sliderBudget.value;
             textBudget.text = budget.ToString();
+            menuActorsManager.DrawBudgetAudition();
         }
 
         public void ReduceBudget()
@@ -154,6 +163,7 @@ namespace VoiceActing
             sliderBudget.value -= 1;
             budget = budgetInitialValue * (int)sliderBudget.value;
             textBudget.text = budget.ToString();
+            menuActorsManager.DrawBudgetAudition();
         }
 
         public bool CheckCost()

@@ -11,6 +11,16 @@ using System.Collections.Generic;
 
 namespace VoiceActing
 {
+
+    public enum VoiceActorState
+    {
+        Fine,
+        Tired,
+        Dead,
+        Absent
+    }
+
+
     /// <summary>
     /// Definition of the VoiceActor class
     /// A VoiceActor is created from a VoiceActorData
@@ -197,6 +207,14 @@ namespace VoiceActing
 
 
         [SerializeField]
+        private VoiceActorState actorMentalState;
+        public VoiceActorState ActorMentalState
+        {
+            get { return actorMentalState; }
+            set { actorMentalState = value; }
+        }
+
+        [SerializeField]
         private bool availability;
         public bool Availability
         {
@@ -205,6 +223,16 @@ namespace VoiceActing
         }
 
         #endregion
+
+
+
+
+
+
+
+
+
+
 
         #region GettersSetters 
 
@@ -483,18 +511,29 @@ namespace VoiceActing
 
         public void WorkForWeek(ExperienceCurveData experienceCurve)
         {
-            // Si le comédien était indisponible il revient full
-            if (availability == false)
+            // Si le comédien était mort il passe en fatigué
+            if (actorMentalState == VoiceActorState.Dead)
             {
-                hp = hpMax;
-                availability = true;
+                hp = 1;
+                actorMentalState = VoiceActorState.Tired;
+                availability = false;
                 return;
             }
 
-            // Si le comédien est dans le mal il passe indisponible
-            if (hp <= (hpMax * 0.25f))
+            // Si le comédien a 0 hp il est mort
+            if (hp == 0)
             {
+                actorMentalState = VoiceActorState.Dead;
                 availability = false;
+                return;
+            }
+
+            // Si le comédien était indisponible il revient full
+            if (actorMentalState == VoiceActorState.Tired)
+            {
+                hp = hpMax;
+                availability = true;
+                actorMentalState = VoiceActorState.Fine;
                 return;
             }
 
@@ -519,6 +558,13 @@ namespace VoiceActing
                 hp += (int)(hpMax * Random.Range(-0.05f, 0.05f));
             }
             hp = Mathf.Clamp(hp, 0, hpMax);
+
+            // Si le comédien est dans le mal il passe indisponible
+            if (hp <= (hpMax * 0.25f))
+            {
+                actorMentalState = VoiceActorState.Tired;
+                availability = false;
+            }
         }
 
 

@@ -72,8 +72,8 @@ namespace VoiceActing
 
         private void Start()
         {
-            moneyManager.DrawMoney(playerData.Money);
             playerData.CreateList();
+            moneyManager.DrawMoney(playerData.Money);
             contractManager.DrawDate();
 
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);

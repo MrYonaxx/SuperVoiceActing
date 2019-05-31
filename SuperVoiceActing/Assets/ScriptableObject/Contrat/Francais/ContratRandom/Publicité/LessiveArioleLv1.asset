@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: LessiveArioleLv1
   m_EditorClassIdentifier: 
   name: Lessive Ariole
-  contractTitle:
-  - Lessive Ariole
-  - Lessive Skop
   level: 1
-  contractType: 0
+  contractType: 3
   salaryMin: 1500
   salaryMax: 2000
   mixingMin: 0
@@ -26,6 +23,10 @@ MonoBehaviour:
   weekMax: 9
   expGain: 20
   expBonus: 20
+  contractTitle:
+  - Lessive Ariole
+  - Lessive Skop
+  contractDictionnary: []
   description:
   - La [nom] est notre nouveau produit.
   characters:
@@ -64,6 +65,7 @@ MonoBehaviour:
         sweetness: 1
         fear: 5
         trust: 0
+      actorLocked: {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -72,7 +74,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Bwah je suis une t\xE2che ind\xE9l\xE9bile !"
       textStats:
@@ -122,7 +125,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Personne ne r\xE9ussira \xE0 m'extirper de ce tee-shirt blanc !"
       textStats:
@@ -192,7 +196,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Je d\xE9teste la lessive !"
       textStats:
@@ -263,7 +268,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 2
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Qui apporte de l'\xE9clat \xE0 vos v\xEAtements"
       textStats:
@@ -323,7 +329,8 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 2
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Je la d\xE9teste !!"
       textStats:
@@ -384,7 +391,8 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
-      dictionnaryCondition: 
+      dictID: 
+      dictCondition: 
     textDataPossible:
     - text: "Je ne peux pas y r\xE9sister ..."
       textStats:
@@ -462,7 +470,9 @@ MonoBehaviour:
           fear: 0
           trust: 0
   eventData: []
+  eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
+  sessionLock: 0
