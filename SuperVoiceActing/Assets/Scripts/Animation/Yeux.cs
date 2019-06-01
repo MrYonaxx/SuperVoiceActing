@@ -23,6 +23,11 @@ public class Yeux : MonoBehaviour
 
     }
 
+    public void SetSprite(Sprite eyes)
+    {
+        spriteRenderer.sprite = eyes;
+    }
+
     public void StartBlink()
     {
         if(coroutine != null)

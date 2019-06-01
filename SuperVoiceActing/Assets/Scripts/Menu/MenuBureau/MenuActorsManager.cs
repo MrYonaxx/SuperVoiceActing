@@ -23,13 +23,10 @@ namespace VoiceActing
         \* ======================================== */
         // Pour les tests
 
-
         private List<VoiceActor> actorsList = new List<VoiceActor>();
 
         private List<VoiceActor> actorsSortList = new List<VoiceActor>();
 
-        /*[SerializeField]
-        private ExperienceCurveData experience;*/
 
         [Header("Prefab")]
         [SerializeField]
@@ -113,6 +110,15 @@ namespace VoiceActing
         [SerializeField]
         Image[] jaugeEmpty;
 
+        [Header("Colors")]
+        float thresholdHealth = 0.5f;
+        [SerializeField]
+        Color colorNameNormal;
+        [SerializeField]
+        Color colorNameTired;
+        [SerializeField]
+        Color colorNameUnavailable;
+
         [Header("Audition")]
         [SerializeField]
         GameObject auditionIndication;
@@ -135,10 +141,6 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorFeedbackButtonAudition;
 
-        [Header("Tri")]
-        [SerializeField]
-        private bool croissant = true;
-
         // ===========================
         // Menu Input
         [Header("Menu Input")]
@@ -156,8 +158,8 @@ namespace VoiceActing
         private int currentTimeBeforeRepeat = -1;
         private int currentRepeatInterval = -1;
         private int lastDirection = 0; // 2 c'est bas, 8 c'est haut (voir numpad)
-        public int indexActorLimit = 0;
-        public int indexActorSelected = -1;
+        private int indexActorLimit = 0;
+        private int indexActorSelected = 0;
         private IEnumerator coroutineScroll = null;
         // Menu Input
         // ===========================
@@ -170,18 +172,18 @@ namespace VoiceActing
         MenuContractPreparation menuContractPreparation;
         [SerializeField]
         MenuActorsAudition menuActorsAudition;
+        [SerializeField]
+        SortManager sortManager;
 
         private List<ButtonVoiceActor> buttonsActors = new List<ButtonVoiceActor>();
+
 
         private bool auditionMode = false;
         private Role auditionRole = null;
 
         private bool gaugeCursorMode = false;
 
-
         private bool firstDraw = true;
-
-        //private RectTransform rectTransformSelection;
 
 
         #endregion
@@ -250,7 +252,7 @@ namespace VoiceActing
             {
                 indexActorSelected = 0;
             }
-            buttonsActors[indexActorSelected].SelectButton();
+            //buttonsActors[indexActorSelected].SelectButton();
             DrawActorStat(actorsList[indexActorSelected]);
             inputController.gameObject.SetActive(true);
 
@@ -267,7 +269,7 @@ namespace VoiceActing
             for(int i = 0; i < actorsList.Count; i++)
             {
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax);
+                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].ActorIconHorizontal);
             }
             if (indexActorSelected < actorsList.Count)
             {
@@ -306,7 +308,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < actorsList.Count; i++)
             {
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax);
+                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].ActorIconHorizontal);
             }
         }
 
@@ -319,6 +321,7 @@ namespace VoiceActing
             {
                 SetActorGaugeToZero();
                 textMeshSelection.text = "Audition";
+                textMeshSelection.color = colorNameNormal;
                 menuActorsAudition.DrawAuditionPanel(true);
                 imageButtonSelection.gameObject.SetActive(true);
                 statLevelActorSelection.gameObject.SetActive(false);
@@ -372,7 +375,7 @@ namespace VoiceActing
 
             statNameStylishActor.text = actor.Name;
             statNameActor.text = actor.Name;
-            statNameActor.transform.eulerAngles = new Vector3(0, 0, Random.Range(-3, 3));
+            statNameActor.transform.eulerAngles = new Vector3(0, 0, Random.Range(-2, 2));
             statNameStylishActor.transform.eulerAngles = statNameActor.transform.eulerAngles;
 
             statLevelActor.text = actor.Level.ToString();
@@ -385,7 +388,24 @@ namespace VoiceActing
             statMaxHpActor.text = actor.HpMax.ToString();
             statHpGauge.transform.localScale = new Vector3((actor.Hp / (float)actor.HpMax), statHpGauge.transform.localScale.y, statHpGauge.transform.localScale.z);
 
-            for(int i = 0; i < statSkillsActor.Length; i++)
+
+            if (actor.Availability == false)
+            {
+                statNameActor.color = colorNameUnavailable;
+                textMeshSelection.color = colorNameUnavailable;
+            }
+            else if (statHpGauge.transform.localScale.x <= thresholdHealth)
+            {
+                statNameActor.color = colorNameTired;
+                textMeshSelection.color = colorNameTired;
+            }
+            else
+            {
+                statNameActor.color = colorNameNormal;
+                textMeshSelection.color = colorNameNormal;
+            }
+
+            for (int i = 0; i < statSkillsActor.Length; i++)
             {
                 if (i < actor.Potentials.Length)
                     statSkillsActor[i].text = actor.Potentials[i].SkillName;
@@ -420,7 +440,7 @@ namespace VoiceActing
         private void DrawGaugeInfo(VoiceActor actor)
         {
             actor.RoleDefense = 8;
-            StopAllCoroutines();
+            StopAllCoroutines(); // sauf le scroll 
             for (int i = 0; i < textStatsActor.Length; i++)
             {
                 int currentStatActor = 0;
@@ -676,7 +696,7 @@ namespace VoiceActing
                 {
                     Debug.Log("allo");
                     indexActorSelected = i;
-                    buttonsActors[indexActorSelected].SelectButton();
+                    //buttonsActors[indexActorSelected].SelectButton();
                     textMeshSelection.text = newActorName;
                     StartCoroutine(SelectionCoroutine());
                     /*rectTransformSelection.anchoredPosition = new Vector2(500, buttonsActors[indexActorSelected].GetAnchoredPosition());
@@ -867,6 +887,35 @@ namespace VoiceActing
         }
 
 
+        public void ShowSortMenu()
+        {
+            sortManager.ShowSortPanel();
+            inputController.gameObject.SetActive(false);
+            animatorSelection.gameObject.SetActive(false);
+        }
+
+        public void SortActorsList()
+        {
+            actorsList = sortManager.SortActorsList(actorsList);
+            RedrawActorsButton();
+            indexActorSelected = 0;
+            MoveScrollRect();
+            DrawActorStat(actorsList[indexActorSelected]);
+            inputController.gameObject.SetActive(true);
+            animatorSelection.gameObject.SetActive(true);
+        }
+        public void SortActorsListFast()
+        {
+            actorsList = sortManager.SortActorsList(actorsList);
+            RedrawActorsButton();
+            indexActorSelected = 0;
+            DrawActorStat(actorsList[indexActorSelected]);
+
+            indexActorLimit = scrollSize;
+            MoveScrollRect();
+        }
+
+
 
         public void SelectActorUp()
         {
@@ -879,7 +928,7 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
-            buttonsActors[indexActorSelected].UnSelectButton();
+            //buttonsActors[indexActorSelected].UnSelectButton();
             indexActorSelected -= 1;
             if(indexActorSelected <= -1)
             {
@@ -887,7 +936,7 @@ namespace VoiceActing
                 //StopRepeat();
             }
 
-            buttonsActors[indexActorSelected].SelectButton();
+            //buttonsActors[indexActorSelected].SelectButton();
             if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
             {
                 DrawActorStat(null);
@@ -910,7 +959,7 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
-            buttonsActors[indexActorSelected].UnSelectButton();
+            //buttonsActors[indexActorSelected].UnSelectButton();
             indexActorSelected += 1;
             if (indexActorSelected >= buttonsActors.Count)
             {
@@ -918,7 +967,7 @@ namespace VoiceActing
                 //StopRepeat();
             }
 
-            buttonsActors[indexActorSelected].SelectButton();
+            //buttonsActors[indexActorSelected].SelectButton();
             if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
             {
                 DrawActorStat(null);

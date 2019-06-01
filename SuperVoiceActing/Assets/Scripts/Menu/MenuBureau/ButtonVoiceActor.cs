@@ -42,6 +42,20 @@ namespace VoiceActing
         [SerializeField]
         Color colorUnSelected;
 
+        [Header("HealthColor")]
+        [SerializeField]
+        float thresholdHealth = 0.5f;
+        [SerializeField]
+        Color colorNameNormal;
+        [SerializeField]
+        Color colorNameTired;
+        [SerializeField]
+        Color colorNameUnavailable;
+        [SerializeField]
+        Color colorActorNormal;
+        [SerializeField]
+        Color colorActorDead;
+
 
         #endregion
 
@@ -61,12 +75,30 @@ namespace VoiceActing
         \* ======================================== */
 
 
-        public void DrawActor(string name, int level, float hpPercentage)
+        public void DrawActor(string name, int level, float hpPercentage, bool availability, Sprite actorSprite = null)
         {
             actorName.text = name;
             actorLevel.text = "Lv." + level;
             actorHealth.transform.localScale = new Vector3(hpPercentage, 1, 1);
-        }
+            if(actorSprite != null)
+                actorImage.sprite = actorSprite;
+            if (availability == false)
+            {
+                actorName.color = colorNameUnavailable;
+                actorImage.color = colorActorDead;
+            }
+            else if (hpPercentage <= thresholdHealth)
+            {
+                actorName.color = colorNameTired;
+                actorImage.color = colorActorNormal;
+            }
+            else
+            {
+                actorName.color = colorNameNormal;
+                actorImage.color = colorActorNormal;
+            }
+
+    }
 
         public void SelectButton()
         {

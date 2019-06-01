@@ -37,6 +37,13 @@ namespace VoiceActing
         [SerializeField]
         string name;
 
+        [SerializeField]
+        private Sprite spriteEye;
+        public Sprite SpriteEye
+        {
+            get { return spriteEye; }
+        }
+
         [Header("Emotion")]
         [SerializeField]
         private Sprite[] spriteNormal;

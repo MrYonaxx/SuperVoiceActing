@@ -102,6 +102,8 @@ namespace VoiceActing
             currentSprites = storyCharacterData.SpriteNormal;
             if (spriteRenderer != null)
                 spriteRenderer.sprite = currentSprites[0];
+            if (sprites.SpriteEye != null)
+                eyesScript.SetSprite(sprites.SpriteEye);
         }
 
         public void LoadCharacterDataSprites()

@@ -99,7 +99,7 @@ namespace VoiceActing
                 {
                     animatorHUD.SetTrigger("Hide");
                     //ModifyAnglePosition(0);
-                    MoveToCamera();
+                    //MoveToCamera();
                     ChangeOrthographicSize(-30);
                     smoothShakeCamera.enabled = false;
                     smoothShakeCamera.transform.position = Vector3.zero;
