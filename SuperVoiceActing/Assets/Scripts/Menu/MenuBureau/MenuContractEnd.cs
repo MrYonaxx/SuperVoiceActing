@@ -211,7 +211,7 @@ namespace VoiceActing
             else // Bonus
             {
                 textScoreTotal.text = "SUPER !";
-                bonusMoney = contract.Money * ((contract.Score / contract.HighScore) - 0.7f);
+                bonusMoney = contract.Money * (((float)contract.Score / contract.HighScore) - 0.7f);
             }          
             totalRevenu += contract.Money + (int)bonusMoney;
             contract.MoneyBonus = (int) bonusMoney;

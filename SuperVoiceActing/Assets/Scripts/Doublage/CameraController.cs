@@ -57,6 +57,7 @@ namespace VoiceActing
         private IEnumerator rotatingCoroutine;
 
         private IEnumerator cinematicCoroutine;
+        private IEnumerator cinematicRotatingCoroutine;
 
         float speedMovement = 0.5f;
 
@@ -127,9 +128,8 @@ namespace VoiceActing
 
         public void SetInitialPosition(Vector3 newPos, Vector3 newRot, int time)
         {
-            //initialPosition.localPosition = newPos;
-            initialPosition.rotation = Quaternion.Euler(newRot.x, newRot.y, newRot.z);
-            //this.transform.localPosition -= newPos;
+            //initialPosition.rotation = Quaternion.Euler(newRot.x, newRot.y, newRot.z);
+            StartCoroutine(RotateInitialPositionCoroutine(newRot.x, newRot.y, newRot.z, time));
             StartCoroutine(MoveInitialPositionCoroutine(newPos.x, newPos.y, newPos.z, time));
         }
 
@@ -148,6 +148,37 @@ namespace VoiceActing
                 yield return null;
             }
             initialPosition.localPosition = new Vector3(x, y, z);
+        }
+
+        private IEnumerator RotateInitialPositionCoroutine(float x, float y, float z, float time)
+        {
+            float angleX = initialPosition.eulerAngles.x;
+            if (angleX > 180)
+                angleX = -(360 - angleX);
+            float speedX = (x - angleX) / time;
+
+            float angleY = initialPosition.eulerAngles.y;
+            if (angleY > 180)
+                angleY = -(360 - angleY);
+            float speedY = (y - angleY) / time;
+
+            float angleZ = initialPosition.eulerAngles.z;
+            if (angleZ > 180)
+                angleZ = -(360 - angleZ);
+            if (z > 180)
+                z = -(360 - z);
+            float speedZ = (z - angleZ) / time;
+
+            while (time != 0)
+            {
+                if (pauseCoroutine == false)
+                {
+                    initialPosition.eulerAngles += new Vector3(speedX, speedY, speedZ);
+                    time -= 1;
+                }
+                yield return null;
+            }
+            initialPosition.eulerAngles = new Vector3(x, y, z);
         }
 
 
@@ -238,13 +269,22 @@ namespace VoiceActing
             cinematicCoroutine = CinematicCameraCoroutine(info.CamStart.x, info.CamStart.y, info.CamStart.z, info.TimeStart,
                                                   info.CameraEnd.x, info.CameraEnd.y, info.CameraEnd.z, info.TimeEnd,
                                                   info.CameraEnd2.x, info.CameraEnd2.y, info.CameraEnd2.z, info.TimeEnd2);
-
             StartCoroutine(cinematicCoroutine);
+
+
+
+            if (cinematicRotatingCoroutine != null)
+                StopCoroutine(cinematicRotatingCoroutine);
+
+            cinematicRotatingCoroutine = CinematicCameraRotationCoroutine(info.CamStart.x, info.CamStart.y, info.CamStart.z, info.TimeStart,
+                                      info.CameraEnd.x, info.CameraEnd.y, info.CameraEnd.z, info.TimeEnd,
+                                      info.CameraEnd2.x, info.CameraEnd2.y, info.CameraEnd2.z, info.TimeEnd2);
+
+            StartCoroutine(cinematicRotatingCoroutine);
 
         }
 
 
-        // Move Camera fast then slow
         private IEnumerator CinematicCameraCoroutine(float x, float y, float z, int time, 
                                                      float x2, float y2, float z2, int time2,
                                                      float x3, float y3, float z3, int time3)
@@ -258,6 +298,25 @@ namespace VoiceActing
                 yield return MoveCameraCoroutine(initialPosition.position.x + x3, initialPosition.position.y + y3, initialPosition.position.z + z3, time3);
             cinematicCoroutine = null;
         }
+
+        
+        private IEnumerator CinematicCameraRotationCoroutine(float x, float y, float z, int time,
+                                                             float x2, float y2, float z2, int time2,
+                                                             float x3, float y3, float z3, int time3)
+        {
+            if (time != -1)
+                SetCameraRotation(initialPosition.eulerAngles.x + x, initialPosition.eulerAngles.y + y, initialPosition.eulerAngles.z + z);
+            yield return null;
+            yield return RotateCameraCoroutine(initialPosition.eulerAngles.x + x2, initialPosition.eulerAngles.y + y2, initialPosition.eulerAngles.z + z2, time2);
+            if (time3 != 0)
+                yield return RotateCameraCoroutine(initialPosition.eulerAngles.x + x3, initialPosition.eulerAngles.y + y3, initialPosition.eulerAngles.z + z3, time3);
+            cinematicCoroutine = null;
+        }
+
+
+
+
+
 
         public void CinematicCamera(int id)
         {
@@ -504,11 +563,15 @@ namespace VoiceActing
             {
                 angleX = -(360 - angleX);
             }
+            if (x > 180)
+                x = -(360 - x);
             float speedX = (x - angleX) / time;
 
             float angleY = this.transform.eulerAngles.y;
             if (angleY > 180)
                 angleY = -(360 - angleY);
+            if (y > 180)
+                y = -(360 - y);
             float speedY = (y - angleY) / time;
 
             float angleZ = this.transform.eulerAngles.z;
