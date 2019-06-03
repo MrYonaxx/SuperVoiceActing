@@ -340,10 +340,18 @@ namespace VoiceActing
             CreateDeck();
         }
 
-        public void ModifiyDeck(EmotionStat newDeck)
+        public void ModifiyDeck(EmotionStat newDeck, int newComboMax = -1)
         {
             //deckEmotion.Add(newDeck);
             CreateDeck();
+            if(newComboMax != -1)
+            {
+                comboMax = newComboMax;
+                comboEmotion = new Emotion[comboMax];
+                comboCardEmotion = new EmotionCard[comboMax];
+                CreateComboSlot();
+            }
+
         }
         // =========================================================================================================================================
 

@@ -863,10 +863,11 @@ namespace VoiceActing
         }
 
 
-        public void ModifyDeck(EmotionStat addDeck)
+        public void ModifyDeck(EmotionStat addDeck, int addComboMax)
         {
             playerData.Deck.Add(addDeck);
-            emotionAttackManager.ModifiyDeck(addDeck);
+            playerData.ComboMax += addComboMax;
+            emotionAttackManager.ModifiyDeck(addDeck, playerData.ComboMax);
         }
 
 
