@@ -229,8 +229,8 @@ namespace VoiceActing
 
         [Title("Other")]
         [SerializeField]
-        private float turnGain;
-        public float TurnGain
+        private int turnGain;
+        public int TurnGain
         {
             get { return turnGain; }
         }

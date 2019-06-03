@@ -80,6 +80,7 @@ namespace VoiceActing
         CameraController cameraController;
         /*[SerializeField]*/
         EmotionAttackManager emotionAttackManager;
+        DoublageManager doublageManager;
 
 
         [Header("Debug")]
@@ -139,8 +140,9 @@ namespace VoiceActing
             return false;
         }
 
-        public void SetManagers(CameraController cC, EmotionAttackManager eAM, ActorsManager aM, RoleManager rM, EnemyManager eM)
+        public void SetManagers(DoublageManager dm, CameraController cC, EmotionAttackManager eAM, ActorsManager aM, RoleManager rM, EnemyManager eM)
         {
+            doublageManager = dm;
             cameraController = cC;
             emotionAttackManager = eAM;
             actorsManager = aM;
@@ -202,13 +204,10 @@ namespace VoiceActing
 
                 if(next == true)
                 {
-                    Debug.Log("FirstCheck");
                     if (CheckHP((voiceActor.Hp / voiceActor.HpMax), skill.HpInterval))
                     {
-                        Debug.Log("SecondCheck");
                         if (CheckPercentage(skill.PercentageActivation))
                         {
-                            Debug.Log("FinalCheck");
                             if (CheckAttackType(emotions, skill.PhraseType))
                             {
                                 SetSkillText(voiceActor, skill);
@@ -349,7 +348,7 @@ namespace VoiceActing
             }
 
             // Other
-
+            doublageManager.AddTurn(skill.TurnGain);
         }
 
 

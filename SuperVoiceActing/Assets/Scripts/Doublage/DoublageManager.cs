@@ -167,6 +167,12 @@ namespace VoiceActing
             endAttack = true;
         }
 
+        public void AddTurn(int addValue)
+        {
+            turnCount += addValue;
+            timer.SetTurn(turnCount);
+        }
+
         #endregion
 
         #region Functions 
@@ -247,7 +253,7 @@ namespace VoiceActing
             actorsManager.ActorTakeDamage(0);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
             emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
-            skillManager.SetManagers(cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
+            skillManager.SetManagers(this, cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetRoles(contrat.Characters);
             toneManager.DrawTone();
@@ -875,6 +881,11 @@ namespace VoiceActing
         {
             skillManager.SetSkillText(actorsManager.GetCurrentActor(), skill);
             skillManager.ActorSkillFeedback();
+            skillManager.ApplySkill(skill);
+        }
+
+        public void ForceSkill(SkillData skill)
+        {
             skillManager.ApplySkill(skill);
         }
 
