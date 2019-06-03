@@ -38,6 +38,8 @@ namespace VoiceActing
         Animator contractButton;
         [SerializeField]
         Animator contractAddButton;
+        [SerializeField]
+        Animator contractWeek;
 
         [Header("Text & Info")]
         [SerializeField]
@@ -97,6 +99,7 @@ namespace VoiceActing
                 contractAddButton.SetBool("Selected", true);
 
             outlineSelection.gameObject.SetActive(true);
+            contractWeek.enabled = true;
         }
 
         public void UnSelectContract()
@@ -107,6 +110,7 @@ namespace VoiceActing
                 contractAddButton.SetBool("Selected", false);
 
             outlineSelection.gameObject.SetActive(false);
+            contractWeek.enabled = false;
         }
 
         public void SetButtonToAddContract()
