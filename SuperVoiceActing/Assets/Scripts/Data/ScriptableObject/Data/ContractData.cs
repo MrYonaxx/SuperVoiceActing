@@ -457,24 +457,36 @@ namespace VoiceActing
 
         [Space]
         [Space]
-        [Space]
         [SerializeField]
         private StoryEventData eventAcceptedContract;
         public StoryEventData EventAcceptedContract
         {
             get { return eventAcceptedContract; }
         }
-
         [SerializeField]
         private StoryEventData eventEndContract;
         public StoryEventData EventEndContract
         {
             get { return eventEndContract; }
         }
+        [Space]
+        [SerializeField]
+        private bool canGameOver;
+        public bool CanGameOver
+        {
+            get { return canGameOver; }
+        }
+        [SerializeField]
+        private DoublageEventData eventGameOver;
+        public DoublageEventData EventGameOver
+        {
+            get { return eventGameOver; }
+        }
 
         [Space]
         [Space]
         [Space]
+        [Title("Autre")]
         [SerializeField]
         private bool changeBGM;
         public bool ChangeBGM
@@ -482,6 +494,7 @@ namespace VoiceActing
             get { return changeBGM; }
         }
 
+        [HorizontalGroup("MusiqueContrat", LabelWidth = 130)]
         [ShowIf("changeBGM", true)]
         [SerializeField]
         private AudioClip battleTheme;
@@ -490,6 +503,7 @@ namespace VoiceActing
             get { return battleTheme; }
         }
 
+        [HorizontalGroup("MusiqueContrat", LabelWidth = 130)]
         [ShowIf("changeBGM", true)]
         [SerializeField]
         private AudioClip victoryTheme;
@@ -498,6 +512,9 @@ namespace VoiceActing
             get { return victoryTheme; }
         }
 
+        [Space]
+        [Space]
+        [Space]
         [SerializeField]
         private bool sessionLock;
         public bool SessionLock

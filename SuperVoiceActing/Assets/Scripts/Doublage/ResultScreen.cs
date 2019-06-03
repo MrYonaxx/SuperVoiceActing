@@ -103,6 +103,8 @@ namespace VoiceActing
         private Animator animatorEndStatScreen;
         [SerializeField]
         private SimpleSpectrum spectrum;
+        [SerializeField]
+        private InputController inputController;
 
         private bool inAnimation = true;
         private int lineDefeated = 0;
@@ -470,6 +472,7 @@ namespace VoiceActing
 
         private void EndScreenResult()
         {
+            inputController.gameObject.SetActive(false);
             animatorEndStatScreen.gameObject.SetActive(true);
             animatorEndStatScreen.SetTrigger("End");
             AudioManager.Instance.StopMusic(90);

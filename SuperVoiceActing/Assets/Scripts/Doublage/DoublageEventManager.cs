@@ -402,7 +402,17 @@ namespace VoiceActing
             return null;
         }
 
-
+        public void StartEvent(DoublageEventData storyEventData)
+        {
+            indexEvent = -1;
+            currentEvent = storyEventData;
+            for (int j = 0; j < textEvent.Length; j++)
+            {
+                textEvent[j].gameObject.SetActive(true);
+            }
+            eventStartLine = false;
+            ExecuteEvent();
+        }
 
         public bool CheckEvent(Contract contrat, int indexPhrase, bool startLine, float hp)
         {

@@ -209,7 +209,12 @@ namespace VoiceActing
         }
 
 
-
+        [SerializeField]
+        private bool canGameOver;
+        public bool CanGameOver
+        {
+            get { return canGameOver; }
+        }
 
         [SerializeField]
         private StoryEventData storyEventWhenAccepted;
@@ -223,7 +228,13 @@ namespace VoiceActing
         {
             get { return storyEventWhenEnd; }
         }
-
+        [SerializeField]
+        private DoublageEventData storyEventWhenGameOver;
+        public DoublageEventData StoryEventWhenGameOver
+        {
+            get { return storyEventWhenGameOver; }
+            set { storyEventWhenGameOver = value; }
+        }
 
 
         [SerializeField]
@@ -322,7 +333,8 @@ namespace VoiceActing
             this.producerMP = data.ProducerMP;
             this.artificialIntelligence = data.ArtificialIntelligence;
 
-
+            this.canGameOver = data.CanGameOver;
+            this.storyEventWhenGameOver = data.EventGameOver;
 
             this.storyEventWhenAccepted = data.EventAcceptedContract;
             this.storyEventWhenEnd = data.EventEndContract;

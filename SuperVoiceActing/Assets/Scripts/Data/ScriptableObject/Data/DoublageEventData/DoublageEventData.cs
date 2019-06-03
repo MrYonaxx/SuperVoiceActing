@@ -135,6 +135,8 @@ namespace VoiceActing
                     return eventNode + " : " + doublageEventViewport.ViewportID.ToString();
                 case DoublageEventNode.Wait:
                     return eventNode + " : " + doublageEventWait.Wait.ToString();
+                case DoublageEventNode.Deck:
+                    return eventNode.ToString();
                 case DoublageEventNode.Sound:
                     return eventNode.ToString(); //+ " : " + doublageEventSound..ToString();
                 case DoublageEventNode.SetCharacter:
@@ -191,13 +193,22 @@ namespace VoiceActing
             get { return stopSession; }
         }
 
+        [HorizontalGroup("Conditions")]
         [SerializeField]
         private bool startPhrase = true;
         public bool StartPhrase
         {
             get { return startPhrase; }
         }
+        [HorizontalGroup("Conditions")]
+        [SerializeField]
+        private bool characterHP;
+        public bool CharacterHP
+        {
+            get { return characterHP; }
+        }
 
+        [HorizontalGroup("ConditionsHP")]
         [HideIf("startPhrase", true)]
         [SerializeField]
         private bool equal = false;
@@ -205,7 +216,6 @@ namespace VoiceActing
         {
             get { return equal; }
         }
-
         [HideIf("startPhrase", true)]
         [SerializeField]
         private float hpPercentage = 100;

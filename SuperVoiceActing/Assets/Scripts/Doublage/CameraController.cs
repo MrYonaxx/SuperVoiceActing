@@ -276,9 +276,9 @@ namespace VoiceActing
             if (cinematicRotatingCoroutine != null)
                 StopCoroutine(cinematicRotatingCoroutine);
 
-            cinematicRotatingCoroutine = CinematicCameraRotationCoroutine(info.CamStart.x, info.CamStart.y, info.CamStart.z, info.TimeStart,
-                                      info.CameraEnd.x, info.CameraEnd.y, info.CameraEnd.z, info.TimeEnd,
-                                      info.CameraEnd2.x, info.CameraEnd2.y, info.CameraEnd2.z, info.TimeEnd2);
+            cinematicRotatingCoroutine = CinematicCameraRotationCoroutine(info.CamStartRotation.x, info.CamStartRotation.y, info.CamStartRotation.z, info.TimeStart,
+                                      info.CameraEndRotation.x, info.CameraEndRotation.y, info.CameraEndRotation.z, info.TimeEnd,
+                                      info.CameraEnd2Rotation.x, info.CameraEnd2Rotation.y, info.CameraEnd2Rotation.z, info.TimeEnd2);
 
             StartCoroutine(cinematicRotatingCoroutine);
 

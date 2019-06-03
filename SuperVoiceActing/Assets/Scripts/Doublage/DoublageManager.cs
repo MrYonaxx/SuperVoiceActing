@@ -414,6 +414,15 @@ namespace VoiceActing
             }
 
             // Check Dead ========================================================================
+            if (actorsManager.GetCurrentActorHP() == 0 && contrat.StoryEventWhenGameOver != null)
+            {
+                eventManager.StartEvent(contrat.StoryEventWhenGameOver);
+                startLine = false;
+                ChangeEventPhase();
+                contrat.StoryEventWhenGameOver = null;
+                textAppearManager.SetLetterSpeed(2);
+                yield break;
+            }
             if (actorsManager.GetCurrentActorHP() == 0)
             {
                 yield return new WaitForSeconds(1f);

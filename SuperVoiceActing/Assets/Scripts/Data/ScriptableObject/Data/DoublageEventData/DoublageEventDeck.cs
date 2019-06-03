@@ -26,6 +26,13 @@ namespace VoiceActing
         {
             get { return newDeck; }
         }
+        [Space]
+        [SerializeField]
+        private int addComboMax;
+        public int AddComboMax
+        {
+            get { return addComboMax; }
+        }
 
 
     } // DoublageEventDeck class
