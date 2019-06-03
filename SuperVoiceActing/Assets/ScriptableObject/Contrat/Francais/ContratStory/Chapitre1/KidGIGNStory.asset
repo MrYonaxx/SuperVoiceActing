@@ -80,27 +80,6 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "Paris est menac\xE9 ..."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 8
-        hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
-      enemyResistance:
-        neutral: 10
-        joy: -30
-        sadness: 10
-        disgust: 0
-        anger: 10
-        surprise: 0
-        sweetness: -50
-        fear: 50
-        trust: 0
-      enemyWeakPoints: []
     - text: "Paris est menac\xE9 !"
       textStats:
         interlocuteurID: 0
@@ -314,6 +293,38 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
+    - text: Le Super-Micro-Blaster !!!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 18
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 1
+        weakPointStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 0
@@ -409,6 +420,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2d3e2b37862018b4b89caaa6a72bc6dc, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
