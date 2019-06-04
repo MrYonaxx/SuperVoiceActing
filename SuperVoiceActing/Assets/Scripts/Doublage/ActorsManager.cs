@@ -312,6 +312,8 @@ namespace VoiceActing
             actors[indexCurrentActor].Hp -= damage;
             if (actors[indexCurrentActor].Hp < 0)
                 actors[indexCurrentActor].Hp = 0;
+            else if (actors[indexCurrentActor].Hp > actors[indexCurrentActor].HpMax)
+                actors[indexCurrentActor].Hp = actors[indexCurrentActor].HpMax;
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
 
             float ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;

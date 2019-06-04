@@ -306,8 +306,10 @@ namespace VoiceActing
                 else if (currentNode is DoublageEventSkill)
                 {
                     DoublageEventSkill node = (DoublageEventSkill) currentNode;
-                    if(node.Skill is SkillActorData)
-                        doublageManager.ForceSkill((SkillActorData) node.Skill);
+                    if (node.Skill is SkillActorData)
+                        doublageManager.ForceSkill((SkillActorData)node.Skill);
+                    else
+                        doublageManager.ForceSkill(node.Skill);
                     StartCoroutine(WaitForceSkill());
 
                 }
