@@ -354,6 +354,10 @@ namespace VoiceActing
         public void SetHp(int newHP)
         {
             enemyHP = newHP;
+            if (enemyHP < 0)
+                enemyHP = 0;
+            else if (enemyHP > currentTextData.HPMax)
+                enemyHP = currentTextData.HPMax;
         }
 
         public void SetVoiceActor(VoiceActor va)

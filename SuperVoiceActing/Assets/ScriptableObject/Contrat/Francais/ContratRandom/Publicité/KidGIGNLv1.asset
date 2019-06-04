@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: KidGIGNLv1
   m_EditorClassIdentifier: 
-  name: Kid GIGN
+  name: '[Nom]'
   level: 1
   contractType: 3
   salaryMin: 1600
@@ -23,12 +23,14 @@ MonoBehaviour:
   weekMax: 7
   expGain: 25
   expBonus: 50
-  contractTitle:
-  - Kid GIGN
-  - Action Kids
-  - Action Kids+
-  - Super Kids
-  contractDictionnary: []
+  contractTitle: []
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Kid GIGN
+    - Action Kids
+    - Action Kids+
+    - Super Kids
   description:
   - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
     un nouveau produit de la licence."
@@ -162,7 +164,7 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "Mais qui voil\xE0 !? Les Kids GIGN !!!"
+    - text: "Mais qui voil\xE0 !? Les [Nom] !!!"
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -408,6 +410,8 @@ MonoBehaviour:
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}

@@ -29,6 +29,9 @@ namespace VoiceActing
         [SerializeField]
         Image fadeScreen;
 
+        [SerializeField]
+        Shake shakeEffect;
+
 
         public void StartEffect(DoublageEventEffect effectData)
         {
@@ -38,14 +41,17 @@ namespace VoiceActing
                     Flash();
                     break;
                 case EventEffect.Negative:
+                    Flash();
                     negativeEffect.SetActive(effectData.Active);
                     break;
                 case EventEffect.BlurredVision:
-                    Flash();
                     blurredEffect.SetActive(effectData.Active);
                     break;
                 case EventEffect.FadeTotal:
                     TotalFade(effectData.Active, effectData.EventTime);
+                    break;
+                case EventEffect.Shake:
+                    shakeEffect.ShakeRectEffect();
                     break;
             }
         }

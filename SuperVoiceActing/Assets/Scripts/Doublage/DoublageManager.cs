@@ -269,7 +269,7 @@ namespace VoiceActing
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
             {
                 yield return new WaitForSeconds(1);
-                //introText.SetPhraseTextacting(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
+                introText.SetPhraseTextacting(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
                 yield return new WaitForSeconds(1.5f);
                 introText.SetPhraseTextacting(contrat.Name);
                 yield return new WaitForSeconds(3);
@@ -441,12 +441,15 @@ namespace VoiceActing
                 introText.SetPhraseTextacting(" ");
                 yield return new WaitForSeconds(1f);
                 introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name + " ?");
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
                 introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name + " !");
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
                 introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name.ToUpper() + " !");
-                yield return new WaitForSeconds(3f);
-                ShowResultScreen();
+                yield return new WaitForSeconds(2f);
+                introText.SetPhraseTextacting(" ");
+                yield return new WaitForSeconds(1f);
+                if (CheckGameOver() == false)
+                    ShowResultScreen();
                 yield break;
             }
 
@@ -529,10 +532,14 @@ namespace VoiceActing
             }
             if (enemyManager.GetHpPercentage() == 0)
             {
-                EndSession();
+                killCount += 1;
+                if (CheckGameOver() == false)
+                    EndSession();
                 yield break;
             }
-            EndSession();
+
+            if (CheckGameOver() == false)
+                EndSession();
         }
 
 
@@ -758,33 +765,6 @@ namespace VoiceActing
         }
 
 
-        /*private IEnumerator FadeVolume(int time)
-        {
-            float speed = audioSourceBattleTheme.volume / time;
-            while (time != 0)
-            {
-                time -= 1;
-                audioSourceBattleTheme.volume -= speed;
-                yield return null;
-            }
-        }*/
-
-
-        /*private IEnumerator FadeVolumeWithPitch(int time)
-        {
-            float speed = audioSourceBattleTheme.volume / time;
-            audioSourceBattleTheme.pitch += 1;
-            while (time != 0)
-            {
-                time -= 1;
-                audioSourceBattleTheme.volume -= speed;
-                yield return null;
-                if(audioSourceBattleTheme.pitch >= 1)
-                    audioSourceBattleTheme.pitch -= 0.01f;
-            }
-        }*/
-
-
 
 
 
@@ -893,6 +873,24 @@ namespace VoiceActing
         {
 
         }
+
+
+        public bool CheckGameOver()
+        {
+            if (contrat.CanGameOver == true)
+            {
+                // Game over
+                introBlackScreen.gameObject.SetActive(true);
+                introText.gameObject.SetActive(true);
+                introText.SetPhraseTextacting("GG C'est Game Over mais on a pas d'écran de game over donc rip.");
+                return true;
+            }
+            else
+                return false;
+        }
+
+
+
 
         public void ShowResultScreen()
         {
