@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -46,8 +47,12 @@ namespace VoiceActing
 
 
         [Header("Tuto & Fin")]
-        /*[SerializeField]
-        protected GameObject[] popups;*/
+        [SerializeField]
+        protected GameObject popup;
+        [SerializeField]
+        protected TextMeshProUGUI textTitle;
+        [SerializeField]
+        protected TextMeshProUGUI textBody;
         [SerializeField]
         protected string endScene;
 
@@ -148,10 +153,7 @@ namespace VoiceActing
                     textEvent[i].NewPhrase(" ");
                 }
             }
-            /*for (int i = 0; i < popups.Length; i++)
-            {
-                popups[i].SetActive(false);
-            }*/
+            popup.gameObject.SetActive(false);
             inputEvent.gameObject.SetActive(false);
             ExecuteEvent();
         }
@@ -179,6 +181,7 @@ namespace VoiceActing
                     }
                     clearAllText = node.ClearAllText;
                     clearText = node.ClearText;
+                    Debug.Log(node.Text);
                     interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
                 }
 
@@ -223,7 +226,9 @@ namespace VoiceActing
                 else if(currentNode is DoublageEventTutoPopup)
                 {
                     DoublageEventTutoPopup node = (DoublageEventTutoPopup)currentNode;
-                    //popups[node.PopupID].SetActive(true);
+                    popup.gameObject.SetActive(true);
+                    textTitle.text = node.TitlePopup;
+                    textBody.text = node.TextPopup;
                     inputEvent.gameObject.SetActive(true);
                 }
 

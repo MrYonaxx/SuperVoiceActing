@@ -18,10 +18,18 @@ namespace VoiceActing
     public class DoublageEventTutoPopup : DoublageEvent
     {
         [SerializeField]
-        private int popupID;
-        public int PopupID
+        private string titlePopup;
+        public string TitlePopup
         {
-            get { return popupID; }
+            get { return titlePopup; }
+        }
+
+        [SerializeField]
+        [TextArea(1,10)]
+        private string textPopup;
+        public string TextPopup
+        {
+            get { return textPopup; }
         }
 
     } // DoublageEventTutoPopup class

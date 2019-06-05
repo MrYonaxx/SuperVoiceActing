@@ -474,17 +474,20 @@ namespace VoiceActing
                         break;
                 }
 
-                if (colorEmotion == Color.white && i > 0)
+                if (particleFeedbacks.Length != 0)
                 {
-                    particleFeedbacks[i].gameObject.SetActive(false);
-                }
-                else
-                {
-                    particleFeedbacks[i].gameObject.SetActive(true);
-                    for (int j = i; j < particleFeedbacks.Length; j++)
+                    if (colorEmotion == Color.white && i > 0)
                     {
-                        var particleColor = particleFeedbacks[j].main;
-                        particleColor.startColor = colorEmotion;
+                        particleFeedbacks[i].gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        particleFeedbacks[i].gameObject.SetActive(true);
+                        for (int j = i; j < particleFeedbacks.Length; j++)
+                        {
+                            var particleColor = particleFeedbacks[j].main;
+                            particleColor.startColor = colorEmotion;
+                        }
                     }
                 }
             }

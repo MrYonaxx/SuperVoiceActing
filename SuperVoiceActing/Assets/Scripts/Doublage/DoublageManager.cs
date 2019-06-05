@@ -245,8 +245,11 @@ namespace VoiceActing
             // Initialisation
             inputController.gameObject.SetActive(false);
             yield return null;
-            spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
-            spectrum.enabled = true;
+            if (spectrum != null)
+            {
+                spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
+                spectrum.enabled = true;
+            }
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
@@ -785,6 +788,8 @@ namespace VoiceActing
 
         public void HideUIButton()
         {
+            if (buttonUIA == null)
+                return;
             StartCoroutine(MoveUIButton(buttonUIA, -600));
             StartCoroutine(MoveUIButton(buttonUIY, -600));
         }
@@ -842,7 +847,8 @@ namespace VoiceActing
         {
             soundEngineerManager.SwitchToEmotion();
             emotionAttackManager.SwitchCardTransformToBattle();
-            cameraController.IngeSon2Cancel();
+            if(cameraController.enabled == true)
+                cameraController.IngeSon2Cancel();
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             actorsManager.ShowHealthBar();
