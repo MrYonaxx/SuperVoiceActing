@@ -23,9 +23,12 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Header("-------------------------------------------------------------")]
         [Header("Changement d'ambiance")]
         [SerializeField]
         Light light;
+        [SerializeField]
+        SpriteRenderer spriteRendererCharacterDoremi;
         [SerializeField]
         RectTransform blackRectUpper;
         [SerializeField]
@@ -44,6 +47,9 @@ namespace VoiceActing
         [SerializeField]
         GameObject studio;
 
+
+        [SerializeField]
+        AudioClip battleThemePrologue;
         bool eventCustom = false;
 
         #endregion
@@ -65,10 +71,14 @@ namespace VoiceActing
 
         public override void SetPhrase()
         {
-            recIcon.SetActive(true);
+
+            //base.SetPhrase();
+
+
             if (indexPhrase == 0)
             {
                 ShiftAmbiance();
+                ChangeEventPhase();
             }
             else if (indexPhrase == 1)
             {
@@ -80,10 +90,11 @@ namespace VoiceActing
             {
                 if (eventCustom == false)
                 {
-                    textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                    textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Tristesse);
                     enemyManager.SetHp(10);
                     textAppearManager.ApplyDamage(50);
-                    StartCoroutine(EventPhrase2());
+                    eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage());
+                    ChangeEventPhase();
                     eventCustom = true;
                 }
                 else
@@ -104,9 +115,9 @@ namespace VoiceActing
             }
             else if (indexPhrase == 11)
             {
-                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                /*textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.gameObject.SetActive(true);
-                skillManager.ActorSkillFeedback();
+                skillManager.ActorSkillFeedback();*/
                 emotionAttackManager.SelectCard(Emotion.Confiance);
 
             }
@@ -117,11 +128,10 @@ namespace VoiceActing
 
         }
 
-        private IEnumerator EventPhrase2()
+        /*private IEnumerator EventPhrase2()
         {
-            yield return new WaitForSeconds(4);
-            //CheckEvent();
-        }
+            eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage());
+        }*/
 
         private void ShiftAmbiance()
         {
@@ -130,6 +140,7 @@ namespace VoiceActing
 
         private IEnumerator ShiftAmbianceCoroutine()
         {
+            AudioManager.Instance.StopMusic();
             float time = 600;
             float speedLight = 1 / time;
             float speedColor = 0.75f / time;
@@ -147,7 +158,7 @@ namespace VoiceActing
                     blackRectLower.anchoredPosition -= new Vector2(0,0.25f);
                 }
                 color -= new Color(speedColor, speedColor, speedColor, 0);
-                //characters[0].ChangeTint(color);
+                spriteRendererCharacterDoremi.color = color;
                 light.intensity -= speedLight;
                 time -= 1;
                 yield return null;
@@ -155,8 +166,10 @@ namespace VoiceActing
             }
             yield return new WaitForSeconds(2);
             color = new Color(1, 1, 1, 1);
-            //characters[0].ChangeTint(color);
+            spriteRendererCharacterDoremi.color = color;
             newAmbiance.Invoke();
+            AudioManager.Instance.PlaySound(audioClipSpotlight);
+            AudioManager.Instance.PlayMusic(battleThemePrologue);
             yield return new WaitForSeconds(3);
             newAmbiance2.Invoke();
             emotionAttackManager.SwitchCardTransformIntro();
@@ -164,8 +177,10 @@ namespace VoiceActing
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
             textAppearManager.ApplyDamage(100);
             inputController.gameObject.SetActive(true);
+            cameraController.enabled = true;
             cameraController.SetNoCameraEffect(false);
             cameraController.MoveToInitialPosition();
+            //SwitchToDoublage();
         }
 
 

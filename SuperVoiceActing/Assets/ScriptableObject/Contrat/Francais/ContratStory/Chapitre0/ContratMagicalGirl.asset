@@ -26,7 +26,41 @@ MonoBehaviour:
   contractTitle: []
   contractDictionnary: []
   description: []
-  characters: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Princess Muffin
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -430,6 +464,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae5e7bc5fac28f04c97a8ab4cdbe2c26, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 1
+  eventGameOver: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}

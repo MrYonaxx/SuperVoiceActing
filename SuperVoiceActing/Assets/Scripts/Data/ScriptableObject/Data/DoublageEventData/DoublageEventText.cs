@@ -86,7 +86,7 @@ namespace VoiceActing
 
         [HorizontalGroup("TextCamera", LabelWidth = 100, Width = 10)]
         [SerializeField]
-        private int cameraID;
+        private int cameraID = -1;
         public int CameraID
         {
             get { return cameraID; }
@@ -106,7 +106,7 @@ namespace VoiceActing
             get { return optionRandom; }
         }*/
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [Title("Position")]
         [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
@@ -117,7 +117,7 @@ namespace VoiceActing
             get { return camStart; }
         }
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [Title("Rotation")]
         [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
@@ -128,7 +128,7 @@ namespace VoiceActing
             get { return camStartRotation; }
         }
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [Title("Time")]
         // -1 pour ne pas set de position initiale
         [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
@@ -140,7 +140,7 @@ namespace VoiceActing
             get { return timeStart; }
         }
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [HorizontalGroup("MouvementFin", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]
@@ -150,7 +150,7 @@ namespace VoiceActing
             get { return cameraEnd; }
         }
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [HorizontalGroup("MouvementFin", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]
@@ -160,7 +160,7 @@ namespace VoiceActing
             get { return cameraEndRotation; }
         }
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [HorizontalGroup("MouvementFin", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]
@@ -170,7 +170,7 @@ namespace VoiceActing
             get { return timeEnd; }
         }
 
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [HorizontalGroup("MouvementFin2", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]
@@ -179,7 +179,7 @@ namespace VoiceActing
         {
             get { return cameraEnd2; }
         }
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [HorizontalGroup("MouvementFin2", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]
@@ -188,7 +188,7 @@ namespace VoiceActing
         {
             get { return cameraEnd2Rotation; }
         }
-        [HideIf("cameraID", 0)]
+        [HideIf("cameraID", -1)]
         [HorizontalGroup("MouvementFin2", PaddingRight = 50, Width = 0.33f)]
         [SerializeField]
         [HideLabel]

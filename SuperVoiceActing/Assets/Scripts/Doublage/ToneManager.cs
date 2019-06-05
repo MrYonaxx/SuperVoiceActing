@@ -196,6 +196,8 @@ namespace VoiceActing
         {
             //int addValue = toneAddValue / 8;
             //EmotionStat stat = new EmotionStat(-addValue, -addValue, -addValue, -addValue, -addValue, -addValue, -addValue, -addValue);
+            if (emotions == null)
+                return;
             for (int i = 0; i < emotions.Length; i++)
             {
                 switch (emotions[i])

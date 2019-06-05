@@ -321,9 +321,6 @@ namespace VoiceActing
             set { contractGachaCooldown = value; }
         }
 
-
-
-
         // Liste des Acteurs
         [SerializeField]
         private List<VoiceActor> voiceActors;
@@ -341,10 +338,6 @@ namespace VoiceActing
             set { voiceActorsGacha = value; }
         }
 
-
-
-
-
         [SerializeField]
         private List<StoryEventData> nextStoryEvents;
         public List<StoryEventData> NextStoryEvents
@@ -352,7 +345,6 @@ namespace VoiceActing
             get { return nextStoryEvents; }
             set { nextStoryEvents = value; }
         }
-
 
         [SerializeField]
         private List<StoryEventData> nextStoryEventsStartWeek;
@@ -430,13 +422,7 @@ namespace VoiceActing
         }
 
 
-        /*[SerializeField]
-        private bool isNextWeek;
-        public bool IsNextWeek
-        {
-            get { return isNextWeek; }
-            set { isNextWeek = value; }
-        }*/
+
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

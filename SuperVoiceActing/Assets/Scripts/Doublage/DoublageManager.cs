@@ -79,8 +79,6 @@ namespace VoiceActing
         protected GameObject recIcon;
         [SerializeField]
         protected Image fade;
-        [SerializeField]
-        protected TextMeshProUGUI textDemo;
 
         [Header("IntroSequence")]
         [SerializeField]
@@ -819,7 +817,7 @@ namespace VoiceActing
 
 
 
-        private void ChangeEventPhase()
+        protected void ChangeEventPhase()
         {
             if(eventManager.CheckStopSession() == false)
             {

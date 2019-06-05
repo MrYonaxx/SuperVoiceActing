@@ -802,7 +802,8 @@ namespace VoiceActing
 
         public void ResetHalo()
         {
-            haloCurrentEmotion.color = new Color(0, 0, 0, 0);
+            if(haloCurrentEmotion != null)
+                haloCurrentEmotion.color = new Color(0, 0, 0, 0);
         }
 
         private void PrintDamage(float totalDamage, float normalDamage)

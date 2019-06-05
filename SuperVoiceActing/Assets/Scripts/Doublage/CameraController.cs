@@ -263,6 +263,17 @@ namespace VoiceActing
 
         public void CinematicCamera(DoublageEventText info)
         {
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+
+            rotating = false;
+            moving = false;
+            cameraPlacement = 0;
+            noCameraEffect = true;
+
             if (cinematicCoroutine != null)
                 StopCoroutine(cinematicCoroutine);
 
@@ -318,7 +329,7 @@ namespace VoiceActing
 
 
 
-        public void CinematicCamera(int id)
+        /*public void CinematicCamera(int id)
         {
             if (cinematicCoroutine != null)
                 StopCoroutine(cinematicCoroutine);
@@ -446,7 +457,7 @@ namespace VoiceActing
 
             if (cinematicCoroutine != null)
                 StartCoroutine(cinematicCoroutine);
-        }
+        }*/
 
         // Move Camera
         private IEnumerator CinematicCamera1(float x, float y, float z, int time, float offsetX = 0, float offsetY = 0, float offsetZ = 0)

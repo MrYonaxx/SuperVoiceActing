@@ -40,6 +40,8 @@ namespace VoiceActing
         [SerializeField]
         protected Transform charactersParent;
         [SerializeField]
+        protected int charactersActorLenght = 3;
+        [SerializeField]
         protected List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
         [SerializeField]
         protected Transform[] defaultCharacterTransform;
@@ -171,7 +173,7 @@ namespace VoiceActing
                     DoublageEventText node = (DoublageEventText)currentNode;
                     inputEvent.gameObject.SetActive(true);
                     interloc = FindInterlocutor(node.Interlocuteur);
-                    if (node.CameraID != 0)
+                    if (node.CameraID >= 0)
                     {
                         viewports[node.CameraID].TextCameraEffect(node);
                     }
@@ -181,7 +183,6 @@ namespace VoiceActing
                     }
                     clearAllText = node.ClearAllText;
                     clearText = node.ClearText;
-                    Debug.Log(node.Text);
                     interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
                 }
 
@@ -398,7 +399,7 @@ namespace VoiceActing
                     continue;
                 if (characters[i].GetStoryCharacterData() == characterToFind)
                 {
-                    if (i < 3) // 3 car il y a 3 voice actors
+                    if (i < charactersActorLenght) // 3 car il y a 3 voice actors
                     {
                         mainText.SetPauseText(true);
                         mainText.HideText();

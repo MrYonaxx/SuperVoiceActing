@@ -26,7 +26,41 @@ MonoBehaviour:
   contractTitle: []
   contractDictionnary: []
   description: []
-  characters: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Princesse Muffin
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -50,10 +84,10 @@ MonoBehaviour:
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 100
+        sadness: -50
+        disgust: -50
+        anger: -50
         surprise: 0
         sweetness: 0
         fear: 0
@@ -63,18 +97,18 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 100
-        hpMax: 100
+        hpMin: 50
+        hpMax: 50
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 90
+        sadness: 50
+        disgust: -50
+        anger: -50
         surprise: 0
         sweetness: 0
         fear: 0
@@ -93,14 +127,16 @@ MonoBehaviour:
           trust: 0
   eventData:
   - {fileID: 11400000, guid: 13fb34b8b0f098c4091b6bda73cceb38, type: 2}
-  - {fileID: 11400000, guid: 5444d47534f94044b8b3ee0a788007c7, type: 2}
+  - {fileID: 11400000, guid: e92c5fb8b5328a44d80ba78ab9632b5e, type: 2}
+  - {fileID: 11400000, guid: 95c225ff7772c654f8d92e87c0116e98, type: 2}
   - {fileID: 11400000, guid: 02a6bcc829f718f49a38da6739056c66, type: 2}
   - {fileID: 11400000, guid: 8c923d71ca8153248a5d2bff5a2d327e, type: 2}
   - {fileID: 11400000, guid: 95dde05f8af8a8546b5cbd83c310def8, type: 2}
-  - {fileID: 11400000, guid: 95c225ff7772c654f8d92e87c0116e98, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
-  changeBGM: 0
-  battleTheme: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: 8b6da23408691fe4ba37fac1db7f1fbb, type: 3}
   victoryTheme: {fileID: 0}
   sessionLock: 0
