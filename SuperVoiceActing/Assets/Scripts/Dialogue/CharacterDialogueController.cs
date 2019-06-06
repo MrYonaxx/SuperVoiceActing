@@ -246,12 +246,14 @@ namespace VoiceActing
             {
                 time -= 1;
                 spriteRenderer.color += new Color(0, 0, 0, alphaSpeed);
+                eyesScript.ChangeTint(spriteRenderer.color);
                 yield return null;
             }
             if(appear == false)
                 spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
             else
                 spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
+            eyesScript.ChangeTint(spriteRenderer.color);
         }
 
         public void ModifyCharacter(DoublageEventMoveCharacter data)
