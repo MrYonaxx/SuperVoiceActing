@@ -70,6 +70,8 @@ public class Yeux : MonoBehaviour
 
     public void ChangeTint(Color newColor)
     {
+        if (spriteRenderer == null)
+            return;
         spriteRenderer.color = newColor;
     }
 }
