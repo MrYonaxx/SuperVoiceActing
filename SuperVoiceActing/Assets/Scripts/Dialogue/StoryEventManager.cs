@@ -90,7 +90,12 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-
+        public bool DebugData()
+        {
+            if (storyEventData != null)
+                return true;
+            return false;
+        }
 
         #endregion
 
@@ -127,7 +132,8 @@ namespace VoiceActing
 
         public void CreateScene()
         {
-            textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
+            if(playerData.Date.month != 0)
+                textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
             for (int i = 0; i < characters.Count; i++)
             {
                 Destroy(characters[i].gameObject);

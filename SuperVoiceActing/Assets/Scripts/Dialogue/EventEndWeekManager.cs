@@ -23,7 +23,8 @@ namespace VoiceActing
 
         private void Start()
         {
-            CheckEventEndWeek();
+            if(storyEventManager.DebugData() == false)
+                CheckEventEndWeek();
         }
 
 
