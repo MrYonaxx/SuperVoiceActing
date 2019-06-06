@@ -438,7 +438,10 @@ namespace VoiceActing
                     contrat.EventData.RemoveAt(i);
                     eventStartLine = startLine;
                     ExecuteEvent();
-                    return true;
+                    if (currentEvent.StopSession == true)
+                        return true;
+                    else
+                        return false;
                 }
             }
             return false;

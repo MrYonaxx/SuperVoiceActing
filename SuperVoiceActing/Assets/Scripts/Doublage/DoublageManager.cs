@@ -549,9 +549,12 @@ namespace VoiceActing
             // Check Event
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
             {
-                startLine = false;
-                ChangeEventPhase();
-                return;
+                if (eventManager.CheckStopSession() == true)
+                {
+                    startLine = false;
+                    ChangeEventPhase();
+                    return;
+                }
             }
             else // Nouveau tour
             {
