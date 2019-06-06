@@ -14,8 +14,9 @@ public class Yeux : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if(forceStopBlink == false)
+        if(spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (forceStopBlink == false)
         {
             coroutine = BlinkEye();
             StartCoroutine(coroutine);
@@ -25,6 +26,8 @@ public class Yeux : MonoBehaviour
 
     public void SetSprite(Sprite eyes)
     {
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = eyes;
     }
 

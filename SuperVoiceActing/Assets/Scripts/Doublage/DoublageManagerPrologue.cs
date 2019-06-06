@@ -119,6 +119,7 @@ namespace VoiceActing
                 inputController.gameObject.SetActive(true);
                 skillManager.ActorSkillFeedback();*/
                 emotionAttackManager.SelectCard(Emotion.Confiance);
+                base.SetPhrase();
 
             }
             else
