@@ -72,7 +72,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: "Alors comme \xE7a vous avez un contrat \xE0 nous proposer."
+        text: "Alors comme \xE7a, vous avez un contrat \xE0 nous proposer."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Nous produisons actuellement le pilote d'une s\xE9rie d'animation."
+        text: "Nous produisons actuellement l'\xE9pisode pilote d'une s\xE9rie d'animation."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Une s\xE9rie destin\xE9e aux jeunes filles plus pr\xE9cisement."
+        text: "Une s\xE9rie destin\xE9e aux jeunes filles, plus pr\xE9cisement."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -517,8 +517,8 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Oh voyez-vous c'est un genre o\xF9 de jeune fille se transforment en
-          super h\xE9roine et combattent les forces du mal."
+        text: "Oh voyez-vous, c'est un genre dans lequel on peut voir des jeunes filles
+          quis se transforment en super h\xE9roines et combattent les forces du mal."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: Le pilote se concentre sur Charlotte, le personnage principal.
+        text: "Cet \xE9pisode pilote se concentrera sur Charlotte, le personnage principal."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -698,8 +698,8 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Une jeune lyc\xE9ene travaillant dans une boulangerie apr\xE8s les
-          cours. Puis un jour, elle obtient de myst\xE9rieux pouvoirs magiques."
+        text: "C'est une jeune lyc\xE9enne qui, pour gagner un peu d'argent travaille
+          dans une boulangerie apr\xE8s les cours."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -741,10 +741,55 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
+        interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
+          type: 2}
+        emotionNPC: 0
+        text: "Un jour, elle obtient de myst\xE9rieux pouvoirs magiques."
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+  - dataBox:
+      eventNode: 0
+      storyEventText:
         interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
           type: 2}
         emotionNPC: 0
-        text: "Ah oui ...\nJ'imagine que vous allez tout exploser avec une s\xE9rie
+        text: "Ah oui...\nJ'imagine que vous allez tout exploser, avec une s\xE9rie
           pareille."
         textEng: 
         mouthSpeed: 1
@@ -790,7 +835,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Ainsi pour le pilote nous n'auront besoin que du r\xF4le de Charlotte."
+        text: "Ainsi, pour le pilote, nous n'auront besoin que du r\xF4le de Charlotte."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -924,7 +969,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Cependant il y a un petit hic dans tout \xE7a ..."
+        text: "Cependant il y a un petit hic dans tout \xE7a..."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1013,7 +1058,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: En fait ...
+        text: En fait...
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1058,7 +1103,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: Heum ...
+        text: Heum...
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1103,7 +1148,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: Nous ne disposons que de ...
+        text: Nous ne disposons que de...
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1325,7 +1370,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "O-Oui hihi ... Voyez-vous on a r\xE9\xE9crit plusieurs fois l'\xE9pisode."
+        text: "O-Oui hihi... Voyez-vous on a r\xE9\xE9crit plusieurs fois l'\xE9pisode."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1502,7 +1547,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: "4 jours c'est tout bonnement irr\xE9alisable ...<link=Pause></link>
+        text: "4 jours c'est tout bonnement irr\xE9alisable...<link=Pause></link>
           hihi."
         textEng: 
         mouthSpeed: 1
@@ -2218,7 +2263,7 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "Son message et sa mythologie va donner espoir \xE0 une g\xE9n\xE9ration
-          d'enfants et un avenir radieux et meilleur !"
+          d'enfants \xE0 un avenir radieux et meilleur !"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -2307,8 +2352,8 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Si Princess Muffin \xE9choue alors c'est mon existence toute enti\xE8re
-          qui est un \xE9chec."
+        text: "Si Princess Muffin \xE9choue, alors c'est mon existence toute enti\xE8re
+          qui est un \xE9chec !"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -2352,7 +2397,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: N'en faites pas trop ...
+        text: N'en faites pas trop...
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -2576,7 +2621,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: c14d90486b68c0845b46ad6377f18abd,
           type: 2}
         emotionNPC: 0
-        text: "Alors s'il vous pla\xEEt "
+        text: "Alors, s'il-vous-pla\xEEt !"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
