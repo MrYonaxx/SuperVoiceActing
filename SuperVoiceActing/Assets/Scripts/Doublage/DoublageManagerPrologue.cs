@@ -85,6 +85,7 @@ namespace VoiceActing
                 textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Joie);
                 textAppearManager.ApplyDamage(100);
                 inputController.gameObject.SetActive(true);
+                ShowUIButton(buttonUIY);
             }
             else if (indexPhrase == 2)
             {
@@ -100,6 +101,8 @@ namespace VoiceActing
                 else
                 {
                     inputController.gameObject.SetActive(true);
+                    ShowUIButton(buttonUIA);
+                    ShowUIButton(buttonUIB);
                 }
             }
             else if (indexPhrase == 3)
@@ -107,6 +110,7 @@ namespace VoiceActing
                 textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 textAppearManager.ApplyDamage(100);
                 inputController.gameObject.SetActive(true);
+                ShowUIButton(buttonUIY);
             }
             else if (indexPhrase == 6)
             {
@@ -181,6 +185,7 @@ namespace VoiceActing
             cameraController.enabled = true;
             cameraController.SetNoCameraEffect(false);
             cameraController.MoveToInitialPosition();
+            ShowUIButton(buttonUIY);
             //SwitchToDoublage();
         }
 

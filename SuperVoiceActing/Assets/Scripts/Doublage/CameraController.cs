@@ -746,6 +746,11 @@ namespace VoiceActing
             if (rotatingCoroutine != null)
                 StopCoroutine(rotatingCoroutine);
 
+            if (cinematicCoroutine != null)
+                StopCoroutine(cinematicCoroutine);
+            if (cinematicRotatingCoroutine != null)
+                StopCoroutine(cinematicRotatingCoroutine);
+
             noCameraEffect = false;
             rotating = false;
             moving = false;

@@ -709,8 +709,13 @@ namespace VoiceActing
             // Calculate Actor Draw Chances
             for (int i = 0; i < voiceActors.Count; i++)
             {
-                currentMaxValue += CalculateVoiceActorGachaScore(role, voiceActors[i], 0.5f);
-                randomDraw[voiceActorsGacha.Count + i] = currentMaxValue;
+                if (voiceActors[i].Availability == false)
+                    currentMaxValue = -1;
+                else
+                {
+                    currentMaxValue += CalculateVoiceActorGachaScore(role, voiceActors[i], 0.5f);
+                    randomDraw[voiceActorsGacha.Count + i] = currentMaxValue;
+                }
             }
 
             // Draw

@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -24,6 +25,12 @@ namespace VoiceActing
         StoryEventData eventEndToAdd;
         [SerializeField]
         VoiceActorData voiceActorToAdd;
+        [SerializeField]
+        bool voiceActorAdd;
+        [SerializeField]
+        bool voiceActorRemove;
+        [SerializeField]
+        bool voiceActorUnavailable;
 
         public void SetNode(PlayerData playerData)
         {
@@ -61,6 +68,46 @@ namespace VoiceActing
             if (eventEndToAdd != null)
             {
                 playerData.NextStoryEvents.Add(eventEndToAdd);
+            }
+
+
+            if (voiceActorToAdd != null)
+            {
+                if (voiceActorRemove == true)
+                {
+                    for (int i = 0; i < playerData.VoiceActors.Count; i++)
+                    {
+                        if (playerData.VoiceActors[i].Name == voiceActorToAdd.Name)
+                            playerData.VoiceActors.RemoveAt(i);
+                    }
+                }
+                else if (voiceActorAdd == true)
+                {
+                    playerData.VoiceActors.Add(new VoiceActor(voiceActorToAdd));
+                }
+
+                if (voiceActorUnavailable == true)
+                {
+                    for (int i = 0; i < playerData.VoiceActors.Count; i++)
+                    {
+                        if (playerData.VoiceActors[i].Name == voiceActorToAdd.Name)
+                        {
+                            playerData.VoiceActors[i].Availability = false;
+                            playerData.VoiceActors[i].ActorMentalState = VoiceActorState.Absent;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < playerData.VoiceActors.Count; i++)
+                    {
+                        if (playerData.VoiceActors[i].Name == voiceActorToAdd.Name)
+                        {
+                            playerData.VoiceActors[i].Availability = true;
+                            playerData.VoiceActors[i].ActorMentalState = VoiceActorState.Fine;
+                        }
+                    }
+                }
             }
 
 

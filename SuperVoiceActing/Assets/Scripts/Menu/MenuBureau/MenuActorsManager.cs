@@ -827,6 +827,9 @@ namespace VoiceActing
             if (auditionMode == false)
                 return;
 
+            if (actorsList[indexActorSelected].Availability == false)
+                return;
+
             animatorFeedbackButtonAudition.SetTrigger("Feedback");
             statImageActorAnimator.SetTrigger("Feedback");
             animatorSelection.SetTrigger("Validate");
