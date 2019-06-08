@@ -225,6 +225,7 @@ namespace VoiceActing
                     playerData.CreateList();
                     contrat = new Contract(contratData); // Pour Debug
                     CheckCharacterLock(contrat);
+                    playerData.CurrentContract = contrat;
                 }
             }
             indexPhrase = contrat.CurrentLine;

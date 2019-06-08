@@ -15,24 +15,11 @@ MonoBehaviour:
   skillName: Odorac
   description: 
   descriptionBattle: Tour +1
-  afterAttack: 0
-  afterCritical: 0
-  afterKill: 1
-  phraseType:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 1
-    sweetness: 0
-    fear: 0
-    trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 20
+  skillType: 0
+  skillTarget: 0
   turnActive: 0
   refresh: 0
-  addTurn: 0
+  addBuffTurn: 0
   cardGain:
     neutral: 0
     joy: 0
@@ -64,9 +51,31 @@ MonoBehaviour:
     fear: 0
     trust: 0
   emotionStatVariance: 0
+  emotionDamagePercentage:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  emotionDamageFlat:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  emotionDamageVariance: 0
   hpGainPercentage: 0
   hpPercentageVariance: 0
   hpGainFlat: 0
   hpFlatVariance: 0
-  turnGain: -1
+  turnGain: 1
   turnGainVariance: 0
+  producerCost: 0
