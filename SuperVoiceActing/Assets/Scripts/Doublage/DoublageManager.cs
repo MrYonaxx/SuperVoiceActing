@@ -106,9 +106,11 @@ namespace VoiceActing
 
         [Header("UI")]
         [SerializeField]
-        Image buttonUIY;
+        protected Animator buttonUIY;
         [SerializeField]
-        Image buttonUIA;
+        protected Animator buttonUIB;
+        [SerializeField]
+        protected Animator buttonUIA;
 
         [Header("AudioSource")]
         [SerializeField]
@@ -350,6 +352,7 @@ namespace VoiceActing
                     SelectCard("Neutre");
                     return;
                 }
+                HideUIButton();
                 StartCoroutine(AttackCoroutine());
 
             }
@@ -564,6 +567,10 @@ namespace VoiceActing
                 emotionAttackManager.SwitchCardTransformToBattle();
                 inputController.gameObject.SetActive(true);
                 skillManager.CheckBuff(actorsManager.GetBuffList());
+                ShowUIButton(buttonUIA);
+                ShowUIButton(buttonUIB);
+                if (enemyManager.GetHpPercentage() == 0)
+                    ShowUIButton(buttonUIY);
             }
 
             // Reprint éventuel
@@ -637,6 +644,7 @@ namespace VoiceActing
                     AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
                     if (indexPhrase == contrat.TextData.Count)
                     {
+
                         EndSession();
                         return;
                     }
@@ -679,6 +687,8 @@ namespace VoiceActing
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
+            ShowUIButton(buttonUIA);
+            ShowUIButton(buttonUIB);
             //skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Kill", lastAttack);
         }
 
@@ -703,6 +713,7 @@ namespace VoiceActing
 
         private IEnumerator EndSessionCoroutine(int time)
         {
+            actorsManager.ResetStat();
             if (contrat.VictoryTheme == null)
             {
                 AudioManager.Instance.StopMusic(180);
@@ -786,16 +797,27 @@ namespace VoiceActing
         }
 
 
+        public void ShowUIButton(Animator animButton)
+        {
+            animButton.gameObject.SetActive(true);
+            animButton.SetTrigger("Appear");
+            animButton.ResetTrigger("Disappear");
+        }
+
 
         public void HideUIButton()
         {
             if (buttonUIA == null)
                 return;
-            StartCoroutine(MoveUIButton(buttonUIA, -600));
-            StartCoroutine(MoveUIButton(buttonUIY, -600));
+            buttonUIY.SetTrigger("Disappear");
+            buttonUIY.ResetTrigger("Appear");
+            buttonUIA.SetTrigger("Disappear");
+            buttonUIA.ResetTrigger("Appear");
+            buttonUIB.SetTrigger("Disappear");
+            buttonUIB.ResetTrigger("Appear");
         }
 
-        private IEnumerator MoveUIButton(Image button, float targetY)
+        /*private IEnumerator MoveUIButton(Image button, float targetY)
         {
 
             int time = 20;
@@ -806,7 +828,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-        }
+        }*/
 
         public IEnumerator WaitSkillManager()
         {
@@ -860,6 +882,10 @@ namespace VoiceActing
         {
             playerData.Deck.Add(addDeck);
             playerData.ComboMax += addComboMax;
+            if (playerData.ComboMax >= 4)
+                playerData.ComboMax = 3;
+            else if (playerData.ComboMax <= 0)
+                playerData.ComboMax = 1;
             emotionAttackManager.ModifiyDeck(addDeck, playerData.ComboMax);
         }
 
@@ -901,6 +927,7 @@ namespace VoiceActing
 
         public void ShowResultScreen()
         {
+            actorsManager.ResetStat();
             if (indexPhrase == playerData.CurrentContract.TotalLine)
             {
                 if (playerData.CurrentContract.StoryEventWhenEnd != null)

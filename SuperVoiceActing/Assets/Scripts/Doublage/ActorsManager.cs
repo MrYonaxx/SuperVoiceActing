@@ -150,6 +150,15 @@ namespace VoiceActing
             DrawActorStat();
         }
 
+        public void ResetStat()
+        {
+            for (int i = 0; i < actors.Count; i++)
+            {
+                actors[indexCurrentActor].StatModifier = new EmotionStat();
+                actors[indexCurrentActor].Buffs.Clear();
+            }
+        }
+
         public bool ApplyBuff(SkillData buff)
         {
             for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)

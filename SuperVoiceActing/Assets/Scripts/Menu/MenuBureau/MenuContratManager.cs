@@ -54,6 +54,8 @@ namespace VoiceActing
         MenuContractPreparation menuContractPreparation;
         [SerializeField]
         MenuManagementManager menuManagementManager;
+        [SerializeField]
+        MenuActorsManager menuActorsManager;
 
         [Header("MenuInfo")]
 
@@ -214,6 +216,7 @@ namespace VoiceActing
                     {
                         playerData.VoiceActors.Add(new VoiceActor(newContract.Characters[i].CharacterLock));
                         newContract.VoiceActors[i] = playerData.VoiceActors[playerData.VoiceActors.Count - 1];
+                        menuActorsManager.DestroyButtonList();
                     }
                 }
             }

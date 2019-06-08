@@ -212,7 +212,10 @@ namespace VoiceActing
                 }
             }
             indexSelected = 0;
-            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+            if(currentContract.Characters[indexSelected].CharacterLock != null)
+                menuActorsManager.AuditionMode(false, currentContract.Characters[indexSelected]);
+            else
+                menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
             listButtonRoles[0].SelectButton();
             indexSelected = 0;
             DrawRoleInfo();
@@ -243,7 +246,11 @@ namespace VoiceActing
         private void DrawRoleInfo()
         {
             // bug si appelé dans OnEnable(), les buttons sont encore considéré inactive
-            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+            if (currentContract.Characters[indexSelected].CharacterLock != null)
+                menuActorsManager.AuditionMode(false, currentContract.Characters[indexSelected]);
+            else
+                menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+            //menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
 
             textRoleName.text = currentContract.Characters[indexSelected].Name;
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
@@ -412,7 +419,13 @@ namespace VoiceActing
 
         private void CheckButtonInSession()
         {
-            for(int i = 0; i < currentContract.VoiceActors.Count; i++)
+            if (currentContract.SessionLock == true)
+            {
+                inSessionPossible = false;
+                inSessionObject.gameObject.SetActive(false);
+                return;
+            }
+            for (int i = 0; i < currentContract.VoiceActors.Count; i++)
             {
                 if (currentContract.VoiceActors[i] == null)
                 {

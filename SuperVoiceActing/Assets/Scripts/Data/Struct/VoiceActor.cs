@@ -529,6 +529,13 @@ namespace VoiceActing
 
         public void WorkForWeek(ExperienceCurveData experienceCurve)
         {
+            if (actorMentalState == VoiceActorState.Absent)
+            {
+                return;
+            }
+
+
+
             // Si le comédien était mort il passe en fatigué
             if (actorMentalState == VoiceActorState.Dead)
             {
