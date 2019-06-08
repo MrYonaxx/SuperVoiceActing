@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LigneTelephoniqueStory
   m_EditorClassIdentifier: 
-  name: "Ligne T\xE9l\xE9phonique"
+  name: "Ligne T\xE9l\xE9phonique [Nom]"
   level: 1
   contractType: 3
   salaryMin: 1500
@@ -24,7 +24,10 @@ MonoBehaviour:
   expGain: 27
   expBonus: 30
   contractTitle: []
-  contractDictionnary: []
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Telefonika
   description:
   - "L'entreprise [Nom] cherche une voix sympathique pour accompagner ses clients
     dans leurs d\xE9marches."
@@ -266,7 +269,7 @@ MonoBehaviour:
         fear: -50
         trust: 30
       enemyWeakPoints: []
-    - text: "Le temps de r\xE9ponse moyen de cet appel est d'environ ... minutes"
+    - text: "Le temps de r\xE9ponse moyen de cet appel est d'environ 2 minutes"
       textStats:
         interlocuteurID: 0
         linked: 0

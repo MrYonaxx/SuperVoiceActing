@@ -261,7 +261,7 @@ namespace VoiceActing
                 textsNext[i].text = experience.ExperienceCurve[va.Level].ToString();
 
                 animatorLevelUpFeedback[i].SetTrigger("LevelUp");
-
+                expGauge.transform.localScale = new Vector3(0, expGauge.transform.localScale.y, expGauge.transform.localScale.z);
                 yield return DrawExpGauge(expGauge, textsNext[i], experience.ExperienceCurve[va.Level], expGain);
             }
 
@@ -335,7 +335,10 @@ namespace VoiceActing
                     animatorLevelUpFeedback[i].SetTrigger("LevelUp");
                 }
                 textsLevel[i].text = va.Level.ToString();
-                textsNext[i].text = experience.ExperienceCurve[va.Level].ToString();//(va.NextEXP- va.Experience).ToString();
+                textsNext[i].text = va.NextEXP.ToString();//(va.NextEXP- va.Experience).ToString();
+                expGauge[i].transform.localScale = new Vector3((1 - (contract.VoiceActors[i].NextEXP / (float)experience.ExperienceCurve[contract.VoiceActors[i].Level])),
+                                                expGauge[i].transform.localScale.y,
+                                                expGauge[i].transform.localScale.z);
             }
             textCurrentLine.text = contract.CurrentLine.ToString();
             textEXP.text = (contract.ExpGain * lineDefeated).ToString();

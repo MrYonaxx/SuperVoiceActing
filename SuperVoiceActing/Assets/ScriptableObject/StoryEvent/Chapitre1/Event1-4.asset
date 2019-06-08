@@ -84,7 +84,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
-        text: "Ah te revoil\xE0 ! Dis donc est-ce que tu as pens\xE9 \xE0 acheter
+        text: "Ah te revoil\xE0 ! Dis donc, est-ce que tu as pens\xE9 \xE0 acheter
           des sardines ?"
         textEng: 
         mouthSpeed: 1
@@ -274,7 +274,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
-        text: Ragab VII Wing of Destruction ?
+        text: '"<color=yellow>Ragab VII : Wing of Destruction</color>" ?'
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
-        text: Inconcevable ...
+        text: Inconcevable...
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: "On a m\xEAme une d\xE9mo alors allume la console"
+        text: "On a m\xEAme une d\xE9mo, alors allume la console"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: "Ouais vu que c'est une suite on va devoir contacter les anciens com\xE9diens."
+        text: "Ouais, vu que c'est une suite on va devoir contacter les anciens com\xE9diens."
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1102,8 +1102,8 @@ MonoBehaviour:
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 1
+        fadeIn: 1
+        fadeOut: 0
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
@@ -1150,8 +1150,8 @@ MonoBehaviour:
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 1
-        fadeOut: 0
+        fadeIn: 0
+        fadeOut: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
@@ -1293,8 +1293,8 @@ MonoBehaviour:
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 1
-        fadeOut: 0
+        fadeIn: 0
+        fadeOut: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
@@ -1341,8 +1341,8 @@ MonoBehaviour:
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 1
+        fadeIn: 1
+        fadeOut: 0
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
@@ -1561,7 +1561,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: "(Miss Ragab est un nouveau personnage in\xE9dit ...)"
+        text: "(Miss Ragab est un nouveau personnage in\xE9dit...)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1608,7 +1608,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: "(Ils nous imposent Dor\xE9mi pour l'interpr\xE9ter ...)"
+        text: "(Ils nous imposent Dor\xE9mi pour l'interpr\xE9ter...)"
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1655,7 +1655,7 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
-        text: (Et surtout ils sont venus nous voir, nous, un petit studio ...)
+        text: (Et surtout, ils sont venus nous voir, nous, un petit studio...)
         textEng: 
         mouthSpeed: 1
         forceSkip: 0
@@ -1709,6 +1709,53 @@ MonoBehaviour:
         ignorePlayerInput: 0
       storyEventWait:
         time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+  - dataBox:
+      eventNode: 1
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        text: 
+        textEng: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 120
       storyEventEffect:
         eventEffect: 0
         time: 60

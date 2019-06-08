@@ -571,6 +571,14 @@ namespace VoiceActing
             destinationVertices[vertexIndex + 3] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);
         }
 
+        protected virtual void MoveVerticesAttack(Vector3[] destinationVertices, int vertexIndex, Matrix4x4 matrix)
+        {
+            destinationVertices[vertexIndex + 0] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 0]);
+            destinationVertices[vertexIndex + 1] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 1]);
+            destinationVertices[vertexIndex + 2] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 2]);
+            destinationVertices[vertexIndex + 3] = matrix.MultiplyPoint3x4(destinationVertices[vertexIndex + 3]);
+        }
+
         protected virtual Vector3 ModifyPosition(int vertexIndex)
         {
             Vector3 position = new Vector3(0, vertexAnim[vertexIndex].offset, 0);
@@ -651,7 +659,7 @@ namespace VoiceActing
             textInfo = textMeshPro.textInfo;
             //Matrix4x4 matrix;
             TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
-            Vector3 scale = new Vector3(1f, 1f, 1f);
+            Vector3 scale = new Vector3(1.02f, 1.02f, 1.02f);
 
             float[] randomParameter = new float[characterCount];
             for (int i = 0; i < characterCount; i++)
@@ -663,7 +671,6 @@ namespace VoiceActing
 
             while (time != 0)
             {
-                scale += new Vector3(0.001f, 0.001f, 0.001f);
                 for (int i = 0; i < characterCount; i++)
                 {
                     TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
@@ -679,7 +686,7 @@ namespace VoiceActing
                     Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
 
                     Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, 0), scale);
-                    MoveVertices(destinationVertices, vertexIndex, matrix);
+                    MoveVerticesAttack(destinationVertices, vertexIndex, matrix);
 
                     destinationVertices[vertexIndex + 0] += offset;
                     destinationVertices[vertexIndex + 1] += offset;
