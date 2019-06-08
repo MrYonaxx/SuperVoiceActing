@@ -160,8 +160,8 @@ namespace VoiceActing
             textEXP.text = "0";
             textExpBonus.text = "0";
 
-            lineGauge.localScale = new Vector3((contract.CurrentLine / contract.TotalLine), lineGauge.localScale.y, lineGauge.localScale.z);
-            lineNewGauge.localScale = new Vector3((contract.CurrentLine / contract.TotalLine), lineNewGauge.localScale.y, lineNewGauge.localScale.z);
+            lineGauge.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), lineGauge.localScale.y, lineGauge.localScale.z);
+            lineNewGauge.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), lineNewGauge.localScale.y, lineNewGauge.localScale.z);
 
             // Update Contract
             contract.CurrentLine += lineDefeated;
@@ -219,19 +219,21 @@ namespace VoiceActing
             for(int i = 0; i < contract.VoiceActors.Count; i++)
             {
                 actorsImage[i].sprite = contract.VoiceActors[i].ActorSprite;
+                actorsImage[i].SetNativeSize();
                 textsLevel[i].text = contract.VoiceActors[i].Level.ToString();
-                textsNext[i].text = (contract.VoiceActors[i].NextEXP - contract.VoiceActors[i].Experience).ToString();
-                expGauge[i].transform.localScale = new Vector3((contract.VoiceActors[i].Experience / contract.VoiceActors[i].NextEXP),
+                textsNext[i].text = (contract.VoiceActors[i].NextEXP).ToString();// - contract.VoiceActors[i].Experience).ToString();
+                expGauge[i].transform.localScale = new Vector3((1-(contract.VoiceActors[i].NextEXP / (float)experience.ExperienceCurve[contract.VoiceActors[i].Level])),
                                                                 expGauge[i].transform.localScale.y,
                                                                 expGauge[i].transform.localScale.z);
 
-                contract.VoiceActors[i].Experience += expGain;
+                int actorGainDeduction = contract.VoiceActors[i].NextEXP;
+                contract.VoiceActors[i].NextEXP -= expGain;
 
-                StartCoroutine(CalculateExp(contract.VoiceActors[i], expGauge[i], i));
+                StartCoroutine(CalculateExp(contract.VoiceActors[i], expGauge[i], i, expGain, actorGainDeduction));
             }
         }
 
-        private IEnumerator CalculateExp(VoiceActor va, RectTransform expGauge, int i)
+        private IEnumerator CalculateExp(VoiceActor va, RectTransform expGauge, int i, int expGain, int actorGainDeduction)
         {
             int time = 180;
             while (time != 0)
@@ -239,8 +241,8 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-            yield return DrawExpGauge(expGauge, textsNext[i], va.NextEXP, va.Experience);
-            while (va.Experience > va.NextEXP)
+            yield return DrawExpGauge(expGauge, textsNext[i], experience.ExperienceCurve[va.Level], expGain);
+            while (va.NextEXP <= 0)
             {
                 // Level Up
                 if (actorsLevelUp[i] == false)
@@ -250,31 +252,32 @@ namespace VoiceActing
                 }
                 actorsLevelUp[i] = true;
 
-                va.Experience -= va.NextEXP;
                 va.LevelUp();
-                va.NextEXP = experience.ExperienceCurve[va.Level];
+                va.NextEXP += experience.ExperienceCurve[va.Level];
+                expGain -= actorGainDeduction;
+                actorGainDeduction = experience.ExperienceCurve[va.Level];
 
                 textsLevel[i].text = va.Level.ToString();
-                textsNext[i].text = va.NextEXP.ToString();
+                textsNext[i].text = experience.ExperienceCurve[va.Level].ToString();
 
                 animatorLevelUpFeedback[i].SetTrigger("LevelUp");
 
-                yield return DrawExpGauge(expGauge, textsNext[i], va.NextEXP, va.Experience);
+                yield return DrawExpGauge(expGauge, textsNext[i], experience.ExperienceCurve[va.Level], expGain);
             }
 
             textsLevel[i].text = va.Level.ToString();
-            textsNext[i].text = (va.NextEXP- va.Experience).ToString();
+            textsNext[i].text = va.NextEXP.ToString();
             inAnimation = false;
         }
 
-        private IEnumerator DrawExpGauge(RectTransform expGauge, TextMeshProUGUI textNext, float nextExp, float exp)
+        private IEnumerator DrawExpGauge(RectTransform expGauge, TextMeshProUGUI textNext, float exp, int expGain)
         {
             int time = 100;
-            Vector3 speed = new Vector3((exp / nextExp) / time, 0, 0);
+            Vector3 speed = new Vector3((expGain / exp)/ (float)time, 0, 0);
             while(time != 0)
             {
                 time -= 1;
-                textNext.text = ((int)(nextExp * (1 - expGauge.transform.localScale.x))).ToString();
+                textNext.text = ((int)(exp * (1 - expGauge.transform.localScale.x))).ToString();
                 expGauge.transform.localScale += speed;
                 if (expGauge.transform.localScale.x >= 1)
                 {
@@ -315,7 +318,7 @@ namespace VoiceActing
             for (int i = 0; i < contract.VoiceActors.Count; i++)
             {
                 va = contract.VoiceActors[i];
-                while (va.Experience > va.NextEXP)
+                while (va.NextEXP <= 0)
                 {
                     // Level Up
                     if (actorsLevelUp[i] == false)
@@ -325,14 +328,14 @@ namespace VoiceActing
                     }
                     actorsLevelUp[i] = true;
 
-                    va.Experience -= va.NextEXP;
+                    //va.Experience -= va.NextEXP;
                     va.LevelUp();
-                    va.NextEXP = experience.ExperienceCurve[va.Level];
+                    va.NextEXP += experience.ExperienceCurve[va.Level];
 
                     animatorLevelUpFeedback[i].SetTrigger("LevelUp");
                 }
                 textsLevel[i].text = va.Level.ToString();
-                textsNext[i].text = (va.NextEXP- va.Experience).ToString();
+                textsNext[i].text = experience.ExperienceCurve[va.Level].ToString();//(va.NextEXP- va.Experience).ToString();
             }
             textCurrentLine.text = contract.CurrentLine.ToString();
             textEXP.text = (contract.ExpGain * lineDefeated).ToString();

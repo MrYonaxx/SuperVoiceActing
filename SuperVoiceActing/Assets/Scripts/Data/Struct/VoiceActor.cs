@@ -140,7 +140,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private int nextEXP = 100;
+        private int nextEXP = 120;
         public int NextEXP
         {
             get { return nextEXP; }
@@ -570,12 +570,12 @@ namespace VoiceActing
             if(random <= chanceWork)
             {
                 hp -= (int) (hpMax * Random.Range(0.1f,0.2f));
-                experience = experience + (int) (experienceCurve.ExperienceCurve[level] * Random.Range(0.1f, 0.3f));
-                nextEXP = experienceCurve.ExperienceCurve[level] - experience;
+                //experience = experience + (int) (experienceCurve.ExperienceCurve[level] * Random.Range(0.1f, 0.3f));
+                nextEXP -= (int)(experienceCurve.ExperienceCurve[level] * Random.Range(0.1f, 0.3f));//experienceCurve.ExperienceCurve[level] - experience;
                 if (nextEXP <= 0)
                 {
                     LevelUp();
-                    nextEXP = experienceCurve.ExperienceCurve[level];
+                    nextEXP += experienceCurve.ExperienceCurve[level];
                 }
             }
             else // le comédien fais des trucs
