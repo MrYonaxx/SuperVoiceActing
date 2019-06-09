@@ -296,6 +296,7 @@ namespace VoiceActing
 
         public void DestroyButtonList()
         {
+            firstDraw = true;
             for (int i = 0; i < buttonsActors.Count; i++)
             {
                 Destroy(buttonsActors[i].gameObject);

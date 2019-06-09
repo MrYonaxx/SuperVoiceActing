@@ -56,8 +56,11 @@ namespace VoiceActing
 
         public void PlayMusic(AudioClip music, int timeFade = 1)
         {
+            if (music == audioMusic.clip)
+                return;
             audioMusic.clip = music;
             audioMusic.Play();
+            StopAllCoroutines();
             StartCoroutine(PlayMusicCoroutine(timeFade));
         }
 
@@ -80,6 +83,7 @@ namespace VoiceActing
 
         public void StopMusic(int timeFade = 1)
         {
+            StopAllCoroutines();
             StartCoroutine(StopMusicCoroutine(timeFade));
         }
 
@@ -101,6 +105,7 @@ namespace VoiceActing
 
         public void StopMusicWithScratch(int time)
         {
+            StopAllCoroutines();
             StartCoroutine(FadeVolumeWithPitch(time));
         }
 

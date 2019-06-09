@@ -29,7 +29,7 @@ MonoBehaviour:
   - "Publicit\xE9 pour la nouvelle recette exclusive de spaghettis bolognaise sous
     forme de nouilles instantan\xE9es !"
   characters:
-  - mainCharacter: 0
+  - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
@@ -38,8 +38,8 @@ MonoBehaviour:
       lineMax: 15
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
+      atkMin: 5
+      atkMax: 7
       timbre: {x: -1, y: 4}
       timbreRand: {x: -1, y: 4}
       characterStatMin:
@@ -508,6 +508,8 @@ MonoBehaviour:
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
   changeBGM: 1
   battleTheme: {fileID: 8300000, guid: 757623091b1cbaa4fb24a07d8c9b4a90, type: 3}
   victoryTheme: {fileID: 8300000, guid: d2a6a66e3dcdd9a43baaed626e0a9ef8, type: 3}

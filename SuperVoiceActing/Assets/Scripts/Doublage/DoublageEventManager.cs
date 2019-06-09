@@ -346,6 +346,8 @@ namespace VoiceActing
             }
             else // Fin d'event
             {
+                for (int i = 1; i < viewports.Length; i++)
+                    viewports[i].SetCameraEffect(false);
                 animatorBlackBand.SetBool("Appear", false);
                 for (int i = 0; i < textEvent.Length; i++)
                 {

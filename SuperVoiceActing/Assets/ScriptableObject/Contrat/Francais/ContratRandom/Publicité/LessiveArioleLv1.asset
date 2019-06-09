@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LessiveArioleLv1
   m_EditorClassIdentifier: 
-  name: Lessive Ariole
+  name: Lessive [Nom]
   level: 1
   contractType: 3
   salaryMin: 1500
@@ -23,12 +23,15 @@ MonoBehaviour:
   weekMax: 9
   expGain: 20
   expBonus: 20
-  contractTitle:
-  - Lessive Ariole
-  - Lessive Skop
-  contractDictionnary: []
+  contractTitle: []
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Ariole
+    - Skop
+    - Pure
   description:
-  - La [nom] est notre nouveau produit.
+  - La lessive [Nom] est notre nouveau produit.
   characters:
   - mainCharacter: 1
     optional: 0
@@ -132,64 +135,64 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 15
-        hpMax: 20
+        hpMin: 13
+        hpMax: 17
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 50
+        sadness: -50
+        disgust: 50
+        anger: 50
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        sweetness: -50
+        fear: -50
+        trust: 50
       enemyWeakPoints: []
     - text: "Personne ne r\xE9ussira \xE0 m'extirper de cette chemise blanche !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 13
+        hpMax: 17
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 50
+        sadness: -50
+        disgust: 50
+        anger: 50
         surprise: 0
         sweetness: 0
-        fear: 0
-        trust: 0
+        fear: -50
+        trust: 50
       enemyWeakPoints: []
     - text: "Personne ne r\xE9ussira \xE0 m'extirper de ce magnifique jean blanc !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 13
+        hpMax: 17
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 50
+        sadness: -50
+        disgust: 50
+        anger: 50
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        sweetness: -50
+        fear: -50
+        trust: 50
       enemyWeakPoints: []
   - textDataCondition:
       all: 1
@@ -231,7 +234,7 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-    - text: Surtout la lessive de la marque Ariole !
+    - text: Surtout la lessive de la marque [Nom] !
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -307,22 +310,22 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 10
+        hpMax: 10
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
-        neutral: 0
-        joy: 0
+        neutral: -50
+        joy: -50
         sadness: 0
-        disgust: 0
-        anger: 0
+        disgust: 100
+        anger: 50
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        sweetness: -50
+        fear: -30
+        trust: -50
       enemyWeakPoints: []
   - textDataCondition:
       all: 0
@@ -336,24 +339,24 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: -100
+        sadness: -50
+        disgust: 50
+        anger: 100
+        surprise: -50
+        sweetness: -100
+        fear: -20
+        trust: -50
       enemyWeakPoints: []
-    - text: Noooon ! Cette personne au grand sourire utilise la lessive Ariole sur
+    - text: Noooon ! Cette personne au grand sourire utilise la lessive [Nom] sur
         moi !
       textStats:
         interlocuteurID: 0
@@ -370,10 +373,10 @@ MonoBehaviour:
         sadness: -30
         disgust: 50
         anger: 100
-        surprise: 0
+        surprise: 50
         sweetness: -100
-        fear: -30
-        trust: -30
+        fear: 50
+        trust: -80
       enemyWeakPoints:
       - wordIndex: 2
         weakPointStat:
@@ -408,7 +411,7 @@ MonoBehaviour:
         neutral: -50
         joy: -50
         sadness: 10
-        disgust: 50
+        disgust: 70
         anger: 50
         surprise: 50
         sweetness: 0
@@ -426,12 +429,12 @@ MonoBehaviour:
           sweetness: 0
           fear: 0
           trust: 0
-    - text: "La lessive Ariole, pour des v\xEAtements d'un blanc... Eclatant."
+    - text: "La lessive [Nom], pour des v\xEAtements d'un blanc... Eclatant."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 20
-        hpMax: 20
+        hpMin: 10
+        hpMax: 10
         atkMin: 0
         atkMax: 0
         evadeMin: 0

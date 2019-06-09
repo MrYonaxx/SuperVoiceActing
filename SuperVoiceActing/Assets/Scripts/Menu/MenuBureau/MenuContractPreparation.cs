@@ -285,6 +285,7 @@ namespace VoiceActing
                 transformGaugeHP.localScale = new Vector3((float)currentContract.VoiceActors[indexSelected].Hp / currentContract.VoiceActors[indexSelected].HpMax, 1, 1);
                 imageActorSprite.enabled = true;
                 imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].ActorSprite;
+                imageActorSprite.SetNativeSize();
             }
             else
             {

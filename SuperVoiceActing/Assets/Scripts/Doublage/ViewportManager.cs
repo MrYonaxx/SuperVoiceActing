@@ -129,6 +129,10 @@ namespace VoiceActing
                 initialSize = viewportMask.sizeDelta;
         }
 
+        public void SetCameraEffect(bool b)
+        {
+            viewportCam.gameObject.SetActive(b);
+        }
 
         public void TextCameraEffect(DoublageEventText camEffect)
         {
@@ -139,6 +143,7 @@ namespace VoiceActing
 
         public void SetViewportSetting(DoublageEventViewport viewportSetting)
         {
+            SetCameraEffect(true);
             if (coroutineMove != null)
                 StopCoroutine(coroutineMove);
             if (coroutineViewport != null)

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class FPSDisplay : MonoBehaviour
 {
-    float deltaTime = 0.0f;
+    //float deltaTime = 0.0f;
 
-    void Update()
+    /*void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
     }
@@ -26,9 +26,9 @@ public class FPSDisplay : MonoBehaviour
         GUI.Label(rect, text, style);
 
 
-        rect = new Rect(200, 0, w, h * 2 / 100);
-        GUI.Label(rect, "Build Alpha 0.01f", style);
+        //rect = new Rect(200, 0, w, h * 2 / 100);
+        //GUI.Label(rect, "Build Alpha 0.01f", style);
         /*rect = new Rect(1000, 0, w, h * 2 / 100);
         GUI.Label(rect, "Ça fait trop professionnel", style);*/
-    }
+    //}
 }

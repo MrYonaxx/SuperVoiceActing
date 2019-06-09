@@ -263,6 +263,8 @@ namespace VoiceActing
                 case Emotion.Confiance:
                     toneSelected = toneTransform[7];
                     break;
+                default:
+                    return;
             }
             if(isHighlight == true)
             {

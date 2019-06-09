@@ -447,6 +447,8 @@ namespace VoiceActing
             {
                 if (emotionCards[i].Emotion == emotion)
                 {
+                    if (emotionCards[i].Cards.Length == 0)
+                        return null;
                     if (emotionCards[i].Cards[0] == null)
                         return null;
                     if (emotionCards[i].Cards[0] != null && emotionCards[i].Cards[0].gameObject.activeInHierarchy == true)
