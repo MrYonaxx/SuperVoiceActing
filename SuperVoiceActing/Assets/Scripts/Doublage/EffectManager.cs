@@ -106,11 +106,13 @@ namespace VoiceActing
             if (active == true)
             {
                 fadeUI.color = new Color(0, 0, 0, 0);
+                fadeScreen.color = new Color(0, 0, 0, 0);
                 colorSpeed = new Color(0, 0, 0, 1f / time);
             }
             else
             {
                 fadeUI.color = new Color(0, 0, 0, 1);
+                fadeScreen.color = new Color(0, 0, 0, 1);
                 colorSpeed = new Color(0, 0, 0, -1f / time);
             }
 
@@ -118,17 +120,19 @@ namespace VoiceActing
             {
                 time -= 1;
                 fadeUI.color += colorSpeed;
-                fadeScreen.color = fadeUI.color;
+                fadeScreen.color += colorSpeed;
                 yield return null;
             }
 
             if (active == true)
             {
                 fadeUI.color = new Color(0, 0, 0, 1);
+                fadeScreen.color = new Color(0, 0, 0, 1);
             }
             else
             {
                 fadeUI.color = new Color(0, 0, 0, 0);
+                fadeScreen.color = new Color(0, 0, 0, 0);
                 fadeUI.gameObject.SetActive(false);
                 fadeScreen.gameObject.SetActive(false);
             }

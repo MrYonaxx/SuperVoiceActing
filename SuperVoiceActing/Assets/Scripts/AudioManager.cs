@@ -57,7 +57,10 @@ namespace VoiceActing
         public void PlayMusic(AudioClip music, int timeFade = 1)
         {
             if (music == audioMusic.clip)
+            {
+                audioMusic.volume = musicVolumeMax;
                 return;
+            }
             audioMusic.clip = music;
             audioMusic.Play();
             StopAllCoroutines();
