@@ -40,6 +40,7 @@ namespace VoiceActing
         {
             get { return charactersProfil; }
         }
+
     }
 
     // CharacterContractData Contract ===================================================================
@@ -47,8 +48,9 @@ namespace VoiceActing
     [System.Serializable]
     public class RoleContractData
     {
-        [HorizontalGroup("Data")]
-        [VerticalGroup("Data/Left")]
+        [FoldoutGroup("RoleStat")]
+        [HorizontalGroup("RoleStat/Data")]
+        [VerticalGroup("RoleStat/Data/Left")]
         [SerializeField]
         private string[] names;
         public string[] Names
@@ -57,14 +59,15 @@ namespace VoiceActing
             set { names = value; }
         }
 
-        [VerticalGroup("Data/Middle")]
+
+        [VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]
         private int lineMin;
         public int LineMin
         {
             get { return lineMin; }
         }
-        [VerticalGroup("Data/Right")]
+        [VerticalGroup("RoleStat/Data/Right")]
         [HideLabel]
         [SerializeField]
         private int lineMax;
@@ -73,14 +76,14 @@ namespace VoiceActing
             get { return lineMax; }
         }
 
-        [VerticalGroup("Data/Middle")]
+        [VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]
         private int fanMin;
         public int FanMin
         {
             get { return fanMin; }
         }
-        [VerticalGroup("Data/Right")]
+        [VerticalGroup("RoleStat/Data/Right")]
         [HideLabel]
         [SerializeField]
         private int fanMax;
@@ -89,14 +92,14 @@ namespace VoiceActing
             get { return fanMax; }
         }
 
-        [VerticalGroup("Data/Middle")]
+        [VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]
         private int atkMin;
         public int AtkMin
         {
             get { return atkMin; }
         }
-        [VerticalGroup("Data/Right")]
+        [VerticalGroup("RoleStat/Data/Right")]
         [HideLabel]
         [SerializeField]
         private int atkMax;
@@ -107,7 +110,7 @@ namespace VoiceActing
 
         [MinMaxSlider(-10, 10)]
         [SerializeField]
-        [HorizontalGroup("Timbre")]
+        [HorizontalGroup("RoleStat/Timbre")]
         [HideLabel]
         private Vector2Int timbre;
         public Vector2Int Timbre
@@ -117,15 +120,13 @@ namespace VoiceActing
 
         [MinMaxSlider(-10, 10)]
         [SerializeField]
-        [HorizontalGroup("Timbre")]
+        [HorizontalGroup("RoleStat/Timbre")]
         [HideLabel]
         private Vector2Int timbreRand;
         public Vector2Int TimbreRand
         {
             get { return timbre; }
         }
-
-
 
         [TabGroup("Stat")]
         [HideLabel]
@@ -135,6 +136,7 @@ namespace VoiceActing
         {
             get { return characterStatMin; }
         }
+
         [TabGroup("Stat")]
         [HideLabel]
         [SerializeField]
@@ -144,13 +146,20 @@ namespace VoiceActing
             get { return characterStatMax; }
         }
 
-
         [TabGroup("VoiceActors")]
         [SerializeField]
         private VoiceActorData actorLocked;
         public VoiceActorData ActorLocked
         {
             get { return actorLocked; }
+        }
+
+        [TabGroup("IA")]
+        [SerializeField]
+        private EnemyAI[] artificialIntelligence;
+        public EnemyAI[] ArtificialIntelligence
+        {
+            get { return artificialIntelligence; }
         }
 
     }

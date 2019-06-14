@@ -246,6 +246,21 @@ namespace VoiceActing
             this.neutral -= addition.neutral;
         }
 
+        public EmotionStat Reverse(EmotionStat stat)
+        {
+            stat.joy = -stat.joy;
+            stat.sadness = -stat.sadness;
+            stat.disgust = -stat.disgust;
+            stat.anger = -stat.anger;
+            stat.surprise = -stat.surprise;
+            stat.sweetness = -stat.sweetness;
+            stat.fear = -stat.fear;
+            stat.trust = -stat.trust;
+            stat.neutral = -stat.neutral;
+            return stat;
+        }
+
+
     }
 
 
@@ -260,13 +275,13 @@ namespace VoiceActing
             get { return wordIndex; }
             set { wordIndex = value; }
         }
-        [SerializeField]
+        /*[SerializeField]
         private EmotionStat weakPointStat;
         public EmotionStat WeakPointStat
         {
             get { return weakPointStat; }
             set { weakPointStat = value; }
-        }
+        }*/
 
     }
 
@@ -291,11 +306,11 @@ namespace VoiceActing
 
         int enemyHP = 100;
 
-        [Header("Current Voice actor")]
+        /*[Header("Current Voice actor")]
         [Space]
         [SerializeField]
         VoiceActor voiceActor;
-
+        */
 
         [Header("Feedbacks")]
         [SerializeField]
@@ -360,10 +375,10 @@ namespace VoiceActing
                 enemyHP = currentTextData.HPMax;
         }
 
-        public void SetVoiceActor(VoiceActor va)
+        /*public void SetVoiceActor(VoiceActor va)
         {
             voiceActor = va;
-        }
+        }*/
 
         public int GetLastAttackScore()
         {
@@ -402,14 +417,12 @@ namespace VoiceActing
             return 0;
         }
 
-        public float DamagePhrase(Emotion[] emotions, int word)
+        public float DamagePhrase(EmotionCard[] emotions, int word, int damageVariance)
         {
             int multiplier = 0;
             int comboSize = emotions.Length;
             float totalDamage = 0;
             float normalDamage = 0;
-            EmotionStat statActor = voiceActor.Statistique;
-            EmotionStat statModifier = voiceActor.StatModifier;
 
             int enemyHPMax = currentTextData.HPMax;
             EmotionStat enemyResistance = currentTextData.EnemyResistance;
@@ -417,62 +430,55 @@ namespace VoiceActing
 
             for (int i = 0; i < emotions.Length; i++)
             {
-
-                switch(emotions[i])
+                switch(emotions[i].GetEmotion())
                 {
                     case Emotion.Neutre:
                         colorEmotion = Color.white;
                         if (i == 0)
                         {
-                            normalDamage += (statActor.Neutral + statModifier.Neutral) * ((100f + enemyResistance.Neutral) / 100f);
                             multiplier += enemyResistance.Neutral;
                         }
                         else
                         {
                             comboSize -= 1;
+                            normalDamage -= emotions[i].GetStat();
                         }
                         break;
                     case Emotion.Joie:
                         colorEmotion = Color.yellow;
-                        normalDamage += (statActor.Joy + statModifier.Joy);
                         multiplier += enemyResistance.Joy;
                         break;
                     case Emotion.Tristesse:
                         colorEmotion = Color.blue;
-                        normalDamage += (statActor.Sadness + statModifier.Sadness);
                         multiplier += enemyResistance.Sadness;
                         break;
                     case Emotion.Dégoût:
                         colorEmotion = Color.green;
-                        normalDamage += (statActor.Disgust + statModifier.Disgust);
                         multiplier += enemyResistance.Disgust;
                         break;
                     case Emotion.Colère:
                         colorEmotion = Color.red;
-                        normalDamage += (statActor.Anger + statModifier.Anger);
                         multiplier += enemyResistance.Anger;
                         break;
                     case Emotion.Surprise:
                         colorEmotion = new Color(0.9f, 0.55f, 0.3f);
-                        normalDamage += (statActor.Surprise + statModifier.Surprise);
                         multiplier += enemyResistance.Surprise;
                         break;
                     case Emotion.Douceur:
                         colorEmotion = new Color(0.88f, 0.58f, 0.9f);
-                        normalDamage += (statActor.Sweetness + statModifier.Sweetness);
                         multiplier += enemyResistance.Sweetness;
                         break;
                     case Emotion.Peur:
                         colorEmotion = Color.black;
-                        normalDamage += (statActor.Fear + statModifier.Fear);
                         multiplier += enemyResistance.Fear;
                         break;
                     case Emotion.Confiance:
                         colorEmotion = Color.white;
-                        normalDamage += (statActor.Trust + statModifier.Trust);
                         multiplier += enemyResistance.Trust;
                         break;
                 }
+
+                normalDamage += emotions[i].GetStat();
 
                 if (particleFeedbacks.Length != 0)
                 {
@@ -500,8 +506,8 @@ namespace VoiceActing
             multiplier = multiplier / comboSize;
 
             totalDamage = normalDamage * ((100 + multiplier) / 100f);
-            totalDamage += ApplyWordBonus(totalDamage, word, statActor);
-            totalDamage += Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance+1);
+            totalDamage += ApplyWordBonus(totalDamage, word);
+            totalDamage += Random.Range(-damageVariance, damageVariance+1);
             if(totalDamage <= 0)
             {
                 totalDamage = 1;
@@ -513,8 +519,8 @@ namespace VoiceActing
             if (enemyHP < 0)
                 enemyHP = 0;
 
-            ChangeParticleAttack(emotions);
-            ChangeHaloEmotion(emotions);
+            ChangeParticleAttack();
+            ChangeHaloEmotion(colorEmotion, comboSize);
 
             PrintDamage(totalDamage, normalDamage);
 
@@ -527,41 +533,20 @@ namespace VoiceActing
         }
 
 
-        private float ApplyWordBonus(float totalDamage, int word, EmotionStat statActor)
+        private float ApplyWordBonus(float totalDamage, int word)
         {
             float bonusDamage = 0;
-            //float[] allDamages = new float[9];
-            //allDamages[0] = totalDamage;
             WeakPoint[] enemyWeakPoints = currentTextData.EnemyWeakPoints;
             for (int i = 0; i < enemyWeakPoints.Length; i++)
             {
                 if (word == enemyWeakPoints[i].WordIndex)
                 {
-                    /*bonusDamage += statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
-                    allDamages[1] = statActor.Joy * (enemyWeakPoints[i].WeakPointStat.Joy / 100f);
-                    bonusDamage += statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
-                    allDamages[2] = statActor.Sadness * (enemyWeakPoints[i].WeakPointStat.Sadness / 100f);
-                    bonusDamage += statActor.Disgust * (enemyWeakPoints[i].WeakPointStat.Disgust / 100f);
-                    allDamages[3] = statActor.Disgust * (enemyWeakPoints[i].WeakPointStat.Disgust / 100f);
-                    bonusDamage += statActor.Anger * (enemyWeakPoints[i].WeakPointStat.Anger / 100f);
-                    allDamages[4] = statActor.Anger * (enemyWeakPoints[i].WeakPointStat.Anger / 100f);
-
-                    bonusDamage += statActor.Surprise * (enemyWeakPoints[i].WeakPointStat.Surprise / 100f);
-                    allDamages[5] = statActor.Surprise * (enemyWeakPoints[i].WeakPointStat.Surprise / 100f);
-                    bonusDamage += statActor.Sweetness * (enemyWeakPoints[i].WeakPointStat.Sweetness / 100f);
-                    allDamages[6] = statActor.Sweetness * (enemyWeakPoints[i].WeakPointStat.Sweetness / 100f);
-                    bonusDamage += statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
-                    allDamages[7] = statActor.Fear * (enemyWeakPoints[i].WeakPointStat.Fear / 100f);
-                    bonusDamage += statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);
-                    allDamages[8] = statActor.Trust * (enemyWeakPoints[i].WeakPointStat.Trust / 100f);*/
                     bonusDamage = totalDamage * 0.2f;
 
-                    //Debug.Log("Weakpoint");
                     if (criticalFeedback != null)
                     {
                         criticalFeedback.SetActive(true);
                         criticalFeedback2.SetActive(true);
-                        //StartDamageCriticalFeedback(allDamages);
                     }
                 }
             }
@@ -674,113 +659,20 @@ namespace VoiceActing
         // ======================== //
         //        Feedback          //
         // ======================== //
-        /*public void SetParticlePosition(Vector2 pos)
-        {
-            particleFeedbacks[2].transform.localPosition = new Vector3(pos.x, pos.y, 0);
-        }*/
 
-        private void ChangeParticleAttack(Emotion[] emotions)
+        private void ChangeParticleAttack()
         {
-            /*if (particleFeedbacks == null)
-                return;
-            Color colorEmotion;
-            for (int i = 0; i < emotions.Length; i++)
-            {
-                switch (emotions[i])
-                {
-                    case Emotion.Joie:
-                        colorEmotion = Color.yellow;
-                        break;
-                    case Emotion.Tristesse:
-                        colorEmotion = Color.blue;
-                        break;
-                    case Emotion.Dégoût:
-                        colorEmotion = Color.green;
-                        break;
-                    case Emotion.Colère:
-                        colorEmotion = Color.red;
-                        break;
-                    case Emotion.Surprise:
-                        colorEmotion = new Color(0.9f,0.55f,0.3f);
-                        break;
-                    case Emotion.Douceur:
-                        colorEmotion = new Color(0.88f, 0.58f, 0.9f);
-                        break;
-                    case Emotion.Peur:
-                        colorEmotion = Color.black;
-                        break;
-                    case Emotion.Confiance:
-                        colorEmotion = Color.white;
-                        break;
-                    default:
-                        colorEmotion = Color.white;
-                        break;
-                }
-                if (colorEmotion == Color.white && i > 0)
-                {
-                    particleFeedbacks[i].gameObject.SetActive(false);
-                }
-                else
-                {
-                    particleFeedbacks[i].gameObject.SetActive(true);
-                    for (int j = i; j < particleFeedbacks.Length; j++)
-                    {
-                        var particleColor = particleFeedbacks[j].main;
-                        particleColor.startColor = colorEmotion;
-                    }
-                }
-            }*/
-
             for (int i = 0; i < particleFeedbacks.Length-2; i++)
             {
                 particleFeedbacks[i].Play();
             }
         }
 
-        private void ChangeHaloEmotion(Emotion[] emotions)
+        private void ChangeHaloEmotion(Color colorEmotion, int size)
         {
             // Attention aux combo de 2 emotion quand il y a 3 slot, emotions peut retourner [emotion, emotion, neutre]
             if (haloCurrentEmotion == null)
                 return;
-
-            int size = emotions.Length;
-            Color colorEmotion = new Color(0, 0, 0, 0);
-            for (int i = 0; i < emotions.Length; i++)
-            {
-                switch (emotions[i])
-                {
-                    case Emotion.Joie:
-                        colorEmotion += Color.yellow;
-                        break;
-                    case Emotion.Tristesse:
-                        colorEmotion += Color.blue;
-                        break;
-                    case Emotion.Dégoût:
-                        colorEmotion += Color.green;
-                        break;
-                    case Emotion.Colère:
-                        colorEmotion += Color.red;
-                        break;
-                    case Emotion.Surprise:
-                        colorEmotion = new Color(0.9f, 0.55f, 0.3f);
-                        break;
-                    case Emotion.Douceur:
-                        colorEmotion = new Color(0.88f, 0.58f, 0.9f);
-                        break;
-                    case Emotion.Peur:
-                        colorEmotion = Color.black;
-                        break;
-                    case Emotion.Confiance:
-                        colorEmotion = Color.white;
-                        break;
-                    default:
-                        if (i == 0)
-                            colorEmotion = Color.white;
-                        else
-                            size -= 1;
-                        break;
-                }
-            }
             colorEmotion = new Color(colorEmotion.r, colorEmotion.g, colorEmotion.b, 0.1f * size);
             StartCoroutine(ChangeHaloEmotionCoroutine(colorEmotion, 70));
         }
@@ -799,12 +691,15 @@ namespace VoiceActing
             }
         }
 
-
         public void ResetHalo()
         {
             if(haloCurrentEmotion != null)
                 haloCurrentEmotion.color = new Color(0, 0, 0, 0);
         }
+
+
+
+
 
         private void PrintDamage(float totalDamage, float normalDamage)
         {

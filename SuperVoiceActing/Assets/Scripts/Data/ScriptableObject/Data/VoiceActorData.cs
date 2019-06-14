@@ -158,6 +158,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private Vector3 skillOffset;
+        public Vector3 SkillOffset
+        {
+            get { return skillOffset; }
+        }
+
+        [SerializeField]
         private Sprite actorSprite;
         public Sprite ActorSprite
         {

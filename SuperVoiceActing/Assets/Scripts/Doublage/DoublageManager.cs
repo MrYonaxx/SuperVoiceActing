@@ -152,7 +152,7 @@ namespace VoiceActing
         protected int turnCount = 15;
         protected int killCount = 0;
 
-        protected Emotion[] lastAttack = null;
+        protected EmotionCard[] lastAttack = null;
 
         #endregion
 
@@ -252,7 +252,7 @@ namespace VoiceActing
                 spectrum.enabled = true;
             }
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
+            //enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
             actorsManager.SetActors(contrat.VoiceActors);
             actorsManager.ActorTakeDamage(0);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
@@ -374,8 +374,11 @@ namespace VoiceActing
 
             HideUIButton();
 
-            lastAttack = emotionAttackManager.GetComboEmotion();
-            textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, textAppearManager.GetWordSelected()), lastAttack);
+            lastAttack = emotionAttackManager.GetComboEmotionCard();
+            textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, 
+                                                                      textAppearManager.GetWordSelected(), 
+                                                                      actorsManager.GetCurrentActorDamageVariance()),
+                                            lastAttack);
             if(actorsManager.GetCurrentActorHP() == 0)
             {
                 AudioManager.Instance.StopMusic(300);
@@ -417,6 +420,7 @@ namespace VoiceActing
             }
 
             // Check Role Attack =================================================================
+
 
             // Wait End Line =====================================================================
             while (textAppearManager.GetEndLine() == false)

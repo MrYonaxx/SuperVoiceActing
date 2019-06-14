@@ -53,6 +53,8 @@ namespace VoiceActing
         TextMeshProUGUI textRoleLine;
         [SerializeField]
         TextMeshProUGUI textRoleCadence;
+        [SerializeField]
+        RectTransform transformRoleTimbre;
 
         [Header("InfoActeur")]
         [SerializeField]
@@ -65,6 +67,8 @@ namespace VoiceActing
         TextMeshProUGUI textActorCost;
         [SerializeField]
         TextMeshProUGUI textActorCadence;
+        [SerializeField]
+        RectTransform transformActorTimbre;
         [SerializeField]
         TextMeshProUGUI textActorLevel;
         [SerializeField]
@@ -257,6 +261,10 @@ namespace VoiceActing
             textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
             textRoleCadence.text = currentContract.Characters[indexSelected].Attack.ToString();
 
+            transformRoleTimbre.anchorMin = new Vector2((currentContract.Characters[indexSelected].Timbre.x + 10) / 20f, 0);
+            transformRoleTimbre.anchorMax = new Vector2((currentContract.Characters[indexSelected].Timbre.y + 10) / 20f, 1);
+            transformRoleTimbre.anchoredPosition = Vector3.zero;
+
             if (currentContract.VoiceActors[indexSelected] == null)
             {
                 DrawActorInfo(false);
@@ -278,7 +286,10 @@ namespace VoiceActing
                 textActorName.text = currentContract.VoiceActors[indexSelected].Name;
                 textActorFan.text = currentContract.VoiceActors[indexSelected].Fan.ToString();
                 textActorCost.text = currentContract.VoiceActors[indexSelected].Price.ToString();
-                textActorCadence.text = "-0 %";
+                textActorCadence.text = "-" + (currentContract.VoiceActors[indexSelected].RoleDefense * 5) + " %";
+                transformActorTimbre.anchorMin = new Vector2((currentContract.VoiceActors[indexSelected].Timbre.x + 10) / 20f, 0);
+                transformActorTimbre.anchorMax = new Vector2((currentContract.VoiceActors[indexSelected].Timbre.y + 10) / 20f, 1);
+                transformActorTimbre.anchoredPosition = Vector3.zero;
                 textActorLevel.text = currentContract.VoiceActors[indexSelected].Level.ToString();
                 textActorPV.text = currentContract.VoiceActors[indexSelected].Hp.ToString();
                 textActorPVMax.text = currentContract.VoiceActors[indexSelected].HpMax.ToString();
@@ -296,6 +307,9 @@ namespace VoiceActing
                 textActorLevel.text = " - ";
                 textActorPV.text = " - ";
                 textActorPVMax.text = " - ";
+                transformActorTimbre.anchorMin = new Vector2(0, 0);
+                transformActorTimbre.anchorMax = new Vector2(0, 1);
+                transformActorTimbre.anchoredPosition = Vector3.zero;
                 transformGaugeHP.localScale = new Vector3(0, 1, 1);
                 imageActorSprite.enabled = false;
 

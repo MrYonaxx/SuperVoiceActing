@@ -215,6 +215,16 @@ namespace VoiceActing
             return emoti;
         }
 
+        public EmotionCard[] GetComboEmotionCard()
+        {
+            var emoti = new EmotionCard[comboMax];
+            for (int i = 0; i < comboEmotion.Length; i++)
+            {
+                emoti[i] = comboCardEmotion[i];
+            }
+            return emoti;
+        }
+
         public void SetDeck(int newComboMax, EmotionStat newDeck)
         {
             comboMax = newComboMax;

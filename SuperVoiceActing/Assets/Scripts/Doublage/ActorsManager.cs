@@ -123,9 +123,19 @@ namespace VoiceActing
             return indexCurrentActor;
         }
 
+        public int GetCurrentActorDamageVariance()
+        {
+            return actors[indexCurrentActor].DamageVariance;
+        }
+
         public List<Buff> GetBuffList()
         {
             return actors[indexCurrentActor].Buffs;
+        }
+
+        public Vector3 GetSkillPositionOffset()
+        {
+            return actors[indexCurrentActor].SkillOffset;
         }
 
 

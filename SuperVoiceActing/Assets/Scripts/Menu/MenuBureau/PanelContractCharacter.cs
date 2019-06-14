@@ -29,6 +29,8 @@ namespace VoiceActing
         TextMeshProUGUI textRoleLine;
         [SerializeField]
         TextMeshProUGUI textRoleCadence;
+        [SerializeField]
+        RectTransform transformTimbre;
 
         [Header("")]
 
@@ -73,6 +75,10 @@ namespace VoiceActing
             textRoleFan.text = role.Fan.ToString();
             textRoleLine.text = role.Line.ToString();
             textRoleCadence.text = role.Attack.ToString();
+
+            transformTimbre.anchorMin = new Vector2((role.Timbre.x + 10) / 20f, 0);
+            transformTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 1);
+            transformTimbre.anchoredPosition = Vector3.zero;
 
             int[] bestValues = new int[8];
 

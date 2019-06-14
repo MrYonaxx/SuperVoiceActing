@@ -120,6 +120,16 @@ namespace VoiceActing
             get { return addBuffTurn; }
         }
 
+        [Space]
+        [Space]
+        [SerializeField]
+        private SkillEffectNode[] skillEffects;
+        public SkillEffectNode[] SkillEffects
+        {
+            get { return skillEffects; }
+        }
+
+
 
         [Space]
         [Space]
@@ -198,6 +208,8 @@ namespace VoiceActing
         [Space]
 
         [Title("HP Damage")]
+
+        [HorizontalGroup("HPPercentage")]
         [SerializeField]
         private float hpGainPercentage;
         public float HpGainPercentage
@@ -205,6 +217,11 @@ namespace VoiceActing
             get { return hpGainPercentage; }
         }
 
+        [Space]
+        [Space]
+
+        [Title("Variance")]
+        [HorizontalGroup("HPPercentage")]
         [SerializeField]
         private float hpPercentageVariance;
         public float HpPercentageVariance
@@ -212,13 +229,14 @@ namespace VoiceActing
             get { return hpPercentageVariance; }
         }
 
+        [HorizontalGroup("HPFlat")]
         [SerializeField]
         private float hpGainFlat;
         public float HpGainFlat
         {
             get { return hpGainFlat; }
         }
-
+        [HorizontalGroup("HPFlat")]
         [SerializeField]
         private float hpFlatVariance;
         public float HpFlatVariance

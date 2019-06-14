@@ -192,7 +192,7 @@ namespace VoiceActing
         }*/
 
 
-        public void ModifyTone(Emotion[] emotions)
+        public void ModifyTone(EmotionCard[] emotions)
         {
             //int addValue = toneAddValue / 8;
             //EmotionStat stat = new EmotionStat(-addValue, -addValue, -addValue, -addValue, -addValue, -addValue, -addValue, -addValue);
@@ -200,7 +200,7 @@ namespace VoiceActing
                 return;
             for (int i = 0; i < emotions.Length; i++)
             {
-                switch (emotions[i])
+                switch (emotions[i].GetEmotion())
                 {
                     case Emotion.Joie:
                         toneValue.Joy += 1;

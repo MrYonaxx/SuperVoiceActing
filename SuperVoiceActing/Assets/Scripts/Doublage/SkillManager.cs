@@ -109,6 +109,7 @@ namespace VoiceActing
         private bool reprintTextEnemy = false;
         Vector3 initialScaleText;
         private bool inSkillAnimation = false;
+        Vector3 initialSkillPosition;
 
         #endregion
 
@@ -148,6 +149,7 @@ namespace VoiceActing
             actorsManager = aM;
             roleManager = rM;
             enemyManager = eM;
+            initialSkillPosition = panelDoubleurPotential.localPosition;
         }
 
         public bool CheckPassiveSkills()
@@ -155,7 +157,7 @@ namespace VoiceActing
             return false;
         }
 
-        public bool CheckSkillCondition(VoiceActor voiceActor, string phase, Emotion[] emotions) 
+        public bool CheckSkillCondition(VoiceActor voiceActor, string phase, EmotionCard[] emotions) 
         {
             if (emotions == null)
                 return false;
@@ -230,15 +232,15 @@ namespace VoiceActing
             animationPotentiel.SetBool("isMalus", skill.IsMalus);
         }
 
-        private bool CheckAttackType(Emotion[] emotions, EmotionStat emotionCheck)
+        private bool CheckAttackType(EmotionCard[] emotions, EmotionStat emotionCheck)
         {
             EmotionStat attackCheck = new EmotionStat(emotionCheck.Joy, emotionCheck.Sadness, emotionCheck.Disgust, emotionCheck.Anger,
                                                       emotionCheck.Surprise, emotionCheck.Sweetness, emotionCheck.Fear, emotionCheck.Trust
                                                       );
             for(int i = 0; i < emotions.Length; i++)
             {
-                Debug.Log(emotions[i]);
-                switch(emotions[i])
+                //Debug.Log(emotions[i]);
+                switch(emotions[i].GetEmotion())
                 {
                     case Emotion.Neutre:
                         attackCheck.Neutral -= 1;
@@ -316,8 +318,13 @@ namespace VoiceActing
         {
             int currentHP = 0;
             float damage = 0;
-            switch (skill.SkillTarget)
+            for(int i = 0; i < skill.SkillEffects.Length; i++)
             {
+                skill.SkillEffects[i].GetSkillEffectNode().ApplySkillEffect(actorsManager, enemyManager, doublageManager);
+            }
+            /*switch (skill.SkillTarget)
+            {
+                //skill.SkillEffects[i].Appl
                 case SkillTarget.VoiceActor:
                     // Damage
                     currentHP = actorsManager.GetCurrentActorHPMax();
@@ -348,7 +355,7 @@ namespace VoiceActing
             }
 
             // Other
-            doublageManager.AddTurn(skill.TurnGain);
+            doublageManager.AddTurn(skill.TurnGain);*/
         }
 
 
@@ -360,7 +367,11 @@ namespace VoiceActing
         {
             int currentHP = 0;
             float damage = 0;
-            switch (skill.SkillTarget)
+            for (int i = 0; i < skill.SkillEffects.Length; i++)
+            {
+                skill.SkillEffects[i].GetSkillEffectNode().RemoveSkillEffect(actorsManager, enemyManager, doublageManager);
+            }
+            /*switch (skill.SkillTarget)
             {
                 case SkillTarget.VoiceActor:
                     // Damage
@@ -389,7 +400,7 @@ namespace VoiceActing
 
 
                     break;
-            }
+            }*/
         }
 
 
@@ -432,6 +443,7 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToRessource();
 
             // Doubleur replacé
+            panelDoubleurPotential.transform.localPosition = initialSkillPosition + actorsManager.GetSkillPositionOffset();
             doubleur.transform.SetParent(panelDoubleurPotential);
             doubleur.ChangeOrderInLayer(60);
             cameraController.ChangeOrthographicSize(-30, 30);

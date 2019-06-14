@@ -38,6 +38,7 @@ namespace VoiceActing
         private Emotion emotion;
 
         private int value = 0;
+        private int valueBonus = 0;
 
         private float damagePercentage = 1;
 
@@ -49,6 +50,11 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+        public int GetStat()
+        {
+            return value + valueBonus;
+        }
 
         public float GetDamagePercentage()
         {
@@ -127,8 +133,12 @@ namespace VoiceActing
 
 
 
+
+
         public void DrawStat(int baseStat, int newStat, Color bonusStat, Color malusStat)
         {
+            value = baseStat;
+            valueBonus = newStat;
             if (textStat == null)
                 return;
             if(newStat > 0)

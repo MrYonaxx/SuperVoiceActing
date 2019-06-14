@@ -180,7 +180,7 @@ namespace VoiceActing
         }
 
         // Attack
-        public void ExplodeLetter(float damage, Emotion[] emotions)
+        public void ExplodeLetter(float damage, EmotionCard[] emotions)
         {
             if (coroutineWaitEndLine != null)
             {
@@ -188,7 +188,7 @@ namespace VoiceActing
             }
             wordID = GetWordSelected();
             currentText.ExplodeLetter(damage, 60);
-            currentText = SelectTextEffect(emotions[0]);
+            currentText = SelectTextEffect(emotions[0].GetEmotion());
 
             StartCoroutine(WaitFrame(60, damage));
 

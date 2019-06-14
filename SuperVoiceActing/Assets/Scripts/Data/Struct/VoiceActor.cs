@@ -157,6 +157,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private Vector3 skillOffset;
+        public Vector3 SkillOffset
+        {
+            get { return skillOffset; }
+        }
+
+        [SerializeField]
         private Sprite actorSprite;
         public Sprite ActorSprite
         {
@@ -286,6 +293,7 @@ namespace VoiceActing
             timbre = actorData.Timbre;
             potentials = actorData.Potentials;
 
+            skillOffset = actorData.SkillOffset;
             spriteSheets = actorData.SpriteSheets;
 
             statistique = new EmotionStat( actorData.Statistique);
