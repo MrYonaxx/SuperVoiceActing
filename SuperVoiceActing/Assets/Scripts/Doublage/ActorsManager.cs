@@ -99,7 +99,21 @@ namespace VoiceActing
         private int indexCurrentActor = 0;
 
         int attackDamage = 0;
-        
+
+
+
+
+        [Title("SwitchActorFeedback")]
+        [SerializeField]
+        Animator animatorSwitchActors;
+        [SerializeField]
+        GameObject spriteSwitchPanel;
+        [SerializeField]
+        SpriteRenderer spriteCurrentActor;
+        [SerializeField]
+        SpriteRenderer spriteNextActor;
+
+
         #endregion
 
         #region GettersSetters 
@@ -107,7 +121,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
         public int GetCurrentActorHP()
         {
             return actors[indexCurrentActor].Hp;
@@ -446,6 +460,35 @@ namespace VoiceActing
             }
             effectManagerDeath.TotalFade(false, 120);
         }
+
+
+
+
+
+
+
+
+
+
+
+        public void SwitchActors(bool switchDirectionRight)
+        {
+            spriteSwitchPanel.SetActive(true);
+            spriteCurrentActor.sprite = actors[indexCurrentActor].ActorSprite;
+            if (switchDirectionRight == true)
+            {
+                spriteNextActor.sprite = actors[2].ActorSprite;
+                animatorSwitchActors.SetTrigger("Right");
+            }
+            else
+            {
+                spriteNextActor.sprite = actors[1].ActorSprite;
+                animatorSwitchActors.SetTrigger("Right");
+            }
+        }
+
+
+
 
 
         #endregion

@@ -661,6 +661,19 @@ namespace VoiceActing
 
         // Placeholders ==================================================================
 
+        public void SetCameraSwitchActor(Transform newTransform)
+        {
+            if (movementCoroutine != null)
+                StopCoroutine(movementCoroutine);
+            if (rotatingCoroutine != null)
+                StopCoroutine(rotatingCoroutine);
+            transform.position = new Vector3(newTransform.position.x+0.05f, newTransform.position.y, newTransform.position.z+0.05f);
+            transform.eulerAngles = new Vector3(newTransform.eulerAngles.x, newTransform.eulerAngles.y, newTransform.eulerAngles.z);
+            moving = true;
+            rotating = false;
+            MoveCamera(newTransform.position.x - 0.05f, newTransform.position.y, newTransform.position.z-0.05f, 90);
+        }
+
         public void NotQuite()
         {
             SetText(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z);

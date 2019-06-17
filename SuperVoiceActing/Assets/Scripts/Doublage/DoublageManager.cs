@@ -244,6 +244,7 @@ namespace VoiceActing
             // On attend une frame que les scripts soient chargés
 
             // Initialisation
+            introBlackScreen.gameObject.SetActive(true);
             inputController.gameObject.SetActive(false);
             yield return null;
             if (spectrum != null)

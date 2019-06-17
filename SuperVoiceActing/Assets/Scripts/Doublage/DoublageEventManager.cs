@@ -112,7 +112,10 @@ namespace VoiceActing
             for (int i = 0; i < actorsContract.Count; i++)
             {
                 if (actorsContract[i] != null)
+                {
                     characters[i].SetStoryCharacterData(actorsContract[i].SpriteSheets);
+                    characters[i].gameObject.SetActive(true);
+                }
             }
         }
 
