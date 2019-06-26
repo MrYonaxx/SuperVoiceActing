@@ -305,6 +305,7 @@ namespace VoiceActing
         TextData currentTextData;
 
         int enemyHP = 100;
+        //int enemyHPMax = 100;
 
         /*[Header("Current Voice actor")]
         [Space]
@@ -342,6 +343,7 @@ namespace VoiceActing
 
 
         int lastAttackScore = 0;
+        bool lastAttackCritical = false;
 
         #endregion
 
@@ -355,6 +357,11 @@ namespace VoiceActing
         public int GetHp()
         {
             return enemyHP;
+        }
+
+        public int GetHpMax()
+        {
+            return currentTextData.HPMax;
         }
 
         public float GetHpPercentage()
@@ -385,6 +392,11 @@ namespace VoiceActing
             return lastAttackScore;
         }
 
+        public bool GetLastAttackCritical()
+        {
+            return lastAttackCritical;
+        }
+
         #endregion
 
         #region Functions 
@@ -404,6 +416,7 @@ namespace VoiceActing
         {
             currentTextData = newTextData;
             enemyHP = currentTextData.HPMax;
+            //enemyHPMax = enemyHP;
         }
 
         public float DamagePhrase()
@@ -430,19 +443,17 @@ namespace VoiceActing
 
             for (int i = 0; i < emotions.Length; i++)
             {
+                if(emotions[i] == null)
+                {
+                    comboSize -= 1;
+                    particleFeedbacks[i].gameObject.SetActive(false);
+                    continue;
+                }
                 switch(emotions[i].GetEmotion())
                 {
                     case Emotion.Neutre:
                         colorEmotion = Color.white;
-                        if (i == 0)
-                        {
-                            multiplier += enemyResistance.Neutral;
-                        }
-                        else
-                        {
-                            comboSize -= 1;
-                            normalDamage -= emotions[i].GetStat();
-                        }
+                        multiplier += enemyResistance.Neutral;
                         break;
                     case Emotion.Joie:
                         colorEmotion = Color.yellow;
@@ -482,18 +493,11 @@ namespace VoiceActing
 
                 if (particleFeedbacks.Length != 0)
                 {
-                    if (colorEmotion == Color.white && i > 0)
+                    particleFeedbacks[i].gameObject.SetActive(true);
+                    for (int j = i; j < particleFeedbacks.Length; j++)
                     {
-                        particleFeedbacks[i].gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        particleFeedbacks[i].gameObject.SetActive(true);
-                        for (int j = i; j < particleFeedbacks.Length; j++)
-                        {
-                            var particleColor = particleFeedbacks[j].main;
-                            particleColor.startColor = colorEmotion;
-                        }
+                        var particleColor = particleFeedbacks[j].main;
+                        particleColor.startColor = colorEmotion;
                     }
                 }
             }
@@ -537,12 +541,13 @@ namespace VoiceActing
         {
             float bonusDamage = 0;
             WeakPoint[] enemyWeakPoints = currentTextData.EnemyWeakPoints;
+            lastAttackCritical = false;
             for (int i = 0; i < enemyWeakPoints.Length; i++)
             {
                 if (word == enemyWeakPoints[i].WordIndex)
                 {
-                    bonusDamage = totalDamage * 0.2f;
-
+                    bonusDamage = totalDamage * 0.25f;
+                    lastAttackCritical = true;
                     if (criticalFeedback != null)
                     {
                         criticalFeedback.SetActive(true);

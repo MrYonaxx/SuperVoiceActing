@@ -25,7 +25,7 @@ namespace VoiceActing
         EmotionStat emotionDamage;
 
 
-        public override void ApplySkillEffect(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
             if (inPercentage == true)
             {
@@ -36,7 +36,7 @@ namespace VoiceActing
             }
         }
 
-        public override void RemoveSkillEffect(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public override void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
             if (inPercentage == true)
             {

@@ -14,12 +14,12 @@ namespace VoiceActing
 	public class SkillEffectData
 	{
 
-        public virtual void ApplySkillEffect(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public virtual void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
 
         }
 
-        public virtual void RemoveSkillEffect(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public virtual void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
 
         }

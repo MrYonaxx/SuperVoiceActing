@@ -141,7 +141,7 @@ namespace VoiceActing
 
 
 
-
+        protected bool intro = true;
 
 
         protected bool startLine = true;
@@ -495,6 +495,16 @@ namespace VoiceActing
                     yield return null;
                 }
             }
+            if (enemyManager.GetLastAttackCritical() == true)
+            {
+                if (skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Critical", lastAttack) == true)
+                {
+                    while (skillManager.InSkillAnimation() == true)
+                    {
+                        yield return null;
+                    }
+                }
+            }
 
 
             // New turn ===========================================================================
@@ -695,6 +705,18 @@ namespace VoiceActing
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
             ShowUIButton(buttonUIA);
             ShowUIButton(buttonUIB);
+            if (intro == true)
+            {
+                //lastAttack[0] = Emotion.Neutre;
+                skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Start", lastAttack);
+                intro = false;
+            }
+            /*{
+                while (skillManager.InSkillAnimation() == true)
+                {
+                    yield return null;
+                }
+            }*/
             //skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Kill", lastAttack);
         }
 

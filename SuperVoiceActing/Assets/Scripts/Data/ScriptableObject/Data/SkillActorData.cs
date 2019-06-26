@@ -21,6 +21,13 @@ namespace VoiceActing
         [Title("Conditions d'Activation")]
 
         [SerializeField]
+        private bool afterStart;
+        public bool AfterStart
+        {
+            get { return afterStart; }
+        }
+
+        [SerializeField]
         private bool afterAttack;
         public bool AfterAttack
         {
@@ -41,6 +48,7 @@ namespace VoiceActing
             get { return afterKill; }
         }
 
+        [HideLabel]
         [SerializeField]
         private EmotionStat phraseType;
         public EmotionStat PhraseType
@@ -61,6 +69,13 @@ namespace VoiceActing
         public float PercentageActivation
         {
             get { return percentageActivation; }
+        }
+
+        [SerializeField]
+        private bool onlyOnce;
+        public bool OnlyOnce
+        {
+            get { return onlyOnce; }
         }
 
         [Space]

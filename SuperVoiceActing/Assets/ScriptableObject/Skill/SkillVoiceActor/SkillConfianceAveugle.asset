@@ -13,73 +13,64 @@ MonoBehaviour:
   m_Name: SkillConfianceAveugle
   m_EditorClassIdentifier: 
   skillName: Confiance Aveugle
-  description: 
-  descriptionBattle: Double la Confiance.
+  description: "Lorsque Dor\xE9mi tombe sous les color=yellow>50%</color> de HP, toutes
+    ses statistiques augmentent de color=yellow>5</color>."
+  descriptionBattle: Augmente toute les stats
   skillType: 1
   skillTarget: 0
   turnActive: 10
   refresh: 0
   addBuffTurn: 0
-  cardGain:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
-  emotionStatGainPercentage:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
-  emotionStatGainFlat:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 10
-  emotionStatVariance: 0
-  emotionDamagePercentage:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
-  emotionDamageFlat:
-    neutral: 0
-    joy: 0
-    sadness: 0
-    disgust: 0
-    anger: 0
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
-  emotionDamageVariance: 0
-  hpGainPercentage: 0
-  hpPercentageVariance: 0
-  hpGainFlat: 0
-  hpFlatVariance: 0
-  turnGain: 0
-  turnGainVariance: 0
+  skillEffects:
+  - eventNode: 1
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 5
+        sadness: 5
+        disgust: 5
+        anger: 5
+        surprise: 5
+        sweetness: 5
+        fear: 5
+        trust: 5
+    skillEffectEmotionStat:
+      inPercentage: 0
+      statVariance: 0
+      emotionStat:
+        neutral: 0
+        joy: 5
+        sadness: 5
+        disgust: 5
+        anger: 5
+        surprise: 5
+        sweetness: 5
+        fear: 5
+        trust: 5
+    skillEffectEmotionDamage:
+      inPercentage: 0
+      damageVariance: 0
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectHealth:
+      inPercentage: 0
+      hpDamage: 0
+      hpDamageVariance: 0
+    skillEffectTurn:
+      inPercentage: 0
+      turnGain: 0
+      turnVariance: 0
   producerCost: 0
-  afterAttack: 0
+  afterStart: 0
+  afterAttack: 1
   afterCritical: 0
   afterKill: 0
   phraseType:
@@ -91,7 +82,8 @@ MonoBehaviour:
     surprise: 0
     sweetness: 0
     fear: 0
-    trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 0
+    trust: 1
+  hpInterval: {x: 0, y: 50}
+  percentageActivation: 100
+  onlyOnce: 1
   isMalus: 0

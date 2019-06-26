@@ -102,7 +102,6 @@ namespace VoiceActing
 
 
 
-
         [Title("SwitchActorFeedback")]
         [SerializeField]
         Animator animatorSwitchActors;

@@ -91,12 +91,7 @@ namespace VoiceActing
 
 
         [Header("Buff")]
-        // Placer dans les classes respectives
-        List<Buff> buffVoiceActor;
-        // Placer dans les classes respectives
-        List<Buff> buffProducer;
-        // Placer dans les classes respectives
-        List<Buff> buffRole;
+        List<string> bannedSkills = new List<string>();
 
 
 
@@ -159,8 +154,8 @@ namespace VoiceActing
 
         public bool CheckSkillCondition(VoiceActor voiceActor, string phase, EmotionCard[] emotions) 
         {
-            if (emotions == null)
-                return false;
+            /*if (emotions == null)
+                return false;*/
             bool next = false;
             for(int i = 0; i < voiceActor.Potentials.Length; i++)
             {
@@ -168,6 +163,13 @@ namespace VoiceActing
                 Debug.Log(skill.SkillName);
                 switch(phase)
                 {
+                    case "Start":
+                        if (skill.AfterStart == true)
+                        {
+                            next = true;
+                        }
+                        break;
+
                     case "Selection":
                         if (skill.AfterAttack == true)
                         {
@@ -206,16 +208,21 @@ namespace VoiceActing
 
                 if(next == true)
                 {
-                    if (CheckHP((voiceActor.Hp / voiceActor.HpMax), skill.HpInterval))
+                    if (CheckHP((voiceActor.Hp / (float)voiceActor.HpMax), skill.HpInterval))
                     {
                         if (CheckPercentage(skill.PercentageActivation))
                         {
                             if (CheckAttackType(emotions, skill.PhraseType))
                             {
-                                SetSkillText(voiceActor, skill);
-                                ActorSkillFeedback();
-                                ApplySkill(skill);
-                                return true; // On verra pour l'activation de compétence multiple plus tard
+                                if (CheckBannedSkills(skill.SkillName))
+                                {
+                                    if (skill.OnlyOnce == true)
+                                        bannedSkills.Add(skill.SkillName);
+                                    SetSkillText(voiceActor, skill);
+                                    ActorSkillFeedback();
+                                    ApplySkill(skill);
+                                    return true; // On verra pour l'activation de compétence multiple plus tard
+                                }
                             }
                         }
                     }
@@ -237,38 +244,44 @@ namespace VoiceActing
             EmotionStat attackCheck = new EmotionStat(emotionCheck.Joy, emotionCheck.Sadness, emotionCheck.Disgust, emotionCheck.Anger,
                                                       emotionCheck.Surprise, emotionCheck.Sweetness, emotionCheck.Fear, emotionCheck.Trust
                                                       );
-            for(int i = 0; i < emotions.Length; i++)
+            if (emotions != null)
             {
-                //Debug.Log(emotions[i]);
-                switch(emotions[i].GetEmotion())
+                for (int i = 0; i < emotions.Length; i++)
                 {
-                    case Emotion.Neutre:
-                        attackCheck.Neutral -= 1;
-                        break;
-                    case Emotion.Joie:
-                        attackCheck.Joy -= 1;
-                        break;
-                    case Emotion.Tristesse:
-                        attackCheck.Sadness -= 1;
-                        break;
-                    case Emotion.Dégoût:
-                        attackCheck.Disgust -= 1;
-                        break;
-                    case Emotion.Colère:
-                        attackCheck.Anger -= 1;
-                        break;
-                    case Emotion.Surprise:
-                        attackCheck.Surprise -= 1;
-                        break;
-                    case Emotion.Douceur:
-                        attackCheck.Sweetness -= 1;
-                        break;
-                    case Emotion.Peur:
-                        attackCheck.Fear -= 1;
-                        break;
-                    case Emotion.Confiance:
-                        attackCheck.Trust -= 1;
-                        break;
+                    if (emotions[i] == null)
+                    {
+                        continue;
+                    }
+                    switch (emotions[i].GetEmotion())
+                    {
+                        case Emotion.Neutre:
+                            attackCheck.Neutral -= 1;
+                            break;
+                        case Emotion.Joie:
+                            attackCheck.Joy -= 1;
+                            break;
+                        case Emotion.Tristesse:
+                            attackCheck.Sadness -= 1;
+                            break;
+                        case Emotion.Dégoût:
+                            attackCheck.Disgust -= 1;
+                            break;
+                        case Emotion.Colère:
+                            attackCheck.Anger -= 1;
+                            break;
+                        case Emotion.Surprise:
+                            attackCheck.Surprise -= 1;
+                            break;
+                        case Emotion.Douceur:
+                            attackCheck.Sweetness -= 1;
+                            break;
+                        case Emotion.Peur:
+                            attackCheck.Fear -= 1;
+                            break;
+                        case Emotion.Confiance:
+                            attackCheck.Trust -= 1;
+                            break;
+                    }
                 }
             }
             if (attackCheck.Neutral > 0) return false;
@@ -285,12 +298,25 @@ namespace VoiceActing
 
         private bool CheckHP(float hp, Vector2Int hpCheck)
         {
+            hp *= 100;
             return (hpCheck.x <= hp && hp <= hpCheck.y);
         }
 
         private bool CheckPercentage(float percentage)
         {
             return (Random.Range(0, 100) < percentage);
+        }
+
+        private bool CheckBannedSkills(string skillName)
+        {
+            for(int i = 0; i < bannedSkills.Count; i++)
+            {
+                if(bannedSkills[i] == skillName)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -316,12 +342,14 @@ namespace VoiceActing
 
         public void ApplySkillEffect(SkillData skill)
         {
-            int currentHP = 0;
-            float damage = 0;
-            for(int i = 0; i < skill.SkillEffects.Length; i++)
+
+            skill.ApplySkillsEffects(actorsManager, enemyManager, doublageManager);
+            if(skill.SkillTarget == SkillTarget.Sentence)
+                reprintTextEnemy = true;
+            /*for(int i = 0; i < skill.SkillEffects.Length; i++)
             {
                 skill.SkillEffects[i].GetSkillEffectNode().ApplySkillEffect(actorsManager, enemyManager, doublageManager);
-            }
+            }*/
             /*switch (skill.SkillTarget)
             {
                 //skill.SkillEffects[i].Appl
@@ -365,12 +393,13 @@ namespace VoiceActing
 
         public void RemoveSkillEffect(SkillData skill)
         {
-            int currentHP = 0;
-            float damage = 0;
-            for (int i = 0; i < skill.SkillEffects.Length; i++)
+            /*int currentHP = 0;
+            float damage = 0;*/
+            skill.RemoveSkillsEffects(actorsManager, enemyManager, doublageManager);
+            /*for (int i = 0; i < skill.SkillEffects.Length; i++)
             {
                 skill.SkillEffects[i].GetSkillEffectNode().RemoveSkillEffect(actorsManager, enemyManager, doublageManager);
-            }
+            }*/
             /*switch (skill.SkillTarget)
             {
                 case SkillTarget.VoiceActor:

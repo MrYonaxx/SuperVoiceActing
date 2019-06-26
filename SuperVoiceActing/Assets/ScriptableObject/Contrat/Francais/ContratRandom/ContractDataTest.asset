@@ -36,8 +36,8 @@ MonoBehaviour:
       lineMax: 0
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
+      atkMin: 10
+      atkMax: 10
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -60,7 +60,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      actorLocked: {fileID: 11400000, guid: 23c95fd2762698540be4a33e932cf694, type: 2}
+      actorLocked: {fileID: 11400000, guid: f4a4be1ad3e10864e96fe72529e39e85, type: 2}
       artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
@@ -128,7 +128,8 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

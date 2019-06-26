@@ -22,6 +22,24 @@ namespace VoiceActing
         [SerializeField]
         int turnVariance;
 
+
+
+
+
+        public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            doublageManager.AddTurn(turnGain);
+        }
+
+
+
+
+        public override void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            doublageManager.AddTurn(-turnGain);
+        }
+
+
     } // SkillEffectTurn class
 	
 }// #PROJECTNAME# namespace

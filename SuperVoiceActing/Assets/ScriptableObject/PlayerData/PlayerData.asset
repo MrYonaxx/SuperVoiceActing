@@ -40,17 +40,17 @@ MonoBehaviour:
   - Novembre
   - Decembre
   monthDate: 05000000090000000d00000012000000160000001a0000001f00000023000000270000002c0000003000000035000000
-  initialComboMax: 1
+  initialComboMax: 2
   initialDeck:
     neutral: 0
-    joy: 1
-    sadness: 1
-    disgust: 1
-    anger: 1
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
+    joy: 2
+    sadness: 2
+    disgust: 2
+    anger: 2
+    surprise: 2
+    sweetness: 2
+    fear: 2
+    trust: 2
   contractAvailableDebug: []
   voiceActorsDebug:
   - {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
@@ -77,33 +77,39 @@ MonoBehaviour:
   playerName: Louis
   studioName: Sutudioh
   contractGacha:
-  - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
-  - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
+  - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
   - {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
   contractGachaCooldown:
+  - contract: {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
+    cooldown: 8
   - contract: {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
     cooldown: 4
-  - contract: {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
-    cooldown: 9
+  - contract: {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
+    cooldown: 7
   nextStoryEvents: []
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
   tutoEvent:
   - {fileID: 11400000, guid: 2cc5ef0a64eae0a42b4828473eb9453e, type: 2}
   - {fileID: 11400000, guid: 42fe3a800ce5c1a49b485f68261d259f, type: 2}
+  - {fileID: 11400000, guid: d2e49b17f87c2bf43a3aad4141cf3cbc, type: 2}
+  - {fileID: 11400000, guid: 888fe57a874159c4695facf6e3e87526, type: 2}
+  - {fileID: 11400000, guid: cdfda44274c005a4aa9f39ed14ed53a5, type: 2}
+  - {fileID: 11400000, guid: 8857801f17a1cd84394cdcb008efcbf7, type: 2}
+  - {fileID: 11400000, guid: 508d9212bdfd43b45baf108e58edb774, type: 2}
   - {fileID: 11400000, guid: a39ac9daff10c264e919c57feef69610, type: 2}
   - {fileID: 11400000, guid: 2b4487d31b0350943b1498111b0c0b38, type: 2}
   maintenance: 6000
   money: 36000
   season: 3
-  comboMax: 1
+  comboMax: 2
   deck:
-    neutral: 0
-    joy: 1
-    sadness: 1
-    disgust: 1
-    anger: 1
-    surprise: 0
-    sweetness: 0
-    fear: 0
-    trust: 0
+    neutral: 2
+    joy: 2
+    sadness: 2
+    disgust: 2
+    anger: 2
+    surprise: 2
+    sweetness: 2
+    fear: 2
+    trust: 2

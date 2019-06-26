@@ -75,6 +75,8 @@ namespace VoiceActing
         private RectTransform statTimbre;
         [SerializeField]
         private TextMeshProUGUI[] statSkillsActor;
+        [SerializeField]
+        private TextMeshProUGUI statSkillActorDescription;
 
         [Header("Stats Panel")]
         [SerializeField]
@@ -412,6 +414,7 @@ namespace VoiceActing
                     statSkillsActor[i].text = actor.Potentials[i].SkillName;
                 else
                     statSkillsActor[i].text = " ";
+                statSkillActorDescription.text = actor.Potentials[0].Description;
             }
 
             if (firstDraw == true)

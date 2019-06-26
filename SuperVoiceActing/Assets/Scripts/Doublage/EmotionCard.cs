@@ -33,6 +33,12 @@ namespace VoiceActing
         Image StatBonus;
         [SerializeField]
         Image StatMalus;
+        [SerializeField]
+        TextMeshProUGUI textBuffTurn;
+        [SerializeField]
+        TextMeshProUGUI textMalusTurn;
+
+
 
 
         private Emotion emotion;
@@ -41,6 +47,8 @@ namespace VoiceActing
         private int valueBonus = 0;
 
         private float damagePercentage = 1;
+
+        private Buff currentBuff;
 
 
         #endregion
@@ -154,6 +162,12 @@ namespace VoiceActing
                 textStat.color = Color.white;
             }
             textStat.text = (baseStat + newStat).ToString();
+        }
+
+
+        public void DrawBuff()
+        {
+
         }
 
         #endregion

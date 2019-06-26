@@ -65,6 +65,8 @@ namespace VoiceActing
         [SerializeField]
         private Image[] actorsImage;
         [SerializeField]
+        private GameObject[] actorsExpOutline;
+        [SerializeField]
         private TextMeshProUGUI[] textsLevel;
         [SerializeField]
         private TextMeshProUGUI[] textsNext;
@@ -218,6 +220,9 @@ namespace VoiceActing
         {
             for(int i = 0; i < contract.VoiceActors.Count; i++)
             {
+                actorsImage[i].gameObject.SetActive(true);
+                actorsExpOutline[i].gameObject.SetActive(true);
+
                 actorsImage[i].sprite = contract.VoiceActors[i].ActorSprite;
                 actorsImage[i].SetNativeSize();
                 textsLevel[i].text = contract.VoiceActors[i].Level.ToString();
@@ -399,6 +404,7 @@ namespace VoiceActing
                 gaugeStats[i].transform.localScale = new Vector3(stat / 100f, gaugeStats[i].transform.localScale.y, gaugeStats[i].transform.localScale.z);
                 newGaugeStats[i].sizeDelta = new Vector2((stat / 100f) * 500, newGaugeStats[i].sizeDelta.y);
                 textsStats[i].text = stat.ToString();
+                textsStats[i].color = Color.white;
                 textsGain[i].transform.localScale = new Vector3(1, 0, 1);
             }
         }

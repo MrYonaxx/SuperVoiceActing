@@ -44,6 +44,7 @@ namespace VoiceActing
             get { return skillName; }
         }
 
+        [TextArea]
         [SerializeField]
         private string description;
         public string Description
@@ -134,7 +135,7 @@ namespace VoiceActing
         [Space]
         [Space]
 
-        [SerializeField]
+        /*[SerializeField]
         [Title("Card Gain")]
         private EmotionStat cardGain;
         public EmotionStat CardGain
@@ -258,7 +259,7 @@ namespace VoiceActing
         public float TurnGainVariance
         {
             get { return turnGainVariance; }
-        }
+        }*/
 
         [SerializeField]
         private int producerCost;
@@ -267,6 +268,22 @@ namespace VoiceActing
             get { return producerCost; }
         }
 
+
+        public void ApplySkillsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            for(int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+            }
+        }
+
+        public void RemoveSkillsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+            }
+        }
 
 
     } // SkillData class
