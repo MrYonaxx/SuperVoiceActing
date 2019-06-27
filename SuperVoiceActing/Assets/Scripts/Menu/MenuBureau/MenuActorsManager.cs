@@ -414,8 +414,10 @@ namespace VoiceActing
                     statSkillsActor[i].text = actor.Potentials[i].SkillName;
                 else
                     statSkillsActor[i].text = " ";
-                statSkillActorDescription.text = actor.Potentials[0].Description;
             }
+
+            if (actor.Potentials.Length != 0)
+                statSkillActorDescription.text = actor.Potentials[0].Description;
 
             if (firstDraw == true)
                 firstDraw = false;
