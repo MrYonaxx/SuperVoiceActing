@@ -416,6 +416,7 @@ namespace VoiceActing
         {
             currentTextData = newTextData;
             enemyHP = currentTextData.HPMax;
+            //enemyHP *= 2;
             //enemyHPMax = enemyHP;
         }
 
