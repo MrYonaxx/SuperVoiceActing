@@ -260,6 +260,7 @@ namespace VoiceActing
             emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
             skillManager.SetManagers(this, cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
+            roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
             toneManager.DrawTone();
             // Initialisation
@@ -439,6 +440,7 @@ namespace VoiceActing
                 textAppearManager.SetLetterSpeed(2);
                 yield break;
             }
+            roleManager.RoleDecision("ENDATTACK", indexPhrase, turnCount, enemyManager.GetHpPercentage());
             if (actorsManager.GetCurrentActorHP() == 0)
             {
                 yield return new WaitForSeconds(1f);
@@ -700,27 +702,45 @@ namespace VoiceActing
                 EndSession();
                 return;
             }
+            StartCoroutine(SetPhraseCoroutine());
+        }
+
+        private IEnumerator SetPhraseCoroutine()
+        {
+
+            // Check Skill ========================================================================
+            if (intro == true)
+            {
+                //lastAttack[0] = Emotion.Neutre;
+                if (skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Start", lastAttack) == true)
+                {
+                    while (skillManager.InSkillAnimation() == true)
+                        yield return null;
+                }
+                intro = false;
+                yield return new WaitForSeconds(0.5f);
+            }
+            // Role Decision ======================================================================
+            roleManager.RoleDecision("STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage());
+            if (roleManager.IsAttacking() == true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                cameraController.EnemySkill();
+                roleManager.EnemyAttackActivation();
+                endAttack = false;
+                while (endAttack == false)
+                {
+                    yield return null;
+                }
+            }
+
+
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
             ShowUIButton(buttonUIA);
             ShowUIButton(buttonUIB);
-            if (intro == true)
-            {
-                //lastAttack[0] = Emotion.Neutre;
-                skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Start", lastAttack);
-                intro = false;
-            }
-            /*{
-                while (skillManager.InSkillAnimation() == true)
-                {
-                    yield return null;
-                }
-            }*/
-            //skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Kill", lastAttack);
         }
-
-
 
 
 

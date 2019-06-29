@@ -26,7 +26,7 @@ namespace VoiceActing
 
         public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
         {
-
+            actorsManager.InvertActorStat(firstEmotion, secondEmotion);
 
         }
 

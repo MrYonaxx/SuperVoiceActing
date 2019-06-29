@@ -376,14 +376,14 @@ namespace VoiceActing
 
         private IEnumerator IntroSequence()
         {
-            for (int j = 0; j < 3; j++)
+            for (int i = 0; i < emotionCards.Length; i++)
             {
-                for (int i = 0; i < emotionCards.Length; i++)
+                for (int j = 0; j < 3; j++)
                 {
                     if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
                         emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j], transitionSpeedIntro);
-                    yield return new WaitForSeconds(0.1f);
                 }
+                yield return new WaitForSeconds(0.1f);
             }
         }
 

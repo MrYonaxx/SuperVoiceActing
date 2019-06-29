@@ -117,6 +117,93 @@ namespace VoiceActing
 
 
 
+
+        public bool CheckEnemyAI(string phase, int line, int turn, float enemyHP)
+        {
+            if (CheckPhase(phase) == true)
+            {
+                if (CheckAICondition(line, turn, enemyHP) == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool CheckPhase(string phase)
+        {
+            switch (phase)
+            {
+                case "STARTPHRASE":
+                    if (startPhrase == true)
+                        return true;
+                    break;
+                case "STARTATTACK":
+                    if (startAttack == true)
+                        return true;
+                    break;
+                case "ENDATTACK":
+                    if (endAttack == true)
+                        return true;
+                    break;
+                case "ENDPHRASE":
+                    if (endPhrase == true)
+                        return true;
+                    break;
+            }
+            return false;
+        }
+
+        private bool CheckAICondition(int line, int turn, float enemyHP)
+        {
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                switch (conditions[i].Condition)
+                {
+                    case AICondition.None:
+                        break;
+                    case AICondition.Line:
+                        if (CheckVariableCondition(conditions[i].MathOperator, line, conditions[i].ConditionValue) == false)
+                            return false;
+                        break;
+                    case AICondition.Turn:
+                        if (CheckVariableCondition(conditions[i].MathOperator, turn, conditions[i].ConditionValue) == false)
+                            return false;
+                        break;
+                    case AICondition.EnemyHP:
+                        if (CheckVariableCondition(conditions[i].MathOperator, enemyHP, conditions[i].ConditionValue) == false)
+                            return false;
+                        break;
+                }
+            }
+            return true;
+        }
+
+
+        private bool CheckVariableCondition(MathOperator mathOperator, float variable, float value)
+        {
+            switch (mathOperator)
+            {
+                case MathOperator.Equal:
+                    return (variable == value);
+                case MathOperator.Less:
+                    return (variable < value);
+                case MathOperator.LessEqual:
+                    return (variable <= value);
+                case MathOperator.More:
+                    return (variable > value);
+                case MathOperator.MoreEqual:
+                    return (variable >= value);
+                case MathOperator.Not:
+                    return (variable != value);
+            }
+            return false;
+        }
+
+
+
+
+
     } // EnemyAI class
 	
 }// #PROJECTNAME# namespace

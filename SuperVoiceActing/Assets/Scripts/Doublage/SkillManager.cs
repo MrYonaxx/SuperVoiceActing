@@ -91,11 +91,11 @@ namespace VoiceActing
         DoublageManager doublageManager;
 
 
-        [Header("Debug")]
+        /*[Header("Debug")]
         [SerializeField]
         private EmotionStat flatBonus;
         [SerializeField]
-        private EmotionStat percentageBonus;
+        private EmotionStat percentageBonus;*/
 
 
         [Header("Buff")]
@@ -181,44 +181,32 @@ namespace VoiceActing
                 {
                     case "Start":
                         if (skill.AfterStart == true)
-                        {
                             next = true;
-                        }
                         break;
 
                     case "Selection":
                         if (skill.AfterAttack == true)
-                        {
                             next = true;
-                        }
                         break;
 
                     case "Attack":
                         if(skill.AfterAttack == true)
-                        {
                             next = true;
-                        }
                         break;
 
                     case "Critical":
                         if (skill.AfterCritical == true)
-                        {
                             next = true;
-                        }
                         break;
 
                     case "Counter":
                         if (skill.AfterAttack == true)
-                        {
                             next = true;
-                        }
                         break;
 
                     case "Kill":
                         if (skill.AfterKill == true)
-                        {
                             next = true;
-                        }
                         break;
                 }
 
@@ -374,19 +362,6 @@ namespace VoiceActing
             skill.RemoveSkillsEffects(actorsManager, enemyManager, doublageManager);
         }
 
-
-        /*public void CheckBuff(List<Buff> buffs)
-        {
-            for(int i = 0; i < buffs.Count; i++)
-            {
-                buffs[i].Turn -= 1;
-                if(buffs[i].Turn == 0)
-                {
-                    RemoveSkillEffect(buffs[i].Skillbuff);
-                    buffs.RemoveAt(i);
-                }
-            }
-        }*/
 
 
 

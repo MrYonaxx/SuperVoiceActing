@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: SkillParfumEcoeurant
   m_EditorClassIdentifier: 
   skillName: Ecoeurant
-  description: "Quadruple les d\xE9gats en utilisant du d\xE9go\xFBt."
-  descriptionBattle: "Quadruple les d\xE9gats en utilisant du d\xE9go\xFBt."
+  description: "Le r\xF4le \xE9coeure [Nom]\n<color=red>Triple les d\xE9gats</color>
+    en utilisant du <color=green>d\xE9go\xFBt</color>."
+  descriptionBattle: "Triple les d\xE9gats en utilisant du d\xE9go\xFBt."
   skillType: 0
   skillTarget: 0
-  turnActive: 0
-  refresh: 0
-  addBuffTurn: 0
-  canAddMultiple: 0
+  buffData:
+    turnActive: 0
+    refresh: 0
+    addBuffTurn: 0
+    canAddMultiple: 0
   skillEffects:
   - eventNode: 2
     skillEffectCardGain:
@@ -48,13 +50,13 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionDamage:
-      inPercentage: 0
+      inPercentage: 1
       damageVariance: 0
       emotionDamage:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 0
+        disgust: 200
         anger: 0
         surprise: 0
         sweetness: 0

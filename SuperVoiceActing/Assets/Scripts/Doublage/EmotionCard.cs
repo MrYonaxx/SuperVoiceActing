@@ -31,13 +31,12 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textStat;
         [SerializeField]
+        TextMeshProUGUI textEmotionDamage;
+        [SerializeField]
         Image[] statBonus;
         [SerializeField]
-        Image[] statMalus;
-        [SerializeField]
         TextMeshProUGUI[] textBuffTurn;
-        [SerializeField]
-        TextMeshProUGUI[] textMalusTurn;
+
 
 
         Color bonusStat;
@@ -60,6 +59,16 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+        public int GetBaseValue()
+        {
+            return value;
+        }
+
+        public int GetBonusValue()
+        {
+            return valueBonus;
+        }
 
         public int GetStat()
         {
@@ -143,6 +152,12 @@ namespace VoiceActing
 
 
 
+        /*public void SetStat(int newBaseValue, int newBonusValue)
+        {
+                        value = baseStat;
+            valueBonus = newStat;
+        }*/
+
         public void AddStat(int statToAdd, Buff buff = null)
         {
             if (buff != null)
@@ -189,6 +204,11 @@ namespace VoiceActing
         public void AddDamagePercentage(int damageModifier)
         {
             damagePercentage += damageModifier / 100;
+            if (textEmotionDamage != null)
+            {
+                textEmotionDamage.text = "x"+damagePercentage;
+                textEmotionDamage.gameObject.SetActive((damagePercentage != 1));
+            }
         }
 
 

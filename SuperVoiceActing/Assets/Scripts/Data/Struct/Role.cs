@@ -125,6 +125,14 @@ namespace VoiceActing
             set { characterLock = value; }
         }
 
+        [SerializeField]
+        private EnemyAI[] roleAI;
+        public EnemyAI[] RoleAI
+        {
+            get { return roleAI; }
+            set { roleAI = value; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -172,6 +180,7 @@ namespace VoiceActing
 
             if(data.ActorLocked != null)
                 this.characterLock = data.ActorLocked;
+            this.roleAI = data.ArtificialIntelligence;
 
             int[] bestValues = new int[8];
 

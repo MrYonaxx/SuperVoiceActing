@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -27,15 +28,23 @@ namespace VoiceActing
         [SerializeField]
         Animator enemyAttackFace;
 
+        [Header("InfoAttack")]
+        [SerializeField]
+        TextMeshProUGUI textSkillName;
+        [SerializeField]
+        TextMeshProUGUI textSkillDescription;
+
         [SerializeField]
         InputController input;
 
         bool firstTime = false;
-        bool attack = false;
+        bool readyToAttack = false;
 
         List<Role> roles;
 
         int indexCurrentRole = 0;
+        private SkillData currentAttack = null;
+        private SkillManager skillManager = null;
 
         #endregion
 
@@ -58,12 +67,15 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void SetManagers(SkillManager manager)
+        {
+            skillManager = manager;
+        }
+
         public void SetRoles(List<Role> contractRoles)
         {
             roles = contractRoles;
         }
-
-
 
         public void AddScorePerformance(int lastAttackScore, int lastBestScore)
         {
@@ -73,16 +85,45 @@ namespace VoiceActing
 
 
 
+
+
+
+
+
         public bool IsAttacking()
         {
-            return attack;
+            return readyToAttack;
         }
 
-        public void SelectAttack()
+
+        public bool RoleDecision(string phase, int line, int turn, float enemyHP)
         {
-            attack = true;
-            ActivateSpot();
+            for (int i = 0; i < roles[indexCurrentRole].RoleAI.Length; i++)
+            {
+                if (roles[indexCurrentRole].RoleAI[i].CheckEnemyAI(phase, line, turn, enemyHP))
+                {
+                    currentAttack = roles[indexCurrentRole].RoleAI[i].Skills[Random.Range(0, roles[indexCurrentRole].RoleAI[i].Skills.Length)];
+                    if (currentAttack != null)
+                    {
+                        readyToAttack = true;
+                        ActivateSpot();
+                    }
+                    else
+                    {
+                        readyToAttack = false;
+                    }
+                    return readyToAttack;
+                }
+            }
+            return false;
         }
+
+
+
+
+
+
+
 
 
 
@@ -98,7 +139,7 @@ namespace VoiceActing
 
         public void EnemyAttackActivation()
         {
-            attack = false;
+            readyToAttack = false;
             if (firstTime == false)
             {
                 enemyAttack.gameObject.SetActive(true);
@@ -107,6 +148,10 @@ namespace VoiceActing
             }
             enemyAttack.SetBool("Appear", true);
             enemyAttackFace.SetBool("Appear", true);
+
+            textSkillName.text = currentAttack.SkillName;
+            textSkillDescription.text = currentAttack.Description;
+            skillManager.ApplySkill(currentAttack);
             //StartCoroutine(WaitInput(60));
         }
 

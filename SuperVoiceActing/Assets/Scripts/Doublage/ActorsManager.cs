@@ -252,7 +252,6 @@ namespace VoiceActing
                         break;
                 }
 
-
                 for (int j = 0; j < pack.Length; j++)
                 {
                     pack[j].CheckBuff();
@@ -288,6 +287,101 @@ namespace VoiceActing
                     return cardTrust[cardTarget.y];
             }
             return null;
+        }
+
+
+
+        public void InvertActorStat(Emotion emotionA, Emotion emotionB)
+        {
+            // A refaire
+            EmotionCard[] packA = null;
+            EmotionCard[] packB = null;
+            switch (emotionA)
+            {
+                case Emotion.Joie: // Joie
+                    packA = cardJoy;
+                    break;
+                case Emotion.Tristesse: // Tristesse
+                    packA = cardSadness;
+                    break;
+                case Emotion.Dégoût: // Dégout
+                    packA = cardDisgust;
+                    break;
+                case Emotion.Colère: // Colère
+                    packA = cardAnger;
+                    break;
+                case Emotion.Surprise: // Surprise
+                    packA = cardSurprise;
+                    break;
+                case Emotion.Douceur: // Douceur
+                    packA = cardSweetness;
+                    break;
+                case Emotion.Peur: // Peur
+                    packA = cardFear;
+                    break;
+                case Emotion.Confiance: // Confiance
+                    packA = cardTrust;
+                    break;
+                case Emotion.Neutre: // Neutral
+                    packA = cardNeutral;
+                    break;
+            }
+            switch (emotionB)
+            {
+                case Emotion.Joie: // Joie
+                    packB = cardJoy;
+                    break;
+                case Emotion.Tristesse: // Tristesse
+                    packB = cardSadness;
+                    break;
+                case Emotion.Dégoût: // Dégout
+                    packB = cardDisgust;
+                    break;
+                case Emotion.Colère: // Colère
+                    packB = cardAnger;
+                    break;
+                case Emotion.Surprise: // Surprise
+                    packB = cardSurprise;
+                    break;
+                case Emotion.Douceur: // Douceur
+                    packB = cardSweetness;
+                    break;
+                case Emotion.Peur: // Peur
+                    packB = cardFear;
+                    break;
+                case Emotion.Confiance: // Confiance
+                    packB = cardTrust;
+                    break;
+                case Emotion.Neutre: // Neutral
+                    packB = cardNeutral;
+                    break;
+            }
+
+            int[] tmpBaseValue = new int[3];
+            int[] tmpBaseBonusValue = new int[3];
+
+            for (int i = 0; i < packB.Length; i++)
+            {
+                if (packA[i] == null)
+                {
+                    tmpBaseValue[i] = tmpBaseValue[i - 1];
+                    tmpBaseBonusValue[i] = tmpBaseBonusValue[i - 1];
+                    packB[i].DrawStat(packA[i].GetBaseValue(), packA[i].GetBonusValue(), colorStatBonus, colorStatMalus);
+                }
+                else if (packB[i] != null)
+                {
+                    tmpBaseValue[i] = packB[i].GetBaseValue();
+                    tmpBaseBonusValue[i] = packB[i].GetBonusValue();
+                    packB[i].DrawStat(packA[i].GetBaseValue(), packA[i].GetBonusValue(), colorStatBonus, colorStatMalus);
+                }
+            }
+            for (int i = 0; i < packA.Length; i++)
+            {
+                if (packB[i] != null)
+                {
+                    packA[i].DrawStat(tmpBaseValue[i], tmpBaseBonusValue[i], colorStatBonus, colorStatMalus);
+                }
+            }
         }
 
 
@@ -420,48 +514,6 @@ namespace VoiceActing
 
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
             textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();
-
-        }
-
-
-
-        private void AddCardBuff(Buff buff, int[] targetEmotion = null, int[] targetIndex = null)
-        {
-            // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
-            EmotionCard[] pack = null;
-            for(int i = 0; i < targetEmotion.Length; i++)
-            {
-                switch (targetEmotion[i])
-                {
-                    case 0: // Joie
-                        pack = cardJoy;
-                        break;
-                    case 1: // Tristesse
-                        pack = cardSadness;
-                        break;
-                    case 2: // Dégout
-                        pack = cardDisgust;
-                        break;
-                    case 3: // Colère
-                        pack = cardAnger;
-                        break;
-                    case 4: // Surprise
-                        pack = cardSurprise;
-                        break;
-                    case 5: // Douceur
-                        pack = cardSweetness;
-                        break;
-                    case 6: // Peur
-                        pack = cardFear;
-                        break;
-                    case 7: // Confiance
-                        pack = cardTrust;
-                        break;
-                }
-            }
-
-
-           
 
         }
 

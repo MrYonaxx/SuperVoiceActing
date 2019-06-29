@@ -86,101 +86,30 @@ namespace VoiceActing
             GainMP(1);
             for (int i = 0; i < producerAI.Length; i++)
             {
-                if (CheckPhase(producerAI[i], phase) == true)
+                if (producerAI[i].CheckEnemyAI(phase, line, turn, enemyHP))
                 {
-                    if (CheckAICondition(producerAI[i].Conditions, line, turn, enemyHP) == true)
+                    currentAttack = producerAI[i].Skills[Random.Range(0, producerAI[i].Skills.Length)];
+                    if (currentAttack != null)
                     {
-                        currentAttack = producerAI[i].Skills[Random.Range(0, producerAI[i].Skills.Length)];
-                        if (currentAttack != null)
-                        {
-                            readyToAttack = true;
-                            if (CheckMP(currentAttack.ProducerCost) == false)
-                            {
-                                readyToAttack = false;
-                            }
-                        }
-                        else
+                        readyToAttack = true;
+                        if (CheckMP(currentAttack.ProducerCost) == false)
                         {
                             readyToAttack = false;
                         }
-
-                        return readyToAttack;
                     }
+                    else
+                    {
+                        readyToAttack = false;
+                    }
+
+                    return readyToAttack;
                 }
             }
             return false;
         }
 
 
-        private bool CheckPhase(EnemyAI producerAI, string phase)
-        {
-            switch (phase)
-            {
-                case "STARTPHRASE":
-                    if (producerAI.StartPhrase == true)
-                        return true;
-                    break;
-                case "STARTATTACK":
-                    if (producerAI.StartAttack == true)
-                        return true;
-                    break;
-                case "ENDATTACK":
-                    if (producerAI.EndAttack == true)
-                        return true;
-                    break;
-                case "ENDPHRASE":
-                    if (producerAI.EndPhrase == true)
-                        return true;
-                    break;
-            }
-            return false;
-        }
 
-        private bool CheckAICondition(ConditionAI[] conditionAI, int line, int turn, float enemyHP)
-        {
-            for(int i = 0; i < conditionAI.Length; i++)
-            {
-                switch(conditionAI[i].Condition)
-                {
-                    case AICondition.None:
-                        break;
-                    case AICondition.Line:
-                        if (CheckVariableCondition(conditionAI[i].MathOperator, line, conditionAI[i].ConditionValue) == false)
-                            return false;
-                        break;
-                    case AICondition.Turn:
-                        if (CheckVariableCondition(conditionAI[i].MathOperator, turn, conditionAI[i].ConditionValue) == false)
-                            return false;
-                        break;
-                    case AICondition.EnemyHP:
-                        if (CheckVariableCondition(conditionAI[i].MathOperator, enemyHP, conditionAI[i].ConditionValue) == false)
-                            return false;
-                        break;
-                }
-            }
-            return true;
-        }
-
-
-        private bool CheckVariableCondition(MathOperator mathOperator, float variable, float value)
-        {
-            switch(mathOperator)
-            {
-                case MathOperator.Equal:
-                    return (variable == value);
-                case MathOperator.Less:
-                    return (variable < value);
-                case MathOperator.LessEqual:
-                    return (variable <= value);
-                case MathOperator.More:
-                    return (variable > value);
-                case MathOperator.MoreEqual:
-                    return (variable >= value);
-                case MathOperator.Not:
-                    return (variable != value);
-            }
-            return false;
-        }
 
 
 
