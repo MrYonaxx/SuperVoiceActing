@@ -19,7 +19,8 @@ namespace VoiceActing
         EmotionStat,
         EmotionStatDamage,
         Health,
-        Turn
+        Turn,
+        TradeStat
     }
 
     [System.Serializable]
@@ -60,6 +61,12 @@ namespace VoiceActing
         [HideLabel]
         public SkillEffectTurn skillEffectTurn = null;
 
+        [VerticalGroup("SkillEffectGroup/Right")]
+        [ShowIf("eventNode", SkillEffect.TradeStat)]
+        [SerializeField]
+        [HideLabel]
+        public SkillEffectTradeStat skillEffectTradeStat = null;
+
 
         public SkillEffectData GetSkillEffectNode()
         {
@@ -75,6 +82,8 @@ namespace VoiceActing
                     return skillEffectHealth;
                 case SkillEffect.Turn:
                     return skillEffectTurn;
+                case SkillEffect.TradeStat:
+                    return skillEffectTradeStat;
             }
             return null;
         }

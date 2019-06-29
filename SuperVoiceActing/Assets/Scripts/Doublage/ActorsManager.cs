@@ -113,6 +113,10 @@ namespace VoiceActing
         SpriteRenderer spriteNextActor;
 
 
+
+
+
+
         #endregion
 
         #region GettersSetters 
@@ -182,45 +186,166 @@ namespace VoiceActing
             }
         }
 
-        public bool ApplyBuff(SkillData buff)
+        /*public bool ApplyBuff(SkillData buff)
         {
             for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
             {
                 if (actors[indexCurrentActor].Buffs[i].Skillbuff == buff)
                 {
-                    if(buff.Refresh == true)
+                    if (buff.CanAddMultiple == false)
                     {
-                        actors[indexCurrentActor].Buffs[i].Turn = buff.TurnActive;
+                        if (buff.Refresh == true)
+                        {
+                            actors[indexCurrentActor].Buffs[i].Turn = buff.TurnActive;
+                        }
+                        else if (buff.AddBuffTurn == true)
+                        {
+                            actors[indexCurrentActor].Buffs[i].Turn += buff.TurnActive;
+                        }
+                        return false;
                     }
-                    else if (buff.AddBuffTurn == true)
-                    {
-                        actors[indexCurrentActor].Buffs[i].Turn += buff.TurnActive;
-                    }
-                    return false;
                 }
             }
             actors[indexCurrentActor].Buffs.Add(new Buff(buff));
             DrawBuffIcon();
             return true;
-        }
+        }*/
 
         public void DrawBuffIcon()
         {
 
         }
 
-
-        public void AddActorStat(EmotionStat modifiers)
+        public void CheckBuffs()
         {
-            actors[indexCurrentActor].StatModifier.Add(modifiers);
-            DrawActorStat();
+            for (int i = 0; i < 9; i++)
+            {
+                EmotionCard[] pack = null;
+                switch (i)
+                {
+                    case 0: // Joie
+                        pack = cardJoy;
+                        break;
+                    case 1: // Tristesse
+                        pack = cardSadness;
+                        break;
+                    case 2: // Dégout
+                        pack = cardDisgust;
+                        break;
+                    case 3: // Colère
+                        pack = cardAnger;
+                        break;
+                    case 4: // Surprise
+                        pack = cardSurprise;
+                        break;
+                    case 5: // Douceur
+                        pack = cardSweetness;
+                        break;
+                    case 6: // Peur
+                        pack = cardFear;
+                        break;
+                    case 7: // Confiance
+                        pack = cardTrust;
+                        break;
+                    case 8: // Neutral
+                        pack = cardNeutral;
+                        break;
+                }
+
+
+                for (int j = 0; j < pack.Length; j++)
+                {
+                    pack[j].CheckBuff();
+                }
+            }
         }
 
-        public void SubstractActorStat(EmotionStat modifiers)
+
+
+
+
+        public EmotionCard GetCardTarget(Vector3Int cardTarget)
         {
-            actors[indexCurrentActor].StatModifier.Substract(modifiers);
-            DrawActorStat();
+            switch (cardTarget.x)
+            {
+                case 0: // Neutral
+                    return cardNeutral[cardTarget.y];
+                case 1: // Joie
+                    return cardJoy[cardTarget.y];
+                case 2: // Tristesse
+                    return cardSadness[cardTarget.y];
+                case 3: // Dégout
+                    return cardDisgust[cardTarget.y];
+                case 4: // Colère
+                    return cardAnger[cardTarget.y];
+                case 5: // Surprise
+                    return cardSurprise[cardTarget.y];
+                case 6: // Douceur
+                    return cardSweetness[cardTarget.y];
+                case 7: // Peur
+                    return cardFear[cardTarget.y];
+                case 8: // Confiance
+                    return cardTrust[cardTarget.y];
+            }
+            return null;
         }
+
+
+
+        public void AddActorStat(List<Vector3Int> cardTargetsData, Buff buff = null)
+        {
+            for(int i = 0; i < cardTargetsData.Count; i++)
+            {
+                GetCardTarget(cardTargetsData[i]).AddStat(cardTargetsData[i].z, buff);
+            }
+        }
+
+        public void RemoveActorStat(List<Vector3Int> cardTargetsData)
+        {
+            for (int i = 0; i < cardTargetsData.Count; i++)
+            {
+                GetCardTarget(cardTargetsData[i]).AddStat(-cardTargetsData[i].z);
+            }
+        }
+
+
+
+        public void AddActorStatPercentage(List<Vector3Int> cardTargetsData)
+        {
+            for (int i = 0; i < cardTargetsData.Count; i++)
+            {
+                GetCardTarget(cardTargetsData[i]).AddStatPercentage(cardTargetsData[i].z);
+            }
+        }
+
+        public void RemoveActorStatPercentage(List<Vector3Int> cardTargetsData)
+        {
+            for (int i = 0; i < cardTargetsData.Count; i++)
+            {
+                GetCardTarget(cardTargetsData[i]).AddStatPercentage(-cardTargetsData[i].z);
+            }
+        }
+
+
+
+        public void AddActorEmotionDamage(List<Vector3Int> cardTargetsData)
+        {
+            for (int i = 0; i < cardTargetsData.Count; i++)
+            {
+                GetCardTarget(cardTargetsData[i]).AddDamagePercentage(cardTargetsData[i].z);
+            }
+        }
+
+        public void RemoveActorEmotionDamage(List<Vector3Int> cardTargetsData)
+        {
+            for (int i = 0; i < cardTargetsData.Count; i++)
+            {
+                GetCardTarget(cardTargetsData[i]).AddDamagePercentage(-cardTargetsData[i].z);
+            }
+        }
+
+
+
 
         private void DrawActorStat()
         {
@@ -287,17 +412,6 @@ namespace VoiceActing
                 }
             }
 
-            /*textCardStats[0].text = actors[indexCurrentActor].Statistique.Joy.ToString();
-
-            textCardStats[1].text = actors[indexCurrentActor].Statistique.Sadness.ToString();
-            textCardStats[2].text = actors[indexCurrentActor].Statistique.Disgust.ToString();
-            textCardStats[3].text = actors[indexCurrentActor].Statistique.Anger.ToString();
-            textCardStats[4].text = actors[indexCurrentActor].Statistique.Surprise.ToString();
-            textCardStats[5].text = actors[indexCurrentActor].Statistique.Sweetness.ToString();
-            textCardStats[6].text = actors[indexCurrentActor].Statistique.Fear.ToString();
-            textCardStats[7].text = actors[indexCurrentActor].Statistique.Trust.ToString();
-            textCardStats[8].text = actors[indexCurrentActor].Statistique.Neutral.ToString();*/
-
             if(actors[indexCurrentActor].Hp < actors[indexCurrentActor].HpMax * healthCriticalThreshold)
             {
                 textCurrentHp.color = healthCriticalColor;
@@ -311,7 +425,45 @@ namespace VoiceActing
 
 
 
+        private void AddCardBuff(Buff buff, int[] targetEmotion = null, int[] targetIndex = null)
+        {
+            // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
+            EmotionCard[] pack = null;
+            for(int i = 0; i < targetEmotion.Length; i++)
+            {
+                switch (targetEmotion[i])
+                {
+                    case 0: // Joie
+                        pack = cardJoy;
+                        break;
+                    case 1: // Tristesse
+                        pack = cardSadness;
+                        break;
+                    case 2: // Dégout
+                        pack = cardDisgust;
+                        break;
+                    case 3: // Colère
+                        pack = cardAnger;
+                        break;
+                    case 4: // Surprise
+                        pack = cardSurprise;
+                        break;
+                    case 5: // Douceur
+                        pack = cardSweetness;
+                        break;
+                    case 6: // Peur
+                        pack = cardFear;
+                        break;
+                    case 7: // Confiance
+                        pack = cardTrust;
+                        break;
+                }
+            }
 
+
+           
+
+        }
 
 
 

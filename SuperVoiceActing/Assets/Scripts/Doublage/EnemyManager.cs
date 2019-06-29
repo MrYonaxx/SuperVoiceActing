@@ -246,9 +246,9 @@ namespace VoiceActing
             this.neutral -= addition.neutral;
         }
 
-        public EmotionStat Reverse(EmotionStat stat)
+        public EmotionStat Reverse()
         {
-            stat.joy = -stat.joy;
+            /*stat.joy = -stat.joy;
             stat.sadness = -stat.sadness;
             stat.disgust = -stat.disgust;
             stat.anger = -stat.anger;
@@ -256,8 +256,8 @@ namespace VoiceActing
             stat.sweetness = -stat.sweetness;
             stat.fear = -stat.fear;
             stat.trust = -stat.trust;
-            stat.neutral = -stat.neutral;
-            return stat;
+            stat.neutral = -stat.neutral;*/
+            return new EmotionStat(-this.joy, -this.sadness, -this.disgust, -this.anger, -this.surprise, -this.sweetness, -this.fear, -this.trust);
         }
 
 

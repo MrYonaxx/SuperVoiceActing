@@ -347,6 +347,8 @@ namespace VoiceActing
             }
             textCurrentLine.text = contract.CurrentLine.ToString();
             textEXP.text = (contract.ExpGain * lineDefeated).ToString();
+            lineGauge.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), lineGauge.localScale.y, lineGauge.localScale.z);
+            lineNewGauge.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), lineNewGauge.localScale.y, lineNewGauge.localScale.z);
             inAnimation = false;
         }
 

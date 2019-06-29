@@ -26,7 +26,7 @@ namespace VoiceActing
 
 
 
-        public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
         {
             doublageManager.AddTurn(turnGain);
         }
@@ -34,10 +34,10 @@ namespace VoiceActing
 
 
 
-        public override void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        /*public override void RemoveSkillEffect(SkillData skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
             doublageManager.AddTurn(-turnGain);
-        }
+        }*/
 
 
     } // SkillEffectTurn class

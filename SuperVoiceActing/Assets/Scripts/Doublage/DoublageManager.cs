@@ -582,7 +582,7 @@ namespace VoiceActing
                 emotionAttackManager.RemoveCard();
                 emotionAttackManager.SwitchCardTransformToBattle();
                 inputController.gameObject.SetActive(true);
-                skillManager.CheckBuff(actorsManager.GetBuffList());
+                actorsManager.CheckBuffs();
                 ShowUIButton(buttonUIA);
                 ShowUIButton(buttonUIB);
                 if (enemyManager.GetHpPercentage() == 0)

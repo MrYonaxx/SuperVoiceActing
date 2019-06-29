@@ -23,17 +23,25 @@ namespace VoiceActing
             set { turn = value; }
         }
 
-        private SkillData skillbuff;
-        public SkillData Skillbuff
+        private SkillEffectData skillEffectbuff;
+        public SkillEffectData SkillEffectbuff
         {
-            get { return skillbuff; }
-            set { skillbuff = value; }
+            get { return skillEffectbuff; }
+            set { skillEffectbuff = value; }
         }
 
-        public Buff(SkillData skill)
+        private BuffData buffData;
+        public BuffData BuffData
         {
-            skillbuff = skill;
-            turn = skill.TurnActive;
+            get { return buffData; }
+            set { buffData = value; }
+        }
+
+        public Buff(SkillEffectData skillEffect, BuffData buff)
+        {
+            skillEffectbuff = skillEffect;
+            turn = buff.TurnActive;
+            buffData = buff;
         }
     }
 
@@ -151,6 +159,14 @@ namespace VoiceActing
         {
             return false;
         }
+
+
+
+
+
+
+
+
 
         public bool CheckSkillCondition(VoiceActor voiceActor, string phase, EmotionCard[] emotions) 
         {
@@ -319,25 +335,25 @@ namespace VoiceActing
             return true;
         }
 
+
+
+
+
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// APPLY SKILL
 
         public void ApplySkill(SkillData skill)
         {
-
-            if (skill.SkillType == SkillType.Buff)
+            if (skill.SkillType == SkillType.Buff && skill.SkillTarget == SkillTarget.VoiceActor)
             {
-                switch (skill.SkillTarget)
-                {
-                    case SkillTarget.VoiceActor:
-                        if(actorsManager.ApplyBuff(skill) == false)
-                        {
-                            return; // Buff deja appliqué donc on applique pas l'effet
-                        }
-                        break;
-                }
+                skill.ApplyBuffsEffects(actorsManager, enemyManager, doublageManager);
             }
-            ApplySkillEffect(skill);
+            else
+            {
+                ApplySkillEffect(skill);
+            }
         }
 
         public void ApplySkillEffect(SkillData skill)
@@ -346,44 +362,6 @@ namespace VoiceActing
             skill.ApplySkillsEffects(actorsManager, enemyManager, doublageManager);
             if(skill.SkillTarget == SkillTarget.Sentence)
                 reprintTextEnemy = true;
-            /*for(int i = 0; i < skill.SkillEffects.Length; i++)
-            {
-                skill.SkillEffects[i].GetSkillEffectNode().ApplySkillEffect(actorsManager, enemyManager, doublageManager);
-            }*/
-            /*switch (skill.SkillTarget)
-            {
-                //skill.SkillEffects[i].Appl
-                case SkillTarget.VoiceActor:
-                    // Damage
-                    currentHP = actorsManager.GetCurrentActorHPMax();
-                    damage = currentHP * (-skill.HpGainPercentage / 100f);
-                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
-                    actorsManager.ActorTakeDamage((int) damage);
-
-
-                    // Stat Gain
-                    actorsManager.AddActorStat(skill.EmotionStatGainFlat);
-
-                    // Card Gain
-
-
-                    break;
-                case SkillTarget.Sentence:
-                    // Damage
-                    currentHP = enemyManager.GetHp();
-                    //damage = currentHP * (skill.HpGainPercentage / 100f);
-                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
-                    enemyManager.SetHp(currentHP - (int) damage);
-                    reprintTextEnemy = true;
-
-                    // Modify Resistance
-
-
-                    break;
-            }
-
-            // Other
-            doublageManager.AddTurn(skill.TurnGain);*/
         }
 
 
@@ -393,47 +371,11 @@ namespace VoiceActing
 
         public void RemoveSkillEffect(SkillData skill)
         {
-            /*int currentHP = 0;
-            float damage = 0;*/
             skill.RemoveSkillsEffects(actorsManager, enemyManager, doublageManager);
-            /*for (int i = 0; i < skill.SkillEffects.Length; i++)
-            {
-                skill.SkillEffects[i].GetSkillEffectNode().RemoveSkillEffect(actorsManager, enemyManager, doublageManager);
-            }*/
-            /*switch (skill.SkillTarget)
-            {
-                case SkillTarget.VoiceActor:
-                    // Damage
-                    currentHP = actorsManager.GetCurrentActorHPMax();
-                    damage = currentHP * (skill.HpGainPercentage / 100f);
-                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
-                    actorsManager.ActorTakeDamage((int)-damage);
-
-
-                    // Stat Gain
-                    actorsManager.SubstractActorStat(skill.EmotionStatGainFlat);
-
-                    // Card Gain
-
-
-                    break;
-                case SkillTarget.Sentence:
-                    // Damage
-                    currentHP = enemyManager.GetHp();
-                    //damage = currentHP * (skill.HpGainPercentage / 100f);
-                    damage += skill.HpGainFlat + Random.Range(-skill.HpFlatVariance, skill.HpFlatVariance);
-                    enemyManager.SetHp(currentHP - (int)damage);
-                    reprintTextEnemy = true;
-
-                    // Modify Resistance
-
-
-                    break;
-            }*/
         }
 
 
-        public void CheckBuff(List<Buff> buffs)
+        /*public void CheckBuff(List<Buff> buffs)
         {
             for(int i = 0; i < buffs.Count; i++)
             {
@@ -444,7 +386,23 @@ namespace VoiceActing
                     buffs.RemoveAt(i);
                 }
             }
-        }
+        }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

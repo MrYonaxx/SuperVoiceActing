@@ -18,9 +18,11 @@ MonoBehaviour:
   descriptionBattle: Stat +5
   skillType: 1
   skillTarget: 0
-  turnActive: 6
-  refresh: 0
-  addBuffTurn: 0
+  buffData:
+    turnActive: 5
+    refresh: 0
+    addBuffTurn: 0
+    canAddMultiple: 1
   skillEffects:
   - eventNode: 1
     skillEffectCardGain:
@@ -40,7 +42,7 @@ MonoBehaviour:
       emotionStat:
         neutral: 0
         joy: 5
-        sadness: 5
+        sadness: 0
         disgust: 5
         anger: 5
         surprise: 5
@@ -68,9 +70,12 @@ MonoBehaviour:
       inPercentage: 0
       turnGain: 0
       turnVariance: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
   producerCost: 0
   afterStart: 1
-  afterAttack: 0
+  afterAttack: 1
   afterCritical: 0
   afterKill: 0
   phraseType:

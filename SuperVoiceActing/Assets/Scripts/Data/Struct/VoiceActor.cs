@@ -588,7 +588,7 @@ namespace VoiceActing
             }
             else // le comédien fais des trucs
             {
-                hp += (int)(hpMax * Random.Range(-0.05f, 0.05f));
+                hp += (int)(hpMax * Random.Range(0.05f, 0.2f));
             }
             hp = Mathf.Clamp(hp, 0, hpMax);
 

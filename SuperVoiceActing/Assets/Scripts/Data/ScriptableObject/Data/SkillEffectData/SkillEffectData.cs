@@ -14,16 +14,30 @@ namespace VoiceActing
 	public class SkillEffectData
 	{
 
-        public virtual void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        protected List<Vector3Int> cardTargetsData = new List<Vector3Int>();
+
+        public virtual void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
         {
 
         }
 
-        public virtual void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        /*public virtual void ApplyBuffEffect(BuffData buffData, SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            ApplySkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+
+        }*/
+
+
+        public virtual void RemoveSkillEffect(SkillData skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
 
         }
-		
-	} // SkillEffectData class
+
+        public virtual void RemoveSkillEffectCard(EmotionCard card)
+        {
+
+        }
+
+    } // SkillEffectData class
 	
 }// #PROJECTNAME# namespace

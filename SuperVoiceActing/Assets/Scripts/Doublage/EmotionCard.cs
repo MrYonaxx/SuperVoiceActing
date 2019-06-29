@@ -8,6 +8,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 namespace VoiceActing
@@ -30,16 +31,17 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textStat;
         [SerializeField]
-        Image StatBonus;
+        Image[] statBonus;
         [SerializeField]
-        Image StatMalus;
+        Image[] statMalus;
         [SerializeField]
-        TextMeshProUGUI textBuffTurn;
+        TextMeshProUGUI[] textBuffTurn;
         [SerializeField]
-        TextMeshProUGUI textMalusTurn;
+        TextMeshProUGUI[] textMalusTurn;
 
 
-
+        Color bonusStat;
+        Color malusStat;
 
         private Emotion emotion;
 
@@ -48,7 +50,7 @@ namespace VoiceActing
 
         private float damagePercentage = 1;
 
-        private Buff currentBuff;
+        private List<Buff> buffs = new List<Buff>();
 
 
         #endregion
@@ -141,33 +143,112 @@ namespace VoiceActing
 
 
 
-
-
-        public void DrawStat(int baseStat, int newStat, Color bonusStat, Color malusStat)
+        public void AddStat(int statToAdd, Buff buff = null)
         {
+            if (buff != null)
+            {
+                if(AddBuff(buff) == false)
+                    return;
+            }
+            valueBonus += statToAdd;
+            DrawStat(value, valueBonus, bonusStat, malusStat);
+        }
+
+        public void AddStatPercentage(int statToAdd, Buff buff = null)
+        {
+            if (buff != null)
+                AddBuff(buff);
+            statToAdd = value * (statToAdd / 100);
+            valueBonus += statToAdd;
+            DrawStat(value, valueBonus, bonusStat, malusStat);
+        }
+
+        public void DrawStat(int baseStat, int newStat, Color colorBonus, Color colorMalus)
+        {
+            bonusStat = colorBonus;
+            malusStat = colorMalus;
             value = baseStat;
             valueBonus = newStat;
             if (textStat == null)
                 return;
             if(newStat > 0)
-            {
                 textStat.color = bonusStat;
-            }
             else if (newStat < 0)
-            {
                 textStat.color = malusStat;
-            }
             else
-            {
                 textStat.color = Color.white;
-            }
             textStat.text = (baseStat + newStat).ToString();
         }
 
 
-        public void DrawBuff()
-        {
 
+
+
+
+
+        public void AddDamagePercentage(int damageModifier)
+        {
+            damagePercentage += damageModifier / 100;
+        }
+
+
+
+
+
+
+        public bool AddBuff(Buff buff)
+        {
+            for (int i = 0; i < buffs.Count; i++)
+            {
+                if (buffs[i].SkillEffectbuff == buff.SkillEffectbuff)
+                {
+                    if (buff.BuffData.CanAddMultiple == false)
+                    {
+                        if (buff.BuffData.Refresh == true)
+                        {
+                            buffs[i].Turn = buff.BuffData.TurnActive;
+                        }
+                        else if (buff.BuffData.AddBuffTurn == true)
+                        {
+                            buffs[i].Turn += buff.BuffData.TurnActive;
+                        }
+                        return false;
+                    }
+                }
+            }
+            buffs.Add(new Buff(buff.SkillEffectbuff, buff.BuffData));
+            DrawBuffs();
+            return true;
+        }
+
+        public void CheckBuff()
+        {
+            for (int i = 0; i < buffs.Count; i++)
+            {
+                buffs[i].Turn -= 1;
+                if (buffs[i].Turn == 0)
+                {
+                    buffs[i].SkillEffectbuff.RemoveSkillEffectCard(this);
+                    buffs.RemoveAt(i);                   
+                }
+            }
+            DrawBuffs();
+        }
+
+        public void DrawBuffs()
+        {
+            for(int i = 0; i < statBonus.Length; i++)
+            {
+                if (i < buffs.Count)
+                {
+                    statBonus[i].gameObject.SetActive(true);
+                    textBuffTurn[i].text = buffs[i].Turn.ToString();
+                }
+                else
+                {
+                    statBonus[i].gameObject.SetActive(false);
+                }
+            }
         }
 
         #endregion

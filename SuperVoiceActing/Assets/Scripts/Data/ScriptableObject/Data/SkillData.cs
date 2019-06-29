@@ -30,6 +30,43 @@ namespace VoiceActing
         Other
     }
 
+    [System.Serializable]
+    public class BuffData
+    {
+        [HorizontalGroup("buffType", LabelWidth = 100)]
+        [SerializeField]
+        private int turnActive;
+        public int TurnActive
+        {
+            get { return turnActive; }
+        }
+
+        [HorizontalGroup("buffType")]
+        [SerializeField]
+        private bool refresh;
+        public bool Refresh
+        {
+            get { return refresh; }
+        }
+
+        [HorizontalGroup("buffType")]
+        [SerializeField]
+        private bool addBuffTurn;
+        public bool AddBuffTurn
+        {
+            get { return addBuffTurn; }
+        }
+
+        [HorizontalGroup("buffType")]
+        [SerializeField]
+        private bool canAddMultiple;
+        public bool CanAddMultiple
+        {
+            get { return canAddMultiple; }
+        }
+    }
+
+
     /// <summary>
     /// Definition of the SkillData class
     /// </summary>
@@ -91,34 +128,12 @@ namespace VoiceActing
         [Space]
         [Space]
         [ShowIf("skillType", SkillType.Buff)]
-        [HorizontalGroup("buffType", LabelWidth = 100)]
+        [HideLabel]
         [SerializeField]
-        private int turnActive;
-        public int TurnActive
+        private BuffData buffData;
+        public BuffData BuffData
         {
-            get { return turnActive; }
-        }
-
-        [Space]
-        [Space]
-        [ShowIf("skillType", SkillType.Buff)]
-        [HorizontalGroup("buffType")]
-        [SerializeField]
-        private bool refresh;
-        public bool Refresh
-        {
-            get { return refresh; }
-        }
-
-        [Space]
-        [Space]
-        [ShowIf("skillType", SkillType.Buff)]
-        [HorizontalGroup("buffType")]
-        [SerializeField]
-        private bool addBuffTurn;
-        public bool AddBuffTurn
-        {
-            get { return addBuffTurn; }
+            get { return buffData; }
         }
 
         [Space]
@@ -273,7 +288,15 @@ namespace VoiceActing
         {
             for(int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(this.skillTarget, actorsManager, enemyManager, doublageManager);
+            }
+        }
+
+        public void ApplyBuffsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(this.skillTarget, actorsManager, enemyManager, doublageManager, buffData);
             }
         }
 
@@ -281,7 +304,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(this, actorsManager, enemyManager, doublageManager);
             }
         }
 
