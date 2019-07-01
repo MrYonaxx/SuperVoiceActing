@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: SkillParfumPervers
   m_EditorClassIdentifier: 
   skillName: Perversion
-  description: "Inverse la douceur et le d\xE9go\xFBt"
-  descriptionBattle: 
+  description: "La perversion du personnage trouble les \xE9motions de [Nom]."
+  descriptionBattle: <sprite=2> <---> <sprite=5>
   skillType: 0
   skillTarget: 0
-  turnActive: 0
-  refresh: 0
-  addBuffTurn: 0
-  canAddMultiple: 0
+  buffData:
+    turnActive: 0
+    refresh: 0
+    addBuffTurn: 0
+    canAddMultiple: 0
   skillEffects:
   - eventNode: 5
     skillEffectCardGain:

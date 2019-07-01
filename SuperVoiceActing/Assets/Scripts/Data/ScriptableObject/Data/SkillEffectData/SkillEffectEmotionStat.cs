@@ -12,6 +12,8 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
+
+
     [System.Serializable]
     public class SkillEffectEmotionStat : SkillEffectData
     {
@@ -35,7 +37,8 @@ namespace VoiceActing
             {
                 buff = new Buff(this, buffData);
             }
-            CalculateTarget();
+            if(skill != SkillTarget.ManualPackSelection)
+                CalculateTarget();
             if (inPercentage == true)
             {
                 actorsManager.AddActorStatPercentage(cardTargetsData);
@@ -99,7 +102,48 @@ namespace VoiceActing
         }
 
 
+        public override void ManualTarget(Emotion emotion)
+        {
+            cardTargetsData.Clear();
+            int stat = 0;
+            switch ((int)emotion)
+            {
+                case 0: // Neutral
+                    stat = emotionStat.Neutral;
+                    break;
+                case 1: // Joie
+                    stat = emotionStat.Joy;
+                    break;
+                case 2: // Tristesse
+                    stat = emotionStat.Sadness;
+                    break;
+                case 3: // Dégout
+                    stat = emotionStat.Disgust;
+                    break;
+                case 4: // Colère
+                    stat = emotionStat.Anger;
+                    break;
+                case 5: // Surprise
+                    stat = emotionStat.Surprise;
+                    break;
+                case 6: // Douceur
+                    stat = emotionStat.Sweetness;
+                    break;
+                case 7: // Peur
+                    stat = emotionStat.Fear;
+                    break;
+                case 8: // Confiance
+                    stat = emotionStat.Trust;
+                    break;
 
+            }
+            if (stat != 0)
+            {
+                cardTargetsData.Add(new Vector3Int((int) emotion, 0, stat));
+                cardTargetsData.Add(new Vector3Int((int) emotion, 1, stat));
+                cardTargetsData.Add(new Vector3Int((int) emotion, 2, stat));
+            }
+        }
 
         private void CalculateTarget()
         {

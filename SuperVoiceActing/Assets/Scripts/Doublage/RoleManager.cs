@@ -33,6 +33,8 @@ namespace VoiceActing
         TextMeshProUGUI textSkillName;
         [SerializeField]
         TextMeshProUGUI textSkillDescription;
+        [SerializeField]
+        TextMeshProUGUI textSkillDescriptionBattle;
 
         [SerializeField]
         InputController input;
@@ -148,10 +150,9 @@ namespace VoiceActing
             }
             enemyAttack.SetBool("Appear", true);
             enemyAttackFace.SetBool("Appear", true);
-
             textSkillName.text = currentAttack.SkillName;
             textSkillDescription.text = currentAttack.Description;
-            skillManager.ApplySkill(currentAttack);
+            textSkillDescriptionBattle.text = currentAttack.DescriptionBattle;
             //StartCoroutine(WaitInput(60));
         }
 
@@ -174,6 +175,8 @@ namespace VoiceActing
 
         public void StopEnemyActivation()
         {
+
+            skillManager.ApplySkill(currentAttack);
             input.gameObject.SetActive(false);
             enemyAttack.SetBool("Appear", false);
             enemyAttackFace.SetBool("Appear", false);

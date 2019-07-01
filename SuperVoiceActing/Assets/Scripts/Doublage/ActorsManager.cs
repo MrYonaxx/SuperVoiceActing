@@ -96,8 +96,14 @@ namespace VoiceActing
         [SerializeField]
         EmotionCard[] cardNeutral;
 
-        private int indexCurrentActor = 0;
+        [Space]
+        [SerializeField]
+        Image[] currentActorBuff;
+        [SerializeField]
+        TextMeshProUGUI[] currentActorBuffTimer;
 
+        private int indexCurrentActor = 0;
+        private int[] actorsResistance = { 0, 0, 0 };
         int attackDamage = 0;
 
 
@@ -186,34 +192,45 @@ namespace VoiceActing
             }
         }
 
-        /*public bool ApplyBuff(SkillData buff)
+        public bool ApplyBuff(SkillEffectData buff, BuffData buffData)
         {
             for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
             {
-                if (actors[indexCurrentActor].Buffs[i].Skillbuff == buff)
+                if (actors[indexCurrentActor].Buffs[i].SkillEffectbuff == buff)
                 {
-                    if (buff.CanAddMultiple == false)
+                    if (buffData.CanAddMultiple == false)
                     {
-                        if (buff.Refresh == true)
+                        if (buffData.Refresh == true)
                         {
-                            actors[indexCurrentActor].Buffs[i].Turn = buff.TurnActive;
+                            actors[indexCurrentActor].Buffs[i].Turn = buffData.TurnActive;
                         }
-                        else if (buff.AddBuffTurn == true)
+                        else if (buffData.AddBuffTurn == true)
                         {
-                            actors[indexCurrentActor].Buffs[i].Turn += buff.TurnActive;
+                            actors[indexCurrentActor].Buffs[i].Turn += buffData.TurnActive;
                         }
                         return false;
                     }
                 }
             }
-            actors[indexCurrentActor].Buffs.Add(new Buff(buff));
+            actors[indexCurrentActor].Buffs.Add(new Buff(buff, buffData));
             DrawBuffIcon();
             return true;
-        }*/
+        }
 
         public void DrawBuffIcon()
         {
-
+            for(int i = 0; i < currentActorBuff.Length; i++)
+            {
+                if(i < actors[indexCurrentActor].Buffs.Count)
+                {
+                    currentActorBuff[i].gameObject.SetActive(true);
+                    currentActorBuffTimer[i].text = actors[indexCurrentActor].Buffs[i].Turn.ToString();
+                }
+                else
+                {
+                    currentActorBuff[i].gameObject.SetActive(false);
+                }
+            }
         }
 
         public void CheckBuffs()
@@ -359,6 +376,7 @@ namespace VoiceActing
 
             int[] tmpBaseValue = new int[3];
             int[] tmpBaseBonusValue = new int[3];
+            //Buff[] buffs
 
             for (int i = 0; i < packB.Length; i++)
             {
@@ -422,11 +440,11 @@ namespace VoiceActing
 
 
 
-        public void AddActorEmotionDamage(List<Vector3Int> cardTargetsData)
+        public void AddActorEmotionDamage(List<Vector3Int> cardTargetsData, Buff buff = null)
         {
             for (int i = 0; i < cardTargetsData.Count; i++)
             {
-                GetCardTarget(cardTargetsData[i]).AddDamagePercentage(cardTargetsData[i].z);
+                GetCardTarget(cardTargetsData[i]).AddDamagePercentage(cardTargetsData[i].z, buff);
             }
         }
 
@@ -526,9 +544,13 @@ namespace VoiceActing
 
 
 
+        // Tout ce qui est en rapport avec les HPs
+        // =================================================================================================================
 
-
-
+        public void AddActorResistance(int addValue)
+        {
+            actorsResistance[indexCurrentActor] += addValue;
+        }
 
 
         public void ActorAttackDamage()
@@ -611,6 +633,7 @@ namespace VoiceActing
         public void AddAttackDamage(int roleAttack, float emotionMultiplier)
         {
             attackDamage += (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            attackDamage -= (int)(attackDamage * (actorsResistance[indexCurrentActor] / 100f));
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization();
             animatorDamage.SetBool("Appear", true);
@@ -619,6 +642,7 @@ namespace VoiceActing
         public void RemoveAttackDamage(int roleAttack, float emotionMultiplier)
         {
             attackDamage -= (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            attackDamage -= (int)(attackDamage * (actorsResistance[indexCurrentActor] / 100f));
             //textDamage.enabled = true;
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization();

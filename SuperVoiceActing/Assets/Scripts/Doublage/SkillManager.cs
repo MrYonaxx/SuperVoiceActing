@@ -334,7 +334,7 @@ namespace VoiceActing
 
         public void ApplySkill(SkillData skill)
         {
-            if (skill.SkillType == SkillType.Buff && skill.SkillTarget == SkillTarget.VoiceActor)
+            if (skill.SkillType == SkillType.Buff && (skill.SkillTarget == SkillTarget.VoiceActor || skill.SkillTarget == SkillTarget.ManualPackSelection))
             {
                 skill.ApplyBuffsEffects(actorsManager, enemyManager, doublageManager);
             }
@@ -357,24 +357,35 @@ namespace VoiceActing
 
 
 
-        public void RemoveSkillEffect(SkillData skill)
+        /*public void RemoveSkillEffect(SkillData skill)
         {
             skill.RemoveSkillsEffects(actorsManager, enemyManager, doublageManager);
+        }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void CheckBuffs(List<Buff> buffs, SkillTarget skillTarget)
+        {
+            for (int i = 0; i < buffs.Count; i++)
+            {
+                buffs[i].Turn -= 1;
+                if (buffs[i].Turn == 0)
+                {
+                    buffs[i].SkillEffectbuff.RemoveSkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+                    buffs.RemoveAt(i);
+                }
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

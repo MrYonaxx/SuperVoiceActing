@@ -317,6 +317,13 @@ namespace VoiceActing
             }
         }
 
+        public void ShowComboSlot(bool b)
+        {
+            for (int i = 0; i < comboSlot.Length; i++)
+            {
+                comboSlot[i].gameObject.SetActive(b);
+            }
+        }
 
         public void ModifiyDeck(Emotion emotion, int number)
         {

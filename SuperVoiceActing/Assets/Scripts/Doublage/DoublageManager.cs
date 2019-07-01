@@ -262,6 +262,7 @@ namespace VoiceActing
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
+            soundEngineerManager.SetManagers(skillManager);
             toneManager.DrawTone();
             // Initialisation
 
@@ -368,6 +369,7 @@ namespace VoiceActing
             AudioManager.Instance.PlaySound(audioClipAttack, 0.5f);
             AudioManager.Instance.PlaySound(audioClipAttack2, 0.8f);
             turnCount -= 1;
+            soundEngineerManager.AddTrickery(1);
             if (timer != null)
                 timer.SetTurn(turnCount);
 
@@ -585,6 +587,10 @@ namespace VoiceActing
                 emotionAttackManager.SwitchCardTransformToBattle();
                 inputController.gameObject.SetActive(true);
                 actorsManager.CheckBuffs();
+                skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.VoiceActor);
+                //skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.Sentence);
+                //skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.Producer);
+                actorsManager.DrawBuffIcon();
                 ShowUIButton(buttonUIA);
                 ShowUIButton(buttonUIB);
                 if (enemyManager.GetHpPercentage() == 0)
@@ -912,6 +918,8 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToRessource();
             cameraController.IngeSon();
             inputController.gameObject.SetActive(false);
+            actorsManager.HideHealthBar();
+            emotionAttackManager.ShowComboSlot(false);
         }
 
         public void SwitchToDoublage()
@@ -923,6 +931,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             actorsManager.ShowHealthBar();
+            emotionAttackManager.ShowComboSlot(true);
         }
 
 

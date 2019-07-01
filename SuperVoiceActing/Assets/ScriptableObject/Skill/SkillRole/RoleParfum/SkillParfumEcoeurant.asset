@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: SkillParfumEcoeurant
   m_EditorClassIdentifier: 
   skillName: Ecoeurant
-  description: "Le r\xF4le \xE9coeure [Nom]\n<color=red>Triple les d\xE9gats</color>
-    en utilisant du <color=green>d\xE9go\xFBt</color>."
-  descriptionBattle: "Triple les d\xE9gats en utilisant du d\xE9go\xFBt."
+  description: "Le r\xF4le \xE9coeure [Nom].\n"
+  descriptionBattle: <sprite=3>DMGx3
   skillType: 0
   skillTarget: 0
   buffData:
-    turnActive: 0
+    turnActive: 15
     refresh: 0
     addBuffTurn: 0
     canAddMultiple: 0
@@ -73,4 +72,6 @@ MonoBehaviour:
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
+    skillEffectResistance:
+      resistancePercentage: 0
   producerCost: 0

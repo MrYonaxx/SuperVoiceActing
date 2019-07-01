@@ -201,9 +201,14 @@ namespace VoiceActing
 
 
 
-        public void AddDamagePercentage(int damageModifier)
+        public void AddDamagePercentage(int damageModifier, Buff buff = null)
         {
-            damagePercentage += damageModifier / 100;
+            if (buff != null)
+            {
+                if (AddBuff(buff) == false)
+                    return;
+            }
+            damagePercentage += damageModifier / 100f;
             if (textEmotionDamage != null)
             {
                 textEmotionDamage.text = "x"+damagePercentage;

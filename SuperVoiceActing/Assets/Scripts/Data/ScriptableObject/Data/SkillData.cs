@@ -27,7 +27,7 @@ namespace VoiceActing
         Sentence,
         Role,
         Producer,
-        Other
+        ManualPackSelection
     }
 
     [System.Serializable]
@@ -300,13 +300,20 @@ namespace VoiceActing
             }
         }
 
-        public void RemoveSkillsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public void ManualTarget(Emotion emotion)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(this, actorsManager, enemyManager, doublageManager);
+                skillEffects[i].GetSkillEffectNode().ManualTarget(emotion);
             }
         }
+        /*public void RemoveSkillsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(this.skillTarget, actorsManager, enemyManager, doublageManager);
+            }
+        }*/
 
 
     } // SkillData class

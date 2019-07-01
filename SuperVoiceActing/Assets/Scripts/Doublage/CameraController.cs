@@ -59,6 +59,8 @@ namespace VoiceActing
         private IEnumerator cinematicCoroutine;
         private IEnumerator cinematicRotatingCoroutine;
 
+        private IEnumerator soundEngineerCoroutine;
+
         float speedMovement = 0.5f;
 
         #endregion
@@ -698,8 +700,9 @@ namespace VoiceActing
                 StopCoroutine(rotatingCoroutine);
 
             noCameraEffect = true;
-            MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, 20);
-            RotateCamera(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z, 20);
+
+            soundEngineerCoroutine = IngeSonCameraMovementCoroutine();
+            StartCoroutine(soundEngineerCoroutine);
         }
 
         private IEnumerator MoveTextCoroutine(float x, float y, float z, float time)
@@ -714,6 +717,36 @@ namespace VoiceActing
                 yield return null;
             }
             text.position = new Vector3(x, y, z + offset);
+        }
+
+
+        private IEnumerator IngeSonCameraMovementCoroutine()
+        {
+            int time = 20;
+            MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, time);
+            RotateCamera(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z, time);
+            while(time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            while (true)
+            {
+                time = 300;
+                MoveCamera(ingeSonPosition.position.x-0.03f, ingeSonPosition.position.y-0.03f, ingeSonPosition.position.z, time);
+                while (time != 0)
+                {
+                    time -= 1;
+                    yield return null;
+                }
+                time = 300;
+                MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, time);
+                while (time != 0)
+                {
+                    time -= 1;
+                    yield return null;
+                }
+            }
         }
 
         /*[ContextMenu("ingeson2")]
@@ -754,6 +787,7 @@ namespace VoiceActing
         {
             //SetText(-6, 2.7f, 0);
             StartCoroutine(MoveTextCoroutine(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z, 40));
+            StopCoroutine(soundEngineerCoroutine);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)

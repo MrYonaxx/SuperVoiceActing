@@ -71,11 +71,11 @@ namespace VoiceActing
 
 
 
-        public override void RemoveSkillEffect(SkillData skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public override void RemoveSkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
             int currentHP = 0;
             float damage = 0;
-            switch (skill.SkillTarget)
+            switch (skill)
             {
                 case SkillTarget.VoiceActor:
                     if (inPercentage == true)

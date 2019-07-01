@@ -21,19 +21,22 @@ namespace VoiceActing
 
         }
 
-        /*public virtual void ApplyBuffEffect(BuffData buffData, SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
-        {
-            ApplySkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
 
-        }*/
-
-
-        public virtual void RemoveSkillEffect(SkillData skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        // Remove les effets généraux lié aux acteurs/phrases
+        public virtual void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
 
         }
 
+        // Remove les effets lié aux cartes
         public virtual void RemoveSkillEffectCard(EmotionCard card)
+        {
+
+        }
+
+
+        // Manual target pour les effets de cartes
+        public virtual void ManualTarget(Emotion emotion)
         {
 
         }
