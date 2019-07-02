@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -23,16 +24,16 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Contrat")]
+        [Header("Debug")]
         [SerializeField]
         protected ContractData contratData;
 
-        [Header("Contrat")]
+        [Title("Contrat")]
         [SerializeField]
         protected PlayerData playerData;
 
 
-        [Header("Controllers")]
+        [Title("Controllers")]
         [SerializeField]
         protected CameraController cameraController;
         [SerializeField]
@@ -60,7 +61,7 @@ namespace VoiceActing
         [SerializeField]
         protected SoundEngineerManager soundEngineerManager;
 
-        [Header("Feedback & UI")]
+        [Title("Feedback & UI")]
         [SerializeField]
         protected TimerDoublage timer;
         [SerializeField]
@@ -80,7 +81,7 @@ namespace VoiceActing
         [SerializeField]
         protected Image fade;
 
-        [Header("IntroSequence")]
+        [Title("IntroSequence")]
         [SerializeField]
         CharacterDialogueController introText;
         [SerializeField]
@@ -91,7 +92,7 @@ namespace VoiceActing
         Animator[] animatorsIntro;
 
 
-        [Header("EndSequence")]
+        [Title("EndSequence")]
         [SerializeField]
         Animator endBlackScreen;
         [SerializeField]
@@ -104,7 +105,7 @@ namespace VoiceActing
         [SerializeField]
         GameObject resultScreen;
 
-        [Header("UI")]
+        [Title("UI")]
         [SerializeField]
         protected Animator buttonUIY;
         [SerializeField]
@@ -112,7 +113,7 @@ namespace VoiceActing
         [SerializeField]
         protected Animator buttonUIA;
 
-        [Header("AudioSource")]
+        [Title("AudioSource")]
         [SerializeField]
         protected SimpleSpectrum spectrum;
         [SerializeField]
@@ -238,35 +239,39 @@ namespace VoiceActing
             StartCoroutine(IntroductionSequence());
         }
 
-
-        private IEnumerator IntroductionSequence()
+        private void InitializeManagers()
         {
-            // On attend une frame que les scripts soient chargés
-
-            // Initialisation
-            introBlackScreen.gameObject.SetActive(true);
-            inputController.gameObject.SetActive(false);
-            yield return null;
-            if (spectrum != null)
-            {
-                spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
-                spectrum.enabled = true;
-            }
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            //enemyManager.SetVoiceActor(contrat.VoiceActors[0]);
+            emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
+
+            actorsManager.SetManagers(emotionAttackManager);
             actorsManager.SetActors(contrat.VoiceActors);
             actorsManager.ActorTakeDamage(0);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
-            emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
             skillManager.SetManagers(this, cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
             soundEngineerManager.SetManagers(skillManager);
             toneManager.DrawTone();
-            // Initialisation
+        }
 
-            if(contrat.BattleTheme != null)
+        private IEnumerator IntroductionSequence()
+        {
+            // ===== Initialisation ===== //
+            introBlackScreen.gameObject.SetActive(true);
+            inputController.gameObject.SetActive(false);
+            yield return null;  // On attend une frame que les scripts soient chargés
+            if (spectrum != null)
+            {
+                spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
+                spectrum.enabled = true;
+            }
+            InitializeManagers();
+            // ===== Initialisation ===== //
+
+
+            if (contrat.BattleTheme != null)
             {
                 audioClipBattleTheme = contrat.BattleTheme;
             }
@@ -358,7 +363,6 @@ namespace VoiceActing
                 }
                 HideUIButton();
                 StartCoroutine(AttackCoroutine());
-
             }
         }
 
@@ -424,7 +428,7 @@ namespace VoiceActing
             }
 
             // Check Role Attack =================================================================
-
+            roleManager.RoleDecision("ENDATTACK", indexPhrase, turnCount, enemyManager.GetHpPercentage());
 
             // Wait End Line =====================================================================
             while (textAppearManager.GetEndLine() == false)
@@ -442,7 +446,7 @@ namespace VoiceActing
                 textAppearManager.SetLetterSpeed(2);
                 yield break;
             }
-            roleManager.RoleDecision("ENDATTACK", indexPhrase, turnCount, enemyManager.GetHpPercentage());
+            
             if (actorsManager.GetCurrentActorHP() == 0)
             {
                 yield return new WaitForSeconds(1f);
@@ -581,9 +585,7 @@ namespace VoiceActing
             }
             else // Nouveau tour
             {
-                emotionAttackManager.RemoveCard();
-                emotionAttackManager.RemoveCard();
-                emotionAttackManager.RemoveCard();
+                emotionAttackManager.ResetCard();
                 emotionAttackManager.SwitchCardTransformToBattle();
                 inputController.gameObject.SetActive(true);
                 actorsManager.CheckBuffs();
@@ -600,8 +602,6 @@ namespace VoiceActing
             // Reprint éventuel
             if (skillManager.CheckReprintTextEnemy() == true || reprint == true)
             {
-                //textAppearManager.CalculateDamageColor(enemyManager.GetHpPercentage());
-                //Debug.Log(enemyManager.GetHpPercentage());
                 textAppearManager.ReprintText();
                 textAppearManager.ApplyDamage((100-enemyManager.GetHpPercentage()));
             }
@@ -634,9 +634,7 @@ namespace VoiceActing
                     killCount += 1;
                     if (currentLineNumber != null)
                         currentLineNumber.text = (indexPhrase).ToString();
-                    emotionAttackManager.RemoveCard();
-                    emotionAttackManager.RemoveCard();
-                    emotionAttackManager.RemoveCard();
+                    emotionAttackManager.ResetCard();
                     toneManager.ModifyTone(lastAttack);
                     roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
                     soundEngineerManager.ShowCharacterShadows();
@@ -669,7 +667,6 @@ namespace VoiceActing
                     AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
                     if (indexPhrase == contrat.TextData.Count)
                     {
-
                         EndSession();
                         return;
                     }
@@ -848,7 +845,6 @@ namespace VoiceActing
             textMeshTurn.text = turnCount.ToString();
             feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
             feedbackLine.SetActive(true);
-
         }
 
 
@@ -871,19 +867,6 @@ namespace VoiceActing
             buttonUIB.SetTrigger("Disappear");
             buttonUIB.ResetTrigger("Appear");
         }
-
-        /*private IEnumerator MoveUIButton(Image button, float targetY)
-        {
-
-            int time = 20;
-            float speedY = (targetY - button.rectTransform.anchoredPosition.y) / time;
-            while (time != 0)
-            {
-                button.rectTransform.anchoredPosition += new Vector2(0, speedY);
-                time -= 1;
-                yield return null;
-            }
-        }*/
 
         public IEnumerator WaitSkillManager()
         {

@@ -41,6 +41,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private Sprite roleSprite;
+        public Sprite RoleSprite
+        {
+            get { return roleSprite; }
+            set { roleSprite = value; }
+        }
+
+        [SerializeField]
         private int line;
         public int Line
         {
@@ -177,6 +185,7 @@ namespace VoiceActing
 
             this.roleScore = 0;
             this.rolePerformance = 0;
+            this.roleSprite = data.RoleSprite;
 
             if(data.ActorLocked != null)
                 this.characterLock = data.ActorLocked;

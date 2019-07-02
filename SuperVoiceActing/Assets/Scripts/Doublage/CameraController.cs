@@ -786,7 +786,7 @@ namespace VoiceActing
         public void IngeSon2Cancel()
         {
             //SetText(-6, 2.7f, 0);
-            StartCoroutine(MoveTextCoroutine(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z, 40));
+            StartCoroutine(MoveTextCoroutine(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z, 30));
             if (soundEngineerCoroutine != null)
                 StopCoroutine(soundEngineerCoroutine);
             if (movementCoroutine != null)
@@ -802,7 +802,7 @@ namespace VoiceActing
             noCameraEffect = false;
             rotating = false;
             moving = false;
-            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 40);
+            MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 30);
             cameraPlacement = 0;
         }
 

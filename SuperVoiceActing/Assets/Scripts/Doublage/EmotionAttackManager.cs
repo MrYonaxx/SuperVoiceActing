@@ -123,12 +123,12 @@ namespace VoiceActing
             get { return transformRessource; }
         }
 
-        [SerializeField]
+        /*[SerializeField]
         private RectTransform transformBattle;
         public RectTransform TransformBattle
         {
             get { return transformBattle; }
-        }
+        }*/
     }
 
 
@@ -152,8 +152,11 @@ namespace VoiceActing
         \* ======================================== */
         [Header("Cartes d'émotions")]
         [SerializeField]
+        EmotionCard prefab;
+        [SerializeField]
+        Sprite[] emotionSprite;
+        [SerializeField]
         EmotionCardPosition[] emotionCards;
-
         [SerializeField]
         EmotionComboData emotionComboData;
 
@@ -184,6 +187,8 @@ namespace VoiceActing
         ParticleSystem particle;
         [SerializeField]
         Image haloEmotion;
+        [SerializeField]
+        Color[] colorParticle;
 
         EmotionStat deckEmotion;
         EmotionCard[] comboCardEmotion;
@@ -225,6 +230,23 @@ namespace VoiceActing
             return emoti;
         }
 
+        public EmotionCard[] GetCardPack(int emotion)
+        {
+            return emotionCards[emotion].Cards;
+        }
+        public EmotionCard GetCardPackSpecific(int emotion, int indexCard)
+        {
+            return emotionCards[emotion].Cards[indexCard];
+        }
+
+        #endregion
+
+        #region Functions 
+
+        /* ======================================== *\
+         *                FUNCTIONS                 *
+        \* ======================================== */
+
         public void SetDeck(int newComboMax, EmotionStat newDeck)
         {
             comboMax = newComboMax;
@@ -236,29 +258,11 @@ namespace VoiceActing
             CreateComboSlot();
         }
 
-        #endregion
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
-
-        // Initialization
-        protected void Start()
-        {
-            /*comboEmotion = new Emotion[comboMax];
-            comboCardEmotion = new EmotionCard[comboMax];
-            CreateDeck();
-            CreateComboSlot();*/
-        }
-
-        // Eventuellement déplacer la gestion du deck dans n script a part
         private void CreateDeck()
         {
-            for(int i = 0; i < emotionCards.Length; i++)
+            for (int i = 0; i < emotionCards.Length; i++)
             {
-                int cardNumber = 0; 
+                int cardNumber = 0;
                 switch (emotionCards[i].Emotion)
                 {
                     case Emotion.Joie:
@@ -290,13 +294,11 @@ namespace VoiceActing
                         break;
                 }
 
-                for (int j = 0; j < emotionCards[i].Cards.Length; j++)
+                for (int j = 0; j < cardNumber; j++)
                 {
+                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCards[i].TransformRessource);
                     emotionCards[i].Cards[j].SetEmotion(emotionCards[i].Emotion);
-                    if (j < cardNumber)
-                        emotionCards[i].Cards[j].gameObject.SetActive(true);
-                    else
-                        emotionCards[i].Cards[j].gameObject.SetActive(false);
+                    emotionCards[i].Cards[j].SetSprite(emotionSprite[(int) emotionCards[i].Emotion]);
                 }
             }
         }
@@ -371,6 +373,7 @@ namespace VoiceActing
 
         }
         // =========================================================================================================================================
+
 
         // =========================================================================================================================================
         // DEPLACEMENT ET FEEDBACK CARTE
@@ -533,7 +536,9 @@ namespace VoiceActing
 
         public void ResetCard()
         {
-
+            RemoveCard();
+            RemoveCard();
+            RemoveCard();
         }
 
         public void CardAttack()
@@ -550,34 +555,7 @@ namespace VoiceActing
                 int[] emotions = { 0, 0, 0 };
                 for (int i = 0; i < comboEmotion.Length; i++)
                 {
-                    int emotion = 0;
-                    switch (comboEmotion[i])
-                    {
-                        case Emotion.Joie:
-                            emotion = 1;
-                            break;
-                        case Emotion.Tristesse:
-                            emotion = 2;
-                            break;
-                        case Emotion.Dégoût:
-                            emotion = 3;
-                            break;
-                        case Emotion.Colère:
-                            emotion = 4;
-                            break;
-                        case Emotion.Surprise:
-                            emotion = 5;
-                            break;
-                        case Emotion.Douceur:
-                            emotion = 6;
-                            break;
-                        case Emotion.Peur:
-                            emotion = 7;
-                            break;
-                        case Emotion.Confiance:
-                            emotion = 8;
-                            break;
-                    }
+                    int emotion = (int) comboEmotion[i];
                     emotions[i] = emotion;
                 }
                 textComboName.gameObject.SetActive(true);
@@ -599,37 +577,7 @@ namespace VoiceActing
                 return;
 
             var particleColor = particle.main;
-            Color colorEmotion;
-            switch (emotion)
-            {
-                case Emotion.Joie:
-                    colorEmotion = Color.yellow;
-                    break;
-                case Emotion.Tristesse:
-                    colorEmotion = Color.blue;
-                    break;
-                case Emotion.Dégoût:
-                    colorEmotion = Color.green;
-                    break;
-                case Emotion.Colère:
-                    colorEmotion = Color.red;
-                    break;
-                case Emotion.Surprise:
-                    colorEmotion = new Color(0.9f, 0.55f, 0.3f);
-                    break;
-                case Emotion.Douceur:
-                    colorEmotion = new Color(0.88f, 0.58f, 0.9f);
-                    break;
-                case Emotion.Peur:
-                    colorEmotion = Color.black;
-                    break;
-                case Emotion.Confiance:
-                    colorEmotion = Color.white;
-                    break;
-                default:
-                    colorEmotion = Color.white;
-                    break;
-            }
+            Color colorEmotion = colorParticle[(int) emotion];
             particleColor.startColor = colorEmotion;
             StartCoroutine(HaloEmotionCoroutine(colorEmotion, 0.1f, 10, 10));
             particle.Play();

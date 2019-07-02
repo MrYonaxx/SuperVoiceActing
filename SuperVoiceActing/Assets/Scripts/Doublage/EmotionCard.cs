@@ -29,6 +29,8 @@ namespace VoiceActing
         private Image image;
 
         [SerializeField]
+        Image imageCard;
+        [SerializeField]
         TextMeshProUGUI textStat;
         [SerializeField]
         TextMeshProUGUI textEmotionDamage;
@@ -80,11 +82,6 @@ namespace VoiceActing
             return damagePercentage;
         }
 
-        public void SetEmotion(Emotion emo)
-        {
-            emotion = emo;
-        }
-
         public Emotion GetEmotion()
         {
             return emotion;
@@ -102,6 +99,15 @@ namespace VoiceActing
         {
             rectTransform = GetComponent<RectTransform>();
             image = GetComponent<Image>();
+        }
+
+        public void SetEmotion(Emotion emo)
+        {
+            emotion = emo;
+        }
+        public void SetSprite(Sprite sprite)
+        {
+            imageCard.sprite = sprite;
         }
 
         public void MoveCard(RectTransform newTransform, float speed)

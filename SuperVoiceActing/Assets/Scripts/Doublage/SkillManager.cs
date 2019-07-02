@@ -357,22 +357,6 @@ namespace VoiceActing
 
 
 
-        /*public void RemoveSkillEffect(SkillData skill)
-        {
-            skill.RemoveSkillsEffects(actorsManager, enemyManager, doublageManager);
-        }*/
-
-
-
-
-
-
-
-
-
-
-
-
 
         public void CheckBuffs(List<Buff> buffs, SkillTarget skillTarget)
         {

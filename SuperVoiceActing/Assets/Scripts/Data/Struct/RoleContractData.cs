@@ -59,6 +59,15 @@ namespace VoiceActing
             set { names = value; }
         }
 
+        [VerticalGroup("RoleStat/Data/Left")]
+        [LabelWidth(80)]
+        [SerializeField]
+        private Sprite roleSprite;
+        public Sprite RoleSprite
+        {
+            get { return roleSprite; }
+        }
+
 
         [VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]
@@ -155,7 +164,7 @@ namespace VoiceActing
         }
 
         [TabGroup("IA")]
-        [GUIColor(1f, 0.9f, 0.9f, 1f)]
+        [GUIColor(0.9f, 0.9f, 1f, 1f)]
         [SerializeField]
         private EnemyAI[] artificialIntelligence;
         public EnemyAI[] ArtificialIntelligence

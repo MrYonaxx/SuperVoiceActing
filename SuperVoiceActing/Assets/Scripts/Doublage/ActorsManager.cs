@@ -68,33 +68,6 @@ namespace VoiceActing
         Color colorStatBonus;
         [SerializeField]
         Color colorStatMalus;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardJoy;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardSadness;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardDisgust;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardAnger;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardSurprise;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardSweetness;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardFear;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardTrust;
-        [FoldoutGroup("Cards")]
-        [SerializeField]
-        EmotionCard[] cardNeutral;
 
         [Space]
         [SerializeField]
@@ -102,9 +75,6 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI[] currentActorBuffTimer;
 
-        private int indexCurrentActor = 0;
-        private int[] actorsResistance = { 0, 0, 0 };
-        int attackDamage = 0;
 
 
 
@@ -119,7 +89,10 @@ namespace VoiceActing
         SpriteRenderer spriteNextActor;
 
 
-
+        private int indexCurrentActor = 0;
+        private int[] actorsResistance = { 0, 0, 0 };
+        int attackDamage = 0;
+        EmotionAttackManager emotionAttackManager;
 
 
 
@@ -172,6 +145,11 @@ namespace VoiceActing
         public VoiceActor GetCurrentActor()
         {
             return actors[indexCurrentActor];
+        }
+
+        public void SetManagers(EmotionAttackManager eAM)
+        {
+            emotionAttackManager = eAM;
         }
 
         public void SetActors(List<VoiceActor> actorsContract)
@@ -238,36 +216,7 @@ namespace VoiceActing
             for (int i = 0; i < 9; i++)
             {
                 EmotionCard[] pack = null;
-                switch (i)
-                {
-                    case 0: // Joie
-                        pack = cardJoy;
-                        break;
-                    case 1: // Tristesse
-                        pack = cardSadness;
-                        break;
-                    case 2: // Dégout
-                        pack = cardDisgust;
-                        break;
-                    case 3: // Colère
-                        pack = cardAnger;
-                        break;
-                    case 4: // Surprise
-                        pack = cardSurprise;
-                        break;
-                    case 5: // Douceur
-                        pack = cardSweetness;
-                        break;
-                    case 6: // Peur
-                        pack = cardFear;
-                        break;
-                    case 7: // Confiance
-                        pack = cardTrust;
-                        break;
-                    case 8: // Neutral
-                        pack = cardNeutral;
-                        break;
-                }
+                pack = emotionAttackManager.GetCardPack(i);
 
                 for (int j = 0; j < pack.Length; j++)
                 {
@@ -282,97 +231,15 @@ namespace VoiceActing
 
         public EmotionCard GetCardTarget(Vector3Int cardTarget)
         {
-            switch (cardTarget.x)
-            {
-                case 0: // Neutral
-                    return cardNeutral[cardTarget.y];
-                case 1: // Joie
-                    return cardJoy[cardTarget.y];
-                case 2: // Tristesse
-                    return cardSadness[cardTarget.y];
-                case 3: // Dégout
-                    return cardDisgust[cardTarget.y];
-                case 4: // Colère
-                    return cardAnger[cardTarget.y];
-                case 5: // Surprise
-                    return cardSurprise[cardTarget.y];
-                case 6: // Douceur
-                    return cardSweetness[cardTarget.y];
-                case 7: // Peur
-                    return cardFear[cardTarget.y];
-                case 8: // Confiance
-                    return cardTrust[cardTarget.y];
-            }
-            return null;
+            return emotionAttackManager.GetCardPackSpecific(cardTarget.x, cardTarget.y);
         }
 
 
 
         public void InvertActorStat(Emotion emotionA, Emotion emotionB)
         {
-            // A refaire
-            EmotionCard[] packA = null;
-            EmotionCard[] packB = null;
-            switch (emotionA)
-            {
-                case Emotion.Joie: // Joie
-                    packA = cardJoy;
-                    break;
-                case Emotion.Tristesse: // Tristesse
-                    packA = cardSadness;
-                    break;
-                case Emotion.Dégoût: // Dégout
-                    packA = cardDisgust;
-                    break;
-                case Emotion.Colère: // Colère
-                    packA = cardAnger;
-                    break;
-                case Emotion.Surprise: // Surprise
-                    packA = cardSurprise;
-                    break;
-                case Emotion.Douceur: // Douceur
-                    packA = cardSweetness;
-                    break;
-                case Emotion.Peur: // Peur
-                    packA = cardFear;
-                    break;
-                case Emotion.Confiance: // Confiance
-                    packA = cardTrust;
-                    break;
-                case Emotion.Neutre: // Neutral
-                    packA = cardNeutral;
-                    break;
-            }
-            switch (emotionB)
-            {
-                case Emotion.Joie: // Joie
-                    packB = cardJoy;
-                    break;
-                case Emotion.Tristesse: // Tristesse
-                    packB = cardSadness;
-                    break;
-                case Emotion.Dégoût: // Dégout
-                    packB = cardDisgust;
-                    break;
-                case Emotion.Colère: // Colère
-                    packB = cardAnger;
-                    break;
-                case Emotion.Surprise: // Surprise
-                    packB = cardSurprise;
-                    break;
-                case Emotion.Douceur: // Douceur
-                    packB = cardSweetness;
-                    break;
-                case Emotion.Peur: // Peur
-                    packB = cardFear;
-                    break;
-                case Emotion.Confiance: // Confiance
-                    packB = cardTrust;
-                    break;
-                case Emotion.Neutre: // Neutral
-                    packB = cardNeutral;
-                    break;
-            }
+            EmotionCard[] packA = emotionAttackManager.GetCardPack((int) emotionA);
+            EmotionCard[] packB = emotionAttackManager.GetCardPack((int) emotionB);
 
             int[] tmpBaseValue = new int[3];
             int[] tmpBaseBonusValue = new int[3];
@@ -465,55 +332,46 @@ namespace VoiceActing
 
             for(int i = 0; i < 9; i++)
             {
-                EmotionCard[] pack = null;
+                EmotionCard[] pack = emotionAttackManager.GetCardPack(i);
                 int newStatValue = 0;
                 int newStatModifier = 0;
                 switch (i)
                 {
-                    case 0: // Joie
-                        pack = cardJoy;
+                    case 0: // Neutral
+                        newStatValue = actors[indexCurrentActor].Statistique.Neutral;
+                        newStatModifier = actors[indexCurrentActor].StatModifier.Neutral;
+                        break;
+                    case 1: // Joie
                         newStatValue = actors[indexCurrentActor].Statistique.Joy;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Joy;
                         break;
-                    case 1: // Tristesse
-                        pack = cardSadness;
+                    case 2: // Tristesse
                         newStatValue = actors[indexCurrentActor].Statistique.Sadness;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Sadness;
                         break;
-                    case 2: // Dégout
-                        pack = cardDisgust;
+                    case 3: // Dégout
                         newStatValue = actors[indexCurrentActor].Statistique.Disgust;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Disgust;
                         break;
-                    case 3: // Colère
-                        pack = cardAnger;
+                    case 4: // Colère
                         newStatValue = actors[indexCurrentActor].Statistique.Anger;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Anger;
                         break;
-                    case 4: // Surprise
-                        pack = cardSurprise;
+                    case 5: // Surprise
                         newStatValue = actors[indexCurrentActor].Statistique.Surprise;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Surprise;
                         break;
-                    case 5: // Douceur
-                        pack = cardSweetness;
+                    case 6: // Douceur
                         newStatValue = actors[indexCurrentActor].Statistique.Sweetness;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Sweetness;
                         break;
-                    case 6: // Peur
-                        pack = cardFear;
+                    case 7: // Peur
                         newStatValue = actors[indexCurrentActor].Statistique.Fear;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Fear;
                         break;
-                    case 7: // Confiance
-                        pack = cardTrust;
+                    case 8: // Confiance
                         newStatValue = actors[indexCurrentActor].Statistique.Trust;
                         newStatModifier = actors[indexCurrentActor].StatModifier.Trust;
-                        break;
-                    case 8: // Neutral
-                        pack = cardNeutral;
-                        newStatValue = actors[indexCurrentActor].Statistique.Neutral;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Neutral;
                         break;
                 }
 

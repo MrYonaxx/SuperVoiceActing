@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -21,6 +22,10 @@ namespace VoiceActing
         \* ======================================== */
 
         [Header("FeedbacksAttack")]
+        [SerializeField]
+        Image imageEnemy;
+        [SerializeField]
+        Image imageEnemyEffect;
         [SerializeField]
         Animator spotEnemy;
         [SerializeField]
@@ -150,6 +155,8 @@ namespace VoiceActing
             }
             enemyAttack.SetBool("Appear", true);
             enemyAttackFace.SetBool("Appear", true);
+            imageEnemy.sprite = roles[indexCurrentRole].RoleSprite;
+            imageEnemyEffect.sprite = roles[indexCurrentRole].RoleSprite;
             textSkillName.text = currentAttack.SkillName;
             textSkillDescription.text = currentAttack.Description;
             textSkillDescriptionBattle.text = currentAttack.DescriptionBattle;
