@@ -125,9 +125,7 @@ namespace VoiceActing
         {
             animatorMixingTable.SetBool("Active", true);
             inputMixingTable.gameObject.SetActive(true);
-            /*vignettageNormal.SetActive(false);
-            vignettageIngeSon.SetActive(true);*/
-            //characterSoundEngineer.gameObject.SetActive(true);
+            characterSoundEngineer.gameObject.SetActive(true);
             for (int i = 0; i < characterShadows.Length; i++)
             {
                 characterShadows[i].gameObject.SetActive(false);
@@ -139,12 +137,14 @@ namespace VoiceActing
         {
             animatorMixingTable.SetBool("Active", false);
             inputMixingTable.gameObject.SetActive(false);
-            /*vignettageNormal.SetActive(true);
-            vignettageIngeSon.SetActive(false);*/
-            //characterSoundEngineer.gameObject.SetActive(false);
+        }
+
+        public void ShowCharacterShadows()
+        {
+            characterSoundEngineer.gameObject.SetActive(false);
             for (int i = 0; i < characterShadows.Length; i++)
             {
-                characterShadows[i].gameObject.SetActive(false);
+                characterShadows[i].gameObject.SetActive(true);
             }
         }
 

@@ -639,6 +639,7 @@ namespace VoiceActing
                     emotionAttackManager.RemoveCard();
                     toneManager.ModifyTone(lastAttack);
                     roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
+                    soundEngineerManager.ShowCharacterShadows();
                     HideUIButton();
 
                     // Nouvelle Phrase

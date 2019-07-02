@@ -16,12 +16,13 @@ MonoBehaviour:
   description: "Lorsque Dor\xE9mi tombe sous les <color=yellow>50%</color> de HP,
     toutes ses statistiques augmentent de <color=yellow>5</color>."
   descriptionBattle: Augmente toute les stats
-  skillType: 1
+  skillType: 0
   skillTarget: 0
-  turnActive: 10
-  refresh: 0
-  addBuffTurn: 0
-  canAddMultiple: 0
+  buffData:
+    turnActive: 0
+    refresh: 0
+    addBuffTurn: 0
+    canAddMultiple: 0
   skillEffects:
   - eventNode: 1
     skillEffectCardGain:
@@ -69,6 +70,11 @@ MonoBehaviour:
       inPercentage: 0
       turnGain: 0
       turnVariance: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+    skillEffectResistance:
+      resistancePercentage: 0
   producerCost: 0
   afterStart: 0
   afterAttack: 1

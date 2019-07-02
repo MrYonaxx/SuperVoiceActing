@@ -155,6 +155,7 @@ namespace VoiceActing
         }
 
         [TabGroup("IA")]
+        [GUIColor(1f, 0.9f, 0.9f, 1f)]
         [SerializeField]
         private EnemyAI[] artificialIntelligence;
         public EnemyAI[] ArtificialIntelligence

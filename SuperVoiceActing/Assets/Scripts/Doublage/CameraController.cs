@@ -787,7 +787,8 @@ namespace VoiceActing
         {
             //SetText(-6, 2.7f, 0);
             StartCoroutine(MoveTextCoroutine(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z, 40));
-            StopCoroutine(soundEngineerCoroutine);
+            if (soundEngineerCoroutine != null)
+                StopCoroutine(soundEngineerCoroutine);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
