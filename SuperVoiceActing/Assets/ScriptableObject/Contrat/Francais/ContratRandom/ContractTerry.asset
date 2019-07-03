@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: ContractTerry
+  m_EditorClassIdentifier: 
+  name: '"Ce que aime Terry"'
+  level: 1
+  contractType: 0
+  salaryMin: 999999
+  salaryMax: 999999
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 1
+  weekMax: 1
+  expGain: 99999999
+  expBonus: 999999
+  contractTitle: []
+  contractDictionnary: []
+  description:
+  - Terry est un animal sauvage aimant le caca.
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Terry
+      roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
+      lineMin: 200
+      lineMax: 500
+      fanMin: 1
+      fanMax: 1
+      atkMin: 20
+      atkMax: 20
+      timbre: {x: 7, y: 10}
+      timbreRand: {x: 7, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 10
+        sadness: 1
+        disgust: 10
+        anger: 10
+        surprise: 1
+        sweetness: 5
+        fear: 1
+        trust: 15
+      characterStatMax:
+        neutral: 0
+        joy: 10
+        sadness: 1
+        disgust: 10
+        anger: 10
+        surprise: 1
+        sweetness: 5
+        fear: 1
+        trust: 15
+      actorLocked: {fileID: 11400000, guid: 23c95fd2762698540be4a33e932cf694, type: 2}
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 1
+          mathOperator: 0
+          conditionValue: 15
+        skills:
+        - {fileID: 11400000, guid: 804d7ac486f382b47bf43c1b8a207bb8, type: 2}
+        - {fileID: 11400000, guid: 7df03325739e8fb4bb574afb5c334d79, type: 2}
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: CA...ca...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 50
+        disgust: -100
+        anger: -80
+        surprise: 30
+        sweetness: 60
+        fear: -80
+        trust: 0
+      enemyWeakPoints: []
+    - text: hdhdddfdf
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

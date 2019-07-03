@@ -40,16 +40,16 @@ MonoBehaviour:
   - Novembre
   - Decembre
   monthDate: 05000000090000000d00000012000000160000001a0000001f00000023000000270000002c0000003000000035000000
-  initialComboMax: 2
+  initialComboMax: 3
   initialDeck:
-    neutral: 0
+    neutral: 1
     joy: 1
-    sadness: 1
+    sadness: 2
     disgust: 1
-    anger: 1
-    surprise: 1
-    sweetness: 2
-    fear: 1
+    anger: 4
+    surprise: 2
+    sweetness: 1
+    fear: 0
     trust: 1
   contractAvailableDebug: []
   voiceActorsDebug:
@@ -70,21 +70,20 @@ MonoBehaviour:
   contractGacha:
   - {fileID: 11400000, guid: 797e26e64cccd93499e77240c6b041f8, type: 2}
   - {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
+  - {fileID: 11400000, guid: 453cf1d29fd1c4843bf8e9429444b8cd, type: 2}
   - {fileID: 11400000, guid: 7aee77c77a7dffe408a74b482e37108f, type: 2}
   - {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
   - {fileID: 11400000, guid: d85d0a7830fd8144e94f5930fa02981b, type: 2}
+  - {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
   - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
   - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
   - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
-  - {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
   - {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
   contractGachaCooldown:
-  - contract: {fileID: 11400000, guid: 453cf1d29fd1c4843bf8e9429444b8cd, type: 2}
-    cooldown: 6
-  - contract: {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
-    cooldown: 4
   - contract: {fileID: 11400000, guid: 0d829c8fedec7a143b428862167f9e68, type: 2}
     cooldown: 11
+  - contract: {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
+    cooldown: 4
   nextStoryEvents: []
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
@@ -92,14 +91,14 @@ MonoBehaviour:
   maintenance: 6000
   money: 36000
   season: 3
-  comboMax: 2
+  comboMax: 3
   deck:
     neutral: 1
     joy: 1
-    sadness: 1
+    sadness: 2
     disgust: 1
-    anger: 1
-    surprise: 1
-    sweetness: 2
-    fear: 1
+    anger: 4
+    surprise: 2
+    sweetness: 1
+    fear: 0
     trust: 1

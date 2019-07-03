@@ -61,6 +61,11 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public void SetIndexRole(int newIndex)
+        {
+            indexCurrentRole = newIndex;
+        }
+
         public int GetRoleAttack()
         {
             return roles[indexCurrentRole].Attack;

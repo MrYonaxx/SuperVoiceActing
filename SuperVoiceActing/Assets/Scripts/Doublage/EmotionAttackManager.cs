@@ -10,6 +10,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -89,11 +90,9 @@ namespace VoiceActing
     }
 
 
-
-
-
+    // class qui represente toutes les cartes possédé actuellement
     [System.Serializable]
-    public class EmotionCardPosition
+    public class EmotionCardTotal
     {
         [SerializeField]
         private Emotion emotion;
@@ -107,6 +106,29 @@ namespace VoiceActing
         public EmotionCard[] Cards
         {
             get { return cards; }
+            set { cards = value; }
+        }
+
+        public EmotionCardTotal(EmotionCard[] newCards)
+        {
+            cards = new EmotionCard[3];
+            for(int i = 0; i < newCards.Length; i++)
+            {
+                cards[i] = newCards[i];
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class EmotionCardPosition
+    {
+
+        [LabelWidth(100)]
+        [SerializeField]
+        private RectTransform transformRessource;
+        public RectTransform TransformRessource
+        {
+            get { return transformRessource; }
         }
 
         [SerializeField]
@@ -115,20 +137,6 @@ namespace VoiceActing
         {
             get { return cardsPosition; }
         }
-
-        [SerializeField]
-        private RectTransform transformRessource;
-        public RectTransform TransformRessource
-        {
-            get { return transformRessource; }
-        }
-
-        /*[SerializeField]
-        private RectTransform transformBattle;
-        public RectTransform TransformBattle
-        {
-            get { return transformBattle; }
-        }*/
     }
 
 
@@ -154,11 +162,16 @@ namespace VoiceActing
         [SerializeField]
         EmotionCard prefab;
         [SerializeField]
-        Sprite[] emotionSprite;
-        [SerializeField]
-        EmotionCardPosition[] emotionCards;
-        [SerializeField]
         EmotionComboData emotionComboData;
+        [SerializeField]
+        Sprite[] emotionSprite;
+
+        [HorizontalGroup]
+        [SerializeField]
+        EmotionCardTotal[] emotionCards;
+        [HorizontalGroup]
+        [SerializeField]
+        EmotionCardPosition[] emotionCardsPosition;
 
         
 
@@ -230,15 +243,6 @@ namespace VoiceActing
             return emoti;
         }
 
-        public EmotionCard[] GetCardPack(int emotion)
-        {
-            return emotionCards[emotion].Cards;
-        }
-        public EmotionCard GetCardPackSpecific(int emotion, int indexCard)
-        {
-            return emotionCards[emotion].Cards[indexCard];
-        }
-
         #endregion
 
         #region Functions 
@@ -247,60 +251,31 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void SetDeck(int newComboMax, EmotionStat newDeck)
+        public EmotionCardTotal[] SetDeck(int newComboMax, EmotionStat newDeck)
         {
             comboMax = newComboMax;
             deckEmotion = newDeck;
-
             comboEmotion = new Emotion[comboMax];
-            comboCardEmotion = new EmotionCard[comboMax];
-            CreateDeck();
+            comboCardEmotion = new EmotionCard[comboMax];          
             CreateComboSlot();
+            return CreateDeck();
         }
 
-        private void CreateDeck()
+        public EmotionCardTotal[] CreateDeck()
         {
             for (int i = 0; i < emotionCards.Length; i++)
             {
-                int cardNumber = 0;
-                switch (emotionCards[i].Emotion)
-                {
-                    case Emotion.Joie:
-                        cardNumber = deckEmotion.Joy;
-                        break;
-                    case Emotion.Tristesse:
-                        cardNumber = deckEmotion.Sadness;
-                        break;
-                    case Emotion.Dégoût:
-                        cardNumber = deckEmotion.Disgust;
-                        break;
-                    case Emotion.Colère:
-                        cardNumber = deckEmotion.Anger;
-                        break;
-                    case Emotion.Surprise:
-                        cardNumber = deckEmotion.Surprise;
-                        break;
-                    case Emotion.Douceur:
-                        cardNumber = deckEmotion.Sweetness;
-                        break;
-                    case Emotion.Peur:
-                        cardNumber = deckEmotion.Fear;
-                        break;
-                    case Emotion.Confiance:
-                        cardNumber = deckEmotion.Trust;
-                        break;
-                    case Emotion.Neutre:
-                        cardNumber = 1;
-                        break;
-                }
-
+                int cardNumber = deckEmotion.GetEmotion(i);
+                if (cardNumber > 3)
+                    cardNumber = 3;
                 for (int j = 0; j < cardNumber; j++)
                 {
-                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCards[i].TransformRessource);
-                    emotionCards[i].Cards[j].SetEmotion(emotionCards[i].Emotion);
+                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
+                    emotionCards[i].Cards[j].SetEmotion((Emotion) i);
                     emotionCards[i].Cards[j].SetSprite(emotionSprite[(int) emotionCards[i].Emotion]);
                 }
             }
+            return emotionCards;
         }
 
         private void CreateComboSlot()
@@ -327,51 +302,79 @@ namespace VoiceActing
             }
         }
 
-        public void ModifiyDeck(Emotion emotion, int number)
+
+        public EmotionCardTotal[] AddDeck(EmotionStat addDeck)
         {
-            switch (emotion)
+            for (int i = 0; i < addDeck.GetLength(); i++)
             {
-                case Emotion.Joie:
-                    deckEmotion.Joy = number;
-                    break;
-                case Emotion.Tristesse:
-                    deckEmotion.Sadness = number;
-                    break;
-                case Emotion.Dégoût:
-                    deckEmotion.Disgust = number;
-                    break;
-                case Emotion.Colère:
-                    deckEmotion.Anger = number;
-                    break;
-                case Emotion.Surprise:
-                    deckEmotion.Surprise = number;
-                    break;
-                case Emotion.Douceur:
-                    deckEmotion.Sweetness = number;
-                    break;
-                case Emotion.Peur:
-                    deckEmotion.Fear = number;
-                    break;
-                case Emotion.Confiance:
-                    deckEmotion.Trust = number;
-                    break;
+                int cardNumber = addDeck.GetEmotion(i);
+                if (cardNumber > 0)
+                {
+                    for (int j = 0; j < emotionCards[i].Cards.Length; j++)
+                    {
+                        if (cardNumber == 0)
+                            break;
+                        if (emotionCards[i].Cards[j] == null)
+                        {
+                            emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
+                            emotionCards[i].Cards[j].SetEmotion((Emotion)i);
+                            emotionCards[i].Cards[j].SetSprite(emotionSprite[(int)emotionCards[i].Emotion]);
+                            cardNumber -= 1;
+                        }
+                    }
+                }
+                else if (cardNumber < 0)
+                {
+                    for (int j = emotionCards[i].Cards.Length-1; j > -1; j--)
+                    {
+                        if (cardNumber == 0)
+                            break;
+                        if (emotionCards[i].Cards[j] != null)
+                        {
+                            Destroy(emotionCards[i].Cards[j]);
+                            emotionCards[i].Cards[j] = null;
+                            cardNumber += 1;
+                        }
+                    }
+                }
             }
-            CreateDeck();
+            return emotionCards;
         }
 
-        public void ModifiyDeck(EmotionStat newDeck, int newComboMax = -1)
+        public void AddComboMax(int addComboMax)
         {
-            //deckEmotion.Add(newDeck);
-            CreateDeck();
-            if(newComboMax != -1)
+            comboMax += addComboMax;
+            if (comboMax >= 3)
             {
-                comboMax = newComboMax;
-                comboEmotion = new Emotion[comboMax];
-                comboCardEmotion = new EmotionCard[comboMax];
-                CreateComboSlot();
+                comboMax = 3;
             }
-
+            else if (comboMax <= 0)
+            {
+                comboMax = 1;
+            }
+            comboEmotion = new Emotion[comboMax];
+            comboCardEmotion = new EmotionCard[comboMax];
+            CreateComboSlot();
         }
+
+        /*public void AddDeck(EmotionStat addDeck)
+        {
+            for (int i = 0; i < addDeck.GetLength(); i++)
+            {          
+                if (addDeck.GetEmotion(i) > 0)
+                {
+                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
+                    emotionCards[i].Cards[j].SetEmotion((Emotion)i);
+                    emotionCards[i].Cards[j].SetSprite(emotionSprite[(int)emotionCards[i].Emotion]);
+                }
+                else if (addDeck.GetEmotion(i) > deckEmotion.GetEmotion(i))
+                {
+                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
+                    emotionCards[i].Cards[j].SetEmotion((Emotion)i);
+                    emotionCards[i].Cards[j].SetSprite(emotionSprite[(int)emotionCards[i].Emotion]);
+                }
+            }
+        }*/
         // =========================================================================================================================================
 
 
@@ -391,7 +394,7 @@ namespace VoiceActing
                 for (int j = 0; j < 3; j++)
                 {
                     if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
-                        emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j], transitionSpeedIntro);
+                        emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].CardsPosition[j], transitionSpeedIntro);
                 }
                 yield return new WaitForSeconds(0.1f);
             }
@@ -404,7 +407,7 @@ namespace VoiceActing
                 for(int j = 0; j < emotionCards[i].Cards.Length; j++)
                 {
                     if(emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
-                        emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j], transitionSpeed);
+                        emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].CardsPosition[j], transitionSpeed);
                 }
             }
             animatorCombo.SetBool("Appear", true);
@@ -419,7 +422,7 @@ namespace VoiceActing
                 for (int j = 0; j < emotionCards[i].Cards.Length; j++)
                 {
                     if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
-                        emotionCards[i].Cards[j].MoveCard(emotionCards[i].TransformRessource, transitionSpeed);
+                        emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].TransformRessource, transitionSpeed);
                 }
             }
             animatorCombo.SetBool("Appear", false);
@@ -486,7 +489,7 @@ namespace VoiceActing
                         if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
                         {
                             emotionCards[i].Cards[j - 1] = emotionCards[i].Cards[j];
-                            emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j-1], transitionSpeedCardSelect);
+                            emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].CardsPosition[j-1], transitionSpeedCardSelect);
                             emotionCards[i].Cards[j] = null;
                         }
                     }
@@ -517,13 +520,13 @@ namespace VoiceActing
                         if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
                         {
                             emotionCards[i].Cards[j + 1] = emotionCards[i].Cards[j];
-                            emotionCards[i].Cards[j].MoveCard(emotionCards[i].CardsPosition[j + 1], transitionSpeedCardSelect);
+                            emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].CardsPosition[j + 1], transitionSpeedCardSelect);
                             emotionCards[i].Cards[j] = null;
                         }
                     }
                     emotionCards[i].Cards[0] = comboCardEmotion[comboCount];
                     card = comboCardEmotion[comboCount];
-                    comboCardEmotion[comboCount].MoveCard(emotionCards[i].CardsPosition[0], transitionSpeedCardSelect);
+                    comboCardEmotion[comboCount].MoveCard(emotionCardsPosition[i].CardsPosition[0], transitionSpeedCardSelect);
                     comboCardEmotion[comboCount] = null;               
                     comboEmotion[comboCount] = Emotion.Neutre;
                     comboCount -= 1;

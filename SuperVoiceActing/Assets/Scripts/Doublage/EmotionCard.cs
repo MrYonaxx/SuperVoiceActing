@@ -146,7 +146,6 @@ namespace VoiceActing
 
         private IEnumerator FeedbackCoroutine(Image feedback, int time)
         {
-            //feedback.color = new Color(1, 1, 1, 1);
             while (time != 0)
             {
                 feedback.color -= new Color(0, 0, 0, 0.05f);
@@ -156,13 +155,6 @@ namespace VoiceActing
             }
         }
 
-
-
-        /*public void SetStat(int newBaseValue, int newBonusValue)
-        {
-                        value = baseStat;
-            valueBonus = newStat;
-        }*/
 
         public void AddStat(int statToAdd, Buff buff = null)
         {

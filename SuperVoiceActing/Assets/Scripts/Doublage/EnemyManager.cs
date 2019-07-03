@@ -248,18 +248,40 @@ namespace VoiceActing
 
         public EmotionStat Reverse()
         {
-            /*stat.joy = -stat.joy;
-            stat.sadness = -stat.sadness;
-            stat.disgust = -stat.disgust;
-            stat.anger = -stat.anger;
-            stat.surprise = -stat.surprise;
-            stat.sweetness = -stat.sweetness;
-            stat.fear = -stat.fear;
-            stat.trust = -stat.trust;
-            stat.neutral = -stat.neutral;*/
             return new EmotionStat(-this.joy, -this.sadness, -this.disgust, -this.anger, -this.surprise, -this.sweetness, -this.fear, -this.trust);
         }
 
+        public int GetEmotion(int emotion)
+        {
+            switch (emotion)
+            {
+                case 0: // Neutr
+                    return neutral;
+                case 1: // Joie
+                    return joy;
+                case 2: // Tristesse
+                    return sadness;
+                case 3: // Degout
+                    return disgust;
+                case 4: // Anger
+                    return anger;
+                case 5: // Surprise
+                    return surprise;
+                case 6: // Douceur
+                    return sweetness;
+                case 7: // Peur
+                    return fear;
+                case 8: // confiance
+                    return trust;
+            }
+            return 0;
+        }
+
+
+        public int GetLength()
+        {
+            return 9;
+        }
 
     }
 
@@ -307,15 +329,12 @@ namespace VoiceActing
         int enemyHP = 100;
         //int enemyHPMax = 100;
 
-        /*[Header("Current Voice actor")]
-        [Space]
-        [SerializeField]
-        VoiceActor voiceActor;
-        */
 
         [Header("Feedbacks")]
         [SerializeField]
         ParticleSystem[] particleFeedbacks;
+        [SerializeField]
+        Color[] colorsEmotions;
         [SerializeField]
         Image haloCurrentEmotion;
         [SerializeField]
@@ -382,10 +401,15 @@ namespace VoiceActing
                 enemyHP = currentTextData.HPMax;
         }
 
-        /*public void SetVoiceActor(VoiceActor va)
+        public int GetInterlocutor()
         {
-            voiceActor = va;
-        }*/
+            return currentTextData.Interlocuteur;
+        }
+
+        public bool CheckInterlocutor(int currentInterlocutor)
+        {
+            return (currentInterlocutor == currentTextData.Interlocuteur);
+        }
 
         public int GetLastAttackScore()
         {
@@ -416,8 +440,6 @@ namespace VoiceActing
         {
             currentTextData = newTextData;
             enemyHP = currentTextData.HPMax;
-            //enemyHP *= 2;
-            //enemyHPMax = enemyHP;
         }
 
         public float DamagePhrase()
@@ -450,45 +472,8 @@ namespace VoiceActing
                     particleFeedbacks[i].gameObject.SetActive(false);
                     continue;
                 }
-                switch(emotions[i].GetEmotion())
-                {
-                    case Emotion.Neutre:
-                        colorEmotion = Color.white;
-                        multiplier += enemyResistance.Neutral;
-                        break;
-                    case Emotion.Joie:
-                        colorEmotion = Color.yellow;
-                        multiplier += enemyResistance.Joy;
-                        break;
-                    case Emotion.Tristesse:
-                        colorEmotion = Color.blue;
-                        multiplier += enemyResistance.Sadness;
-                        break;
-                    case Emotion.Dégoût:
-                        colorEmotion = Color.green;
-                        multiplier += enemyResistance.Disgust;
-                        break;
-                    case Emotion.Colère:
-                        colorEmotion = Color.red;
-                        multiplier += enemyResistance.Anger;
-                        break;
-                    case Emotion.Surprise:
-                        colorEmotion = new Color(0.9f, 0.55f, 0.3f);
-                        multiplier += enemyResistance.Surprise;
-                        break;
-                    case Emotion.Douceur:
-                        colorEmotion = new Color(0.88f, 0.58f, 0.9f);
-                        multiplier += enemyResistance.Sweetness;
-                        break;
-                    case Emotion.Peur:
-                        colorEmotion = Color.black;
-                        multiplier += enemyResistance.Fear;
-                        break;
-                    case Emotion.Confiance:
-                        colorEmotion = Color.white;
-                        multiplier += enemyResistance.Trust;
-                        break;
-                }
+                multiplier += enemyResistance.GetEmotion((int)emotions[i].GetEmotion());
+                colorEmotion = colorsEmotions[(int)emotions[i].GetEmotion()];
 
                 normalDamage += emotions[i].GetStat();
 
@@ -570,39 +555,9 @@ namespace VoiceActing
         {
             int bestStat = 0;
             int currentStat = 0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < currentTextData.EnemyResistance.GetLength(); i++)
             {
-
-                switch (i)
-                {
-                    case 0:
-                        currentStat = currentTextData.EnemyResistance.Neutral;
-                        break;
-                    case 1:
-                        currentStat = currentTextData.EnemyResistance.Joy;
-                        break;
-                    case 2:
-                        currentStat = currentTextData.EnemyResistance.Sadness;
-                        break;
-                    case 3:
-                        currentStat = currentTextData.EnemyResistance.Disgust;
-                        break;
-                    case 4:
-                        currentStat = currentTextData.EnemyResistance.Anger;
-                        break;
-                    case 5:
-                        currentStat = currentTextData.EnemyResistance.Surprise;
-                        break;
-                    case 6:
-                        currentStat = currentTextData.EnemyResistance.Sweetness;
-                        break;
-                    case 7:
-                        currentStat = currentTextData.EnemyResistance.Fear;
-                        break;
-                    case 8:
-                        currentStat = currentTextData.EnemyResistance.Trust;
-                        break;
-                }
+                currentStat = currentTextData.EnemyResistance.GetEmotion(i);
                 if (currentStat > bestStat)
                     bestStat = currentStat;
             }

@@ -89,10 +89,15 @@ namespace VoiceActing
         SpriteRenderer spriteNextActor;
 
 
+
+        EmotionCardTotal[] emotionCards = new EmotionCardTotal[9];
+
+
+
         private int indexCurrentActor = 0;
         private int[] actorsResistance = { 0, 0, 0 };
         int attackDamage = 0;
-        EmotionAttackManager emotionAttackManager;
+
 
 
 
@@ -112,6 +117,11 @@ namespace VoiceActing
         public int GetCurrentActorHPMax()
         {
             return actors[indexCurrentActor].HpMax;
+        }
+
+        public void SetIndexActors(int newIndex)
+        {
+            indexCurrentActor = newIndex;
         }
 
         public int GetCurrentActorIndex()
@@ -147,9 +157,16 @@ namespace VoiceActing
             return actors[indexCurrentActor];
         }
 
-        public void SetManagers(EmotionAttackManager eAM)
+        public void SetCards(EmotionCardTotal[] cards)
         {
-            emotionAttackManager = eAM;
+            for (int i = 0; i < cards.Length; i++)
+            {
+                emotionCards[i] = new EmotionCardTotal(cards[i].Cards);
+                /*for (int j = 0; j < cards[i].Cards.Length; j++)
+                {
+                    emotionCards[i] = new EmotionCardTotal(cards[i].Cards);
+                }*/
+            }
         }
 
         public void SetActors(List<VoiceActor> actorsContract)
@@ -216,11 +233,12 @@ namespace VoiceActing
             for (int i = 0; i < 9; i++)
             {
                 EmotionCard[] pack = null;
-                pack = emotionAttackManager.GetCardPack(i);
+                pack = emotionCards[i].Cards;//.GetCardPack(i);
 
                 for (int j = 0; j < pack.Length; j++)
                 {
-                    pack[j].CheckBuff();
+                    if(pack[j] != null)
+                        pack[j].CheckBuff();
                 }
             }
         }
@@ -231,15 +249,15 @@ namespace VoiceActing
 
         public EmotionCard GetCardTarget(Vector3Int cardTarget)
         {
-            return emotionAttackManager.GetCardPackSpecific(cardTarget.x, cardTarget.y);
+            return emotionCards[cardTarget.x].Cards[cardTarget.y];//.GetCardPackSpecific(cardTarget.x, cardTarget.y);
         }
 
 
 
         public void InvertActorStat(Emotion emotionA, Emotion emotionB)
         {
-            EmotionCard[] packA = emotionAttackManager.GetCardPack((int) emotionA);
-            EmotionCard[] packB = emotionAttackManager.GetCardPack((int) emotionB);
+            EmotionCard[] packA = emotionCards[(int)emotionA].Cards;//.GetCardPack((int) emotionA);
+            EmotionCard[] packB = emotionCards[(int)emotionB].Cards; //emotionAttackManager.GetCardPack((int) emotionB);
 
             int[] tmpBaseValue = new int[3];
             int[] tmpBaseBonusValue = new int[3];
@@ -251,7 +269,8 @@ namespace VoiceActing
                 {
                     tmpBaseValue[i] = tmpBaseValue[i - 1];
                     tmpBaseBonusValue[i] = tmpBaseBonusValue[i - 1];
-                    packB[i].DrawStat(packA[i].GetBaseValue(), packA[i].GetBonusValue(), colorStatBonus, colorStatMalus);
+                    if(packB[i] != null)
+                        packB[i].DrawStat(packA[i].GetBaseValue(), packA[i].GetBonusValue(), colorStatBonus, colorStatMalus);
                 }
                 else if (packB[i] != null)
                 {
@@ -275,7 +294,8 @@ namespace VoiceActing
         {
             for(int i = 0; i < cardTargetsData.Count; i++)
             {
-                GetCardTarget(cardTargetsData[i]).AddStat(cardTargetsData[i].z, buff);
+                if (emotionCards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    GetCardTarget(cardTargetsData[i]).AddStat(cardTargetsData[i].z, buff);
             }
         }
 
@@ -293,7 +313,8 @@ namespace VoiceActing
         {
             for (int i = 0; i < cardTargetsData.Count; i++)
             {
-                GetCardTarget(cardTargetsData[i]).AddStatPercentage(cardTargetsData[i].z);
+                if (emotionCards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    GetCardTarget(cardTargetsData[i]).AddStatPercentage(cardTargetsData[i].z);
             }
         }
 
@@ -311,7 +332,8 @@ namespace VoiceActing
         {
             for (int i = 0; i < cardTargetsData.Count; i++)
             {
-                GetCardTarget(cardTargetsData[i]).AddDamagePercentage(cardTargetsData[i].z, buff);
+                if(emotionCards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    GetCardTarget(cardTargetsData[i]).AddDamagePercentage(cardTargetsData[i].z, buff);
             }
         }
 
@@ -332,53 +354,16 @@ namespace VoiceActing
 
             for(int i = 0; i < 9; i++)
             {
-                EmotionCard[] pack = emotionAttackManager.GetCardPack(i);
-                int newStatValue = 0;
-                int newStatModifier = 0;
-                switch (i)
-                {
-                    case 0: // Neutral
-                        newStatValue = actors[indexCurrentActor].Statistique.Neutral;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Neutral;
-                        break;
-                    case 1: // Joie
-                        newStatValue = actors[indexCurrentActor].Statistique.Joy;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Joy;
-                        break;
-                    case 2: // Tristesse
-                        newStatValue = actors[indexCurrentActor].Statistique.Sadness;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Sadness;
-                        break;
-                    case 3: // Dégout
-                        newStatValue = actors[indexCurrentActor].Statistique.Disgust;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Disgust;
-                        break;
-                    case 4: // Colère
-                        newStatValue = actors[indexCurrentActor].Statistique.Anger;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Anger;
-                        break;
-                    case 5: // Surprise
-                        newStatValue = actors[indexCurrentActor].Statistique.Surprise;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Surprise;
-                        break;
-                    case 6: // Douceur
-                        newStatValue = actors[indexCurrentActor].Statistique.Sweetness;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Sweetness;
-                        break;
-                    case 7: // Peur
-                        newStatValue = actors[indexCurrentActor].Statistique.Fear;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Fear;
-                        break;
-                    case 8: // Confiance
-                        newStatValue = actors[indexCurrentActor].Statistique.Trust;
-                        newStatModifier = actors[indexCurrentActor].StatModifier.Trust;
-                        break;
-                }
-
+                if (emotionCards[i] == null)
+                    continue;
+                EmotionCard[] pack = emotionCards[i].Cards;//.GetCardPack(i);
+                int newStatValue = actors[indexCurrentActor].Statistique.GetEmotion(i);
+                int newStatModifier = actors[indexCurrentActor].StatModifier.GetEmotion(i);
 
                 for(int j = 0; j < pack.Length; j++)
                 {
-                    pack[j].DrawStat(newStatValue, newStatModifier, colorStatBonus, colorStatMalus);
+                    if(pack[j] != null)
+                        pack[j].DrawStat(newStatValue, newStatModifier, colorStatBonus, colorStatMalus);
                 }
             }
 

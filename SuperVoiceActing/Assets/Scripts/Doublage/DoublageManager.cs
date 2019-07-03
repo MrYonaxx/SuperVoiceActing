@@ -242,11 +242,9 @@ namespace VoiceActing
         private void InitializeManagers()
         {
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck);
-
-            actorsManager.SetManagers(emotionAttackManager);
+            actorsManager.SetCards(emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
             actorsManager.SetActors(contrat.VoiceActors);
-            actorsManager.ActorTakeDamage(0);
+            //actorsManager.ActorTakeDamage(0);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
             skillManager.SetManagers(this, cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
@@ -270,13 +268,10 @@ namespace VoiceActing
             InitializeManagers();
             // ===== Initialisation ===== //
 
-
             if (contrat.BattleTheme != null)
             {
                 audioClipBattleTheme = contrat.BattleTheme;
             }
-
-
 
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
             {
@@ -655,21 +650,37 @@ namespace VoiceActing
                         }
                     }
 
+
+
                     // Si pas d'event anim de destruction de phrase
                     enemyManager.DamagePhrase();
                     textAppearManager.TextPop();
                     textAppearManager.SelectWord(0);
                     FeedbackNewLine();
-                    if (cameraController != null && indexPhrase < contrat.TextData.Count)
-                        cameraController.NotQuite();
-
                     AudioManager.Instance.PlaySound(audioClipKillPhrase);
                     AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
+
                     if (indexPhrase == contrat.TextData.Count)
                     {
                         EndSession();
                         return;
                     }
+
+                    // Check si changement d'acteur
+                    if (enemyManager.CheckInterlocutor(actorsManager.GetCurrentActorIndex()) == false)
+                    {
+                        actorsManager.SwitchActors(false);
+                        cameraController.SetCameraSwitchActor();
+                        actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
+                        roleManager.SetIndexRole(enemyManager.GetInterlocutor());
+                        emotionAttackManager.SwitchCardTransformToRessource();
+                    }
+                    else
+                    {
+                        if (cameraController != null)
+                            cameraController.NotQuite();
+                    }
+
                     StartCoroutine(WaitCoroutineNextPhrase(60));
                     startLine = false;
                 }
@@ -919,16 +930,23 @@ namespace VoiceActing
         }
 
 
-        public void ModifyDeck(EmotionStat addDeck, int addComboMax)
+        public void ModifyDeck(EmotionStat addDeck)
         {
-            playerData.Deck.Add(addDeck);
+            /*playerData.Deck.Add(addDeck);
             playerData.ComboMax += addComboMax;
             if (playerData.ComboMax >= 4)
                 playerData.ComboMax = 3;
             else if (playerData.ComboMax <= 0)
-                playerData.ComboMax = 1;
-            emotionAttackManager.ModifiyDeck(addDeck, playerData.ComboMax);
+                playerData.ComboMax = 1;*/
+            emotionAttackManager.ResetCard();
+            actorsManager.SetCards(emotionAttackManager.AddDeck(addDeck));
         }
+
+        public void ModifyComboMax(int addComboMax)
+        {
+            emotionAttackManager.AddComboMax(addComboMax);
+        }
+
 
 
         public void ForceSkill(SkillActorData skill)

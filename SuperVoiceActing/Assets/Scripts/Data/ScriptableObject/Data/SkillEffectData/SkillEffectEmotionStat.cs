@@ -148,10 +148,11 @@ namespace VoiceActing
         private void CalculateTarget()
         {
             cardTargetsData.Clear();
+            int stat = 0;
             for (int i = 0; i < 9; i++)
             {
-                int stat = 0;
-                switch (i)
+                stat = emotionStat.GetEmotion(i);
+                /*switch (i)
                 {
                     case 0: // Neutral
                         stat = emotionStat.Neutral;
@@ -181,7 +182,7 @@ namespace VoiceActing
                         stat = emotionStat.Trust;
                         break;
 
-                }
+                }*/
 
                 if (stat != 0)
                 {

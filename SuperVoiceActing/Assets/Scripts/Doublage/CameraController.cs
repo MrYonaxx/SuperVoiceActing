@@ -34,6 +34,8 @@ namespace VoiceActing
         [SerializeField]
         Transform enemyPosition;
         [SerializeField]
+        Transform actorSwitchPosition;
+        [SerializeField]
         float offsetZ = 0;
         [SerializeField]
         float offsetX = 0;
@@ -663,17 +665,17 @@ namespace VoiceActing
 
         // Placeholders ==================================================================
 
-        public void SetCameraSwitchActor(Transform newTransform)
+        public void SetCameraSwitchActor()
         {
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
                 StopCoroutine(rotatingCoroutine);
-            transform.position = new Vector3(newTransform.position.x+0.05f, newTransform.position.y, newTransform.position.z+0.05f);
-            transform.eulerAngles = new Vector3(newTransform.eulerAngles.x, newTransform.eulerAngles.y, newTransform.eulerAngles.z);
+            transform.position = new Vector3(actorSwitchPosition.position.x+0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z+0.05f);
+            transform.eulerAngles = new Vector3(actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y, actorSwitchPosition.eulerAngles.z);
             moving = true;
             rotating = false;
-            MoveCamera(newTransform.position.x - 0.05f, newTransform.position.y, newTransform.position.z-0.05f, 90);
+            MoveCamera(actorSwitchPosition.position.x - 0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z-0.05f, 90);
         }
 
         public void NotQuite()
@@ -803,6 +805,7 @@ namespace VoiceActing
             rotating = false;
             moving = false;
             MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 30);
+            RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 30);
             cameraPlacement = 0;
         }
 
@@ -862,7 +865,7 @@ namespace VoiceActing
                 StopCoroutine(rotatingCoroutine);
 
             noCameraEffect = true;
-            RotateCamera(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z, 40);
+            RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
             MoveCamera(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, 40);
             RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 600);
             //MoveCamera(enemyPosition.position.x, enemyPosition.position.y + 0.01f, enemyPosition.position.z, 1000);
