@@ -78,15 +78,7 @@ namespace VoiceActing
 
 
 
-        [Title("SwitchActorFeedback")]
-        [SerializeField]
-        Animator animatorSwitchActors;
-        [SerializeField]
-        GameObject spriteSwitchPanel;
-        [SerializeField]
-        SpriteRenderer spriteCurrentActor;
-        [SerializeField]
-        SpriteRenderer spriteNextActor;
+
 
 
 
@@ -162,10 +154,6 @@ namespace VoiceActing
             for (int i = 0; i < cards.Length; i++)
             {
                 emotionCards[i] = new EmotionCardTotal(cards[i].Cards);
-                /*for (int j = 0; j < cards[i].Cards.Length; j++)
-                {
-                    emotionCards[i] = new EmotionCardTotal(cards[i].Cards);
-                }*/
             }
         }
 
@@ -541,28 +529,7 @@ namespace VoiceActing
 
 
 
-        public void SwitchActors(bool switchDirectionRight)
-        {
-            spriteSwitchPanel.SetActive(true);
-            spriteCurrentActor.sprite = actors[indexCurrentActor].ActorSprite;
-            int nextActor = indexCurrentActor;
-            if (switchDirectionRight == true)
-            {
-                nextActor -= 1;
-                if (nextActor == 0)
-                    nextActor = actors.Count-1;
-                spriteNextActor.sprite = actors[2].ActorSprite;
-                animatorSwitchActors.SetTrigger("Right");
-            }
-            else
-            {
-                nextActor += 1;
-                if (nextActor == actors.Count)
-                    nextActor = 0;
-                animatorSwitchActors.SetTrigger("Right");
-            }
-            spriteNextActor.sprite = actors[nextActor].ActorSprite;
-        }
+
 
 
 

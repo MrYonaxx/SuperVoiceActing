@@ -67,7 +67,7 @@ namespace VoiceActing
         [SerializeField]
         protected TimerDoublage timer;
         [SerializeField]
-        protected GameObject feedbackLine;
+        protected RectTransform feedbackLine;
         [SerializeField]
         protected RectTransform feedbackLineTransform;
         [SerializeField]
@@ -376,7 +376,7 @@ namespace VoiceActing
                 timer.SetTurn(turnCount);
 
             if (feedbackLine != null)
-                feedbackLine.SetActive(false);
+                feedbackLine.gameObject.SetActive(false);
 
             HideUIButton();
 
@@ -659,12 +659,12 @@ namespace VoiceActing
                     enemyManager.DamagePhrase();
                     textAppearManager.TextPop();
                     textAppearManager.SelectWord(0);
-                    FeedbackNewLine();
                     AudioManager.Instance.PlaySound(audioClipKillPhrase);
                     AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
 
                     if (indexPhrase == contrat.TextData.Count)
                     {
+                        FeedbackNewLine();
                         EndSession();
                         return;
                     }
@@ -672,11 +672,12 @@ namespace VoiceActing
                     // Check si changement d'acteur
                     if (enemyManager.CheckInterlocutor(actorsManager.GetCurrentActorIndex()) == false)
                     {
+                        FeedbackNewLine();
                         SwitchActors();
-                        StartCoroutine(WaitCoroutineNextPhrase(100));
                     }
                     else
                     {
+                        FeedbackNewLine();
                         if (cameraController != null)
                             cameraController.NotQuite();
                         StartCoroutine(WaitCoroutineNextPhrase(60));
@@ -699,17 +700,27 @@ namespace VoiceActing
 
         public void SwitchActors()
         {
-            actorsManager.SwitchActors(false);
-            cameraController.SetCameraSwitchActor();
+
+            if (characterDoublageManager.SwitchActors(enemyManager.GetInterlocutor()) == true) // GoLeft
+            {
+                cameraController.SetCameraSwitchActor(true);
+                FeedbackNewLineSwitch(true);
+            }
+            else
+            {
+                cameraController.SetCameraSwitchActor(false);
+                FeedbackNewLineSwitch(false);
+            }
             actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
             roleManager.SetIndexRole(enemyManager.GetInterlocutor());
+
             emotionAttackManager.SwitchCardTransformToRessource();
             actorsManager.DrawActorStat();
             actorsManager.DrawBuffIcon();
             textAppearManager.SetMouth(characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
-            characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
         }
 
+        // Appelé par l'event Switch Actors
         // Affiche la phrase
         public virtual void SetPhrase()
         {
@@ -754,6 +765,7 @@ namespace VoiceActing
                 yield return new WaitForSeconds(0.1f);
                 cameraController.EnemySkill();
                 roleManager.EnemyAttackActivation();
+                emotionAttackManager.SwitchCardTransformToRessource();
                 endAttack = false;
                 while (endAttack == false)
                 {
@@ -865,8 +877,28 @@ namespace VoiceActing
             enemyManager.ResetHalo();
             textMeshLine.text = (contrat.TextData.Count - indexPhrase).ToString();
             textMeshTurn.text = turnCount.ToString();
+            feedbackLine.anchoredPosition = new Vector2(feedbackLine.anchoredPosition.x, -50);
             feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
-            feedbackLine.SetActive(true);
+            feedbackLine.gameObject.SetActive(true);
+        }
+
+        private void FeedbackNewLineSwitch(bool goLeft)
+        {
+            if (feedbackLine == null)
+                return;
+            enemyManager.ResetHalo();
+            textMeshLine.text = (contrat.TextData.Count - indexPhrase).ToString();
+            textMeshTurn.text = turnCount.ToString();
+            feedbackLine.anchoredPosition = new Vector2(feedbackLine.anchoredPosition.x, -125);
+            if (goLeft == true)
+            {
+                feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, -20);
+            }
+            else
+            {
+                feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 20);
+            }
+            feedbackLine.gameObject.SetActive(true);
         }
 
 

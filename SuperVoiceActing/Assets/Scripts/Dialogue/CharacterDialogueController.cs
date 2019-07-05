@@ -66,6 +66,10 @@ namespace VoiceActing
         {
             return spriteRenderer;
         }
+        public Sprite GetSprite()
+        {
+            return spriteRenderer.sprite;
+        }
 
         public void SetPhraseTextacting(string newText)
         {

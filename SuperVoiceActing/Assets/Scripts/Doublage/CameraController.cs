@@ -665,17 +665,27 @@ namespace VoiceActing
 
         // Placeholders ==================================================================
 
-        public void SetCameraSwitchActor()
+        public void SetCameraSwitchActor(bool goLeft)
         {
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
             if (rotatingCoroutine != null)
                 StopCoroutine(rotatingCoroutine);
-            transform.position = new Vector3(actorSwitchPosition.position.x+0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z+0.05f);
-            transform.eulerAngles = new Vector3(actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y, actorSwitchPosition.eulerAngles.z);
+
             moving = true;
             rotating = false;
-            MoveCamera(actorSwitchPosition.position.x - 0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z-0.05f, 90);
+            if (goLeft == true)
+            {
+                transform.position = new Vector3(actorSwitchPosition.position.x + 0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z + 0.05f);
+                transform.eulerAngles = new Vector3(actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y, actorSwitchPosition.eulerAngles.z);
+                MoveCamera(actorSwitchPosition.position.x - 0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z - 0.05f, 90);
+            }
+            else
+            {
+                transform.position = new Vector3(actorSwitchPosition.position.x + 0.05f, actorSwitchPosition.position.y, -actorSwitchPosition.position.z + 0.05f);
+                transform.eulerAngles = new Vector3(actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y - 90, -actorSwitchPosition.eulerAngles.z);
+                MoveCamera(actorSwitchPosition.position.x - 0.05f, actorSwitchPosition.position.y, -actorSwitchPosition.position.z - 0.05f, 90);
+            }
         }
 
         public void NotQuite()
