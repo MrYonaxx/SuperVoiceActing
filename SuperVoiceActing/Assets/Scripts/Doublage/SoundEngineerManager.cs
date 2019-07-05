@@ -131,6 +131,7 @@ namespace VoiceActing
                 characterShadows[i].gameObject.SetActive(false);
             }
             CheckCostPreventive();
+            DrawDescription(skills[indexList]);
         }
 
         public void SwitchToEmotion()

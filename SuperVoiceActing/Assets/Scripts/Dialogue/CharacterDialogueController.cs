@@ -138,6 +138,8 @@ namespace VoiceActing
         \* ======================================== */
         public void ActivateMouth(float speed = -1, bool noSpeak = false)
         {
+            if (this.gameObject.activeInHierarchy == false)
+                return;
             speak = noSpeak;
             if (speed != -1)
                 speedMouth = speed;
@@ -275,6 +277,7 @@ namespace VoiceActing
         public void ChangeOrderInLayer(int newOrder)
         {
             spriteRenderer.sortingOrder = newOrder;
+            eyesScript.ChangeOrderInLayer(newOrder+1);
             //mouth.ChangeOrderInLayer(newOrder + 1);
         }
 

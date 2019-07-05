@@ -74,4 +74,11 @@ public class Yeux : MonoBehaviour
             return;
         spriteRenderer.color = newColor;
     }
+
+    public void ChangeOrderInLayer(int newOrder)
+    {
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = newOrder;
+    }
 }

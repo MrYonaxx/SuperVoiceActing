@@ -51,6 +51,8 @@ namespace VoiceActing
         [SerializeField]
         protected ProducerManager producerManager;
         [SerializeField]
+        protected CharacterDoublageManager characterDoublageManager;
+        [SerializeField]
         protected SkillManager skillManager;
         [SerializeField]
         protected ResultScreen resultScreenManager;
@@ -252,6 +254,7 @@ namespace VoiceActing
             roleManager.SetRoles(contrat.Characters);
             soundEngineerManager.SetManagers(skillManager);
             toneManager.DrawTone();
+            characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
         }
 
         private IEnumerator IntroductionSequence()
@@ -669,19 +672,16 @@ namespace VoiceActing
                     // Check si changement d'acteur
                     if (enemyManager.CheckInterlocutor(actorsManager.GetCurrentActorIndex()) == false)
                     {
-                        actorsManager.SwitchActors(false);
-                        cameraController.SetCameraSwitchActor();
-                        actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
-                        roleManager.SetIndexRole(enemyManager.GetInterlocutor());
-                        emotionAttackManager.SwitchCardTransformToRessource();
+                        SwitchActors();
+                        StartCoroutine(WaitCoroutineNextPhrase(100));
                     }
                     else
                     {
                         if (cameraController != null)
                             cameraController.NotQuite();
+                        StartCoroutine(WaitCoroutineNextPhrase(60));
                     }
 
-                    StartCoroutine(WaitCoroutineNextPhrase(60));
                     startLine = false;
                 }
             }
@@ -697,6 +697,18 @@ namespace VoiceActing
             SetPhrase();
         }
 
+        public void SwitchActors()
+        {
+            actorsManager.SwitchActors(false);
+            cameraController.SetCameraSwitchActor();
+            actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
+            roleManager.SetIndexRole(enemyManager.GetInterlocutor());
+            emotionAttackManager.SwitchCardTransformToRessource();
+            actorsManager.DrawActorStat();
+            actorsManager.DrawBuffIcon();
+            textAppearManager.SetMouth(characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
+            characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
+        }
 
         // Affiche la phrase
         public virtual void SetPhrase()
@@ -748,8 +760,7 @@ namespace VoiceActing
                     yield return null;
                 }
             }
-
-
+            emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
@@ -889,7 +900,10 @@ namespace VoiceActing
 
 
 
-
+        public void ShakeCurrentCharacter()
+        {
+            characterDoublageManager.ShakeCharacter(actorsManager.GetCurrentActorIndex());
+        }
 
         protected void ChangeEventPhase()
         {

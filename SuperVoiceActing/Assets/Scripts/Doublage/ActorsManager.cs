@@ -348,7 +348,7 @@ namespace VoiceActing
 
 
 
-        private void DrawActorStat()
+        public void DrawActorStat()
         {
             // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
 
@@ -545,16 +545,23 @@ namespace VoiceActing
         {
             spriteSwitchPanel.SetActive(true);
             spriteCurrentActor.sprite = actors[indexCurrentActor].ActorSprite;
+            int nextActor = indexCurrentActor;
             if (switchDirectionRight == true)
             {
+                nextActor -= 1;
+                if (nextActor == 0)
+                    nextActor = actors.Count-1;
                 spriteNextActor.sprite = actors[2].ActorSprite;
                 animatorSwitchActors.SetTrigger("Right");
             }
             else
             {
-                spriteNextActor.sprite = actors[1].ActorSprite;
+                nextActor += 1;
+                if (nextActor == actors.Count)
+                    nextActor = 0;
                 animatorSwitchActors.SetTrigger("Right");
             }
+            spriteNextActor.sprite = actors[nextActor].ActorSprite;
         }
 
 

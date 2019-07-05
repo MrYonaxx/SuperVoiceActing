@@ -89,6 +89,11 @@ namespace VoiceActing
             return currentText.PrintAllText();
         }
 
+        public void SetMouth(CharacterDialogueController newCharacterMouth)
+        {
+            mouth = newCharacterMouth;
+        }
+
         public void SelectWord(int index)
         {
             currentText.SelectWord(index);

@@ -160,7 +160,10 @@ namespace VoiceActing
 
         public Role(RoleContractData data)
         {
-            this.name = data.Names[Random.Range(0, data.Names.Length)];
+            if (data.Names.Length != 0)
+                this.name = data.Names[Random.Range(0, data.Names.Length)];
+            else
+                this.name = "";
             this.line = Random.Range(data.LineMin, data.LineMax);
             this.fan = Random.Range(data.FanMin, data.FanMax);
 
