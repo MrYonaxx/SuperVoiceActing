@@ -12,15 +12,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3aeea74d582ba44a09bba334f6b2b5, type: 3}
   m_Name: SkillYonaxRage
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
+  skillName: Rage
+  description: "Le r\xF4le exprime sa col\xE8re."
   descriptionBattle: 
-  skillType: 0
+  skillType: 1
   skillTarget: 0
   buffData:
-    turnActive: 0
-    refresh: 0
+    turnActive: 3
+    refresh: 1
     addBuffTurn: 0
     canAddMultiple: 0
-  skillEffects: []
+  skillEffects:
+  - eventNode: 2
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionStat:
+      inPercentage: 0
+      statVariance: 0
+      emotionStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionDamage:
+      inPercentage: 1
+      damageVariance: 0
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 100
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectHealth:
+      inPercentage: 0
+      hpDamage: 0
+      hpDamageVariance: 0
+    skillEffectTurn:
+      inPercentage: 0
+      turnGain: 0
+      turnVariance: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+    skillEffectResistance:
+      resistancePercentage: 0
   producerCost: 0

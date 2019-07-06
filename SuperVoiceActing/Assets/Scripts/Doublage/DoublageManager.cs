@@ -302,6 +302,7 @@ namespace VoiceActing
             }
             else
             {
+                yield return null;
                 textIntro.SetActive(false);
                 ChangeEventPhase();
                 yield return new WaitForSeconds(1f);

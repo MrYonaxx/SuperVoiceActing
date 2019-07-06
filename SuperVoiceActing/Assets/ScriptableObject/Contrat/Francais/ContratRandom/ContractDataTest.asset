@@ -12,26 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: ContractDataTest
   m_EditorClassIdentifier: 
-  name: Salu
+  name: Contrat Test
   level: 0
   contractType: 0
   salaryMin: 0
   salaryMax: 0
   mixingMin: 0
   mixingMax: 0
-  weekMin: 0
-  weekMax: 0
+  weekMin: 5
+  weekMax: 5
   expGain: 1250
   expBonus: 0
   contractTitle: []
   contractDictionnary: []
-  description: []
+  description:
+  - Je suis une description.
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
-      - A
+      - Lia
       roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
       lineMin: 0
       lineMax: 0
@@ -64,28 +65,28 @@ MonoBehaviour:
       actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
       artificialIntelligence:
       - memo: 
-        startPhrase: 1
+        startPhrase: 0
         startAttack: 0
-        endAttack: 0
+        endAttack: 1
         endPhrase: 0
         conditions:
-        - condition: 0
+        - condition: 2
           mathOperator: 0
-          conditionValue: 0
+          conditionValue: 1
         skills:
-        - {fileID: 11400000, guid: 7df03325739e8fb4bb574afb5c334d79, type: 2}
+        - {fileID: 11400000, guid: 45924b486b651de4cb6f365e671fdfde, type: 2}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
-      - hey
-      roleSprite: {fileID: 21300000, guid: 65f5e7a661546a944992cae2aaf0aeaa, type: 3}
+      - Yonax
+      roleSprite: {fileID: 21300000, guid: af4b0cc7b2e184542a69981b4b93abb9, type: 3}
       lineMin: 0
       lineMax: 0
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
+      atkMin: 10
+      atkMax: 10
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -109,52 +110,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: 23c95fd2762698540be4a33e932cf694, type: 2}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 0
-          mathOperator: 0
-          conditionValue: 0
-        skills:
-        - {fileID: 11400000, guid: 7df03325739e8fb4bb574afb5c334d79, type: 2}
-  - mainCharacter: 1
-    optional: 0
-    charactersProfil:
-    - names: []
-      roleSprite: {fileID: 0}
-      lineMin: 0
-      lineMax: 0
-      fanMin: 0
-      fanMax: 0
-      atkMin: 0
-      atkMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
-      characterStatMin:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      characterStatMax:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
       artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
@@ -167,28 +122,28 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "Bonjour est-ce que \xE7a va ?"
+    - text: "Ah ! Encore une belle journ\xE9e qui commence !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 100
+        sadness: -80
+        disgust: -80
+        anger: -80
+        surprise: -20
+        sweetness: -20
+        fear: -80
+        trust: 50
       enemyWeakPoints:
-      - wordIndex: 0
+      - wordIndex: 3
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -197,56 +152,30 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "\xE7a va et toi ?"
-      textStats:
-        interlocuteurID: 2
-        linked: 0
-        hpMin: 0
-        hpMax: 0
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      dictID: 
-      dictCondition: 
-    textDataPossible:
-    - text: "moi \xE7a va."
+    - text: "J'ai h\xE2te de donner le meilleur de moi-m\xEAme !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        joy: 100
+        sadness: -80
+        disgust: -80
+        anger: -80
+        surprise: -50
+        sweetness: -50
+        fear: -80
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 5
+      - wordIndex: 1
+      - wordIndex: 7
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -255,27 +184,61 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: Salut les copains !
+    - text: "Arr\xEAte de jacasser tu fais trop de bruit !"
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 15
+        hpMax: 15
         atkMin: 0
         atkMax: 0
         evadeMin: 0
         evadeMax: 0
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
+        joy: -80
+        sadness: -50
         disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
+        anger: 100
+        surprise: -50
+        sweetness: -80
+        fear: -80
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 2
+      - wordIndex: 5
+      - wordIndex: 7
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Ah pardon, je me suis un peu emport\xE9e."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 15
+        atkMin: 0
+        atkMax: 0
+        evadeMin: 0
+        evadeMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 100
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: -20
         fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 7
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

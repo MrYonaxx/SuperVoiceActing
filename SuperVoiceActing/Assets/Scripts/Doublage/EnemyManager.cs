@@ -351,6 +351,17 @@ namespace VoiceActing
         [SerializeField]
         Color[] damageColorLevel;
 
+        [HorizontalGroup("textResult")]
+        [SerializeField]
+        float[] damageLevelText;
+        [HorizontalGroup("textResult")]
+        [SerializeField]
+        string[] textResult;
+        [HorizontalGroup("textResult")]
+        [SerializeField]
+        TextMeshProUGUI[] textMeshResult;
+
+
         [SerializeField]
         GameObject criticalFeedback;
         [SerializeField]
@@ -470,8 +481,10 @@ namespace VoiceActing
                 {
                     comboSize -= 1;
                     particleFeedbacks[i].gameObject.SetActive(false);
+                    textMeshResult[i].gameObject.SetActive(false);
                     continue;
                 }
+                DrawTextResult(enemyResistance.GetEmotion((int)emotions[i].GetEmotion()), textMeshResult[i]);
                 multiplier += enemyResistance.GetEmotion((int)emotions[i].GetEmotion());
                 colorEmotion = colorsEmotions[(int)emotions[i].GetEmotion()];
 
@@ -659,7 +672,18 @@ namespace VoiceActing
         }
 
 
-
+        private void DrawTextResult(int multiplier, TextMeshProUGUI textMesh)
+        {
+            textMesh.gameObject.SetActive(false);
+            for (int i = 0; i < damageLevelText.Length; i++)
+            {
+                if (multiplier >= damageLevelText[i])
+                {
+                    textMesh.gameObject.SetActive(true);
+                    textMesh.text = textResult[i];
+                }
+            }
+        }
 
 
         private void PrintDamage(float totalDamage, float normalDamage)
@@ -710,6 +734,7 @@ namespace VoiceActing
                 }
             }
         }
+
 
         #endregion
 

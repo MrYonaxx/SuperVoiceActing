@@ -12,15 +12,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3aeea74d582ba44a09bba334f6b2b5, type: 3}
   m_Name: SkillLiaDynamique
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
-  descriptionBattle: 
+  skillName: Dynamique
+  description: "Le r\xF4le est tr\xE8s dynamique qu'il en devient fatiguant."
+  descriptionBattle: HP -10
   skillType: 0
   skillTarget: 0
   buffData:
-    turnActive: 0
+    turnActive: 3
     refresh: 0
     addBuffTurn: 0
     canAddMultiple: 0
-  skillEffects: []
+  skillEffects:
+  - eventNode: 3
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionStat:
+      inPercentage: 0
+      statVariance: 0
+      emotionStat:
+        neutral: 0
+        joy: 10
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionDamage:
+      inPercentage: 0
+      damageVariance: 0
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectHealth:
+      inPercentage: 0
+      hpDamage: 10
+      hpDamageVariance: 0
+    skillEffectTurn:
+      inPercentage: 0
+      turnGain: 0
+      turnVariance: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+    skillEffectResistance:
+      resistancePercentage: 0
   producerCost: 0
