@@ -484,7 +484,7 @@ namespace VoiceActing
                     textMeshResult[i].gameObject.SetActive(false);
                     continue;
                 }
-                DrawTextResult(enemyResistance.GetEmotion((int)emotions[i].GetEmotion()), textMeshResult[i]);
+                DrawTextResult(enemyResistance.GetEmotion((int)emotions[i].GetEmotion()), textMeshResult[i], (int)emotions[i].GetEmotion());
                 multiplier += enemyResistance.GetEmotion((int)emotions[i].GetEmotion());
                 colorEmotion = colorsEmotions[(int)emotions[i].GetEmotion()];
 
@@ -672,7 +672,7 @@ namespace VoiceActing
         }
 
 
-        private void DrawTextResult(int multiplier, TextMeshProUGUI textMesh)
+        private void DrawTextResult(int multiplier, TextMeshProUGUI textMesh, int emotion)
         {
             textMesh.gameObject.SetActive(false);
             for (int i = 0; i < damageLevelText.Length; i++)
@@ -680,6 +680,7 @@ namespace VoiceActing
                 if (multiplier >= damageLevelText[i])
                 {
                     textMesh.gameObject.SetActive(true);
+                    textMesh.color = colorsEmotions[emotion];
                     textMesh.text = textResult[i];
                 }
             }
