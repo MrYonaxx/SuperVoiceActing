@@ -17,10 +17,10 @@ namespace VoiceActing
 
         [Header("Info")]
         [SerializeField]
-        private string name;
-        public string Name
+        private string engineerName;
+        public string EngineerName
         {
-            get { return name; }
+            get { return engineerName; }
         }
 
         [SerializeField]

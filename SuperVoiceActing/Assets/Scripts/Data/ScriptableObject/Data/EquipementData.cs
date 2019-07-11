@@ -8,54 +8,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-	public class EquipementData : ScriptableObject
-	{
-		#region Attributes 
+    public enum EquipementCategory
+    {
+        Microphone,
+        Enceinte,
+        TabledeMixage,
+        Accessoire
+    }
 
-        /* ======================================== *\
-         *               ATTRIBUTES                 *
-        \* ======================================== */
-        
+    [CreateAssetMenu(fileName = "EquipementData", menuName = "EquipementData", order = 1)]
+    public class EquipementData : ScriptableObject
+	{
+        [HorizontalGroup("General")]
         [SerializeField]
-        private string name;
-        public string Name
+        private string equipmentName;
+        public string EquipmentName
         {
-            get { return name; }
-            set { name = value; }
+            get { return equipmentName; }
+        }
+        [HorizontalGroup("General")]
+        [HideLabel]
+        [SerializeField]
+        private EquipementCategory equipementCategory;
+        public EquipementCategory EquipementCategory
+        {
+            get { return equipementCategory; }
         }
 
+        [HorizontalGroup("Prix")]
         [SerializeField]
         private int price;
         public int Price
         {
             get { return price; }
-            set { price = value; }
+        }
+        [HorizontalGroup("Prix")]
+        [SerializeField]
+        private int maintenance;
+        public int Maintenance
+        {
+            get { return maintenance; }
         }
 
+        [Header("Equipement Atk (%)")]
+        [HideLabel]
+        [SerializeField]
+        private EmotionStat atkBonus;
+        public EmotionStat AtkBonus
+        {
+            get { return atkBonus; }
+        }
 
-        #endregion
+        [Space]
+        [Space]
+        [Header("Equipement Def (%)")]
+        [HideLabel]
+        [SerializeField]
+        private EmotionStat defBonus;
+        public EmotionStat DefBonus
+        {
+            get { return defBonus; }
+        }
 
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-
-
-        #endregion
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
-
-
-
-        #endregion
 
     } // EquipementData class
 	

@@ -30,8 +30,6 @@ namespace VoiceActing
         private PlayerData playerData;
 
         // [AssetList(Path = "Plugins/Sirenix/")] pour chopper tout les asset d'un repertoire et remplir automatiquement un truc
-        //[SerializeField]
-        //private ContractData[] contractDatabase;
 
         [SerializeField]
         private List<Contract> contractAcceptedList = new List<Contract>(3);

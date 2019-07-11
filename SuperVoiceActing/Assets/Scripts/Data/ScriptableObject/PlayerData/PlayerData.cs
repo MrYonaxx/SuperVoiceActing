@@ -199,21 +199,38 @@ namespace VoiceActing
         [Title("Battle Data")]
         [SerializeField]
         private int initialComboMax;
-        public int InitialComboMax
-        {
-            get { return initialComboMax; }
-            set { initialComboMax = value; }
-        }
+
 
         [SerializeField]
         [HideLabel]
         private EmotionStat initialDeck;
-        public EmotionStat InitialDeck
+
+        [SerializeField]
+        private EmotionStat initialAtkBonus;
+
+        [SerializeField]
+        private EmotionStat initialDefBonus;
+
+        [SerializeField]
+        private int initialCriticalRate;
+
+        [SerializeField]
+        private int initialTemperature;
+
+        [SerializeField]
+        private int initialTurn;
+
+        [HorizontalGroup("InitialEquipement")]
+        [SerializeField]
+        private EquipementCategory[] equipementCategories;
+        public EquipementCategory[] EquipementCategories
         {
-            get { return initialDeck; }
-            set { initialDeck = value; }
+            get { return equipementCategories; }
         }
 
+        [HorizontalGroup("InitialEquipement")]
+        [SerializeField]
+        private EquipementData[] initialEquipement;
 
         /////////////////////////////////////////////////////////////////////////////////// 
         [Space]
@@ -373,6 +390,21 @@ namespace VoiceActing
 
 
         [SerializeField]
+        private List<EquipementData> inventoryEquipement;
+        public List<EquipementData> InventoryEquipement
+        {
+            get { return inventoryEquipement; }
+        }
+        [SerializeField]
+        private EquipementData[] currentEquipement;
+        public EquipementData[] CurrentEquipement
+        {
+            get { return currentEquipement; }
+        }
+
+
+
+        [SerializeField]
         private int maintenance;
         public int Maintenance
         {
@@ -404,6 +436,7 @@ namespace VoiceActing
 
 
 
+
         [SerializeField]
         private int comboMax;
         public int ComboMax
@@ -413,7 +446,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        [HideLabel]
         private EmotionStat deck;
         public EmotionStat Deck
         {
@@ -421,7 +453,51 @@ namespace VoiceActing
             set { deck = value; }
         }
 
+        [SerializeField]
+        private EmotionStat atkBonus;
+        public EmotionStat AtkBonus
+        {
+            get { return atkBonus; }
+            set { atkBonus = value; }
+        }
+        [SerializeField]
+        private EmotionStat defBonus;
+        public EmotionStat DefBonus
+        {
+            get { return defBonus; }
+            set { defBonus = value; }
+        }
 
+        [SerializeField]
+        private int criticalRate;
+        public int CriticalRate
+        {
+            get { return criticalRate; }
+            set { criticalRate = value; }
+        }
+
+        [SerializeField]
+        private int enemyHealthMalus;
+        public int EnemyHealthMalus
+        {
+            get { return enemyHealthMalus; }
+            set { enemyHealthMalus = value; }
+        }
+
+        [SerializeField]
+        private int healthActorsBonus;
+        public int HealthActorsBonus
+        {
+            get { return healthActorsBonus; }
+            set { healthActorsBonus = value; }
+        }
+
+        [SerializeField]
+        private int turnLimit;
+        public int TurnLimit
+        {
+            get { return turnLimit; }
+        }
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -481,6 +557,14 @@ namespace VoiceActing
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
                 contractAccepted.Add(null);
+
+
+                currentEquipement = new EquipementData[equipementCategories.Length];
+                for (int i = 0; i < initialEquipement.Length; i++)
+                {
+                    currentEquipement[i] = initialEquipement[i];
+                }
+
                 CreateNewData();
                 CheckContractTimeline();
                 CheckEventsTimeline();
@@ -501,12 +585,18 @@ namespace VoiceActing
             nextStoryEvents = new List<StoryEventData>();
             nextStoryEventsStartWeek = new List<StoryEventData>();
             phoneStoryEvents = new List<StoryEventData>();
+
             date = new Date(week, month, year);
+
             season = StartSeason;
             money = startMoney;
             maintenance = startMaintenance;
+
             deck = new EmotionStat(initialDeck);
             comboMax = initialComboMax;
+            atkBonus = new EmotionStat(initialAtkBonus);
+            defBonus = new EmotionStat(initialDefBonus);
+
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
