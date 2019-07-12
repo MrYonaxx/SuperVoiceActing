@@ -22,11 +22,15 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
+        RectTransform equipementRectTransform;
+        [SerializeField]
         Image equipementCategoryImage;
         [SerializeField]
         TextMeshProUGUI equipementName;
         [SerializeField]
         TextMeshProUGUI equipementCost;
+
+        EquipementData equipement;
 
         #endregion
 
@@ -57,6 +61,17 @@ namespace VoiceActing
                 equipementName.text = eqData.EquipmentName;
                 equipementCost.text = eqData.Maintenance.ToString();
             }
+            equipement = eqData;
+        }
+
+        public RectTransform GetRectTransform()
+        {
+            return equipementRectTransform;
+        }
+
+        public EquipementData GetEquipement()
+        {
+            return equipement;
         }
         
         #endregion

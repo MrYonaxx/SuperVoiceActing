@@ -53,6 +53,12 @@ namespace VoiceActing
         {
             get { return maintenance; }
         }
+        [SerializeField]
+        private string description;
+        public string Description
+        {
+            get { return description; }
+        }
 
         [Header("Equipement Atk (%)")]
         [HideLabel]
@@ -72,6 +78,22 @@ namespace VoiceActing
         public EmotionStat DefBonus
         {
             get { return defBonus; }
+        }
+
+
+
+        public void Equip(PlayerData playerData)
+        {
+            playerData.AtkBonus.Add(atkBonus);
+            playerData.DefBonus.Add(defBonus);
+            playerData.Maintenance += maintenance;
+        }
+
+        public void Unequip(PlayerData playerData)
+        {
+            playerData.AtkBonus.Add(atkBonus.Reverse());
+            playerData.DefBonus.Add(defBonus.Reverse());
+            playerData.Maintenance -= maintenance;
         }
 
 

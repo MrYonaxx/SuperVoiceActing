@@ -51,12 +51,36 @@ MonoBehaviour:
     sweetness: 1
     fear: 1
     trust: 1
-  initialAtkBonus: 0
-  initialDefBonus: 0
+  initialAtkBonus:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  initialDefBonus:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
   initialCriticalRate: 0
   initialTemperature: 0
   initialTurn: 0
   equipementCategories: 0000000001000000020000000300000003000000
+  initialEquipement:
+  - {fileID: 11400000, guid: f0ed5fa9bfc22074daff6a455822496b, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   contractAvailableDebug:
   - {fileID: 11400000, guid: b2bc6bfc41fdfdc4db96209a1443da7c, type: 2}
   - {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
@@ -83,6 +107,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50dcee845b7379f4493a4f435a13fa4c, type: 2}
   - {fileID: 11400000, guid: 0ee245d96dfa26943a3226186fc38a63, type: 2}
   initialTutoEvent: []
+  inventoryDebug:
+  - {fileID: 11400000, guid: 1478496b353fb2847930517e4ac16615, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  - {fileID: 11400000, guid: f0ed5fa9bfc22074daff6a455822496b, type: 2}
+  - {fileID: 11400000, guid: 1478496b353fb2847930517e4ac16615, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
   playerName: Louis
   studioName: Sutudioh
   contractGacha:
@@ -97,13 +129,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
   - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
   - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
-  - {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
   - {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
-  contractGachaCooldown: []
+  contractGachaCooldown:
+  - contract: {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
+    cooldown: 4
   nextStoryEvents: []
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
   tutoEvent: []
+  inventoryEquipement:
+  - {fileID: 11400000, guid: 1478496b353fb2847930517e4ac16615, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  - {fileID: 11400000, guid: f0ed5fa9bfc22074daff6a455822496b, type: 2}
+  - {fileID: 11400000, guid: 1478496b353fb2847930517e4ac16615, type: 2}
+  - {fileID: 11400000, guid: 2e586e77bbc9e5c4690670b5d37a9530, type: 2}
+  currentEquipement:
+  - {fileID: 11400000, guid: f0ed5fa9bfc22074daff6a455822496b, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   maintenance: 6000
   money: 36000
   season: 3
@@ -118,3 +165,27 @@ MonoBehaviour:
     sweetness: 1
     fear: 1
     trust: 1
+  atkBonus:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  defBonus:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  criticalRate: 0
+  enemyHealthMalus: 0
+  healthActorsBonus: 0
+  turnLimit: 0

@@ -33,7 +33,7 @@ namespace VoiceActing
         [SerializeField]
         protected int buttonSize = 85;
         [SerializeField]
-        protected RectTransform[] buttonsList;
+        protected List<RectTransform> buttonsList;
 
 
 
@@ -44,6 +44,8 @@ namespace VoiceActing
 
         protected IEnumerator coroutineScroll = null;
         protected int indexSelected = 0;
+
+        protected RectTransform animatorSelectionTransform;
 
 
 
@@ -64,9 +66,20 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        protected virtual void Start()
+        {
+            animatorSelectionTransform = animatorSelection.GetComponent<RectTransform>();
+            indexLimit = scrollSize;
+        }
+
+        protected virtual void BeforeSelection()
+        {
+        }
+
+
         public void SelectUp()
         {
-            if (buttonsList.Length == 0)
+            if (buttonsList.Count == 0)
             {
                 return;
             }
@@ -79,17 +92,19 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
+            BeforeSelection();
             indexSelected -= 1;
             if (indexSelected <= -1)
             {
-                indexSelected = buttonsList.Length - 1;
+                indexSelected = buttonsList.Count - 1;
             }
+            AfterSelection();
             MoveScrollRect();
         }
 
         public void SelectDown()
         {
-            if (buttonsList.Length == 0)
+            if (buttonsList.Count == 0)
             {
                 return;
             }
@@ -101,12 +116,18 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
+            BeforeSelection();
             indexSelected += 1;
-            if (indexSelected >= buttonsList.Length)
+            if (indexSelected >= buttonsList.Count)
             {
                 indexSelected = 0;
             }
+            AfterSelection();
             MoveScrollRect();
+        }
+
+        protected virtual void AfterSelection()
+        {
         }
 
 
@@ -182,6 +203,10 @@ namespace VoiceActing
                 }
                 StartCoroutine(coroutineScroll);
             }
+            else
+            {
+                animatorSelectionTransform.anchoredPosition = buttonsList[indexSelected].anchoredPosition;
+            }
 
         }
 
@@ -192,12 +217,12 @@ namespace VoiceActing
             Vector2 speed = new Vector2(0, (buttonScrollListTransform.anchoredPosition.y - ratio * buttonSize) / time);
             while (time != 0)
             {
-                animatorSelection.gameObject.transform.position = buttonsList[indexSelected].transform.position;
                 buttonScrollListTransform.anchoredPosition -= speed;
+                animatorSelectionTransform.anchoredPosition = buttonsList[indexSelected].anchoredPosition;
                 time -= 1;
                 yield return null;
             }
-            animatorSelection.gameObject.transform.position = buttonsList[indexSelected].transform.position;
+            animatorSelectionTransform.anchoredPosition = buttonsList[indexSelected].anchoredPosition;
         }
 
 

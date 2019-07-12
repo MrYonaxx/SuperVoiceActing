@@ -23,15 +23,9 @@ namespace VoiceActing
         [Space]
         [Title("Menu Studio Main")]
         [SerializeField]
-        int soundEngineerMenu = 0;
+        GameObject[] subMenus;
         [SerializeField]
-        int translatorMenu = 1;
-        [SerializeField]
-        int equipementMenu = 2;
-        [SerializeField]
-        int researchMenu = 3;
-        [SerializeField]
-        int otherMenu = 4;
+        Animator animatorMenu;
 
         #endregion
 
@@ -49,29 +43,16 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+        public void OnEnable()
+        {
+            animatorMenu.gameObject.SetActive(true);
+        }
 
         public void Validate()
         {
-            if(indexSelected == soundEngineerMenu)
-            {
-
-            }
-            else if (indexSelected == translatorMenu)
-            {
-
-            }
-            else if (indexSelected == equipementMenu)
-            {
-
-            }
-            else if (indexSelected == researchMenu)
-            {
-
-            }
-            else if (indexSelected == otherMenu)
-            {
-
-            }
+            subMenus[indexSelected].gameObject.SetActive(true);
+            animatorMenu.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
 

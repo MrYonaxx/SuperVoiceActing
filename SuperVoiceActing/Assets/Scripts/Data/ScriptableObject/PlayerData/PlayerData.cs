@@ -246,11 +246,11 @@ namespace VoiceActing
         [SerializeField]
         private List<VoiceActorData> voiceActorsGachaDebug = new List<VoiceActorData>();
 
-
-
         [SerializeField]
         private List<StoryEventData> initialTutoEvent = new List<StoryEventData>();
 
+        [SerializeField]
+        private List<EquipementData> inventoryDebug = new List<EquipementData>();
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -551,6 +551,12 @@ namespace VoiceActing
                 for (int i = 0; i < initialTutoEvent.Count; i++)
                 {
                     tutoEvent.Add(initialTutoEvent[i]);
+                }
+
+                inventoryEquipement = new List<EquipementData>(inventoryDebug.Count);
+                for (int i = 0; i < inventoryDebug.Count; i++)
+                {
+                    inventoryEquipement.Add(inventoryDebug[i]);
                 }
 
                 contractAccepted = new List<Contract>(3);
