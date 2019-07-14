@@ -17,7 +17,8 @@ namespace VoiceActing
         Microphone,
         Enceinte,
         TabledeMixage,
-        Accessoire
+        Accessoire,
+        All
     }
 
     [CreateAssetMenu(fileName = "EquipementData", menuName = "EquipementData", order = 1)]

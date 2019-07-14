@@ -59,7 +59,11 @@ namespace VoiceActing
         [SerializeField]
         Color colorNegative;
 
+        [SerializeField]
+        Animator animatorMenu;
+
         int indexCreateList = 0;
+
 
         #endregion
 
@@ -77,6 +81,12 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        private void OnEnable()
+        {
+            animatorMenu.gameObject.SetActive(true);
+
+        }
 
         public void SelectionOn(bool b)
         {

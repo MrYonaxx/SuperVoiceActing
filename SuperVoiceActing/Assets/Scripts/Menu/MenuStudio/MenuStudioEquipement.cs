@@ -108,8 +108,6 @@ namespace VoiceActing
 
         private void OnEnable()
         {
-            /*animatorMenu.SetBool("Appear", true);
-            animatorMenu.gameObject.SetActive(true);*/
             DrawPlayerStat();
             DrawEquipements();
             animatorMenu.gameObject.SetActive(true);
