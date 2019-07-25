@@ -320,6 +320,7 @@ namespace VoiceActing
         }
 
 
+
         // Contrat Gacha
         [SerializeField]
         private List<ContractData> contractGacha;
@@ -338,6 +339,8 @@ namespace VoiceActing
             set { contractGachaCooldown = value; }
         }
 
+
+
         // Liste des Acteurs
         [SerializeField]
         private List<VoiceActor> voiceActors;
@@ -354,6 +357,8 @@ namespace VoiceActing
             get { return voiceActorsGacha; }
             set { voiceActorsGacha = value; }
         }
+
+
 
         [SerializeField]
         private List<StoryEventData> nextStoryEvents;
@@ -386,6 +391,25 @@ namespace VoiceActing
             get { return tutoEvent; }
             set { tutoEvent = value; }
         }
+
+
+
+        [SerializeField]
+        private List<StoryEventData> randomEventsAvailable;
+        public List<StoryEventData> RandomEventsAvailable
+        {
+            get { return randomEventsAvailable; }
+            set { randomEventsAvailable = value; }
+        }
+
+        [SerializeField]
+        private List<StoryEventData> randomEventsStandby;
+        public List<StoryEventData> RandomEventsStandby
+        {
+            get { return randomEventsStandby; }
+            set { randomEventsStandby = value; }
+        }
+
 
 
 

@@ -25,6 +25,7 @@ namespace VoiceActing
         [TableMatrix(HorizontalTitle = "Emotions", VerticalTitle = "Emotions")]
         private string[,] emotionsCombo = new string[9, 9];
 
+
         #endregion
 
         public string GetName(int emotion1, int emotion2, int emotion3)

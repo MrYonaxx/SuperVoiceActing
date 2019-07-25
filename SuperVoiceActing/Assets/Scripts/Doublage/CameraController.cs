@@ -690,6 +690,7 @@ namespace VoiceActing
 
         public void NotQuite()
         {
+            ChangeOrthographicSize(20, 1);
             SetText(textInitialPosition.x, textInitialPosition.y, textInitialPosition.z);
             if (movementCoroutine != null)
                 StopCoroutine(movementCoroutine);
@@ -700,6 +701,7 @@ namespace VoiceActing
             MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 80);
             RotateCamera(0, 90, 0, 80);
             cameraPlacement = 0;
+            ChangeOrthographicSize(0, 80);
         }
 
         public void IngeSon()

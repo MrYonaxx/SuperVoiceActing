@@ -76,6 +76,9 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent unityEvent;
 
+
+        List<StoryVariable> localVariables = new List<StoryVariable>();
+
         private IEnumerator coroutineStory = null;
         private IEnumerator coroutineAnimName = null;
 
@@ -229,7 +232,6 @@ namespace VoiceActing
                     }
                 }
 
-
                 else if (currentNode is StoryEventEffect)
                 {
                     StoryEventEffect node = (StoryEventEffect)currentNode;
@@ -244,6 +246,24 @@ namespace VoiceActing
                 else if (currentNode is StoryEventChoices)
                 {
                     storyEventChoiceManager.DrawChoices((StoryEventChoices)currentNode);
+                }
+
+                else if (currentNode is StoryEventVariable)
+                {
+                    StoryEventVariable node = (StoryEventVariable)currentNode;
+                    node.SetNode(localVariables, playerData);
+                }
+                else if (currentNode is StoryEventConditions)
+                {
+                    StoryEventConditions node = (StoryEventConditions)currentNode;
+                    if(node.CheckCondition(localVariables, playerData) == false)
+                    {
+                        while(!(currentNode is StoryEventEndConditions))
+                        {
+                            i += 1;
+                            currentNode = storyEventData.GetEventNode(i);
+                        }
+                    }
                 }
                 // ==============================================================================================================================
 

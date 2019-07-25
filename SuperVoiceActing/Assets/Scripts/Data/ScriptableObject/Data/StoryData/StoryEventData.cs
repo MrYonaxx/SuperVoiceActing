@@ -22,7 +22,11 @@ namespace VoiceActing
         SceneLoader,
         LoadEvent,
         PlayerData,
-        Choices
+        Choices,
+        Variable,
+        Condition,
+        EndCondition,
+        Script
     }
 
     [System.Serializable]
@@ -88,6 +92,24 @@ namespace VoiceActing
         [HideLabel]
         public StoryEventChoices storyEventChoices = null;
 
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", StoryEventNode.Variable)]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventVariable storyEventVariable = null;
+
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", StoryEventNode.Condition)]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventConditions storyEventCondition = null;
+
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", StoryEventNode.EndCondition)]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventEndConditions storyEventEndCondition = null;
+
 
 
         public string GetBoxTitle()
@@ -106,8 +128,15 @@ namespace VoiceActing
                     return eventNode.ToString();
                 case StoryEventNode.Choices:
                     return eventNode.ToString();
+                case StoryEventNode.Variable:
+                    return eventNode.ToString();
+                case StoryEventNode.Condition:
+                    return eventNode.ToString() + " ------------------------------------------------------------------------------------------------------------------------";
+                case StoryEventNode.EndCondition:
+                    return " ";
+                default:
+                    return eventNode.ToString();
             }
-            return null;
         }
     }
 
@@ -183,6 +212,12 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventPlayerData;
                 case StoryEventNode.Choices:
                     return eventNodes[index].dataBox.storyEventChoices;
+                case StoryEventNode.Variable:
+                    return eventNodes[index].dataBox.storyEventVariable;
+                case StoryEventNode.Condition:
+                    return eventNodes[index].dataBox.storyEventCondition;
+                case StoryEventNode.EndCondition:
+                    return eventNodes[index].dataBox.storyEventEndCondition;
             }
             return null;
         }
