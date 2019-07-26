@@ -129,7 +129,7 @@ namespace VoiceActing
                 case StoryEventNode.Choices:
                     return eventNode.ToString();
                 case StoryEventNode.Variable:
-                    return eventNode.ToString();
+                    return eventNode.ToString() + " : [" + storyEventVariable.VariableName + "]";
                 case StoryEventNode.Condition:
                     return eventNode.ToString() + " ------------------------------------------------------------------------------------------------------------------------";
                 case StoryEventNode.EndCondition:

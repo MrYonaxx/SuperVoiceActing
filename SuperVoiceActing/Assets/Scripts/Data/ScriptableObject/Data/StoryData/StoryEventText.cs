@@ -10,6 +10,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using System.Text;
 
 namespace VoiceActing
 {
@@ -72,6 +73,10 @@ namespace VoiceActing
 
         int language = 0;
 
+        string actualText = null;
+
+
+
 
 
 
@@ -87,7 +92,7 @@ namespace VoiceActing
             return interlocuteur;
         }
 
-        public void SetNode(TextMeshProUGUI textMesh, List<CharacterDialogueController> charactersEvent, GameObject next)
+        public void SetNode(TextMeshProUGUI textMesh, List<CharacterDialogueController> charactersEvent, GameObject next, Dictionary<string, string> dictionary)
         {
             textMeshPro = textMesh;
             nextButton = next;
@@ -99,9 +104,21 @@ namespace VoiceActing
                     break;
                 }
             }
+
+
+            actualText = text;
+            this.actualText = StringReplace(this.actualText, dictionary);
+
         }
 
-
+        private string StringReplace(string stringB, Dictionary<string, string> dict)
+        {
+            foreach (string k in dict.Keys)
+            {
+                stringB = stringB.Replace(k, dict[k]);
+            }
+            return stringB;
+        }
 
         protected override IEnumerator StoryEventCoroutine()
         {
@@ -109,9 +126,10 @@ namespace VoiceActing
             textMeshPro.textInfo.linkCount = 0;
             pauseList.Clear();
             actualTime = 0;
-            string actualText = text; // French
+
+            /*string actualText = text; // French
             if (language == 1) // English
-                actualText = textEng;
+                actualText = textEng;*/
 
 
             textMeshPro.text = actualText;

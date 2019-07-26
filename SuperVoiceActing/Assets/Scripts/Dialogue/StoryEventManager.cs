@@ -78,6 +78,8 @@ namespace VoiceActing
 
 
         List<StoryVariable> localVariables = new List<StoryVariable>();
+        Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
 
         private IEnumerator coroutineStory = null;
         private IEnumerator coroutineAnimName = null;
@@ -108,16 +110,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        /*protected void Awake()
-        {
-            
-        }*/
-
-
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
@@ -127,6 +119,7 @@ namespace VoiceActing
             if (storyEventData != null)
             {
                 CreateScene();
+                CreateDictionnary();
                 StartCoroutine(NextNodeCoroutine());
             }
             
@@ -203,7 +196,7 @@ namespace VoiceActing
                 {
                     StoryEventText node = (StoryEventText) currentNode;
                     node.SetLanguage(playerData.Language);
-                    node.SetNode(textMeshPro, characters, next);
+                    node.SetNode(textMeshPro, characters, next, dictionary);
                     DrawName(node.GetInterlocuteur());
                 }
 
@@ -251,7 +244,7 @@ namespace VoiceActing
                 else if (currentNode is StoryEventVariable)
                 {
                     StoryEventVariable node = (StoryEventVariable)currentNode;
-                    node.SetNode(localVariables, playerData);
+                    node.SetNode(localVariables, playerData, dictionary);
                 }
                 else if (currentNode is StoryEventConditions)
                 {
@@ -286,9 +279,26 @@ namespace VoiceActing
         public void LoadNewStoryEvent(StoryEventData data)
         {
             storyEventData = data;
-            //CreateScene();
             i = -1;
         }
+
+
+
+
+
+
+
+
+
+        private void CreateDictionnary()
+        {
+            dictionary.Add("[PlayerName]", playerData.PlayerName);
+            dictionary.Add("[StudioName]", playerData.StudioName);
+        }
+
+
+
+
 
         private void DrawName(StoryCharacterData interlocuteur)
         {

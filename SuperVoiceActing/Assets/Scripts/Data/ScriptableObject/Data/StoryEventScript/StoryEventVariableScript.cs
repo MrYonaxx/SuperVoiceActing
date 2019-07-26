@@ -11,10 +11,17 @@ using UnityEngine;
 
 namespace VoiceActing
 {
-	public class StoryEventVariableScript
+
+
+
+    [System.Serializable]
+	public class StoryEventVariableScript : ScriptableObject
 	{
 
-
+        public virtual StoryVariable CreateStoryVariable(string variableName, PlayerData playerData)
+        {
+            return new StoryVariable();
+        }
 
     } // StoryEventVariableScript class
 	
