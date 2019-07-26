@@ -79,6 +79,13 @@ namespace VoiceActing
                 valueText = VA.Name;
         }
 
+        public string GetActorName()
+        {
+            if (voiceActor != null)
+                return voiceActor.Name;
+            return "";
+        }
+
     }
 
 
@@ -123,6 +130,10 @@ namespace VoiceActing
         [SerializeField]
         StoryEventVariableScript customScript;
 
+        [ShowIf("custom")]
+        [SerializeField]
+        string otherVariable;
+
 
 
         public void SetNode(List<StoryVariable> localVariable, PlayerData playerData, Dictionary<string, string> dictionary)
@@ -159,15 +170,16 @@ namespace VoiceActing
 
         private void AddToDictionnary(Dictionary<string, string> dictionary, string variableName, string value)
         {
+            string realVariableName = "[" + variableName + "]";
             foreach (string k in dictionary.Keys)
             {
-                if (k == variableName)
+                if (k == realVariableName)
                 {
                     dictionary[k] = value;
                     return;
                 }
             }
-            dictionary.Add("["+variableName+"]", value);
+            dictionary.Add(realVariableName, value);
         }
 
         protected override IEnumerator StoryEventCoroutine()

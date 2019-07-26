@@ -386,7 +386,8 @@ namespace VoiceActing
                                                                       textAppearManager.GetWordSelected(), 
                                                                       actorsManager.GetCurrentActorDamageVariance()),
                                             lastAttack);
-            if(actorsManager.GetCurrentActorHP() == 0)
+            toneManager.ModifyTone(lastAttack);
+            if (actorsManager.GetCurrentActorHP() == 0)
             {
                 AudioManager.Instance.StopMusic(300);
                 textAppearManager.SetLetterSpeed(12);

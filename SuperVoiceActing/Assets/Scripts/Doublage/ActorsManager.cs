@@ -351,7 +351,7 @@ namespace VoiceActing
                 for(int j = 0; j < pack.Length; j++)
                 {
                     if(pack[j] != null)
-                        pack[j].DrawStat(newStatValue, newStatModifier, colorStatBonus, colorStatMalus);
+                        pack[j].DrawStat((int)(newStatValue * (1f - (0.25f * j))), newStatModifier, colorStatBonus, colorStatMalus);
                 }
             }
 

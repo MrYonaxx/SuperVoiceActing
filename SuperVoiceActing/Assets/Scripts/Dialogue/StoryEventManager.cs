@@ -116,10 +116,10 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Awake()
         {
+            CreateDictionnary();
             if (storyEventData != null)
             {
                 CreateScene();
-                CreateDictionnary();
                 StartCoroutine(NextNodeCoroutine());
             }
             
@@ -257,6 +257,13 @@ namespace VoiceActing
                             currentNode = storyEventData.GetEventNode(i);
                         }
                     }
+                }
+                else if (currentNode is StoryEventConditionActor)
+                {
+                    StoryEventConditionActor node = (StoryEventConditionActor)currentNode;
+                    storyEventData = node.SetNode(localVariables, playerData);
+                    CreateScene();
+                    i = -1;
                 }
                 // ==============================================================================================================================
 

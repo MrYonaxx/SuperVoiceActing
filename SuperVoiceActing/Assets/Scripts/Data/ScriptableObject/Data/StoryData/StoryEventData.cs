@@ -26,7 +26,7 @@ namespace VoiceActing
         Variable,
         Condition,
         EndCondition,
-        Script
+        ConditionActor
     }
 
     [System.Serializable]
@@ -109,6 +109,12 @@ namespace VoiceActing
         [SerializeField]
         [HideLabel]
         public StoryEventEndConditions storyEventEndCondition = null;
+
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", StoryEventNode.ConditionActor)]
+        [SerializeField]
+        [HideLabel]
+        public StoryEventConditionActor storyEventConditionActor = null;
 
 
 
@@ -218,6 +224,8 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventCondition;
                 case StoryEventNode.EndCondition:
                     return eventNodes[index].dataBox.storyEventEndCondition;
+                case StoryEventNode.ConditionActor:
+                    return eventNodes[index].dataBox.storyEventConditionActor;
             }
             return null;
         }
