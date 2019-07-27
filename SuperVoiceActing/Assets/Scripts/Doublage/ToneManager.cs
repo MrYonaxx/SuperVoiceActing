@@ -157,8 +157,8 @@ namespace VoiceActing
 
         public void HighlightTone(Emotion emotion, bool isHighlight)
         {
-            Image toneSelected = null;
-            switch (emotion)
+            Image toneSelected = toneTransform[(int) emotion];
+            /*switch (emotion)
             {
                 case Emotion.Joie:
                     toneSelected = toneTransform[1];
@@ -186,7 +186,7 @@ namespace VoiceActing
                     break;
                 default:
                     return;
-            }
+            }*/
             if(isHighlight == true)
             {
                 //toneSelected.rectTransform.offsetMax = new Vector2(0, 15);

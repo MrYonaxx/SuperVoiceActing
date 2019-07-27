@@ -428,6 +428,16 @@ namespace VoiceActing
 
 
 
+
+        [SerializeField]
+        private int currentChapter;
+        public int CurrentChapter
+        {
+            get { return currentChapter; }
+        }
+
+
+
         [SerializeField]
         private int maintenance;
         public int Maintenance

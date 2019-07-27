@@ -152,37 +152,6 @@ namespace VoiceActing
             for (int i = 0; i < 9; i++)
             {
                 stat = emotionStat.GetEmotion(i);
-                /*switch (i)
-                {
-                    case 0: // Neutral
-                        stat = emotionStat.Neutral;
-                        break;
-                    case 1: // Joie
-                        stat = emotionStat.Joy;
-                        break;
-                    case 2: // Tristesse
-                        stat = emotionStat.Sadness;
-                        break;
-                    case 3: // Dégout
-                        stat = emotionStat.Disgust;
-                        break;
-                    case 4: // Colère
-                        stat = emotionStat.Anger;
-                        break;
-                    case 5: // Surprise
-                        stat = emotionStat.Surprise;
-                        break;
-                    case 6: // Douceur
-                        stat = emotionStat.Sweetness;
-                        break;
-                    case 7: // Peur
-                        stat = emotionStat.Fear;
-                        break;
-                    case 8: // Confiance
-                        stat = emotionStat.Trust;
-                        break;
-
-                }*/
 
                 if (stat != 0)
                 {
