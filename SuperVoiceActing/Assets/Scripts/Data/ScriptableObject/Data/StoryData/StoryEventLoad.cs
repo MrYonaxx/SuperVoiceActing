@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -16,7 +17,8 @@ namespace VoiceActing
     [System.Serializable]
     public class StoryEventLoad : StoryEvent
     {
-
+        [HideLabel]
+        [HorizontalGroup]
         [SerializeField]
         StoryEventData DataToLoad;
         public StoryEventData GetDataToLoad()
@@ -24,6 +26,15 @@ namespace VoiceActing
             return DataToLoad;
         }
 
+        [HorizontalGroup(LabelWidth = 100)]
+        [SerializeField]
+        bool saveSceneConfiguration;
+        public bool SaveSceneConfiguration()
+        {
+            return saveSceneConfiguration;
+        }
+
+        [HideLabel]
         [SerializeField]
         DoublageEventData DoublageEventToLoad;
         public DoublageEventData GetDoublageEventToLoad()

@@ -32,8 +32,8 @@ namespace VoiceActing
         {
             if(playerData.NextStoryEvents.Count != 0)
             {
-                storyEventManager.StartStoryEventDataWithScene(playerData.NextStoryEvents[0]);
-                playerData.NextStoryEvents.RemoveAt(0);
+                storyEventManager.StartStoryEventDataWithScene(playerData.NextStoryEvents[playerData.NextStoryEvents.Count-1]);
+                playerData.NextStoryEvents.RemoveAt(playerData.NextStoryEvents.Count-1);
             }
             else
             {

@@ -22,6 +22,8 @@ namespace VoiceActing
 
         [SerializeField]
         PlayerData playerData;
+        [SerializeField]
+        private RandomEventDatabase randomEventDatabase;
 
         [Header("Managers")]
         [SerializeField]
@@ -78,8 +80,9 @@ namespace VoiceActing
 
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
 
+            AddRandomEvents();
 
-            if(playerData.NextStoryEventsStartWeek.Count == 0)
+            if (playerData.NextStoryEventsStartWeek.Count == 0)
             {
                 AudioManager.Instance.PlayMusic(defaultDekstopTheme);
                 actorsManagers.SetListActors(playerData.VoiceActors);
@@ -91,14 +94,6 @@ namespace VoiceActing
                 storyEventStartWeek.CreateScene(playerData.NextStoryEventsStartWeek[0]);
             }
             menuNextWeek.StartNextWeek();
-
-
-
-            //menuNextWeek.gameObject.SetActive(true);
-            //menuNextWeek.StartNextWeek();
-                //menuNextWeek.SkipTransition();
-
-
         }
 
 
@@ -206,7 +201,12 @@ namespace VoiceActing
 
 
 
-
+        private void AddRandomEvents()
+        {
+            StoryEventData randomEvent = randomEventDatabase.GetStoryRandomEvent(playerData);
+            if (randomEvent != null)
+                playerData.NextStoryEvents.Add(randomEvent);
+        }
 
 
 

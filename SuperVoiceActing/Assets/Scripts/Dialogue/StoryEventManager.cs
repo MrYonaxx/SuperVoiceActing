@@ -181,6 +181,8 @@ namespace VoiceActing
             i = 0;
             storyEventData = newStoryEvent;
             CreateScene();
+            storyEventEffectManager.Fade(false, 60);
+            storyEventEffectManager.Tint(Color.clear, 60);
             StartCoroutine(NextNodeCoroutine());
         }
 
@@ -216,7 +218,8 @@ namespace VoiceActing
                     if (node.GetDataToLoad() != null)
                     {
                         storyEventData = node.GetDataToLoad();
-                        CreateScene();
+                        if(node.SaveSceneConfiguration() == false)
+                            CreateScene();
                         i = -1;
                     }
                     else if (node.GetDoublageEventToLoad() != null)
