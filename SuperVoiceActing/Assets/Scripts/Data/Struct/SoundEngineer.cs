@@ -12,35 +12,88 @@ using UnityEngine;
 namespace VoiceActing
 {
     // Un ingé son peut etre utiliser en tant qu'acteur
-	public class SoundEngineer : VoiceActor
+	public class SoundEngineer
 	{
-		#region Attributes 
 
-        /* ======================================== *\
-         *               ATTRIBUTES                 *
-        \* ======================================== */
-        
-        
-        #endregion
+        [SerializeField]
+        private string engineerName;
+        public string EngineerName
+        {
+            get { return engineerName; }
+        }
 
-        #region GettersSetters 
+        [SerializeField]
+        private int level;
+        public int Level
+        {
+            get { return level; }
+        }
 
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-        
+        [SerializeField]
+        private int experience;
+        public int Experience
+        {
+            get { return experience; }
+        }
 
-        #endregion
+        [SerializeField]
+        private int salary;
+        public int Salary
+        {
+            get { return salary; }
+        }
 
-        #region Functions 
+        [SerializeField]
+        private ExperienceCurveData experienceCurve;
+        public ExperienceCurveData ExperienceCurve
+        {
+            get { return experienceCurve; }
+        }
 
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
+        [SerializeField]
+        private int artificeGauge;
+        public int ArtificeGauge
+        {
+            get { return artificeGauge; }
+        }
 
-        
-        #endregion
-		
-	} // SoundEngineer class
+        [SerializeField]
+        private int mixingPower;
+        public int MixingPower
+        {
+            get { return mixingPower; }
+        }
+
+        [SerializeField]
+        private SkillData[] skills;
+        public SkillData[] Skills
+        {
+            get { return skills; }
+        }
+
+        [SerializeField]
+        StoryCharacterData spritesSheets;
+        public StoryCharacterData SpritesSheets
+        {
+            get { return spritesSheets; }
+        }
+
+
+
+
+        public SoundEngineer(SoundEngineerData soundEngineer)
+        {
+            engineerName = soundEngineer.EngineerName;
+            level = soundEngineer.Level;
+            experience = 0;
+            salary = soundEngineer.Salary;
+            experienceCurve = soundEngineer.ExperienceCurve;
+            artificeGauge = soundEngineer.ArtificeGauge;
+            mixingPower = soundEngineer.MixingPower;
+            spritesSheets = soundEngineer.SpritesSheets;
+        }
+
+
+    } // SoundEngineer class
 	
 }// #PROJECTNAME# namespace

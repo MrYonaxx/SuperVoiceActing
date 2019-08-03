@@ -35,14 +35,34 @@ namespace VoiceActing
         TextMeshProUGUI textContractSalaire;
         [SerializeField]
         TextMeshProUGUI textContractTotalCost;
+
+        [SerializeField]
+        Animator animatorButtonLine;
         [SerializeField]
         TextMeshProUGUI textContractLine;
         [SerializeField]
         TextMeshProUGUI textContractLineMax;
+
+        [SerializeField]
+        Animator animatorButtonMixage;
         [SerializeField]
         TextMeshProUGUI textContractMixage;
         [SerializeField]
         TextMeshProUGUI textContractMixageMax;
+
+        [SerializeField]
+        Animator animatorButtonAdaptation;
+        [SerializeField]
+        TextMeshProUGUI textContractAdaptation;
+        [SerializeField]
+        TextMeshProUGUI textContractAdaptationMax;
+
+        /*[Header("InfoContract")]
+
+        [Header("InfoSoundEngi")]
+
+        [Header("InfoTranslator")]*/
+
 
         [Header("InfoRole")]
         [SerializeField]
@@ -145,6 +165,9 @@ namespace VoiceActing
         private int indexSelected = 0;
         private bool inSessionPossible = false;
 
+        List<Animator> listAnimatorTeamTech;
+        private int indexSelectedTeamTech = 0;
+
         #endregion
 
         #region GettersSetters 
@@ -200,6 +223,21 @@ namespace VoiceActing
             textContractMixageMax.text = currentContract.TotalMixing.ToString();
         }
 
+        private void DrawButtonsTeamTech()
+        {
+            listAnimatorTeamTech.Clear();
+            listAnimatorTeamTech.Add(animatorButtonLine);
+            if (currentContract.TotalMixing <= 0)
+            {
+                animatorButtonMixage.gameObject.SetActive(false);
+            }
+            else
+            {
+                animatorButtonMixage.gameObject.SetActive(true);
+                listAnimatorTeamTech.Add(animatorButtonMixage);
+            }
+        }
+
         private void DrawButtons()
         {
             for(int i = 0; i < listButtonRoles.Length; i++)
@@ -244,7 +282,6 @@ namespace VoiceActing
                     sum += (currentContract.VoiceActors[i].Price * currentContract.Characters[i].Line);
             }
             return sum;
-            //textContractTotalCost.text = sum.ToString();
         }
 
         private void DrawRoleInfo()
@@ -321,67 +358,13 @@ namespace VoiceActing
             StopAllCoroutines();
             for (int i = 0; i < textStatsRole.Length; i++)
             {
-                int currentStatRole = 0;
-                switch (i)
-                {
-                    case 0:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Joy;
-                        break;
-                    case 1:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Sadness;
-                        break;
-                    case 2:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Disgust;
-                        break;
-                    case 3:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Anger;
-                        break;
-                    case 4:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Surprise;
-                        break;
-                    case 5:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Sweetness;
-                        break;
-                    case 6:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Fear;
-                        break;
-                    case 7:
-                        currentStatRole = currentContract.Characters[indexSelected].CharacterStat.Trust;
-                        break;
-                }
+                int currentStatRole = currentContract.Characters[indexSelected].CharacterStat.GetEmotion(i+1);
                 textStatsRole[i].text = currentStatRole.ToString();
                 StartCoroutine(GaugeCoroutine(jaugeStatsRole[i], currentStatRole / 100f));
 
                 if (hasActor == true)
                 {
-                    int currentStatActor = 0;
-                    switch (i)
-                    {
-                        case 0:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Joy;
-                            break;
-                        case 1:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Sadness;
-                            break;
-                        case 2:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Disgust;
-                            break;
-                        case 3:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Anger;
-                            break;
-                        case 4:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Surprise;
-                            break;
-                        case 5:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Sweetness;
-                            break;
-                        case 6:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Fear;
-                            break;
-                        case 7:
-                            currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.Trust;
-                            break;
-                    }
+                    int currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.GetEmotion(i+1);
                     textStatsActor[i].text = currentStatActor.ToString();
                     StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
                 }
@@ -428,7 +411,7 @@ namespace VoiceActing
             DrawRoleInfo();
             animatorFeedbackSpriteAudition.SetTrigger("Feedback");
             listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
-            textContractTotalCost.text = GetTotalCost().ToString();
+            textContractTotalCost.text = "-" + GetTotalCost().ToString();
             CheckButtonInSession();
         }
 
@@ -467,6 +450,25 @@ namespace VoiceActing
             menuTransitionDoublage.StartTransition();
             inSessionObject.SetTrigger("Selection");
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         // =================================================================

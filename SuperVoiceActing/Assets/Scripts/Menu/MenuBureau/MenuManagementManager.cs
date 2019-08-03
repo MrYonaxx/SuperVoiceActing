@@ -33,6 +33,8 @@ namespace VoiceActing
         [SerializeField]
         private MenuActorsManager actorsManagers;
         [SerializeField]
+        private MenuStudioSoundEngiManager soundEngiManager;
+        [SerializeField]
         private MenuContractMoney moneyManager;
 
         [Header("a")]
@@ -79,6 +81,7 @@ namespace VoiceActing
             contractManager.DrawDate();
 
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
+            soundEngiManager.SetSoundEngiList(playerData.SoundEngineers);
 
             AddRandomEvents();
 

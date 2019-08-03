@@ -146,7 +146,13 @@ namespace VoiceActing
             set { iconSprite = value; }
         }
 
-
+        [SerializeField]
+        private SoundEngineer soundEngineer;
+        public SoundEngineer SoundEngineer
+        {
+            get { return soundEngineer; }
+            set { soundEngineer = value; }
+        }
 
         [SerializeField]
         private List<Role> characters = new List<Role>();

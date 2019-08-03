@@ -68,7 +68,8 @@ namespace VoiceActing
 
         protected virtual void Start()
         {
-            animatorSelectionTransform = animatorSelection.GetComponent<RectTransform>();
+            if (animatorSelection != null)
+                animatorSelectionTransform = animatorSelection.GetComponent<RectTransform>();
             indexLimit = scrollSize;
         }
 
@@ -180,7 +181,8 @@ namespace VoiceActing
         {
             if (buttonScrollListTransform == null)
             {
-                animatorSelection.gameObject.transform.position = buttonsList[indexSelected].transform.position;
+                if (animatorSelection != null)
+                    animatorSelection.gameObject.transform.position = buttonsList[indexSelected].transform.position;
                 return;
             }
             if (indexSelected > indexLimit)
@@ -205,7 +207,8 @@ namespace VoiceActing
             }
             else
             {
-                animatorSelectionTransform.anchoredPosition = buttonsList[indexSelected].anchoredPosition;
+                if (animatorSelection != null)
+                    animatorSelectionTransform.anchoredPosition = buttonsList[indexSelected].anchoredPosition;
             }
 
         }

@@ -247,6 +247,9 @@ namespace VoiceActing
         private List<VoiceActorData> voiceActorsGachaDebug = new List<VoiceActorData>();
 
         [SerializeField]
+        private List<SoundEngineerData> soundEngineerDebug = new List<SoundEngineerData>();
+
+        [SerializeField]
         private List<StoryEventData> initialTutoEvent = new List<StoryEventData>();
 
         [SerializeField]
@@ -358,6 +361,15 @@ namespace VoiceActing
             set { voiceActorsGacha = value; }
         }
 
+
+        // Liste des IngéSon
+        [SerializeField]
+        private List<SoundEngineer> soundEngineers;
+        public List<SoundEngineer> SoundEngineers
+        {
+            get { return soundEngineers; }
+            set { soundEngineers = value; }
+        }
 
 
         [SerializeField]
@@ -571,6 +583,12 @@ namespace VoiceActing
                 for (int i = 0; i < voiceActorsGachaDebug.Count; i++)
                 {
                     voiceActorsGacha.Add(new VoiceActor(voiceActorsGachaDebug[i]));
+                }
+
+                soundEngineers = new List<SoundEngineer>(soundEngineerDebug.Count);
+                for (int i = 0; i < soundEngineerDebug.Count; i++)
+                {
+                    soundEngineers.Add(new SoundEngineer(soundEngineerDebug[i]));
                 }
 
 

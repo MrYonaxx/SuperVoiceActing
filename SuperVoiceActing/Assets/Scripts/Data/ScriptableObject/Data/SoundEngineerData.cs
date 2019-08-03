@@ -31,6 +31,20 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private ExperienceCurveData experienceCurve;
+        public ExperienceCurveData ExperienceCurve
+        {
+            get { return experienceCurve; }
+        }
+
+        [SerializeField]
+        private int salary;
+        public int Salary
+        {
+            get { return salary; }
+        }
+
+        [SerializeField]
         private int artificeGauge;
         public int ArtificeGauge
         {
@@ -51,21 +65,13 @@ namespace VoiceActing
             get { return skills; }
         }
 
-
-
-        [Header("Dialogues")]
-
-        [SerializeField]
-        private string[] lineStart;
-        public string[] LineStart
-        {
-            get { return lineStart; }
-        }
-
-
         [Header("Sprites")]
         [SerializeField]
         StoryCharacterData spritesSheets;
+        public StoryCharacterData SpritesSheets
+        {
+            get { return spritesSheets; }
+        }
 
     } // SoundEngineerData class
 	
