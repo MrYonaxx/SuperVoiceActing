@@ -69,6 +69,11 @@ namespace VoiceActing
 
         public void SetSoundEngiList(List<SoundEngineer> soundEngineers)
         {
+            buttonsList = new List<RectTransform>(soundEngineers.Count);
+            for (int i = 0; i < soundEngineers.Count; i++)
+            {
+                buttonsList.Add(null);
+            }
             soundEngineersList = soundEngineers;
         }
 

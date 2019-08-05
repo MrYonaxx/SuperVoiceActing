@@ -55,6 +55,25 @@ namespace VoiceActing
             this.gameObject.SetActive(false);
         }
 
+        public void SwitchToMenu(int menu)
+        {
+            for (int i = 0; i < subMenus.Length; i++)
+            {
+                if (subMenus[i] != null)
+                {
+                    if (i == menu)
+                    {
+                        subMenus[i].gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        subMenus[i].gameObject.SetActive(false);
+                    }
+                }
+            }
+            animatorMenu.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
 
         public void DrawStudioInfo()
         {

@@ -11,15 +11,22 @@ using UnityEngine;
 
 namespace VoiceActing
 {
-	public class MenuContractPreparationAnnexe
+    [System.Serializable]
+	public class MenuContractPreparationAnnexe : MonoBehaviour
 	{
-		#region Attributes 
+        #region Attributes 
 
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        
-        
+
+        [SerializeField]
+        GameObject panelContract;
+        [SerializeField]
+        protected Animator buttonAnimator;
+        [SerializeField]
+        GameObject outlineButton;
+
         #endregion
 
         #region GettersSetters 
@@ -27,7 +34,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -37,36 +44,38 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
+        public virtual bool CanAdd(Contract contract)
         {
-            
+            buttonAnimator.gameObject.SetActive(true);
+            DrawContract(contract);
+            return true;
         }
 
+        public virtual void DrawContract(Contract contract)
+        {
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
-        {
-            
         }
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        protected void Update()
+
+        public virtual void UnselectButton()
         {
-            
+            outlineButton.gameObject.SetActive(false);
+            panelContract.gameObject.SetActive(false);
         }
-        
+
+        public virtual void SelectButton()
+        {
+            buttonAnimator.SetTrigger("Feedback");
+            outlineButton.gameObject.SetActive(true);
+            panelContract.gameObject.SetActive(true);
+        }
+
+        public virtual void ValidateButton(Contract contract)
+        {
+
+        }
+
         #endregion
-		
-	} // MenuContractPreparationAnnexe class
+
+    } // MenuContractPreparationAnnexe class
 	
 }// #PROJECTNAME# namespace

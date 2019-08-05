@@ -8,18 +8,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace VoiceActing
 {
-	public class MenuContractPreparationSoundEngi : MonoBehaviour
-	{
-		#region Attributes 
+	public class MenuContractPreparationSoundEngi : MenuContractPreparationAnnexe
+    {
+        #region Attributes 
 
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        
-        
+
+        [Space]
+        [SerializeField]
+        Image imageSoundEngiIcon;
+        [SerializeField]
+        TextMeshProUGUI textContractCurrentMixing;
+        [SerializeField]
+        TextMeshProUGUI textContractTotalMixing;
+        [SerializeField]
+        RectTransform rectTransformMixingProgress;
+
+        [SerializeField]
+        CameraBureau cameraBureau;
+        [SerializeField]
+        MenuStudioMain menuStudioMain;
+        [SerializeField]
+        MenuStudioSoundEngiManager menuStudioSoundEngiManager;
+
         #endregion
 
         #region GettersSetters 
@@ -27,7 +45,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -37,36 +55,38 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
+        public override bool CanAdd(Contract contract)
         {
-            
+            if(contract.TotalMixing <= 0)
+            {
+                buttonAnimator.gameObject.SetActive(false);
+                return false;
+            }
+            else
+            {
+                buttonAnimator.gameObject.SetActive(true);
+                DrawContract(contract);
+                return true;
+            }
+        }
+
+        public override void DrawContract(Contract contract)
+        {
+            //imageSoundEngiIcon.sprite = contract.SoundEngineer.
+            textContractCurrentMixing.text = contract.CurrentMixing.ToString();
+            textContractTotalMixing.text = contract.TotalMixing.ToString();
+            rectTransformMixingProgress.localScale = new Vector3((float)contract.CurrentMixing / contract.TotalMixing, rectTransformMixingProgress.localScale.y, rectTransformMixingProgress.localScale.z);
         }
 
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
+        public override void ValidateButton(Contract contract)
         {
-            
+            menuStudioMain.SwitchToMenu(0);
+            cameraBureau.MoveToCamera(3);
         }
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        protected void Update()
-        {
-            
-        }
-        
+
         #endregion
-		
-	} // MenuContractPreparationSoundEngi class
+
+    } // MenuContractPreparationSoundEngi class
 	
 }// #PROJECTNAME# namespace

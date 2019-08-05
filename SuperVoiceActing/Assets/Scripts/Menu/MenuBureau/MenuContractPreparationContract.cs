@@ -21,8 +21,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [SerializeField]
-        GameObject panelContract;
+        [Space]
         [SerializeField]
         TextMeshProUGUI textContractWeek;
         [SerializeField]
@@ -60,7 +59,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawContract(Contract contract)
+        public override void DrawContract(Contract contract)
         {
             textContractWeek.text = contract.WeekRemaining.ToString();
             textContractSalary.text = contract.Money.ToString();
@@ -74,17 +73,12 @@ namespace VoiceActing
             textContractFan.text = sumFan.ToString();
             textContractLine.text = sumLine.ToString();
             textContractDescription.text = contract.Description;
+
+            textContractCurrentLine.text = contract.CurrentLine.ToString();
+            textContractTotalLine.text = contract.TotalLine.ToString();
+            rectTransformLineProgress.localScale = new Vector3((float)contract.CurrentLine / contract.TotalLine, rectTransformLineProgress.localScale.y, rectTransformLineProgress.localScale.z);
         }
 
-        public void Validate(Contract contract)
-        {
-
-        }
-
-        public void RemoveButton(Contract contract)
-        {
-
-        }
 
         #endregion
 

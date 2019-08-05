@@ -37,31 +37,7 @@ namespace VoiceActing
         TextMeshProUGUI textContractTotalCost;
 
         [SerializeField]
-        Animator animatorButtonLine;
-        [SerializeField]
-        TextMeshProUGUI textContractLine;
-        [SerializeField]
-        TextMeshProUGUI textContractLineMax;
-
-        [SerializeField]
-        Animator animatorButtonMixage;
-        [SerializeField]
-        TextMeshProUGUI textContractMixage;
-        [SerializeField]
-        TextMeshProUGUI textContractMixageMax;
-
-        [SerializeField]
-        Animator animatorButtonAdaptation;
-        [SerializeField]
-        TextMeshProUGUI textContractAdaptation;
-        [SerializeField]
-        TextMeshProUGUI textContractAdaptationMax;
-
-        /*[Header("InfoContract")]
-
-        [Header("InfoSoundEngi")]
-
-        [Header("InfoTranslator")]*/
+        MenuContractPreparationAnnexe[] contractInfoAnnex;
 
 
         [Header("InfoRole")]
@@ -165,7 +141,7 @@ namespace VoiceActing
         private int indexSelected = 0;
         private bool inSessionPossible = false;
 
-        List<Animator> listAnimatorTeamTech;
+        List<MenuContractPreparationAnnexe> listAnnexTeamTech = new List<MenuContractPreparationAnnexe>();
         private int indexSelectedTeamTech = 0;
 
         #endregion
@@ -207,8 +183,8 @@ namespace VoiceActing
             menuActorsManager.DrawAuditionTitle(contract.Name);
             menuActorsManager.DrawAuditionIcon(contract.IconSprite);
             DrawContractInfo();
+            DrawButtonsTeamTech();
             DrawButtons();
-            textContractTotalCost.text = GetTotalCost().ToString();
             CheckButtonInSession();
         }
 
@@ -217,25 +193,21 @@ namespace VoiceActing
             textContractTitle.text = currentContract.Name;
             imageContractIcon.sprite = currentContract.IconSprite;
             textContractSalaire.text = currentContract.Money.ToString();
-            textContractLine.text = currentContract.CurrentLine.ToString();
-            textContractLineMax.text = currentContract.TotalLine.ToString();
-            textContractMixage.text = currentContract.CurrentMixing.ToString();
-            textContractMixageMax.text = currentContract.TotalMixing.ToString();
+            textContractTotalCost.text = GetTotalCost().ToString();
         }
 
         private void DrawButtonsTeamTech()
         {
-            listAnimatorTeamTech.Clear();
-            listAnimatorTeamTech.Add(animatorButtonLine);
-            if (currentContract.TotalMixing <= 0)
+            listAnnexTeamTech.Clear();
+            for(int i = 0; i < contractInfoAnnex.Length; i++)
             {
-                animatorButtonMixage.gameObject.SetActive(false);
+                if (contractInfoAnnex[i].CanAdd(currentContract) == true)
+                {
+                    listAnnexTeamTech.Add(contractInfoAnnex[i]);
+                    listAnnexTeamTech[i].UnselectButton();
+                }
             }
-            else
-            {
-                animatorButtonMixage.gameObject.SetActive(true);
-                listAnimatorTeamTech.Add(animatorButtonMixage);
-            }
+            indexSelectedTeamTech = -1;
         }
 
         private void DrawButtons()
@@ -261,7 +233,6 @@ namespace VoiceActing
             listButtonRoles[0].SelectButton();
             indexSelected = 0;
             DrawRoleInfo();
-            //StartCoroutine(WaitEndOfFrame());
 
         }
 
@@ -397,12 +368,19 @@ namespace VoiceActing
 
         public void Validate()
         {
-            if(currentContract.Characters[indexSelected].CharacterLock != null)
+            if (indexSelectedTeamTech != -1)
             {
-                return;
+                listAnnexTeamTech[indexSelectedTeamTech].ValidateButton(currentContract);
             }
-            menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
-            cameraManager.MoveToCamera(1);
+            else
+            {
+                if (currentContract.Characters[indexSelected].CharacterLock != null)
+                {
+                    return;
+                }
+                menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
+                cameraManager.MoveToCamera(1);
+            }
         }
 
         public void SetActor(VoiceActor actor)
@@ -487,16 +465,34 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
-            listButtonRoles[indexSelected].UnselectButton();
-
-            indexSelected -= 1;
-            if (indexSelected <= -1)
+            if(indexSelected == -1)
             {
-                indexSelected = currentContract.Characters.Count - 1;
+                listAnnexTeamTech[indexSelectedTeamTech].UnselectButton();
+                indexSelectedTeamTech -= 1;
+                if (indexSelectedTeamTech <= -1)
+                {
+                    indexSelectedTeamTech = -1;
+                    indexSelected = currentContract.Characters.Count - 1;
+                    listButtonRoles[indexSelected].SelectButton();
+                    return;
+                }
+                listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
             }
-            MoveScrollRect();
-            DrawRoleInfo();
-            listButtonRoles[indexSelected].SelectButton();
+            else
+            {
+                listButtonRoles[indexSelected].UnselectButton();
+                indexSelected -= 1;
+                if (indexSelected <= -1)
+                {
+                    indexSelected = -1;
+                    indexSelectedTeamTech = listAnnexTeamTech.Count - 1;
+                    listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
+                    return;
+                }
+                listButtonRoles[indexSelected].SelectButton();
+                DrawRoleInfo();
+            }
+            //MoveScrollRect();
         }
 
         public void SelectRoleDown()
@@ -513,17 +509,35 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
-            listButtonRoles[indexSelected].UnselectButton();
 
-            indexSelected += 1;
-            if (indexSelected >= currentContract.Characters.Count)
+            if (indexSelected == -1)
             {
-                indexSelected = 0;
+                listAnnexTeamTech[indexSelectedTeamTech].UnselectButton();
+                indexSelectedTeamTech += 1;
+                if (indexSelectedTeamTech >= listAnnexTeamTech.Count)
+                {
+                    indexSelectedTeamTech = -1;
+                    indexSelected = 0;
+                    listButtonRoles[indexSelected].SelectButton();
+                    return;
+                }
+                listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
             }
-            MoveScrollRect();
-            DrawRoleInfo();
-            listButtonRoles[indexSelected].SelectButton();
-
+            else
+            {
+                listButtonRoles[indexSelected].UnselectButton();
+                indexSelected += 1;
+                if (indexSelected >= currentContract.Characters.Count)
+                {
+                    indexSelected = -1;
+                    indexSelectedTeamTech = 0;
+                    listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
+                    return;
+                }
+                listButtonRoles[indexSelected].SelectButton();
+                DrawRoleInfo();
+            }
+            //MoveScrollRect();
         }
 
 
