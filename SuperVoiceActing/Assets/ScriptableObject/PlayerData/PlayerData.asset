@@ -43,14 +43,14 @@ MonoBehaviour:
   initialComboMax: 3
   initialDeck:
     neutral: 1
-    joy: 3
-    sadness: 3
-    disgust: 3
-    anger: 3
-    surprise: 3
-    sweetness: 3
-    fear: 3
-    trust: 3
+    joy: 2
+    sadness: 2
+    disgust: 2
+    anger: 2
+    surprise: 2
+    sweetness: 2
+    fear: 2
+    trust: 2
   initialAtkBonus:
     neutral: 0
     joy: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
     trust: 0
   initialCriticalRate: 0
   initialTemperature: 0
-  initialTurn: 0
+  initialTurn: 15
   equipementCategories: 0000000001000000020000000300000003000000
   initialEquipement:
   - {fileID: 11400000, guid: f0ed5fa9bfc22074daff6a455822496b, type: 2}
@@ -83,12 +83,6 @@ MonoBehaviour:
   - {fileID: 0}
   contractAvailableDebug:
   - {fileID: 11400000, guid: b2bc6bfc41fdfdc4db96209a1443da7c, type: 2}
-  - {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
-  - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
-  - {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
-  - {fileID: 11400000, guid: d85d0a7830fd8144e94f5930fa02981b, type: 2}
-  - {fileID: 11400000, guid: 9cfcc9e654405b7448d7778b8ba9c00d, type: 2}
-  - {fileID: 11400000, guid: 4dc5a82a321cd824b852b35da3bb257b, type: 2}
   voiceActorsDebug:
   - {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
   - {fileID: 11400000, guid: 0282d05fdcd99e74a8a4e4c9375737e9, type: 2}
@@ -134,13 +128,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d829c8fedec7a143b428862167f9e68, type: 2}
   - {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
   - {fileID: 11400000, guid: d85d0a7830fd8144e94f5930fa02981b, type: 2}
-  - {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
   - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
   - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
   - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
   - {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
   - {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
-  contractGachaCooldown: []
+  - {fileID: 11400000, guid: e1a59a024da49b7458213ed01964ad5c, type: 2}
+  contractGachaCooldown:
+  - contract: {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
+    cooldown: 4
   nextStoryEvents: []
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []

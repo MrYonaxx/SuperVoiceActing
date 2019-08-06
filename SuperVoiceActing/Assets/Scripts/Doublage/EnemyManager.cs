@@ -233,6 +233,19 @@ namespace VoiceActing
             this.neutral += addition.neutral;
         }
 
+        public void Clamp(int minValue, int maxValue)
+        {
+            this.joy = Mathf.Clamp(this.joy, minValue, maxValue);
+            this.sadness = Mathf.Clamp(this.sadness, minValue, maxValue);
+            this.disgust = Mathf.Clamp(this.disgust, minValue, maxValue);
+            this.anger = Mathf.Clamp(this.anger, minValue, maxValue);
+            this.surprise = Mathf.Clamp(this.surprise, minValue, maxValue);
+            this.sweetness = Mathf.Clamp(this.sweetness, minValue, maxValue);
+            this.fear = Mathf.Clamp(this.fear, minValue, maxValue);
+            this.trust = Mathf.Clamp(this.trust, minValue, maxValue);
+            this.neutral = Mathf.Clamp(this.neutral, minValue, maxValue);
+        }
+
         public void Substract(EmotionStat addition)
         {
             this.joy -= addition.joy;
@@ -289,7 +302,6 @@ namespace VoiceActing
     [System.Serializable]
     public class WeakPoint
     {
-        [Header("WeakPoint")]
         [SerializeField]
         private int wordIndex;
         public int WordIndex

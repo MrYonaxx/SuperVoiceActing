@@ -47,6 +47,8 @@ namespace VoiceActing
         [SerializeField]
         Image healthContentProgression;
         [SerializeField]
+        TextMeshProUGUI textActorName;
+        [SerializeField]
         TextMeshProUGUI textCurrentHp;
         [SerializeField]
         TextMeshProUGUI textMaxHp;
@@ -58,6 +60,12 @@ namespace VoiceActing
         TextMeshProUGUI textDamage;
         [SerializeField]
         RectTransform damagePreviz;
+        [SerializeField]
+        RectTransform transformDamageLost;
+        [SerializeField]
+        Animator animatorDamageLost;
+
+        [Space]
         [SerializeField]
         EffectManager effectManagerDeath;
 
@@ -88,6 +96,7 @@ namespace VoiceActing
 
         private int indexCurrentActor = 0;
         private int[] actorsResistance = { 0, 0, 0 };
+        private int[] actorsHealthRegain = { 0, 0, 0 };
         int attackDamage = 0;
 
 
@@ -361,9 +370,16 @@ namespace VoiceActing
                 textMaxHp.color = healthCriticalColor;
             }
 
+            textActorName.text = actors[indexCurrentActor].Name;
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
             textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();
 
+            float ratioHP = (float)actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
+            healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
+
+            float ratioHPRegain = actors[indexCurrentActor].Hp + actorsHealthRegain[indexCurrentActor];
+            ratioHPRegain = ratioHPRegain / actors[indexCurrentActor].HpMax;
+            healthContentProgression.transform.localScale = new Vector3(ratioHPRegain, healthContentProgression.transform.localScale.y, healthContentProgression.transform.localScale.z);
         }
 
 
@@ -397,7 +413,16 @@ namespace VoiceActing
 
         public void ActorTakeDamage(int damage)
         {
-            
+            float ratioHP;
+            float ratioHPRegain;
+            float damagePercentage;
+
+            // Animation Damage Lost
+            damagePercentage = (float)damage / actors[indexCurrentActor].Hp;
+            transformDamageLost.anchorMax = new Vector2(1 + damagePercentage, 0.5f);
+            animatorDamageLost.SetTrigger("Feedback");
+
+            // Modification jauge de vie
             actors[indexCurrentActor].Hp -= damage;
             if (actors[indexCurrentActor].Hp < 0)
                 actors[indexCurrentActor].Hp = 0;
@@ -405,13 +430,21 @@ namespace VoiceActing
                 actors[indexCurrentActor].Hp = actors[indexCurrentActor].HpMax;
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
 
-            float ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
+            ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
             healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
             if (actors[indexCurrentActor].Hp < actors[indexCurrentActor].HpMax * healthCriticalThreshold)
             {
                 textCurrentHp.color = healthCriticalColor;
                 textMaxHp.color = healthCriticalColor;
             }
+
+            // HP Regain
+            actorsHealthRegain[indexCurrentActor] += damage / 2;
+            ratioHPRegain = actors[indexCurrentActor].Hp + actorsHealthRegain[indexCurrentActor];
+            if(ratioHPRegain > actors[indexCurrentActor].HpMax) { ratioHPRegain = 1; }
+            ratioHPRegain = ratioHPRegain / actors[indexCurrentActor].HpMax;
+            healthContentProgression.transform.localScale = new Vector3(ratioHPRegain, healthContentProgression.transform.localScale.y, healthContentProgression.transform.localScale.z);
+
             if (damage > 0)
                 StartCoroutine(FeedbackHealthBar());
         }
@@ -423,22 +456,22 @@ namespace VoiceActing
                 effectManagerDeath.NegativeScreen(true);
                 effectManagerDeath.Flash();
             }
-            float intensity = 100;
+            float intensity = 30;
             Vector2 origin = healthBar.anchoredPosition;
             while (timeShake != 0)
             {
                 timeShake -= 1;
-                healthBar.anchoredPosition = new Vector2(origin.x + Random.Range(-intensity, intensity), origin.y);
+                healthBar.anchoredPosition = new Vector2(origin.x + Random.Range(-intensity, intensity), origin.y + Random.Range(-intensity, intensity));
                 intensity *= 0.9f;
                 yield return null;
             }
             healthBar.anchoredPosition = origin;
 
-            Vector3 speed = new Vector3((healthContent.transform.localScale.x - healthContentProgression.transform.localScale.x) / timeGauge, 0, 0);
+            //Vector3 speed = new Vector3((healthContent.transform.localScale.x - healthContentProgression.transform.localScale.x) / timeGauge, 0, 0);
             while (timeGauge != 0)
             {
                 timeGauge -= 1;
-                healthContentProgression.transform.localScale += speed;
+                //healthContentProgression.transform.localScale += speed;
                 yield return null;
             }
             if (actors[indexCurrentActor].Hp == 0)

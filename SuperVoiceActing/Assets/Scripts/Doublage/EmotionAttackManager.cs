@@ -556,10 +556,13 @@ namespace VoiceActing
             else
             {
                 int[] emotions = { 0, 0, 0 };
+                int totalValue = 0;
                 for (int i = 0; i < comboEmotion.Length; i++)
                 {
                     int emotion = (int) comboEmotion[i];
                     emotions[i] = emotion;
+                    if(emotion != 0)
+                        totalValue += comboCardEmotion[i].GetStat();
                 }
                 textComboName.gameObject.SetActive(true);
                 textComboName.text = emotionComboData.GetName(emotions[0], emotions[1], emotions[2]);

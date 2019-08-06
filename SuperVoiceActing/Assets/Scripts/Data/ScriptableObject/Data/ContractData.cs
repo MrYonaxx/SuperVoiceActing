@@ -164,7 +164,7 @@ namespace VoiceActing
         }
 
 
-        [HorizontalGroup("Atk", LabelWidth = 100, Width = 100)]
+        /*[HorizontalGroup("Atk", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int atkMin;
         public int AtkMin
@@ -193,7 +193,7 @@ namespace VoiceActing
         public int EvadeMax
         {
             get { return evadeMax; }
-        }
+        }*/
     }
 
 
@@ -211,7 +211,7 @@ namespace VoiceActing
         [Space]
         [SerializeField]
         [HorizontalGroup("Test3", Width = 200, MarginLeft = 20)]
-        [TextArea(3, 3)]
+        [TextArea(1, 1)]
         [HideLabel]
         private string text;
         public string Text

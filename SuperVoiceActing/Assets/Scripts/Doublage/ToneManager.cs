@@ -94,7 +94,10 @@ namespace VoiceActing
 
                 }
                 if (maxValue == 0)
+                {
+                    startX = 0.5f;
                     width = 0;
+                }
                 else
                     width = multiplier / maxValue;
                 if(width == 0)
@@ -106,16 +109,31 @@ namespace VoiceActing
                     textTone[i].gameObject.SetActive(true);
                     textTone[i].text = multiplier.ToString();
                 }
-                toneTransform[i].rectTransform.anchorMin = new Vector2(startX, 0);
-                toneTransform[i].rectTransform.anchorMax = new Vector2(startX + width, 1);
+                StartCoroutine(ModifyToneCoroutine(toneTransform[i].rectTransform, startX, startX + width));
+                //toneTransform[i].rectTransform.anchorMin = new Vector2(startX, 0);
+                //toneTransform[i].rectTransform.anchorMax = new Vector2(startX + width, 1);
                 startX += width;
             }
         }
 
 
+        private IEnumerator ModifyToneCoroutine(RectTransform rectTransform, float newXMin, float newXMax, int time = 60)
+        {
+            Vector2 speedXMin = new Vector2((newXMin - rectTransform.anchorMin.x) / time, 0);
+            Vector2 speedXMax = new Vector2((newXMax - rectTransform.anchorMax.x) / time, 0);
+            while (time != 0)
+            {
+                rectTransform.anchorMin += speedXMin;
+                rectTransform.anchorMax += speedXMax;
+                time -= 1;
+                yield return null;
+            }
+        }
+
 
         public void ModifyTone(EmotionCard[] emotions)
         {
+            toneValue.Add(new EmotionStat(-1, -1, -1, -1, -1, -1, -1, -1));
             for (int i = 0; i < emotions.Length; i++)
             {
                 if (emotions[i] == null)
@@ -124,32 +142,32 @@ namespace VoiceActing
                 {
                    
                     case Emotion.Joie:
-                        toneValue.Joy += 1;
+                        toneValue.Joy += 2;
                         break;
                     case Emotion.Tristesse:
-                        toneValue.Sadness += 1;
+                        toneValue.Sadness += 2;
                         break;
                     case Emotion.Dégoût:
-                        toneValue.Disgust += 1;
+                        toneValue.Disgust += 2;
                         break;
                     case Emotion.Colère:
-                        toneValue.Anger += 1;
+                        toneValue.Anger += 2;
                         break;
                     case Emotion.Surprise:
-                        toneValue.Surprise += 1;
+                        toneValue.Surprise += 2;
                         break;
                     case Emotion.Douceur:
-                        toneValue.Sweetness += 1;
+                        toneValue.Sweetness += 2;
                         break;
                     case Emotion.Peur:
-                        toneValue.Fear += 1;
+                        toneValue.Fear += 2;
                         break;
                     case Emotion.Confiance:
-                        toneValue.Trust += 1;
+                        toneValue.Trust += 2;
                         break;
                 }
-                //toneMultiplier.Add(stat);
             }
+            toneValue.Clamp(0, 100);
             DrawTone();
             StopHighlight();
         }
@@ -157,8 +175,8 @@ namespace VoiceActing
 
         public void HighlightTone(Emotion emotion, bool isHighlight)
         {
-            Image toneSelected = toneTransform[(int) emotion];
-            /*switch (emotion)
+            Image toneSelected;// = toneTransform[(int) emotion];
+            switch (emotion)
             {
                 case Emotion.Joie:
                     toneSelected = toneTransform[1];
@@ -186,7 +204,7 @@ namespace VoiceActing
                     break;
                 default:
                     return;
-            }*/
+            }
             if(isHighlight == true)
             {
                 //toneSelected.rectTransform.offsetMax = new Vector2(0, 15);
