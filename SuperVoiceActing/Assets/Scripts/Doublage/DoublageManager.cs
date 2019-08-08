@@ -958,10 +958,10 @@ namespace VoiceActing
         public void SwitchToMixingTable()
         {
             soundEngineerManager.SwitchToMixingTable();
-            emotionAttackManager.SwitchCardTransformToRessource();
+            //emotionAttackManager.SwitchCardTransformToRessource();
             cameraController.IngeSon();
             inputController.gameObject.SetActive(false);
-            actorsManager.HideHealthBar();
+            //actorsManager.HideHealthBar();
             emotionAttackManager.ShowComboSlot(false);
         }
 

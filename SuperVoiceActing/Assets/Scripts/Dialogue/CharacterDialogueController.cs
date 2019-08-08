@@ -37,6 +37,9 @@ namespace VoiceActing
         [SerializeField]
         FeedbackSon soundVisualizer;
 
+        [Header("Autres")]
+        [SerializeField]
+        Animator animatorBalloon;
 
         [Header("Phase d'Acting")]
         [SerializeField]
@@ -302,6 +305,13 @@ namespace VoiceActing
                 yield return null;
             }
             this.transform.position = origin;
+        }
+
+
+        public void PlayAnimBalloon(int emotion)
+        {
+            if(animatorBalloon != null)
+                animatorBalloon.SetInteger("Emotion", emotion);
         }
 
         #endregion

@@ -206,6 +206,9 @@ namespace VoiceActing
                     case ContractType.Serie:
                         contract.IconSprite = iconSprites[2];
                         break;
+                    case ContractType.JeuVideo:
+                        contract.IconSprite = iconSprites[3];
+                        break;
                 }
             }
         }

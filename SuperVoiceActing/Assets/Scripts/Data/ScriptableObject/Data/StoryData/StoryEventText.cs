@@ -15,20 +15,40 @@ using System.Text;
 namespace VoiceActing
 {
 
+    public enum EmotionBalloon
+    {
+        None,
+        Exclamation,
+        Question,
+        MusicNote,
+        Heart,
+        Angry,
+        SweatDrop,
+        Annoyed,
+        Silence,
+        Idea,
+        Sleep
+    }
+
     [System.Serializable]
     public class StoryEventText : StoryEvent
     {
-        [HorizontalGroup("Interlocuteur")]
+        [HorizontalGroup("Interlocuteur", Width = 0.5f)]
         [SerializeField]
         [HideLabel]
         StoryCharacterData interlocuteur;
 
-        [HorizontalGroup("Interlocuteur")]
+        [HorizontalGroup("Interlocuteur", Width = 0.25f)]
         [SerializeField]
         [HideLabel]
         EmotionNPC emotionNPC;
 
-        [TabGroup("ParentGroup", "Texte")]
+        [HorizontalGroup("Interlocuteur", Width = 0.25f)]
+        [SerializeField]
+        [HideLabel]
+        EmotionBalloon emotionEmoticonBalloon;
+
+        //[TabGroup("ParentGroup", "Texte")]
         [SerializeField]
         [TextArea(2,2)]
         [HideLabel]
@@ -38,11 +58,11 @@ namespace VoiceActing
             get { return text;  }
         }
 
-        [TabGroup("ParentGroup", "TexteEng")]
+        /*[TabGroup("ParentGroup", "TexteEng")]
         [SerializeField]
         [TextArea(2, 2)]
         [HideLabel]
-        string textEng = null;
+        string textEng = null;*/
 
 
         [HorizontalGroup("Option Avancées", LabelWidth = 50)]
@@ -135,6 +155,11 @@ namespace VoiceActing
             textMeshPro.text = actualText;
             textMeshPro.maxVisibleCharacters = 0;
 
+            if (characterDialogue != null)
+            {
+                characterDialogue.PlayAnimBalloon(-1);
+            }
+
             yield return null;
 
             textMeshPro.maxVisibleCharacters = 0;
@@ -151,6 +176,7 @@ namespace VoiceActing
                     characterDialogue.ActivateMouth(mouthSpeed + 7);
                 }
                 characterDialogue.ChangeEmotion(emotionNPC);
+                characterDialogue.PlayAnimBalloon((int)emotionEmoticonBalloon - 1);
             }
 
             for (int i = 0; i < textMeshPro.textInfo.linkCount; i++)
