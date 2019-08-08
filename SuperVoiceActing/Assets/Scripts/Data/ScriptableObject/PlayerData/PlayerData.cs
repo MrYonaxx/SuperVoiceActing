@@ -808,6 +808,7 @@ namespace VoiceActing
 
             if (contractGacha.Count != 0)
             {
+                nbContract = Mathf.Clamp(nbContract, 0, contractGacha.Count);
                 for (int i = 0; i < nbContract; i++)
                 {
                     int rand = Random.Range(0, contractGacha.Count);

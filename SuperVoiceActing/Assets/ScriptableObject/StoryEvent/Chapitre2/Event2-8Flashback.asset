@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: Event2-8Flashback
   m_EditorClassIdentifier: 
   background: {fileID: 0}
-  characters: []
+  characters:
+  - characterToMove: {fileID: 11400000, guid: 7bb2c155b34de9041ae1338bf92db368, type: 2}
+    time: 60
+    newPosition: {x: 0, y: -5.2, z: 0}
+    newRotation: {x: 0, y: 0, z: 0}
+    newScale: {x: 0.45, y: 0.45, z: 0.45}
+    fadeIn: 1
+    fadeOut: 0
+    waitEnd: 0
   eventNodes:
   - dataBox:
       eventNode: 2
@@ -31,7 +39,7 @@ MonoBehaviour:
         eventEffect: 7
         time: 60
         timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
+        tintColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.39215687}
       storyEventMoveCharacter:
         characterToMove: {fileID: 0}
         time: 60

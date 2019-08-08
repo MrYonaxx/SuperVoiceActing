@@ -476,6 +476,7 @@ namespace VoiceActing
             {
                 yield return new WaitForSeconds(0.1f);
                 cameraController.EnemySkill();
+                emotionAttackManager.SwitchCardTransformToBattle(false);
                 roleManager.EnemyAttackActivation();
                 endAttack = false;
                 while (endAttack == false)
@@ -766,8 +767,8 @@ namespace VoiceActing
             {
                 yield return new WaitForSeconds(0.1f);
                 cameraController.EnemySkill();
-                roleManager.EnemyAttackActivation();
-                emotionAttackManager.SwitchCardTransformToRessource();
+                emotionAttackManager.SwitchCardTransformToBattle(false);
+                roleManager.EnemyAttackActivation();    
                 endAttack = false;
                 while (endAttack == false)
                 {

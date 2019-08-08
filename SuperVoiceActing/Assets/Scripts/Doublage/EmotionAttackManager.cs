@@ -400,7 +400,7 @@ namespace VoiceActing
             }
         }
 
-        public void SwitchCardTransformToBattle()
+        public void SwitchCardTransformToBattle(bool showCombo = true)
         {
             for (int i = 0; i < emotionCards.Length; i++)
             {
@@ -410,9 +410,17 @@ namespace VoiceActing
                         emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].CardsPosition[j], transitionSpeed);
                 }
             }
-            animatorCombo.SetBool("Appear", true);
-            animatorCombo.SetBool("Attack", false);
+            if (showCombo == true)
+            {
+                animatorCombo.SetBool("Appear", true);
+                animatorCombo.SetBool("Attack", false);
+            }
+            else
+            {
+                animatorCombo.SetBool("Appear", false);
+            }
         }
+
 
 
         public void SwitchCardTransformToRessource()
