@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -21,12 +22,17 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-
+        [Title("Animator")]
         [SerializeField]
         Animator animatorMenu;
 
+
+
+        [Title("Sound Engineer Information")]
         [SerializeField]
         Image imageSoundEngiFace;
+        [SerializeField]
+        Animator animatorSoundEngiFace;
 
         [SerializeField]
         TextMeshProUGUI textSoundEngiName;
@@ -35,7 +41,33 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textSoundEngi;
 
+
+
+        [Title("Sound Engineer Audition")]
+        [SerializeField]
+        Animator animatorAudition;
+
+        [SerializeField]
+        TextMeshProUGUI textAuditionContractTitle;
+        [SerializeField]
+        TextMeshProUGUI textAuditionContractMixingMax;
+        [SerializeField]
+        TextMeshProUGUI textAuditionContractMixingCurrent;
+
+        [SerializeField]
+        RectTransform transformContractMixingProgress;
+        [SerializeField]
+        RectTransform transformContractMixingPreview;
+
+        [Title("Sound Engineer Button")]
+        [SerializeField]
+        Animator buttonAuditionSelection;
+
+
+
         List<SoundEngineer> soundEngineersList;
+
+        bool auditionMode = false;
 
         #endregion
 
@@ -59,9 +91,11 @@ namespace VoiceActing
         {
             DrawSoundEngi(soundEngineersList[indexSelected]);
             animatorMenu.gameObject.SetActive(true);
+            if (auditionMode == true)
+                animatorAudition.gameObject.SetActive(true);
         }
 
-        private void OnDisable()
+        private void QuitMenu()
         {
             animatorMenu.gameObject.SetActive(false);
         }
@@ -82,6 +116,38 @@ namespace VoiceActing
             imageSoundEngiFace.sprite = soundEngineer.SpritesSheets.SpriteNormal[0];
             textSoundEngiName.text = soundEngineer.EngineerName;
             textSoundEngiLevel.text = soundEngineer.Level.ToString();
+        }
+
+
+        public void AuditionMode(bool b)
+        {
+            auditionMode = b;
+            if(b == false)
+                animatorAudition.gameObject.SetActive(false);
+        }
+
+
+        public void Validate()
+        {
+            if(auditionMode == false)
+            {
+                return;
+            }
+            animatorSoundEngiFace.SetTrigger("Feedback");
+            StartCoroutine(WaitFeedback());
+        }
+
+        private IEnumerator WaitFeedback()
+        {
+            //inputController.gameObject.SetActive(false);
+            int time = 20;
+            while (time != 0)
+            {
+                time -= 1;
+                yield return null;
+            }
+            //cameraManager.MoveToCamera(2);
+            //menuContractPreparation.SetActor(actorsList[indexActorSelected]);
         }
 
         protected override void AfterSelection()

@@ -38,10 +38,16 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private int salary;
-        public int Salary
+        private int initialSalary;
+        public int InitialSalary
         {
-            get { return salary; }
+            get { return initialSalary; }
+        }
+        [SerializeField]
+        private int additionSalary;
+        public int AdditionSalary
+        {
+            get { return additionSalary; }
         }
 
         [SerializeField]
@@ -58,11 +64,26 @@ namespace VoiceActing
             get { return mixingPower; }
         }
 
+
+
         [SerializeField]
-        private SkillData[] skills;
-        public SkillData[] Skills
+        private int bonusBuff;
+        public int BonusBuff
         {
-            get { return skills; }
+            get { return bonusBuff; }
+        }
+        [SerializeField]
+        private int buffTurnCount;
+        public int BuffTurnCount
+        {
+            get { return buffTurnCount; }
+        }
+
+        [SerializeField]
+        private SkillData[] initialSkills;
+        public SkillData[] InitialSkills
+        {
+            get { return initialSkills; }
         }
 
         [Header("Sprites")]

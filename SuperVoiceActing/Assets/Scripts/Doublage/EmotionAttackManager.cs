@@ -193,7 +193,13 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorCombo;
         [SerializeField]
+        Animator animatorCardLeft;
+        [SerializeField]
+        Animator animatorCardRight;
+        [SerializeField]
         TextMeshProUGUI textComboName;
+        [SerializeField]
+        TextMeshProUGUI textComboDamage;
         [SerializeField]
         Image feedbackSelectCard;
         [SerializeField]
@@ -434,6 +440,8 @@ namespace VoiceActing
                 }
             }
             animatorCombo.SetBool("Appear", false);
+            textComboName.gameObject.SetActive(false);
+            textComboDamage.gameObject.SetActive(false);
         }
 
 
@@ -560,28 +568,37 @@ namespace VoiceActing
         public void DrawComboName()
         {
             if (comboEmotion.Length == 0 || comboEmotion[0] == Emotion.Neutre)
+            {
                 textComboName.gameObject.SetActive(false);
+                textComboDamage.gameObject.SetActive(false);
+            }
             else
             {
                 int[] emotions = { 0, 0, 0 };
                 int totalValue = 0;
                 for (int i = 0; i < comboEmotion.Length; i++)
                 {
-                    int emotion = (int) comboEmotion[i];
+                    int emotion = (int)comboEmotion[i];
                     emotions[i] = emotion;
-                    if(emotion != 0)
+                    if (emotion != 0)
                         totalValue += comboCardEmotion[i].GetStat();
                 }
                 textComboName.gameObject.SetActive(true);
+                textComboDamage.gameObject.SetActive(true);
                 textComboName.text = emotionComboData.GetName(emotions[0], emotions[1], emotions[2]);
+                textComboDamage.text = totalValue.ToString();
             }
             
         }
 
+
         // ================================================= //
         // =============== FEEDBACK ==================
         // ================================================= //
-
+        public void StartTurnCardFeedback()
+        {
+            animatorCardLeft.SetTrigger("Feedback");
+        }
 
         private void ParticleSelectEmotion(Emotion emotion)
         {

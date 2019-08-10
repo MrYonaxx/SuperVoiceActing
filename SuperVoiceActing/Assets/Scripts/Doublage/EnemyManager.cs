@@ -233,6 +233,40 @@ namespace VoiceActing
             this.neutral += addition.neutral;
         }
 
+        public void Add(int emotion, int addValue)
+        {
+            switch (emotion)
+            {
+                case 0: // Neutr
+                    neutral += addValue;
+                    break;
+                case 1: // Joie
+                    joy += addValue;
+                    break;
+                case 2: // Tristesse
+                    sadness += addValue;
+                    break;
+                case 3: // Degout
+                    disgust += addValue;
+                    break;
+                case 4: // Anger
+                    anger += addValue;
+                    break;
+                case 5: // Surprise
+                    surprise += addValue;
+                    break;
+                case 6: // Douceur
+                    sweetness += addValue;
+                    break;
+                case 7: // Peur
+                    fear += addValue;
+                    break;
+                case 8: // confiance
+                    trust += addValue;
+                    break;
+            }
+        }
+
         public void Clamp(int minValue, int maxValue)
         {
             this.joy = Mathf.Clamp(this.joy, minValue, maxValue);
@@ -290,6 +324,40 @@ namespace VoiceActing
             return 0;
         }
 
+        public int SetValue(int emotion, int newValue)
+        {
+            switch (emotion)
+            {
+                case 0: // Neutr
+                    neutral = newValue;
+                    break;
+                case 1: // Joie
+                    joy = newValue;
+                    break;
+                case 2: // Tristesse
+                    sadness = newValue;
+                    break;
+                case 3: // Degout
+                    disgust = newValue;
+                    break;
+                case 4: // Anger
+                    anger = newValue;
+                    break;
+                case 5: // Surprise
+                    surprise = newValue;
+                    break;
+                case 6: // Douceur
+                    sweetness = newValue;
+                    break;
+                case 7: // Peur
+                    fear = newValue;
+                    break;
+                case 8: // confiance
+                    trust = newValue;
+                    break;
+            }
+            return 0;
+        }
 
         public int GetLength()
         {

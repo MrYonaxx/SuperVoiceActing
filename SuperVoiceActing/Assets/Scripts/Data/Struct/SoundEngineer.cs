@@ -86,11 +86,17 @@ namespace VoiceActing
             engineerName = soundEngineer.EngineerName;
             level = soundEngineer.Level;
             experience = 0;
-            salary = soundEngineer.Salary;
+            salary = soundEngineer.InitialSalary;
             experienceCurve = soundEngineer.ExperienceCurve;
             artificeGauge = soundEngineer.ArtificeGauge;
             mixingPower = soundEngineer.MixingPower;
             spritesSheets = soundEngineer.SpritesSheets;
+        }
+
+        public void LevelUp()
+        {
+            level += 1;
+            mixingPower += 1;
         }
 
 

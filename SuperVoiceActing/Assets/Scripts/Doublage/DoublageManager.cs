@@ -636,6 +636,7 @@ namespace VoiceActing
                     if (currentLineNumber != null)
                         currentLineNumber.text = (indexPhrase).ToString();
                     emotionAttackManager.ResetCard();
+                    emotionAttackManager.StartTurnCardFeedback();
                     toneManager.ModifyTone(lastAttack);
                     roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
                     soundEngineerManager.ShowCharacterShadows();

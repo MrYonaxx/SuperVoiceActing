@@ -39,6 +39,12 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI[] textTone;
 
+
+        [SerializeField]
+        TextMeshProUGUI textMoodBonus;
+
+        private int moodBonus = 0;
+
         #endregion
 
         #region GettersSetters 
@@ -133,43 +139,37 @@ namespace VoiceActing
 
         public void ModifyTone(EmotionCard[] emotions)
         {
-            toneValue.Add(new EmotionStat(-1, -1, -1, -1, -1, -1, -1, -1));
+            EmotionStat toneAddValue = new EmotionStat(0,0,0,0,0,0,0,0);
+            EmotionStat toneSubstractValue = new EmotionStat(-1, -1, -1, -1, -1, -1, -1, -1);
             for (int i = 0; i < emotions.Length; i++)
             {
                 if (emotions[i] == null)
                     continue;
-                switch (emotions[i].GetEmotion())
-                {
-                   
-                    case Emotion.Joie:
-                        toneValue.Joy += 2;
-                        break;
-                    case Emotion.Tristesse:
-                        toneValue.Sadness += 2;
-                        break;
-                    case Emotion.Dégoût:
-                        toneValue.Disgust += 2;
-                        break;
-                    case Emotion.Colère:
-                        toneValue.Anger += 2;
-                        break;
-                    case Emotion.Surprise:
-                        toneValue.Surprise += 2;
-                        break;
-                    case Emotion.Douceur:
-                        toneValue.Sweetness += 2;
-                        break;
-                    case Emotion.Peur:
-                        toneValue.Fear += 2;
-                        break;
-                    case Emotion.Confiance:
-                        toneValue.Trust += 2;
-                        break;
-                }
+                if(i == 0)
+                    toneAddValue.Add((int)emotions[i].GetEmotion(), 2);
+                else
+                    toneAddValue.Add((int)emotions[i].GetEmotion(), 1);
+                toneSubstractValue.SetValue((int)emotions[i].GetEmotion(), 0);
             }
+            toneValue.Add(toneAddValue);
+            toneValue.Add(toneSubstractValue);
             toneValue.Clamp(0, 100);
             DrawTone();
             StopHighlight();
+        }
+
+        private void DrawMoodBonus()
+        {
+            textMoodBonus.gameObject.SetActive(true);
+            textMoodBonus.text = moodBonus.ToString() + "%";
+            /*if (moodBonus == 0)
+            {
+                textMoodBonus.gameObject.SetActive(false);
+            }
+            else
+            {
+            
+            }*/
         }
 
 
@@ -207,20 +207,25 @@ namespace VoiceActing
             }
             if(isHighlight == true)
             {
-                //toneSelected.rectTransform.offsetMax = new Vector2(0, 15);
-                toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 1);
+                if(toneSelected.color.a != 1)
+                    moodBonus += toneValue.GetEmotion((int)emotion);
+                toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 1);             
             }
             else
             {
                 //toneSelected.rectTransform.offsetMax = new Vector2(0, 0);
                 toneSelected.color = new Color(toneSelected.color.r, toneSelected.color.g, toneSelected.color.b, 0.6f);
+                moodBonus -= toneValue.GetEmotion((int)emotion);
             }
+            DrawMoodBonus();
         }
 
         private void StopHighlight()
         {
             for(int i = 0; i < toneTransform.Length; i++)
                 toneTransform[i].color = new Color(toneTransform[i].color.r, toneTransform[i].color.g, toneTransform[i].color.b, 0.6f);
+            moodBonus = 0;
+            DrawMoodBonus();
         }
         
         #endregion

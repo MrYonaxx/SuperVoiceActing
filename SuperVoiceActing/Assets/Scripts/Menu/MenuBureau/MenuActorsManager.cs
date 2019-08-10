@@ -277,9 +277,6 @@ namespace VoiceActing
             {
                 DrawActorStat(actorsList[indexActorSelected]);
             }
-
-
-
             buttonListTransform.anchoredPosition = new Vector2(0, 0);
         }
 
@@ -449,8 +446,8 @@ namespace VoiceActing
             StopAllCoroutines(); // sauf le scroll 
             for (int i = 0; i < textStatsActor.Length; i++)
             {
-                int currentStatActor = 0;
-                switch (i)
+                int currentStatActor = actor.Statistique.GetEmotion(i+1);
+                /*switch (i)
                 {
                     case 0:
                         currentStatActor = actor.Statistique.Joy;
@@ -476,7 +473,7 @@ namespace VoiceActing
                     case 7:
                         currentStatActor = actor.Statistique.Trust;
                         break;
-                }
+                }*/
 
 
                 if (gaugeCursorMode == false)
@@ -605,14 +602,6 @@ namespace VoiceActing
             {
                 yield break;
             }
-            /*int time2 = time/2;
-            Vector3 speed = new Vector3((1 - jaugeStat.transform.localScale.x) / Random.Range(time/2,time*1.5f), 0, 0);
-            while (time2 != 0)
-            {
-                time2 -= 1;
-                jaugeStat.transform.localScale += speed;
-                yield return null;
-            }*/
 
             Vector3 speed = new Vector3((target - jaugeStat.transform.localScale.x) / time, 0, 0);
             while (time != 0)
@@ -700,26 +689,18 @@ namespace VoiceActing
             {
                 if(actorsList[i].Name == newActorName)
                 {
-                    Debug.Log("allo");
                     indexActorSelected = i;
-                    //buttonsActors[indexActorSelected].SelectButton();
                     textMeshSelection.text = newActorName;
                     StartCoroutine(SelectionCoroutine());
-                    /*rectTransformSelection.anchoredPosition = new Vector2(500, buttonsActors[indexActorSelected].GetAnchoredPosition());
-                    Debug.Log(buttonsActors[indexActorSelected].GetAnchoredPosition());*/
-                    //DrawActorStat(actorsList[i]);
                     return;
                 }
             }
-            //buttonsActors[indexActorSelected].SelectButton();
-            //DrawActorStat(actorsList[indexActorSelected]);
         }
 
         private IEnumerator SelectionCoroutine()
         {
             yield return new WaitForEndOfFrame();
             DrawActorStat(actorsList[indexActorSelected]);
-            //animatorSelection.transform.position = buttonsActors[indexActorSelected].transform.position;
         }
 
 
@@ -937,15 +918,11 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
-            //buttonsActors[indexActorSelected].UnSelectButton();
             indexActorSelected -= 1;
             if(indexActorSelected <= -1)
             {
                 indexActorSelected = buttonsActors.Count-1;
-                //StopRepeat();
             }
-
-            //buttonsActors[indexActorSelected].SelectButton();
             if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
             {
                 DrawActorStat(null);
@@ -968,15 +945,11 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
-            //buttonsActors[indexActorSelected].UnSelectButton();
             indexActorSelected += 1;
             if (indexActorSelected >= buttonsActors.Count)
             {
                 indexActorSelected = 0;
-                //StopRepeat();
             }
-
-            //buttonsActors[indexActorSelected].SelectButton();
             if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
             {
                 DrawActorStat(null);
@@ -1069,11 +1042,6 @@ namespace VoiceActing
                 yield return null;
             }
             animatorSelection.transform.position = buttonsActors[indexActorSelected].transform.position;
-            //}
-            /*if(indexActorLimit == scrollSize)
-            {
-
-            }*/
 
         }
         
