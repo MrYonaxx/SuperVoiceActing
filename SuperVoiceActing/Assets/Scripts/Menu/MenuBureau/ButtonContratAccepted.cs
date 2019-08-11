@@ -56,6 +56,12 @@ namespace VoiceActing
         Image contractIcon;
         [SerializeField]
         RectTransform gaugeLine;
+        [SerializeField]
+        RectTransform gaugeMixing;
+        [SerializeField]
+        GameObject gameObjectLine;
+        [SerializeField]
+        GameObject gameObjectMixing;
 
         bool isButtonAddContract = false;
 
@@ -88,7 +94,26 @@ namespace VoiceActing
             contractWeekRemaining.text = contract.WeekRemaining.ToString();
             contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
             contractIcon.sprite = contract.IconSprite;
-            gaugeLine.transform.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), gaugeLine.transform.localScale.y, gaugeLine.transform.localScale.z);
+
+            if (contract.TotalLine <= 0)
+            {
+                gameObjectLine.SetActive(false);
+            }
+            else
+            {
+                gameObjectLine.SetActive(true);
+                gaugeLine.transform.localScale = new Vector2((contract.CurrentLine / (float)contract.TotalLine), gaugeLine.transform.localScale.y);
+            }
+
+            if(contract.TotalMixing <= 0)
+            {
+                gameObjectMixing.SetActive(false);
+            }
+            else
+            {
+                gameObjectMixing.SetActive(true);
+                gaugeMixing.transform.localScale = new Vector2((contract.CurrentMixing / (float)contract.TotalMixing), gaugeLine.transform.localScale.y);
+            }
         }
 
         public void SelectContract()

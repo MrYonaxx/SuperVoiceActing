@@ -204,8 +204,8 @@ namespace VoiceActing
                 if (contractInfoAnnex[i].CanAdd(currentContract) == true)
                 {
                     listAnnexTeamTech.Add(contractInfoAnnex[i]);
-                    listAnnexTeamTech[i].UnselectButton();
                 }
+                contractInfoAnnex[i].UnselectButton();
             }
             indexSelectedTeamTech = -1;
         }
@@ -393,6 +393,12 @@ namespace VoiceActing
             CheckButtonInSession();
         }
 
+        public void SetSoundEngi(SoundEngineer soundEngineer)
+        {
+            currentContract.SoundEngineer = soundEngineer;
+            contractInfoAnnex[indexSelectedTeamTech].DrawContract(currentContract);
+        }
+
         private void CheckButtonInSession()
         {
             if (currentContract.SessionLock == true)
@@ -474,6 +480,7 @@ namespace VoiceActing
                     indexSelectedTeamTech = -1;
                     indexSelected = currentContract.Characters.Count - 1;
                     listButtonRoles[indexSelected].SelectButton();
+                    DrawRoleInfo();
                     return;
                 }
                 listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
@@ -487,6 +494,7 @@ namespace VoiceActing
                     indexSelected = -1;
                     indexSelectedTeamTech = listAnnexTeamTech.Count - 1;
                     listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
+                    menuActorsManager.AuditionMode(false, null);
                     return;
                 }
                 listButtonRoles[indexSelected].SelectButton();
@@ -519,6 +527,7 @@ namespace VoiceActing
                     indexSelectedTeamTech = -1;
                     indexSelected = 0;
                     listButtonRoles[indexSelected].SelectButton();
+                    DrawRoleInfo();
                     return;
                 }
                 listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
@@ -532,6 +541,7 @@ namespace VoiceActing
                     indexSelected = -1;
                     indexSelectedTeamTech = 0;
                     listAnnexTeamTech[indexSelectedTeamTech].SelectButton();
+                    menuActorsManager.AuditionMode(false, null);
                     return;
                 }
                 listButtonRoles[indexSelected].SelectButton();

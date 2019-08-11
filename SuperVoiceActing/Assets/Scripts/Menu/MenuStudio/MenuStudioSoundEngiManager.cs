@@ -39,7 +39,11 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textSoundEngiLevel;
         [SerializeField]
-        TextMeshProUGUI textSoundEngi;
+        TextMeshProUGUI textSoundEngiSalary;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiMixage;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiTrickery;
 
 
 
@@ -50,16 +54,19 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textAuditionContractTitle;
         [SerializeField]
-        TextMeshProUGUI textAuditionContractMixingMax;
-        [SerializeField]
-        TextMeshProUGUI textAuditionContractMixingCurrent;
+        TextMeshProUGUI textAuditionContractMixingAdd;
 
         [SerializeField]
         RectTransform transformContractMixingProgress;
         [SerializeField]
         RectTransform transformContractMixingPreview;
 
+        [SerializeField]
+        MenuContractPreparation menuContractPreparation;
+
         [Title("Sound Engineer Button")]
+        [SerializeField]
+        InputController inputController;
         [SerializeField]
         Animator buttonAuditionSelection;
 
@@ -68,6 +75,8 @@ namespace VoiceActing
         List<SoundEngineer> soundEngineersList;
 
         bool auditionMode = false;
+        int auditionMaxMixing;
+
 
         #endregion
 
@@ -95,11 +104,11 @@ namespace VoiceActing
                 animatorAudition.gameObject.SetActive(true);
         }
 
-        private void QuitMenu()
+        public void QuitMenu()
         {
             animatorMenu.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
-
 
         public void SetSoundEngiList(List<SoundEngineer> soundEngineers)
         {
@@ -111,12 +120,25 @@ namespace VoiceActing
             soundEngineersList = soundEngineers;
         }
 
+
+
+
         public void DrawSoundEngi(SoundEngineer soundEngineer)
         {
             imageSoundEngiFace.sprite = soundEngineer.SpritesSheets.SpriteNormal[0];
             textSoundEngiName.text = soundEngineer.EngineerName;
             textSoundEngiLevel.text = soundEngineer.Level.ToString();
+            textSoundEngiSalary.text = soundEngineer.Salary.ToString();
+            textSoundEngiMixage.text = soundEngineer.MixingPower.ToString();
+            textSoundEngiTrickery.text = soundEngineer.ArtificeGauge.ToString();
+
+            if (auditionMode == true)
+                DrawSoundEngiPreview();
         }
+
+
+
+
 
 
         public void AuditionMode(bool b)
@@ -126,6 +148,27 @@ namespace VoiceActing
                 animatorAudition.gameObject.SetActive(false);
         }
 
+        public void DrawAudition(string contractTitle, Sprite contractType, int contractMixingCurrent, int contractMixingMax)
+        {
+            textAuditionContractTitle.text = contractTitle;
+            transformContractMixingProgress.localScale = new Vector2((float)contractMixingCurrent / contractMixingMax, transformContractMixingProgress.localScale.y);
+            auditionMaxMixing = contractMixingMax;
+            DrawSoundEngiPreview();
+        }
+
+        private void DrawSoundEngiPreview()
+        {
+            float size = (float)soundEngineersList[indexSelected].MixingPower / auditionMaxMixing;
+            if (size >= 1)
+                size = 1;
+            transformContractMixingPreview.localScale = new Vector2(size, transformContractMixingPreview.localScale.y);
+            textAuditionContractMixingAdd.text = "+" + soundEngineersList[indexSelected].MixingPower;
+        }
+
+
+
+
+
 
         public void Validate()
         {
@@ -134,20 +177,13 @@ namespace VoiceActing
                 return;
             }
             animatorSoundEngiFace.SetTrigger("Feedback");
-            StartCoroutine(WaitFeedback());
+            inputController.gameObject.SetActive(false);      
         }
 
-        private IEnumerator WaitFeedback()
+        public void SetSoundEngiToContract()
         {
-            //inputController.gameObject.SetActive(false);
-            int time = 20;
-            while (time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
-            //cameraManager.MoveToCamera(2);
-            //menuContractPreparation.SetActor(actorsList[indexActorSelected]);
+            menuContractPreparation.SetSoundEngi(soundEngineersList[indexSelected]);
+            inputController.gameObject.SetActive(true);
         }
 
         protected override void AfterSelection()
