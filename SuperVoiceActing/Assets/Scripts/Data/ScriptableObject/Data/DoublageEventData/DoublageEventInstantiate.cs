@@ -24,6 +24,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private bool instantiateUI = false;
+        public bool InstantiateUI
+        {
+            get { return instantiateUI; }
+        }
+
+        [SerializeField]
         private PostProcessingProfile newPostProcess;
         public PostProcessingProfile NewPostProcess
         {

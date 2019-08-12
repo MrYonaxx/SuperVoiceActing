@@ -24,6 +24,8 @@ namespace VoiceActing
         Transform defaultEnvironnement;
         [SerializeField]
         Transform newEnvironnementParent;
+        [SerializeField]
+        Transform UIParent;
 
         [SerializeField]
         PostProcessingBehaviour cameraPostProcess;
@@ -69,7 +71,11 @@ namespace VoiceActing
             }
             else
             {
-                listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, newEnvironnementParent));
+                if(data.InstantiateUI == false)
+                    listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, newEnvironnementParent));
+                else
+                    listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, UIParent));
+
                 if (data.NewPostProcess != null)
                     ChangePostProcess(data.NewPostProcess);
                 if (data.ChangeSceneRenderSetting == true)
