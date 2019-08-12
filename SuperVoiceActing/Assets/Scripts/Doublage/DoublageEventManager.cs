@@ -46,8 +46,6 @@ namespace VoiceActing
         [SerializeField]
         protected Transform[] defaultCharacterTransform;
 
-
-
         [Header("Tuto & Fin")]
         [SerializeField]
         protected GameObject popup;
@@ -63,6 +61,8 @@ namespace VoiceActing
         protected DoublageManager doublageManager;
         [SerializeField]
         protected StoryEventManager storyEventManager;
+        [SerializeField]
+        protected EventBackgroundManager eventBackgroundManager;
 
         [Header("Feedbacks")]
         [SerializeField]
@@ -343,6 +343,12 @@ namespace VoiceActing
                     else
                         doublageManager.ShowResultScreen();
 
+                }
+
+                else if (currentNode is DoublageEventInstantiate)
+                {
+                    eventBackgroundManager.InstantiateNewObject((DoublageEventInstantiate)currentNode);
+                    ExecuteEvent();
                 }
 
 
