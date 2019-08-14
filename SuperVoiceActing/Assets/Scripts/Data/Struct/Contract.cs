@@ -463,6 +463,18 @@ namespace VoiceActing
 
         }*/
 
+        public void ProgressMixing()
+        {
+            if(soundEngineer != null)
+            {
+                currentMixing += soundEngineer.GetMixingPower(this);
+                if(currentMixing > totalMixing)
+                {
+                    currentMixing = totalMixing;
+                }
+            }
+        }
+
         #endregion
 
     } // Contract class

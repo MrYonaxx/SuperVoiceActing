@@ -29,8 +29,6 @@ namespace VoiceActing
         [SerializeField]
         private PlayerData playerData;
 
-        // [AssetList(Path = "Plugins/Sirenix/")] pour chopper tout les asset d'un repertoire et remplir automatiquement un truc
-
         [SerializeField]
         private List<Contract> contractAcceptedList = new List<Contract>(3);
 
@@ -41,7 +39,8 @@ namespace VoiceActing
 
         int indexAcceptedList = 0;
 
-
+        [SerializeField]
+        InputController inputController;
 
         [Header("MenuManagers")]
         [SerializeField]
@@ -146,16 +145,20 @@ namespace VoiceActing
         }
 
         public void DrawAvailableContract()
-        {
+        {          
             buttonContractAccepted[0].gameObject.SetActive(true);
             buttonContractAccepted[0].SetButtonToAddContract();
+
+            for(int i = 1; i < buttonContractAccepted.Length; i++ )
+            {
+                buttonContractAccepted[i].gameObject.SetActive(false);
+            }
 
             // à voir si j'instancie des prefab, mais pour 5 objets on va faire simple
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
                 if(contractAcceptedList[i] != null)
                 {
-                    //contractAccepted[i].gameObject.SetActive(true);
                     buttonContractAccepted[i].DrawContract(contractAcceptedList[i]);
                     if (i + 1 < buttonContractAccepted.Length)
                     {
@@ -194,6 +197,7 @@ namespace VoiceActing
             }
         }
 
+        // ``A déplacer
         public void CheckCharacterLock(Contract newContract)
         {
             for(int i = 0; i < newContract.Characters.Count; i++)
@@ -219,6 +223,68 @@ namespace VoiceActing
                 }
             }
         }
+
+
+
+        public IEnumerator ProgressMixingContract()
+        {
+            for (int i = 0; i < contractAcceptedList.Count; i++)
+            {
+                if (contractAcceptedList[i] != null)
+                {
+                    contractAcceptedList[i].ProgressMixing();
+                    if(contractAcceptedList[i].SoundEngineer != null)
+                        yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
+                }
+            }
+        }
+
+
+
+        public void ActivateInput(bool b)
+        {
+            inputController.gameObject.SetActive(b);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        private void SwitchToMenuContractAvailable()
+        {
+            menuContractAvailable.gameObject.SetActive(true);
+            animatorMenu.SetBool("Appear", false);
+            this.gameObject.SetActive(false);
+        }
+
+        private void SwitchToMenuContractPreparation()
+        {
+            menuContractPreparation.gameObject.SetActive(true);
+            animatorMenu.SetBool("Appear", false);
+            this.gameObject.SetActive(false);
+        }
+
+        public void CheckPhoneEvent()
+        {
+            if (eventPhone == true)
+            {
+                this.gameObject.SetActive(false);
+                eventPhone = false;
+            }
+        }
+
+
+
+
+
+
 
 
 
@@ -284,28 +350,6 @@ namespace VoiceActing
 
 
 
-        private void SwitchToMenuContractAvailable()
-        {
-            menuContractAvailable.gameObject.SetActive(true);
-            animatorMenu.SetBool("Appear", false);
-            this.gameObject.SetActive(false);
-        }
-
-        private void SwitchToMenuContractPreparation()
-        {
-            menuContractPreparation.gameObject.SetActive(true);
-            animatorMenu.SetBool("Appear", false);
-            this.gameObject.SetActive(false);
-        }
-
-        public void CheckPhoneEvent()
-        {
-            if(eventPhone == true)
-            {
-                this.gameObject.SetActive(false);
-                eventPhone = false;
-            }
-        }
 
 
         #endregion

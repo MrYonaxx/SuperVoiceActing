@@ -145,6 +145,23 @@ namespace VoiceActing
             panelAddContract.SetActive(true);
         }
 
+
+
+
+        public IEnumerator CoroutineProgress(int newCurrentMixing, int totalMixing, int time = 120)
+        {
+            if (totalMixing == 0)
+                yield break;
+            Vector3 speed = new Vector3((((float)newCurrentMixing / totalMixing) - gaugeMixing.transform.localScale.x) / time, 0, 0);
+            while (time != 0)
+            {
+                gaugeMixing.transform.localScale += speed;
+                time -= 1;
+                yield return null;
+            }
+            contractMixage.text = newCurrentMixing + " / " + totalMixing;
+        }
+
         #endregion
     }
 }

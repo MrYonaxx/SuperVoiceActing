@@ -99,6 +99,15 @@ namespace VoiceActing
             mixingPower += 1;
         }
 
+        public int GetMixingPower(Contract contract)
+        {
+            return mixingPower;
+        }
+
+        public int GetMixingPower(ContractType contractType)
+        {
+            return mixingPower;
+        }
 
     } // SoundEngineer class
 	

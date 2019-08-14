@@ -1,0 +1,411 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: ClimClimaxLv2
+  m_EditorClassIdentifier: 
+  name: Clim-Climax
+  level: 2
+  contractType: 3
+  salaryMin: 3000
+  salaryMax: 3000
+  mixingMin: 10
+  mixingMax: 10
+  weekMin: 4
+  weekMax: 4
+  expGain: 50
+  expBonus: 0
+  contractTitle: []
+  contractDictionnary: []
+  description:
+  - "L'\xE9t\xE9 risque d'\xEAtre rude. Mais c'est sans compter sur Clim-Climax !\n\nSi
+    vos acteurs sont pr\xEAts \xE0 braver les d\xE9serts les plus chauds n'h\xE9sitez
+    pas \xE0 accepter d'enregistrer les voix de notre publicit\xE9 !"
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Aventurier
+      - "R\xF4deur du D\xE9sert"
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 20
+      atkMax: 20
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 10
+        disgust: 0
+        anger: 0
+        surprise: 15
+        sweetness: 0
+        fear: 10
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 16
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: 0
+        fear: 14
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: 23c95fd2762698540be4a33e932cf694, type: 2}
+      artificialIntelligence: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Marchand
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 10
+      atkMax: 10
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: De l'eau... de l'eau...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: 50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+    - text: J'ai... soif...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: 50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+    - text: Je meurs... la chaleur...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: 50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+    - text: Je vais y passer...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 100
+        disgust: 50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+    - text: Ho ! Un oasis ? Un mirage ?
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 10
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
+        disgust: -50
+        anger: -50
+        surprise: 100
+        sweetness: -50
+        fear: 50
+        trust: -90
+      enemyWeakPoints: []
+    - text: "Non ? C'est bien r\xE9el !?"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 10
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
+        disgust: -50
+        anger: -50
+        surprise: 100
+        sweetness: -50
+        fear: 20
+        trust: -90
+      enemyWeakPoints: []
+    - text: Ce ... Ce vent de fraicheur !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: -90
+        anger: -90
+        surprise: 100
+        sweetness: 0
+        fear: -50
+        trust: -50
+      enemyWeakPoints: []
+    - text: Je ressucite !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -80
+        disgust: -80
+        anger: -80
+        surprise: 100
+        sweetness: 0
+        fear: -80
+        trust: 0
+      enemyWeakPoints: []
+    - text: Bienvenue dans mon Oasis de plaisir !
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+    - text: Mais la carte n'indiquait pas d'oasis...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 18
+        hpMax: 25
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 100
+        sweetness: 40
+        fear: 10
+        trust: -50
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "C'est ma foi fort simple, c'est gr\xE2ce \xE0 notre Climatisation !"
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: 50
+        sweetness: 100
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+    - text: "Voyez vous la Clim-Climax n\xE9cessite simplement de piles pour fonctionner."
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -91
+        disgust: -90
+        anger: -91
+        surprise: -91
+        sweetness: 100
+        fear: -91
+        trust: 100
+      enemyWeakPoints: []
+    - text: "La poign\xE9e sur le c\xF4t\xE9 vous permettra de la transporter avec
+        vous."
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+    - text: "Et ainsi, vous pourrez braver les d\xE9serts les plus chauds."
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 30
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -90
+        disgust: -90
+        anger: 0
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+    - text: "Je vous en ach\xE8te 10 !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 25
+      enemyResistance:
+        neutral: 0
+        joy: 120
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: 50
+      enemyWeakPoints: []
+    - text: "Clim-Climax, profitez de notre offre de r\xE9duction de -20% pour affronter
+        l'\xE9t\xE9."
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 60
+      enemyResistance:
+        neutral: 50
+        joy: 20
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: 50
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+  eventData:
+  - {fileID: 11400000, guid: e21f9ef0c0eebc64b8c68ff7033ae1f3, type: 2}
+  - {fileID: 11400000, guid: e3f35d6e7e54bd14aabad8053c854885, type: 2}
+  - {fileID: 11400000, guid: e4361b3548cb6a24a9edde3c899fcaa8, type: 2}
+  eventAcceptedContract: {fileID: 11400000, guid: 7e0fe9de7c0abea45bfaf35f83bd4473,
+    type: 2}
+  eventEndContract: {fileID: 11400000, guid: 026264962fdf6514fa6238a3a0fb13f4, type: 2}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

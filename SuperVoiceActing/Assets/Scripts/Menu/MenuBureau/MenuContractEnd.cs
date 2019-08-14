@@ -66,7 +66,9 @@ namespace VoiceActing
             for(int i = 0; i < 8; i++)
             {
                 statGain = 0;
-                switch (i)
+                statRole = role.CharacterStat.GetEmotion(i + 1);
+                statActor = voiceActor.Statistique.GetEmotion(i + 1);
+                /*switch (i)
                 {
                     case 0:
                         statRole = role.CharacterStat.Joy;
@@ -101,7 +103,7 @@ namespace VoiceActing
                         statActor = voiceActor.Statistique.Trust;
                         break;
 
-                }
+                }*/
 
                 if (statRole == role.BestStat)
                     multiplier = 3;
@@ -159,36 +161,7 @@ namespace VoiceActing
             CalculateContractReward(contract);
         }
 
-        public bool CheckContractDone(PlayerData playerData)
-        {
-            bool b = false;
-            for (int i = 0; i < playerData.ContractAccepted.Count; i++)
-            {
-                if (playerData.ContractAccepted[i] != null)
-                {
-                    if (playerData.ContractAccepted[i].CurrentLine == playerData.ContractAccepted[i].TotalLine)
-                    {
-                        if (playerData.ContractAccepted[i].CurrentMixing == playerData.ContractAccepted[i].TotalMixing)
-                        {
-                            b = true;
-                            contractsEnd.Add(playerData.ContractAccepted[i]);
-                            CalculTotalScore(playerData.ContractAccepted[i]);
-                            playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
-                            playerData.ContractAccepted.RemoveAt(i);
-                            playerData.ContractAccepted.Add(null);
-                        }
-                    }
-                }
-            }
-            if (b == true)
-            {
-                animatorEnd.gameObject.SetActive(true);
-                DrawAllContracts();
-            }
-            return b;
-        }
 
-        // ========================================================================
 
         public void CalculateContractReward(Contract contract)
         {
@@ -212,11 +185,46 @@ namespace VoiceActing
             {
                 textScoreTotal.text = "SUPER !";
                 bonusMoney = contract.Money * (((float)contract.Score / contract.HighScore) - 0.7f);
-            }          
+            }
             totalRevenu += contract.Money + (int)bonusMoney;
-            contract.MoneyBonus = (int) bonusMoney;
+            contract.MoneyBonus = (int)bonusMoney;
 
         }
+
+
+
+        // ========================================================================
+
+        public bool CheckContractDone(PlayerData playerData)
+        {
+            bool b = false;
+            for (int i = 0; i < playerData.ContractAccepted.Count; i++)
+            {
+                if (playerData.ContractAccepted[i] != null)
+                {
+                    if (playerData.ContractAccepted[i].CurrentLine == playerData.ContractAccepted[i].TotalLine)
+                    {
+                        if (playerData.ContractAccepted[i].CurrentMixing == playerData.ContractAccepted[i].TotalMixing)
+                        {
+                            b = true;
+                            contractsEnd.Add(playerData.ContractAccepted[i]);
+                            CalculTotalScore(playerData.ContractAccepted[i]);
+                            playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
+                            playerData.ContractAccepted[i] = null;//.RemoveAt(i);
+                            //playerData.ContractAccepted.Add(null);
+                        }
+                    }
+                }
+            }
+            if (b == true)
+            {
+                this.gameObject.SetActive(true);
+                animatorEnd.gameObject.SetActive(true);
+                DrawAllContracts();
+            }
+            return b;
+        }
+
 
 
         public void DrawAllContracts()
@@ -257,7 +265,6 @@ namespace VoiceActing
                 animatorEnd.SetTrigger("Disappear");
                 moneyManager.AddSalaryDatas("Revenu", totalRevenu);
             }
-
             else
                 animatorEnd.SetTrigger("Slide");
 

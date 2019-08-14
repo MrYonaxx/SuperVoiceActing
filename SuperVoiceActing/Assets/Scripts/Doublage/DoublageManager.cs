@@ -763,6 +763,15 @@ namespace VoiceActing
                 yield return new WaitForSeconds(0.5f);
             }
             // Role Decision ======================================================================
+            if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
+            {
+                producerManager.ProducerAttackActivation();
+                endAttack = false;
+                while (endAttack == false)
+                {
+                    yield return null;
+                }
+            }
             roleManager.RoleDecision("STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage());
             if (roleManager.IsAttacking() == true)
             {

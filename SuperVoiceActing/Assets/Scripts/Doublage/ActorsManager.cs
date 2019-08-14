@@ -95,7 +95,7 @@ namespace VoiceActing
 
 
         private int indexCurrentActor = 0;
-        private int[] actorsResistance = { 0, 0, 0 };
+        private int[] actorsResistance = { 100, 100, 100 };
         private int[] actorsHealthRegain = { 0, 0, 0 };
         int attackDamage = 0;
 
@@ -496,8 +496,9 @@ namespace VoiceActing
 
         public void AddAttackDamage(int roleAttack, float emotionMultiplier)
         {
-            attackDamage += (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            attackDamage -= (int)(attackDamage * (actorsResistance[indexCurrentActor] / 100f));
+            int damageTmp = (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            damageTmp = (int)(damageTmp * (actorsResistance[indexCurrentActor] / 100f));
+            attackDamage += damageTmp;
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization();
             animatorDamage.SetBool("Appear", true);
@@ -505,9 +506,9 @@ namespace VoiceActing
 
         public void RemoveAttackDamage(int roleAttack, float emotionMultiplier)
         {
-            attackDamage -= (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            attackDamage -= (int)(attackDamage * (actorsResistance[indexCurrentActor] / 100f));
-            //textDamage.enabled = true;
+            int damageTmp = (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            damageTmp = (int)(damageTmp * (actorsResistance[indexCurrentActor] / 100f));
+            attackDamage -= damageTmp;
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization();
         }
@@ -524,10 +525,10 @@ namespace VoiceActing
             {
                 effectManagerDeath.BlurScreen(true);
             }
-            else
+            /*else
             {
                 effectManagerDeath.BlurScreen(false);
-            }
+            }*/
         }
 
 
