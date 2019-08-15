@@ -20,9 +20,9 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Camera Center")]
-        [SerializeField]
-        Camera camera;
+        /*[Header("Camera Center")]
+        [SerializeField]*/
+        Camera cameraComponent;
 
         [Header("Camera Center")]
         [SerializeField]
@@ -35,10 +35,10 @@ namespace VoiceActing
         Transform enemyPosition;
         [SerializeField]
         Transform actorSwitchPosition;
-        [SerializeField]
+        /*[SerializeField]
         float offsetZ = 0;
         [SerializeField]
-        float offsetX = 0;
+        float offsetX = 0;*/
 
         [Header("Text")]
         [SerializeField]
@@ -109,6 +109,7 @@ namespace VoiceActing
         {
             if(text != null)
                 textInitialPosition = text.transform.position;
+            cameraComponent = GetComponent<Camera>();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -628,15 +629,15 @@ namespace VoiceActing
 
         private IEnumerator OrthographicSizeTransition(float addValue, int time)
         {
-            float rate = ((65 + addValue) - camera.fieldOfView) / time;
+            float rate = ((65 + addValue) - cameraComponent.fieldOfView) / time;
             while (time != 0)
             {
-                camera.fieldOfView += rate;
+                cameraComponent.fieldOfView += rate;
                 time -= 1;
                 yield return null;
             }
 
-            camera.orthographicSize = 65 + addValue;
+            cameraComponent.orthographicSize = 65 + addValue;
             //orthographicCoroutine = null;
         }
 
@@ -876,24 +877,27 @@ namespace VoiceActing
             StartCoroutine(ChangeCameraRect(newX, newY, newWidth, newHeight, time));
         }
 
+
+
+        // Obsolete
         private IEnumerator ChangeCameraRect(float x, float y, float width, float height, float time)
         {
-            float speedX = (x - camera.rect.x) / time;
-            float speedY = (y - camera.rect.y) / time;
-            float speedWidth = (width - camera.rect.width) / time;
-            float speedHeight = (height - camera.rect.height) / time;
-            Rect rect = camera.rect;
+            float speedX = (x - cameraComponent.rect.x) / time;
+            float speedY = (y - cameraComponent.rect.y) / time;
+            float speedWidth = (width - cameraComponent.rect.width) / time;
+            float speedHeight = (height - cameraComponent.rect.height) / time;
+            Rect rect = cameraComponent.rect;
             while (time != 0)
             {
                 rect.x += speedX;
                 rect.width += speedWidth;
                 rect.y += speedY;
                 rect.height += speedHeight;
-                camera.rect = rect;
+                cameraComponent.rect = rect;
                 time -= 1;
                 yield return null;
             }
-            camera.rect = new Rect(x, y, width, height);
+            cameraComponent.rect = new Rect(x, y, width, height);
         }
 
 

@@ -133,7 +133,7 @@ namespace VoiceActing
 
         public void PlaySound(AudioClip sound, float volumeMultiplier = 1)
         {
-            audioSound.PlayOneShot(sound, volumeMultiplier);
+            audioSound.PlayOneShot(sound, soundVolumeMax * volumeMultiplier);
         }
 
 

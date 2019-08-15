@@ -119,10 +119,10 @@ namespace VoiceActing
         // ===========================
         // Menu Input (Sans doute mettre dans une classe parent mais flemme)
         [Header("Menu Input")]
-        [SerializeField]
+        /*[SerializeField]
         private int scrollSize = 8;
         [SerializeField]
-        private int buttonSize = 85; // à voir si on peut pas automatiser
+        private int buttonSize = 85;*/ // à voir si on peut pas automatiser
         [SerializeField]
         private int timeBeforeRepeat = 10;
         [SerializeField]
@@ -131,9 +131,9 @@ namespace VoiceActing
         private int currentTimeBeforeRepeat = -1;
         private int currentRepeatInterval = -1;
         private int lastDirection = 0; // 2 c'est bas, 8 c'est haut (voir numpad)
-        private int indexLimit = 0;
+        //private int indexLimit = 0;
 
-        private IEnumerator coroutineScroll = null;
+        //private IEnumerator coroutineScroll = null;
         // ===========================
 
 

@@ -26,7 +26,7 @@ namespace VoiceActing
         [Header("-------------------------------------------------------------")]
         [Header("Changement d'ambiance")]
         [SerializeField]
-        Light light;
+        Light lightAmbient;
         [SerializeField]
         SpriteRenderer spriteRendererCharacterDoremi;
         [SerializeField]
@@ -164,7 +164,7 @@ namespace VoiceActing
                 }
                 color -= new Color(speedColor, speedColor, speedColor, 0);
                 spriteRendererCharacterDoremi.color = color;
-                light.intensity -= speedLight;
+                lightAmbient.intensity -= speedLight;
                 time -= 1;
                 yield return null;
 

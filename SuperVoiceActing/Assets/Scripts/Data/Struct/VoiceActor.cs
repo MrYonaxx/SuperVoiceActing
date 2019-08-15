@@ -35,15 +35,15 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [Header(" Informations générales")]
         [SerializeField]
-        private string name;
+        //private string name;
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return spriteSheets.GetName(); }
         }
 
+
+        [Header(" Informations générales")]
         [SerializeField]
         private int fan;
         public int Fan
@@ -279,7 +279,7 @@ namespace VoiceActing
 
         public VoiceActor(VoiceActorData actorData)
         {
-            name = actorData.Name;
+            //name = actorData.Name;
             level = actorData.Level;
             fan = actorData.Fan;
             price = actorData.Price;

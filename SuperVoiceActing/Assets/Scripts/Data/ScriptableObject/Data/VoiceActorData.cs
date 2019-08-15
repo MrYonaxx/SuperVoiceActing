@@ -22,14 +22,15 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Informations générales")]
-        [SerializeField]
-        private string name;
+
+        /*[SerializeField]
+        private string name;*/
         public string Name
         {
-            get { return name; }
+            get { return spriteSheets.GetName(); }
         }
 
+        [Header("Informations générales")]
         [SerializeField]
         private int fan;
         public int Fan
@@ -194,27 +195,7 @@ namespace VoiceActing
 
         #endregion
 
-        #region GettersSetters 
 
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-
-
-        #endregion
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
-
-        public void GainExp(float exp)
-        {
-
-        }
-        
-        #endregion
 
     } // VoiceActorData class
 

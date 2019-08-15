@@ -92,6 +92,8 @@ namespace VoiceActing
             contractLine.text = contract.CurrentLine + " / " + contract.TotalLine;
             contractMixage.text = contract.CurrentMixing + " / " + contract.TotalMixing;
             contractWeekRemaining.text = contract.WeekRemaining.ToString();
+            if (contract.WeekRemaining <= 2)
+                contractWeekRemaining.color = Color.yellow;
             contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
             contractIcon.sprite = contract.IconSprite;
 

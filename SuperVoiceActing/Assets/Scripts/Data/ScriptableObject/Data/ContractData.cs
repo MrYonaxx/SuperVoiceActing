@@ -271,10 +271,10 @@ namespace VoiceActing
 
         [Title("Info")]
         [SerializeField]
-        private string name;
+        private string contractName;
         public string Name
         {
-            get { return name; }
+            get { return contractName; }
         }
 
         [HorizontalGroup("Level")]
@@ -354,15 +354,9 @@ namespace VoiceActing
             get { return expBonus; }
         }
 
+
+
         [Space]
-        [SerializeField]
-        private string[] contractTitle;
-        public string[] ContractTitle
-        {
-            get { return contractTitle; }
-        }
-
-
         [HorizontalGroup("Dictionnaire")]
         [SerializeField]
         ContractDictionnary[] contractDictionnary;
@@ -370,7 +364,7 @@ namespace VoiceActing
         {
             get { return contractDictionnary; }
         }
-
+        [Space]
         [HorizontalGroup("Dictionnaire")]
         [TextArea]
         [SerializeField]

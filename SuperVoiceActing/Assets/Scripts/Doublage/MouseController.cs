@@ -68,6 +68,10 @@ namespace VoiceActing
         protected void Start()
         {
             scrollValue = Input.GetAxis("Mouse ScrollWheel");
+            if(scrollValue == 0)
+            {
+                scrollValue = 1;
+            }
         }
 
         protected void Update()

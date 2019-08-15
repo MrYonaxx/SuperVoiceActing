@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: VoitureLv1
   m_EditorClassIdentifier: 
-  name: Nouvelle voiture [Nom]
+  contractName: Nouvelle voiture [Nom]
   level: 1
   contractType: 3
   salaryMin: 2000
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 4
   expGain: 25
   expBonus: 0
-  contractTitle: []
   contractDictionnary:
   - nameID: '[Nom]'
     namesDictionnary:
@@ -40,6 +39,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - "P\xE8re"
+      roleSprite: {fileID: 0}
       lineMin: 20
       lineMax: 50
       fanMin: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
         fear: 0
         trust: 3
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -86,10 +87,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -107,10 +104,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -128,10 +121,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -157,10 +146,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 18
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -80
@@ -178,10 +163,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -80
@@ -207,10 +188,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -80
@@ -223,26 +200,12 @@ MonoBehaviour:
         trust: 20
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Bien s\xFBr."
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 17
         hpMax: 21
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -80
@@ -260,10 +223,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -80
@@ -281,10 +240,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 17
         hpMax: 21
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -80
@@ -302,10 +257,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 26
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -323,10 +274,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 18
         hpMax: 22
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -342,6 +289,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}

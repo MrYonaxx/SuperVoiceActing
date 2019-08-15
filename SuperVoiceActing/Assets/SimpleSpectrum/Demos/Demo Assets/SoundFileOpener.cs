@@ -16,7 +16,7 @@ public class SoundFileOpener : MonoBehaviour {
 #endif
     }
 
-    public void PlayFile()
+    /*public void PlayFile()
     {
         WWW w = new WWW(pathBox.text);
         while (!w.isDone){ } //shh... don't tell anyone
@@ -25,5 +25,5 @@ public class SoundFileOpener : MonoBehaviour {
         AudioClip clip = w.GetAudioClip(true,false);
         GetComponent<AudioSource>().clip = clip;
         GetComponent<AudioSource>().Play();
-    }
+    }*/
 }

@@ -91,8 +91,8 @@ namespace VoiceActing
             { 15, "Confiance" }
         };
 
-        bool sortDecroissant = true;
-        bool sortAvailability = false;
+        /*bool sortDecroissant = true;
+        bool sortAvailability = false;*/
         
         #endregion
 

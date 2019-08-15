@@ -439,7 +439,7 @@ namespace VoiceActing
                         continue;
 
                     // Retrieve the pre-computed animation data for the given character.
-                    VertexAnim vertAnim = vertexAnim[i];
+                    //VertexAnim vertAnim = vertexAnim[i];
 
                     // Get the index of the material used by the current character.
                     int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
@@ -673,7 +673,7 @@ namespace VoiceActing
             {
                 for (int i = 0; i < characterCount; i++)
                 {
-                    TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
+                    //TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
                     int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
                     int vertexIndex = textInfo.characterInfo[i].vertexIndex;
 
@@ -728,7 +728,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < characterCount; i++)
             {
-                TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
+                //TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
                 int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
                 int vertexIndex = textInfo.characterInfo[i].vertexIndex;
 

@@ -76,7 +76,8 @@ namespace VoiceActing
 
             textContractCurrentLine.text = contract.CurrentLine.ToString();
             textContractTotalLine.text = contract.TotalLine.ToString();
-            rectTransformLineProgress.localScale = new Vector3((float)contract.CurrentLine / contract.TotalLine, rectTransformLineProgress.localScale.y, rectTransformLineProgress.localScale.z);
+            if(contract.TotalLine > 0)
+                rectTransformLineProgress.localScale = new Vector3((float)contract.CurrentLine / contract.TotalLine, rectTransformLineProgress.localScale.y, rectTransformLineProgress.localScale.z);
         }
 
 

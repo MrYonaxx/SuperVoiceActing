@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: ContratTutoriel
   m_EditorClassIdentifier: 
-  name: Tutoriel
+  contractName: Tutoriel
   level: 0
   contractType: 0
   salaryMin: 0
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
-  contractTitle: []
   contractDictionnary: []
   description: []
   characters:
@@ -32,6 +31,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - '...'
+      roleSprite: {fileID: 0}
       lineMin: 0
       lineMax: 0
       fanMin: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: 2d5e822918d9a7249a98f9c961d32b08, type: 2}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -78,10 +79,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 1000
@@ -99,10 +96,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -100
@@ -120,10 +113,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -100

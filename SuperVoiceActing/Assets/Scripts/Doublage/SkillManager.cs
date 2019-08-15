@@ -104,7 +104,7 @@ namespace VoiceActing
 
 
         ActorsManager actorsManager;
-        RoleManager roleManager;
+        //RoleManager roleManager;
         EnemyManager enemyManager;
 
 
@@ -150,7 +150,7 @@ namespace VoiceActing
             cameraController = cC;
             emotionAttackManager = eAM;
             actorsManager = aM;
-            roleManager = rM;
+            //roleManager = rM;
             enemyManager = eM;
             initialSkillPosition = panelDoubleurPotential.localPosition;
         }

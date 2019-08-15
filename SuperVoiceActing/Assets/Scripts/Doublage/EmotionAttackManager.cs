@@ -214,7 +214,7 @@ namespace VoiceActing
         Emotion[] comboEmotion;
         int comboCount = -1;
         int comboMax = 3;
-        private IEnumerator transitionCoroutine = null;
+        //private IEnumerator transitionCoroutine = null;
 
         #endregion
 

@@ -176,6 +176,8 @@ namespace VoiceActing
         public void SetTitle()
         {
             name = dataBox.GetBoxTitle();
+            if (name == null)
+                name = " ";
         }
 
     }

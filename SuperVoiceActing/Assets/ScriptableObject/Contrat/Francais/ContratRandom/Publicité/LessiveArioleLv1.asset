@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LessiveArioleLv1
   m_EditorClassIdentifier: 
-  name: Lessive [Nom]
+  contractName: Lessive [Nom]
   level: 1
   contractType: 3
   salaryMin: 1500
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 9
   expGain: 20
   expBonus: 20
-  contractTitle: []
   contractDictionnary:
   - nameID: '[Nom]'
     namesDictionnary:
@@ -40,6 +39,7 @@ MonoBehaviour:
       - "Bact\xE9rie"
       - "T\xE2che"
       - Microbe
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 50
       fanMin: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
         fear: 5
         trust: 0
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -86,10 +87,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 14
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -30
         joy: 10
@@ -102,27 +99,7 @@ MonoBehaviour:
         trust: -50
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 5
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -137,10 +114,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 13
         hpMax: 17
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -158,10 +131,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 13
         hpMax: 17
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -179,10 +148,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 13
         hpMax: 17
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -208,10 +173,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: -30
@@ -224,26 +185,12 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: Surtout la lessive de la marque [Nom] !
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 15
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: 0
@@ -256,16 +203,6 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 6
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -280,10 +217,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: -30
@@ -296,26 +229,12 @@ MonoBehaviour:
         trust: -50
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Qui illumine vos v\xEAtements et votre vie."
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: -50
@@ -341,10 +260,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -100
@@ -363,10 +278,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: -50
@@ -379,16 +290,6 @@ MonoBehaviour:
         trust: -80
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -403,10 +304,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: -50
@@ -419,26 +316,12 @@ MonoBehaviour:
         trust: -50
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "La lessive [Nom], pour des v\xEAtements d'un blanc... Eclatant."
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -451,27 +334,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 8
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

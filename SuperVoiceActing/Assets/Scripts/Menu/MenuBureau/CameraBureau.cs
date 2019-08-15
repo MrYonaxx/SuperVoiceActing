@@ -55,7 +55,7 @@ namespace VoiceActing
         private IEnumerator coroutine = null;
         private IEnumerator orthographicCoroutine = null;
 
-        Camera camera;
+        Camera cameraDekstop;
 
         #endregion
 
@@ -75,7 +75,7 @@ namespace VoiceActing
         \* ======================================== */
         private void Start()
         {
-            camera = GetComponent<Camera>();
+            cameraDekstop = GetComponent<Camera>();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -389,14 +389,14 @@ namespace VoiceActing
 
         private IEnumerator OrthographicSizeTransition(float addValue, float time = 20)
         {
-            float rate = ((65 + addValue) - camera.fieldOfView) / time;
+            float rate = ((65 + addValue) - cameraDekstop.fieldOfView) / time;
             while (time != 0)
             {
-                camera.fieldOfView += rate;
+                cameraDekstop.fieldOfView += rate;
                 time -= 1;
                 yield return null;
             }
-            camera.fieldOfView = 65 + addValue;
+            cameraDekstop.fieldOfView = 65 + addValue;
             orthographicCoroutine = null;
         }
 

@@ -39,7 +39,7 @@ namespace VoiceActing
         RectTransform positionDisappear;
 
 
-        RectTransform transform;
+        RectTransform transformPopup;
 
         [SerializeField]
         float speedPopupText = 15;
@@ -69,7 +69,7 @@ namespace VoiceActing
 
         private void Start()
         {
-            transform = GetComponent<RectTransform>();
+            transformPopup = GetComponent<RectTransform>();
         }
 
 
@@ -87,11 +87,11 @@ namespace VoiceActing
 
         private IEnumerator PanelScrollCoroutine(float time)
         {
-            this.transform.SetParent(positionAppear);
+            transformPopup.SetParent(positionAppear);
             float speedScale = 1 / time;
             while (time != 0)
             {
-                this.transform.anchoredPosition /= 1.1f;
+                transformPopup.anchoredPosition /= 1.1f;
                 
                 if(textPopup.transform.localScale.y < 1)
                     textPopup.transform.localScale += new Vector3(0, speedScale, 0);
@@ -99,9 +99,9 @@ namespace VoiceActing
                 yield return null;
             }
 
-            while (this.transform.anchoredPosition != Vector2.zero)
+            while (transformPopup.anchoredPosition != Vector2.zero)
             {
-                this.transform.anchoredPosition /= 1.1f;
+                transformPopup.anchoredPosition /= 1.1f;
                 yield return null;
             }
         }
@@ -121,7 +121,7 @@ namespace VoiceActing
 
         private IEnumerator PanelHideCoroutine(float time)
         {
-            this.transform.SetParent(positionDisappear);
+            transformPopup.SetParent(positionDisappear);
             float speedScale = 1 / time;
             while (time != 0)
             {
@@ -131,11 +131,9 @@ namespace VoiceActing
                 yield return null;
             }
 
-
-            //this.transform.SetParent(positionDisappear);
-            while (this.transform.anchoredPosition != Vector2.zero)
+            while (transformPopup.anchoredPosition != Vector2.zero)
             {
-                this.transform.anchoredPosition /= 1.1f;
+                transformPopup.anchoredPosition /= 1.1f;
                 yield return null;
             }
         }

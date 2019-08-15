@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: ContratTutoriel2
   m_EditorClassIdentifier: 
-  name: 
+  contractName: Tutoriel 2
   level: 0
   contractType: 0
   salaryMin: 0
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
-  contractTitle: []
   contractDictionnary: []
   description: []
   characters:
@@ -32,6 +31,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Princesse Muffin
+      roleSprite: {fileID: 0}
       lineMin: 0
       lineMax: 0
       fanMin: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -78,10 +79,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 25
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 100
@@ -99,10 +96,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 50
         hpMax: 50
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 90
@@ -115,16 +108,6 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData:
   - {fileID: 11400000, guid: 13fb34b8b0f098c4091b6bda73cceb38, type: 2}
   - {fileID: 11400000, guid: e92c5fb8b5328a44d80ba78ab9632b5e, type: 2}

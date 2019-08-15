@@ -23,15 +23,15 @@ namespace VoiceActing
         \* ======================================== */
         [SerializeField]
         EmotionStat toneMultiplier;
-        [SerializeField]
-        float toneMaxValue = 800.0f;
+        /*[SerializeField]
+        float toneMaxValue = 800.0f;*/
 
         [SerializeField]
         EmotionStat toneValue;
 
-        [SerializeField]
+        /*[SerializeField]
         [InfoBox("Toujours un int multiple de 8")]
-        int toneAddValue = 8;
+        int toneAddValue = 8;*/
 
         [Header("Transforms")]
         [SerializeField]

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: EntrepriseEkavoxStory
   m_EditorClassIdentifier: 
-  name: Entreprise Ekavox
+  contractName: Entreprise Ekavox
   level: 1
   contractType: 0
   salaryMin: 1250
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 3
   expGain: 20
   expBonus: 50
-  contractTitle: []
   contractDictionnary: []
   description:
   - "Nous r\xE9alisons un film \xE0 l'attention de nos employ\xE9s pour notre Entreprise
@@ -34,6 +33,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Narrateur
+      roleSprite: {fileID: 0}
       lineMin: 12
       lineMax: 60
       fanMin: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
         fear: 9
         trust: 7
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -80,10 +81,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -50
@@ -96,26 +93,12 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: Les carries...
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -50
@@ -128,16 +111,6 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -152,10 +125,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -50
@@ -168,37 +137,13 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 6
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: Il arrive qu'elles provoquent la mort.
       textStats:
         interlocuteurID: 0
         linked: 2
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -50
@@ -211,37 +156,13 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 5
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "La mort de la dignit\xE9"
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -50
@@ -254,27 +175,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 0
@@ -290,10 +191,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 11
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 60
@@ -319,10 +216,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -340,10 +233,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -362,10 +251,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50

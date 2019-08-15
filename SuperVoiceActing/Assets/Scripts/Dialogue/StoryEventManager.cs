@@ -81,7 +81,7 @@ namespace VoiceActing
         Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
 
-        private IEnumerator coroutineStory = null;
+        //private IEnumerator coroutineStory = null;
         private IEnumerator coroutineAnimName = null;
 
         StoryEvent currentNode;

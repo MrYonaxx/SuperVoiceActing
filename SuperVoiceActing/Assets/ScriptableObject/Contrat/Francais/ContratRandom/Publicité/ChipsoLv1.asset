@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: ChipsoLv1
   m_EditorClassIdentifier: 
-  name: Chipso [Nom]
+  contractName: Chipso [Nom]
   level: 2
   contractType: 3
   salaryMin: 3000
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 5
   expGain: 30
   expBonus: 0
-  contractTitle: []
   contractDictionnary:
   - nameID: '[Nom]'
     namesDictionnary:
@@ -43,6 +42,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Narrateur
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
       fanMin: 33
@@ -72,6 +72,7 @@ MonoBehaviour:
         fear: 0
         trust: 2
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -89,10 +90,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -30
         joy: 30
@@ -105,26 +102,12 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Et oui ! Chipso D\xE9ssert !"
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 20
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: 50
@@ -150,10 +133,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -171,10 +150,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -192,10 +167,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -221,10 +192,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 25
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -100
         joy: 80
@@ -250,10 +217,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 1
         hpMax: 1
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 100
@@ -271,10 +234,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 80
@@ -300,10 +259,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -50
         joy: 0
@@ -329,10 +284,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 25
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -90
         joy: 80
@@ -347,6 +298,8 @@ MonoBehaviour:
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}

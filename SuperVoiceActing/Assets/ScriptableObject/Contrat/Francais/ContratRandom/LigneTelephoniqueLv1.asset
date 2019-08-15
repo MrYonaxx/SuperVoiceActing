@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LigneTelephoniqueLv1
   m_EditorClassIdentifier: 
-  name: "Ligne T\xE9l\xE9phonique [Nom]"
+  contractName: "Ligne T\xE9l\xE9phonique [Nom]"
   level: 1
   contractType: 3
   salaryMin: 1500
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 8
   expGain: 27
   expBonus: 30
-  contractTitle: []
   contractDictionnary:
   - nameID: '[Nom]'
     namesDictionnary:
@@ -37,6 +36,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - "R\xE9pondeur"
+      roleSprite: {fileID: 0}
       lineMin: 20
       lineMax: 50
       fanMin: 0
@@ -66,6 +66,7 @@ MonoBehaviour:
         fear: 2
         trust: 6
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -83,10 +84,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 7
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -112,10 +109,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 8
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -133,10 +126,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 8
         hpMax: 14
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -162,10 +151,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 9
         hpMax: 17
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -183,10 +168,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 19
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -212,10 +193,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 70
@@ -233,10 +210,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 8
         hpMax: 13
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 100
@@ -254,10 +227,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 7
         hpMax: 14
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -275,10 +244,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 21
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0

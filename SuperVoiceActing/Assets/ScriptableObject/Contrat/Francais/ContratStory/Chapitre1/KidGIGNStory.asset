@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: KidGIGNStory
   m_EditorClassIdentifier: 
-  name: '[Nom]'
+  contractName: '[Nom]'
   level: 1
   contractType: 3
   salaryMin: 1600
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 3
   expGain: 25
   expBonus: 50
-  contractTitle: []
   contractDictionnary:
   - nameID: '[Nom]'
     namesDictionnary:
@@ -42,6 +41,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Narrateur
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
       fanMin: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
         fear: 0
         trust: 3
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -88,10 +89,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -10
         joy: -50
@@ -104,26 +101,12 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: La ville est en flamme !
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 11
         hpMax: 13
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: -10
         joy: -50
@@ -149,10 +132,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 16
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -178,10 +157,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 19
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -194,16 +169,6 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 5
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -218,10 +183,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 14
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -234,27 +195,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -269,10 +210,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 18
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -285,26 +222,12 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: Le Super-Micro-Blaster !!!
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 12
         hpMax: 18
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -317,16 +240,6 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 0
@@ -341,10 +254,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 17
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 30
         joy: 30
@@ -357,27 +266,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -392,10 +281,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 50
         joy: 50
@@ -408,16 +293,6 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 12
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData:
   - {fileID: 11400000, guid: 2d3e2b37862018b4b89caaa6a72bc6dc, type: 2}
   eventAcceptedContract: {fileID: 0}

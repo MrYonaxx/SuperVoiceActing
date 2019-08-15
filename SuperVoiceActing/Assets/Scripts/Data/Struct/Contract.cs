@@ -311,12 +311,7 @@ namespace VoiceActing
 
         public Contract(ContractData data)
         {
-
-            if (data.ContractTitle.Length == 0)
-                this.name = data.Name;
-            else
-                this.name = data.ContractTitle[Random.Range(0, data.ContractTitle.Length)];
-
+            this.name = data.Name;
             if (data.Description.Length == 0)
                 this.description = " ";
             else

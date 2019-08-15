@@ -86,12 +86,12 @@ namespace VoiceActing
         protected CharacterDialogueController characterDialogue;
         protected GameObject nextButton;
 
-        int characterCount = 0;
+        //int characterCount = 0;
         int actualTime = 0;
 
         List<int> pauseList = new List<int>();
 
-        int language = 0;
+        //int language = 0;
 
         string actualText = null;
 
@@ -104,7 +104,7 @@ namespace VoiceActing
 
         public void SetLanguage(int newLanguage)
         {
-            language = newLanguage;
+            //language = newLanguage;
         }
 
         public StoryCharacterData GetInterlocuteur()

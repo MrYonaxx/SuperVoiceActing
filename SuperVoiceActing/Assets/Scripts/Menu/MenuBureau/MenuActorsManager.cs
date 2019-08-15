@@ -25,8 +25,6 @@ namespace VoiceActing
 
         private List<VoiceActor> actorsList = new List<VoiceActor>();
 
-        private List<VoiceActor> actorsSortList = new List<VoiceActor>();
-
 
         [Header("Prefab")]
         [SerializeField]

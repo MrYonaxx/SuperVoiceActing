@@ -28,7 +28,14 @@ namespace VoiceActing
 
         public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
         {
-            doublageManager.AddTurn(turnGain);
+            if (inPercentage == true)
+            {
+
+            }
+            else
+            {
+                doublageManager.AddTurn(turnGain);
+            }
         }
 
 

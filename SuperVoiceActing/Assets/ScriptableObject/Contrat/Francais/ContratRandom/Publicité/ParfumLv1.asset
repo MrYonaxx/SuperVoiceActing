@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: ParfumLv1
   m_EditorClassIdentifier: 
-  name: Parfum
+  contractName: Parfum
   level: 0
   contractType: 3
   salaryMin: 2500
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 11
   expGain: 30
   expBonus: 20
-  contractTitle: []
   contractDictionnary: []
   description:
   - 'La nouvelle gamme de Parfum est sorti.
@@ -35,6 +34,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Femme
+      roleSprite: {fileID: 0}
       lineMin: 30
       lineMax: 70
       fanMin: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
       artificialIntelligence: []
     - names:
       - Homme
+      roleSprite: {fileID: 0}
       lineMin: 30
       lineMax: 70
       fanMin: 0
@@ -114,10 +115,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -135,10 +132,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -164,10 +157,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -185,10 +174,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -206,10 +191,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -227,10 +208,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -256,10 +233,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 35
         hpMax: 40
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -272,27 +245,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: SanteJeunesseLv1
   m_EditorClassIdentifier: 
-  name: "Sant\xE9 pr\xE9vention jeunesse"
+  contractName: "Sant\xE9 pr\xE9vention jeunesse"
   level: 1
   contractType: 3
   salaryMin: 2000
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 8
   expGain: 20
   expBonus: 50
-  contractTitle: []
   contractDictionnary: []
   description:
   - "Dans le cadre du programme de pr\xE9vention de sant\xE9 chez les jeunes, nous
@@ -34,6 +33,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Homme
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
       fanMin: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -80,10 +81,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 5
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -96,16 +93,6 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -120,10 +107,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 18
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -136,48 +119,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 6
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Ne mange pas trop gras, trop sucr\xE9, trop sal\xE9."
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 10
         hpMax: 18
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -203,10 +152,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 5
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -219,16 +164,6 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -243,10 +178,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 8
         hpMax: 16
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 100
@@ -259,26 +190,12 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Evite de grignoter dans la journ\xE9e."
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 8
         hpMax: 16
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -291,41 +208,13 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 5
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
   changeBGM: 0
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}

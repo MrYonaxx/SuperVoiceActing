@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: FilmEtudiantLv1
   m_EditorClassIdentifier: 
-  name: "Film \xE9tudiant"
+  contractName: '[Nom]'
   level: 2
   contractType: 0
   salaryMin: 750
@@ -23,13 +23,15 @@ MonoBehaviour:
   weekMax: 6
   expGain: 30
   expBonus: 0
-  contractTitle:
-  - "Projet de fin d'\xE9tude"
   contractDictionnary:
   - nameID: '[Fin]'
     namesDictionnary:
     - A
     - B
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - "Film \xE9tudiant"
+    - "Projet de fin d'\xE9tude"
   description:
   - "Nous sommes des \xE9tudiants en derni\xE8re ann\xE9e d'animation et nous aimerions
     un(e) com\xE9dienne de doublage \"professionnels\" pour notre court-m\xE9trage.
@@ -40,6 +42,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Narrateur
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
       fanMin: 30
@@ -69,6 +72,7 @@ MonoBehaviour:
         fear: 7
         trust: 15
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -86,10 +90,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 30
@@ -107,10 +107,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 30
@@ -128,10 +124,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 30
@@ -157,10 +149,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 30
@@ -178,10 +166,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 30
@@ -207,10 +191,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 20
@@ -236,10 +216,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 10
         joy: 20
@@ -265,10 +241,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 20
@@ -294,10 +266,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 17
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 10
@@ -315,10 +283,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 10
@@ -344,10 +308,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 0
@@ -373,10 +333,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -394,10 +350,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -415,10 +367,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 5
         hpMax: 8
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -30
@@ -444,10 +392,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 40
         joy: 30
@@ -465,10 +409,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 40
         joy: 30
@@ -486,10 +426,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -507,10 +443,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 12
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 70
         joy: 50
@@ -536,10 +468,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 14
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 40
         joy: -30
@@ -557,10 +485,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 12
         hpMax: 14
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 40
         joy: -30
@@ -578,10 +502,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 13
         hpMax: 15
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: -30
@@ -599,10 +519,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 14
         hpMax: 16
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 70
         joy: -50

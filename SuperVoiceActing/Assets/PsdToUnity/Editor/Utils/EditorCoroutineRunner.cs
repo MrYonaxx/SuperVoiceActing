@@ -231,7 +231,7 @@
 						// These dont make sense in editor, so we will treat them the same as a null return...
 						isWaiting = false;
 					}
-					else if (currentType == typeof(WWW))
+					/*else if (currentType == typeof(WWW))
 					{
 						// Web download request, lets see if its done!
 						var www = current as WWW;
@@ -239,7 +239,7 @@
 						{
 							isWaiting = true;
 						}
-					}
+					}*/
 					else if (currentType.IsSubclassOf(typeof(CustomYieldInstruction)))
 					{
 						// last yield was a custom yield type, lets check its keepWaiting property and react to that

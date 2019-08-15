@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: BolognaiseLv1
   m_EditorClassIdentifier: 
-  name: "Bolognaise instantan\xE9e"
+  contractName: "Bolognaise instantan\xE9e"
   level: 0
   contractType: 3
   salaryMin: 3700
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 4
   expGain: 40
   expBonus: 50
-  contractTitle: []
   contractDictionnary: []
   description:
   - "Publicit\xE9 pour la nouvelle recette exclusive de spaghettis bolognaise sous
@@ -34,6 +33,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Chef cuisto
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 15
       fanMin: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
         fear: 1
         trust: 13
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -81,10 +82,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 30
         hpMax: 35
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 40
@@ -97,27 +94,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 12
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -132,10 +109,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 30
         hpMax: 35
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 40
@@ -148,27 +121,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -183,10 +136,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 25
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 60
@@ -199,26 +148,12 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 7
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Le subtil go\xFBt du basilique !"
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 25
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 70
@@ -231,16 +166,6 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -255,10 +180,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 25
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 40
@@ -271,16 +192,6 @@ MonoBehaviour:
         trust: 70
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -295,10 +206,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 25
         hpMax: 30
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 30
@@ -311,16 +218,6 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -335,10 +232,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 35
         hpMax: 45
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 40
@@ -351,16 +244,6 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -375,10 +258,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 15
         hpMax: 20
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 40
@@ -391,16 +270,6 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 2
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Avec les nouilles instantan\xE9es Bolognaise, les saveurs de la m\xE9dit\xE9ran\xE9e
         sont retrouv\xE9es !"
       textStats:
@@ -408,10 +277,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 40
         hpMax: 50
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 40
@@ -438,10 +303,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -454,16 +315,6 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 9
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -479,10 +330,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 20
         hpMax: 25
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 60
@@ -495,16 +342,6 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

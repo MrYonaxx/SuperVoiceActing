@@ -35,7 +35,7 @@ namespace VoiceActing
         #region Attributes 
 
         [SerializeField]
-        string name;
+        string characterName;
 
         [SerializeField]
         private Sprite spriteIcon;
@@ -75,7 +75,7 @@ namespace VoiceActing
 
         public string GetName()
         {
-            return name;
+            return characterName;
         }
         
         #endregion

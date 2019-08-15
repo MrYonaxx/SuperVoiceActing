@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: JambonLv1
   m_EditorClassIdentifier: 
-  name: Cordons bleus [Nom]
+  contractName: Cordons bleus [Nom]
   level: 0
   contractType: 3
   salaryMin: 1500
@@ -23,7 +23,6 @@ MonoBehaviour:
   weekMax: 4
   expGain: 15
   expBonus: 20
-  contractTitle: []
   contractDictionnary:
   - nameID: '[Onomatop]'
     namesDictionnary:
@@ -45,6 +44,7 @@ MonoBehaviour:
     - names:
       - Narrateur
       - Cuisinier
+      roleSprite: {fileID: 0}
       lineMin: 20
       lineMax: 40
       fanMin: 0
@@ -74,6 +74,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
+      artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -91,10 +92,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -107,16 +104,6 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 2
@@ -131,10 +118,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 25
@@ -147,48 +130,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 6
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 9
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
     - text: "Du fromage de qualit\xE9 sup\xE9rieure..."
       textStats:
         interlocuteurID: 0
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 25
@@ -201,27 +150,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
       - wordIndex: 4
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 0
@@ -236,10 +165,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -265,10 +190,6 @@ MonoBehaviour:
         linked: 0
         hpMin: 10
         hpMax: 10
-        atkMin: 0
-        atkMax: 0
-        evadeMin: 0
-        evadeMax: 0
       enemyResistance:
         neutral: 0
         joy: 50
@@ -281,16 +202,6 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
-        weakPointStat:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
