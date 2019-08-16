@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -18,16 +19,23 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-
+        [Title("Menu Shop")]
         [SerializeField]
         PlayerData playerData;
         [SerializeField]
+        GameObject menuShopWindow;
+        [SerializeField]
         MenuShopSelection menuShopSelection;
         [SerializeField]
-        int buyOptionIndex;
+        int buyOptionIndex = 0;
         [SerializeField]
-        int sellOptionIndex;
-
+        int sellOptionIndex = 1;
+        [SerializeField]
+        int exitOptionIndex = 2;
+        [SerializeField]
+        Animator animatorTransition;
+        [SerializeField]
+        CameraBureau cameraDekstop;
         #endregion
 
         #region GettersSetters 
@@ -47,7 +55,8 @@ namespace VoiceActing
 
         public void Validate()
         {
-            if(indexSelected == buyOptionIndex)
+            this.gameObject.SetActive(false);
+            if (indexSelected == buyOptionIndex)
             {
 
             }
@@ -55,6 +64,32 @@ namespace VoiceActing
             {
                 menuShopSelection.SetEquipementsShowcase(playerData.InventoryEquipement, false);
                 menuShopSelection.gameObject.SetActive(true);
+            }
+            else if (indexSelected == exitOptionIndex)
+            {
+                ExitMenuShop();
+            }
+        }
+
+        public void ExitMenuShop()
+        {
+            this.gameObject.SetActive(false);
+            animatorTransition.gameObject.SetActive(true);
+            animatorTransition.SetTrigger("Disappear");
+        }
+
+        public void ShowWindowShop()
+        {
+            if(menuShopWindow.activeInHierarchy == true)
+            {
+                menuShopWindow.gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
+                cameraDekstop.MoveToCameraInstant(2, true);
+            }
+            else
+            {
+                menuShopWindow.gameObject.SetActive(true);
+                this.gameObject.SetActive(true);
             }
         }
 

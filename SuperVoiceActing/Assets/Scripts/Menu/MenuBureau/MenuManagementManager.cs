@@ -219,7 +219,10 @@ namespace VoiceActing
 
         public void ReloadScene()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if(playerData.NextStoryEvents.Count == 0)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            else
+                SceneManager.LoadScene("EventScene");
         }
 
 

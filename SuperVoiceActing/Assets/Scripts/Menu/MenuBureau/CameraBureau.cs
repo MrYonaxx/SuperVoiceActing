@@ -97,20 +97,11 @@ namespace VoiceActing
             {
                 if (zoomed == false)
                 {
-                    animatorHUD.SetTrigger("Hide");
-                    //ModifyAnglePosition(0);
-                    //MoveToCamera();
-                    ChangeOrthographicSize(-30);
-                    smoothShakeCamera.enabled = false;
-                    smoothShakeCamera.transform.position = Vector3.zero;
-                    zoomed = true;
+                    ZoomCameraOn();
                 }
                 else
                 {
-                    animatorHUD.SetTrigger("Show");
-                    ChangeOrthographicSize(0);
-                    smoothShakeCamera.enabled = true;
-                    zoomed = false;
+                    ZoomCameraOff();
                 }
 
                 inputLeftTrigger = true;
@@ -152,17 +143,27 @@ namespace VoiceActing
                     return;
 
             }
-            /*
-            if (Input.GetAxis("ControllerRightHorizontal") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
-            {
-                MoveCameraRight();
-            }
-            else if (Input.GetAxis("ControllerRightHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
-            {
-                MoveCameraLeft();
-            }*/
+
         }
 
+
+        public void ZoomCameraOn()
+        {
+            animatorHUD.SetTrigger("Hide");
+            ChangeOrthographicSize(-30);
+            smoothShakeCamera.enabled = false;
+            smoothShakeCamera.transform.position = Vector3.zero;
+            zoomed = true;
+        }
+
+        public void ZoomCameraOff()
+        {
+            if (zoomed == true)
+                animatorHUD.SetTrigger("Show");
+            ChangeOrthographicSize(0);
+            smoothShakeCamera.enabled = true;
+            zoomed = false;
+        }
 
         public void MoveCameraRight()
         {
@@ -241,9 +242,6 @@ namespace VoiceActing
 
         private void ModifyAnglePosition(float range)
         {
-            /*if(range == 0)
-                transforms[position].eulerAngles = new Vector3(0, 0, 0);
-            else*/
             transforms[position].eulerAngles = new Vector3(transforms[position].eulerAngles.x, transforms[position].eulerAngles.y, Random.Range(-range, range));
             transformToRotate.SetParent(transforms[position]);
         }
@@ -267,6 +265,20 @@ namespace VoiceActing
 
             coroutine = MoveToOrigin(1.2f);
             StartCoroutine(coroutine);
+        }
+
+        public void MoveToCameraInstant(int newPos = -1, bool activeManager = false)
+        {
+            if (newPos != -1)
+            {
+                position = newPos;
+                ModifyAnglePosition(0);
+            }
+            transformToRotate.localPosition = Vector3.zero;
+            transformToRotate.localEulerAngles = Vector3.zero;
+
+            if(activeManager == true)
+                ActivateScreenManager(position);
         }
 
         private IEnumerator MoveToOrigin(float speedCoroutine)
