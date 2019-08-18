@@ -119,8 +119,17 @@ namespace VoiceActing
             for (int i = 0; i < soundEngineers.Count; i++)
             {
                 buttonsList.Add(null);
+                soundEngineers[i].Formation();
             }
             soundEngineersList = soundEngineers;
+        }
+
+        public void FormationSoundEngi()
+        {
+            for (int i = 0; i < soundEngineersList.Count; i++)
+            {
+                soundEngineersList[i].Formation();
+            }
         }
 
 

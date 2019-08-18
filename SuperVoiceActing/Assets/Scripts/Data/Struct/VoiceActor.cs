@@ -277,6 +277,7 @@ namespace VoiceActing
 
         }
 
+        // Rappel : les classes ne sont pas dupliqué par défaut, à la place les deux variable auront la meme reference donc bug potentiel
         public VoiceActor(VoiceActorData actorData)
         {
             //name = actorData.Name;
@@ -291,7 +292,13 @@ namespace VoiceActing
             damageVariance = actorData.FourchetteMax;
             roleDefense = 0;
             timbre = actorData.Timbre;
-            potentials = actorData.Potentials;
+
+            potentials = new SkillActorData[actorData.Potentials.Length];
+            for(int i = 0; i < actorData.Potentials.Length; i++)
+            {
+                potentials[i] = actorData.Potentials[i];
+            }
+
 
             skillOffset = actorData.SkillOffset;
             spriteSheets = actorData.SpriteSheets;
@@ -527,9 +534,10 @@ namespace VoiceActing
                 currentGrowth.Trust -= 100;
                 statistique.Trust += 1;
             }
-
             statistique.Neutral = (statistique.Joy + statistique.Sadness + statistique.Disgust + statistique.Anger + 
                                    statistique.Surprise + statistique.Sweetness + statistique.Fear + statistique.Trust) / 8;
+            hp += (growth.Neutral / 8);
+            hpMax += (growth.Neutral / 8);
             level += 1;
 
         }

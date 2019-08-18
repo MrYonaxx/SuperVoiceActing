@@ -91,6 +91,9 @@ namespace VoiceActing
 
 
 
+
+
+
     } // SkillActorData class
 	
 }// #PROJECTNAME# namespace

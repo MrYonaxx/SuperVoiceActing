@@ -109,11 +109,33 @@ namespace VoiceActing
             artificeGauge = soundEngineer.ArtificeGauge;
             mixingPower = soundEngineer.MixingPower;
             spritesSheets = soundEngineer.SpritesSheets;
-            skills = soundEngineer.InitialSkills;
+
+            skills = new SkillData[soundEngineer.InitialSkills.Length];
+            for (int i = 0; i < soundEngineer.InitialSkills.Length; i++)
+            {
+                skills[i] = soundEngineer.InitialSkills[i];
+            }
+            formationSkillID = 0;
+            formationSkill = null;
+            formationSkillTime = 0;
+            formationSkillTotalTime = 0;
+        }
+
+        public bool GainExp(int exp)
+        {
+            bool returnValue = false;
+            experience += exp;
+            while(experience >= experienceCurve.ExperienceCurve[level])
+            {
+                LevelUp();
+                returnValue = true;
+            }
+            return returnValue;
         }
 
         public void LevelUp()
         {
+            experience -= experienceCurve.ExperienceCurve[level];
             level += 1;
             mixingPower += 1;
         }
@@ -134,6 +156,18 @@ namespace VoiceActing
             formationSkill = skillFormation;
             formationSkillTime = 0;
             formationSkillTotalTime = formationTime;
+        }
+
+        public void Formation()
+        {
+            if (formationSkill == null)
+                return;
+            formationSkillTime += 1;
+            if(formationSkillTime >= formationSkillTotalTime)
+            {
+                skills[formationSkillID] = formationSkill;
+                formationSkill = null;
+            }
         }
 
     } // SoundEngineer class

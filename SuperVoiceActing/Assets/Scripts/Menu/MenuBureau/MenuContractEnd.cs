@@ -5,14 +5,14 @@
  * Date:       #CREATIONDATE#
 ******************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace VoiceActing
 {
-	public class MenuContractEnd : MonoBehaviour
+    public class MenuContractEnd : MonoBehaviour
 	{
         #region Attributes 
 
@@ -40,10 +40,32 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textScoreTotal;
 
+        [Space]
+        [SerializeField]
+        Image imageSoundEngi;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiOldLevel;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiNewLevel;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiExpGained;
+        [SerializeField]
+        RectTransform transformSoundEngiExpGauge;
+        [SerializeField]
+        Animator animatorLevelUp;
+
+        [Space]
+        [SerializeField]
+        Image[] imageActors;
+        [SerializeField]
+        TextMeshProUGUI[] textActors;
+
         [SerializeField]
         private MenuContractMoney moneyManager;
 
         int totalRevenu = 0;
+        int soundEngiOldLevel;
+        int soundEngiExpGained;
 
 
         List<Contract> contractsEnd = new List<Contract>();
@@ -191,7 +213,17 @@ namespace VoiceActing
 
         }
 
+        public void SoundEngiLevelUp(SoundEngineer soundEngineer, int exp)
+        {
+            if (soundEngineer == null)
+                return;
+            soundEngiOldLevel = soundEngineer.Level;
+            soundEngiExpGained = exp + Random.Range(80, 100);
+            if (soundEngineer.GainExp(soundEngiExpGained))
+            {
 
+            }
+        }
 
         // ========================================================================
 
@@ -210,6 +242,7 @@ namespace VoiceActing
                             contractsEnd.Add(playerData.ContractAccepted[i]);
                             CalculTotalScore(playerData.ContractAccepted[i]);
                             playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
+                            SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
                             playerData.ContractAccepted[i] = null;//.RemoveAt(i);
                             //playerData.ContractAccepted.Add(null);
                         }
@@ -254,6 +287,45 @@ namespace VoiceActing
             textContractBonusMoney.text = contract.MoneyBonus.ToString();
             textContractTotalMoney.text = (contract.Money + contract.MoneyBonus).ToString();
             textScoreTotal.text = contract.Score.ToString() + " / " + contract.HighScore;
+
+            if(contract.SoundEngineer != null)
+            {
+                imageSoundEngi.gameObject.SetActive(true);
+                imageSoundEngi.sprite = contract.SoundEngineer.SpritesSheets.SpriteNormal[0];
+                textSoundEngiOldLevel.text = soundEngiOldLevel.ToString();
+                textSoundEngiExpGained.text = "+" + soundEngiExpGained.ToString();
+                transformSoundEngiExpGauge.localScale = new Vector2((float)contract.SoundEngineer.Experience / contract.SoundEngineer.ExperienceCurve.ExperienceCurve[contract.SoundEngineer.Level], 1);
+                if (soundEngiOldLevel != contract.SoundEngineer.Level)
+                {
+                    textSoundEngiNewLevel.gameObject.SetActive(true);
+                    textSoundEngiNewLevel.text = contract.SoundEngineer.Level.ToString();
+                    animatorLevelUp.gameObject.SetActive(true);
+                    animatorLevelUp.SetTrigger("Feedback");
+                }
+                else
+                {
+                    textSoundEngiNewLevel.gameObject.SetActive(false);
+                }
+
+            }
+            else
+            {
+                imageSoundEngi.gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < imageActors.Length; i++)
+            {
+                if(i < contract.VoiceActors.Count)
+                {
+                    imageActors[i].gameObject.SetActive(true);
+                    imageActors[i].sprite = contract.VoiceActors[i].SpriteSheets.SpriteIcon;
+                    textActors[i].text = (contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance) + " / " + contract.Characters[i].RoleBestScore;
+                }
+                else
+                {
+                    imageActors[i].gameObject.SetActive(false);
+                }
+            }
         }
 
         public void NextContract()
