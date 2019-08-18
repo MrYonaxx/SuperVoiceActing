@@ -73,9 +73,31 @@ namespace VoiceActing
         {
             return equipement;
         }
-        
+
+
+
+        // Je devrai faire un autre script mais pour une fonction nique
+        public void DrawFormation(FormationData formData, int soundEngiID)
+        {
+            if (soundEngiID > formData.FormationSkills.Length)
+                soundEngiID = 0;
+            if (formData.FormationSkills[soundEngiID] == null)
+            {
+                equipementName.text = "---";
+                equipementCost.text = "";
+            }
+            else
+            {
+                equipementName.text = formData.FormationSkills[soundEngiID].SkillName;
+                equipementCost.text = formData.FormationTime.ToString();
+            }
+        }
+
+
+
+
         #endregion
-		
-	} // ButtonEquipement class
+
+    } // ButtonEquipement class
 	
 }// #PROJECTNAME# namespace

@@ -21,7 +21,7 @@ namespace VoiceActing
         All
     }
 
-    [CreateAssetMenu(fileName = "EquipementData", menuName = "EquipementData", order = 1)]
+    [CreateAssetMenu(fileName = "EquipementData", menuName = "ItemData/EquipementData", order = 1)]
     public class EquipementData : ScriptableObject
 	{
         [HorizontalGroup("General")]

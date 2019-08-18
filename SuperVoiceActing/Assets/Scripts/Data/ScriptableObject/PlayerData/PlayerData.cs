@@ -255,6 +255,9 @@ namespace VoiceActing
         [SerializeField]
         private List<EquipementData> inventoryDebug = new List<EquipementData>();
 
+        [SerializeField]
+        private List<FormationData> formationDebug = new List<FormationData>();
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -440,6 +443,17 @@ namespace VoiceActing
 
 
 
+        [SerializeField]
+        private List<FormationData> inventoryFormation;
+        public List<FormationData> InventoryFormation
+        {
+            get { return inventoryFormation; }
+        }
+
+
+
+
+
 
         [SerializeField]
         private int currentChapter;
@@ -609,6 +623,13 @@ namespace VoiceActing
                 for (int i = 0; i < inventoryDebug.Count; i++)
                 {
                     inventoryEquipement.Add(inventoryDebug[i]);
+                }
+
+
+                inventoryFormation = new List<FormationData>(formationDebug.Count);
+                for (int i = 0; i < formationDebug.Count; i++)
+                {
+                    inventoryFormation.Add(formationDebug[i]);
                 }
 
                 contractAccepted = new List<Contract>(3);

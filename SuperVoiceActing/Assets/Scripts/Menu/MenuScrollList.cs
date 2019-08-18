@@ -133,7 +133,7 @@ namespace VoiceActing
 
 
         // Check si on peut repeter l'input
-        private bool CheckRepeat()
+        protected bool CheckRepeat()
         {
             if (currentRepeatInterval == -1)
             {
@@ -177,7 +177,7 @@ namespace VoiceActing
 
 
 
-        private void MoveScrollRect()
+        protected void MoveScrollRect()
         {
             if (buttonScrollListTransform == null)
             {

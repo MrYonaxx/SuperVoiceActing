@@ -78,8 +78,26 @@ namespace VoiceActing
             get { return spritesSheets; }
         }
 
-
-
+        private int formationSkillID;
+        public int FormationSkillID
+        {
+            get { return formationSkillID; }
+        }
+        private SkillData formationSkill;
+        public SkillData FormationSkill
+        {
+            get { return formationSkill; }
+        }
+        private int formationSkillTime;
+        public int FormationSkillTime
+        {
+            get { return formationSkillTime; }
+        }
+        private int formationSkillTotalTime;
+        public int FormationSkillTotalTime
+        {
+            get { return formationSkillTotalTime; }
+        }
 
         public SoundEngineer(SoundEngineerData soundEngineer)
         {
@@ -91,6 +109,7 @@ namespace VoiceActing
             artificeGauge = soundEngineer.ArtificeGauge;
             mixingPower = soundEngineer.MixingPower;
             spritesSheets = soundEngineer.SpritesSheets;
+            skills = soundEngineer.InitialSkills;
         }
 
         public void LevelUp()
@@ -107,6 +126,14 @@ namespace VoiceActing
         public int GetMixingPower(ContractType contractType)
         {
             return mixingPower;
+        }
+
+        public void SetSkillFormation(int slotSkill, SkillData skillFormation, int formationTime)
+        {
+            formationSkillID = slotSkill;
+            formationSkill = skillFormation;
+            formationSkillTime = 0;
+            formationSkillTotalTime = formationTime;
         }
 
     } // SoundEngineer class

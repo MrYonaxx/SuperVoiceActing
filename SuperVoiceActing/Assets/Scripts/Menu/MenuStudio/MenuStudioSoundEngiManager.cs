@@ -25,7 +25,8 @@ namespace VoiceActing
         [Title("Animator")]
         [SerializeField]
         Animator animatorMenu;
-
+        [SerializeField]
+        MenuStudioSoundEngiFormation menuSoundEngiFormation;
 
 
         [Title("Sound Engineer Information")]
@@ -44,6 +45,8 @@ namespace VoiceActing
         TextMeshProUGUI textSoundEngiMixage;
         [SerializeField]
         TextMeshProUGUI textSoundEngiTrickery;
+        [SerializeField]
+        ButtonSkill[] buttonSkills;
 
 
 
@@ -121,7 +124,10 @@ namespace VoiceActing
         }
 
 
-
+        public void RedrawCurrentSoundEngi()
+        {
+            DrawSoundEngi(soundEngineersList[indexSelected]);
+        }
 
         public void DrawSoundEngi(SoundEngineer soundEngineer)
         {
@@ -131,6 +137,22 @@ namespace VoiceActing
             textSoundEngiSalary.text = soundEngineer.Salary.ToString();
             textSoundEngiMixage.text = soundEngineer.MixingPower.ToString();
             textSoundEngiTrickery.text = soundEngineer.ArtificeGauge.ToString();
+
+            for(int i = 0; i < buttonSkills.Length; i++)
+            {
+                if (i < soundEngineer.Skills.Length)
+                {
+                    buttonSkills[i].DrawSkill(soundEngineer.Skills[i]);
+                }
+                else
+                {
+                    buttonSkills[i].DrawSkill(null);
+                }
+            }
+            if (soundEngineer.FormationSkill != null)
+            {
+                buttonSkills[soundEngineer.FormationSkillID].DrawFormation(soundEngineer.FormationSkill.SkillName, soundEngineer.FormationSkillTime, soundEngineer.FormationSkillTotalTime);
+            }
 
             if (auditionMode == true)
                 DrawSoundEngiPreview();
@@ -163,6 +185,29 @@ namespace VoiceActing
                 size = 1;
             transformContractMixingPreview.localScale = new Vector2(size, transformContractMixingPreview.localScale.y);
             textAuditionContractMixingAdd.text = "+" + soundEngineersList[indexSelected].MixingPower;
+        }
+
+
+
+
+
+
+
+        public void SwitchToFormationMenu(bool b)
+        {
+            if (b == true)
+            {
+                animatorMenu.SetTrigger("FormationAppear");
+                inputController.gameObject.SetActive(false);
+                menuSoundEngiFormation.gameObject.SetActive(true);
+                menuSoundEngiFormation.SetSoundEngiID(soundEngineersList[indexSelected]);
+            }
+            else
+            {
+                animatorMenu.SetTrigger("FormationDisappear");
+                inputController.gameObject.SetActive(true);
+                menuSoundEngiFormation.gameObject.SetActive(false);
+            }
         }
 
 
