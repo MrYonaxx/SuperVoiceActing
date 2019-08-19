@@ -27,6 +27,8 @@ namespace VoiceActing
     /// VoiceActorData contains all possibilities for a VoiceActor
     /// A VoiceActor object is a possibility of VoiceActorData
     /// </summary>
+
+    [System.Serializable]
     public class VoiceActor
     {
         #region Attributes 

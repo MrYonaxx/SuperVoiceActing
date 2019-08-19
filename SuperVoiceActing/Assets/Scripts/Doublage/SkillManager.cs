@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace VoiceActing
 {
-
+    //[System.Serializable] // à réactiver si un jour j'ai besoin de sauvegardé la liste des buffs
     public class Buff
     {
         private int turn;

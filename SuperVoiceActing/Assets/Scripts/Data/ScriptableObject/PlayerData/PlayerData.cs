@@ -13,6 +13,15 @@ using Sirenix.OdinInspector;
 namespace VoiceActing
 {
 
+    public class DebugSave
+    {
+        private bool boolean = true;
+        public DebugSave(bool b)
+        {
+            boolean = b;
+        }
+    }
+
     public enum Season
     {
         Spring,
@@ -302,6 +311,7 @@ namespace VoiceActing
 
 
         // Contrat en cours à doubler
+        [SerializeField]
         private Contract currentContract;
         public Contract CurrentContract
         {
@@ -310,6 +320,7 @@ namespace VoiceActing
         }
 
         // Contrat accepté
+        [SerializeField]
         private List<Contract> contractAccepted;
         public List<Contract> ContractAccepted
         {
@@ -318,6 +329,7 @@ namespace VoiceActing
         }
 
         // Contrat Disponible 
+        [SerializeField]
         private List<Contract> contractAvailable;
         public List<Contract> ContractAvailable
         {
@@ -559,7 +571,7 @@ namespace VoiceActing
             get { return turnLimit; }
         }
 
-
+        private DebugSave bla = null;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -583,8 +595,9 @@ namespace VoiceActing
 
         public void CreateList()
         {
-            if (voiceActors == null && contractAvailable == null)
+            if (bla == null)
             {
+                bla = new DebugSave(true);
                 currentContract = null;
 
                 voiceActors = new List<VoiceActor>(voiceActorsDebug.Count);

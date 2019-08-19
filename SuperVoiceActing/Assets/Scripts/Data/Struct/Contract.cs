@@ -18,6 +18,8 @@ namespace VoiceActing
     /// ContractData contains all possibilities for a Contract
     /// A contract object is a possibility of ContractData
     /// </summary>
+
+
     public class Contract
     {
         #region Attributes 
@@ -284,7 +286,7 @@ namespace VoiceActing
 
         public Contract()
         {
-            name = "Salut";
+
         }
 
         public Contract(string name)

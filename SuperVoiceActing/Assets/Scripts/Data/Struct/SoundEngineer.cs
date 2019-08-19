@@ -12,7 +12,9 @@ using UnityEngine;
 namespace VoiceActing
 {
     // Un ingé son peut etre utiliser en tant qu'acteur
-	public class SoundEngineer
+
+    [System.Serializable]
+    public class SoundEngineer
 	{
 
         [SerializeField]
