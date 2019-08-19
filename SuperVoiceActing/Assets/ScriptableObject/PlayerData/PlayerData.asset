@@ -125,12 +125,13 @@ MonoBehaviour:
   studioName: Sutudioh
   contractGacha:
   - {fileID: 11400000, guid: 797e26e64cccd93499e77240c6b041f8, type: 2}
-  - {fileID: 11400000, guid: 453cf1d29fd1c4843bf8e9429444b8cd, type: 2}
-  - {fileID: 11400000, guid: 7aee77c77a7dffe408a74b482e37108f, type: 2}
+  - {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
   - {fileID: 11400000, guid: 0d829c8fedec7a143b428862167f9e68, type: 2}
   - {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
   - {fileID: 11400000, guid: d85d0a7830fd8144e94f5930fa02981b, type: 2}
+  - {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
   - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
+  - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
   - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
   - {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
   - {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
@@ -141,29 +142,27 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 53cd95d492cc2ab42a2cbf2e646d2385, type: 2}
   - {fileID: 11400000, guid: 39162772652748b4b86d71d3d4888833, type: 2}
   contractGachaCooldown:
-  - contract: {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
-    cooldown: 8
-  - contract: {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
-    cooldown: 3
-  - contract: {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
-    cooldown: 5
+  - contract: {fileID: 11400000, guid: 7aee77c77a7dffe408a74b482e37108f, type: 2}
+    cooldown: 9
+  - contract: {fileID: 11400000, guid: 453cf1d29fd1c4843bf8e9429444b8cd, type: 2}
+    cooldown: 6
   voiceActors:
   - fan: 0
     price: 6
-    level: 2
-    hp: 178
-    hpMax: 214
+    level: 1
+    hp: 200
+    hpMax: 200
     timbre: {x: -7, y: 3}
     statistique:
-      neutral: 6
-      joy: 9
-      sadness: 11
-      disgust: 6
+      neutral: 5
+      joy: 8
+      sadness: 10
+      disgust: 5
       anger: 2
       surprise: 3
-      sweetness: 9
+      sweetness: 8
       fear: 1
-      trust: 11
+      trust: 10
     statModifier:
       neutral: 0
       joy: 0
@@ -176,26 +175,26 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 156
-      sadness: 151
-      disgust: 103
+      joy: 162
+      sadness: 152
+      disgust: 98
       anger: 64
-      surprise: 73
-      sweetness: 146
-      fear: 70
-      trust: 147
+      surprise: 65
+      sweetness: 149
+      fear: 68
+      trust: 152
     currentGrowth:
       neutral: 0
-      joy: 56
-      sadness: 51
-      disgust: 3
-      anger: 64
-      surprise: 73
-      sweetness: 46
-      fear: 70
-      trust: 47
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
-    nextEXP: 124
+    nextEXP: 120
     relation: 0
     skillOffset: {x: 0.14, y: 0.12, z: 0}
     actorSprite: {fileID: 21300000, guid: 34bcc4fed29754b40be5ac6ddaa91b7c, type: 3}
@@ -204,26 +203,26 @@ MonoBehaviour:
       type: 3}
     spriteSheets: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483, type: 2}
     damageVariance: 2
-    roleDefense: 8
+    roleDefense: 5
     potentials:
     - {fileID: 11400000, guid: 4693805a529dd554694916f79f88a756, type: 2}
     actorMentalState: 0
     availability: 1
   - fan: 0
     price: 6
-    level: 2
-    hp: 192
-    hpMax: 214
+    level: 1
+    hp: 200
+    hpMax: 200
     timbre: {x: -8, y: -7}
     statistique:
       neutral: 5
-      joy: 22
-      sadness: 4
+      joy: 20
+      sadness: 3
       disgust: 2
       anger: 2
       surprise: 3
-      sweetness: 6
-      fear: 4
+      sweetness: 5
+      fear: 3
       trust: 3
     statModifier:
       neutral: 0
@@ -237,26 +236,26 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 203
-      sadness: 105
-      disgust: 96
-      anger: 98
-      surprise: 96
-      sweetness: 101
-      fear: 102
-      trust: 99
+      joy: 202
+      sadness: 110
+      disgust: 110
+      anger: 95
+      surprise: 94
+      sweetness: 92
+      fear: 99
+      trust: 98
     currentGrowth:
       neutral: 0
-      joy: 3
-      sadness: 5
-      disgust: 96
-      anger: 98
-      surprise: 96
-      sweetness: 1
-      fear: 2
-      trust: 99
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
-    nextEXP: 96
+    nextEXP: 120
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
     actorSprite: {fileID: 21300000, guid: 3a668133cccfc9747baf7a6ce61737be, type: 3}
@@ -265,7 +264,7 @@ MonoBehaviour:
       type: 3}
     spriteSheets: {fileID: 11400000, guid: 8e3d2645f02a6cf4e86d96d96778ffec, type: 2}
     damageVariance: 3
-    roleDefense: 8
+    roleDefense: 2
     potentials:
     - {fileID: 11400000, guid: 8b3dd6ba44529d546a1b98096b42d41a, type: 2}
     actorMentalState: 0
@@ -358,14 +357,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 130
-      sadness: 101
-      disgust: 95
-      anger: 41
-      surprise: 77
-      sweetness: 214
-      fear: 132
-      trust: 120
+      joy: 118
+      sadness: 90
+      disgust: 93
+      anger: 68
+      surprise: 74
+      sweetness: 229
+      fear: 131
+      trust: 107
     currentGrowth:
       neutral: 0
       joy: 0
@@ -386,7 +385,7 @@ MonoBehaviour:
       type: 3}
     spriteSheets: {fileID: 11400000, guid: 5a8ca4d0dc3e59a418e33d3fb3664009, type: 2}
     damageVariance: 2
-    roleDefense: 8
+    roleDefense: 0
     potentials:
     - {fileID: 11400000, guid: ddec83d64cbc8eb4db092c623d87c95d, type: 2}
     actorMentalState: 0
@@ -447,7 +446,7 @@ MonoBehaviour:
       type: 3}
     spriteSheets: {fileID: 11400000, guid: 7919096dd34fc5243b9c76237f92419b, type: 2}
     damageVariance: 0
-    roleDefense: 8
+    roleDefense: 0
     potentials:
     - {fileID: 11400000, guid: 20175402815609f40b3f9ee3f621c691, type: 2}
     actorMentalState: 0
@@ -480,14 +479,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 48
-      sadness: 119
-      disgust: 174
-      anger: 95
-      surprise: 72
-      sweetness: 43
+      joy: 56
+      sadness: 130
+      disgust: 170
+      anger: 65
+      surprise: 82
+      sweetness: 47
       fear: 145
-      trust: 114
+      trust: 115
     currentGrowth:
       neutral: 0
       joy: 0
@@ -508,7 +507,7 @@ MonoBehaviour:
       type: 3}
     spriteSheets: {fileID: 11400000, guid: 8a2080d9b91350341ae62d050794000a, type: 2}
     damageVariance: 0
-    roleDefense: 8
+    roleDefense: 0
     potentials:
     - {fileID: 11400000, guid: 852f41409bb26604c912aae6d044a65c, type: 2}
     actorMentalState: 0
@@ -542,14 +541,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 181
-      sadness: 98
-      disgust: 106
-      anger: 109
-      surprise: 98
-      sweetness: 108
-      fear: 103
-      trust: 97
+      joy: 202
+      sadness: 106
+      disgust: 101
+      anger: 99
+      surprise: 91
+      sweetness: 109
+      fear: 96
+      trust: 96
     currentGrowth:
       neutral: 0
       joy: 0
@@ -603,14 +602,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 130
-      joy: 146
-      sadness: 134
-      disgust: 130
-      anger: 114
-      surprise: 120
-      sweetness: 146
-      fear: 125
-      trust: 125
+      joy: 129
+      sadness: 146
+      disgust: 145
+      anger: 117
+      surprise: 114
+      sweetness: 112
+      fear: 129
+      trust: 148
     currentGrowth:
       neutral: 0
       joy: 0
@@ -663,14 +662,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 64
-      sadness: 117
-      disgust: 175
-      anger: 86
+      joy: 58
+      sadness: 125
+      disgust: 169
+      anger: 98
       surprise: 78
-      sweetness: 40
-      fear: 146
-      trust: 104
+      sweetness: 41
+      fear: 141
+      trust: 100
     currentGrowth:
       neutral: 0
       joy: 0
@@ -785,14 +784,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 102
-      joy: 113
-      sadness: 79
-      disgust: 133
+      joy: 110
+      sadness: 60
+      disgust: 136
       anger: 125
-      surprise: 74
+      surprise: 70
       sweetness: 125
-      fear: 61
-      trust: 110
+      fear: 79
+      trust: 115
     currentGrowth:
       neutral: 0
       joy: 0
@@ -846,14 +845,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 51
-      sadness: 124
-      disgust: 168
-      anger: 89
-      surprise: 65
-      sweetness: 45
-      fear: 160
-      trust: 108
+      joy: 54
+      sadness: 123
+      disgust: 165
+      anger: 98
+      surprise: 80
+      sweetness: 40
+      fear: 150
+      trust: 100
     currentGrowth:
       neutral: 0
       joy: 0
@@ -906,14 +905,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 110
-      sadness: 113
-      disgust: 89
-      anger: 57
-      surprise: 77
-      sweetness: 219
-      fear: 126
-      trust: 119
+      joy: 128
+      sadness: 96
+      disgust: 87
+      anger: 33
+      surprise: 89
+      sweetness: 238
+      fear: 129
+      trust: 110
     currentGrowth:
       neutral: 0
       joy: 0
@@ -967,14 +966,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 106
-      joy: 76
+      joy: 83
       sadness: 34
-      disgust: 187
-      anger: 150
-      surprise: 122
-      sweetness: 67
-      fear: 110
-      trust: 104
+      disgust: 164
+      anger: 158
+      surprise: 140
+      sweetness: 53
+      fear: 111
+      trust: 107
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1028,14 +1027,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 75
-      joy: 57
-      sadness: 86
-      disgust: 45
-      anger: 112
-      surprise: 137
-      sweetness: 39
-      fear: 49
-      trust: 80
+      joy: 50
+      sadness: 95
+      disgust: 50
+      anger: 113
+      surprise: 140
+      sweetness: 36
+      fear: 45
+      trust: 76
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1064,7 +1063,7 @@ MonoBehaviour:
   soundEngineers:
   - engineerName: Zaques
     level: 1
-    experience: 102
+    experience: 0
     salary: 0
     experienceCurve: {fileID: 11400000, guid: c5c1392fe5ebaa4478a43506558835b9, type: 2}
     artificeGauge: 10
@@ -1087,7 +1086,8 @@ MonoBehaviour:
     mixingPower: 0
     skills: []
     spritesSheets: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
-  nextStoryEvents: []
+  nextStoryEvents:
+  - {fileID: 11400000, guid: 2fe103b1f458b114bb0bc8ecbda4fa37, type: 2}
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
   tutoEvent: []
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: efe9920289513ff48ba96f07992e1a68, type: 2}
   currentChapter: 0
   maintenance: 6000
-  money: 39011
+  money: 36000
   season: 3
   comboMax: 2
   deck:

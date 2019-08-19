@@ -19,7 +19,7 @@ namespace VoiceActing
     /// A contract object is a possibility of ContractData
     /// </summary>
 
-
+    //[System.Serializable]
     public class Contract
     {
         #region Attributes 
@@ -267,6 +267,13 @@ namespace VoiceActing
             get { return victoryTheme; }
         }
 
+        [SerializeField]
+        private bool isNull;
+        public bool IsNull
+        {
+            get { return isNull; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -286,7 +293,7 @@ namespace VoiceActing
 
         public Contract()
         {
-
+            isNull = true;
         }
 
         public Contract(string name)

@@ -127,6 +127,8 @@ namespace VoiceActing
         {
             bool returnValue = false;
             experience += exp;
+            if (experienceCurve == null)
+                return false;
             while(experience >= experienceCurve.ExperienceCurve[level])
             {
                 LevelUp();
