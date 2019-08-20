@@ -12,6 +12,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 namespace VoiceActing
 {
@@ -36,6 +38,8 @@ namespace VoiceActing
         [Header("Menu Save")]
         [SerializeField]
         ButtonSaveLoad buttonSavePrefab;
+        [SerializeField]
+        UnityEvent eventOnQuit;
 
 
         private int maxSlot = 20;
@@ -59,6 +63,14 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        /*protected override void Start()
+        {
+            base.Start();
+            LoadPlayerSavesData();
+            maxSlot = saveDatabase.SavesDatas.Length;
+            CreateButton();
+        }*/
 
         protected override void Start()
         {
@@ -102,6 +114,17 @@ namespace VoiceActing
             buttonSaveLoad[indexSelected].FeedbackSave();
         }
 
+        public void Load(PlayerData playerData)
+        {
+            LoadPlayerProfile(playerData, indexSelected);
+            playerData.IsLoading = true;
+            SceneManager.LoadScene("Bureau");
+        }
+
+        public void QuitMenu()
+        {
+            eventOnQuit.Invoke();
+        }
 
         public void SavePlayerProfile(PlayerData playerData, int index)
         {

@@ -60,6 +60,7 @@ namespace VoiceActing
         private AudioClip defaultDekstopTheme;
 
 
+
         #endregion
 
         #region GettersSetters 
@@ -79,10 +80,18 @@ namespace VoiceActing
 
         private void Start()
         {
-            playerData.CreateList();
+            if(playerData.IsLoading == true)
+            {
+                playerData.IsLoading = false;
+            }
+            else
+            {
+                playerData.CreateList();
+                AddRandomEvents();
+            }
             moneyManager.DrawMoney(playerData.Money);
             contractManager.DrawDate();
-            AddRandomEvents();
+
 
             if (playerData.NextStoryEventsStartWeek.Count == 0)
             {
