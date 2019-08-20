@@ -30,11 +30,14 @@ namespace VoiceActing
         Winter
     }
 
-
+    [System.Serializable]
     public struct Date
     {
+        [SerializeField]
         public int week;
+        [SerializeField]
         public int month;
+        [SerializeField]
         public int year;
 
         public Date(int w, int m, int y)
@@ -65,13 +68,6 @@ namespace VoiceActing
     [CreateAssetMenu(fileName = "PlayerData", menuName = "PlayerData/PlayerData", order = 1)]
     public class PlayerData : ScriptableObject
     {
-
-        [SerializeField]
-        private bool reset = true;
-        public bool Reset
-        {
-            get { return reset; }
-        }
 
         [Space]
 
@@ -500,6 +496,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private float timer;
+        public float Timer
+        {
+            get { return timer; }
+        }
+
+        [SerializeField]
         private Season season;
         public Season Season
         {
@@ -646,9 +649,6 @@ namespace VoiceActing
                 }
 
                 contractAccepted = new List<Contract>(3);
-                contractAccepted.Add(null);
-                contractAccepted.Add(null);
-                contractAccepted.Add(null);
 
 
                 currentEquipement = new EquipementData[equipementCategories.Length];
@@ -683,6 +683,7 @@ namespace VoiceActing
             season = StartSeason;
             money = startMoney;
             maintenance = startMaintenance;
+            timer = 0;
 
             deck = new EmotionStat(initialDeck);
             comboMax = initialComboMax;
@@ -1015,6 +1016,40 @@ namespace VoiceActing
             return (int) (finalScore * finalMultiplier);
         }
 
+
+
+
+        public void AddTimer()
+        {
+            timer += Time.time;
+        }
+        public void SubstractTimer()
+        {
+            timer -= Time.time;
+        }
+
+        public string GetTimeInHour()
+        {
+            float tmpTimer = timer + Time.time;
+            string hourDecade = "0";
+            string minuteDecade = "0";
+            int hour = 0;
+            int minute = 0;
+
+            hour = (int)(tmpTimer / 3600);
+            minute = (int)((tmpTimer / 60) % 60);
+
+            if(hour >= 10)
+            {
+                hourDecade = "";
+            }
+
+            if (minute >= 10)
+            {
+                minuteDecade = "";
+            }
+            return hourDecade + hour + ":" + minuteDecade + minute;
+        }
 
 
         // PlayerData class

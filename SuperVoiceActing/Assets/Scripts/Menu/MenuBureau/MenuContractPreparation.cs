@@ -137,7 +137,7 @@ namespace VoiceActing
         // ===========================
 
 
-        private Contract currentContract = null;
+        private Contract currentContract;
         private int indexSelected = 0;
         private bool inSessionPossible = false;
 
@@ -180,6 +180,7 @@ namespace VoiceActing
         public void SetContract(Contract contract)
         {
             currentContract = contract;
+            Debug.Log("allo?");
             menuActorsManager.DrawAuditionTitle(contract.Name);
             menuActorsManager.DrawAuditionIcon(contract.IconSprite);
             DrawContractInfo();
@@ -249,7 +250,7 @@ namespace VoiceActing
             int sum = 0;
             for(int i = 0; i < currentContract.VoiceActors.Count; i++)
             {
-                if(currentContract.VoiceActors[i] != null) 
+                if(currentContract.VoiceActors[i].IsNull != true) 
                     sum += (currentContract.VoiceActors[i].Price * currentContract.Characters[i].Line);
             }
             return sum;
@@ -273,7 +274,7 @@ namespace VoiceActing
             transformRoleTimbre.anchorMax = new Vector2((currentContract.Characters[indexSelected].Timbre.y + 10) / 20f, 1);
             transformRoleTimbre.anchoredPosition = Vector3.zero;
 
-            if (currentContract.VoiceActors[indexSelected] == null)
+            if (currentContract.VoiceActors[indexSelected].IsNull == true)
             {
                 DrawActorInfo(false);
                 DrawGaugeInfo(false);
@@ -409,7 +410,7 @@ namespace VoiceActing
             }
             for (int i = 0; i < currentContract.VoiceActors.Count; i++)
             {
-                if (currentContract.VoiceActors[i] == null)
+                if (currentContract.VoiceActors[i].IsNull == true)
                 {
                     inSessionPossible = false;
                     inSessionObject.gameObject.SetActive(false);

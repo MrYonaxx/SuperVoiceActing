@@ -24,7 +24,35 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorButton;
         [SerializeField]
-        TextMeshProUGUI text;
+        RectTransform rectTransform;
+
+        [Space]
+        [SerializeField]
+        GameObject saveFile;
+        [SerializeField]
+        TextMeshProUGUI textNewFile;
+
+        [Space]
+        [SerializeField]
+        Image imageSeason;
+        [SerializeField]
+        Image imageBestActor;
+        [SerializeField]
+        TextMeshProUGUI textFileMonth;
+        [SerializeField]
+        TextMeshProUGUI textFileWeek;
+        [SerializeField]
+        TextMeshProUGUI textTimer;
+        [SerializeField]
+        TextMeshProUGUI textMoney;
+        [SerializeField]
+        TextMeshProUGUI textChapter;
+        [SerializeField]
+        TextMeshProUGUI textPlayerName;
+
+        [SerializeField]
+        TextMeshProUGUI textSlotNumber;
+
 
         #endregion
 
@@ -43,32 +71,57 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
+        public void DrawButton(SaveData saveData, int index)
         {
-            
+            this.gameObject.SetActive(true);
+            if(index < 10)
+            {
+                textSlotNumber.text = "0" + index;
+            }
+            else
+            {
+                textSlotNumber.text = index.ToString();
+            }
+
+            if (saveData.SaveTime != "") // en gros null 
+            {
+                textNewFile.gameObject.SetActive(false);
+                saveFile.gameObject.SetActive(true);
+                imageBestActor.gameObject.SetActive(true);
+                textPlayerName.text = saveData.SavePlayerName + " - " + saveData.SaveStudioName;
+                textFileMonth.text = saveData.SaveMonth;
+                textFileWeek.text = "Semaine " + saveData.SaveWeek;
+                textTimer.text = saveData.SaveTime;
+                textMoney.text = saveData.SaveMoney;
+                textChapter.text = saveData.SaveChapter;
+            }
+            else
+            {
+                textNewFile.gameObject.SetActive(true);
+                saveFile.gameObject.SetActive(false);
+                imageBestActor.gameObject.SetActive(false);
+            }
+
         }
 
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
+        public void UnselectButton()
         {
-            
+            animatorButton.SetTrigger("Unselected");
         }
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        protected void Update()
+
+        public void SelectButton()
         {
-            
+            animatorButton.SetTrigger("Selected");
+        }
+
+        public void FeedbackSave()
+        {
+            animatorButton.SetTrigger("FeedbackSave");
+        }
+
+        public RectTransform GetRectTransform()
+        {
+            return rectTransform;
         }
         
         #endregion

@@ -247,6 +247,13 @@ namespace VoiceActing
             set { availability = value; }
         }
 
+        [SerializeField]
+        private bool isNull;
+        public bool IsNull
+        {
+            get { return isNull; }
+        }
+
         #endregion
 
 
@@ -276,12 +283,13 @@ namespace VoiceActing
 
         public VoiceActor()
         {
-
+            isNull = true;
         }
 
         // Rappel : les classes ne sont pas dupliqué par défaut, à la place les deux variable auront la meme reference donc bug potentiel
         public VoiceActor(VoiceActorData actorData)
         {
+            isNull = false;
             //name = actorData.Name;
             level = actorData.Level;
             fan = actorData.Fan;

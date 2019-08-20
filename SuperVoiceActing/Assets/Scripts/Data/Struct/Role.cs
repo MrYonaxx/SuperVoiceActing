@@ -21,7 +21,7 @@ namespace VoiceActing
         VoixOff
     }
 
-
+    [System.Serializable]
 	public class Role
 	{
         #region Attributes 

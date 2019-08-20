@@ -243,7 +243,7 @@ namespace VoiceActing
                             CalculTotalScore(playerData.ContractAccepted[i]);
                             playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
                             SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
-                            playerData.ContractAccepted[i] = null;//.RemoveAt(i);
+                            playerData.ContractAccepted.RemoveAt(i);
                             //playerData.ContractAccepted.Add(null);
                         }
                     }

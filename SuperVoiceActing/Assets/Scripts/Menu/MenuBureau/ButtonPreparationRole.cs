@@ -69,7 +69,7 @@ namespace VoiceActing
         {
             buttonRole.color = roleUnlocked;
             textRoleName.text = role.Name;
-            if(voiceActor != null)
+            if(voiceActor.IsNull != true)
             {
                 DrawActor(role, voiceActor);
             }

@@ -19,7 +19,7 @@ namespace VoiceActing
     /// A contract object is a possibility of ContractData
     /// </summary>
 
-    //[System.Serializable]
+    [System.Serializable]
     public class Contract
     {
         #region Attributes 
@@ -402,7 +402,7 @@ namespace VoiceActing
             voiceActors = new List<VoiceActor>(characters.Count);
             for (int i = 0; i < characters.Count; i++)
             {
-                voiceActors.Add(null);
+                voiceActors.Add(new VoiceActor());
             }
 
             // Select TextData --------------------------------------------------------------------------------------------------------------
@@ -460,7 +460,34 @@ namespace VoiceActing
         }
 
 
+        public bool CheckCharacterLock(List<VoiceActor> voicesActorsPlayer)
+        {
+            bool b = false;
+            for (int i = 0; i < Characters.Count; i++)
+            {
+                if (Characters[i].CharacterLock != null)
+                {
+                    // On cherche l'acteur dans le monde
+                    for (int j = 0; j < voicesActorsPlayer.Count; j++)
+                    {
+                        if (Characters[i].CharacterLock.Name == voicesActorsPlayer[j].Name)
+                        {
+                            VoiceActors[i] = voicesActorsPlayer[j];
+                            continue;
+                        }
+                    }
+                    // Si l'acteur n'est pas dans la liste, on l'invoque
+                    if (VoiceActors[i].IsNull == true)
+                    {
+                        voicesActorsPlayer.Add(new VoiceActor(Characters[i].CharacterLock));
+                        VoiceActors[i] = voicesActorsPlayer[voicesActorsPlayer.Count - 1];
+                        b = true;
 
+                    }
+                }
+            }
+            return b;
+        }
 
         /*private string ReplaceText()
         {

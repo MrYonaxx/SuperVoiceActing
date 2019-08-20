@@ -80,29 +80,45 @@ namespace VoiceActing
             get { return spritesSheets; }
         }
 
+        [SerializeField]
         private int formationSkillID;
         public int FormationSkillID
         {
             get { return formationSkillID; }
         }
+        [SerializeField]
         private SkillData formationSkill;
         public SkillData FormationSkill
         {
             get { return formationSkill; }
         }
+        [SerializeField]
         private int formationSkillTime;
         public int FormationSkillTime
         {
             get { return formationSkillTime; }
         }
+        [SerializeField]
         private int formationSkillTotalTime;
         public int FormationSkillTotalTime
         {
             get { return formationSkillTotalTime; }
         }
+        [SerializeField]
+        private bool isNull;
+        public bool IsNull
+        {
+            get { return isNull; }
+        }
+
+        public SoundEngineer()
+        {
+            isNull = true;
+        }
 
         public SoundEngineer(SoundEngineerData soundEngineer)
         {
+            isNull = false;
             engineerName = soundEngineer.EngineerName;
             level = soundEngineer.Level;
             experience = 0;

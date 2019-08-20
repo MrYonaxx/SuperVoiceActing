@@ -146,10 +146,7 @@ namespace VoiceActing
 
         public void DrawAvailableContract()
         {          
-            buttonContractAccepted[0].gameObject.SetActive(true);
-            buttonContractAccepted[0].SetButtonToAddContract();
-
-            for(int i = 1; i < buttonContractAccepted.Length; i++ )
+            for(int i = contractAcceptedList.Count; i < buttonContractAccepted.Length; i++ )
             {
                 buttonContractAccepted[i].gameObject.SetActive(false);
             }
@@ -157,22 +154,25 @@ namespace VoiceActing
             // à voir si j'instancie des prefab, mais pour 5 objets on va faire simple
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
-                if(contractAcceptedList[i] != null)
-                {
-                    buttonContractAccepted[i].DrawContract(contractAcceptedList[i]);
-                    if (i + 1 < buttonContractAccepted.Length)
-                    {
-                        buttonContractAccepted[i + 1].gameObject.SetActive(true);
-                        buttonContractAccepted[i + 1].SetButtonToAddContract();
-                    }
-
-                }
+                //buttonContractAccepted[i].gameObject.SetActive(true);
+                buttonContractAccepted[i].DrawContract(contractAcceptedList[i]);
+            }
+            if (contractAcceptedList.Count < 3)
+            {
+                buttonContractAccepted[contractAcceptedList.Count].gameObject.SetActive(true);
+                buttonContractAccepted[contractAcceptedList.Count].SetButtonToAddContract();
             }
         }
 
         public bool AddContractToList(Contract newContract)
         {
-            for(int i = 0; i < contractAcceptedList.Count; i++)
+            contractAcceptedList.Add(newContract);
+            DrawAvailableContract();
+            CheckEventWhenAccepted(newContract);
+            if(newContract.CheckCharacterLock(playerData.VoiceActors) == true) // true == acteurs à instancier;
+                menuActorsManager.DestroyButtonList();
+            return true;
+            /*for (int i = 0; i < contractAcceptedList.Count; i++)
             {
                 if (contractAcceptedList[i] == null)
                 {
@@ -183,7 +183,7 @@ namespace VoiceActing
                     return true;
                 }
             }
-            return false;
+            return false;*/
         }
 
 
@@ -198,31 +198,7 @@ namespace VoiceActing
         }
 
         // ``A déplacer
-        public void CheckCharacterLock(Contract newContract)
-        {
-            for(int i = 0; i < newContract.Characters.Count; i++)
-            {
-                if(newContract.Characters[i].CharacterLock != null)
-                {
-                    // On cherche l'acteur dans le monde
-                    for(int j = 0; j < playerData.VoiceActors.Count; j++)
-                    {
-                        if(newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].Name)
-                        {
-                            newContract.VoiceActors[i] = playerData.VoiceActors[j];
-                            continue;
-                        }
-                    }
-                    // Si l'acteur n'est pas dans la liste, on l'invoque
-                    if (newContract.VoiceActors[i] == null)
-                    {
-                        playerData.VoiceActors.Add(new VoiceActor(newContract.Characters[i].CharacterLock));
-                        newContract.VoiceActors[i] = playerData.VoiceActors[playerData.VoiceActors.Count - 1];
-                        menuActorsManager.DestroyButtonList();
-                    }
-                }
-            }
-        }
+
 
 
 
@@ -230,12 +206,10 @@ namespace VoiceActing
         {
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
-                if (contractAcceptedList[i] != null)
-                {
-                    contractAcceptedList[i].ProgressMixing();
-                    if(contractAcceptedList[i].SoundEngineer != null)
-                        yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
-                }
+                contractAcceptedList[i].ProgressMixing();
+                if(contractAcceptedList[i].SoundEngineer != null)
+                    yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
+             
             }
         }
 
@@ -299,7 +273,7 @@ namespace VoiceActing
 
         public void Validate()
         {
-            if(contractAcceptedList[indexAcceptedList] == null)
+            if(indexAcceptedList == contractAcceptedList.Count)
             {
                 SwitchToMenuContractAvailable();
             }
@@ -317,11 +291,19 @@ namespace VoiceActing
             indexAcceptedList -= 1;
             if(indexAcceptedList == -1)
             {
-                indexAcceptedList = contractAcceptedList.Count-1;
-                while (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
+                if (contractAcceptedList.Count == 3)
+                {
+                    indexAcceptedList = contractAcceptedList.Count-1;
+                }
+                else
+                {
+                    indexAcceptedList = contractAcceptedList.Count;
+                }
+
+                /*while (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
                 {
                     indexAcceptedList -= 1;
-                }
+                }*/
             }
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
@@ -331,14 +313,18 @@ namespace VoiceActing
         {
             buttonContractAccepted[indexAcceptedList].UnSelectContract();
             indexAcceptedList += 1;
-            if(indexAcceptedList == contractAcceptedList.Count)
+            if (indexAcceptedList == 3)
             {
                 indexAcceptedList = 0;
             }
-            else if (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
+            else if (indexAcceptedList == contractAcceptedList.Count+1)
             {
                 indexAcceptedList = 0;
             }
+            /*else if (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
+            {
+                indexAcceptedList = 0;
+            }*/
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
 
