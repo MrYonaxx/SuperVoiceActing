@@ -178,16 +178,18 @@ namespace VoiceActing
             formationSkillTotalTime = formationTime;
         }
 
-        public void Formation()
+        public bool Formation()
         {
             if (formationSkill == null)
-                return;
+                return false;
             formationSkillTime += 1;
             if(formationSkillTime >= formationSkillTotalTime)
             {
                 skills[formationSkillID] = formationSkill;
                 formationSkill = null;
+                return true;
             }
+            return false;
         }
 
     } // SoundEngineer class

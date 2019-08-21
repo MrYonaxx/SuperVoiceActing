@@ -71,7 +71,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawButton(SaveData saveData, int index)
+        public void DrawButton(SaveData saveData, ImageDictionnary seasonData, int index)
         {
             this.gameObject.SetActive(true);
             if(index < 10)
@@ -88,6 +88,9 @@ namespace VoiceActing
                 textNewFile.gameObject.SetActive(false);
                 saveFile.gameObject.SetActive(true);
                 imageBestActor.gameObject.SetActive(true);
+
+                imageBestActor.sprite = saveData.SaveBestVA;
+                imageSeason.sprite = seasonData.GetSprite(saveData.SaveSeason);
                 textPlayerName.text = saveData.SavePlayerName + " - " + saveData.SaveStudioName;
                 textFileMonth.text = saveData.SaveMonth;
                 textFileWeek.text = "Semaine " + saveData.SaveWeek;

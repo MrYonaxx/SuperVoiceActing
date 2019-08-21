@@ -22,13 +22,19 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
+        InitialPlayerData playerDataDebug;
+        [SerializeField]
         PlayerData playerData;
         [SerializeField]
         private RandomEventDatabase randomEventDatabase;
+        [SerializeField]
+        private GameTimelineData gameTimelineData;
 
         [Header("Managers")]
         [SerializeField]
         private MenuContratManager contractManager;
+        [SerializeField]
+        private MenuContractInfo infoManager;
         [SerializeField]
         private MenuContractAvailable contractAvailable;
         [SerializeField]
@@ -86,12 +92,8 @@ namespace VoiceActing
             }
             else
             {
-                playerData.CreateList();
-                AddRandomEvents();
+                NextWeek();
             }
-            moneyManager.DrawMoney(playerData.Money);
-            contractManager.DrawDate();
-
 
             if (playerData.NextStoryEventsStartWeek.Count == 0)
             {
@@ -103,7 +105,19 @@ namespace VoiceActing
                 storyEventTexture.SetActive(true);
                 storyEventStartWeek.CreateScene(playerData.NextStoryEventsStartWeek[0]);
             }
+
             menuNextWeek.StartNextWeek();
+        }
+
+        private void NextWeek()
+        {
+            playerData.CreateList(playerDataDebug);
+            AddRandomEvents();
+            gameTimelineData.CheckContractTimeline(playerData);
+            gameTimelineData.CheckEventsTimeline(playerData);
+            playerData.VoiceActorWork();
+            playerData.GachaContract();
+            playerData.SetBestActor();
         }
 
         private void InitialiazeManagers()
@@ -113,6 +127,11 @@ namespace VoiceActing
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
             soundEngiManager.SetSoundEngiList(playerData.SoundEngineers);
             soundEngiFormation.CreateButtonFormation(playerData.InventoryFormation);
+            moneyManager.DrawMoney(playerData.Money);
+            infoManager.DrawDate(playerData.Date, (int)playerData.Season, playerData.MonthName[playerData.Date.month - 1], playerData.MonthDate[playerData.Date.month - 1]);
+            infoManager.DrawObjective(playerData.CurrentChapter, playerData.CurrentObjective);
+            infoManager.DrawInfo(0, actorsManagers.GetActorUnavailable());
+            infoManager.DrawInfo(1, soundEngiManager.GetFormationComplete());
         }
 
 
@@ -155,6 +174,7 @@ namespace VoiceActing
 
         private void CheckContractDone()
         {
+            // Bug fonction quand meme appelé quand on load
             StartCoroutine(CoroutineProgressAnimation());
 
 
@@ -207,6 +227,26 @@ namespace VoiceActing
             }
             moneyManager.DrawMoneyGain();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

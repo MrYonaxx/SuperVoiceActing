@@ -33,6 +33,8 @@ namespace VoiceActing
         string saveAllDataName = "savesData";
         [SerializeField]
         SaveDatabase saveDatabase;
+        [SerializeField]
+        ImageDictionnary seasonData;
 
 
         [Header("Menu Save")]
@@ -88,7 +90,7 @@ namespace VoiceActing
                 {
                     buttonSaveLoad.Add(Instantiate(buttonSavePrefab, buttonScrollListTransform));
                     buttonsList.Add(buttonSaveLoad[buttonSaveLoad.Count - 1].GetRectTransform());
-                    buttonSaveLoad[i].DrawButton(saveDatabase.SavesDatas[i], i);
+                    buttonSaveLoad[i].DrawButton(saveDatabase.SavesDatas[i], seasonData, i);
                 }
             }
         }
@@ -110,7 +112,7 @@ namespace VoiceActing
         public void Validate(PlayerData playerData)
         {
             SavePlayerProfile(playerData, indexSelected);
-            buttonSaveLoad[indexSelected].DrawButton(saveDatabase.SavesDatas[indexSelected], indexSelected);
+            buttonSaveLoad[indexSelected].DrawButton(saveDatabase.SavesDatas[indexSelected], seasonData, indexSelected);
             buttonSaveLoad[indexSelected].FeedbackSave();
         }
 
@@ -159,7 +161,7 @@ namespace VoiceActing
             string filePath = string.Format("{0}/saves/{1}.json", Application.persistentDataPath, saveAllDataName);
 
             Debug.Log(filePath);
-            FileInfo fileInfo = new FileInfo(filePath);
+            //FileInfo fileInfo = new FileInfo(filePath);
             File.WriteAllText(filePath, json);
         }
 

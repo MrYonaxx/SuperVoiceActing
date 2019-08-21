@@ -141,14 +141,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private Sprite iconSprite;
-        public Sprite IconSprite
-        {
-            get { return iconSprite; }
-            set { iconSprite = value; }
-        }
-
-        [SerializeField]
         private SoundEngineer soundEngineer;
         public SoundEngineer SoundEngineer
         {
@@ -327,7 +319,6 @@ namespace VoiceActing
                 this.description = data.Description[Random.Range(0, data.Description.Length)];
 
             this.contractType = data.ContractType;
-            this.iconSprite = null;
 
             this.level = data.Level;
             this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
@@ -353,6 +344,8 @@ namespace VoiceActing
 
             this.victoryTheme = data.VictoryTheme;
             this.battleTheme = data.BattleTheme;
+
+            this.soundEngineer = new SoundEngineer();
 
             this.eventData = new List<DoublageEventData>(data.EventData.Length);
             for (int i = 0; i < data.EventData.Length; i++)

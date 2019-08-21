@@ -53,8 +53,8 @@ namespace VoiceActing
 
 
         [SerializeField]
-        string saveSeason;
-        public string SaveSeason
+        int saveSeason;
+        public int SaveSeason
         {
             get { return saveSeason; }
             set { saveSeason = value; }
@@ -91,11 +91,11 @@ namespace VoiceActing
             set { saveMoney = value; }
         }
         [SerializeField]
-        string saveBestDA;
-        public string SaveBestDA
+        Sprite saveBestVA;
+        public Sprite SaveBestVA
         {
-            get { return saveBestDA; }
-            set { saveBestDA = value; }
+            get { return saveBestVA; }
+            set { saveBestVA = value; }
         }
 
         public SaveData(PlayerData playerData)
@@ -115,6 +115,9 @@ namespace VoiceActing
             saveTime = playerData.GetTimeInHour();
             saveMoney = playerData.Money.ToString();
             saveChapter = playerData.CurrentChapter.ToString();
+
+            saveSeason = (int)playerData.Season;
+            saveBestVA = playerData.CurrentBestActor;
         }
 
     }

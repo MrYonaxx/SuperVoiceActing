@@ -25,6 +25,8 @@ namespace VoiceActing
         [Header("Save")]
         [SerializeField]
         PlayerData playerData;
+        [SerializeField]
+        ImageDictionnary typeContractData;
 
         [Header("Info")]
         [SerializeField]
@@ -182,7 +184,7 @@ namespace VoiceActing
             currentContract = contract;
             Debug.Log("allo?");
             menuActorsManager.DrawAuditionTitle(contract.Name);
-            menuActorsManager.DrawAuditionIcon(contract.IconSprite);
+            menuActorsManager.DrawAuditionIcon(typeContractData.GetSprite((int)contract.ContractType));
             DrawContractInfo();
             DrawButtonsTeamTech();
             DrawButtons();
@@ -192,7 +194,7 @@ namespace VoiceActing
         private void DrawContractInfo()
         {
             textContractTitle.text = currentContract.Name;
-            imageContractIcon.sprite = currentContract.IconSprite;
+            imageContractIcon.sprite = typeContractData.GetSprite((int)currentContract.ContractType);
             textContractSalaire.text = currentContract.Money.ToString();
             textContractTotalCost.text = GetTotalCost().ToString();
         }

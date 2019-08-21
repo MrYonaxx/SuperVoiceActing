@@ -23,6 +23,10 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Header("Data")]
+        [SerializeField]
+        ImageDictionnary typeContractData;
+
         [Header("Prefab")]
         [SerializeField]
         private ButtonContratAvailable buttonPrefab;
@@ -36,13 +40,6 @@ namespace VoiceActing
         private TextMeshProUGUI textMeshSelection;
         [SerializeField]
         private Image iconSelection;
-
-        [HorizontalGroup]
-        [SerializeField]
-        private string[] iconName;
-        [HorizontalGroup]
-        [SerializeField]
-        private Sprite[] iconSprites;
 
 
         [Header("InfoPanel")]
@@ -170,8 +167,7 @@ namespace VoiceActing
             for(int i = 0; i < listContractAvailable.Count; i++)
             {
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
-                SetContractsIcons(listContractAvailable[i]);
-                buttonsContracts[i].DrawButton(listContractAvailable[i].Name, listContractAvailable[i].IconSprite);
+                buttonsContracts[i].DrawButton(listContractAvailable[i].Name, typeContractData.GetSprite((int)listContractAvailable[i].ContractType));
             }
         }
 
@@ -186,34 +182,7 @@ namespace VoiceActing
             menuContractManager.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
             animatorMenu.SetBool("Appear", false);
-            //animatorMenu.gameObject.SetActive(false);
         }
-
-
-
-        public void SetContractsIcons(Contract contract)
-        {
-            if (contract.IconSprite == null)
-            {
-                switch (contract.ContractType)
-                {
-                    case ContractType.Film:
-                        contract.IconSprite = iconSprites[0];
-                        break;
-                    case ContractType.Publicite:
-                        contract.IconSprite = iconSprites[1];
-                        break;
-                    case ContractType.Serie:
-                        contract.IconSprite = iconSprites[2];
-                        break;
-                    case ContractType.JeuVideo:
-                        contract.IconSprite = iconSprites[3];
-                        break;
-                }
-            }
-        }
-
-
 
 
         private void SelectButton()
@@ -224,7 +193,7 @@ namespace VoiceActing
             }
             animatorSelection.transform.position = buttonsContracts[indexSelected].transform.position;
             textMeshSelection.text = listContractAvailable[indexSelected].Name;
-            iconSelection.sprite = listContractAvailable[indexSelected].IconSprite;
+            iconSelection.sprite = buttonsContracts[indexSelected].GetIconContract();
 
             animatorSelection.SetTrigger("Active");
             animatorPanelContract.SetTrigger("Feedback");
@@ -261,19 +230,8 @@ namespace VoiceActing
             textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
             textInfoDescription.text = listContractAvailable[indexSelected].Description;
 
-            switch(listContractAvailable[indexSelected].ContractType)
-            {
-                case ContractType.Film:
-                    textInfoType.text = "Film";
-                    break;
-                case ContractType.Publicite:
-                    textInfoType.text = "Publicité";
-                    break;
-                case ContractType.Serie:
-                    textInfoType.text = "Série";
-                    break;
-            }
-            iconInfoType.sprite = listContractAvailable[indexSelected].IconSprite;
+            textInfoType.text = typeContractData.GetName((int)listContractAvailable[indexSelected].ContractType);
+            iconInfoType.sprite = typeContractData.GetSprite((int)listContractAvailable[indexSelected].ContractType);
 
 
 

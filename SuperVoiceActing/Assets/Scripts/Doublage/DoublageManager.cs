@@ -31,7 +31,8 @@ namespace VoiceActing
         [Title("Contrat")]
         [SerializeField]
         protected PlayerData playerData;
-
+        [SerializeField]
+        protected InitialPlayerData initialPlayerData;
 
         [Title("Controllers")]
         [SerializeField]
@@ -225,7 +226,7 @@ namespace VoiceActing
             {
                 if (contratData != null)
                 {
-                    playerData.CreateList();
+                    playerData.CreatePlayerData(initialPlayerData);
                     contrat = new Contract(contratData); // Pour Debug
                     CheckCharacterLock(contrat);
                     playerData.CurrentContract = contrat;

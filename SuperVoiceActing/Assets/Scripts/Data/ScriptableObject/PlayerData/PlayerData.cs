@@ -70,10 +70,8 @@ namespace VoiceActing
     {
 
         [Space]
-
         [SerializeField]
         private int language;
-
         public int Language
         {
             get { return language; }
@@ -83,20 +81,6 @@ namespace VoiceActing
         [Space]
         [Space]
         [Title("Ressources")]
-
-        [SerializeField]
-        private int startMoney;
-        public int StartMoney
-        {
-            get { return startMoney; }
-        }
-
-        [SerializeField]
-        private int startMaintenance;
-        public int StartMaintenance
-        {
-            get { return startMaintenance; }
-        }
 
 
         [SerializeField]
@@ -111,44 +95,6 @@ namespace VoiceActing
         [Space]
         [Title("Calendar")]
 
-
-        [SerializeField]
-        private GameTimelineData gameTimeline;
-        public GameTimelineData GameTimeline
-        {
-            get { return gameTimeline; }
-        }
-
-        [SerializeField]
-        private Season startSeason;
-        public Season StartSeason
-        {
-            get { return startSeason; }
-        }
-
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
-        [SerializeField]
-        private int week;
-        public int Week
-        {
-            get { return week; }
-        }
-
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
-        [SerializeField]
-        private int month;
-        public int Month
-        {
-            get { return month; }
-        }
-
-        [HorizontalGroup("Date", LabelWidth = 50, Width = 50)]
-        [SerializeField]
-        private int year;
-        public int Year
-        {
-            get { return year; }
-        }
 
 
         [Space]
@@ -180,7 +126,7 @@ namespace VoiceActing
         {
             get { return winterDate; }
         }
-        //[FoldoutGroup("Configuration")]
+
         [HorizontalGroup("Configuration/hey")]
         [SerializeField]
         private string[] monthName;
@@ -188,7 +134,6 @@ namespace VoiceActing
         {
             get { return monthName; }
         }
-        //[FoldoutGroup("Configuration")]
         [HorizontalGroup("Configuration/hey")]
         [SerializeField]
         private int[] monthDate;
@@ -197,33 +142,6 @@ namespace VoiceActing
             get { return monthDate; }
         }
 
-        ///////////////////////////////////////////////////////////////////////////////////
-        [Space]
-        [Space]
-        [Space]
-        [Title("Battle Data")]
-        [SerializeField]
-        private int initialComboMax;
-
-
-        [SerializeField]
-        [HideLabel]
-        private EmotionStat initialDeck;
-
-        [SerializeField]
-        private EmotionStat initialAtkBonus;
-
-        [SerializeField]
-        private EmotionStat initialDefBonus;
-
-        [SerializeField]
-        private int initialCriticalRate;
-
-        [SerializeField]
-        private int initialTemperature;
-
-        [SerializeField]
-        private int initialTurn;
 
         [HorizontalGroup("InitialEquipement")]
         [SerializeField]
@@ -232,36 +150,6 @@ namespace VoiceActing
         {
             get { return equipementCategories; }
         }
-
-        [HorizontalGroup("InitialEquipement")]
-        [SerializeField]
-        private EquipementData[] initialEquipement;
-
-        /////////////////////////////////////////////////////////////////////////////////// 
-        [Space]
-        [Space]
-        [Space]
-        [Title("Management Data")]
-        [SerializeField]
-        private List<ContractData> contractAvailableDebug = new List<ContractData>();
-
-        [SerializeField]
-        private List<VoiceActorData> voiceActorsDebug = new List<VoiceActorData>();
-
-        [SerializeField]
-        private List<VoiceActorData> voiceActorsGachaDebug = new List<VoiceActorData>();
-
-        [SerializeField]
-        private List<SoundEngineerData> soundEngineerDebug = new List<SoundEngineerData>();
-
-        [SerializeField]
-        private List<StoryEventData> initialTutoEvent = new List<StoryEventData>();
-
-        [SerializeField]
-        private List<EquipementData> inventoryDebug = new List<EquipementData>();
-
-        [SerializeField]
-        private List<FormationData> formationDebug = new List<FormationData>();
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -460,7 +348,12 @@ namespace VoiceActing
 
 
 
-
+        private Sprite currentBestActor;
+        public Sprite CurrentBestActor
+        {
+            get { return currentBestActor; }
+            set { currentBestActor = value; }
+        }
 
 
         [SerializeField]
@@ -468,6 +361,12 @@ namespace VoiceActing
         public int CurrentChapter
         {
             get { return currentChapter; }
+        }
+        [SerializeField]
+        private string currentObjective;
+        public string CurrentObjective
+        {
+            get { return currentObjective; }
         }
 
 
@@ -603,71 +502,94 @@ namespace VoiceActing
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void CreateList()
+
+        public void CreatePlayerData(InitialPlayerData initialPlayerData)
+        {
+            currentContract = new Contract();
+            contractAccepted = new List<Contract>(3);
+
+            voiceActors = new List<VoiceActor>(initialPlayerData.VoiceActorsDebug.Count);
+            for (int i = 0; i < initialPlayerData.VoiceActorsDebug.Count; i++)
+            {
+                voiceActors.Add(new VoiceActor(initialPlayerData.VoiceActorsDebug[i]));
+            }
+
+            voiceActorsGacha = new List<VoiceActor>(initialPlayerData.VoiceActorsGachaDebug.Count);
+            for (int i = 0; i < initialPlayerData.VoiceActorsGachaDebug.Count; i++)
+            {
+                voiceActorsGacha.Add(new VoiceActor(initialPlayerData.VoiceActorsGachaDebug[i]));
+            }
+
+            soundEngineers = new List<SoundEngineer>(initialPlayerData.SoundEngineerDebug.Count);
+            for (int i = 0; i < initialPlayerData.SoundEngineerDebug.Count; i++)
+            {
+                soundEngineers.Add(new SoundEngineer(initialPlayerData.SoundEngineerDebug[i]));
+            }
+
+            contractAvailable = new List<Contract>(initialPlayerData.ContractAvailableDebug.Count);
+            for (int i = 0; i < initialPlayerData.ContractAvailableDebug.Count; i++)
+            {
+                contractAvailable.Add(new Contract(initialPlayerData.ContractAvailableDebug[i]));
+            }
+
+            tutoEvent = new List<StoryEventData>(initialPlayerData.InitialTutoEvent.Count);
+            for (int i = 0; i < initialPlayerData.InitialTutoEvent.Count; i++)
+            {
+                tutoEvent.Add(initialPlayerData.InitialTutoEvent[i]);
+            }
+
+            inventoryEquipement = new List<EquipementData>(initialPlayerData.InventoryDebug.Count);
+            for (int i = 0; i < initialPlayerData.InventoryDebug.Count; i++)
+            {
+                inventoryEquipement.Add(initialPlayerData.InventoryDebug[i]);
+            }
+
+            inventoryFormation = new List<FormationData>(initialPlayerData.FormationDebug.Count);
+            for (int i = 0; i < initialPlayerData.FormationDebug.Count; i++)
+            {
+                inventoryFormation.Add(initialPlayerData.FormationDebug[i]);
+            }
+
+            currentEquipement = new EquipementData[initialPlayerData.InitialEquipement.Length];
+            for (int i = 0; i < initialPlayerData.InitialEquipement.Length; i++)
+            {
+                currentEquipement[i] = initialPlayerData.InitialEquipement[i];
+            }
+
+            equipementCategories = new EquipementCategory[initialPlayerData.EquipementCategories.Length];
+            for (int i = 0; i < initialPlayerData.EquipementCategories.Length; i++)
+            {
+                equipementCategories[i] = initialPlayerData.EquipementCategories[i];
+            }
+
+
+
+            contractGacha = new List<ContractData>();
+            contractGachaCooldown = new List<ContractCooldown>();
+            nextStoryEvents = new List<StoryEventData>();
+            nextStoryEventsStartWeek = new List<StoryEventData>();
+            phoneStoryEvents = new List<StoryEventData>();
+
+            date = new Date(initialPlayerData.Week, initialPlayerData.Month, initialPlayerData.Year);
+
+            season = initialPlayerData.StartSeason;
+            money = initialPlayerData.StartMoney;
+            maintenance = initialPlayerData.StartMaintenance;
+
+            comboMax = initialPlayerData.InitialComboMax;
+            deck = new EmotionStat(initialPlayerData.InitialDeck);
+            atkBonus = new EmotionStat(initialPlayerData.InitialAtkBonus);
+            defBonus = new EmotionStat(initialPlayerData.InitialDefBonus);
+
+            timer = 0;
+        }
+
+        public void CreateList(InitialPlayerData initialPlayerData)
         {
             if (bla == null)
             {
                 bla = new DebugSave(true);
-                currentContract = null;
-
-                voiceActors = new List<VoiceActor>(voiceActorsDebug.Count);
-                for (int i = 0; i < voiceActorsDebug.Count; i++)
-                {
-                    voiceActors.Add(new VoiceActor(voiceActorsDebug[i]));
-                }
-
-                voiceActorsGacha = new List<VoiceActor>(voiceActorsGachaDebug.Count);
-                for (int i = 0; i < voiceActorsGachaDebug.Count; i++)
-                {
-                    voiceActorsGacha.Add(new VoiceActor(voiceActorsGachaDebug[i]));
-                }
-
-                soundEngineers = new List<SoundEngineer>(soundEngineerDebug.Count);
-                for (int i = 0; i < soundEngineerDebug.Count; i++)
-                {
-                    soundEngineers.Add(new SoundEngineer(soundEngineerDebug[i]));
-                }
-
-
-                contractAvailable = new List<Contract>(contractAvailableDebug.Count);
-                for (int i = 0; i < contractAvailableDebug.Count; i++)
-                {
-                    contractAvailable.Add(new Contract(contractAvailableDebug[i]));
-                }
-
-
-                tutoEvent = new List<StoryEventData>(initialTutoEvent.Count);
-                for (int i = 0; i < initialTutoEvent.Count; i++)
-                {
-                    tutoEvent.Add(initialTutoEvent[i]);
-                }
-
-                inventoryEquipement = new List<EquipementData>(inventoryDebug.Count);
-                for (int i = 0; i < inventoryDebug.Count; i++)
-                {
-                    inventoryEquipement.Add(inventoryDebug[i]);
-                }
-
-
-                inventoryFormation = new List<FormationData>(formationDebug.Count);
-                for (int i = 0; i < formationDebug.Count; i++)
-                {
-                    inventoryFormation.Add(formationDebug[i]);
-                }
-
-                contractAccepted = new List<Contract>(3);
-
-
-                currentEquipement = new EquipementData[equipementCategories.Length];
-                for (int i = 0; i < initialEquipement.Length; i++)
-                {
-                    currentEquipement[i] = initialEquipement[i];
-                }
-
-                CreateNewData();
-                CheckContractTimeline();
-                CheckEventsTimeline();
-                GachaContract();
+                CreatePlayerData(initialPlayerData);
             }
             else
             {
@@ -676,28 +598,6 @@ namespace VoiceActing
 
         }
 
-
-        public void CreateNewData()
-        {
-            contractGacha = new List<ContractData>();
-            contractGachaCooldown = new List<ContractCooldown>();
-            nextStoryEvents = new List<StoryEventData>();
-            nextStoryEventsStartWeek = new List<StoryEventData>();
-            phoneStoryEvents = new List<StoryEventData>();
-
-            date = new Date(week, month, year);
-
-            season = StartSeason;
-            money = startMoney;
-            maintenance = startMaintenance;
-            timer = 0;
-
-            deck = new EmotionStat(initialDeck);
-            comboMax = initialComboMax;
-            atkBonus = new EmotionStat(initialAtkBonus);
-            defBonus = new EmotionStat(initialDefBonus);
-
-        }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -717,12 +617,9 @@ namespace VoiceActing
             }
             CheckMonth();
             CheckSeason();
+
             ContractNextWeek();
-            VoiceActorWork();
-            CheckContractTimeline();
-            CheckEventsTimeline();
             CheckContractCooldown();
-            GachaContract();
         }
 
 
@@ -771,7 +668,7 @@ namespace VoiceActing
                     }
                     if (contractAccepted[i].WeekRemaining <= 0)
                     {
-                        contractAccepted[i] = null;
+                        contractAccepted.RemoveAt(i);
                     }
                 }
             }
@@ -790,39 +687,6 @@ namespace VoiceActing
             for (int i = 0; i < voiceActors.Count; i++)
             {
                 voiceActors[i].WorkForWeek(experienceCurve);
-            }
-        }
-
-
-        public void CheckContractTimeline()
-        {
-            for (int i = 0; i < gameTimeline.ContractTimeline[date.week].contractsData.addContracts.Length; i++)
-            {
-                contractAvailable.Add(new Contract(gameTimeline.ContractTimeline[date.week].contractsData.addContracts[i]));
-            }
-
-            for (int i = 0; i < gameTimeline.ContractRandomTimeline[date.week].contractsData.addContracts.Length; i++)
-            {
-                contractGacha.Add(gameTimeline.ContractRandomTimeline[date.week].contractsData.addContracts[i]);
-            }
-
-        }
-
-        public void CheckEventsTimeline()
-        {
-            for (int i = 0; i < gameTimeline.EventsTimeline[date.week].eventData.eventsPhone.Length; i++)
-            {
-                phoneStoryEvents.Add(gameTimeline.EventsTimeline[date.week].eventData.eventsPhone[i]);
-            }
-
-            for (int i = 0; i < gameTimeline.EventsTimeline[date.week].eventData.eventStartWeek.Length; i++)
-            {
-                nextStoryEventsStartWeek.Add(gameTimeline.EventsTimeline[date.week].eventData.eventStartWeek[i]);
-            }
-
-            for (int i = 0; i < gameTimeline.EventsTimeline[date.week].eventData.eventEndWeek.Length; i++)
-            {
-                nextStoryEvents.Add(gameTimeline.EventsTimeline[date.week].eventData.eventEndWeek[i]);
             }
         }
 
@@ -1023,6 +887,18 @@ namespace VoiceActing
             return (int) (finalScore * finalMultiplier);
         }
 
+
+        public void SetBestActor()
+        {
+            if(currentContract.IsNull == false)
+                currentBestActor = currentContract.VoiceActors[Random.Range(0, CurrentContract.VoiceActors.Count)].SpriteSheets.SpriteIcon;
+        }
+
+        public void SetNewChapter(int newChapter, string newObjective)
+        {
+            currentChapter = newChapter;
+            currentObjective = newObjective;
+        }
 
 
 

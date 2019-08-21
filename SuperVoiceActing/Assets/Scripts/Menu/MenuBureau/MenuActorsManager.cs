@@ -185,6 +185,8 @@ namespace VoiceActing
 
         private bool firstDraw = true;
 
+        int actorUnavailable = 0;
+
 
         #endregion
 
@@ -194,6 +196,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public int GetActorUnavailable()
+        {
+            return actorUnavailable;
+        }
 
         #endregion
 
@@ -270,6 +276,10 @@ namespace VoiceActing
             {
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
                 buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].ActorIconHorizontal);
+                if(actorsList[i].Availability == false)
+                {
+                    actorUnavailable += 1;
+                }
             }
             if (indexActorSelected < actorsList.Count)
             {

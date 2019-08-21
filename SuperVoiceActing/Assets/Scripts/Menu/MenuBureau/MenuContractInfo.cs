@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -20,9 +21,32 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Header("MenuInfo")]
         [SerializeField]
-        TextMeshProUGUI[] textMeshProUGUI;
+        private ImageDictionnary seasonData;
 
+        [Header("MenuDate")]
+        [SerializeField]
+        TextMeshProUGUI textWeek;
+        [SerializeField]
+        TextMeshProUGUI textMonth;
+        [SerializeField]
+        TextMeshProUGUI textNextMonth;
+        [SerializeField]
+        TextMeshProUGUI textYear;
+        [SerializeField]
+        Image imageSeasonOutline;
+        [SerializeField]
+        Image imageSeason;
+
+        [Header("MenuInfo")]
+        [SerializeField]
+        TextMeshProUGUI[] textsInfo;
+
+        [SerializeField]
+        string[] placeholderTextDatabase;
+
+        int textInfoCount = 0;
         #endregion
 
         #region GettersSetters 
@@ -30,7 +54,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -40,20 +64,46 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawText(string[] infos)
+
+        public void DrawDate(Date date, int season, string debugMonthName, int debugMonthDate)
         {
-            for(int i = 0; i < textMeshProUGUI.Length; i++)
+            textWeek.text = date.week.ToString();
+            textMonth.text = debugMonthName;// playerData.MonthName[playerData.Date.month - 1];
+            textYear.text = date.year.ToString();
+            textNextMonth.text = (debugMonthDate - date.week).ToString(); //playerData.MonthDate[playerData.Date.month - 1]
+            imageSeason.sprite = seasonData.GetSprite(season);
+            imageSeasonOutline.sprite = imageSeason.sprite;
+        }
+
+        public void DrawInfo(string info)
+        {
+            textsInfo[textInfoCount].text = info;
+            textInfoCount += 1;
+        }
+
+        public void DrawObjective(int currentChapter, string objective)
+        {
+            if (currentChapter != 0)
             {
-                if (i < infos.Length)
-                {
-                    textMeshProUGUI[i].gameObject.SetActive(true);
-                    textMeshProUGUI[i].text = infos[i];
-                }
-                else
-                {
-                    textMeshProUGUI[i].gameObject.SetActive(false);
-                }
+                textsInfo[textInfoCount].text = "Chapitre " + currentChapter + "\n" + objective;
+                textInfoCount += 1;
             }
+        }
+
+        public void DrawInfo(string info, int value)
+        {
+            if (value == 0)
+                return;
+            textsInfo[textInfoCount].text = string.Format(info, value);
+            textInfoCount += 1;
+        }
+
+        public void DrawInfo(int infoID, int value)
+        {
+            if (value == 0)
+                return;
+            textsInfo[textInfoCount].text = string.Format(placeholderTextDatabase[infoID], value);
+            textInfoCount += 1;
         }
 
 

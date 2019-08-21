@@ -288,7 +288,7 @@ namespace VoiceActing
             textContractTotalMoney.text = (contract.Money + contract.MoneyBonus).ToString();
             textScoreTotal.text = contract.Score.ToString() + " / " + contract.HighScore;
 
-            if(contract.SoundEngineer != null)
+            if(contract.SoundEngineer.IsNull != true)
             {
                 imageSoundEngi.gameObject.SetActive(true);
                 imageSoundEngi.sprite = contract.SoundEngineer.SpritesSheets.SpriteNormal[0];

@@ -34,6 +34,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public Sprite GetIconContract()
+        {
+            return iconSprite.sprite;
+        }
 
         #endregion
 

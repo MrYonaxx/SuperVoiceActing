@@ -73,6 +73,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public Sprite GetIconContract()
+        {
+            return contractIcon.sprite;
+        }
 
         #endregion
 
@@ -82,7 +86,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawContract(Contract contract)
+        public void DrawContract(Contract contract, Sprite iconContract = null)
         {
             isButtonAddContract = false;
             panelContract.SetActive(true);
@@ -95,7 +99,7 @@ namespace VoiceActing
             if (contract.WeekRemaining <= 2)
                 contractWeekRemaining.color = Color.yellow;
             contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
-            contractIcon.sprite = contract.IconSprite;
+            contractIcon.sprite = iconContract;
 
             if (contract.TotalLine <= 0)
             {

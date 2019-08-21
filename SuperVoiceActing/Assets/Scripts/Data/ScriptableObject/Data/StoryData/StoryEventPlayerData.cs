@@ -31,6 +31,12 @@ namespace VoiceActing
         bool voiceActorRemove;
         [SerializeField]
         bool voiceActorUnavailable;
+        [SerializeField]
+        int newChapter;
+        [SerializeField]
+        string newObjective;
+        [SerializeField]
+        bool skipNextWeek;
 
         public void SetNode(PlayerData playerData)
         {
@@ -46,15 +52,18 @@ namespace VoiceActing
 
             if (contractToAdd != null)
             {
-                for (int i = 0; i < playerData.ContractAccepted.Count; i++)
+                playerData.ContractAccepted.Add(new Contract(contractToAdd));
+                playerData.ContractAccepted[playerData.ContractAccepted.Count-1].CheckCharacterLock(playerData.VoiceActors);
+                /*for (int i = 0; i < playerData.ContractAccepted.Count; i++)
                 {
+                    playerData.ContractAccepted.Add(new Contract(contractToAdd));
                     if (playerData.ContractAccepted[i] == null)
                     {
                         playerData.ContractAccepted[i] = new Contract(contractToAdd);
                         CheckCharacterLock(playerData, playerData.ContractAccepted[i]);
                         break;
                     }
-                }
+                }*/
             }
 
 
@@ -108,6 +117,16 @@ namespace VoiceActing
                         }
                     }
                 }
+            }
+
+            if (newChapter != 0)
+            {
+                playerData.SetNewChapter(newChapter, newObjective);
+            }
+
+            if(skipNextWeek == true)
+            {
+                playerData.IsLoading = true;
             }
 
 

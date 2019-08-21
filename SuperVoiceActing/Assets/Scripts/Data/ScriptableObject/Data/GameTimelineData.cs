@@ -167,16 +167,37 @@ namespace VoiceActing
         }
 
 
-        /*public ContractData[] GetContracts(int week)
+        public void CheckContractTimeline(PlayerData playerData)
         {
-            if(contractTimeline[week].addContracts.addContracts != null)
+            for (int i = 0; i < ContractTimeline[playerData.Date.week].contractsData.addContracts.Length; i++)
             {
-                if (contractTimeline[week].addContracts.addContracts.Length != 0)
-                    return contractTimeline[week].addContracts.addContracts;
-
+                playerData.ContractAvailable.Add(new Contract(ContractTimeline[playerData.Date.week].contractsData.addContracts[i]));
             }
-            return null;
-        }*/
+
+            for (int i = 0; i < ContractRandomTimeline[playerData.Date.week].contractsData.addContracts.Length; i++)
+            {
+                playerData.ContractGacha.Add(ContractRandomTimeline[playerData.Date.week].contractsData.addContracts[i]);
+            }
+
+        }
+
+        public void CheckEventsTimeline(PlayerData playerData)
+        {
+            for (int i = 0; i < EventsTimeline[playerData.Date.week].eventData.eventsPhone.Length; i++)
+            {
+                playerData.PhoneStoryEvents.Add(EventsTimeline[playerData.Date.week].eventData.eventsPhone[i]);
+            }
+
+            for (int i = 0; i < EventsTimeline[playerData.Date.week].eventData.eventStartWeek.Length; i++)
+            {
+                playerData.NextStoryEventsStartWeek.Add(EventsTimeline[playerData.Date.week].eventData.eventStartWeek[i]);
+            }
+
+            for (int i = 0; i < EventsTimeline[playerData.Date.week].eventData.eventEndWeek.Length; i++)
+            {
+                playerData.NextStoryEvents.Add(EventsTimeline[playerData.Date.week].eventData.eventEndWeek[i]);
+            }
+        }
 
 
     } // GameTimelineData class

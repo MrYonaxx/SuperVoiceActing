@@ -78,13 +78,13 @@ namespace VoiceActing
 
         public override void DrawContract(Contract contract)
         {
-            menuStudioSoundEngiManager.DrawAudition(contract.Name, contract.IconSprite, contract.CurrentMixing, contract.TotalMixing);
+            menuStudioSoundEngiManager.DrawAudition(contract.Name, null, contract.CurrentMixing, contract.TotalMixing);
 
             textContractCurrentMixing.text = contract.CurrentMixing.ToString();
             textContractTotalMixing.text = contract.TotalMixing.ToString();
             rectTransformMixingProgress.localScale = new Vector2((float)contract.CurrentMixing / contract.TotalMixing, rectTransformMixingProgress.localScale.y);
 
-            if (contract.SoundEngineer == null)
+            if (contract.SoundEngineer.IsNull == true)
             {
                 imageSoundEngiIcon.gameObject.SetActive(false);
                 imageSoundEngiFace.gameObject.SetActive(false);

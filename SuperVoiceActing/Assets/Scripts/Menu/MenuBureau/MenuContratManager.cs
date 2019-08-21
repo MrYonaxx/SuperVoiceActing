@@ -28,8 +28,10 @@ namespace VoiceActing
 
         [SerializeField]
         private PlayerData playerData;
-
         [SerializeField]
+        private ImageDictionnary typeContractData;
+
+        /*[SerializeField]*/
         private List<Contract> contractAcceptedList = new List<Contract>(3);
 
         [Header("Prefab")]
@@ -54,23 +56,6 @@ namespace VoiceActing
         [SerializeField]
         MenuActorsManager menuActorsManager;
 
-        [Header("MenuInfo")]
-
-        [SerializeField]
-        TextMeshProUGUI textWeek;
-        [SerializeField]
-        TextMeshProUGUI textMonth;
-        [SerializeField]
-        TextMeshProUGUI textNextMonth;
-        [SerializeField]
-        TextMeshProUGUI textYear;
-        [SerializeField]
-        Image imageSeasonOutline;
-        [SerializeField]
-        Image imageSeason;
-
-        [SerializeField]
-        Sprite[] spriteSeason;
 
         [Header("EventPhone")]
         [SerializeField]
@@ -120,29 +105,7 @@ namespace VoiceActing
         }
 
 
-        public void DrawDate()
-        {
-            textWeek.text = playerData.Date.week.ToString();
-            textMonth.text = playerData.MonthName[playerData.Date.month - 1];
-            textYear.text = playerData.Date.year.ToString();
-            textNextMonth.text = (playerData.MonthDate[playerData.Date.month - 1] - playerData.Date.week).ToString();
-            switch (playerData.Season)
-            {
-                case Season.Spring:
-                    imageSeason.sprite = spriteSeason[0];
-                    break;
-                case Season.Summer:
-                    imageSeason.sprite = spriteSeason[1];
-                    break;
-                case Season.Autumn:
-                    imageSeason.sprite = spriteSeason[2];
-                    break;
-                case Season.Winter:
-                    imageSeason.sprite = spriteSeason[3];
-                    break;
-            }
-            imageSeasonOutline.sprite = imageSeason.sprite;
-        }
+
 
         public void DrawAvailableContract()
         {          
@@ -154,8 +117,7 @@ namespace VoiceActing
             // à voir si j'instancie des prefab, mais pour 5 objets on va faire simple
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
-                //buttonContractAccepted[i].gameObject.SetActive(true);
-                buttonContractAccepted[i].DrawContract(contractAcceptedList[i]);
+                buttonContractAccepted[i].DrawContract(contractAcceptedList[i], typeContractData.GetSprite((int)contractAcceptedList[i].ContractType));
             }
             if (contractAcceptedList.Count < 3)
             {
@@ -172,18 +134,6 @@ namespace VoiceActing
             if(newContract.CheckCharacterLock(playerData.VoiceActors) == true) // true == acteurs à instancier;
                 menuActorsManager.DestroyButtonList();
             return true;
-            /*for (int i = 0; i < contractAcceptedList.Count; i++)
-            {
-                if (contractAcceptedList[i] == null)
-                {
-                    contractAcceptedList[i] = newContract;
-                    DrawAvailableContract();
-                    CheckEventWhenAccepted(newContract);
-                    CheckCharacterLock(newContract);
-                    return true;
-                }
-            }
-            return false;*/
         }
 
 

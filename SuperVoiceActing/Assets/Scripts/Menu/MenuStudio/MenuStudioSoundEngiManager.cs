@@ -79,6 +79,7 @@ namespace VoiceActing
 
         bool auditionMode = false;
         int auditionMaxMixing;
+        int formationComplete = 0;
 
 
         #endregion
@@ -89,6 +90,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public int GetFormationComplete()
+        {
+            return formationComplete;
+        }
 
         #endregion
 
@@ -119,17 +124,12 @@ namespace VoiceActing
             for (int i = 0; i < soundEngineers.Count; i++)
             {
                 buttonsList.Add(null);
-                soundEngineers[i].Formation();
+                if(soundEngineers[i].Formation() == true)
+                {
+                    formationComplete += 1;
+                }
             }
             soundEngineersList = soundEngineers;
-        }
-
-        public void FormationSoundEngi()
-        {
-            for (int i = 0; i < soundEngineersList.Count; i++)
-            {
-                soundEngineersList[i].Formation();
-            }
         }
 
 
