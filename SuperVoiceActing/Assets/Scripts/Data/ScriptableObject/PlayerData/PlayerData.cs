@@ -13,6 +13,7 @@ using Sirenix.OdinInspector;
 namespace VoiceActing
 {
 
+
     public class DebugSave
     {
         private bool boolean = true;
@@ -346,7 +347,12 @@ namespace VoiceActing
             get { return inventoryFormation; }
         }
 
-
+        [SerializeField]
+        private ResearchPlayerLevel[] researchesLevels;
+        public ResearchPlayerLevel[] ResearchesLevels
+        {
+            get { return researchesLevels; }
+        }
 
         private Sprite currentBestActor;
         public Sprite CurrentBestActor
@@ -392,6 +398,7 @@ namespace VoiceActing
         public int ResearchPoint
         {
             get { return researchPoint; }
+            set { researchPoint = value; }
         }
 
         [SerializeField]
@@ -591,6 +598,17 @@ namespace VoiceActing
             defBonus = new EmotionStat(initialPlayerData.InitialDefBonus);
 
             timer = 0;
+
+            researchPoint = initialPlayerData.StartResearchPoint;
+            researchesLevels = new ResearchPlayerLevel[initialPlayerData.ResearchDatabase.ResearchesData.Length];
+            for(int i = 0; i < initialPlayerData.ResearchDatabase.ResearchesData.Length; i++)
+            {
+                researchesLevels[i] = new ResearchPlayerLevel(initialPlayerData.ResearchDatabase.ResearchesData[i].Researches.Length);
+                for(int j = 0; j < initialPlayerData.ResearchDatabase.ResearchesData[i].Researches.Length; j++)
+                {
+                    researchesLevels[i].ResearchLevel[j] = 0;
+                }
+            }
         }
 
         public void CreateList(InitialPlayerData initialPlayerData)

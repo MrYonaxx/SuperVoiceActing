@@ -40,6 +40,20 @@ namespace VoiceActing
             get { return startMaintenance; }
         }
 
+        [SerializeField]
+        private int startResearchPoint;
+        public int StartResearchPoint
+        {
+            get { return startResearchPoint; }
+        }
+
+        [SerializeField]
+        private ResearchDatabase researchDatabase;
+        public ResearchDatabase ResearchDatabase
+        {
+            get { return researchDatabase; }
+        }
+
         ///////////////////////////////////////////////////////////////////////////////////
         ///
         [Space]

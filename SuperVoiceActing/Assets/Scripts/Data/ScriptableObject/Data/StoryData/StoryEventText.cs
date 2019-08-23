@@ -219,6 +219,11 @@ namespace VoiceActing
                     {
                         textMeshPro.maxVisibleCharacters += 1;
                         actualTime = 0;
+                        /*if (textMeshPro.maxVisibleCharacters > 0)
+                        {
+                            if (actualText[textMeshPro.maxVisibleCharacters-1] == ',' || actualText[textMeshPro.maxVisibleCharacters - 1] == '.')
+                                actualTime -= 20;
+                        }*/
                     }
                 }
                 else if (textMeshPro.maxVisibleCharacters < actualText.Length)

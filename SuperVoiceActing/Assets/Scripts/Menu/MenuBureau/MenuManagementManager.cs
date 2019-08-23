@@ -44,6 +44,8 @@ namespace VoiceActing
         [SerializeField]
         private MenuStudioSoundEngiFormation soundEngiFormation;
         [SerializeField]
+        private MenuStudioResearch researchManager;
+        [SerializeField]
         private MenuContractMoney moneyManager;
 
         [Header("a")]
@@ -127,6 +129,7 @@ namespace VoiceActing
             contractAvailable.SetContractAvailable(playerData.ContractAvailable);
             soundEngiManager.SetSoundEngiList(playerData.SoundEngineers);
             soundEngiFormation.CreateButtonFormation(playerData.InventoryFormation);
+            researchManager.SetResearchPlayerLevels(playerData);
             moneyManager.DrawMoney(playerData.Money);
             infoManager.DrawDate(playerData.Date, (int)playerData.Season, playerData.MonthName[playerData.Date.month - 1], playerData.MonthDate[playerData.Date.month - 1]);
             infoManager.DrawObjective(playerData.CurrentChapter, playerData.CurrentObjective);

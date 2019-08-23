@@ -12,6 +12,24 @@ using UnityEngine;
 namespace VoiceActing
 {
     [System.Serializable]
+    public class ResearchPlayerLevel
+    {
+        [SerializeField]
+        private int[] researchLevel;
+        public int[] ResearchLevel
+        {
+            get { return researchLevel; }
+            set { researchLevel = value; }
+        }
+
+        public ResearchPlayerLevel(int size)
+        {
+            researchLevel = new int[size];
+        }
+    }
+
+
+    [System.Serializable]
     public class ResearchDatabaseCategory
     {
         [SerializeField]
