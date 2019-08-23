@@ -118,6 +118,7 @@ namespace VoiceActing
 
 
 
+
         public string GetBoxTitle()
         {
             switch (eventNode)

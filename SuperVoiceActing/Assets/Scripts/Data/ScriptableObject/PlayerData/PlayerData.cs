@@ -388,6 +388,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private int researchPoint;
+        public int ResearchPoint
+        {
+            get { return researchPoint; }
+        }
+
+        [SerializeField]
         private Date date;
         public Date Date
         {
@@ -472,6 +479,8 @@ namespace VoiceActing
         {
             get { return turnLimit; }
         }
+
+
 
         private DebugSave bla = null;
 

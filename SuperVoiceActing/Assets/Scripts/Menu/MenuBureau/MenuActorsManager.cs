@@ -275,7 +275,7 @@ namespace VoiceActing
             for(int i = 0; i < actorsList.Count; i++)
             {
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].ActorIconHorizontal);
+                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].SpriteSheets.SpriteIcon);
                 if(actorsList[i].Availability == false)
                 {
                     actorUnavailable += 1;
@@ -316,7 +316,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < actorsList.Count; i++)
             {
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].ActorIconHorizontal);
+                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].SpriteSheets.SpriteIcon);
             }
         }
 

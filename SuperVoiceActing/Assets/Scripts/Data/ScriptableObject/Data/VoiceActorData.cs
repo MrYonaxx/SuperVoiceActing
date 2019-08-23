@@ -173,20 +173,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private Sprite actorIcon;
-        public Sprite ActorIcon
-        {
-            get { return actorIcon; }
-        }
-
-        [SerializeField]
-        private Sprite actorContractIcon;
-        public Sprite ActorContractIcon
-        {
-            get { return actorContractIcon; }
-        }
-
-        [SerializeField]
         private StoryCharacterData spriteSheets;
         public StoryCharacterData SpriteSheets
         {

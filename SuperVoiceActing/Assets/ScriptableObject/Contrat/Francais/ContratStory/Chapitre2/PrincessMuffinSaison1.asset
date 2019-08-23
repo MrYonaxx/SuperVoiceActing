@@ -19,8 +19,8 @@ MonoBehaviour:
   salaryMax: 0
   mixingMin: 0
   mixingMax: 0
-  weekMin: 0
-  weekMax: 0
+  weekMin: 10
+  weekMax: 10
   expGain: 0
   expBonus: 0
   contractDictionnary: []
@@ -107,7 +107,17 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 0
+          mathOperator: 0
+          conditionValue: 0
+        skills: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:

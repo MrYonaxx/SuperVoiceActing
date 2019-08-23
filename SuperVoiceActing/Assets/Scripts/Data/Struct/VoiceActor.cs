@@ -174,22 +174,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private Sprite actorIcon;
-        public Sprite ActorIcon
-        {
-            get { return actorIcon; }
-            set { actorIcon = value; }
-        }
-
-        [SerializeField]
-        private Sprite actorIconHorizontal;
-        public Sprite ActorIconHorizontal
-        {
-            get { return actorIconHorizontal; }
-            set { actorIconHorizontal = value; }
-        }
-
-        [SerializeField]
         private StoryCharacterData spriteSheets;
         public StoryCharacterData SpriteSheets
         {
@@ -297,8 +281,6 @@ namespace VoiceActing
             hp = actorData.Hp;
             hpMax = actorData.Hp;
             actorSprite = actorData.ActorSprite;
-            actorIcon = actorData.ActorContractIcon;
-            actorIconHorizontal = actorData.ActorIcon;
             damageVariance = actorData.FourchetteMax;
             roleDefense = 0;
             timbre = actorData.Timbre;

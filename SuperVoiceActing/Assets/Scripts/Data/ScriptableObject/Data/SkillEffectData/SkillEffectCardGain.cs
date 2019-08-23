@@ -18,7 +18,13 @@ namespace VoiceActing
         [SerializeField]
         [HideLabel]
         EmotionStat cardGain;
-	
-	} // SkillEffectCardGain class
+
+        public override void ApplySkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
+        {
+            doublageManager.ModifyDeck(cardGain);
+
+        }
+
+    } // SkillEffectCardGain class
 	
 }// #PROJECTNAME# namespace

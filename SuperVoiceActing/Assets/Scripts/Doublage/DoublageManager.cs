@@ -990,16 +990,23 @@ namespace VoiceActing
         }
 
 
-        public void ModifyDeck(EmotionStat addDeck)
+        public void ModifyPlayerDeck(EmotionStat addDeck, int addComboMax)
         {
-            /*playerData.Deck.Add(addDeck);
+            playerData.Deck.Add(addDeck);
             playerData.ComboMax += addComboMax;
             if (playerData.ComboMax >= 4)
                 playerData.ComboMax = 3;
             else if (playerData.ComboMax <= 0)
-                playerData.ComboMax = 1;*/
+                playerData.ComboMax = 1;
+            ModifyDeck(addDeck);
+            ModifyComboMax(addComboMax);
+        }
+
+        public void ModifyDeck(EmotionStat addDeck)
+        {
             emotionAttackManager.ResetCard();
             actorsManager.SetCards(emotionAttackManager.AddDeck(addDeck));
+            actorsManager.DrawActorStat();
         }
 
         public void ModifyComboMax(int addComboMax)

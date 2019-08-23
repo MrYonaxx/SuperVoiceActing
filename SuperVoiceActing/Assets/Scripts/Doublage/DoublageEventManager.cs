@@ -221,7 +221,7 @@ namespace VoiceActing
                 else if(currentNode is DoublageEventDeck)
                 {
                     DoublageEventDeck node = (DoublageEventDeck)currentNode;
-                    doublageManager.ModifyDeck(node.NewDeck);
+                    doublageManager.ModifyPlayerDeck(node.NewDeck, node.AddComboMax);
                     StartCoroutine(WaitCoroutine(1));
                 }
 
