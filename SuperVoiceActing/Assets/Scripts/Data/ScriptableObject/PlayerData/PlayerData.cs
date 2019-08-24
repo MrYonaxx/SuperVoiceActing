@@ -485,6 +485,7 @@ namespace VoiceActing
         public int TurnLimit
         {
             get { return turnLimit; }
+            set { turnLimit = value; }
         }
 
 
@@ -594,6 +595,7 @@ namespace VoiceActing
 
             comboMax = initialPlayerData.InitialComboMax;
             deck = new EmotionStat(initialPlayerData.InitialDeck);
+            turnLimit = initialPlayerData.InitialTurn;
             atkBonus = new EmotionStat(initialPlayerData.InitialAtkBonus);
             defBonus = new EmotionStat(initialPlayerData.InitialDefBonus);
 
@@ -623,6 +625,11 @@ namespace VoiceActing
                 NextWeek();
             }
 
+        }
+
+        public bool GetPlayerDebugSave()
+        {
+            return (bla == null);
         }
 
 

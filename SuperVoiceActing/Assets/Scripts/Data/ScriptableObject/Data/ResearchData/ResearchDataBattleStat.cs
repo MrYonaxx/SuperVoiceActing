@@ -35,7 +35,7 @@ namespace VoiceActing
             switch(battleStat)
             {
                 case BattleSessionStat.Turn:
-                    //playerData.TurnLimit += researchValue[researchLevel];
+                    playerData.TurnLimit += researchValue[researchLevel];
                     break;
             }
         }

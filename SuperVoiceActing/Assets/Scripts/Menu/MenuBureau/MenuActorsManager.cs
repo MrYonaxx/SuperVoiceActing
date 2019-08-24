@@ -94,6 +94,10 @@ namespace VoiceActing
         TextMeshProUGUI[] textStatsRole;
         [SerializeField]
         RectTransform[] jaugeStatsRole;
+        [SerializeField]
+        Image[] jaugeEmptyActor;
+        [SerializeField]
+        Image[] jaugeEmptyRole;
 
         [Header("Stats Panel 2")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
@@ -455,33 +459,6 @@ namespace VoiceActing
             for (int i = 0; i < textStatsActor.Length; i++)
             {
                 int currentStatActor = actor.Statistique.GetEmotion(i+1);
-                /*switch (i)
-                {
-                    case 0:
-                        currentStatActor = actor.Statistique.Joy;
-                        break;
-                    case 1:
-                        currentStatActor = actor.Statistique.Sadness;
-                        break;
-                    case 2:
-                        currentStatActor = actor.Statistique.Disgust;
-                        break;
-                    case 3:
-                        currentStatActor = actor.Statistique.Anger;
-                        break;
-                    case 4:
-                        currentStatActor = actor.Statistique.Surprise;
-                        break;
-                    case 5:
-                        currentStatActor = actor.Statistique.Sweetness;
-                        break;
-                    case 6:
-                        currentStatActor = actor.Statistique.Fear;
-                        break;
-                    case 7:
-                        currentStatActor = actor.Statistique.Trust;
-                        break;
-                }*/
 
 
                 if (gaugeCursorMode == false)
@@ -502,40 +479,15 @@ namespace VoiceActing
 
                 if (auditionMode == true)
                 {
-                    int currentStatRole = 0;
-                    switch (i)
-                    {
-                        case 0:
-                            currentStatRole = auditionRole.CharacterStat.Joy;
-                            break;
-                        case 1:
-                            currentStatRole = auditionRole.CharacterStat.Sadness;
-                            break;
-                        case 2:
-                            currentStatRole = auditionRole.CharacterStat.Disgust;
-                            break;
-                        case 3:
-                            currentStatRole = auditionRole.CharacterStat.Anger;
-                            break;
-                        case 4:
-                            currentStatRole = auditionRole.CharacterStat.Surprise;
-                            break;
-                        case 5:
-                            currentStatRole = auditionRole.CharacterStat.Sweetness;
-                            break;
-                        case 6:
-                            currentStatRole = auditionRole.CharacterStat.Fear;
-                            break;
-                        case 7:
-                            currentStatRole = auditionRole.CharacterStat.Trust;
-                            break;
-                    }
+                    int currentStatRole = auditionRole.CharacterStat.GetEmotion(i+1);
 
                     if (currentStatActor >= currentStatRole)
                     {
                         feedbackBestStat[i].color = new Color(1, 1, 0, 0.5f);
                         imageStatIcon[i].color = new Color(1, 1, 0);
                         jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
+                        jaugeEmptyActor[i].color = jaugeEmpty[i].color;
+                        jaugeEmptyRole[i].color = jaugeEmpty[i].color;
                     }
                     else
                     {
@@ -543,6 +495,8 @@ namespace VoiceActing
                         feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
                         imageStatIcon[i].color = new Color(1, 1, 1);
                         jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
+                        jaugeEmptyActor[i].color = jaugeEmpty[i].color;
+                        jaugeEmptyRole[i].color = jaugeEmpty[i].color;
                     }
                 }
 

@@ -42,8 +42,13 @@ namespace VoiceActing
         [SerializeField]
         float ambiantDefaultFogDensity;
 
-        List<GameObject> listObjectInstantiate = new List<GameObject>();
 
+
+        [SerializeField]
+        SimpleSpectrum simpleSpectrum;
+
+
+        List<GameObject> listObjectInstantiate = new List<GameObject>();
         #endregion
 
         #region GettersSetters 
@@ -79,7 +84,15 @@ namespace VoiceActing
                 if (data.NewPostProcess != null)
                     ChangePostProcess(data.NewPostProcess);
                 if (data.ChangeSceneRenderSetting == true)
+                {
+                    RenderSettings.skybox = data.NewSkyBox;
                     ChangeAmbientSettings(data.NewAmbientColor, data.NewFogColor, data.NewFogDensity, data.TimeTransitionRender);
+                    if (data.NewSkyBox != null)
+                    {
+                        RenderSettings.skybox = data.NewSkyBox;
+                    }
+                }
+                simpleSpectrum.gameObject.SetActive(data.ActiveBaseSpectrum);
             }
         }
 
@@ -111,8 +124,14 @@ namespace VoiceActing
             if (data.NewPostProcess != null)
                 ChangePostProcess(data.NewPostProcess);
             if (data.ChangeSceneRenderSetting == true)
+            {
                 ChangeAmbientSettings(data.NewAmbientColor, data.NewFogColor, data.NewFogDensity, data.TimeTransitionRender);
-
+                if (data.NewSkyBox != null)
+                {
+                    RenderSettings.skybox = data.NewSkyBox;
+                }
+            }
+            simpleSpectrum.gameObject.SetActive(data.ActiveBaseSpectrum);
 
             while (time != data.TimeTransitionForNewBackground)
             {

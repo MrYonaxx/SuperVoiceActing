@@ -40,6 +40,9 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textScoreTotal;
 
+        [SerializeField]
+        TextMeshProUGUI textContractResearch;
+
         [Space]
         [SerializeField]
         Image imageSoundEngi;
@@ -242,6 +245,7 @@ namespace VoiceActing
                             contractsEnd.Add(playerData.ContractAccepted[i]);
                             CalculTotalScore(playerData.ContractAccepted[i]);
                             playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
+                            playerData.ResearchPoint += playerData.ContractAccepted[i].Level;
                             SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
                             playerData.ContractAccepted.RemoveAt(i);
                             //playerData.ContractAccepted.Add(null);
@@ -287,8 +291,9 @@ namespace VoiceActing
             textContractBonusMoney.text = contract.MoneyBonus.ToString();
             textContractTotalMoney.text = (contract.Money + contract.MoneyBonus).ToString();
             textScoreTotal.text = contract.Score.ToString() + " / " + contract.HighScore;
+            textContractResearch.text = contract.Level.ToString();
 
-            if(contract.SoundEngineer.IsNull != true)
+            if (contract.SoundEngineer.IsNull != true)
             {
                 imageSoundEngi.gameObject.SetActive(true);
                 imageSoundEngi.sprite = contract.SoundEngineer.SpritesSheets.SpriteNormal[0];

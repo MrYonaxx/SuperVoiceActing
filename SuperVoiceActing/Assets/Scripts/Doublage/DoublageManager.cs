@@ -222,7 +222,7 @@ namespace VoiceActing
         protected virtual void Start()
         {
             contrat = playerData.CurrentContract;           
-            if(contrat == null)
+            if(playerData.GetPlayerDebugSave() == true)
             {
                 if (contratData != null)
                 {
@@ -233,6 +233,7 @@ namespace VoiceActing
                 }
             }
             indexPhrase = contrat.CurrentLine;
+            turnCount = playerData.TurnLimit;
             if (timer != null)
                 timer.SetTurn(turnCount);
             if (maxLineNumber != null)

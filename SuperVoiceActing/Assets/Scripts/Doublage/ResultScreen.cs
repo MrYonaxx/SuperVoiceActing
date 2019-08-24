@@ -168,11 +168,17 @@ namespace VoiceActing
             // Update Contract
             contract.CurrentLine += lineDefeated;
 
+            int expBonus = 0;
+            if (contract.CurrentLine == contract.TotalLine)
+            {
+                expBonus = contract.ExpBonus;
+                StartCoroutine(ExpGainCoroutine(textExpBonus, expBonus, lineDefeated));
+            }
             // Coroutine
             StartCoroutine(LineGainCoroutine());
-            StartCoroutine(ExpGainCoroutine(lineDefeated));
+            StartCoroutine(ExpGainCoroutine(textEXP, contract.ExpGain, lineDefeated));
 
-            DrawActors(contract.ExpGain * lineDefeated);
+            DrawActors((contract.ExpGain * lineDefeated) + expBonus);
 
         }
 
@@ -192,19 +198,19 @@ namespace VoiceActing
             textCurrentLine.text = contract.CurrentLine.ToString();
         }
 
-        private IEnumerator ExpGainCoroutine(int lineDefeated)
+        private IEnumerator ExpGainCoroutine(TextMeshProUGUI tmp, int exp, int lineDefeated)
         {
             float time = 180f;
-            float speed = (contract.ExpGain * lineDefeated) / time;
+            float speed = (exp * lineDefeated) / time;
             float digit = 0;
             while (time != 0)
             {
                 time -= 1;
                 digit += speed;
-                textEXP.text = ((int)digit).ToString();
+                tmp.text = ((int)digit).ToString();
                 yield return null;
             }
-            textEXP.text = (contract.ExpGain * lineDefeated).ToString();
+            tmp.text = (exp * lineDefeated).ToString();
         }
 
 

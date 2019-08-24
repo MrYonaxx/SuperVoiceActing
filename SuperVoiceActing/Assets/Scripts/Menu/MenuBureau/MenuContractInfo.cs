@@ -38,6 +38,8 @@ namespace VoiceActing
         Image imageSeasonOutline;
         [SerializeField]
         Image imageSeason;
+        [SerializeField]
+        TextMeshProUGUI textResearch;
 
         [Header("MenuInfo")]
         [SerializeField]
@@ -74,6 +76,13 @@ namespace VoiceActing
             imageSeason.sprite = seasonData.GetSprite(season);
             imageSeasonOutline.sprite = imageSeason.sprite;
         }
+
+        public void DrawResearch(int researchPoint)
+        {
+            // destiné a changer quand j'aurai une vrai interface
+            textResearch.text = researchPoint + " Point de recherche";
+        }
+
 
         public void DrawInfo(string info)
         {

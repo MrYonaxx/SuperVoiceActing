@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
 
@@ -55,6 +56,11 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textResearchNextDescription;
 
+        [SerializeField]
+        TextMeshProUGUI textResearch;
+        [SerializeField]
+        Image moneyIcon;
+
 
 
 
@@ -90,6 +96,15 @@ namespace VoiceActing
             animatorMenu.gameObject.SetActive(true);
             CreateResearchesButtons();
             DrawCategories();
+            DrawResearch();
+        }
+
+        public void QuitMenu()
+        {
+            animatorMenu.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+            textResearch.text = playerData.Money.ToString();
+            moneyIcon.color = Color.white;
         }
 
         public void SetResearchPlayerLevels(PlayerData data)
@@ -217,7 +232,7 @@ namespace VoiceActing
                 buttonResearchList[indexSelected].DrawResearch(researchDatabase.ResearchesData[indexCategory].Researches[indexSelected], researchPlayerLevels[indexCategory].ResearchLevel[indexSelected]);
                 DrawResearchDescription(researchDatabase.ResearchesData[indexCategory].Researches[indexSelected], researchPlayerLevels[indexCategory].ResearchLevel[indexSelected]);
 
-
+                DrawResearch();
 
             }
 
@@ -263,7 +278,12 @@ namespace VoiceActing
 
 
 
-
+        public void DrawResearch()
+        {
+            // destiné a changer quand j'aurai une vrai interface
+            textResearch.text = playerData.ResearchPoint.ToString();
+            moneyIcon.color = new Color(0,0,0,0);
+        }
 
 
 

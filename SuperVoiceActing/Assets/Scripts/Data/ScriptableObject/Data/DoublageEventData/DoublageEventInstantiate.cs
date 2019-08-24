@@ -64,6 +64,14 @@ namespace VoiceActing
 
         [ShowIf("changeSceneRenderSetting")]
         [SerializeField]
+        private Material newSkyBox;
+        public Material NewSkyBox
+        {
+            get { return newSkyBox; }
+        }
+
+        [ShowIf("changeSceneRenderSetting")]
+        [SerializeField]
         private Color newAmbientColor;
         public Color NewAmbientColor
         {
@@ -92,6 +100,14 @@ namespace VoiceActing
         public int TimeTransitionRender
         {
             get { return timeTransitionRender; }
+        }
+
+        [Space]
+        [SerializeField]
+        private bool activeBaseSpectrum = true;
+        public bool ActiveBaseSpectrum
+        {
+            get { return activeBaseSpectrum; }
         }
 
     } // DoublageEventInstantiate class

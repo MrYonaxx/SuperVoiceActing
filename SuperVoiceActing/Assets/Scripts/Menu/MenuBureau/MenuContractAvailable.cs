@@ -50,6 +50,8 @@ namespace VoiceActing
         [SerializeField]
         Image iconInfoType;
         [SerializeField]
+        TextMeshProUGUI textInfoDifficulty;
+        [SerializeField]
         TextMeshProUGUI textInfoCharacterNumber;
         [SerializeField]
         TextMeshProUGUI textInfoMoney;
@@ -222,6 +224,7 @@ namespace VoiceActing
 
         private void DrawInfo()
         {
+            textInfoDifficulty.text = "Difficulty " + listContractAvailable[indexSelected].Level.ToString();
             textInfoCharacterNumber.text = listContractAvailable[indexSelected].Characters.Count.ToString();
             textInfoTitle.text = listContractAvailable[indexSelected].Name;
             textInfoWeek.text = listContractAvailable[indexSelected].WeekRemaining.ToString();

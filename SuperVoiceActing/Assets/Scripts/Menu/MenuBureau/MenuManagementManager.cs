@@ -135,6 +135,7 @@ namespace VoiceActing
             infoManager.DrawObjective(playerData.CurrentChapter, playerData.CurrentObjective);
             infoManager.DrawInfo(0, actorsManagers.GetActorUnavailable());
             infoManager.DrawInfo(1, soundEngiManager.GetFormationComplete());
+            infoManager.DrawResearch(playerData.ResearchPoint);
         }
 
 
@@ -229,6 +230,7 @@ namespace VoiceActing
                 moneyManager.AddSalaryDatas("Entretien", -playerData.Maintenance);
             }
             moneyManager.DrawMoneyGain();
+            infoManager.DrawResearch(playerData.ResearchPoint);
         }
 
 
