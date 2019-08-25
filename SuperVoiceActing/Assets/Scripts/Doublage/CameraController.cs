@@ -259,6 +259,15 @@ namespace VoiceActing
 
         }
 
+
+        public void SetNewCameraData(DoublageEventCameraData doublageEventCameraData)
+        {
+            cameraMovementSet1 = doublageEventCameraData.CameraSet1;
+            cameraMovementSet2 = doublageEventCameraData.CameraSet2;
+        }
+
+
+
         public void CameraDataMovement(CameraMovementData info)
         {
             if (movementCoroutine != null)

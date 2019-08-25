@@ -351,6 +351,12 @@ namespace VoiceActing
                     ExecuteEvent();
                 }
 
+                else if (currentNode is DoublageEventCameraData)
+                {
+                    viewports[0].SetCameraData((DoublageEventCameraData)currentNode);
+                    ExecuteEvent();
+                }
+
 
             }
             else // Fin d'event

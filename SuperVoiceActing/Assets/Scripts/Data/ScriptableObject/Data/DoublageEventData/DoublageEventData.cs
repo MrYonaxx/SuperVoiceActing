@@ -28,7 +28,8 @@ namespace VoiceActing
         SetCharacter,
         MoveCharacter,
         ResultScreen,
-        Instantiate
+        Instantiate,
+        CameraData
     }
 
     [System.Serializable]
@@ -129,6 +130,12 @@ namespace VoiceActing
         [HideLabel]
         public DoublageEventInstantiate doublageEventInstantiate = null;
 
+        [VerticalGroup("Hey/Right")]
+        [ShowIf("eventNode", DoublageEventNode.CameraData)]
+        [SerializeField]
+        [HideLabel]
+        public DoublageEventCameraData doublageEventCameraData = null;
+
 
         public string GetBoxTitle()
         {
@@ -158,6 +165,8 @@ namespace VoiceActing
                     return eventNode.ToString();
                 case DoublageEventNode.Instantiate:
                     return eventNode + " : " + doublageEventInstantiate.ObjectToInstantiate.name.ToString();
+                case DoublageEventNode.CameraData:
+                    return eventNode.ToString();
             }
             return null;
         }
@@ -287,6 +296,8 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageEventResultScreen;
                 case DoublageEventNode.Instantiate:
                     return doublageEvent[index].dataBox.doublageEventInstantiate;
+                case DoublageEventNode.CameraData:
+                    return doublageEvent[index].dataBox.doublageEventCameraData;
             }
             return null;
         }

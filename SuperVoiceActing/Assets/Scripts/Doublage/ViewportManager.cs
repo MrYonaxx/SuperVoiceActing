@@ -140,6 +140,11 @@ namespace VoiceActing
         }
 
 
+        public void SetCameraData(DoublageEventCameraData data)
+        {
+            viewportCam.SetNewCameraData(data);
+        }
+
 
         public void SetViewportSetting(DoublageEventViewport viewportSetting)
         {
