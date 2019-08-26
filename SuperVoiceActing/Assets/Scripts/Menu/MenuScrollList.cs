@@ -25,6 +25,8 @@ namespace VoiceActing
         [SerializeField]
         protected Animator animatorSelection;
         [SerializeField]
+        protected bool canLoop = true;
+        [SerializeField]
         protected int timeBeforeRepeat = 10;
         [SerializeField]
         protected int repeatInterval = 3;
@@ -97,7 +99,10 @@ namespace VoiceActing
             indexSelected -= 1;
             if (indexSelected <= -1)
             {
-                indexSelected = buttonsList.Count - 1;
+                if (canLoop == false)
+                    indexSelected += 1;
+                else
+                    indexSelected = buttonsList.Count - 1;
             }
             AfterSelection();
             MoveScrollRect();
@@ -121,7 +126,10 @@ namespace VoiceActing
             indexSelected += 1;
             if (indexSelected >= buttonsList.Count)
             {
-                indexSelected = 0;
+                if (canLoop == false)
+                    indexSelected -= 1;
+                else
+                    indexSelected = 0;
             }
             AfterSelection();
             MoveScrollRect();

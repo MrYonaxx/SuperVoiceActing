@@ -185,36 +185,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-
-        public void CheckCharacterLock(Contract newContract)
-        {
-            for (int i = 0; i < newContract.Characters.Count; i++)
-            {
-                if (newContract.Characters[i].CharacterLock != null)
-                {
-                    // On cherche l'acteur dans le monde
-                    for (int j = 0; j < playerData.VoiceActors.Count; j++)
-                    {
-                        if (newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].Name)
-                        {
-                            newContract.VoiceActors[i] = playerData.VoiceActors[j];
-                            continue;
-                        }
-                    }
-                    // Si l'acteur n'est pas dans la liste, on l'invoque
-                    if (newContract.VoiceActors[i] == null)
-                    {
-                        playerData.VoiceActors.Add(new VoiceActor(newContract.Characters[i].CharacterLock));
-                        newContract.VoiceActors[i] = playerData.VoiceActors[playerData.VoiceActors.Count - 1];
-                    }
-                }
-            }
-        }
-
-
-
-
-
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
@@ -228,7 +198,7 @@ namespace VoiceActing
                 {
                     playerData.CreatePlayerData(initialPlayerData);
                     contrat = new Contract(contratData); // Pour Debug
-                    CheckCharacterLock(contrat);
+                    contrat.CheckCharacterLock(playerData.VoiceActors);
                     playerData.CurrentContract = contrat;
                 }
             }
@@ -971,6 +941,7 @@ namespace VoiceActing
         public void SwitchToMixingTable()
         {
             soundEngineerManager.SwitchToMixingTable();
+            emotionAttackManager.ResetCard();
             //emotionAttackManager.SwitchCardTransformToRessource();
             cameraController.IngeSon();
             inputController.gameObject.SetActive(false);

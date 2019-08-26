@@ -45,7 +45,6 @@ namespace VoiceActing
         [SerializeField]
         string nextScene;
 
-
         [Space]
         [Space]
         [Space]
@@ -106,6 +105,7 @@ namespace VoiceActing
                                                            0 + (i / characterTable.GetLength(0))];
             }
         }
+
 
 
         public void RegisterPlayerName()

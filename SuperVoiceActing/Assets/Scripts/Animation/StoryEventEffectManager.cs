@@ -37,6 +37,9 @@ namespace VoiceActing
         [SerializeField]
         Image fadeImage;
 
+
+        private IEnumerator fadeCoroutine;
+
         #endregion
 
         #region GettersSetters 
@@ -129,7 +132,10 @@ namespace VoiceActing
         [ContextMenu("Fade")]
         public void Fade(bool b, int time)
         {
-            StartCoroutine(FadeCoroutine(b, time));
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+            fadeCoroutine = FadeCoroutine(b, time);
+            StartCoroutine(fadeCoroutine);
         }
 
         private IEnumerator FadeCoroutine(bool b, int time)
@@ -141,6 +147,7 @@ namespace VoiceActing
             {
                 time -= 1;
                 fadeImage.color += speed;
+
                 yield return null;
             }
             if (b == false)
