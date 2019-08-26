@@ -111,14 +111,16 @@ namespace VoiceActing
         public void RegisterPlayerName()
         {
             playerData.PlayerName = inputField.text;
-            playerData.NextStoryEvents.Add(storyEventData);
+            if(storyEventData != null)
+                playerData.NextStoryEvents.Add(storyEventData);
             SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         }
 
         public void RegisterStudioName()
         {
             playerData.StudioName = inputField.text;
-            playerData.NextStoryEvents.Add(storyEventData);
+            if (storyEventData != null)
+                playerData.NextStoryEvents.Add(storyEventData);
             SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         }
 

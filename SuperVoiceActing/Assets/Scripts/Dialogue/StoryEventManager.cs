@@ -317,7 +317,10 @@ namespace VoiceActing
                 HideName();
                 return;
             }
-            textName.text = interlocuteur.GetName();
+            if (interlocuteur.GetName().Equals("[PlayerName]"))
+                textName.text = playerData.PlayerName;
+            else
+                textName.text = interlocuteur.GetName();
             if (coroutineAnimName != null)
                 StopCoroutine(coroutineAnimName);
             coroutineAnimName = ScaleAnimName(0.7f, false);

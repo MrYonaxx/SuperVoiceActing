@@ -94,8 +94,8 @@ MonoBehaviour:
         joy: -50
         sadness: 0
         disgust: 0
-        anger: 50
-        surprise: 30
+        anger: 100
+        surprise: 100
         sweetness: -50
         fear: 10
         trust: 0
@@ -112,12 +112,13 @@ MonoBehaviour:
         joy: -50
         sadness: 0
         disgust: 0
-        anger: 50
-        surprise: 30
+        anger: 100
+        surprise: 100
         sweetness: -50
         fear: 30
         trust: 0
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 4
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -142,7 +143,8 @@ MonoBehaviour:
         sweetness: -50
         fear: 0
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 2
   - textDataCondition:
       all: 0
       nbPhraseMin: 0

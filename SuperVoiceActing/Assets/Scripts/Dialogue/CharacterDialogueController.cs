@@ -31,6 +31,8 @@ namespace VoiceActing
 
         [Header("Mouth")]
         [SerializeField]
+        bool mouthEmitSound = true;
+        [SerializeField]
         float speedMouth = 5;
         [SerializeField]
         AudioSource voice = null;
@@ -105,6 +107,8 @@ namespace VoiceActing
 
         public void SetStoryCharacterData(StoryCharacterData sprites)
         {
+            if(sprites.CharacterVoice != null && voice != null)
+                voice.clip = sprites.CharacterVoice;
             storyCharacterData = sprites;
             currentSprites = storyCharacterData.SpriteNormal;
             if (spriteRenderer != null)
@@ -170,14 +174,7 @@ namespace VoiceActing
 
         public void DesactivateMouth()
         {
-            if (mouthCoroutine != null)
-                StopCoroutine(mouthCoroutine);
-
-            if (spriteRenderer != null)
-                spriteRenderer.sprite = currentSprites[0];
-
-            if (soundVisualizer != null)
-                soundVisualizer.StopVisualizer();
+            StopMouth();
         }
 
 
@@ -196,7 +193,7 @@ namespace VoiceActing
                     {
                         if (i >= currentSprites.Length)
                             i = 0;
-                        changeMouthSprite(i);
+                        ChangeMouthSprite(i);
                     }
                     speed = speedMouth;
                     if (soundVisualizer != null)
@@ -205,13 +202,10 @@ namespace VoiceActing
             }
         }
 
-        public void changeMouthSprite(int index)
+        public void ChangeMouthSprite(int index)
         {
-            if (voice != null)
-            {
-                voice.pitch = Random.Range(0.95f, 1.05f);
-                voice.Play();
-            }
+            if (mouthEmitSound == true)
+                PlayVoice();
             if (speak == true)
                 return;
             if (index < currentSprites.Length)
@@ -219,7 +213,15 @@ namespace VoiceActing
         }
 
 
-
+        public void PlayVoice()
+        {
+            if (voice != null)
+            {
+                voice.pitch = Random.Range(0.95f, 1.05f);
+                if(storyCharacterData.CharacterVoice != null)
+                    voice.PlayOneShot(storyCharacterData.CharacterVoice);
+            }
+        }
 
 
         public void FadeCharacter(bool fade, float time)

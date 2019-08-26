@@ -632,6 +632,11 @@ namespace VoiceActing
             return (bla == null);
         }
 
+        public void SetLoading()
+        {
+            isLoading = true;
+            bla = new DebugSave(true);
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

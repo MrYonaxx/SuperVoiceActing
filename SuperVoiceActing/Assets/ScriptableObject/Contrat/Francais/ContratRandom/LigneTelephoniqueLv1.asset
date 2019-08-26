@@ -87,14 +87,16 @@ MonoBehaviour:
       enemyResistance:
         neutral: 30
         joy: 30
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: -50
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
         sweetness: 100
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -114,12 +116,13 @@ MonoBehaviour:
         joy: 30
         sadness: 0
         disgust: -50
-        anger: -50
-        surprise: -50
+        anger: 0
+        surprise: -90
         sweetness: 100
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 3
     - text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
       textStats:
         interlocuteurID: 0
@@ -131,12 +134,13 @@ MonoBehaviour:
         joy: 30
         sadness: 0
         disgust: -50
-        anger: -50
-        surprise: -50
+        anger: 0
+        surprise: -90
         sweetness: 100
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 1
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -145,7 +149,7 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "Nous nous efforcons d'\xE9courter agr\xE9ablement votre attente."
+    - text: "Nous nous efforcons d'\xE9courter votre attente."
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -155,13 +159,14 @@ MonoBehaviour:
         neutral: 30
         joy: 30
         sadness: 30
-        disgust: -50
+        disgust: -90
         anger: -50
-        surprise: -50
+        surprise: -90
         sweetness: 100
-        fear: -50
-        trust: 300
-      enemyWeakPoints: []
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 0
     - text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
       textStats:
         interlocuteurID: 0
@@ -172,13 +177,14 @@ MonoBehaviour:
         neutral: 30
         joy: 30
         sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        disgust: -90
+        anger: -50
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 0
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -196,15 +202,16 @@ MonoBehaviour:
       enemyResistance:
         neutral: 30
         joy: 70
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: -50
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
         sweetness: 100
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
-    - text: "Nous vous souhaitons de bonnes f\xEAtes"
+      enemyWeakPoints:
+      - wordIndex: 2
+    - text: "Nous vous souhaitons de bonnes f\xEAtes."
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -213,14 +220,15 @@ MonoBehaviour:
       enemyResistance:
         neutral: 30
         joy: 100
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: -50
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
         sweetness: 100
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 0
     - text: Nos services sont actuellement indisponibles.
       textStats:
         interlocuteurID: 0
@@ -231,14 +239,16 @@ MonoBehaviour:
         neutral: 0
         joy: 30
         sadness: 30
-        disgust: -50
+        disgust: -90
         anger: -50
-        surprise: -50
+        surprise: -90
         sweetness: 50
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
-    - text: "Le temps de r\xE9ponse moyen de cet appel est d'environ 3 minutes"
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+    - text: "Le temps de r\xE9ponse moyen de cet appel est d'environ 2 minutes"
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -248,13 +258,14 @@ MonoBehaviour:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: -50
-        anger: -50
-        surprise: -50
+        disgust: -90
+        anger: -90
+        surprise: -90
         sweetness: 100
-        fear: -50
+        fear: -90
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 10
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

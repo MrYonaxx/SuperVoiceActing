@@ -118,9 +118,12 @@ namespace VoiceActing
 
         public void Load(PlayerData playerData)
         {
-            LoadPlayerProfile(playerData, indexSelected);
-            playerData.IsLoading = true;
-            SceneManager.LoadScene("Bureau");
+            if(LoadPlayerProfile(playerData, indexSelected))
+            {
+                playerData.SetLoading();
+                SceneManager.LoadScene("Bureau");
+            }
+
         }
 
         public void QuitMenu()
@@ -171,7 +174,7 @@ namespace VoiceActing
 
 
 
-        public void LoadPlayerProfile(PlayerData playerData, int index)
+        public bool LoadPlayerProfile(PlayerData playerData, int index)
         {
             string filePath = string.Format("{0}/saves/{1}{2}.json", Application.persistentDataPath, saveFileName, index);
             Debug.Log(filePath);
@@ -179,8 +182,16 @@ namespace VoiceActing
             {
                 string dataAsJson = File.ReadAllText(filePath);
                 JsonUtility.FromJsonOverwrite(dataAsJson, playerData);
+                return true;
             }
+            return false;
         }
+
+
+
+
+
+
 
 
         public void LoadPlayerSavesData()
@@ -194,46 +205,7 @@ namespace VoiceActing
         }
 
 
-        /*public void SavePlayerProfileBinary(PlayerData playerData)
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
 
-            string path = Application.persistentDataPath + "/player.fun";
-            FileStream stream = new FileStream(path, FileMode.Create);
-            try
-            {
-                formatter.Serialize(stream, playerData);
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-            }
-            stream.Close();
-
-        }
-
-        public void LoadPlayerProfileBinary(PlayerData playerData)
-        {
-            string path = Application.persistentDataPath + "/player.fun";
-            if(File.Exists(path))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                FileStream stream = new FileStream(path, FileMode.Open);
-                try
-                {
-                    playerData = formatter.Deserialize(stream) as PlayerData;
-                }
-                catch(Exception e)
-                {
-                    Debug.Log(e);
-                }
-            }
-            else
-            {
-                Debug.Log("oups");
-            }
-
-        }*/
 
         #endregion
 

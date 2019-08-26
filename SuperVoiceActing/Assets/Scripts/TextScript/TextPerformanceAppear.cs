@@ -618,6 +618,7 @@ namespace VoiceActing
                     particlesLineDead.transform.localPosition = offset;
                     var particleColor = particlesLineDead.main;
                     particleColor.startColor = (Color) damageColor;
+                    particlesLineDead.gameObject.SetActive(true);
                     particlesLineDead.Play();
                 }
                 if (particlesLineDead2 != null)
@@ -648,6 +649,7 @@ namespace VoiceActing
             StartCoroutine(coroutine);
             endLine = false;
             endDamage = false;
+            particlesLineDead.Stop();
         }
 
         protected IEnumerator ExplosionVertex(float damage, float time)
@@ -722,6 +724,7 @@ namespace VoiceActing
         {
             StopCoroutine(coroutine);
             StartCoroutine(ExplosionVertex(100, time));
+            particlesLineDead.Stop();
         }
 
         protected IEnumerator PopVertex()

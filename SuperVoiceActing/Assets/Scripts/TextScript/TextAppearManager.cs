@@ -172,13 +172,15 @@ namespace VoiceActing
             {
                 currentText = textNewPhrase;
                 currentText.NewMouthAnim(mouth);
-                //currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
+                particleLineDead1.gameObject.SetActive(false);
+                currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
                 currentText.NewPhrase(newText, newText.Length);
             }
             else
             {
                 currentText = SelectTextEffect(emotion);
                 currentText.NewMouthAnim(mouth);
+                particleLineDead1.gameObject.SetActive(false);
                 currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
                 currentText.NewPhrase(newText);
             }
@@ -208,6 +210,7 @@ namespace VoiceActing
 
         public void ReprintText()
         {
+            particleLineDead1.gameObject.SetActive(false);
             currentText.ReprintText();
         }
 

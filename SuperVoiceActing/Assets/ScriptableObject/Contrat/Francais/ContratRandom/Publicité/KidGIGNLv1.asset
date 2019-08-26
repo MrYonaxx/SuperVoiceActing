@@ -83,23 +83,6 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "Paris est menac\xE9 ..."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 8
-        hpMax: 12
-      enemyResistance:
-        neutral: 10
-        joy: -30
-        sadness: 10
-        disgust: 0
-        anger: 10
-        surprise: 0
-        sweetness: -50
-        fear: 50
-        trust: 0
-      enemyWeakPoints: []
     - text: "Paris est menac\xE9 !"
       textStats:
         interlocuteurID: 0
@@ -111,8 +94,8 @@ MonoBehaviour:
         joy: -50
         sadness: 0
         disgust: 0
-        anger: 50
-        surprise: 30
+        anger: 100
+        surprise: 100
         sweetness: -50
         fear: 10
         trust: 0
@@ -129,12 +112,13 @@ MonoBehaviour:
         joy: -50
         sadness: 0
         disgust: 0
-        anger: 50
-        surprise: 30
+        anger: 100
+        surprise: 100
         sweetness: -50
         fear: 30
         trust: 0
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 4
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -159,7 +143,8 @@ MonoBehaviour:
         sweetness: -50
         fear: 0
         trust: 30
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 2
   - textDataCondition:
       all: 0
       nbPhraseMin: 0
@@ -239,6 +224,24 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 2
+    - text: Le Super-Micro-Blaster !!!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 18
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 1
   - textDataCondition:
       all: 0
       nbPhraseMin: 0
@@ -278,8 +281,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 20
-        hpMax: 22
+        hpMin: 15
+        hpMax: 20
       enemyResistance:
         neutral: 50
         joy: 50

@@ -83,13 +83,13 @@ MonoBehaviour:
         hpMax: 12
       enemyResistance:
         neutral: 0
-        joy: -50
+        joy: -90
         sadness: 30
         disgust: 30
-        anger: 30
+        anger: 50
         surprise: -50
         sweetness: -50
-        fear: 50
+        fear: 100
         trust: -30
       enemyWeakPoints:
       - wordIndex: 0
@@ -101,13 +101,13 @@ MonoBehaviour:
         hpMax: 12
       enemyResistance:
         neutral: 0
-        joy: -50
+        joy: -90
         sadness: 30
         disgust: 30
-        anger: 30
+        anger: 50
         surprise: -50
         sweetness: 0
-        fear: 50
+        fear: 100
         trust: -30
       enemyWeakPoints:
       - wordIndex: 1
@@ -123,17 +123,17 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 15
-        hpMax: 20
+        hpMin: 10
+        hpMax: 12
       enemyResistance:
         neutral: 0
-        joy: -50
+        joy: -90
         sadness: 30
-        disgust: 30
+        disgust: 50
         anger: 10
         surprise: -30
         sweetness: 0
-        fear: 60
+        fear: 100
         trust: -30
       enemyWeakPoints:
       - wordIndex: 3
@@ -142,13 +142,13 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 2
-        hpMin: 15
-        hpMax: 20
+        hpMin: 10
+        hpMax: 12
       enemyResistance:
         neutral: 0
-        joy: -50
+        joy: -90
         sadness: 30
-        disgust: 30
+        disgust: 50
         anger: 0
         surprise: -20
         sweetness: -50
@@ -161,11 +161,11 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 17
-        hpMax: 20
+        hpMin: 10
+        hpMax: 12
       enemyResistance:
         neutral: 0
-        joy: -50
+        joy: -90
         sadness: 30
         disgust: 30
         anger: 30
@@ -189,19 +189,20 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 25
-        hpMax: 30
+        hpMin: 11
+        hpMax: 15
       enemyResistance:
         neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 60
+        sadness: -90
+        disgust: -90
+        anger: -50
         surprise: 30
         sweetness: 0
         fear: -50
-        trust: 50
-      enemyWeakPoints: []
+        trust: 60
+      enemyWeakPoints:
+      - wordIndex: 8
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -214,54 +215,57 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 25
-        hpMax: 31
+        hpMin: 10
+        hpMax: 15
       enemyResistance:
         neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -50
         surprise: 0
-        sweetness: 0
+        sweetness: 50
         fear: -50
-        trust: 30
-      enemyWeakPoints: []
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
     - text: '...Au brossage de dents de toutes l''entreprise !'
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 15
-        hpMax: 23
+        hpMin: 10
+        hpMax: 15
       enemyResistance:
         neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -50
         surprise: 30
-        sweetness: 0
+        sweetness: 50
         fear: -50
-        trust: 30
-      enemyWeakPoints: []
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 5
     - text: "Les 30 minutes de repas seront donc consacr\xE9es \xE0 30% au brossage
         de dents !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 25
-        hpMax: 32
+        hpMin: 10
+        hpMax: 15
       enemyResistance:
         neutral: 0
         joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
+        sadness: -90
+        disgust: -90
+        anger: -50
         surprise: 0
-        sweetness: 0
+        sweetness: 50
         fear: -50
-        trust: 50
-      enemyWeakPoints: []
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

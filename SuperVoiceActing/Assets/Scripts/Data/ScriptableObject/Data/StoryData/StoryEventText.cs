@@ -86,8 +86,8 @@ namespace VoiceActing
         protected CharacterDialogueController characterDialogue;
         protected GameObject nextButton;
 
-        //int characterCount = 0;
         int actualTime = 0;
+        int actualLenght = 0;
 
         List<int> pauseList = new List<int>();
 
@@ -96,7 +96,8 @@ namespace VoiceActing
         string actualText = null;
 
 
-
+        int voiceLetterInterval = 3;
+        int voiceLetterCurrentInterval = 0;
 
 
 
@@ -140,18 +141,28 @@ namespace VoiceActing
             return stringB;
         }
 
+
+        public void PlayVoice(char character)
+        {
+            voiceLetterCurrentInterval += 1;
+            if(voiceLetterCurrentInterval >= voiceLetterInterval)
+            {
+                if (character != ' ' && character != ',' && character != '.' && character != '?' && character != '!')
+                {
+                    if (characterDialogue != null)
+                        characterDialogue.PlayVoice();
+                    voiceLetterCurrentInterval = 0;
+                }
+            }
+        }
+
         protected override IEnumerator StoryEventCoroutine()
         {
             // Initialization
             textMeshPro.textInfo.linkCount = 0;
             pauseList.Clear();
             actualTime = 0;
-
-            /*string actualText = text; // French
-            if (language == 1) // English
-                actualText = textEng;*/
-
-
+            voiceLetterCurrentInterval = voiceLetterInterval;
             textMeshPro.text = actualText;
             textMeshPro.maxVisibleCharacters = 0;
 
@@ -162,18 +173,17 @@ namespace VoiceActing
 
             yield return null;
 
-            textMeshPro.maxVisibleCharacters = 0;
+            actualLenght = textMeshPro.textInfo.characterCount;
 
             if (characterDialogue != null)
             {
                 if (mouthSpeed <= -1)
                 {
-                    characterDialogue.ActivateMouth(mouthSpeed + 7, true);
-                    //mouthSpeed *= -1;
+                    characterDialogue.ActivateMouth(mouthSpeed + 6, true);
                 }
                 else
                 {
-                    characterDialogue.ActivateMouth(mouthSpeed + 7);
+                    characterDialogue.ActivateMouth(mouthSpeed + 6);
                 }
                 characterDialogue.ChangeEmotion(emotionNPC);
                 characterDialogue.PlayAnimBalloon((int)emotionEmoticonBalloon - 1);
@@ -189,44 +199,43 @@ namespace VoiceActing
                     case "Print":
                         textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.linkInfo[i].linkTextLength;
                         break;
-                    case "Shake":
-                        //textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.linkInfo[i].linkTextLength;
-                        break;
-                    case "Flash":
-                        //textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.linkInfo[i].linkTextLength;
-                        break;
                     default:
                         break;
                 }
             }
 
 
-            if(actualText[0] == '(')
-            {
+            if (actualText[0] == '(')
                 textMeshPro.color = new Color(0.8f, 0.8f, 1);
-            }
             else
-            {
                 textMeshPro.color = new Color(1, 1, 1);
-            }
+
+
+
+
+            //    B O U C L E    P R I N C I P A L
 
             while (true)
             {
-                // print
-                if (actualTime == Mathf.Abs(mouthSpeed) && textMeshPro.maxVisibleCharacters < actualText.Length)
+                // Print letter + wait time
+                if (actualTime == Mathf.Abs(mouthSpeed) && textMeshPro.maxVisibleCharacters < actualLenght)
                 {
                     if (CheckPause() == false)
                     {
                         textMeshPro.maxVisibleCharacters += 1;
                         actualTime = 0;
-                        /*if (textMeshPro.maxVisibleCharacters > 0)
+                        if (textMeshPro.maxVisibleCharacters > 0 && textMeshPro.maxVisibleCharacters < actualLenght)
                         {
-                            if (actualText[textMeshPro.maxVisibleCharacters-1] == ',' || actualText[textMeshPro.maxVisibleCharacters - 1] == '.')
-                                actualTime -= 20;
-                        }*/
+                            if (actualText[textMeshPro.maxVisibleCharacters-1] == ',' && actualText[textMeshPro.maxVisibleCharacters] == ' ' ||
+                                actualText[textMeshPro.maxVisibleCharacters - 1] == '.' && actualText[textMeshPro.maxVisibleCharacters] == ' ' || 
+                                actualText[textMeshPro.maxVisibleCharacters - 1] == '?' && actualText[textMeshPro.maxVisibleCharacters] == ' ' || 
+                                actualText[textMeshPro.maxVisibleCharacters - 1] == '!' && actualText[textMeshPro.maxVisibleCharacters] == ' ')
+                                actualTime -= 12;
+                        }
+                        PlayVoice(actualText[textMeshPro.maxVisibleCharacters - 1]);
                     }
                 }
-                else if (textMeshPro.maxVisibleCharacters < actualText.Length)
+                else if (textMeshPro.maxVisibleCharacters < actualLenght)
                 {
                     actualTime += 1;
                 }
@@ -234,7 +243,7 @@ namespace VoiceActing
                 // Check Input
                 if (ignorePlayerInput == false)
                 {
-                    if (Input.GetButton("ControllerB") && textMeshPro.maxVisibleCharacters == actualText.Length)
+                    if (Input.GetButton("ControllerB") && textMeshPro.maxVisibleCharacters == actualLenght)
                     {
                         actualTime = 0;
                         textMeshPro.maxVisibleCharacters = 0;
@@ -247,7 +256,7 @@ namespace VoiceActing
                         actualTime = 0;
                         if (CheckSkipPause() == false)
                         {
-                            textMeshPro.maxVisibleCharacters = actualText.Length;
+                            textMeshPro.maxVisibleCharacters = actualLenght;
                             if (characterDialogue != null)
                                 characterDialogue.StopMouth();
                             nextButton.SetActive(true);
@@ -255,7 +264,7 @@ namespace VoiceActing
                         yield return null;
                         yield return null;
                     }
-                    else if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == actualText.Length)
+                    else if ((Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0)) && textMeshPro.maxVisibleCharacters == actualLenght)
                     {
                         actualTime = 0;
                         textMeshPro.maxVisibleCharacters = 0;
@@ -268,7 +277,7 @@ namespace VoiceActing
                         actualTime = 0;
                         if (CheckSkipPause() == false)
                         {
-                            textMeshPro.maxVisibleCharacters = actualText.Length;
+                            textMeshPro.maxVisibleCharacters = actualLenght;
                             if (characterDialogue != null)
                                 characterDialogue.StopMouth();
                             nextButton.SetActive(true);

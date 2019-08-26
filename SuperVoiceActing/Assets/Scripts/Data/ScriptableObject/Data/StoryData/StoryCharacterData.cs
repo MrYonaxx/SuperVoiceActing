@@ -38,6 +38,13 @@ namespace VoiceActing
         string characterName;
 
         [SerializeField]
+        private AudioClip characterVoice;
+        public AudioClip CharacterVoice
+        {
+            get { return characterVoice; }
+        }
+
+        [SerializeField]
         private Sprite spriteIcon;
         public Sprite SpriteIcon
         {

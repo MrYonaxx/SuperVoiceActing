@@ -68,6 +68,9 @@ namespace VoiceActing
         private IEnumerator cinematicCoroutine;
         private IEnumerator cinematicRotatingCoroutine;
 
+        private IEnumerator movementTextCoroutine;
+        private IEnumerator rotatingTextCoroutine;
+
         private IEnumerator soundEngineerCoroutine;
 
         float speedMovement = 0.5f;
@@ -295,13 +298,19 @@ namespace VoiceActing
 
             if(info.ChangeTextMovement == true)
             {
-                StartCoroutine(TextMovementCoroutine(info.TextStart.x, info.TextStart.y, info.TextStart.z, (int)(info.TextTimeStart * speedMovement),
+                if (movementTextCoroutine != null)
+                    StopCoroutine(movementTextCoroutine);
+                movementTextCoroutine = TextMovementCoroutine(info.TextStart.x, info.TextStart.y, info.TextStart.z, (int)(info.TextTimeStart * speedMovement),
                                                      info.TextEnd.x, info.TextEnd.y, info.TextEnd.z, (int)(info.TextTimeEnd * speedMovement),
-                                                     info.TextEnd2.x, info.TextEnd2.y, info.TextEnd2.z, (int)(info.TextTimeEnd2 * speedMovement)));
+                                                     info.TextEnd2.x, info.TextEnd2.y, info.TextEnd2.z, (int)(info.TextTimeEnd2 * speedMovement));
+                StartCoroutine(movementTextCoroutine);
 
-                StartCoroutine(TextRotationCoroutine(info.TextStartRotation.x, info.TextStartRotation.y, info.TextStartRotation.z, (int)(info.TextTimeStart * speedMovement),
+                if (rotatingTextCoroutine != null)
+                    StopCoroutine(rotatingTextCoroutine);
+                rotatingTextCoroutine = TextRotationCoroutine(info.TextStartRotation.x, info.TextStartRotation.y, info.TextStartRotation.z, (int)(info.TextTimeStart * speedMovement),
                                                      info.TextEndRotation.x, info.TextEndRotation.y, info.TextEndRotation.z, (int)(info.TextTimeEnd * speedMovement),
-                                                     info.TextEnd2Rotation.x, info.TextEnd2Rotation.y, info.TextEnd2Rotation.z, (int)(info.TextTimeEnd2 * speedMovement)));
+                                                     info.TextEnd2Rotation.x, info.TextEnd2Rotation.y, info.TextEnd2Rotation.z, (int)(info.TextTimeEnd2 * speedMovement));
+                StartCoroutine(rotatingTextCoroutine);
             }
 
         }

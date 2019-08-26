@@ -81,7 +81,7 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: Rapide ...
+    - text: Rapide...
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -92,13 +92,14 @@ MonoBehaviour:
         joy: 50
         sadness: 0
         disgust: 0
-        anger: 0
+        anger: 50
         surprise: 0
-        sweetness: 0
+        sweetness: 100
         fear: 0
         trust: 50
-      enemyWeakPoints: []
-    - text: Audacieuse ...
+      enemyWeakPoints:
+      - wordIndex: 0
+    - text: Audacieuse...
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -109,13 +110,14 @@ MonoBehaviour:
         joy: 50
         sadness: 0
         disgust: 0
-        anger: 0
+        anger: 50
         surprise: 0
-        sweetness: 0
+        sweetness: 70
         fear: 0
         trust: 50
-      enemyWeakPoints: []
-    - text: Et dangereuse ...
+      enemyWeakPoints:
+      - wordIndex: 0
+    - text: Et dangereuse...
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -125,13 +127,14 @@ MonoBehaviour:
         neutral: 0
         joy: 50
         sadness: 50
-        disgust: 0
-        anger: 0
+        disgust: 50
+        anger: 50
         surprise: 0
-        sweetness: 0
+        sweetness: 50
         fear: 0
         trust: 50
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 1
   - textDataCondition:
       all: 0
       nbPhraseMin: 1
@@ -140,7 +143,7 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: "C'est comme \xE7a ... comme \xE7a que je l'ai perdu."
+    - text: "C'est comme \xE7a... comme \xE7a que je l'ai perdu."
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -156,8 +159,10 @@ MonoBehaviour:
         sweetness: -25
         fear: 0
         trust: -80
-      enemyWeakPoints: []
-    - text: "C'est comme \xE7a ... comme \xE7a qu'elle m'a quitt\xE9."
+      enemyWeakPoints:
+      - wordIndex: 2
+      - wordIndex: 8
+    - text: "C'est comme \xE7a... comme \xE7a qu'elle m'a quitt\xE9."
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -173,7 +178,9 @@ MonoBehaviour:
         sweetness: -25
         fear: 0
         trust: -80
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 2
+      - wordIndex: 8
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -191,7 +198,7 @@ MonoBehaviour:
       enemyResistance:
         neutral: 0
         joy: -80
-        sadness: 50
+        sadness: 100
         disgust: 0
         anger: 0
         surprise: 20
@@ -199,7 +206,7 @@ MonoBehaviour:
         fear: 0
         trust: 20
       enemyWeakPoints:
-      - wordIndex: 0
+      - wordIndex: 3
     - text: "Bien s\xFBr."
       textStats:
         interlocuteurID: 0
@@ -209,14 +216,15 @@ MonoBehaviour:
       enemyResistance:
         neutral: 0
         joy: -80
-        sadness: 50
-        disgust: 0
+        sadness: 100
+        disgust: 30
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 50
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 1
     - text: "Est-ce que je souhaite retourner en arri\xE8re ?"
       textStats:
         interlocuteurID: 0
@@ -226,14 +234,16 @@ MonoBehaviour:
       enemyResistance:
         neutral: 0
         joy: -80
-        sadness: 50
-        disgust: 0
+        sadness: 100
+        disgust: 30
         anger: 0
         surprise: 20
         sweetness: -25
         fear: 0
         trust: 20
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 4
+      - wordIndex: 6
     - text: Evidemment.
       textStats:
         interlocuteurID: 0
@@ -243,14 +253,15 @@ MonoBehaviour:
       enemyResistance:
         neutral: 0
         joy: -80
-        sadness: 50
-        disgust: 0
+        sadness: 100
+        disgust: 30
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 50
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 0
     - text: "Mais c'est pour \xE7a que je continuerai de conduire."
       textStats:
         interlocuteurID: 0
@@ -259,15 +270,16 @@ MonoBehaviour:
         hpMax: 26
       enemyResistance:
         neutral: 0
-        joy: 50
-        sadness: 50
+        joy: 100
+        sadness: 100
         disgust: -50
         anger: -50
         surprise: -50
         sweetness: 10
         fear: -50
         trust: 0
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 6
     - text: Pour elle, et son sourire.
       textStats:
         interlocuteurID: 0
@@ -276,15 +288,16 @@ MonoBehaviour:
         hpMax: 22
       enemyResistance:
         neutral: 0
-        joy: 50
-        sadness: 50
+        joy: 100
+        sadness: 100
         disgust: -80
         anger: -80
         surprise: -80
         sweetness: 50
         fear: -80
         trust: 0
-      enemyWeakPoints: []
+      enemyWeakPoints:
+      - wordIndex: 1
   eventData:
   - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
   eventAcceptedContract: {fileID: 0}
