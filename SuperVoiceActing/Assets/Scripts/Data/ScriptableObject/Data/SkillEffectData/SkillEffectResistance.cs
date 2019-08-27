@@ -19,31 +19,24 @@ namespace VoiceActing
         int resistancePercentage = 0;
 
 
-        public override void ApplySkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
-            switch(skill)
+            Buff buff = null;
+            if (buffData != null)
             {
-                case SkillTarget.VoiceActor:
-                    if (buffData != null)
-                        actorsManager.ApplyBuff(this, buffData);
-                    actorsManager.AddActorResistance(resistancePercentage);
-                    break;
+                buff = new Buff(this, buffData);
             }
 
-
+            if (buffData != null)
+                doublageManager.ActorsManager.AddBuff(buff);
+            doublageManager.ActorsManager.AddActorResistance(resistancePercentage);
         }
 
-
-
-        public override void RemoveSkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        /*public override void RemoveSkillEffectActor(VoiceActor actor)
         {
-            switch (skill)
-            {
-                case SkillTarget.VoiceActor:
-                    actorsManager.AddActorResistance(-resistancePercentage);
-                    break;
-            }
-        }
+            actor.AddActorResistance(-resistancePercentage);
+        }*/
+
 
     } // SkillEffectResistance class
 

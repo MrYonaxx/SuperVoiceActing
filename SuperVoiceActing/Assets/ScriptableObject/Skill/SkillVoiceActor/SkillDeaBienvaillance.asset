@@ -18,10 +18,11 @@ MonoBehaviour:
     toute l'\xE9quipe."
   descriptionBattle: "Restaure 5% d'HP \xE0 tous les alli\xE9s"
   skillType: 0
-  skillTarget: 0
-  turnActive: 2
-  refresh: 0
-  addBuffTurn: 0
+  buffData:
+    turnActive: 0
+    refresh: 0
+    addBuffTurn: 0
+    canAddMultiple: 0
   skillEffects:
   - eventNode: 3
     skillEffectCardGain:
@@ -36,6 +37,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
+      skillTarget: 0
       inPercentage: 0
       statVariance: 0
       emotionStat:
@@ -49,7 +51,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionDamage:
-      inPercentage: 0
       damageVariance: 0
       emotionDamage:
         neutral: 0
@@ -62,13 +63,18 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectHealth:
+      skillTarget: 1
       inPercentage: 1
       hpDamage: -5
       hpDamageVariance: 0
     skillEffectTurn:
-      inPercentage: 0
       turnGain: 0
       turnVariance: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+    skillEffectResistance:
+      resistancePercentage: 0
   producerCost: 0
   afterStart: 0
   afterAttack: 1

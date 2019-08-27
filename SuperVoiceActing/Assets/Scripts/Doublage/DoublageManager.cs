@@ -142,7 +142,7 @@ namespace VoiceActing
 
 
 
-
+        protected bool reprint = false;
 
 
         protected bool intro = true;
@@ -158,6 +158,28 @@ namespace VoiceActing
 
         protected EmotionCard[] lastAttack = null;
 
+
+
+
+
+
+        public ToneManager ToneManager
+        {
+            get { return toneManager; }
+        }
+        public EmotionAttackManager EmotionAttackManager
+        {
+            get { return emotionAttackManager; }
+        }
+        public EnemyManager EnemyManager
+        {
+            get { return enemyManager; }
+        }
+        public ActorsManager ActorsManager
+        {
+            get { return actorsManager; }
+        }
+
         #endregion
 
         #region GettersSetters 
@@ -165,6 +187,11 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+        public void SetReprintText(bool b)
+        {
+            reprint = b;
+        }
 
         public void SetEndAttack()
         {
@@ -175,6 +202,16 @@ namespace VoiceActing
         {
             turnCount += addValue;
             timer.SetTurn(turnCount);
+            if (addValue < 0)
+            {
+                for (int i = 0; i < Mathf.Abs(addValue); i++)
+                {
+                    actorsManager.CheckBuffsActors();
+                    actorsManager.CheckBuffsCards();
+                }
+            }
+            actorsManager.DrawBuffIcon();
+
         }
 
         #endregion
@@ -219,8 +256,10 @@ namespace VoiceActing
             actorsManager.SetCards(emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
             actorsManager.SetActors(contrat.VoiceActors);
             //actorsManager.ActorTakeDamage(0);
+            eventManager.SetManagers(skillManager);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
-            skillManager.SetManagers(this, cameraController, emotionAttackManager, actorsManager, roleManager, enemyManager);
+            skillManager.SetManagers(this, cameraController);
+            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor());
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
@@ -544,7 +583,7 @@ namespace VoiceActing
         }
 
 
-        public void NewTurn(bool reprint = false)
+        public void NewTurn(bool reprintText = false)
         {
             // Check Event
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == true)
@@ -561,8 +600,8 @@ namespace VoiceActing
                 emotionAttackManager.ResetCard();
                 emotionAttackManager.SwitchCardTransformToBattle();
                 inputController.gameObject.SetActive(true);
-                actorsManager.CheckBuffs();
-                skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.VoiceActor);
+                actorsManager.CheckBuffsActors();
+                actorsManager.CheckBuffsCards();
                 //skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.Sentence);
                 //skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.Producer);
                 actorsManager.DrawBuffIcon();
@@ -573,7 +612,7 @@ namespace VoiceActing
             }
 
             // Reprint éventuel
-            if (skillManager.CheckReprintTextEnemy() == true || reprint == true)
+            if (reprint == true || reprintText == true)
             {
                 textAppearManager.ReprintText();
                 textAppearManager.ApplyDamage((100-enemyManager.GetHpPercentage()));
@@ -694,6 +733,7 @@ namespace VoiceActing
             actorsManager.DrawActorStat();
             actorsManager.DrawBuffIcon();
             textAppearManager.SetMouth(characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
+            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor());
         }
 
         // Appelé par l'event Switch Actors
@@ -986,19 +1026,6 @@ namespace VoiceActing
             emotionAttackManager.AddComboMax(addComboMax);
         }
 
-
-
-        public void ForceSkill(SkillActorData skill)
-        {
-            skillManager.SetSkillText(actorsManager.GetCurrentActor(), skill);
-            skillManager.ActorSkillFeedback();
-            skillManager.ApplySkill(skill);
-        }
-
-        public void ForceSkill(SkillData skill)
-        {
-            skillManager.ApplySkill(skill);
-        }
 
         public void ChangeResultScreenEndScene()
         {

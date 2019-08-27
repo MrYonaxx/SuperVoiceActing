@@ -83,19 +83,9 @@ namespace VoiceActing
         [SerializeField]
         ParticleSystem particleSpeedLines;
 
-        /*[Header("Managers")]
-        [SerializeField]*/
         CameraController cameraController;
-        /*[SerializeField]*/
-        EmotionAttackManager emotionAttackManager;
         DoublageManager doublageManager;
 
-
-        /*[Header("Debug")]
-        [SerializeField]
-        private EmotionStat flatBonus;
-        [SerializeField]
-        private EmotionStat percentageBonus;*/
 
 
         [Header("Buff")]
@@ -103,16 +93,14 @@ namespace VoiceActing
 
 
 
-        ActorsManager actorsManager;
-        //RoleManager roleManager;
-        EnemyManager enemyManager;
-
 
         private IEnumerator coroutineSkill = null;
         private bool reprintTextEnemy = false;
         Vector3 initialScaleText;
         private bool inSkillAnimation = false;
         Vector3 initialSkillPosition;
+
+        VoiceActor currentVoiceActor;
 
         #endregion
 
@@ -144,28 +132,23 @@ namespace VoiceActing
             return false;
         }
 
-        public void SetManagers(DoublageManager dm, CameraController cC, EmotionAttackManager eAM, ActorsManager aM, RoleManager rM, EnemyManager eM)
+        public void SetManagers(DoublageManager dm, CameraController cC)
         {
             doublageManager = dm;
             cameraController = cC;
-            emotionAttackManager = eAM;
-            actorsManager = aM;
-            //roleManager = rM;
-            enemyManager = eM;
             initialSkillPosition = panelDoubleurPotential.localPosition;
         }
 
-        public bool CheckPassiveSkills()
+
+        public void SetCurrentVoiceActor(VoiceActor voiceActor)
         {
-            return false;
+            currentVoiceActor = voiceActor;
         }
 
 
 
-
-
-
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///   C O N D I T I O N
 
 
         public bool CheckSkillCondition(VoiceActor voiceActor, string phase, EmotionCard[] emotions) 
@@ -224,7 +207,8 @@ namespace VoiceActing
                                         bannedSkills.Add(skill.SkillName);
                                     SetSkillText(voiceActor, skill);
                                     ActorSkillFeedback();
-                                    ApplySkill(skill);
+                                    skill.ApplySkill(doublageManager);
+                                    //ApplySkill(skill);
                                     return true; // On verra pour l'activation de compétence multiple plus tard
                                 }
                             }
@@ -256,36 +240,7 @@ namespace VoiceActing
                     {
                         continue;
                     }
-                    switch (emotions[i].GetEmotion())
-                    {
-                        case Emotion.Neutre:
-                            attackCheck.Neutral -= 1;
-                            break;
-                        case Emotion.Joie:
-                            attackCheck.Joy -= 1;
-                            break;
-                        case Emotion.Tristesse:
-                            attackCheck.Sadness -= 1;
-                            break;
-                        case Emotion.Dégoût:
-                            attackCheck.Disgust -= 1;
-                            break;
-                        case Emotion.Colère:
-                            attackCheck.Anger -= 1;
-                            break;
-                        case Emotion.Surprise:
-                            attackCheck.Surprise -= 1;
-                            break;
-                        case Emotion.Douceur:
-                            attackCheck.Sweetness -= 1;
-                            break;
-                        case Emotion.Peur:
-                            attackCheck.Fear -= 1;
-                            break;
-                        case Emotion.Confiance:
-                            attackCheck.Trust -= 1;
-                            break;
-                    }
+                    attackCheck.Add((int)emotions[i].GetEmotion(), -1);
                 }
             }
             if (attackCheck.Neutral > 0) return false;
@@ -330,46 +285,36 @@ namespace VoiceActing
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// APPLY SKILL
+        ///   A P P L Y    S K I L L
 
         public void ApplySkill(SkillData skill)
         {
-            if (skill.SkillType == SkillType.Buff && (skill.SkillTarget == SkillTarget.VoiceActor || skill.SkillTarget == SkillTarget.ManualPackSelection))
-            {
-                skill.ApplyBuffsEffects(actorsManager, enemyManager, doublageManager);
-            }
-            else
-            {
-                ApplySkillEffect(skill);
-            }
+            skill.ApplySkill(doublageManager);
         }
 
-        public void ApplySkillEffect(SkillData skill)
+        public void ForceSkill(SkillActorData skill)
         {
-
-            skill.ApplySkillsEffects(actorsManager, enemyManager, doublageManager);
-            if(skill.SkillTarget == SkillTarget.Sentence)
-                reprintTextEnemy = true;
+            SetSkillText(currentVoiceActor, skill);
+            ActorSkillFeedback();
+            ApplySkill(skill);
         }
 
 
 
 
 
-
-
-        public void CheckBuffs(List<Buff> buffs, SkillTarget skillTarget)
+        /*public void CheckBuffs(List<Buff> buffs, SkillTarget skillTarget)
         {
             for (int i = 0; i < buffs.Count; i++)
             {
                 buffs[i].Turn -= 1;
                 if (buffs[i].Turn == 0)
                 {
-                    buffs[i].SkillEffectbuff.RemoveSkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
+                    //buffs[i].SkillEffectbuff.RemoveSkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
                     buffs.RemoveAt(i);
                 }
             }
-        }
+        }*/
 
 
 
@@ -397,10 +342,10 @@ namespace VoiceActing
         // Appelé par animationPotentiel
         public void ActorSkillFeedback2()
         {
-            emotionAttackManager.SwitchCardTransformToRessource();
+            //emotionAttackManager.SwitchCardTransformToRessource();
 
             // Doubleur replacé
-            panelDoubleurPotential.transform.localPosition = initialSkillPosition + actorsManager.GetSkillPositionOffset();
+            panelDoubleurPotential.transform.localPosition = initialSkillPosition + currentVoiceActor.SkillOffset;  //actorsManager.GetSkillPositionOffset();
             doubleur.transform.SetParent(panelDoubleurPotential);
             doubleur.ChangeOrderInLayer(60);
             cameraController.ChangeOrthographicSize(-30, 30);
@@ -505,7 +450,6 @@ namespace VoiceActing
 
         public void ActorSkillStopFeedback()
         {
-            emotionAttackManager.SwitchCardTransformToBattle();
 
             // Doubleur replacé
             doubleur.transform.SetParent(panelDoubleurDefault);

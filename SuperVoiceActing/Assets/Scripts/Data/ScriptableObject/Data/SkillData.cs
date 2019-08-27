@@ -22,12 +22,15 @@ namespace VoiceActing
 
     public enum SkillTarget
     {
+        Cards,
         VoiceActor,
         VoiceActors,
         Sentence,
         Role,
         Producer,
-        ManualPackSelection
+        ManualPackSelection,
+        ManualDoublePackSelection,
+        ManualTriplePackSelection,
     }
 
     [System.Serializable]
@@ -104,7 +107,6 @@ namespace VoiceActing
 
         [Title("Type")]     
         [SerializeField]
-        [HorizontalGroup]
         [HideLabel]
         private SkillType skillType;
         public SkillType SkillType
@@ -112,7 +114,7 @@ namespace VoiceActing
             get { return skillType; }
         }
 
-        [Space]
+        /*[Space]
         [Space]
         [Title("Target")]
         [SerializeField]
@@ -122,7 +124,7 @@ namespace VoiceActing
         public SkillTarget SkillTarget
         {
             get { return skillTarget; }
-        }
+        }*/
 
 
         [Space]
@@ -158,21 +160,34 @@ namespace VoiceActing
         }
 
 
-        public void ApplySkillsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+
+
+
+
+        public void ApplySkill(DoublageManager doublageManager)
         {
-            for(int i = 0; i < skillEffects.Length; i++)
+            if(skillType == SkillType.Buff)
             {
-                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(this.skillTarget, actorsManager, enemyManager, doublageManager);
+                ApplySkillEffects(doublageManager, this.buffData);
+            }
+            else
+            {
+                ApplySkillEffects(doublageManager);
             }
         }
 
-        public void ApplyBuffsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+
+        private void ApplySkillEffects(DoublageManager doublageManager, BuffData data = null)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(this.skillTarget, actorsManager, enemyManager, doublageManager, buffData);
+                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(doublageManager, data);
             }
         }
+
+
+
+
 
         public void ManualTarget(Emotion emotion)
         {
@@ -181,13 +196,6 @@ namespace VoiceActing
                 skillEffects[i].GetSkillEffectNode().ManualTarget(emotion);
             }
         }
-        /*public void RemoveSkillsEffects(ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
-        {
-            for (int i = 0; i < skillEffects.Length; i++)
-            {
-                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(this.skillTarget, actorsManager, enemyManager, doublageManager);
-            }
-        }*/
 
 
     } // SkillData class

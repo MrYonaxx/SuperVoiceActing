@@ -179,8 +179,6 @@ namespace VoiceActing
             set { trust = value; }
         }
 
-
-
         public EmotionStat()
         {
             this.joy = 0;

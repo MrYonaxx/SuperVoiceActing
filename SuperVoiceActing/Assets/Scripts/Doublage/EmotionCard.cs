@@ -40,14 +40,16 @@ namespace VoiceActing
         TextMeshProUGUI[] textBuffTurn;
 
 
-
-        Color bonusStat;
-        Color malusStat;
+        [SerializeField]
+        Color colorBonusStat;
+        [SerializeField]
+        Color colorMalusStat;
 
         private Emotion emotion;
 
         private int value = 0;
         private int valueBonus = 0;
+        private int valueActorBonus = 0;
 
         private float damagePercentage = 1;
 
@@ -74,7 +76,7 @@ namespace VoiceActing
 
         public int GetStat()
         {
-            return value + valueBonus;
+            return value + valueBonus + valueActorBonus;
         }
 
         public float GetDamagePercentage()
@@ -109,6 +111,14 @@ namespace VoiceActing
         {
             imageCard.sprite = sprite;
         }
+
+
+
+
+
+
+
+
 
         public void MoveCard(RectTransform newTransform, float speed)
         {
@@ -156,60 +166,33 @@ namespace VoiceActing
         }
 
 
-        public void AddStat(int statToAdd, Buff buff = null)
+
+
+
+
+
+        //    S E C T I O N    S T A T
+
+        public void AddStat(int statToAdd)
         {
-            if (buff != null)
-            {
-                if(AddBuff(buff) == false)
-                    return;
-            }
             valueBonus += statToAdd;
-            DrawStat(value, valueBonus, bonusStat, malusStat);
+            DrawStat();
         }
 
-        public void AddStatPercentage(int statToAdd, Buff buff = null)
+        public void AddStatPercentage(int statToAdd)
         {
-            if (buff != null)
-                AddBuff(buff);
             statToAdd = value * (statToAdd / 100);
             valueBonus += statToAdd;
-            DrawStat(value, valueBonus, bonusStat, malusStat);
-        }
-
-        public void DrawStat(int baseStat, int newStat, Color colorBonus, Color colorMalus)
-        {
-            bonusStat = colorBonus;
-            malusStat = colorMalus;
-            value = baseStat;
-            valueBonus = newStat;
-            if (textStat == null)
-                return;
-            if(newStat > 0)
-                textStat.color = bonusStat;
-            else if (newStat < 0)
-                textStat.color = malusStat;
-            else
-                textStat.color = Color.white;
-            textStat.text = (baseStat + newStat).ToString();
+            DrawStat();
         }
 
 
-
-
-
-
-
-        public void AddDamagePercentage(int damageModifier, Buff buff = null)
+        public void AddDamagePercentage(int damageModifier)
         {
-            if (buff != null)
-            {
-                if (AddBuff(buff) == false)
-                    return;
-            }
             damagePercentage += damageModifier / 100f;
             if (textEmotionDamage != null)
             {
-                textEmotionDamage.text = "x"+damagePercentage;
+                textEmotionDamage.text = "x" + damagePercentage;
                 textEmotionDamage.gameObject.SetActive((damagePercentage != 1));
             }
         }
@@ -217,6 +200,55 @@ namespace VoiceActing
 
 
 
+
+
+        //    S E C T I O N    D R A W
+
+        public void DrawStat()
+        {
+            if (textStat == null)
+                return;
+
+            if ((valueBonus + valueActorBonus) > 0)
+                textStat.color = colorBonusStat;
+            else if ((valueBonus + valueActorBonus) < 0)
+                textStat.color = colorMalusStat;
+            else
+                textStat.color = Color.white;
+
+            textStat.text = (value + valueBonus + valueActorBonus).ToString();
+        }
+
+        public void DrawStat(int baseStat)
+        {
+            value = baseStat;
+
+            DrawStat();
+
+        }
+
+        public void DrawStat(int baseStat, int actorBonusStat)
+        {
+            value = baseStat;
+            valueActorBonus = actorBonusStat;
+
+            DrawStat();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //    S E C T I O N    B U F F
 
 
         public bool AddBuff(Buff buff)

@@ -19,7 +19,7 @@ namespace VoiceActing
         [HideLabel]
         EmotionStat cardGain;
 
-        public override void ApplySkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
             doublageManager.ModifyDeck(cardGain);
 

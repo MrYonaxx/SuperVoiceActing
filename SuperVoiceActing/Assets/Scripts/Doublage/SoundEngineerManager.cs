@@ -197,8 +197,8 @@ namespace VoiceActing
 
         public void DrawDescription(SkillData skill)
         {
-            textSkillDescription.text = skill.ProducerCost + " ARTIFICE - " + skill.Description;
-            characterSoundEngineer.SetPhraseEventTextacting(skill.ProducerCost + " ARTIFICE - " + skill.Description, EmotionNPC.Normal);
+            textSkillDescription.text = skill.Description;
+            characterSoundEngineer.SetPhraseEventTextacting(skill.Description, EmotionNPC.Normal);
             selection.SetParent(textButtons[indexList].transform);
             selection.transform.localPosition = Vector3.zero;
         }
@@ -207,12 +207,12 @@ namespace VoiceActing
         {
             if (CheckTrickeryCost(skills[indexList].ProducerCost) == true)
             {
-                if (skills[indexList].SkillTarget == SkillTarget.ManualPackSelection)
+                /*if (skills[indexList].SkillTarget == SkillTarget.ManualPackSelection)
                 {
                     StartCoroutine(CoroutineWaitEndOfFrame());
                     //SwitchToSelectEmotion(true);
                     return;
-                }
+                }*/
                 AddTrickery(-skills[indexList].ProducerCost);
                 skillManager.ApplySkill(skills[indexList]);
                 unityEvent.Invoke();

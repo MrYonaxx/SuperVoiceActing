@@ -87,6 +87,7 @@ namespace VoiceActing
         bool clearText = false;
         bool clearAllText = false;
         CharacterDialogueController interloc;
+        SkillManager skillManager;
 
         #endregion
 
@@ -96,7 +97,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-
+        public void SetManagers(SkillManager sM)
+        {
+            skillManager = sM;
+        }
 
         #endregion
 
@@ -162,6 +166,7 @@ namespace VoiceActing
             inputEvent.gameObject.SetActive(false);
             ExecuteEvent();
         }
+
 
         // =========================================================================================
         private void ExecuteEvent()
@@ -316,9 +321,9 @@ namespace VoiceActing
                 {
                     DoublageEventSkill node = (DoublageEventSkill) currentNode;
                     if (node.Skill is SkillActorData)
-                        doublageManager.ForceSkill((SkillActorData)node.Skill);
+                        skillManager.ForceSkill((SkillActorData)node.Skill);
                     else
-                        doublageManager.ForceSkill(node.Skill);
+                        skillManager.ApplySkill(node.Skill);
                     StartCoroutine(WaitForceSkill());
 
                 }

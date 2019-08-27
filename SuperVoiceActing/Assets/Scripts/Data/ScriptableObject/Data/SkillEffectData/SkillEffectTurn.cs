@@ -16,8 +16,6 @@ namespace VoiceActing
     public class SkillEffectTurn : SkillEffectData
 	{
         [SerializeField]
-        bool inPercentage = false;
-        [SerializeField]
         int turnGain;
         [SerializeField]
         int turnVariance;
@@ -26,25 +24,12 @@ namespace VoiceActing
 
 
 
-        public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
-            if (inPercentage == true)
-            {
-
-            }
-            else
-            {
-                doublageManager.AddTurn(turnGain);
-            }
+            doublageManager.AddTurn(turnGain);
         }
 
 
-
-
-        /*public override void RemoveSkillEffect(SkillData skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
-        {
-            doublageManager.AddTurn(-turnGain);
-        }*/
 
 
     } // SkillEffectTurn class

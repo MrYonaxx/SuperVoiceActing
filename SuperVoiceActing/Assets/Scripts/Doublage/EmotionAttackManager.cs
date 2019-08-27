@@ -158,7 +158,7 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Cartes d'émotions")]
+        [Title("Cartes d'émotions")]
         [SerializeField]
         EmotionCard prefab;
         [SerializeField]
@@ -175,13 +175,13 @@ namespace VoiceActing
 
         
 
-        [Header("Combo")]
+        [Title("Combo")]
         [SerializeField]
         RectTransform[] comboSlot;
-        
 
 
-        [Header("Transtions")]
+
+        [Title("Transtions")]
         [SerializeField]
         float transitionSpeed = 1.1f;
         [SerializeField]
@@ -189,7 +189,7 @@ namespace VoiceActing
         [SerializeField]
         float transitionSpeedCardSelect = 1.1f;
 
-        [Header("Feedback")]
+        [Title("Animator & UI")]
         [SerializeField]
         Animator animatorCombo;
         [SerializeField]
@@ -200,6 +200,8 @@ namespace VoiceActing
         TextMeshProUGUI textComboName;
         [SerializeField]
         TextMeshProUGUI textComboDamage;
+
+        [Title("Feedback")]
         [SerializeField]
         Image feedbackSelectCard;
         [SerializeField]
@@ -249,6 +251,11 @@ namespace VoiceActing
             return emoti;
         }
 
+        public EmotionCardTotal[] GetCards()
+        {
+            return emotionCards;
+        }
+
         #endregion
 
         #region Functions 
@@ -293,18 +300,14 @@ namespace VoiceActing
                 else
                     comboSlot[i].gameObject.SetActive(false);
             }
-            if (comboSlot.Length == 2)
-            {
-                comboSlot[0].anchoredPosition += new Vector2(-75, 0);
-                comboSlot[1].anchoredPosition += new Vector2(-75, 0);
-            }
         }
 
         public void ShowComboSlot(bool b)
         {
             for (int i = 0; i < comboSlot.Length; i++)
             {
-                comboSlot[i].gameObject.SetActive(b);
+                if (i < comboMax)
+                    comboSlot[i].gameObject.SetActive(b);
             }
         }
 
@@ -362,25 +365,6 @@ namespace VoiceActing
             comboCardEmotion = new EmotionCard[comboMax];
             CreateComboSlot();
         }
-
-        /*public void AddDeck(EmotionStat addDeck)
-        {
-            for (int i = 0; i < addDeck.GetLength(); i++)
-            {          
-                if (addDeck.GetEmotion(i) > 0)
-                {
-                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
-                    emotionCards[i].Cards[j].SetEmotion((Emotion)i);
-                    emotionCards[i].Cards[j].SetSprite(emotionSprite[(int)emotionCards[i].Emotion]);
-                }
-                else if (addDeck.GetEmotion(i) > deckEmotion.GetEmotion(i))
-                {
-                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
-                    emotionCards[i].Cards[j].SetEmotion((Emotion)i);
-                    emotionCards[i].Cards[j].SetSprite(emotionSprite[(int)emotionCards[i].Emotion]);
-                }
-            }
-        }*/
         // =========================================================================================================================================
 
 

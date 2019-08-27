@@ -18,125 +18,187 @@ namespace VoiceActing
     public class SkillEffectEmotionStat : SkillEffectData
     {
         [SerializeField]
-        bool inPercentage;
-        [SerializeField]
-        int statVariance;
+        SkillTarget skillTarget;
 
+        [SerializeField]
+        bool inPercentage;
         [HideLabel]
         [SerializeField]
         EmotionStat emotionStat;
+        [SerializeField]
+        int statVariance;
 
 
 
 
 
-        public override void ApplySkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
             Buff buff = null;
             if (buffData != null)
             {
                 buff = new Buff(this, buffData);
             }
-            if(skill != SkillTarget.ManualPackSelection)
-                CalculateTarget();
-            if (inPercentage == true)
+
+            switch(skillTarget)
             {
-                actorsManager.AddActorStatPercentage(cardTargetsData);
-            }
-            else
-            {
-                actorsManager.AddActorStat(cardTargetsData, buff);
+                case SkillTarget.VoiceActor:
+                    if (inPercentage == true)
+                    {
+                        AddActorStatPercentage(doublageManager.ActorsManager, buff);
+                    }
+                    else
+                    {
+                        AddActorStat(doublageManager.ActorsManager, buff);
+                    }
+                    break;
+                case SkillTarget.Cards:
+                    CalculateTarget();
+                    if (inPercentage == true)
+                    {
+                        AddCardStatPercentage(doublageManager.EmotionAttackManager.GetCards(), buff);
+                    }
+                    else
+                    {
+                        AddCardStat(doublageManager.EmotionAttackManager.GetCards(), buff);
+                    }
+                    break;
             }
 
         }
 
 
 
-        /*public override void RemoveSkillEffect(SkillData skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+
+        //    A C T O R
+
+        public void AddActorStat(ActorsManager actorsManager, Buff buff)
         {
-            CalculateTarget();
-            if (inPercentage == true)
+            if (buff != null)
             {
-                actorsManager.RemoveActorStatPercentage(cardTargetsData);
+                if (actorsManager.AddBuff(buff) == true) // on peut ajouter un buff au voice actor
+                {
+                    actorsManager.GetCurrentActor().StatModifier.Add(emotionStat);
+                    actorsManager.DrawActorStat();
+                }
             }
             else
             {
-                actorsManager.RemoveActorStat(cardTargetsData);
+                actorsManager.GetCurrentActor().StatModifier.Add(emotionStat);
+                actorsManager.DrawActorStat();
             }
-        }*/
+        }
 
+        public void AddActorStatPercentage(ActorsManager actorsManager, Buff buff)
+        {
+            if (buff != null)
+            {
+                if (actorsManager.AddBuff(buff) == true) // on peut ajouter un buff au voice actor
+                {
+                    actorsManager.GetCurrentActor().StatModifier.Add(emotionStat);
+                    actorsManager.DrawActorStat();
+                }
+            }
+            else
+            {
+                actorsManager.GetCurrentActor().StatModifier.Add(emotionStat);
+                actorsManager.DrawActorStat();
+            }
+        }
+
+
+        public override void RemoveSkillEffectActor(VoiceActor actor)
+        {
+            actor.StatModifier.Add(emotionStat.Reverse());
+
+        }
+
+
+
+
+
+
+
+        //   C A R D S
+
+
+        public void AddCardStat(EmotionCardTotal[] cards, Buff buff)
+        {
+            if (buff != null)
+            {
+                for (int i = 0; i < cardTargetsData.Count; i++)
+                {
+                    if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    {
+                        if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddBuff(buff) == true)
+                        {
+                            cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddStat(cardTargetsData[i].z);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < cardTargetsData.Count; i++)
+                {
+                    if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    {
+                        cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddStat(cardTargetsData[i].z);
+                    }
+                }
+            }
+        }
+
+
+        public void AddCardStatPercentage(EmotionCardTotal[] cards, Buff buff)
+        {
+            if (buff != null)
+            {
+                for (int i = 0; i < cardTargetsData.Count; i++)
+                {
+                    if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    {
+                        if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddBuff(buff) == true)
+                            cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddStatPercentage(cardTargetsData[i].z);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < cardTargetsData.Count; i++)
+                {
+                    if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
+                    {
+                        cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddStatPercentage(cardTargetsData[i].z);
+                    }
+                }
+            }
+        }
 
         public override void RemoveSkillEffectCard(EmotionCard card)
         {
-            switch (card.GetEmotion())
+            if(inPercentage == true)
             {
-                case Emotion.Neutre:
-                    card.AddStat(-emotionStat.Neutral);
-                    break;
-                case Emotion.Joie:
-                    card.AddStat(-emotionStat.Joy);
-                    break;
-                case Emotion.Tristesse:
-                    card.AddStat(-emotionStat.Sadness);
-                    break;
-                case Emotion.Dégoût:
-                    card.AddStat(-emotionStat.Disgust);
-                    break;
-                case Emotion.Colère:
-                    card.AddStat(-emotionStat.Anger);
-                    break;
-                case Emotion.Surprise:
-                    card.AddStat(-emotionStat.Surprise);
-                    break;
-                case Emotion.Douceur:
-                    card.AddStat(-emotionStat.Sweetness);
-                    break;
-                case Emotion.Peur:
-                    card.AddStat(-emotionStat.Fear);
-                    break;
-                case Emotion.Confiance:
-                    card.AddStat(-emotionStat.Trust);
-                    break;
 
             }
+            else
+            {
+                card.AddStat(-emotionStat.GetEmotion((int)card.GetEmotion()));
+            }
+
         }
+
+
+
+
+
+
 
 
         public override void ManualTarget(Emotion emotion)
         {
             cardTargetsData.Clear();
-            int stat = 0;
-            switch ((int)emotion)
-            {
-                case 0: // Neutral
-                    stat = emotionStat.Neutral;
-                    break;
-                case 1: // Joie
-                    stat = emotionStat.Joy;
-                    break;
-                case 2: // Tristesse
-                    stat = emotionStat.Sadness;
-                    break;
-                case 3: // Dégout
-                    stat = emotionStat.Disgust;
-                    break;
-                case 4: // Colère
-                    stat = emotionStat.Anger;
-                    break;
-                case 5: // Surprise
-                    stat = emotionStat.Surprise;
-                    break;
-                case 6: // Douceur
-                    stat = emotionStat.Sweetness;
-                    break;
-                case 7: // Peur
-                    stat = emotionStat.Fear;
-                    break;
-                case 8: // Confiance
-                    stat = emotionStat.Trust;
-                    break;
-
-            }
+            int stat = emotionStat.GetEmotion((int)(emotion));
             if (stat != 0)
             {
                 cardTargetsData.Add(new Vector3Int((int) emotion, 0, stat));

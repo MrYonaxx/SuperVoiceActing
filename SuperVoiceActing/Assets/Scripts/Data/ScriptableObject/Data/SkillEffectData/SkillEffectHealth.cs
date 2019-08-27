@@ -15,6 +15,8 @@ namespace VoiceActing
     public class SkillEffectHealth : SkillEffectData
     {
         [SerializeField]
+        SkillTarget skillTarget;
+        [SerializeField]
         bool inPercentage = false;
         [SerializeField]
         int hpDamage;
@@ -23,7 +25,7 @@ namespace VoiceActing
 
 
 
-        public override void ApplySkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
             int currentHP = 0;
             float damage = 0;
@@ -32,7 +34,7 @@ namespace VoiceActing
                 case SkillTarget.VoiceActor:
                     if (inPercentage == true)
                     {
-                        currentHP = actorsManager.GetCurrentActorHPMax();
+                        currentHP = doublageManager.ActorsManager.GetCurrentActorHPMax();
                         damage = currentHP * (hpDamage / 100f);
                     }
                     else
@@ -40,14 +42,14 @@ namespace VoiceActing
                         damage = hpDamage;
                     }
                     damage += Random.Range(-hpDamageVariance, hpDamageVariance);
-                    actorsManager.ActorTakeDamage((int)damage);
+                    doublageManager.ActorsManager.ActorTakeDamage((int)damage);
                     break;
 
 
                 case SkillTarget.Sentence:
                     if (inPercentage == true)
                     {
-                        currentHP = enemyManager.GetHpMax();
+                        currentHP = doublageManager.EnemyManager.GetHpMax();
                         damage = currentHP * (hpDamage / 100f);
                     }
                     else
@@ -55,7 +57,8 @@ namespace VoiceActing
                         damage = hpDamage;
                     }
                     damage += Random.Range(-hpDamageVariance, hpDamageVariance);
-                    enemyManager.SetHp(enemyManager.GetHp() - (int)damage);
+                    doublageManager.EnemyManager.SetHp(doublageManager.EnemyManager.GetHp() - (int)damage);
+                    doublageManager.SetReprintText(true);
                     break;
             }
         }
@@ -71,7 +74,7 @@ namespace VoiceActing
 
 
 
-        public override void RemoveSkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        /*public override void RemoveSkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
         {
             int currentHP = 0;
             float damage = 0;
@@ -106,7 +109,7 @@ namespace VoiceActing
                     enemyManager.SetHp(enemyManager.GetHp() + (int)damage);
                     break;
             }
-        }
+        }*/
 
 
 

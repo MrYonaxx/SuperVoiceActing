@@ -17,7 +17,6 @@ MonoBehaviour:
     ses statistiques augmente de 5 points pendant 5 tours/
   descriptionBattle: Stat +5
   skillType: 1
-  skillTarget: 0
   buffData:
     turnActive: 5
     refresh: 0
@@ -37,6 +36,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
+      skillTarget: 1
       inPercentage: 0
       statVariance: 0
       emotionStat:
@@ -50,7 +50,6 @@ MonoBehaviour:
         fear: 5
         trust: 5
     skillEffectEmotionDamage:
-      inPercentage: 0
       damageVariance: 0
       emotionDamage:
         neutral: 0
@@ -63,11 +62,11 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectHealth:
+      skillTarget: 0
       inPercentage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
-      inPercentage: 0
       turnGain: 0
       turnVariance: 0
     skillEffectTradeStat:

@@ -16,7 +16,6 @@ MonoBehaviour:
   description: "Le r\xF4le \xE9coeure [Nom].\n"
   descriptionBattle: <sprite=3>DMGx3
   skillType: 0
-  skillTarget: 0
   buffData:
     turnActive: 15
     refresh: 0
@@ -36,6 +35,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
+      skillTarget: 0
       inPercentage: 0
       statVariance: 0
       emotionStat:
@@ -49,7 +49,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionDamage:
-      inPercentage: 1
       damageVariance: 0
       emotionDamage:
         neutral: 0
@@ -62,11 +61,11 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectHealth:
+      skillTarget: 0
       inPercentage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
-      inPercentage: 0
       turnGain: 0
       turnVariance: 0
     skillEffectTradeStat:
