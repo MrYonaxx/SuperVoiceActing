@@ -293,8 +293,43 @@ namespace VoiceActing
 
 
 
+        [Title("Orthographic Movement")]
+        [SerializeField]
+        private bool changeOrthographic = false;
+        public bool ChangeOrthographic
+        {
+            get { return changeOrthographic; }
+        }
+        [ShowIf("changeOrthographic")]
+        [SerializeField]
+        private int orthographicStart;
+        public int OrthographicStart
+        {
+            get { return orthographicStart; }
+        }
+        [ShowIf("changeOrthographic")]
+        [SerializeField]
+        private int orthographicEnd;
+        public int OrthographicEnd
+        {
+            get { return orthographicEnd; }
+        }
+        [ShowIf("changeOrthographic")]
+        [SerializeField]
+        private int orthographicEnd2;
+        public int OrthographicEnd2
+        {
+            get { return orthographicEnd2; }
+        }
 
 
+        [Title("Next Camera Movement")]
+        [SerializeField]
+        private CameraMovementData nextCameraData;
+        public CameraMovementData NextCameraData
+        {
+            get { return nextCameraData; }
+        }
 
         #endregion
 

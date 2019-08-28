@@ -525,7 +525,6 @@ namespace VoiceActing
                     // Bug si coloredCharacterCount est un espace donc je check sur 2i mais ça peut ne pas régler à 100% le problème
                     if ((i == coloredCharacterCount-1 || i == coloredCharacterCount) && endDamage == false)
                     {
-                        //Debug.Log("Hey");
                         endDamage = true;
                     }
 
@@ -534,8 +533,8 @@ namespace VoiceActing
                         PlayParticle(offset, vertexAnim[i].damage);
                         endLine = true;
                     }
-                    // ====================================================== //
-                    if(i == characterCount-1 && vertexAnim[i].feedback == true)
+                    // ===================== Particle Coup critique =========================== //
+                    if (i == characterCount-1 && vertexAnim[i].feedback == true)
                     {
                         if (particlesEndLine != null)
                         {
@@ -547,7 +546,7 @@ namespace VoiceActing
                             vertexAnim[i].feedback = false;
                         }
                     }
-                    //vertexAnim[i] = vertAnim;
+                    // ====================================================== //
 
                 }
 
@@ -740,9 +739,9 @@ namespace VoiceActing
                 Vector2 charMidBasline = (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
                 Vector3 offset = charMidBasline;
 
-                ParticleSystem par = Instantiate(particlesEndLine, this.transform);
+                /*ParticleSystem par = Instantiate(particlesEndLine, this.transform);
                 par.transform.localPosition = offset;
-                par.Play();
+                par.Play();*/
                 yield return null;
             }
         }

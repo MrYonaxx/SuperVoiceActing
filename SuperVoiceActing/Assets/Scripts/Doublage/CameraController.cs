@@ -62,15 +62,18 @@ namespace VoiceActing
         [SerializeField]
         CameraMovementData[] cameraMovementEndSequence;
 
+        [Space]
         [SerializeField]
         Animator animatorCameraComplex;
 
-
+        [Space]
+        [Title("Debug")]
+        public bool noCameraEffect = false;
         CameraMovementData currentCamMovement;
 
         bool moving = true;
         bool rotating = false;
-        public bool noCameraEffect = false;
+
 
         float offset = 0;
 
@@ -347,6 +350,13 @@ namespace VoiceActing
                 StartCoroutine(rotatingTextCoroutine);
             }
 
+
+            if (info.ChangeOrthographic == true)
+            {
+                ChangeOrthographicSize(info.OrthographicStart, 1);
+                ChangeOrthographicSize(info.OrthographicEnd, (int)(info.TimeEnd * speedMovement));
+            }
+
         }
 
 
@@ -543,11 +553,6 @@ namespace VoiceActing
 
         public void ChangeOrthographicSize(float addValue, int time = 20)
         {
-            /*if (orthographicCoroutine != null)
-            {
-                StopCoroutine(orthographicCoroutine);
-            }
-            orthographicCoroutine = OrthographicSizeTransition(addValue);*/
             StartCoroutine(OrthographicSizeTransition(addValue, time));
         }
 
@@ -562,7 +567,6 @@ namespace VoiceActing
             }
 
             cameraComponent.orthographicSize = 65 + addValue;
-            //orthographicCoroutine = null;
         }
 
 
@@ -616,19 +620,9 @@ namespace VoiceActing
 
         public void NotQuite()
         {
-            ChangeOrthographicSize(20, 1);
-            SetText(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z);
-            if (movementCoroutine != null)
-                StopCoroutine(movementCoroutine);
-            if(rotatingCoroutine != null)
-                StopCoroutine(rotatingCoroutine);
-            SetCamera(notQuitePosition.position.x, notQuitePosition.position.y, notQuitePosition.position.z);
-            SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
-            MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 80);
-            RotateCamera(0, 90, 0, 80);
+            CameraDataMovement(cameraMovementRetake[Random.Range(0, cameraMovementRetake.Length)]);
             if(cameraPlacement != -1)
                 cameraPlacement = 0;
-            ChangeOrthographicSize(0, 80);
         }
 
         public void IngeSon()

@@ -175,15 +175,13 @@ namespace VoiceActing
             {
                 currentText = textNewPhrase;
                 currentText.NewMouthAnim(mouth);
-                particleLineDead1.Stop();
-                currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
+                currentText.SetParticle(null, particleLineDead1, particleLineDead2); // Pas de fin de ligne en première phrase
                 currentText.NewPhrase(newText, newText.Length);
             }
             else // Apparition de la phrase après une prise
             {
                 currentText = SelectTextEffect(emotion);
                 currentText.NewMouthAnim(mouth);
-                particleLineDead1.Stop();
                 currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
                 currentText.NewPhrase(newText);
             }
