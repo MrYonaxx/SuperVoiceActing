@@ -602,8 +602,6 @@ namespace VoiceActing
                 inputController.gameObject.SetActive(true);
                 actorsManager.CheckBuffsActors();
                 actorsManager.CheckBuffsCards();
-                //skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.Sentence);
-                //skillManager.CheckBuffs(actorsManager.GetBuffList(), SkillTarget.Producer);
                 actorsManager.DrawBuffIcon();
                 ShowUIButton(buttonUIA);
                 ShowUIButton(buttonUIB);
@@ -616,6 +614,7 @@ namespace VoiceActing
             {
                 textAppearManager.ReprintText();
                 textAppearManager.ApplyDamage((100-enemyManager.GetHpPercentage()));
+                SetReprintText(false);
             }
         }
 
@@ -774,7 +773,7 @@ namespace VoiceActing
                 intro = false;
                 yield return new WaitForSeconds(0.5f);
             }
-            // Role Decision ======================================================================
+            // Producteur Decision ======================================================================
             if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
             {
                 producerManager.ProducerAttackActivation();
@@ -784,6 +783,7 @@ namespace VoiceActing
                     yield return null;
                 }
             }
+            // Role Decision ======================================================================
             roleManager.RoleDecision("STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage());
             if (roleManager.IsAttacking() == true)
             {

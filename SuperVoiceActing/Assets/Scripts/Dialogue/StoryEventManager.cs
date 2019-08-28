@@ -124,19 +124,29 @@ namespace VoiceActing
             }
             
         }
-        
+
+        private string StringReplace(string stringB, Dictionary<string, string> dict)
+        {
+            foreach (string k in dict.Keys)
+            {
+                stringB = stringB.Replace(k, dict[k]);
+            }
+            return stringB;
+        }
 
         public void CreateScene()
         {
-            if(playerData.Date.month != 0)
+            /*if(playerData.Date.month != 0)
                 textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
             for (int i = 0; i < characters.Count; i++)
             {
                 Destroy(characters[i].gameObject);
             }
             characters.Clear();
-            imageBackground.sprite = storyEventData.Background;
-            for(int i = 0; i < storyEventData.Characters.Length; i++)
+
+            imageBackground.sprite = storyEventData.Background.SpriteBackground;
+            textLocation.text = storyEventData.Background.NameBackground;
+            for (int i = 0; i < storyEventData.Characters.Length; i++)
             {
                 characters.Add(Instantiate(characterPrefab, transformCharacter));
                 characters[characters.Count - 1].SetStoryCharacterData(storyEventData.Characters[i].CharacterToMove);
@@ -144,7 +154,8 @@ namespace VoiceActing
                 characters[characters.Count - 1].transform.localScale = storyEventData.Characters[i].NewScale;
                 characters[characters.Count - 1].transform.eulerAngles = storyEventData.Characters[i].NewRotation;
                 characters[characters.Count - 1].FadeCharacter(storyEventData.Characters[i].FadeIn, 1);
-            }
+            }*/
+            CreateScene(storyEventData);
         }
 
 
@@ -156,7 +167,13 @@ namespace VoiceActing
                 Destroy(characters[i].gameObject);
             }
             characters.Clear();
-            imageBackground.sprite = newStoryEvent.Background;
+
+            if (newStoryEvent.Background != null)
+            {
+                imageBackground.sprite = newStoryEvent.Background.SpriteBackground;
+                textLocation.text = newStoryEvent.Background.NameBackground;
+                textLocation.text = StringReplace(textLocation.text, dictionary);
+            }
             for (int i = 0; i < newStoryEvent.Characters.Length; i++)
             {
                 characters.Add(Instantiate(characterPrefab, transformCharacter));

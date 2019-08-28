@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -24,7 +25,7 @@ namespace VoiceActing
         [SerializeField]*/
         Camera cameraComponent;
 
-        [Header("Camera Center")]
+        [Title("Camera Center")]
         [SerializeField]
         Transform initialPosition;
         [SerializeField]
@@ -36,7 +37,7 @@ namespace VoiceActing
         [SerializeField]
         Transform actorSwitchPosition;
 
-        [Header("Text")]
+        [Title("Text")]
         [SerializeField]
         Transform text;
         [SerializeField]
@@ -45,11 +46,25 @@ namespace VoiceActing
         Transform textAttackPosition;
 
 
-        [Header("Camera Center")]
+        [Title("Camera Data")]
         [SerializeField]
         CameraMovementData[] cameraMovementSet1;
         [SerializeField]
         CameraMovementData[] cameraMovementSet2;
+
+        [Space]
+        [SerializeField]
+        CameraMovementData[] cameraMovementRetake;
+        [SerializeField]
+        CameraMovementData[] cameraMovementSoundEngi;
+        [SerializeField]
+        CameraMovementData[] cameraMovementRoleAttack;
+        [SerializeField]
+        CameraMovementData[] cameraMovementEndSequence;
+
+        [SerializeField]
+        Animator animatorCameraComplex;
+
 
         CameraMovementData currentCamMovement;
 
@@ -216,7 +231,12 @@ namespace VoiceActing
             SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
             SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
 
-            if(cameraPlacement == 0)
+            if (cameraPlacement == -1)
+            {
+                cameraPlacement = 0;
+                Debug.Log("hola");
+            }
+            else if (cameraPlacement == 0)
             {
                 if (cameraMovementSet1.Length == 0)
                     return;
@@ -267,6 +287,20 @@ namespace VoiceActing
         {
             cameraMovementSet1 = doublageEventCameraData.CameraSet1;
             cameraMovementSet2 = doublageEventCameraData.CameraSet2;
+
+            if(doublageEventCameraData.AnimatorCustomCameraID != 0)
+            {
+                animatorCameraComplex.SetInteger("Anim", doublageEventCameraData.AnimatorCustomCameraID);
+                SetNoCameraEffect(true);
+                animatorCameraComplex.enabled = true;
+                cameraPlacement = -1;
+                currentCamMovement = null;
+            }
+
+            if (doublageEventCameraData.CurrentCameraData != null)
+            {
+                currentCamMovement = doublageEventCameraData.CurrentCameraData;
+            }
         }
 
 
@@ -592,7 +626,8 @@ namespace VoiceActing
             SetCameraRotation(notQuitePosition.eulerAngles.x, notQuitePosition.eulerAngles.y, notQuitePosition.eulerAngles.z);
             MoveCamera(notQuitePosition.position.x + 3, notQuitePosition.position.y, notQuitePosition.position.z, 80);
             RotateCamera(0, 90, 0, 80);
-            cameraPlacement = 0;
+            if(cameraPlacement != -1)
+                cameraPlacement = 0;
             ChangeOrthographicSize(0, 80);
         }
 
@@ -700,6 +735,9 @@ namespace VoiceActing
         public void IngeSon2Cancel()
         {
             //SetText(-6, 2.7f, 0);
+            if (cameraPlacement == -1)
+                return;
+
             StartCoroutine(MoveTextCoroutine(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 30));
             if (soundEngineerCoroutine != null)
                 StopCoroutine(soundEngineerCoroutine);

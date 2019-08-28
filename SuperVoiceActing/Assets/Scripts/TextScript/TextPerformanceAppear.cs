@@ -117,9 +117,10 @@ namespace VoiceActing
         public void SetPauseText(bool b)
         {
             pauseText = b;
-            mouth.DesactivateMouth();
             if (characterCount < textMeshPro.text.Length && b == false)
                 mouth.ActivateMouth();
+            else
+                mouth.DesactivateMouth();
         }
 
         public void SetParticle(ParticleSystem par, ParticleSystem par2, ParticleSystem par3)
@@ -408,7 +409,7 @@ namespace VoiceActing
                     actualTime += 1;
                 }
 
-                if(characterCount == textInfo.characterCount)
+                if(characterCount == textInfo.characterCount && mouth != null)
                     mouth.DesactivateMouth();
 
                 // If No Characters then just yield and wait for some text to be added

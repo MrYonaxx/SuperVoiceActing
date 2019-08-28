@@ -137,16 +137,19 @@ namespace VoiceActing
 
 
 
-        public virtual void PrintAllText()
+        public virtual void PrintAllText(bool forceSkip = false)
         {
-            bool checkText = false;
-            for (int i = 0; i < textEvent.Length; i++)
+            if (forceSkip == false)
             {
-                if (textEvent[i].PrintAllText() == false)
-                    checkText = true;
+                bool checkText = false;
+                for (int i = 0; i < textEvent.Length; i++)
+                {
+                    if (textEvent[i].PrintAllText() == false)
+                        checkText = true;
+                }
+                if (checkText == true)
+                    return;
             }
-            if (checkText == true)
-                return;
 
             if(clearText == true)
             {
@@ -161,6 +164,8 @@ namespace VoiceActing
                 {
                     textEvent[i].NewPhrase(" ");
                 }
+                mainText.SetPauseText(true);
+                mainText.HideText();
             }
             popup.gameObject.SetActive(false);
             inputEvent.gameObject.SetActive(false);
@@ -191,7 +196,12 @@ namespace VoiceActing
                     }
                     clearAllText = node.ClearAllText;
                     clearText = node.ClearText;
-                    interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
+                    if (interloc != null)
+                        interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
+                    else
+                    {
+                        PrintAllText(true);
+                    }
                 }
 
 

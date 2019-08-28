@@ -77,8 +77,11 @@ namespace VoiceActing
 
         public void Validate()
         {
-            animatorMainMenu.SetTrigger("MenuDisappear");
-            animatorMainMenuDescription.SetTrigger("SubMenuAppear");
+            if (indexSelected == indexNewGame || indexSelected == indexLoadGame)
+            {
+                animatorMainMenu.SetTrigger("MenuDisappear");
+                animatorMainMenuDescription.SetTrigger("SubMenuAppear");
+            }
         }
 
 

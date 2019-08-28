@@ -169,13 +169,13 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the StoryEventData class
     /// </summary>
-    [CreateAssetMenu(fileName = "StoryEventData", menuName = "StoryEvent", order = 1)]
+    [CreateAssetMenu(fileName = "StoryEventData", menuName = "StoryEvent/StoryEventData", order = 1)]
     public class StoryEventData : ScriptableObject
     {
         [Title("Scene Info")]
         [SerializeField]
-        Sprite background;
-        public Sprite Background
+        StoryBackgroundData background;
+        public StoryBackgroundData Background
         {
             get { return background; }
         }

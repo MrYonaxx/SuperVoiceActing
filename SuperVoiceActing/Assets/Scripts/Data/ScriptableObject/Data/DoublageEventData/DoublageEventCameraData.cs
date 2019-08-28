@@ -16,6 +16,13 @@ namespace VoiceActing
 	public class DoublageEventCameraData : DoublageEvent
 	{
         [SerializeField]
+        private CameraMovementData currentCameraData;
+        public CameraMovementData CurrentCameraData
+        {
+            get { return currentCameraData; }
+        }
+
+        [SerializeField]
         private CameraMovementData[] cameraSet1;
         public CameraMovementData[] CameraSet1
         {
@@ -27,6 +34,13 @@ namespace VoiceActing
         public CameraMovementData[] CameraSet2
         {
             get { return cameraSet2; }
+        }
+
+        [SerializeField]
+        private int animatorCustomCameraID;
+        public int AnimatorCustomCameraID
+        {
+            get { return animatorCustomCameraID; }
         }
 
     } // DoublageEventCameraData class

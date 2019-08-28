@@ -16,7 +16,6 @@ MonoBehaviour:
   description: "Je peux inverser les propri\xE9t\xE9s de deux \xE9motions."
   descriptionBattle: 
   skillType: 1
-  skillTarget: 5
   buffData:
     turnActive: 3
     refresh: 0
@@ -36,8 +35,8 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
+      skillTarget: 0
       inPercentage: 0
-      statVariance: 0
       emotionStat:
         neutral: 0
         joy: 0
@@ -48,9 +47,8 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      statVariance: 0
     skillEffectEmotionDamage:
-      inPercentage: 0
-      damageVariance: 0
       emotionDamage:
         neutral: 0
         joy: 0
@@ -61,17 +59,18 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      damageVariance: 0
     skillEffectHealth:
+      skillTarget: 0
       inPercentage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
-      inPercentage: 0
       turnGain: 0
       turnVariance: 0
     skillEffectTradeStat:
-      firstEmotion: 0
-      secondEmotion: 0
+      firstEmotion: 7
+      secondEmotion: 8
     skillEffectResistance:
       resistancePercentage: 0
   producerCost: 5

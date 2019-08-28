@@ -141,12 +141,15 @@ namespace VoiceActing
             currentText.SetLetterSpeed(newValue);
         }
 
+
+
         public void HideText()
         {
             if (initialScale != Vector3.zero)
                 return;
             initialScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
             transform.localScale = new Vector3(0, 0, 0);
+            particleLineDead1.Stop();
         }
 
         public void ShowText()
@@ -168,19 +171,19 @@ namespace VoiceActing
                 currentText.Stop();
             }
 
-            if(startPhrase == true)
+            if(startPhrase == true) // Premiere Apparition d'une phrase
             {
                 currentText = textNewPhrase;
                 currentText.NewMouthAnim(mouth);
-                particleLineDead1.gameObject.SetActive(false);
+                particleLineDead1.Stop();
                 currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
                 currentText.NewPhrase(newText, newText.Length);
             }
-            else
+            else // Apparition de la phrase après une prise
             {
                 currentText = SelectTextEffect(emotion);
                 currentText.NewMouthAnim(mouth);
-                particleLineDead1.gameObject.SetActive(false);
+                particleLineDead1.Stop();
                 currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
                 currentText.NewPhrase(newText);
             }
@@ -201,25 +204,6 @@ namespace VoiceActing
 
         }
 
-        public void ApplyDamage(float damage)
-        {
-            currentText.ApplyDamage(damage);
-            //ShowUIButton(damage);
-
-        }
-
-        public void ReprintText()
-        {
-            particleLineDead1.gameObject.SetActive(false);
-            currentText.ReprintText();
-        }
-
-        // C'est pas clair
-        public void CalculateDamageColor(float damage)
-        {
-            currentText.CalculateDamageColor(damage);
-        }
-
         private IEnumerator WaitFrame(float time, float damage)
         {
             while(time != 0)
@@ -234,6 +218,27 @@ namespace VoiceActing
             currentText.SetWordFeedback(wordID);
             ApplyDamage(damage);
         }
+
+        public void ApplyDamage(float damage)
+        {
+            currentText.ApplyDamage(damage);
+        }
+
+
+
+
+        public void ReprintText()
+        {
+            particleLineDead1.Stop();
+            currentText.ReprintText();
+        }
+
+        // C'est pas clair
+        public void CalculateDamageColor(float damage)
+        {
+            currentText.CalculateDamageColor(damage);
+        }
+
 
 
 

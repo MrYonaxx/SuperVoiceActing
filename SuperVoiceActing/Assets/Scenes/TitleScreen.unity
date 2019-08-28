@@ -1481,31 +1481,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2682235939064896540, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682235939064896540, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682235939064896540, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682235939907427816, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682235939458124131, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2682235938760783058, guid: c4649e376cba29a4ca09eaedb6dfcc13,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1535,11 +1510,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682235940037342246, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_Text
-      value: Louis
       objectReference: {fileID: 0}
     - target: {fileID: 2682235939555882717, guid: c4649e376cba29a4ca09eaedb6dfcc13,
         type: 3}
@@ -1574,11 +1544,6 @@ PrefabInstance:
     - target: {fileID: 2682235939851536405, guid: c4649e376cba29a4ca09eaedb6dfcc13,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682235939700873025, guid: c4649e376cba29a4ca09eaedb6dfcc13,
-        type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2682235938956256804, guid: c4649e376cba29a4ca09eaedb6dfcc13,
@@ -1626,10 +1591,45 @@ PrefabInstance:
       propertyPath: nextScene
       value: EventSceneNameField
       objectReference: {fileID: 0}
+    - target: {fileID: 2682235940037342246, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_Text
+      value: Louis
+      objectReference: {fileID: 0}
     - target: {fileID: 2682235938604957880, guid: c4649e376cba29a4ca09eaedb6dfcc13,
         type: 3}
       propertyPath: eventBoutonY.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RegisterPlayerName
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682235939064896540, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682235939064896540, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682235939064896540, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682235939458124131, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682235939700873025, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682235939907427816, guid: c4649e376cba29a4ca09eaedb6dfcc13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4649e376cba29a4ca09eaedb6dfcc13, type: 3}
@@ -2976,6 +2976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033970925}
   - component: {fileID: 1033970926}
+  - component: {fileID: 1033970927}
   m_Layer: 5
   m_Name: SUPERVOICEACTING
   m_TagString: Untagged
@@ -3026,6 +3027,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1033970927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033970924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9237332b26e0241a79ee729b36b166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2021525905}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  unityEvent2:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1063420715
 GameObject:
   m_ObjectHideFlags: 0
@@ -8110,7 +8144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2021525906
 Transform:
   m_ObjectHideFlags: 0

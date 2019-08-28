@@ -229,8 +229,12 @@ namespace VoiceActing
             textInfoTitle.text = listContractAvailable[indexSelected].Name;
             textInfoWeek.text = listContractAvailable[indexSelected].WeekRemaining.ToString();
             textInfoMoney.text = listContractAvailable[indexSelected].Money.ToString();
+
             textInfoLine.text = listContractAvailable[indexSelected].TotalLine.ToString();
+            textInfoLine.gameObject.SetActive(listContractAvailable[indexSelected].TotalLine != 0);
             textInfoMixage.text = listContractAvailable[indexSelected].TotalMixing.ToString();
+            textInfoMixage.gameObject.SetActive(listContractAvailable[indexSelected].TotalMixing != 0);
+
             textInfoDescription.text = listContractAvailable[indexSelected].Description;
 
             textInfoType.text = typeContractData.GetName((int)listContractAvailable[indexSelected].ContractType);
@@ -301,6 +305,21 @@ namespace VoiceActing
         {
             animatorInfoCharacter.SetBool("Appear", !animatorInfoCharacter.GetBool("Appear"));
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public void SelectContractUp()
         {
