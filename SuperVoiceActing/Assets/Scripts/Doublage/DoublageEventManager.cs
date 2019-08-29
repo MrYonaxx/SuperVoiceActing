@@ -199,6 +199,7 @@ namespace VoiceActing
                     clearText = node.ClearText;
                     if (interloc != null)
                     {
+                        interloc.ChangeEmotion(node.EmotionNPC);
                         textEvent[node.CameraID].NewMouthAnim(interloc);
                         textEvent[node.CameraID].NewPhrase(node.Text);
                         //interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
