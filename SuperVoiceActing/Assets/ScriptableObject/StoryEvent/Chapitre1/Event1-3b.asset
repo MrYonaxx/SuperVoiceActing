@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
   m_Name: Event1-3b
   m_EditorClassIdentifier: 
-  background: {fileID: 0}
+  background: {fileID: 11400000, guid: 8483a0de16824cd45979c3cd87240071, type: 2}
   characters: []
   eventNodes:
   - dataBox:
@@ -21,8 +21,8 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "J'ai \xE9tudi\xE9 votre cas avant de venir ici."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -59,19 +60,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Et tr\xE8s franchement, je ne pense pas que vos pubs pour les nouilles
           instantan\xE9es soient particuli\xE8rement rentables."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -95,6 +119,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -108,19 +133,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Il faut savoir saisir les opportunit\xE9s. Je sais que vous avez besoin
           d'argent, et moi je veux que notre jeu ait du succ\xE8s."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -144,6 +192,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -157,18 +206,41 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: C'est donnant-donnant.
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -192,6 +264,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -205,18 +278,41 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: Parfaitement.
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -240,6 +336,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -253,17 +350,40 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 6
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: 
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -287,6 +407,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 11400000, guid: 8287f4fe759ae6f43b6ea05b3baa6fdd, type: 2}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -300,7 +421,30 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}

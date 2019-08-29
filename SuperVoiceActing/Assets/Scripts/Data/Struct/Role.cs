@@ -237,6 +237,14 @@ namespace VoiceActing
                     secondBestStatEmotion = i + 1;
                 }
             }
+            if (bestStat == 0)
+            {
+                bestStat = -1;
+            }
+            if (secondBestStat == 0)
+            {
+                secondBestStat = -1;
+            }
 
 
         }

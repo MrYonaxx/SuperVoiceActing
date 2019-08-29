@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
   m_Name: Event1-3Choix
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: c4f9ae483abccf2449340d34bc35762b, type: 3}
+  background: {fileID: 11400000, guid: 8483a0de16824cd45979c3cd87240071, type: 2}
   characters:
   - characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990, type: 2}
     time: 60
@@ -36,8 +36,8 @@ MonoBehaviour:
       storyEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: 
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -74,6 +75,9 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: Test
         answers:
@@ -85,3 +89,23 @@ MonoBehaviour:
         - {fileID: 11400000, guid: fd1878bff5a07304c8efd4a582be2eac, type: 2}
         - {fileID: 11400000, guid: add78d08f8f0e444db975de132d97168, type: 2}
         - {fileID: 11400000, guid: 9948bbae5d157904f92457cad115f66e, type: 2}
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}

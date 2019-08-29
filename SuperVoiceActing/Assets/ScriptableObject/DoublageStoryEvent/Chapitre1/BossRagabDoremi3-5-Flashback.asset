@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
   m_Name: BossRagabDoremi3-5-Flashback
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: c4f9ae483abccf2449340d34bc35762b, type: 3}
+  background: {fileID: 0}
   characters:
   - characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
     time: 60
@@ -29,9 +29,9 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         emotionNPC: 1
+        emotionEmoticonBalloon: 0
         text: "H\xE9 ! Me regarde pas comme \xE7a.\nSi j'te dis tout \xE7a c'est parce
           que j'veux vraiment que tu donnes ton maximum."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -68,19 +69,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Je sais que tu dois arrondir tes fins de mois.\nMais que \xE7a ne t'emp\xEAche
           pas de faire du travail de qualit\xE9."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -104,6 +128,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -117,19 +142,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Et c'est pas parce que je te connais pas ou que tu m'appr\xE9cies pas
           trop que je ne vais pas te faire confiance."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -153,6 +201,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -166,18 +215,41 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "C'est toi le chef d'orchestre, apr\xE8s tout."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -201,6 +273,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -214,55 +287,30 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
-  - dataBox:
-      eventNode: 6
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        text: 
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 11400000, guid: b1cd8a754616d0d4b84c63a067c98b3d,
-          type: 2}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-      storyEventPlayerData:
-        currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-      storyEventChoices:
-        text: 
-        answers: []
-        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}

@@ -292,7 +292,9 @@ namespace VoiceActing
                     }
                     else if (node.StoryEventData != null)
                     {
-                        StartFlashback(node.StoryEventData);
+                        panelFlashback.SetActive(true);
+                        StartCoroutine(TransitionFlashback(true));
+                        storyEventManager.StartStoryEventDataWithScene(node.StoryEventData);
                     }
                 }
 
@@ -512,20 +514,12 @@ namespace VoiceActing
 
 
 
-        public void StartFlashback(StoryEventData storyEventData)
+
+
+
+        public void StopFlashback()
         {
-            panelFlashback.SetActive(true);
-            storyEventManager.StartStoryEventDataWithScene(storyEventData);
-            StartCoroutine(TransitionFlashback(true));
-        }
-
-
-
-
-        public void StopFlashback(DoublageEventData doublageEventData)
-        {
-            currentEvent = doublageEventData;
-            indexEvent = -1;
+            //indexEvent = -1;
             ExecuteEvent();
             StartCoroutine(TransitionFlashback(false));
         }

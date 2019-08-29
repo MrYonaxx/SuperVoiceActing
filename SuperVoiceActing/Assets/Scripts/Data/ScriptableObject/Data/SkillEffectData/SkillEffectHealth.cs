@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -19,9 +20,15 @@ namespace VoiceActing
         [SerializeField]
         bool inPercentage = false;
         [SerializeField]
+        bool restoreChipDamage = false;
+
+        [HideIf("restoreChipDamage")]
+        [SerializeField]
         int hpDamage;
+        [HideIf("restoreChipDamage")]
         [SerializeField]
         int hpDamageVariance;
+
 
 
 
@@ -29,6 +36,13 @@ namespace VoiceActing
         {
             int currentHP = 0;
             float damage = 0;
+            if(restoreChipDamage == true)
+            {
+                damage = -doublageManager.ActorsManager.GetCurrentActorHPRegain();
+                doublageManager.ActorsManager.ResetActorRegain();
+                doublageManager.ActorsManager.ActorTakeDamage((int)damage);
+                return;
+            }
             switch (skillTarget)
             {
                 case SkillTarget.VoiceActor:

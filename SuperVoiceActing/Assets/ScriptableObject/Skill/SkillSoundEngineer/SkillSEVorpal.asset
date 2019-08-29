@@ -9,21 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3aeea74d582ba44a09bba334f6b2b5, type: 3}
-  m_Name: SkillPause
+  m_Script: {fileID: 11500000, guid: 49802d3224b3dca40ac3576bb19059ef, type: 3}
+  m_Name: SkillSEVorpal
   m_EditorClassIdentifier: 
-  skillName: Pause
-  description: On perd un tour et le mood pour restaurer l'endurance d'un Acteur.
+  skillName: Vorpal
+  description: "Je peux augmenter une \xE9motion de 5 pendant 3 tours."
   descriptionBattle: 
-  skillType: 0
-  skillTarget: 0
+  skillType: 1
   buffData:
-    turnActive: 0
-    refresh: 0
+    turnActive: 3
+    refresh: 1
     addBuffTurn: 0
     canAddMultiple: 0
   skillEffects:
-  - eventNode: 3
+  - eventNode: 1
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -36,21 +35,20 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
+      skillTarget: 0
       inPercentage: 0
-      statVariance: 0
       emotionStat:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 5
+        sadness: 5
+        disgust: 5
+        anger: 5
+        surprise: 5
+        sweetness: 5
+        fear: 5
+        trust: 5
+      statVariance: 0
     skillEffectEmotionDamage:
-      inPercentage: 0
-      damageVariance: 0
       emotionDamage:
         neutral: 0
         joy: 0
@@ -61,12 +59,13 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      damageVariance: 0
     skillEffectHealth:
+      skillTarget: 0
       inPercentage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
-      inPercentage: 0
       turnGain: 0
       turnVariance: 0
     skillEffectTradeStat:
@@ -74,4 +73,7 @@ MonoBehaviour:
       secondEmotion: 0
     skillEffectResistance:
       resistancePercentage: 0
-  producerCost: 0
+  producerCost: 3
+  cardSelection: 1
+  packSelection: 0
+  cardComboSize: {x: 0, y: 3}

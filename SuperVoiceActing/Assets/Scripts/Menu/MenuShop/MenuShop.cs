@@ -55,18 +55,20 @@ namespace VoiceActing
 
         public void Validate()
         {
-            this.gameObject.SetActive(false);
+            
             if (indexSelected == buyOptionIndex)
             {
-
+                return;
             }
             else if(indexSelected == sellOptionIndex)
             {
-                menuShopSelection.SetEquipementsShowcase(playerData.InventoryEquipement, false);
-                menuShopSelection.gameObject.SetActive(true);
+                return;
+                /*menuShopSelection.SetEquipementsShowcase(playerData.InventoryEquipement, false);
+                menuShopSelection.gameObject.SetActive(true);*/
             }
             else if (indexSelected == exitOptionIndex)
             {
+                this.gameObject.SetActive(false);
                 ExitMenuShop();
             }
         }

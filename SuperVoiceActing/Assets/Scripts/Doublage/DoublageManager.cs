@@ -200,6 +200,8 @@ namespace VoiceActing
         public void AddTurn(int addValue)
         {
             turnCount += addValue;
+            if (turnCount <= 0)
+                turnCount = 0;
             timer.SetTurn(turnCount);
             if (addValue < 0)
             {
@@ -262,7 +264,10 @@ namespace VoiceActing
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
-            soundEngineerManager.SetManagers(skillManager);
+            if(contrat.SoundEngineer.IsNull)
+                soundEngineerManager.SetManagers(skillManager, playerData.SoundEngineers[0]);
+            else 
+                soundEngineerManager.SetManagers(skillManager, contrat.SoundEngineer);
             toneManager.DrawTone();
             characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
         }
@@ -991,7 +996,7 @@ namespace VoiceActing
 
         public void SwitchToDoublage()
         {
-            soundEngineerManager.SwitchToEmotion();
+            soundEngineerManager.SwitchToBattle();
             emotionAttackManager.SwitchCardTransformToBattle();
             if(cameraController.enabled == true)
                 cameraController.IngeSon2Cancel();

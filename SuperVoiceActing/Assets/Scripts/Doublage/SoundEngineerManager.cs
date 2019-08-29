@@ -34,6 +34,8 @@ namespace VoiceActing
         GameObject vignettageIngeSon;*/
 
         [SerializeField]
+        TextPerformanceAppear textSkillDescriptionAnimation;
+        [SerializeField]
         CharacterDialogueController characterSoundEngineer;
         [SerializeField]
         TextMeshPro textSkillDescription;
@@ -49,7 +51,9 @@ namespace VoiceActing
         [SerializeField]
         TextMeshPro[] textButtons;
         [SerializeField]
-        SkillData[] skills;
+        TextMeshPro[] textCosts;
+        [SerializeField]
+        SkillDataSoundEngi[] skills;
         [SerializeField]
         Transform selection;
         [SerializeField]
@@ -58,24 +62,22 @@ namespace VoiceActing
         Color colorNormal;
         [SerializeField]
         Color colorUnavailable;
-        [SerializeField]
-        UnityEvent unityEvent;
 
         [Header("DebugEmotion")]
         [SerializeField]
         InputController inputEmotion;
         [SerializeField]
-        Transform[] emotionButtons;
-        [SerializeField]
-        Transform selectionEmotion;
-        [SerializeField]
         Transform textDescription;
 
         int indexList = 0;
-        int indexEmotion = 0;
 
+        [SerializeField]
+        EmotionAttackManager emotionAttackManager;
+        
         SkillManager skillManager;
         int trickery = 16;
+
+        int currentComboMax = 0;
 
         #endregion
 
@@ -107,9 +109,11 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void SetManagers(SkillManager sM)
+        public void SetManagers(SkillManager sM, SoundEngineer soundEngi)
         {
             skillManager = sM;
+            characterSoundEngineer.SetStoryCharacterData(soundEngi.SpritesSheets);
+            skills = soundEngi.Skills;              
             InitializeSoundEngineer();
         }
 
@@ -117,7 +121,11 @@ namespace VoiceActing
         {
             for (int i = 0; i < skills.Length; i++)
             {
-                textButtons[i].text = skills[i].SkillName;
+                if (skills[i] != null)
+                {
+                    textButtons[i].text = skills[i].SkillName;
+                    textCosts[i].text = skills[i].ProducerCost.ToString();
+                }
             }
         }
 
@@ -134,7 +142,7 @@ namespace VoiceActing
             DrawDescription(skills[indexList]);
         }
 
-        public void SwitchToEmotion()
+        public void SwitchToBattle()
         {
             animatorMixingTable.SetBool("Active", false);
             inputMixingTable.gameObject.SetActive(false);
@@ -156,10 +164,13 @@ namespace VoiceActing
         {
             for (int i = 0; i < skills.Length; i++)
             {
-                if (trickery < skills[i].ProducerCost)
-                    textButtons[i].color = colorUnavailable;
-                else
-                    textButtons[i].color = colorNormal;
+                if (skills[i] != null)
+                {
+                    if (trickery < skills[i].ProducerCost)
+                        textButtons[i].color = colorUnavailable;
+                    else
+                        textButtons[i].color = colorNormal;
+                }
             }
         }
 
@@ -197,7 +208,18 @@ namespace VoiceActing
 
         public void DrawDescription(SkillData skill)
         {
+            if (skill == null)
+            {
+                textSkillDescription.text = " ";
+                textSkillDescriptionAnimation.NewMouthAnim(characterSoundEngineer);
+                textSkillDescriptionAnimation.NewPhrase(" ");
+                selection.SetParent(textButtons[indexList].transform);
+                selection.transform.localPosition = Vector3.zero;
+                return;
+            }
             textSkillDescription.text = skill.Description;
+            textSkillDescriptionAnimation.NewMouthAnim(characterSoundEngineer);
+            textSkillDescriptionAnimation.NewPhrase(skill.Description);
             //characterSoundEngineer.SetPhraseEventTextacting(skill.Description, EmotionNPC.Normal);
             selection.SetParent(textButtons[indexList].transform);
             selection.transform.localPosition = Vector3.zero;
@@ -205,17 +227,19 @@ namespace VoiceActing
 
         public void ValidateSkill()
         {
+            if (skills[indexList] == null)
+                return;
+
             if (CheckTrickeryCost(skills[indexList].ProducerCost) == true)
             {
-                /*if (skills[indexList].SkillTarget == SkillTarget.ManualPackSelection)
+                if (skills[indexList].CardSelection == true)
                 {
                     StartCoroutine(CoroutineWaitEndOfFrame());
-                    //SwitchToSelectEmotion(true);
                     return;
-                }*/
+                }
                 AddTrickery(-skills[indexList].ProducerCost);
                 skillManager.ApplySkill(skills[indexList]);
-                unityEvent.Invoke();
+                //unityEvent.Invoke();
             }
             //SwitchToEmotion();
         }
@@ -255,35 +279,87 @@ namespace VoiceActing
         {
             inputMixingTable.enabled = !b;
             inputEmotion.enabled = b;
-            selectionEmotion.gameObject.SetActive(b);
             textDescription.gameObject.SetActive(!b);
+            if (b == true)
+                SetCardSlot();
+            else
+                ResetCardSlot();
         }
 
-        public void SelectEmotion(int direction)
+
+
+        public void SetCardSlot()
         {
-            switch (direction)
+            int addComboMax = 0;
+            currentComboMax = emotionAttackManager.GetComboMax();
+            if(skills[indexList].CardComboSize.x <= currentComboMax && currentComboMax <= skills[indexList].CardComboSize.y)
             {
-                case 4: //left
-                    indexEmotion -= 1;
-                    if (indexEmotion < 0)
-                        indexEmotion = emotionButtons.Length - 1;
-                    break;
-                case 6: //right
-                    indexEmotion += 1;
-                    if (indexEmotion >= emotionButtons.Length)
-                        indexEmotion = 0;
-                    break;
+                addComboMax = 0;
             }
-            selectionEmotion.SetParent(emotionButtons[indexEmotion].transform);
-            selectionEmotion.transform.localPosition = Vector3.zero;
+            else
+            {
+                addComboMax = skills[indexList].CardComboSize.y - currentComboMax;
+                emotionAttackManager.AddComboMax(addComboMax);
+            }
+            emotionAttackManager.ShowComboSlot(true);
         }
+
+        public void ResetCardSlot()
+        {
+            int addComboMax = 0;
+            if (skills[indexList].PackSelection)
+                emotionAttackManager.ResetPack();
+            else
+                emotionAttackManager.ResetCard();
+            if (skills[indexList].CardComboSize.x <= currentComboMax && currentComboMax <= skills[indexList].CardComboSize.y)
+            {
+                addComboMax = 0;
+            }
+            else
+            {
+                addComboMax = skills[indexList].CardComboSize.y - currentComboMax;
+                emotionAttackManager.AddComboMax(-addComboMax);
+            }
+            emotionAttackManager.ShowComboSlot(false);
+        }
+
+        public void RemoveCard()
+        {
+            if (emotionAttackManager.GetComboCount() == -1)
+            {
+                SwitchToSelectEmotion(false);
+            }
+            else
+            {
+                if (skills[indexList].PackSelection)
+                    emotionAttackManager.RemovePack();
+                else
+                    emotionAttackManager.RemoveCard();
+            }
+        }
+
+        public void SelectEmotion(string emotion)
+        {
+            if (skills[indexList].PackSelection)
+                emotionAttackManager.SelectPack(emotion);
+            else
+                emotionAttackManager.SelectCard(emotion);
+        }
+
+
 
         public void ValidateEmotion()
         {
-            SwitchToSelectEmotion(false);
-            skills[indexList].ManualTarget((Emotion)indexEmotion + 1);
-            AddTrickery(-skills[indexList].ProducerCost);
-            skillManager.ApplySkill(skills[indexList]);
+            if (emotionAttackManager.GetComboCount() >= skills[indexList].CardComboSize.x-1)
+            {
+
+                AddTrickery(-skills[indexList].ProducerCost);
+                // On target puis on retire les cartes avant d'appliquer le buff
+                skills[indexList].ManualTarget(emotionAttackManager.GetComboEmotion(), skills[indexList].PackSelection);
+                SwitchToSelectEmotion(false);
+                skillManager.ApplySkill(skills[indexList]);
+
+            }
         }
 
 

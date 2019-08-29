@@ -226,6 +226,11 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public int GetComboMax()
+        {
+            return comboMax;
+        }
+
         public int GetComboCount()
         {
             return comboCount;
@@ -543,6 +548,124 @@ namespace VoiceActing
             RemoveCard();
             RemoveCard();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // sélectionne une carte avec un nom
+        public EmotionCard SelectPack(string emotion)
+        {
+            if (comboCount == comboMax)
+                return null;
+            switch (emotion)
+            {
+                case "Joie":
+                    return SelectPack(Emotion.Joie);
+                case "Tristesse":
+                    return SelectPack(Emotion.Tristesse);
+                case "Dégoût":
+                    return SelectPack(Emotion.Dégoût);
+                case "Colère":
+                    return SelectPack(Emotion.Colère);
+                case "Surprise":
+                    return SelectPack(Emotion.Surprise);
+                case "Douceur":
+                    return SelectPack(Emotion.Douceur);
+                case "Peur":
+                    return SelectPack(Emotion.Peur);
+                case "Confiance":
+                    return SelectPack(Emotion.Confiance);
+                case "Neutre":
+                    return SelectPack(Emotion.Neutre);
+            }
+            return null;
+        }
+
+        // selectionne une carte et décale l'ordre de 1
+        public EmotionCard SelectPack(Emotion emotion)
+        {
+            if (comboCount == comboMax - 1)
+                return null;
+
+            for (int i = 0; i < emotionCards.Length; i++)
+            {
+                if (emotionCards[i].Emotion == emotion)
+                {
+                    if (emotionCards[i].Cards.Length == 0)
+                        return null;
+                    if (emotionCards[i].Cards[0] == null)
+                        return null;
+
+                    emotionCards[i].Cards[0].FeedbackCardSelected(feedbackSelectCard);
+                    comboCount += 1;
+                    comboEmotion[comboCount] = emotion;
+                    for (int j = 0; j < emotionCards[i].Cards.Length; j++)
+                    {
+                        if(emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
+                            emotionCards[i].Cards[j].MoveCard(comboSlot[comboCount], transitionSpeedCardSelect);
+                    }
+                    return comboCardEmotion[comboCount];
+
+                }
+            }
+            return null;
+        }
+
+
+
+
+        // Retire un pack de carte
+        public EmotionCard RemovePack()
+        {
+            if (comboCount == -1)
+                return null;
+            Emotion emotionRemove = comboEmotion[comboCount];
+
+            for (int i = 0; i < emotionCards.Length; i++)
+            {
+                if (emotionCards[i].Emotion == emotionRemove)
+                {
+                    for (int j = 0; j < emotionCards[i].Cards.Length; j++)
+                    {
+                        if (emotionCards[i].Cards[j] != null && emotionCards[i].Cards[j].gameObject.activeInHierarchy == true)
+                            emotionCards[i].Cards[j].MoveCard(emotionCardsPosition[i].CardsPosition[j], transitionSpeedCardSelect);
+                    }
+                    
+                    comboEmotion[comboCount] = Emotion.Neutre;
+                    comboCount -= 1;
+                    return emotionCards[i].Cards[0];
+                }
+            }
+            return null;
+        }
+
+        public void ResetPack()
+        {
+            RemovePack();
+            RemovePack();
+            RemovePack();
+        }
+
+
+
+
+
+
+
+
+
+
 
         public void CardAttack()
         {

@@ -45,8 +45,17 @@ namespace VoiceActing
 
         private void InvertActorStat(EmotionCardTotal[] emotionCards)
         {
-            packA = emotionCards[(int)firstEmotion].Cards;
-            packB = emotionCards[(int)secondEmotion].Cards;
+            if(targetAcquired == true)
+            {
+                packA = emotionCards[cardTargetsData[0].x].Cards;
+                packB = emotionCards[cardTargetsData[1].x].Cards;
+                targetAcquired = false;
+            }
+            else
+            {
+                packA = emotionCards[(int)firstEmotion].Cards;
+                packB = emotionCards[(int)secondEmotion].Cards;
+            }
 
             InvertActorStat();
         }
@@ -83,6 +92,19 @@ namespace VoiceActing
         public override void RemoveSkillEffectActor(VoiceActor actor)
         {
             InvertActorStat();
+        }
+
+
+
+        public override void ManualTarget(Emotion[] emotion, bool selectionByPack)
+        {
+            cardTargetsData.Clear();
+
+            cardTargetsData.Add(new Vector3Int((int)emotion[0], 0, 0)); // emotion1
+            cardTargetsData.Add(new Vector3Int((int)emotion[1], 0, 0)); // emotion2
+
+
+            targetAcquired = true;
         }
 
 

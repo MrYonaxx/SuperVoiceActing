@@ -80,8 +80,8 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private SkillData[] initialSkills;
-        public SkillData[] InitialSkills
+        private SkillDataSoundEngi[] initialSkills;
+        public SkillDataSoundEngi[] InitialSkills
         {
             get { return initialSkills; }
         }

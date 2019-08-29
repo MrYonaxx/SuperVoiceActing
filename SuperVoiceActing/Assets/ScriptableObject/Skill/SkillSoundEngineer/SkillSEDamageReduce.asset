@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3aeea74d582ba44a09bba334f6b2b5, type: 3}
-  m_Name: SkillBurst
+  m_Script: {fileID: 11500000, guid: 49802d3224b3dca40ac3576bb19059ef, type: 3}
+  m_Name: SkillSEDamageReduce
   m_EditorClassIdentifier: 
-  skillName: Burst
-  description: "Je peux annuler les d\xE9gats de la prochaine attaque."
+  skillName: Damage Reduce
+  description: "Je peux r\xE9duire les d\xE9gats subis dans une \xE9motion de 50%."
   descriptionBattle: 
   skillType: 1
   buffData:
-    turnActive: 1
-    refresh: 0
+    turnActive: 3
+    refresh: 1
     addBuffTurn: 0
     canAddMultiple: 0
   skillEffects:
-  - eventNode: 6
+  - eventNode: 2
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -51,18 +51,19 @@ MonoBehaviour:
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: -50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: -50
+        fear: -50
+        trust: -50
       damageVariance: 0
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
+      restoreChipDamage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
@@ -72,5 +73,8 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
     skillEffectResistance:
-      resistancePercentage: -100
-  producerCost: 5
+      resistancePercentage: 0
+  producerCost: 3
+  cardSelection: 1
+  packSelection: 0
+  cardComboSize: {x: 1, y: 3}

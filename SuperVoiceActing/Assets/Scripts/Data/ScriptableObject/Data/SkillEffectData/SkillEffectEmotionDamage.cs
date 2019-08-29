@@ -31,7 +31,10 @@ namespace VoiceActing
             {
                 buff = new Buff(this, buffData);
             }
-            CalculateTarget();
+            if (targetAcquired == false)
+                CalculateTarget();
+            else
+                targetAcquired = false;
             AddActorEmotionDamage(doublageManager.EmotionAttackManager.GetCards(), buff);
 
         }
@@ -72,16 +75,33 @@ namespace VoiceActing
 
 
 
-        public override void ManualTarget(Emotion emotion)
+        public override void ManualTarget(Emotion[] emotion, bool selectionByPack)
         {
             cardTargetsData.Clear();
-            int stat = emotionDamage.GetEmotion((int)emotion);
-            if (stat != 0)
+            int stat = 0;
+            int[] manualIndex = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            for (int i = 0; i < emotion.Length; i++)
             {
-                cardTargetsData.Add(new Vector3Int((int)emotion, 0, stat));
-                cardTargetsData.Add(new Vector3Int((int)emotion, 1, stat));
-                cardTargetsData.Add(new Vector3Int((int)emotion, 2, stat));
+                stat = emotionDamage.GetEmotion((int)(emotion[i]));
+                Debug.Log(emotion[i]);
+                Debug.Log(stat);
+                if (stat != 0)
+                {
+                    if (selectionByPack == true)
+                    {
+                        cardTargetsData.Add(new Vector3Int((int)emotion[i], 0, stat));
+                        cardTargetsData.Add(new Vector3Int((int)emotion[i], 1, stat));
+                        cardTargetsData.Add(new Vector3Int((int)emotion[i], 2, stat));
+                    }
+                    else
+                    {
+                        cardTargetsData.Add(new Vector3Int((int)emotion[i], manualIndex[(int)emotion[i]], stat));
+                        manualIndex[(int)emotion[i]] += 1;
+                    }
+                }
             }
+            targetAcquired = true;
         }
 
         private void CalculateTarget()

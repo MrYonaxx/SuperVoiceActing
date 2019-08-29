@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3aeea74d582ba44a09bba334f6b2b5, type: 3}
-  m_Name: SkillMixup
+  m_Script: {fileID: 11500000, guid: 49802d3224b3dca40ac3576bb19059ef, type: 3}
+  m_Name: SkillSEBurst
   m_EditorClassIdentifier: 
-  skillName: Mix-up
-  description: "Je peux inverser les propri\xE9t\xE9s de deux \xE9motions."
+  skillName: Burst
+  description: "Je peux annuler les d\xE9gats de la prochaine attaque."
   descriptionBattle: 
   skillType: 1
   buffData:
-    turnActive: 3
+    turnActive: 1
     refresh: 0
     addBuffTurn: 0
     canAddMultiple: 0
   skillEffects:
-  - eventNode: 5
+  - eventNode: 6
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -63,14 +63,18 @@ MonoBehaviour:
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
+      restoreChipDamage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
     skillEffectTradeStat:
-      firstEmotion: 7
-      secondEmotion: 8
+      firstEmotion: 0
+      secondEmotion: 0
     skillEffectResistance:
-      resistancePercentage: 0
+      resistancePercentage: -100
   producerCost: 5
+  cardSelection: 0
+  packSelection: 0
+  cardComboSize: {x: 0, y: 0}

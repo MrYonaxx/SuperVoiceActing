@@ -30,8 +30,6 @@ namespace VoiceActing
         [SerializeField]
         Transform initialPosition;
         [SerializeField]
-        Transform ingeSonPosition;
-        [SerializeField]
         Transform enemyPosition;
         [SerializeField]
         Transform actorSwitchPosition;
@@ -391,10 +389,6 @@ namespace VoiceActing
 
 
 
-
-
-
-
         private IEnumerator MovementCoroutine(Transform transform, float x, float y, float z, float angleX, float angleY, float angleZ, float time)
         {
             time = Mathf.Max(1, time);
@@ -456,14 +450,6 @@ namespace VoiceActing
 
 
 
-
-
-
-
-
-
-
-
         public void ChangeOrthographicSize(float addValue, int time = 20)
         {
             StartCoroutine(OrthographicSizeTransition(addValue, time));
@@ -517,52 +503,30 @@ namespace VoiceActing
                 cameraPlacement = 0;
         }
 
+
+
         public void IngeSon()
         {
-            /*StartCoroutine(MoveTextCoroutine(textInitialPosition.position.x - 1f, textInitialPosition.position.y - 0.4f, textInitialPosition.position.z + 0.4f, 20));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
 
             noCameraEffect = true;
 
             soundEngineerCoroutine = IngeSonCameraMovementCoroutine();
-            StartCoroutine(soundEngineerCoroutine);*/
-            noCameraEffect = true;
+            StartCoroutine(soundEngineerCoroutine);
         }
 
-
-
-
-
-
-        /*private IEnumerator IngeSonCameraMovementCoroutine()
+        private IEnumerator IngeSonCameraMovementCoroutine()
         {
-            int time = 20;
-            MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, time);
-            RotateCamera(ingeSonPosition.eulerAngles.x, ingeSonPosition.eulerAngles.y, ingeSonPosition.eulerAngles.z, time);
-            while(time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
+            yield return CameraMovementCoroutine(cameraMovementSoundEngi[0].CamDataNodes);
             while (true)
             {
-                time = 300;
-                MoveCamera(ingeSonPosition.position.x-0.03f, ingeSonPosition.position.y-0.03f, ingeSonPosition.position.z, time);
-                while (time != 0)
+                for(int i = 0; i < cameraMovementSoundEngi.Length; i++)
                 {
-                    time -= 1;
-                    yield return null;
-                }
-                time = 300;
-                MoveCamera(ingeSonPosition.position.x, ingeSonPosition.position.y, ingeSonPosition.position.z, time);
-                while (time != 0)
-                {
-                    time -= 1;
-                    yield return null;
+                    yield return CameraMovementCoroutine(cameraMovementSoundEngi[i].CamDataNodes);
                 }
             }
-        }*/
+        }
 
 
         public void IngeSon2Cancel()
@@ -579,7 +543,6 @@ namespace VoiceActing
             moving = false;
             MoveToInitialPosition(30);
             TextMovement(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 0, 0, 0, 30);
-            //StartCoroutine(MoveTextCoroutine(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 30));
             cameraPlacement = 0;
         }
 

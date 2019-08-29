@@ -42,8 +42,8 @@ namespace VoiceActing
         [InfoBox("0 = skill pour Zaque, 1 = skill pour quelqu'un d'autre (Voir sound engi formation pour + d'info)")]
         [HorizontalGroup]
         [SerializeField]
-        private SkillData[] formationSkills;
-        public SkillData[] FormationSkills
+        private SkillDataSoundEngi[] formationSkills;
+        public SkillDataSoundEngi[] FormationSkills
         {
             get { return formationSkills; }
         }

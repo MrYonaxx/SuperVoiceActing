@@ -67,8 +67,8 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private SkillData[] skills;
-        public SkillData[] Skills
+        private SkillDataSoundEngi[] skills;
+        public SkillDataSoundEngi[] Skills
         {
             get { return skills; }
         }
@@ -87,8 +87,8 @@ namespace VoiceActing
             get { return formationSkillID; }
         }
         [SerializeField]
-        private SkillData formationSkill;
-        public SkillData FormationSkill
+        private SkillDataSoundEngi formationSkill;
+        public SkillDataSoundEngi FormationSkill
         {
             get { return formationSkill; }
         }
@@ -128,7 +128,7 @@ namespace VoiceActing
             mixingPower = soundEngineer.MixingPower;
             spritesSheets = soundEngineer.SpritesSheets;
 
-            skills = new SkillData[soundEngineer.InitialSkills.Length];
+            skills = new SkillDataSoundEngi[soundEngineer.InitialSkills.Length];
             for (int i = 0; i < soundEngineer.InitialSkills.Length; i++)
             {
                 skills[i] = soundEngineer.InitialSkills[i];
@@ -170,7 +170,7 @@ namespace VoiceActing
             return mixingPower;
         }
 
-        public void SetSkillFormation(int slotSkill, SkillData skillFormation, int formationTime)
+        public void SetSkillFormation(int slotSkill, SkillDataSoundEngi skillFormation, int formationTime)
         {
             formationSkillID = slotSkill;
             formationSkill = skillFormation;

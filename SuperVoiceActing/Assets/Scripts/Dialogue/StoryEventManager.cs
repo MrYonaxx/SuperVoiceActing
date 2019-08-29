@@ -66,13 +66,7 @@ namespace VoiceActing
         [SerializeField]
         StoryEventEffectManager storyEventEffectManager;
 
-        [FoldoutGroup("Optionnel")]
-        [Title("DoublageEventManager (Acting only)")]
-        [SerializeField]
-        DoublageEventManager doublageEventManager;
 
-        [FoldoutGroup("Optionnel")]
-        [Title("PhoneCall")]
         [SerializeField]
         UnityEvent unityEvent;
 
@@ -136,25 +130,6 @@ namespace VoiceActing
 
         public void CreateScene()
         {
-            /*if(playerData.Date.month != 0)
-                textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
-            for (int i = 0; i < characters.Count; i++)
-            {
-                Destroy(characters[i].gameObject);
-            }
-            characters.Clear();
-
-            imageBackground.sprite = storyEventData.Background.SpriteBackground;
-            textLocation.text = storyEventData.Background.NameBackground;
-            for (int i = 0; i < storyEventData.Characters.Length; i++)
-            {
-                characters.Add(Instantiate(characterPrefab, transformCharacter));
-                characters[characters.Count - 1].SetStoryCharacterData(storyEventData.Characters[i].CharacterToMove);
-                characters[characters.Count - 1].transform.localPosition = storyEventData.Characters[i].NewPosition;
-                characters[characters.Count - 1].transform.localScale = storyEventData.Characters[i].NewScale;
-                characters[characters.Count - 1].transform.eulerAngles = storyEventData.Characters[i].NewRotation;
-                characters[characters.Count - 1].FadeCharacter(storyEventData.Characters[i].FadeIn, 1);
-            }*/
             CreateScene(storyEventData);
         }
 
@@ -241,7 +216,7 @@ namespace VoiceActing
                     }
                     else if (node.GetDoublageEventToLoad() != null)
                     {
-                        doublageEventManager.StopFlashback(node.GetDoublageEventToLoad());
+                        //doublageEventManager.StopFlashback(node.GetDoublageEventToLoad());
                     }
                 }
 

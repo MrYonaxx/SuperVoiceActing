@@ -110,6 +110,7 @@ namespace VoiceActing
             return actors[indexCurrentActor].Hp;
         }
 
+
         public int GetCurrentActorHPMax()
         {
             return actors[indexCurrentActor].HpMax;
@@ -140,6 +141,10 @@ namespace VoiceActing
             return actors[indexCurrentActor].SkillOffset;
         }
 
+        public int GetCurrentActorHPRegain()
+        {
+            return actorsHealthRegain[indexCurrentActor];
+        }
 
         #endregion
 
@@ -317,6 +322,10 @@ namespace VoiceActing
 
         // Tout ce qui est en rapport avec les HPs
         // =================================================================================================================
+        public void ResetActorRegain()
+        {
+            actorsHealthRegain[indexCurrentActor] = 0;
+        }
 
         public void AddActorResistance(int addValue)
         {
@@ -363,7 +372,8 @@ namespace VoiceActing
             }
 
             // HP Regain
-            actorsHealthRegain[indexCurrentActor] += damage / 2;
+            if(damage > 0)
+                actorsHealthRegain[indexCurrentActor] += damage / 2;
             ratioHPRegain = actors[indexCurrentActor].Hp + actorsHealthRegain[indexCurrentActor];
             if(ratioHPRegain > actors[indexCurrentActor].HpMax) { ratioHPRegain = 1; }
             ratioHPRegain = ratioHPRegain / actors[indexCurrentActor].HpMax;

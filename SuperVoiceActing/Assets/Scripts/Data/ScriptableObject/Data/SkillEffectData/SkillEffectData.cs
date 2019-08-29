@@ -15,6 +15,7 @@ namespace VoiceActing
 	{
 
         protected List<Vector3Int> cardTargetsData = new List<Vector3Int>();
+        protected bool targetAcquired = false;
 
         public virtual void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
@@ -42,7 +43,7 @@ namespace VoiceActing
 
 
         // Manual target pour les effets de cartes
-        public virtual void ManualTarget(Emotion emotion)
+        public virtual void ManualTarget(Emotion[] emotion, bool selectionByPack)
         {
 
         }

@@ -189,11 +189,11 @@ namespace VoiceActing
 
 
 
-        public void ManualTarget(Emotion emotion)
+        public void ManualTarget(Emotion[] emotion, bool selectionByPack)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().ManualTarget(emotion);
+                skillEffects[i].GetSkillEffectNode().ManualTarget(emotion, selectionByPack);
             }
         }
 

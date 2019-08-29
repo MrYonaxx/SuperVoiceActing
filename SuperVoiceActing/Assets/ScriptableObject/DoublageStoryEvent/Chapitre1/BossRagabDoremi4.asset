@@ -25,11 +25,9 @@ MonoBehaviour:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -39,6 +37,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -105,17 +105,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -125,6 +141,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -191,6 +209,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -198,11 +234,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "(Boss me fais confiance, Dor\xE9mi me fais confiance...) "
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -212,6 +246,14 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes:
+        - dataPosition: {x: 0, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 1
+        - dataPosition: {x: -0.2, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 600
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -278,6 +320,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -285,11 +345,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: '(Alors, je ne peux pas trahir leur confiance.) '
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: -1
@@ -299,6 +357,14 @@ MonoBehaviour:
         cameraEnd2: {x: 0.4, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 300
+        cameraMovementData: {fileID: 0}
+        camDataNodes:
+        - dataPosition: {x: 0.3, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 60
+        - dataPosition: {x: 0.4, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 600
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -365,6 +431,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -372,11 +456,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: '(Il est trop tard pour douter.) '
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -386,6 +468,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -452,17 +536,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -472,6 +572,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -538,6 +640,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -546,11 +666,9 @@ MonoBehaviour:
         emotionNPC: 0
         text: "(Tant pis si j'ai mal interpr\xE9t\xE9 la sc\xE8ne, je dois aller jusqu'au
           bout.) "
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -560,6 +678,14 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes:
+        - dataPosition: {x: 0, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 1
+        - dataPosition: {x: 0, y: 0, z: 0.3}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 1200
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -626,6 +752,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -633,11 +777,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "(Boss et Dor\xE9mi sont aveugles, c'est pourquoi je dois les guider.) "
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -647,6 +789,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -713,6 +857,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -721,11 +883,9 @@ MonoBehaviour:
         emotionNPC: 0
         text: "(Et si m\xEAme moi je ne sais pas quel ton donner \xE0 Ragab, alors
           on va droit dans le mur.) "
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -735,6 +895,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -801,17 +963,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -821,6 +999,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -887,6 +1067,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -895,11 +1093,9 @@ MonoBehaviour:
         emotionNPC: 0
         text: '(Si Bourghi ne va pas dans mon sens, alors je vais devoir l''affronter
           !) '
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -909,6 +1105,14 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes:
+        - dataPosition: {x: 0, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 1
+        - dataPosition: {x: 0, y: 0, z: 0.3}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 600
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -975,17 +1179,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -995,6 +1215,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1061,6 +1283,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1068,11 +1308,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: Zaques, tu me fais confiance ?
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1082,6 +1320,14 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes:
+        - dataPosition: {x: 0, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 1
+        - dataPosition: {x: 0.3, y: 0, z: 0}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 600
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1148,6 +1394,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1155,11 +1419,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: C'est quoi cet question ?
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: -1
@@ -1169,6 +1431,14 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 2}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 600
+        cameraMovementData: {fileID: 0}
+        camDataNodes:
+        - dataPosition: {x: 0, y: 0, z: 1.6}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 120
+        - dataPosition: {x: 0, y: 0, z: 2}
+          dataRotation: {x: 0, y: 0, z: 0}
+          dataTime: 1200
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1235,6 +1505,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1242,11 +1530,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "\xC9videmment, bien plus que ce buisnessman."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1256,6 +1542,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1322,6 +1610,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1329,11 +1635,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "Et, je serais pas l\xE0 sinon."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1343,6 +1647,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1409,17 +1715,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1429,6 +1751,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1495,17 +1819,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1515,6 +1855,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1581,6 +1923,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1588,11 +1948,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "Dor\xE9mi, on va refaire une prise."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 1
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1602,6 +1960,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1668,17 +2028,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1688,6 +2064,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1754,17 +2132,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1774,6 +2168,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1840,6 +2236,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1848,11 +2262,9 @@ MonoBehaviour:
         emotionNPC: 0
         text: "Monsieur Bourghi, n'h\xE9sitez pas \xE0 \xE9mettre vos critiques, j'ajusterai
           en fonction."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1862,6 +2274,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1928,6 +2342,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -1936,11 +2368,9 @@ MonoBehaviour:
         emotionNPC: 0
         text: "Mais vous l'avez dit, c'est mon travail de m'assurer que mes acteurs
           donnent le meilleur d'eux-m\xEAmes."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -1950,6 +2380,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2016,6 +2448,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -2024,11 +2474,9 @@ MonoBehaviour:
         emotionNPC: 0
         text: "M\xEAme si j'ai un avis diff\xE9rent du votre, j'agis pour le bien
           de votre produit."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2038,6 +2486,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2104,6 +2554,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -2111,11 +2579,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "Vous m'avez donn\xE9 ce job."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2125,6 +2591,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2191,6 +2659,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -2198,11 +2684,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: "Alors je vous invite \xE0 me faire un peu plus confiance."
-        textEng: 
+        cameraID: 1
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2212,6 +2696,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2278,6 +2764,24 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 0
       doublageEventText:
@@ -2285,11 +2789,9 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         text: Hmpf... Cessez de jacasser, et au travail.
-        textEng: 
+        cameraID: 2
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2299,6 +2801,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2365,17 +2869,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2385,6 +2905,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2451,17 +2973,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2471,6 +3009,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2537,17 +3077,33 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0
   - dataBox:
       eventNode: 2
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
         text: 
-        textEng: 
+        cameraID: 0
         clearText: 0
         clearAllText: 0
-        changeViewportText: 0
-        cameraID: 0
         camStart: {x: 0, y: 0, z: 0}
         camStartRotation: {x: 0, y: 0, z: 0}
         timeStart: 0
@@ -2557,6 +3113,8 @@ MonoBehaviour:
         cameraEnd2: {x: 0, y: 0, z: 0}
         cameraEnd2Rotation: {x: 0, y: 0, z: 0}
         timeEnd2: 0
+        cameraMovementData: {fileID: 0}
+        camDataNodes: []
       doublageEventTextPopup:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -2623,3 +3181,21 @@ MonoBehaviour:
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
         loadScene: 
+      doublageEventInstantiate:
+        objectToInstantiate: {fileID: 0}
+        instantiateUI: 0
+        newPostProcess: {fileID: 0}
+        transitionForNewBackground: 0
+        timeTransitionForNewBackground: 60
+        changeSceneRenderSetting: 0
+        newSkyBox: {fileID: 0}
+        newAmbientColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogColor: {r: 0, g: 0, b: 0, a: 0}
+        newFogDensity: 0
+        timeTransitionRender: 0
+        activeBaseSpectrum: 1
+      doublageEventCameraData:
+        currentCameraData: {fileID: 0}
+        cameraSet1: []
+        cameraSet2: []
+        animatorCustomCameraID: 0

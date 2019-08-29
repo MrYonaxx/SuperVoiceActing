@@ -12,127 +12,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: PrincessMuffinSaison1Boss
   m_EditorClassIdentifier: 
-  contractName: 
-  level: 0
-  contractType: 0
-  salaryMin: 0
-  salaryMax: 0
-  mixingMin: 0
-  mixingMax: 0
-  weekMin: 0
-  weekMax: 0
+  contractName: Princess Muffin S1 EP01-05
+  level: 3
+  contractType: 1
+  salaryMin: 10000
+  salaryMax: 10000
+  mixingMin: 20
+  mixingMax: 25
+  weekMin: 10
+  weekMax: 10
   expGain: 0
   expBonus: 0
   contractDictionnary: []
-  description: []
+  description:
+  - "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de nouveaux alli\xE9s
+    pour affronter les forces de la religieuse. Cependant cette derni\xE8re semble
+    avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer la ville, pendant
+    que Charlotte est en rendez-vous amoureux avec Mathieu.\nC'est donc au terre des
+    nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
-      - a
+      - Opera
       roleSprite: {fileID: 0}
-      lineMin: 0
-      lineMax: 0
+      lineMin: 200
+      lineMax: 250
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      atkMin: 12
+      atkMax: 15
+      timbre: {x: -10, y: 2}
+      timbreRand: {x: -10, y: 2}
       characterStatMin:
         neutral: 0
         joy: 0
-        sadness: 0
-        disgust: 0
+        sadness: 12
+        disgust: 8
         anger: 0
         surprise: 0
         sweetness: 0
-        fear: 0
+        fear: 15
         trust: 0
       characterStatMax:
         neutral: 0
         joy: 0
-        sadness: 0
-        disgust: 0
+        sadness: 12
+        disgust: 8
         anger: 0
         surprise: 0
         sweetness: 0
-        fear: 0
+        fear: 15
         trust: 0
-      actorLocked: {fileID: 11400000, guid: 9a0ca61c72ee77f43b506ae0ffb5e77e, type: 2}
+      actorLocked: {fileID: 0}
       artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
-      - b
+      - Nougat
       roleSprite: {fileID: 0}
-      lineMin: 0
-      lineMax: 0
+      lineMin: 100
+      lineMax: 150
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      atkMin: 13
+      atkMax: 17
+      timbre: {x: -7, y: 2}
+      timbreRand: {x: -6, y: 2}
       characterStatMin:
         neutral: 0
-        joy: 0
-        sadness: 0
+        joy: 5
+        sadness: 10
         disgust: 0
-        anger: 0
+        anger: 20
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
       characterStatMax:
         neutral: 0
-        joy: 0
-        sadness: 0
+        joy: 5
+        sadness: 10
         disgust: 0
-        anger: 0
+        anger: 20
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-      actorLocked: {fileID: 11400000, guid: 0282d05fdcd99e74a8a4e4c9375737e9, type: 2}
+      actorLocked: {fileID: 0}
       artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
-      - c
+      - Praline
       roleSprite: {fileID: 0}
-      lineMin: 0
-      lineMax: 0
+      lineMin: 100
+      lineMax: 200
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      atkMin: 8
+      atkMax: 10
+      timbre: {x: -8, y: 0}
+      timbreRand: {x: -8, y: 0}
       characterStatMin:
         neutral: 0
         joy: 0
         sadness: 0
         disgust: 0
         anger: 0
-        surprise: 0
-        sweetness: 0
+        surprise: 7
+        sweetness: 5
         fear: 0
-        trust: 0
+        trust: 15
       characterStatMax:
         neutral: 0
         joy: 0
         sadness: 0
         disgust: 0
         anger: 0
-        surprise: 0
-        sweetness: 0
+        surprise: 7
+        sweetness: 5
         fear: 0
-        trust: 0
-      actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
+        trust: 15
+      actorLocked: {fileID: 0}
       artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
@@ -145,7 +150,7 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: Bravo les filles ! On a gagner !
+    - text: "Bravo les filles ! On a gagn\xE9 !"
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -322,7 +327,7 @@ MonoBehaviour:
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
-  changeBGM: 0
-  battleTheme: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
   victoryTheme: {fileID: 0}
   sessionLock: 0

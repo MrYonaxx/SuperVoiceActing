@@ -26,7 +26,7 @@ namespace VoiceActing
 
         public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
         {
-            doublageManager.AddTurn(turnGain);
+            doublageManager.AddTurn(turnGain + Random.Range(-turnVariance, turnVariance));
         }
 
 
