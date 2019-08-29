@@ -16,27 +16,22 @@ MonoBehaviour:
   camInitialPosition: {x: 0, y: 0, z: 0}
   camInitialRotation: {x: 0, y: 0, z: 0}
   changeCamMovement: 1
-  camStart: {x: 2.5, y: 0, z: 1}
-  camStartRotation: {x: -17, y: 160, z: 20}
-  timeStart: 0
-  cameraEnd: {x: 3, y: 0, z: 1}
-  cameraEndRotation: {x: -17, y: 160, z: 40}
-  timeEnd: 900
-  cameraEnd2: {x: 0, y: 0, z: 0}
-  cameraEnd2Rotation: {x: 0, y: 0, z: 0}
-  timeEnd2: 0
+  camDataNodes:
+  - dataPosition: {x: 2.5, y: 0, z: 1}
+    dataRotation: {x: -17, y: 160, z: 20}
+    dataTime: 1
+  - dataPosition: {x: 3, y: 0, z: 1}
+    dataRotation: {x: -17, y: 160, z: 40}
+    dataTime: 900
   changeTextMovement: 1
-  textStart: {x: 1, y: 0.25, z: 1}
-  textStartRotation: {x: -17, y: 160, z: 20}
-  textTimeStart: 0
-  textEnd: {x: 1.5, y: 0.25, z: 1}
-  textEndRotation: {x: -17, y: 160, z: 40}
-  textTimeEnd: 900
-  textEnd2: {x: 0, y: 0, z: 0}
-  textEnd2Rotation: {x: 0, y: 0, z: 0}
-  textTimeEnd2: 0
+  textDataNodes:
+  - dataPosition: {x: 1, y: 0.25, z: 1}
+    dataRotation: {x: -17, y: 160, z: 20}
+    dataTime: 1
+  - dataPosition: {x: 1.5, y: 0.25, z: 1}
+    dataRotation: {x: -17, y: 160, z: 40}
+    dataTime: 900
   changeOrthographic: 0
   orthographicStart: 0
   orthographicEnd: 0
-  orthographicEnd2: 0
-  nextCameraData: {fileID: 0}
+  timeOrthographic: 0

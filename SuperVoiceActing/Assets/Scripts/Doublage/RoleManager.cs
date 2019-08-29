@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -21,7 +22,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [Header("FeedbacksAttack")]
+        [Title("FeedbacksAttack")]
         [SerializeField]
         Image imageEnemy;
         [SerializeField]
@@ -33,7 +34,7 @@ namespace VoiceActing
         [SerializeField]
         Animator enemyAttackFace;
 
-        [Header("InfoAttack")]
+        [Title("InfoAttack")]
         [SerializeField]
         TextMeshProUGUI textSkillName;
         [SerializeField]
@@ -43,6 +44,16 @@ namespace VoiceActing
 
         [SerializeField]
         InputController input;
+
+
+        [Title("Best Stat Marker")]
+        [SerializeField]
+        RectTransform[] positionEmotionBestStat;
+        [SerializeField]
+        RectTransform bestStatIcon;
+        [SerializeField]
+        RectTransform secondBestStatIcon;
+
 
         bool firstTime = false;
         bool readyToAttack = false;
@@ -64,6 +75,7 @@ namespace VoiceActing
         public void SetIndexRole(int newIndex)
         {
             indexCurrentRole = newIndex;
+            SetBestStatIcon();
         }
 
         public int GetRoleAttack()
@@ -87,6 +99,7 @@ namespace VoiceActing
         public void SetRoles(List<Role> contractRoles)
         {
             roles = contractRoles;
+            SetBestStatIcon();
         }
 
         public void AddScorePerformance(int lastAttackScore, int lastBestScore)
@@ -194,6 +207,43 @@ namespace VoiceActing
             enemyAttackFace.SetBool("Appear", false);
             spotEnemy.SetBool("Appear", false);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void SetBestStatIcon()
+        {
+            bestStatIcon.SetParent(positionEmotionBestStat[roles[indexCurrentRole].BestStatEmotion]);
+            bestStatIcon.anchoredPosition = new Vector2(0, 0);
+            secondBestStatIcon.SetParent(positionEmotionBestStat[roles[indexCurrentRole].SecondBestStatEmotion]);
+            secondBestStatIcon.anchoredPosition = new Vector2(0,0);
+        }
+
+
+
+
+
+
 
         #endregion
 

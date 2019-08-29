@@ -43,10 +43,6 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorBalloon;
 
-        [Header("Phase d'Acting")]
-        [SerializeField]
-        private TextPerformanceAppear textActing;
-
 
         bool speak = false;
         private Sprite[] currentSprites;
@@ -62,10 +58,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        public TextPerformanceAppear GetTextActing()
+        /*public TextPerformanceAppear GetTextActing()
         {
             return textActing;
-        }
+        }*/
 
         public SpriteRenderer GetSpriteRenderer()
         {
@@ -76,19 +72,31 @@ namespace VoiceActing
             return spriteRenderer.sprite;
         }
 
-        public void SetPhraseTextacting(string newText)
+        /*public void SetPhraseTextacting(string newText)
         {
             textActing.NewMouthAnim(this);
             textActing.NewPhrase(newText);
-        }
+        }*/
 
-        public void SetPhraseEventTextacting(string newText, EmotionNPC emotionNPC)
+        /*public void SetPhraseEventTextacting(string newText, EmotionNPC emotionNPC)
         {
             ChangeEmotion(emotionNPC);
             textActing.NewMouthAnim(this);
             textActing.NewPhrase(newText);
-        }
+        }*/
 
+        public void ChangeEmotion(Emotion emotionBattle)
+        {
+            switch (emotionBattle)
+            {
+                case Emotion.Joie:
+                    currentSprites = storyCharacterData.SpriteJoy;
+                    break;
+                default:
+                    currentSprites = storyCharacterData.SpriteNormal;
+                    break;
+            }
+        }
         public void ChangeEmotion(EmotionNPC emotionNPC)
         {
             switch(emotionNPC)
@@ -124,10 +132,10 @@ namespace VoiceActing
                 spriteRenderer.sprite = currentSprites[0];
         }
 
-        public void SetTextActing(TextPerformanceAppear textMeshPro)
+        /*public void SetTextActing(TextPerformanceAppear textMeshPro)
         {
             textActing = textMeshPro;
-        }
+        }*/
 
         public StoryCharacterData GetStoryCharacterData()
         {
@@ -165,7 +173,7 @@ namespace VoiceActing
             if (mouthCoroutine != null)
                 StopCoroutine(mouthCoroutine);
 
-            if (spriteRenderer != null)
+            if (spriteRenderer != null && currentSprites.Length != 0)
                 spriteRenderer.sprite = currentSprites[0];
 
             if (soundVisualizer != null)

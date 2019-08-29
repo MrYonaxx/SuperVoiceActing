@@ -12,6 +12,41 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
+    [System.Serializable]
+    public class CamDataNode
+    {
+        [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
+        [SerializeField]
+        [HideLabel]
+        private Vector3 dataPosition;
+        public Vector3 DataPosition
+        {
+            get { return dataPosition; }
+        }
+
+        [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
+        [SerializeField]
+        [HideLabel]
+        private Vector3 dataRotation;
+        public Vector3 DataRotation
+        {
+            get { return dataRotation; }
+        }
+
+        // -1 pour ne pas set de position initiale
+        [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
+        [SerializeField]
+        [HideLabel]
+        [MinValue(1)]
+        private int dataTime = 1;
+        public int DataTime
+        {
+            get { return dataTime; }
+        }
+    }
+
+
+
     [CreateAssetMenu(fileName = "CameraMovementData", menuName = "Cinematic/CameraMovement", order = 1)]
     public class CameraMovementData : ScriptableObject
 	{
@@ -57,116 +92,13 @@ namespace VoiceActing
             get { return changeCamMovement; }
         }
 
-        [Title("Position")]
-        [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
+        [InfoBox("Position                                                  Rotation                                                  Time")]
         [SerializeField]
-        [HideLabel]
-        private Vector3 camStart;
-        public Vector3 CamStart
+        private CamDataNode[] camDataNodes;
+        public CamDataNode[] CamDataNodes
         {
-            get { return camStart; }
+            get { return camDataNodes; }
         }
-
-        [Title("Rotation")]
-        [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 camStartRotation;
-        public Vector3 CamStartRotation
-        {
-            get { return camStartRotation; }
-        }
-
-        [Title("Time")]
-        // -1 pour ne pas set de position initiale
-        [HorizontalGroup("Mouvement", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private int timeStart;
-        public int TimeStart
-        {
-            get { return timeStart; }
-        }
-
-
-
-
-
-
-
-
-        [HorizontalGroup("MouvementFin", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 cameraEnd;
-        public Vector3 CameraEnd
-        {
-            get { return cameraEnd; }
-        }
-
-        [HorizontalGroup("MouvementFin", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 cameraEndRotation;
-        public Vector3 CameraEndRotation
-        {
-            get { return cameraEndRotation; }
-        }
-
-        [HorizontalGroup("MouvementFin", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private int timeEnd;
-        public int TimeEnd
-        {
-            get { return timeEnd; }
-        }
-
-
-
-
-
-
-        [HorizontalGroup("MouvementFin2", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 cameraEnd2;
-        public Vector3 CameraEnd2
-        {
-            get { return cameraEnd2; }
-        }
-
-        [HorizontalGroup("MouvementFin2", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 cameraEnd2Rotation;
-        public Vector3 CameraEnd2Rotation
-        {
-            get { return cameraEnd2Rotation; }
-        }
-
-        [HorizontalGroup("MouvementFin2", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeCamMovement")]
-        [SerializeField]
-        [HideLabel]
-        private int timeEnd2;
-        public int TimeEnd2
-        {
-            get { return timeEnd2; }
-        }
-
-
-
-
-
 
 
 
@@ -182,116 +114,20 @@ namespace VoiceActing
             get { return changeTextMovement; }
         }
 
-        [Title("Position")]
-        [HorizontalGroup("TextMovement", PaddingRight = 50, Width = 0.33f)]
         [ShowIf("changeTextMovement")]
         [SerializeField]
-        [HideLabel]
-        private Vector3 textStart;
-        public Vector3 TextStart
+        private CamDataNode[] textDataNodes;
+        public CamDataNode[] TextDataNodes
         {
-            get { return textStart; }
-        }
-        [Title("Rotation")]
-        [HorizontalGroup("TextMovement", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 textStartRotation;
-        public Vector3 TextStartRotation
-        {
-            get { return textStartRotation; }
-        }
-        [Title("Time")]
-        // -1 pour ne pas set de position initiale
-        [HorizontalGroup("TextMovement", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private int textTimeStart;
-        public int TextTimeStart
-        {
-            get { return textTimeStart; }
+            get { return textDataNodes; }
         }
 
 
 
 
-
-
-
-
-        [HorizontalGroup("TextMovementEnd", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 textEnd;
-        public Vector3 TextEnd
-        {
-            get { return textEnd; }
-        }
-
-        [HorizontalGroup("TextMovementEnd", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 textEndRotation;
-        public Vector3 TextEndRotation
-        {
-            get { return textEndRotation; }
-        }
-
-        [HorizontalGroup("TextMovementEnd", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private int textTimeEnd;
-        public int TextTimeEnd
-        {
-            get { return textTimeEnd; }
-        }
-
-
-
-
-
-
-
-
-
-        [HorizontalGroup("TextMovementEnd2", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 textEnd2;
-        public Vector3 TextEnd2
-        {
-            get { return textEnd2; }
-        }
-
-        [HorizontalGroup("TextMovementEnd2", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private Vector3 textEnd2Rotation;
-        public Vector3 TextEnd2Rotation
-        {
-            get { return textEnd2Rotation; }
-        }
-
-        [HorizontalGroup("TextMovementEnd2", PaddingRight = 50, Width = 0.33f)]
-        [ShowIf("changeTextMovement")]
-        [SerializeField]
-        [HideLabel]
-        private int textTimeEnd2;
-        public int TextTimeEnd2
-        {
-            get { return textTimeEnd2; }
-        }
-
-
-
-
+        [Space]
+        [Space]
+        [Space]
 
         [Title("Orthographic Movement")]
         [SerializeField]
@@ -316,20 +152,12 @@ namespace VoiceActing
         }
         [ShowIf("changeOrthographic")]
         [SerializeField]
-        private int orthographicEnd2;
-        public int OrthographicEnd2
+        private int timeOrthographic;
+        public int TimeOrthographic
         {
-            get { return orthographicEnd2; }
+            get { return timeOrthographic; }
         }
 
-
-        [Title("Next Camera Movement")]
-        [SerializeField]
-        private CameraMovementData nextCameraData;
-        public CameraMovementData NextCameraData
-        {
-            get { return nextCameraData; }
-        }
 
         #endregion
 

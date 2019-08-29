@@ -159,7 +159,7 @@ namespace VoiceActing
                 contractAcceptedList[i].ProgressMixing();
                 if(contractAcceptedList[i].SoundEngineer != null)
                     yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
-             
+                yield return new WaitForSeconds(0.2f);
             }
         }
 

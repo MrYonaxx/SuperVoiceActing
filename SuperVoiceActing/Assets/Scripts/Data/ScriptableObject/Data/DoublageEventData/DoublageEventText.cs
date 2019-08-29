@@ -40,7 +40,6 @@ namespace VoiceActing
             get { return emotionNPC; }
         }
 
-        [TabGroup("ParentGroup", "Texte")]
         [SerializeField]
         [TextArea(1,1)]
         [HideLabel]
@@ -50,17 +49,14 @@ namespace VoiceActing
             get { return text; }
         }
 
-        [TabGroup("ParentGroup", "TexteEng")]
+
+        [HorizontalGroup("Hey8", LabelWidth = 100, Width = 10)]
         [SerializeField]
-        [TextArea(1, 1)]
-        [HideLabel]
-        private string textEng;
-        public string TextEng
+        private int cameraID = -1;
+        public int CameraID
         {
-            get { return textEng; }
+            get { return cameraID; }
         }
-
-
         //[HorizontalGroup("Hey8", LabelWidth = 100)]
         [HorizontalGroup("Hey8", LabelWidth = 100)]
         [SerializeField]
@@ -76,21 +72,15 @@ namespace VoiceActing
         {
             get { return clearAllText; }
         }
-        [HorizontalGroup("Hey8", LabelWidth = 100)]
+        /*[HorizontalGroup("Hey8", LabelWidth = 100)]
         [SerializeField]
         private bool changeViewportText;
         public bool ChangeViewportText
         {
             get { return changeViewportText; }
-        }
+        }*/
 
-        [HorizontalGroup("TextCamera", LabelWidth = 100, Width = 10)]
-        [SerializeField]
-        private int cameraID = -1;
-        public int CameraID
-        {
-            get { return cameraID; }
-        }
+
         /*[HorizontalGroup("TextCamera", LabelWidth = 100)]
         [SerializeField]
         private int mainCamera;
@@ -105,6 +95,7 @@ namespace VoiceActing
         {
             get { return optionRandom; }
         }*/
+
 
         [HideIf("cameraID", -1)]
         [Title("Position")]
@@ -198,6 +189,20 @@ namespace VoiceActing
             get { return timeEnd2; }
         }
 
+        [SerializeField]
+        [HideLabel]
+        private CameraMovementData cameraMovementData;
+        public CameraMovementData CameraMovementData
+        {
+            get { return cameraMovementData; }
+        }
+        [SerializeField]
+        [HideIf("cameraMovementData")]
+        private CamDataNode[] camDataNodes;
+        public CamDataNode[] CamDataNodes
+        {
+            get { return camDataNodes; }
+        }
 
 
 

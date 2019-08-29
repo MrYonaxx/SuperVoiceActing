@@ -248,6 +248,7 @@ namespace VoiceActing
                             playerData.ResearchPoint += playerData.ContractAccepted[i].Level;
                             SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
                             playerData.ContractAccepted.RemoveAt(i);
+                            i -= 1;
                             //playerData.ContractAccepted.Add(null);
                         }
                     }

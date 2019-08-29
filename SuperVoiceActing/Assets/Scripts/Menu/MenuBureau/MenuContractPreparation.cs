@@ -44,6 +44,8 @@ namespace VoiceActing
 
         [Header("InfoRole")]
         [SerializeField]
+        Image roleSprite;
+        [SerializeField]
         TextMeshProUGUI textRoleName;
         [SerializeField]
         TextMeshProUGUI textRoleFan;
@@ -271,6 +273,13 @@ namespace VoiceActing
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
             textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
             textRoleCadence.text = currentContract.Characters[indexSelected].Attack.ToString();
+            if (currentContract.Characters[indexSelected].RoleSprite != null)
+            {
+                roleSprite.enabled = true;
+                roleSprite.sprite = currentContract.Characters[indexSelected].RoleSprite;
+            }
+            else
+                roleSprite.enabled = false;
 
             transformRoleTimbre.anchorMin = new Vector2((currentContract.Characters[indexSelected].Timbre.x + 10) / 20f, 0);
             transformRoleTimbre.anchorMax = new Vector2((currentContract.Characters[indexSelected].Timbre.y + 10) / 20f, 1);

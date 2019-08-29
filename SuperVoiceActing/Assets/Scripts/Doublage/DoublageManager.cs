@@ -5,12 +5,11 @@
  * Date:       #CREATIONDATE#
 ******************************************************************/
 
+using Sirenix.OdinInspector;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.SceneManagement;
-using TMPro;
-using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -86,7 +85,7 @@ namespace VoiceActing
 
         [Title("IntroSequence")]
         [SerializeField]
-        CharacterDialogueController introText;
+        TextPerformanceAppear introText;
         [SerializeField]
         GameObject textIntro;
         [SerializeField]
@@ -290,9 +289,9 @@ namespace VoiceActing
             if (eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage()) == false)
             {
                 yield return new WaitForSeconds(1);
-                introText.SetPhraseTextacting(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
+                introText.NewPhrase(playerData.MonthName[playerData.Date.month -1] + "\nSemaine " + playerData.Date.week.ToString());
                 yield return new WaitForSeconds(1.5f);
-                introText.SetPhraseTextacting(contrat.Name);
+                introText.NewPhrase(contrat.Name);
                 yield return new WaitForSeconds(3);
                 textIntro.SetActive(false);
                 yield return new WaitForSeconds(1f);
@@ -398,6 +397,7 @@ namespace VoiceActing
                                                                       actorsManager.GetCurrentActorDamageVariance()),
                                             lastAttack);
             toneManager.ModifyTone(lastAttack);
+            characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()).ChangeEmotion(lastAttack[0].GetEmotion());
             if (actorsManager.GetCurrentActorHP() == 0)
             {
                 AudioManager.Instance.StopMusic(300);
@@ -467,15 +467,15 @@ namespace VoiceActing
                 introBlackScreen.enabled = true;
                 introBlackScreen.color = new Color(0, 0, 0, 1);
                 textIntro.SetActive(true);
-                introText.SetPhraseTextacting(" ");
+                introText.NewPhrase(" ");
                 yield return new WaitForSeconds(1f);
-                introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name + " ?");
+                introText.NewPhrase(actorsManager.GetCurrentActor().Name + " ?");
                 yield return new WaitForSeconds(2f);
-                introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name + " !");
+                introText.NewPhrase(actorsManager.GetCurrentActor().Name + " !");
                 yield return new WaitForSeconds(2f);
-                introText.SetPhraseTextacting(actorsManager.GetCurrentActor().Name.ToUpper() + " !");
+                introText.NewPhrase(actorsManager.GetCurrentActor().Name.ToUpper() + " !");
                 yield return new WaitForSeconds(2f);
-                introText.SetPhraseTextacting(" ");
+                introText.NewPhrase(" ");
                 yield return new WaitForSeconds(1f);
                 if (CheckGameOver() == false)
                     ShowResultScreen();
@@ -1040,7 +1040,7 @@ namespace VoiceActing
                 // Game over
                 introBlackScreen.gameObject.SetActive(true);
                 introText.gameObject.SetActive(true);
-                introText.SetPhraseTextacting("GG C'est Game Over mais on a pas d'écran de game over donc rip.");
+                introText.NewPhrase("GG C'est Game Over mais on a pas d'écran de game over donc rip.");
                 return true;
             }
             else

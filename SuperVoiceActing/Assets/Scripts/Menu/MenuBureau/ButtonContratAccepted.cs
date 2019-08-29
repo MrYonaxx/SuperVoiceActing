@@ -59,9 +59,14 @@ namespace VoiceActing
         [SerializeField]
         RectTransform gaugeMixing;
         [SerializeField]
+        RectTransform gaugeMixingPreview;
+        [SerializeField]
         GameObject gameObjectLine;
         [SerializeField]
         GameObject gameObjectMixing;
+
+        [SerializeField]
+        GameObject gameObjectClear;
 
         bool isButtonAddContract = false;
 
@@ -118,8 +123,16 @@ namespace VoiceActing
             else
             {
                 gameObjectMixing.SetActive(true);
-                gaugeMixing.transform.localScale = new Vector2((contract.CurrentMixing / (float)contract.TotalMixing), gaugeLine.transform.localScale.y);
+                gaugeMixing.transform.localScale = new Vector2((contract.CurrentMixing / (float)contract.TotalMixing), gaugeMixing.transform.localScale.y);
+                if(contract.SoundEngineer.IsNull != true)
+                {
+                    float size = (contract.CurrentMixing + contract.SoundEngineer.GetMixingPower(contract) / (float)contract.TotalMixing);
+                    if (size >= 1)
+                        size = 1;
+                    gaugeMixingPreview.transform.localScale = new Vector2(size, gaugeMixingPreview.transform.localScale.y);
+                }
             }
+            gameObjectClear.SetActive(false);
         }
 
         public void SelectContract()
@@ -149,15 +162,22 @@ namespace VoiceActing
             isButtonAddContract = true;
             panelContract.SetActive(false);
             panelAddContract.SetActive(true);
+            gameObjectClear.SetActive(false);
         }
 
 
 
 
-        public IEnumerator CoroutineProgress(int newCurrentMixing, int totalMixing, int time = 120)
+        public IEnumerator CoroutineProgress(int newCurrentMixing, int totalMixing, int time = 90)
         {
             if (totalMixing == 0)
+            {
+                if (gaugeLine.transform.localScale.x == 1)
+                {
+                    gameObjectClear.SetActive(true);
+                }
                 yield break;
+            }
             Vector3 speed = new Vector3((((float)newCurrentMixing / totalMixing) - gaugeMixing.transform.localScale.x) / time, 0, 0);
             while (time != 0)
             {
@@ -166,6 +186,11 @@ namespace VoiceActing
                 yield return null;
             }
             contractMixage.text = newCurrentMixing + " / " + totalMixing;
+
+            if(gaugeLine.transform.localScale.x >= 1 && gaugeMixing.transform.localScale.x >= 1)
+            {
+                gameObjectClear.SetActive(true);
+            }
         }
 
         #endregion

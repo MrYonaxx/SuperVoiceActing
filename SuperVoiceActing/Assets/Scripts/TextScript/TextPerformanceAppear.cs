@@ -181,6 +181,9 @@ namespace VoiceActing
 
             textMeshPro.text = newText;
 
+            if (newText == "")
+                return;
+
             if (coroutine != null)
                 StopCoroutine(coroutine);
             coroutine = AnimateVertexColors(count);

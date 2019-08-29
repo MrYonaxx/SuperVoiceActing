@@ -101,6 +101,21 @@ namespace VoiceActing
 
 
         [SerializeField]
+        private int bestStatEmotion;
+        public int BestStatEmotion
+        {
+            get { return bestStatEmotion; }
+        }
+
+        [SerializeField]
+        private int secondBestStatEmotion;
+        public int SecondBestStatEmotion
+        {
+            get { return secondBestStatEmotion; }
+        }
+
+
+        [SerializeField]
         private int roleScore;
         public int RoleScore
         {
@@ -214,10 +229,12 @@ namespace VoiceActing
                 {
                     secondBestStat = bestStat;
                     bestStat = bestValues[i];
+                    bestStatEmotion = i + 1;
                 }
                 else if (bestValues[i] > secondBestStat)
                 {
                     secondBestStat = bestValues[i];
+                    secondBestStatEmotion = i + 1;
                 }
             }
 

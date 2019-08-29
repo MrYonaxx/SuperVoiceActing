@@ -154,7 +154,7 @@ namespace VoiceActing
             if(clearText == true)
             {
                 clearText = false;
-                interloc.GetTextActing().NewPhrase(" ");
+                //interloc.GetTextActing().NewPhrase(" ");
             }
 
             if(clearAllText == true)
@@ -190,14 +190,19 @@ namespace VoiceActing
                     {
                         viewports[node.CameraID].TextCameraEffect(node);
                     }
-                    if (node.ChangeViewportText == true)
+                    /*if (node.ChangeViewportText == true)
                     {
                         interloc.SetTextActing(textEvent[node.CameraID]);
-                    }
+                        textEvent[node.CameraID].NewMouthAnim
+                    }*/
                     clearAllText = node.ClearAllText;
                     clearText = node.ClearText;
                     if (interloc != null)
-                        interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
+                    {
+                        textEvent[node.CameraID].NewMouthAnim(interloc);
+                        textEvent[node.CameraID].NewPhrase(node.Text);
+                        //interloc.SetPhraseEventTextacting(node.Text, node.EmotionNPC);
+                    }
                     else
                     {
                         PrintAllText(true);
@@ -299,7 +304,7 @@ namespace VoiceActing
                     characters.Add(Instantiate(characterPrefab, charactersParent));
                     //charactersMaxLength = 1;
                     characters[characters.Count-1].SetStoryCharacterData(node.Character);
-                    characters[characters.Count-1].SetTextActing(textEvent[node.ViewportID]);
+                    //characters[characters.Count-1].SetTextActing(textEvent[node.ViewportID]);
                     characters[characters.Count-1].SetFlip(node.FlipX);
                     if(node.CustomPos == false)
                     {

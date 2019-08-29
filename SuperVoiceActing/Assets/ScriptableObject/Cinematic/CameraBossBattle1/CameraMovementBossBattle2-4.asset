@@ -25,6 +25,16 @@ MonoBehaviour:
   cameraEnd2: {x: -7, y: 2.2, z: 4}
   cameraEnd2Rotation: {x: 10, y: 30, z: 0}
   timeEnd2: 900
+  camDataNodes:
+  - dataPosition: {x: -7, y: 2.2, z: -4}
+    dataRotation: {x: 10, y: -30, z: 0}
+    dataTime: 1
+  - dataPosition: {x: -7, y: 2.2, z: 0}
+    dataRotation: {x: 10, y: 0, z: 0}
+    dataTime: 900
+  - dataPosition: {x: -7, y: 2.2, z: 4}
+    dataRotation: {x: 10, y: 30, z: 0}
+    dataTime: 900
   changeTextMovement: 0
   textStart: {x: 0, y: 0, z: 0}
   textStartRotation: {x: 0, y: 0, z: 0}
@@ -35,8 +45,8 @@ MonoBehaviour:
   textEnd2: {x: 0, y: 0, z: 0}
   textEnd2Rotation: {x: 0, y: 0, z: 0}
   textTimeEnd2: 0
+  textDataNodes: []
   changeOrthographic: 0
   orthographicStart: 0
   orthographicEnd: 0
   orthographicEnd2: 0
-  nextCameraData: {fileID: 0}

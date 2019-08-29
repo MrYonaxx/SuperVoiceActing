@@ -155,7 +155,7 @@ namespace VoiceActing
                 if(time == 300)
                 {
                     cameraController.SetNoCameraEffect(true);
-                    cameraController.MoveCamera(-6.5f,2.9f,0,400);
+                    //cameraController.MoveCamera(-6.5f,2.9f,0,400);
                 }
                 if(time < 300)
                 {

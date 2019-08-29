@@ -198,7 +198,7 @@ namespace VoiceActing
         public void DrawDescription(SkillData skill)
         {
             textSkillDescription.text = skill.Description;
-            characterSoundEngineer.SetPhraseEventTextacting(skill.Description, EmotionNPC.Normal);
+            //characterSoundEngineer.SetPhraseEventTextacting(skill.Description, EmotionNPC.Normal);
             selection.SetParent(textButtons[indexList].transform);
             selection.transform.localPosition = Vector3.zero;
         }
