@@ -99,7 +99,8 @@ namespace VoiceActing
         public void SetRoles(List<Role> contractRoles)
         {
             roles = contractRoles;
-            SetBestStatIcon();
+            if(bestStatIcon != null)
+                SetBestStatIcon();
         }
 
         public void AddScorePerformance(int lastAttackScore, int lastBestScore)
