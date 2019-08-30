@@ -58,8 +58,6 @@ namespace VoiceActing
 
         [SerializeField]
         TextMeshProUGUI textResearch;
-        [SerializeField]
-        Image moneyIcon;
 
 
 
@@ -97,14 +95,13 @@ namespace VoiceActing
             CreateResearchesButtons();
             DrawCategories();
             DrawResearch();
+            AfterSelection();
         }
 
         public void QuitMenu()
         {
             animatorMenu.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
-            textResearch.text = playerData.Money.ToString();
-            moneyIcon.color = Color.white;
         }
 
         public void SetResearchPlayerLevels(PlayerData data)
@@ -280,9 +277,7 @@ namespace VoiceActing
 
         public void DrawResearch()
         {
-            // destiné a changer quand j'aurai une vrai interface
             textResearch.text = playerData.ResearchPoint.ToString();
-            moneyIcon.color = new Color(0,0,0,0);
         }
 
 

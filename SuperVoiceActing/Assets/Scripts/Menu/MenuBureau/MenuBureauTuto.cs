@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -21,8 +22,21 @@ namespace VoiceActing
         [SerializeField]
         PlayerData playerData;
 
+        [HorizontalGroup]
         [SerializeField]
         StoryEventData[] tutoDatabase;
+        [HorizontalGroup]
+        [SerializeField]
+        GameObject[] tutoTrigger;
+        [HorizontalGroup("Input")]
+        [SerializeField]
+        InputController[] inputTutoActivate;
+        [HorizontalGroup("Input")]
+        [SerializeField]
+        InputController[] inputTutoDesactivate;
+
+        [Space]
+        [Space]
         [SerializeField]
         StoryEventManager eventManager;
         [SerializeField]
@@ -31,32 +45,9 @@ namespace VoiceActing
         GameObject menuManagers;
 
 
-        [Header("------------------------------")]
-
-        [SerializeField]
-        GameObject menuContratAvailable;
-        [SerializeField]
-        GameObject menuContratPreparation;
-        [SerializeField]
-        GameObject panelAudition;
-        [SerializeField]
-        GameObject panelInSession;
-
-        [Header("------------------------------")]
-        [SerializeField]
-        InputController inputTuto1;
-        [SerializeField]
-        InputController inputTuto3;
-
-        [Header("------------------------------")]
-        [SerializeField]
-        InputController inputContractManager;
-        [SerializeField]
-        InputController inputContractAvailable;
 
 
-        bool tuto1Activate = false;
-        bool tuto3Activate = false;
+        int currentTuto = -1;
 
 
         #endregion
@@ -86,28 +77,24 @@ namespace VoiceActing
         /// </summary>
         protected void Update()
         {
-            /*if(playerData.TutoEvent.Count == 0)
+            // Optimisable avec les inputController mais après faut chercher partout c'est chiant
+            // A optimiser quand on sera sur pour les tutos
+            if (currentTuto == -1)
             {
-                this.gameObject.SetActive(false);
-            }*/
-
-
-
-            if(menuContratAvailable.activeInHierarchy == true)
-            {
-                StartTuto(2);
-            }
-            if (menuContratPreparation.activeInHierarchy == true)
-            {
-                StartTuto(4);
-            }
-            if (panelAudition.activeInHierarchy == true)
-            {
-                StartTuto(5);
-            }
-            if (panelInSession.activeInHierarchy == true)
-            {
-                StartTuto(6);
+                for (int i = 0; i < tutoDatabase.Length; i++)
+                {
+                    if (tutoTrigger[i] != null)
+                    {
+                        if (tutoTrigger[i].activeInHierarchy == true)
+                        {
+                            StartTuto(i);
+                            if (currentTuto != -1)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -119,44 +106,26 @@ namespace VoiceActing
                 eventManager.StartStoryEventData(tutoDatabase[i]);
                 eventBox.SetActive(true);
                 menuManagers.SetActive(false);
-                switch(i)
-                {
-                    case 0:
-                        tuto1Activate = true;
-                        break;
-                    case 2:
-                        tuto3Activate = true;
-                        break;
-                }
+                currentTuto = i;
+                if (inputTutoActivate[i] != null)
+                    currentTuto = i;
             }
         }
 
-
+        // appelé à la fin d'un tuto
         public void ActivateInput()
         {
-            if (tuto1Activate)
+            if (inputTutoActivate[currentTuto] != null)
             {
-                tuto1Activate = false;
-                inputTuto1.gameObject.SetActive(true);
-                inputContractManager.gameObject.SetActive(false);
+                inputTutoActivate[currentTuto].gameObject.SetActive(true);
+                inputTutoDesactivate[currentTuto].gameObject.SetActive(false);
             }
             else
             {
-                inputTuto1.gameObject.SetActive(false);
-                inputContractManager.gameObject.SetActive(true);
-            }
-            if (tuto3Activate)
-            {
-                tuto3Activate = false;
-                inputTuto3.gameObject.SetActive(true);
-                inputContractAvailable.gameObject.SetActive(false);
-            }
-            else
-            {
-                inputTuto3.gameObject.SetActive(false);
-                inputContractAvailable.gameObject.SetActive(true);
+                currentTuto = -1;
             }
         }
+
         
         #endregion
 		

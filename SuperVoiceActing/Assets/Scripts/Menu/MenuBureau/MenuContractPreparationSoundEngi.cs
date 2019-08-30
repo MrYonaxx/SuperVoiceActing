@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -36,6 +37,26 @@ namespace VoiceActing
         RectTransform rectTransformMixingProgress;
         [SerializeField]
         RectTransform rectTransformMixingPreview;
+
+        [Title("DrawSoundEngi")]
+        [SerializeField]
+        GameObject panelSoundEngi;
+        [SerializeField]
+        GameObject panelNoSoundEngi;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiName;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiLevel;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiTrickery;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiMixing;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiBonus;
+        [SerializeField]
+        TextMeshProUGUI textSoundEngiLongevite;
+        [SerializeField]
+        ButtonSkill[] buttonSkills;
 
         [SerializeField]
         CameraBureau cameraBureau;
@@ -86,22 +107,46 @@ namespace VoiceActing
 
             if (contract.SoundEngineer.IsNull == true)
             {
+                panelSoundEngi.gameObject.SetActive(false);
+                panelNoSoundEngi.gameObject.SetActive(true);
                 imageSoundEngiIcon.gameObject.SetActive(false);
                 imageSoundEngiFace.gameObject.SetActive(false);
                 rectTransformMixingPreview.localScale = new Vector2(0, rectTransformMixingPreview.localScale.y);
             }
             else
             {
-                imageSoundEngiIcon.gameObject.SetActive(true);
-                imageSoundEngiIcon.sprite = contract.SoundEngineer.SpritesSheets.SpriteIcon;
-                imageSoundEngiFace.gameObject.SetActive(true);
-                imageSoundEngiFace.sprite = contract.SoundEngineer.SpritesSheets.SpriteNormal[0];
-                animatorSoundEngiFace.SetTrigger("FeedbackSoundEngi");
+                panelSoundEngi.gameObject.SetActive(true);
+                panelNoSoundEngi.gameObject.SetActive(false);
                 float size = (float)contract.SoundEngineer.MixingPower / contract.TotalMixing;
                 if (size >= 1)
                     size = 1;
                 rectTransformMixingPreview.localScale = new Vector2(size, rectTransformMixingPreview.localScale.y);
+                DrawSoundEngi(contract.SoundEngineer);
             }
+        }
+
+
+        private void DrawSoundEngi(SoundEngineer soundEngi)
+        {
+            imageSoundEngiIcon.gameObject.SetActive(true);
+            imageSoundEngiIcon.sprite = soundEngi.SpritesSheets.SpriteIcon;
+            imageSoundEngiFace.gameObject.SetActive(true);
+            imageSoundEngiFace.sprite = soundEngi.SpritesSheets.SpriteNormal[0];
+            animatorSoundEngiFace.SetTrigger("FeedbackSoundEngi");
+
+            textSoundEngiName.text = soundEngi.EngineerName;
+            textSoundEngiLevel.text = "Lv." + soundEngi.Level;
+            textSoundEngiMixing.text = soundEngi.MixingPower.ToString();
+            textSoundEngiTrickery.text = soundEngi.ArtificeGauge.ToString();
+
+            textSoundEngiBonus.text = "0";
+            textSoundEngiLongevite.text = "0";
+
+            for(int i = 0; i < soundEngi.Skills.Length; i++)
+            {
+                buttonSkills[i].DrawSkill(soundEngi.Skills[i]);
+            }
+
         }
 
         public override void UnselectButton()

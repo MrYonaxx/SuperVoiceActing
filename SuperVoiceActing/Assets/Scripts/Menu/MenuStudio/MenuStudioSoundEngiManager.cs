@@ -66,6 +66,8 @@ namespace VoiceActing
 
         [SerializeField]
         MenuContractPreparation menuContractPreparation;
+        [SerializeField]
+        GameObject panelResearch;
 
         [Title("Sound Engineer Button")]
         [SerializeField]
@@ -109,13 +111,17 @@ namespace VoiceActing
             DrawSoundEngi(soundEngineersList[indexSelected]);
             animatorMenu.gameObject.SetActive(true);
             if (auditionMode == true)
+            {
+                panelResearch.gameObject.SetActive(false);
                 animatorAudition.gameObject.SetActive(true);
+            }
         }
 
         public void QuitMenu()
         {
             animatorMenu.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
+            panelResearch.gameObject.SetActive(true);
         }
 
         public void SetSoundEngiList(List<SoundEngineer> soundEngineers)
@@ -175,8 +181,11 @@ namespace VoiceActing
         public void AuditionMode(bool b)
         {
             auditionMode = b;
-            if(b == false)
+            if (b == false)
+            {
                 animatorAudition.gameObject.SetActive(false);
+                panelResearch.gameObject.SetActive(true);
+            }
         }
 
         public void DrawAudition(string contractTitle, Sprite contractType, int contractMixingCurrent, int contractMixingMax)

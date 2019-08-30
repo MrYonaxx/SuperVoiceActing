@@ -58,11 +58,6 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        /*public TextPerformanceAppear GetTextActing()
-        {
-            return textActing;
-        }*/
-
         public SpriteRenderer GetSpriteRenderer()
         {
             return spriteRenderer;
@@ -71,19 +66,6 @@ namespace VoiceActing
         {
             return spriteRenderer.sprite;
         }
-
-        /*public void SetPhraseTextacting(string newText)
-        {
-            textActing.NewMouthAnim(this);
-            textActing.NewPhrase(newText);
-        }*/
-
-        /*public void SetPhraseEventTextacting(string newText, EmotionNPC emotionNPC)
-        {
-            ChangeEmotion(emotionNPC);
-            textActing.NewMouthAnim(this);
-            textActing.NewPhrase(newText);
-        }*/
 
         public void ChangeEmotion(Emotion emotionBattle)
         {
@@ -131,11 +113,6 @@ namespace VoiceActing
             if (spriteRenderer != null)
                 spriteRenderer.sprite = currentSprites[0];
         }
-
-        /*public void SetTextActing(TextPerformanceAppear textMeshPro)
-        {
-            textActing = textMeshPro;
-        }*/
 
         public StoryCharacterData GetStoryCharacterData()
         {
@@ -230,6 +207,13 @@ namespace VoiceActing
                     voice.PlayOneShot(storyCharacterData.CharacterVoice);
             }
         }
+
+
+
+
+
+
+
 
 
         public void FadeCharacter(bool fade, float time)

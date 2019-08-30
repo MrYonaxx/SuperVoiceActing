@@ -21,8 +21,8 @@ MonoBehaviour:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Ok, \xE9coute bien le choix des com\xE9diens est tr\xE8s important."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -59,19 +60,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "En bas de l'\xE9cran, tu peux consulter les infos du r\xF4le pour lequel
           tu auditionnes."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -95,6 +119,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -108,68 +133,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
-        text: "Au milieu, tu peux consulter les statistiques du com\xE9dien en blanc
-          et celle du r\xF4le en bleu."
-        textEng: 
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-      storyEventPlayerData:
-        currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-      storyEventChoices:
-        text: 
-        answers: []
-        storyChoices: []
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
-          type: 2}
-        emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Les statistiques du com\xE9dien correspondent \xE0 leur niveau de maitrise
           dans les diff\xE9rentes \xE9motions qu'ils transmettent."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -193,6 +192,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -206,19 +206,43 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
-        text: "Le but du jeu, c'est de s\xE9lectionner un acteur avec des statistiques
-          sup\xE9rieures \xE0 celle du r\xF4le."
-        textEng: 
+        emotionEmoticonBalloon: 0
+        text: "Il y a la <sprite=0> Joie, la <sprite=1> Tristesse, le <sprite=2> D\xE9go\xFBt,
+          la <sprite=3> Col\xE8re, la <sprite=4> Surprise, la <sprite=5> Douceur,
+          la <sprite=6> Peur et enfin la <sprite=7> Confiance."
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -242,6 +266,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -255,18 +280,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
-        text: "L'ic\xF4ne s'affichera en vert comme un <color=yellow>OK</color>."
-        textEng: 
+        emotionEmoticonBalloon: 0
+        text: "Au milieu, tu peux consulter :\n-Les statistiques du com\xE9dien en
+          blanc.\n-<color=blue>Les statistiques du r\xF4le en bleu</color>."
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -290,6 +339,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -303,20 +353,187 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Le but du jeu, c'est de s\xE9lectionner un acteur avec des <color=yellow>statistiques
+          sup\xE9rieures \xE0 celle du r\xF4le.</color>"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
+          type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "L'ic\xF4ne s'affichera en vert comme un <color=green>OK</color>."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
+          type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Cependant, si on veut aller plus loin, on pr\xE9f\xE8rera un com\xE9dien
-          dont les statistiques sont \xE9gales ou un point au dessus, un point en-dessous
-          du r\xF4le."
-        textEng: 
+          dont les statistiques sont \xE9gales au r\xF4le plut\xF4t que sup\xE9rieur."
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -340,6 +557,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -353,19 +571,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Basiquement, plus les statistiques sont rapproch\xE9es, plus ton com\xE9dien
           est fait pour le r\xF4le."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -389,6 +630,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -402,19 +644,115 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "M\xEAme si le com\xE9dien est quelques point en dessous, tant qu'on
+          est proche \xE7a devrait faire l'affaire."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: -5.2, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        fadeIn: 0
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
+          type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: "Surveille \xE9galement le co\xFBt total du com\xE9dien affich\xE9 en
           bas \xE0 droite, et une fois que tu as la perle rare, s\xE9lectionne-la."
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -438,6 +776,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -451,19 +790,42 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
         interlocuteur: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11,
           type: 2}
         emotionNPC: 0
+        emotionEmoticonBalloon: 0
         text: Si personne ne fais l'affaire, on peut organiser une Audition moyennant
           finance.
-        textEng: 
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -487,6 +849,7 @@ MonoBehaviour:
         sceneName: 
       storyEventLoadEvent:
         DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -500,7 +863,30 @@ MonoBehaviour:
         voiceActorAdd: 0
         voiceActorRemove: 0
         voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+      storyEventEndCondition:
+        endConditionName: 
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
