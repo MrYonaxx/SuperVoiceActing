@@ -478,6 +478,8 @@ namespace VoiceActing
         {
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
+            if (movTextCoroutine != null)
+                StopCoroutine(movTextCoroutine);
 
             moving = true;
             if (goLeft == true)
@@ -550,6 +552,8 @@ namespace VoiceActing
         {
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
+            SetCamera(initialPosition.position.x + offset, initialPosition.position.y, initialPosition.position.z);
+            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + rotationOffset);
             CameraMovement(initialPosition.position.x + offset + 0.02f, initialPosition.position.y, initialPosition.position.z, 
                            initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + rotationOffset, 60);
         }

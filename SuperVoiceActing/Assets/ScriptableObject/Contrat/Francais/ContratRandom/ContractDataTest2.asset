@@ -1,0 +1,259 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: ContractDataTest2
+  m_EditorClassIdentifier: 
+  contractName: Contrat Test
+  level: 3
+  contractType: 1
+  salaryMin: 1000
+  salaryMax: 1000
+  mixingMin: 5
+  mixingMax: 8
+  weekMin: 5
+  weekMax: 5
+  expGain: 1250
+  expBonus: 0
+  contractDictionnary: []
+  description:
+  - "Nos deux h\xE9ros sont perdus en plein d\xE9sert."
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Lia
+      roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
+      lineMin: 10
+      lineMax: 20
+      fanMin: 1
+      fanMax: 50
+      atkMin: 10
+      atkMax: 10
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 5
+        sadness: 0
+        disgust: 0
+        anger: 9
+        surprise: 7
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 5
+        sadness: 0
+        disgust: 0
+        anger: 9
+        surprise: 7
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: 645bf85b0285d0d41b5a0f571aeeda11, type: 2}
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Yonax
+      roleSprite: {fileID: 21300000, guid: af4b0cc7b2e184542a69981b4b93abb9, type: 3}
+      lineMin: 10
+      lineMax: 20
+      fanMin: 1
+      fanMax: 50
+      atkMin: 10
+      atkMax: 10
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 40
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 40
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: De l'eau... je meurs de soif...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 15
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -80
+        disgust: -80
+        anger: -80
+        surprise: -20
+        sweetness: -20
+        fear: -80
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Arr\xEAte de jacasser tu fais trop de bruit !"
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 15
+        hpMax: 15
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -80
+        disgust: -80
+        anger: -80
+        surprise: -50
+        sweetness: -50
+        fear: -80
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 5
+      - wordIndex: 1
+      - wordIndex: 7
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "C'est la faute de ce maudit d\xE9sert !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 15
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: -50
+        disgust: 0
+        anger: 100
+        surprise: -50
+        sweetness: -80
+        fear: -80
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 2
+      - wordIndex: 5
+      - wordIndex: 7
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Oh ! Regarde un oasis !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 15
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 100
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: -20
+        fear: 0
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 7
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "On est sauv\xE9s !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 0
+        hpMax: 0
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  eventData:
+  - {fileID: 11400000, guid: 52a7a120cfa74884588c0de5a438a6a6, type: 2}
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

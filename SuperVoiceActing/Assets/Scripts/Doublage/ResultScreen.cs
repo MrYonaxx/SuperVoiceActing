@@ -172,7 +172,7 @@ namespace VoiceActing
             if (contract.CurrentLine == contract.TotalLine)
             {
                 expBonus = contract.ExpBonus;
-                StartCoroutine(ExpGainCoroutine(textExpBonus, expBonus, lineDefeated));
+                StartCoroutine(ExpGainCoroutine(textExpBonus, expBonus, 1));
             }
             // Coroutine
             StartCoroutine(LineGainCoroutine());
