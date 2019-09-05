@@ -25,7 +25,7 @@ MonoBehaviour:
   expBonus: 0
   contractDictionnary: []
   description:
-  - "Nos deux h\xE9ros sont perdus en plein d\xE9sert."
+  - Je suis un contrat test dans l'unique but de montrer rapidement du gameplay.
   characters:
   - mainCharacter: 1
     optional: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Yonax
-      roleSprite: {fileID: 21300000, guid: af4b0cc7b2e184542a69981b4b93abb9, type: 3}
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
       fanMin: 1
@@ -129,14 +129,14 @@ MonoBehaviour:
         hpMax: 15
       enemyResistance:
         neutral: 0
-        joy: 100
-        sadness: -80
-        disgust: -80
-        anger: -80
-        surprise: -20
+        joy: -80
+        sadness: 100
+        disgust: 0
+        anger: 0
+        surprise: -80
         sweetness: -20
-        fear: -80
-        trust: 50
+        fear: 0
+        trust: -80
       enemyWeakPoints:
       - wordIndex: 3
   - textDataCondition:
@@ -151,22 +151,20 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 15
-        hpMax: 15
+        hpMin: 30
+        hpMax: 30
       enemyResistance:
         neutral: 0
-        joy: 100
+        joy: -80
         sadness: -80
         disgust: -80
-        anger: -80
+        anger: 100
         surprise: -50
         sweetness: -50
         fear: -80
-        trust: 100
+        trust: 0
       enemyWeakPoints:
-      - wordIndex: 5
-      - wordIndex: 1
-      - wordIndex: 7
+      - wordIndex: 2
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -185,16 +183,15 @@ MonoBehaviour:
         neutral: 0
         joy: -80
         sadness: -50
-        disgust: 0
+        disgust: 20
         anger: 100
         surprise: -50
         sweetness: -80
         fear: -80
         trust: -80
       enemyWeakPoints:
-      - wordIndex: 2
       - wordIndex: 5
-      - wordIndex: 7
+      - wordIndex: 6
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -203,7 +200,7 @@ MonoBehaviour:
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: Oh ! Regarde un oasis !
+    - text: Oh ! Regarde ! Une oasis !
       textStats:
         interlocuteurID: 0
         linked: 0
@@ -211,17 +208,18 @@ MonoBehaviour:
         hpMax: 15
       enemyResistance:
         neutral: 0
-        joy: -50
-        sadness: 100
+        joy: 50
+        sadness: -50
         disgust: -50
         anger: -50
-        surprise: -50
+        surprise: 100
         sweetness: -20
-        fear: 0
+        fear: -50
         trust: -80
       enemyWeakPoints:
+      - wordIndex: 0
       - wordIndex: 1
-      - wordIndex: 7
+      - wordIndex: 3
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -234,19 +232,20 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 20
+        hpMax: 20
       enemyResistance:
         neutral: 0
-        joy: 0
+        joy: 100
         sadness: 0
         disgust: 0
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 2
   eventData:
   - {fileID: 11400000, guid: 52a7a120cfa74884588c0de5a438a6a6, type: 2}
   eventAcceptedContract: {fileID: 0}

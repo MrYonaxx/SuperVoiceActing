@@ -495,10 +495,12 @@ namespace VoiceActing
                 emotionAttackManager.SwitchCardTransformToBattle(false);
                 roleManager.EnemyAttackActivation();
                 endAttack = false;
+                emotionAttackManager.ShowComboSlot(false);
                 while (endAttack == false)
                 {
                     yield return null;
                 }
+                emotionAttackManager.ShowComboSlot(true);
             }
 
             // Check Producer Attack ==============================================================
@@ -797,10 +799,12 @@ namespace VoiceActing
                 emotionAttackManager.SwitchCardTransformToBattle(false);
                 roleManager.EnemyAttackActivation();    
                 endAttack = false;
+                emotionAttackManager.ShowComboSlot(false);
                 while (endAttack == false)
                 {
                     yield return null;
                 }
+                emotionAttackManager.ShowComboSlot(true);
             }
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);

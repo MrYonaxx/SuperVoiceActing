@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace VoiceActing
 {
-	public class ButtonVoiceActor : MonoBehaviour
+	public class ButtonVoiceActor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
         #region Attributes 
 
@@ -122,6 +123,15 @@ namespace VoiceActing
         public Vector2 GetAnchoredPosition()
         {
             return rectTransform.anchoredPosition;
+        }
+
+        public void OnPointerEnter(PointerEventData data)
+        {
+            SelectButton();
+        }
+        public void OnPointerExit(PointerEventData data)
+        {
+            UnSelectButton();
         }
 
         #endregion
