@@ -73,7 +73,8 @@ namespace VoiceActing
 
         public void OnPointerClick(PointerEventData data)
         {
-            eventOnClick.Invoke(buttonIndex);
+            if (data.button == PointerEventData.InputButton.Left)
+                eventOnClick.Invoke(buttonIndex);
         }
 
         #endregion

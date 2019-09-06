@@ -226,7 +226,8 @@ namespace VoiceActing
         }
         public void OnPointerClick(PointerEventData data)
         {
-            unityEventOnClick.Invoke(buttonIndex);
+            if (data.button == PointerEventData.InputButton.Left)
+                unityEventOnClick.Invoke(buttonIndex);
         }
 
 

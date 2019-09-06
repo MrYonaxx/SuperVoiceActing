@@ -124,6 +124,7 @@ namespace VoiceActing
             {
                 buttonContractAccepted[contractAcceptedList.Count].gameObject.SetActive(true);
                 buttonContractAccepted[contractAcceptedList.Count].SetButtonToAddContract();
+                buttonContractAccepted[contractAcceptedList.Count].SetButtonIndex(contractAcceptedList.Count);
             }
         }
 
