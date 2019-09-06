@@ -7,6 +7,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,11 +28,20 @@ namespace VoiceActing
 
         [SerializeField]
         RectTransform virtualMouse;
+        /*[SerializeField]
+        TextMeshProUGUI textMouseDescription;
+        [SerializeField]
+        TextMeshProUGUI textMouseDescription;*/
+        [SerializeField]
+        ParticleSystem[] particleMouse;
 
         [SerializeField]
         UnityEvent eventMouseLeft;
         [SerializeField]
         UnityEvent eventMouseRight;
+
+
+        private IEnumerator cursorCoroutine = null;
 
         #endregion
 
@@ -49,7 +59,12 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-        
+
+        protected void Start()
+        {
+            //StartCoroutine(ParticleCoroutine());
+        }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Update is called once per frame.
@@ -67,19 +82,22 @@ namespace VoiceActing
                 {             
                     eventMouseRight.Invoke();
                     mouseHeldDown = true;
-                    StartCoroutine(WaitRepeat());
+                    cursorCoroutine = WaitRepeat();
+                    StartCoroutine(cursorCoroutine);
                 }
                 else if (virtualMouse.anchoredPosition.x - lastPositionX <= -changeScreenVelocity)
                 {
                     eventMouseLeft.Invoke();
                     mouseHeldDown = true;
-                    StartCoroutine(WaitRepeat());
+                    cursorCoroutine = WaitRepeat();
+                    StartCoroutine(cursorCoroutine);
                 }
             }
             else if (!Input.GetMouseButton(0) && mouseHeldDown == true)
             {
                 mouseHeldDown = false;
-                StopAllCoroutines();
+                if(cursorCoroutine != null)
+                    StopCoroutine(cursorCoroutine);
             }
 
             lastPositionX = virtualMouse.anchoredPosition.x;
@@ -92,9 +110,22 @@ namespace VoiceActing
             yield return new WaitForSeconds(0.2f);
             mouseHeldDown = false;
         }
-        
+
+       /* private IEnumerator ParticleCoroutine()
+        {
+            while (true)
+            {
+                for (int i = 0; i < particleMouse.Length; i++)
+                {
+                    particleMouse[i].Play();
+                    particleMouse[i].transform.position = virtualMouse.transform.position;
+                    yield return new WaitForSeconds(0.1f / particleMouse.Length);
+                }
+            }
+        }*/
+
         #endregion
-		
-	} // VirtualMouse class
+
+    } // VirtualMouse class
 	
 }// #PROJECTNAME# namespace

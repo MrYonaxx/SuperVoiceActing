@@ -297,7 +297,9 @@ namespace VoiceActing
         public void CreateAuditionButton()
         {
             buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
+            buttonsActors[buttonsActors.Count - 1].gameObject.SetActive(true);
             buttonsActors[buttonsActors.Count - 1].DrawAudition();
+            buttonsActors[buttonsActors.Count - 1].SetButtonIndex(buttonsActors.Count - 1);
         }
 
         public void DestroyAuditionButton()
@@ -877,7 +879,14 @@ namespace VoiceActing
         public void SelectActor(int index)
         {
             indexActorSelected = index;
-            DrawActorStat(actorsList[indexActorSelected]);
+            if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
+            {
+                DrawActorStat(null);
+            }
+            else
+            {
+                DrawActorStat(actorsList[indexActorSelected]);
+            }
         }
 
         public void SelectActorUp()

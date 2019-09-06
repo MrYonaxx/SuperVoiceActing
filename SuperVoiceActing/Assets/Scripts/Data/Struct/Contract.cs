@@ -12,6 +12,13 @@ using System.Text;
 
 namespace VoiceActing
 {
+    [System.Serializable]
+    public class EmotionUsed 
+    {
+        [SerializeField]
+        public Emotion[] emotions = new Emotion[3];
+    }
+
     /// <summary>
     /// Definition of the Contract class
     /// A contract is created from a ContractData
@@ -168,6 +175,13 @@ namespace VoiceActing
         public List<TextData> TextData
         {
             get { return textData; }
+        }
+
+        [SerializeField]
+        private List<EmotionUsed> emotionsUsed = new List<EmotionUsed>();
+        public List<EmotionUsed> EmotionsUsed
+        {
+            get { return emotionsUsed; }
         }
 
         [SerializeField]

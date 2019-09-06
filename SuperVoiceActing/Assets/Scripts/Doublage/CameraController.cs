@@ -247,7 +247,7 @@ namespace VoiceActing
                 currentCamMovement = cameraMovementSet2[Random.Range(0, cameraMovementSet2.Length)];
                 cameraPlacement = 0;
             }
-            Debug.Log(currentCamMovement.name);
+            //Debug.Log(currentCamMovement.name);
             CameraDataMovement(currentCamMovement);
 
         }

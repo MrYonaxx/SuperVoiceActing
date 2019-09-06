@@ -155,7 +155,7 @@ namespace VoiceActing
                         statGain = statActor;
                     statGain = statRole + (statRole - statGain);
                 }
-                Debug.Log(statGain * multiplier);
+                //Debug.Log(statGain * multiplier);
                 totalScore += statGain * multiplier;
 
                 // Calculate Theoric Max

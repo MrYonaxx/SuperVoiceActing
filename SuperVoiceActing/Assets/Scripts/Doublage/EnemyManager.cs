@@ -46,7 +46,6 @@ namespace VoiceActing
 
 
         [TabGroup("ParentGroup", "Statistiques")]
-        //[BoxGroup("Statistique")]
         [SerializeField]
         private EmotionStat enemyResistance;
         public EmotionStat EnemyResistance

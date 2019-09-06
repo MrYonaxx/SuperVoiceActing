@@ -486,7 +486,6 @@ namespace VoiceActing
         {
             if (indexSelectedTeamTech != -1)
             {
-                Debug.Log(indexSelectedTeamTech);
                 listAnnexTeamTech[indexSelectedTeamTech].UnselectButton();
             }
             if (indexSelected != -1)

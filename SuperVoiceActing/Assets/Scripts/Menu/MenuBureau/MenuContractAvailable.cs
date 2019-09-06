@@ -181,6 +181,14 @@ namespace VoiceActing
 
         }
 
+        private void ReassignListButton()
+        {
+            for (int i = 0; i < listContractAvailable.Count; i++)
+            {
+                buttonsContracts[i].SetButtonIndex(i);
+            }
+        }
+
         public void SwitchToMenuContractManager()
         {
             menuContractManager.gameObject.SetActive(true);
@@ -295,6 +303,7 @@ namespace VoiceActing
                 {
                     indexSelected = 0;
                 }
+                ReassignListButton();
                 animatorSelection.SetTrigger("Validate");
                 StartCoroutine(WaitValidate(0.2f));
             }

@@ -62,6 +62,8 @@ namespace VoiceActing
         protected DoublageEventManager eventManager;
         [SerializeField]
         protected SoundEngineerManager soundEngineerManager;
+        [SerializeField]
+        protected SessionRecapManager sessionRecapManager;
 
         [Title("Feedback & UI")]
         [SerializeField]
@@ -647,7 +649,8 @@ namespace VoiceActing
                 {
                     inputController.gameObject.SetActive(false);
 
-                    
+                    Emotion[] emotionsUsed = { lastAttack[0].GetEmotion(), lastAttack[1].GetEmotion(), lastAttack[2].GetEmotion() };
+                    contrat.EmotionsUsed[indexPhrase].emotions = emotionsUsed;
                     indexPhrase += 1;
                     killCount += 1;
                     if (currentLineNumber != null)
@@ -655,6 +658,7 @@ namespace VoiceActing
                     emotionAttackManager.ResetCard();
                     emotionAttackManager.StartTurnCardFeedback();
                     toneManager.ModifyTone(lastAttack);
+
                     roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
                     soundEngineerManager.ShowCharacterShadows();
                     HideUIButton();
@@ -1008,6 +1012,26 @@ namespace VoiceActing
             recIcon.SetActive(true);
             actorsManager.ShowHealthBar();
             emotionAttackManager.ShowComboSlot(true);
+        }
+
+        public void SwitchToRecap()
+        {
+            emotionAttackManager.SwitchCardTransformToRessource();
+            emotionAttackManager.ShowComboSlot(false);
+            inputController.gameObject.SetActive(true);
+            recIcon.SetActive(false);
+            actorsManager.ShowHealthBar();
+            sessionRecapManager.DrawContract(contrat);
+        }
+
+        public void RecapToSession()
+        {
+            emotionAttackManager.SwitchCardTransformToBattle();
+            emotionAttackManager.ShowComboSlot(true);
+            inputController.gameObject.SetActive(true);
+            recIcon.SetActive(true);
+            actorsManager.ShowHealthBar();
+            sessionRecapManager.MenuDisappear();
         }
 
 
