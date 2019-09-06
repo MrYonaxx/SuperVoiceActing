@@ -279,8 +279,10 @@ namespace VoiceActing
             for(int i = 0; i < actorsList.Count; i++)
             {
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
+                buttonsActors[i].gameObject.SetActive(true);
                 buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].SpriteSheets.SpriteIcon);
-                if(actorsList[i].Availability == false)
+                buttonsActors[i].SetButtonIndex(i);
+                if (actorsList[i].Availability == false)
                 {
                     actorUnavailable += 1;
                 }
@@ -758,6 +760,11 @@ namespace VoiceActing
 
         // ==================================================================================
         // Commandes
+        public void Validate(int index)
+        {
+            indexActorSelected = index;
+            Validate();
+        }
 
         public void Validate()
         {
@@ -867,7 +874,11 @@ namespace VoiceActing
             MoveScrollRect();
         }
 
-
+        public void SelectActor(int index)
+        {
+            indexActorSelected = index;
+            DrawActorStat(actorsList[indexActorSelected]);
+        }
 
         public void SelectActorUp()
         {

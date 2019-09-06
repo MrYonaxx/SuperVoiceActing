@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 
 namespace VoiceActing
 {
-	public class ButtonVoiceActor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+	public class ButtonVoiceActor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
         #region Attributes 
 
@@ -57,6 +57,12 @@ namespace VoiceActing
         [SerializeField]
         Color colorActorDead;
 
+        int buttonIndex;
+
+        [SerializeField]
+        UnityEventInt eventOnClick;
+        [SerializeField]
+        UnityEventInt eventOnSelect;
 
         #endregion
 
@@ -66,6 +72,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public void SetButtonIndex(int index)
+        {
+            buttonIndex = index;
+        }
 
         #endregion
 
@@ -127,11 +137,16 @@ namespace VoiceActing
 
         public void OnPointerEnter(PointerEventData data)
         {
+            eventOnSelect.Invoke(buttonIndex);
             SelectButton();
         }
         public void OnPointerExit(PointerEventData data)
         {
             UnSelectButton();
+        }
+        public void OnPointerClick(PointerEventData data)
+        {
+            eventOnClick.Invoke(buttonIndex);
         }
 
         #endregion

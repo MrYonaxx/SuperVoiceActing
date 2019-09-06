@@ -118,6 +118,7 @@ namespace VoiceActing
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
                 buttonContractAccepted[i].DrawContract(contractAcceptedList[i], typeContractData.GetSprite((int)contractAcceptedList[i].ContractType));
+                buttonContractAccepted[i].SetButtonIndex(i);
             }
             if (contractAcceptedList.Count < 3)
             {
@@ -234,6 +235,20 @@ namespace VoiceActing
             }
         }
 
+        public void Validate(int index)
+        {
+            indexAcceptedList = index;
+            if (indexAcceptedList == contractAcceptedList.Count)
+            {
+                SwitchToMenuContractAvailable();
+            }
+            else
+            {
+                SwitchToMenuContractPreparation();
+                menuContractPreparation.SetContract(contractAcceptedList[indexAcceptedList]);
+            }
+        }
+
         [ContextMenu("SelectionUp")]
         public void SelectContractAcceptedUp()
         {
@@ -249,11 +264,6 @@ namespace VoiceActing
                 {
                     indexAcceptedList = contractAcceptedList.Count;
                 }
-
-                /*while (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
-                {
-                    indexAcceptedList -= 1;
-                }*/
             }
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
@@ -271,10 +281,6 @@ namespace VoiceActing
             {
                 indexAcceptedList = 0;
             }
-            /*else if (buttonContractAccepted[indexAcceptedList].gameObject.activeInHierarchy == false)
-            {
-                indexAcceptedList = 0;
-            }*/
             buttonContractAccepted[indexAcceptedList].SelectContract();
         }
 

@@ -184,7 +184,6 @@ namespace VoiceActing
         public void SetContract(Contract contract)
         {
             currentContract = contract;
-            Debug.Log("allo?");
             menuActorsManager.DrawAuditionTitle(contract.Name);
             menuActorsManager.DrawAuditionIcon(typeContractData.GetSprite((int)contract.ContractType));
             DrawContractInfo();
@@ -209,6 +208,7 @@ namespace VoiceActing
                 if (contractInfoAnnex[i].CanAdd(currentContract) == true)
                 {
                     listAnnexTeamTech.Add(contractInfoAnnex[i]);
+                    listAnnexTeamTech[i].SetButtonIndex(-i - 1); // index negatif pour differencier des roles
                 }
                 contractInfoAnnex[i].UnselectButton();
             }
@@ -222,6 +222,7 @@ namespace VoiceActing
                 if(i < currentContract.Characters.Count)
                 {
                     listButtonRoles[i].gameObject.SetActive(true);
+                    listButtonRoles[i].SetButtonIndex(i);
                     listButtonRoles[i].DrawButton(currentContract.Characters[i], currentContract.VoiceActors[i]);
                     listButtonRoles[i].UnselectButton();
                 }
@@ -376,7 +377,20 @@ namespace VoiceActing
 
 
 
-
+        public void Validate(int index)
+        {
+            if(index < 0)
+            {
+                indexSelectedTeamTech = Mathf.Abs(index)-1;
+                indexSelected = -1;
+            }
+            else
+            {
+                indexSelected = index;
+                indexSelectedTeamTech = -1;
+            }
+            Validate();
+        }
 
         public void Validate()
         {
@@ -468,6 +482,42 @@ namespace VoiceActing
 
 
         // =================================================================
+        public void Select(int index)
+        {
+            if (indexSelectedTeamTech != -1)
+            {
+                Debug.Log(indexSelectedTeamTech);
+                listAnnexTeamTech[indexSelectedTeamTech].UnselectButton();
+            }
+            if (indexSelected != -1)
+            {
+                listButtonRoles[indexSelected].UnselectButton();
+            }
+
+
+            if (index < 0)
+            {
+                indexSelectedTeamTech = Mathf.Abs(index) - 1;
+                indexSelected = -1;
+            }
+            else
+            {
+                indexSelected = index;
+                indexSelectedTeamTech = -1;
+            }
+
+
+            if (indexSelected == -1)
+            {
+                menuActorsManager.AuditionMode(false, null);
+            }
+            else
+            {
+                DrawRoleInfo();
+            }
+        }
+
+
         public void SelectRoleUp()
         {
             if (currentContract.Characters.Count == 0)

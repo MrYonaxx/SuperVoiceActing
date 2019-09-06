@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 
 namespace VoiceActing
@@ -17,7 +19,7 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the CameraBureau class
     /// </summary>
-    public class ButtonContratAccepted : MonoBehaviour
+    public class ButtonContratAccepted : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         #region Attributes 
 
@@ -70,6 +72,11 @@ namespace VoiceActing
 
         bool isButtonAddContract = false;
 
+        int buttonIndex;
+
+        [SerializeField]
+        UnityEventInt unityEventOnClick;
+
         #endregion
 
         #region GettersSetters 
@@ -81,6 +88,11 @@ namespace VoiceActing
         public Sprite GetIconContract()
         {
             return contractIcon.sprite;
+        }
+
+        public void SetButtonIndex(int index)
+        {
+            buttonIndex = index;
         }
 
         #endregion
@@ -134,6 +146,11 @@ namespace VoiceActing
             }
             gameObjectClear.SetActive(false);
         }
+
+
+
+
+
 
         public void SelectContract()
         {
@@ -192,6 +209,27 @@ namespace VoiceActing
                 gameObjectClear.SetActive(true);
             }
         }
+
+
+
+
+
+
+
+        public void OnPointerEnter(PointerEventData data)
+        {
+            SelectContract();
+        }
+        public void OnPointerExit(PointerEventData data)
+        {
+            UnSelectContract();
+        }
+        public void OnPointerClick(PointerEventData data)
+        {
+            unityEventOnClick.Invoke(buttonIndex);
+        }
+
+
 
         #endregion
     }

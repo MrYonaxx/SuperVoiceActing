@@ -10,11 +10,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace VoiceActing
 {
-	public class ButtonPreparationRole : MonoBehaviour
-	{
+	public class ButtonPreparationRole : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+    {
         #region Attributes 
 
         /* ======================================== *\
@@ -48,6 +49,13 @@ namespace VoiceActing
         Color roleLocked = new Color(1, 0, 0);
         Color roleUnlocked = new Color(1, 1, 1);
 
+        int buttonIndex;
+
+        [SerializeField]
+        UnityEventInt eventOnClick;
+        [SerializeField]
+        UnityEventInt eventOnSelect;
+
         #endregion
 
         #region GettersSetters 
@@ -56,6 +64,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public void SetButtonIndex(int index)
+        {
+            buttonIndex = index;
+        }
 
         #endregion
 
@@ -104,6 +116,25 @@ namespace VoiceActing
         {
             animatorOutline.gameObject.SetActive(false);
         }
+
+
+
+
+
+
+        public void OnPointerEnter(PointerEventData data)
+        {
+            eventOnSelect.Invoke(buttonIndex);
+            SelectButton();
+        }
+
+
+        public void OnPointerClick(PointerEventData data)
+        {
+            eventOnClick.Invoke(buttonIndex);
+        }
+
+
 
 
         #endregion

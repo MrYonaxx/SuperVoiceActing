@@ -6,9 +6,11 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using Sirenix;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -35,10 +37,20 @@ namespace VoiceActing
         [SerializeField]
         Transform transformToRotate;
 
+        [HorizontalGroup]
         [SerializeField]
         Transform[] transforms;
+        [HorizontalGroup]
         [SerializeField]
         GameObject[] screenManager;
+        [SerializeField]
+        GameObject[] cameraScreen;
+        [SerializeField]
+        GraphicRaycaster[] raycasters;
+        [SerializeField]
+        LigneMenuFeedback[] feedbacksLines;
+        [SerializeField]
+        RectTransform mouseCursor;
 
         [SerializeField]
         Animator animatorHUD;
@@ -75,6 +87,7 @@ namespace VoiceActing
         \* ======================================== */
         private void Start()
         {
+            Cursor.visible = false;
             cameraDekstop = GetComponent<Camera>();
         }
 
@@ -180,6 +193,11 @@ namespace VoiceActing
                 ModifyAnglePosition(0);
             MoveToCamera();
 
+            if(feedbacksLines[position] != null)
+            {
+                feedbacksLines[position].FeedbackLinesAppearFromLeft();
+            }
+
             inputRightStickEnter = true;
         }
 
@@ -197,6 +215,12 @@ namespace VoiceActing
             else
                 ModifyAnglePosition(0);
             MoveToCamera();
+
+
+            if (feedbacksLines[position] != null)
+            {
+                feedbacksLines[position].FeedbackLinesAppearFromRight();
+            }
 
             inputRightStickEnter = true;
         }
@@ -419,15 +443,24 @@ namespace VoiceActing
             // active le screen Manager a l'index de la camera
             for(int i = 0; i < screenManager.Length; i++)
             {
-                if(screenManager[i] != null)
-                    screenManager[i].SetActive(false);
+                screenManager[i].SetActive(false);
+                if (cameraScreen[i] != null)
+                {
+                    cameraScreen[i].SetActive(false);
+                    raycasters[i].enabled = false;
+                }
 
-                if(i == index && screenManager[i] != null)
+                if (i == index)
                 {
                     screenManager[index].SetActive(true);
+                    if (cameraScreen[index] != null)
+                    {
+                        cameraScreen[index].SetActive(true);
+                        raycasters[index].enabled = true;
+                        mouseCursor.SetParent(raycasters[index].gameObject.transform);
+                    }
                 }
             }
-
         }
 
         public void HideHUD()

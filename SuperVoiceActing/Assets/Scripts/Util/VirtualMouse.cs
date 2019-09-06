@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace VoiceActing
 {
@@ -18,9 +19,20 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [SerializeField]
+        int changeScreenVelocity = 50;
 
-        RectTransform rectTransform;
-        
+        float lastPositionX = 0;
+        bool mouseHeldDown = false;
+
+        [SerializeField]
+        RectTransform virtualMouse;
+
+        [SerializeField]
+        UnityEvent eventMouseLeft;
+        [SerializeField]
+        UnityEvent eventMouseRight;
+
         #endregion
 
         #region GettersSetters 
@@ -28,7 +40,7 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-        
+
 
         #endregion
 
@@ -37,24 +49,6 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
-        {
-        }
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
-        {
-            rectTransform = GetComponent<RectTransform>();
-        }
         
         ////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
@@ -65,7 +59,38 @@ namespace VoiceActing
             float screenRatioX = Input.mousePosition.x / Screen.width;
             float screenRatioY = Input.mousePosition.y / Screen.height;
 
-            rectTransform.anchoredPosition = new Vector2((-1920 / 2) + 1920 * screenRatioX, (-1080 / 2) + 1080 * screenRatioY);
+            virtualMouse.anchoredPosition = new Vector2((-1920 / 2) + 1920 * screenRatioX, (-1080 / 2) + 1080 * screenRatioY);
+
+            if (Input.GetMouseButton(0) && mouseHeldDown == false)
+            {
+                if (virtualMouse.anchoredPosition.x - lastPositionX >= changeScreenVelocity)
+                {             
+                    eventMouseRight.Invoke();
+                    mouseHeldDown = true;
+                    StartCoroutine(WaitRepeat());
+                }
+                else if (virtualMouse.anchoredPosition.x - lastPositionX <= -changeScreenVelocity)
+                {
+                    eventMouseLeft.Invoke();
+                    mouseHeldDown = true;
+                    StartCoroutine(WaitRepeat());
+                }
+            }
+            else if (!Input.GetMouseButton(0) && mouseHeldDown == true)
+            {
+                mouseHeldDown = false;
+                StopAllCoroutines();
+            }
+
+            lastPositionX = virtualMouse.anchoredPosition.x;
+
+        }
+
+
+        private IEnumerator WaitRepeat()
+        {
+            yield return new WaitForSeconds(0.2f);
+            mouseHeldDown = false;
         }
         
         #endregion

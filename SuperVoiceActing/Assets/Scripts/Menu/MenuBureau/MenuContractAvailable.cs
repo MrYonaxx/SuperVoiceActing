@@ -169,6 +169,8 @@ namespace VoiceActing
             for(int i = 0; i < listContractAvailable.Count; i++)
             {
                 buttonsContracts.Add(Instantiate(buttonPrefab, buttonListTransform));
+                buttonsContracts[i].gameObject.SetActive(true);
+                buttonsContracts[i].SetButtonIndex(i);
                 buttonsContracts[i].DrawButton(listContractAvailable[i].Name, typeContractData.GetSprite((int)listContractAvailable[i].ContractType));
             }
         }
@@ -271,6 +273,12 @@ namespace VoiceActing
 
         }
 
+        public void Validate(int index)
+        {
+            indexSelected = index;
+            Validate();
+        }
+
         public void Validate()
         {
             if(listContractAvailable.Count == 0)
@@ -282,7 +290,6 @@ namespace VoiceActing
                 listContractAvailable.RemoveAt(indexSelected);
                 Destroy(buttonsContracts[indexSelected].gameObject);
                 buttonsContracts.RemoveAt(indexSelected);
-                //RedrawListButton(indexSelected);
                 indexSelected -= 1;
                 if(indexSelected < 0)
                 {
@@ -317,7 +324,11 @@ namespace VoiceActing
 
 
 
-
+        public void SelectContract(int index)
+        {
+            indexSelected = index;
+            SelectButton();
+        }
 
 
 

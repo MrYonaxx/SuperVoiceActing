@@ -282,7 +282,7 @@ namespace UnityEngine.EventSystems
                 leftData.delta = pos - leftData.position;
                 leftData.position = pos;
             }
-            Debug.Log(leftData.position);
+            //Debug.Log(leftData.position);
             leftData.scrollDelta = input.mouseScrollDelta;
             leftData.button = PointerEventData.InputButton.Left;
             eventSystem.RaycastAll(leftData, m_RaycastResultCache);

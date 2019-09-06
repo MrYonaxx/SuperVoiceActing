@@ -8,12 +8,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace VoiceActing
 {
     [System.Serializable]
-	public class MenuContractPreparationAnnexe : MonoBehaviour
-	{
+	public class MenuContractPreparationAnnexe : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+    {
         #region Attributes 
 
         /* ======================================== *\
@@ -27,6 +28,13 @@ namespace VoiceActing
         [SerializeField]
         GameObject outlineButton;
 
+        int buttonIndex;
+
+        [SerializeField]
+        UnityEventInt eventOnClick;
+        [SerializeField]
+        UnityEventInt eventOnSelect;
+
         #endregion
 
         #region GettersSetters 
@@ -35,6 +43,10 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public void SetButtonIndex(int index)
+        {
+            buttonIndex = index;
+        }
 
         #endregion
 
@@ -72,6 +84,20 @@ namespace VoiceActing
         public virtual void ValidateButton(Contract contract)
         {
 
+        }
+
+
+
+        public void OnPointerEnter(PointerEventData data)
+        {
+            eventOnSelect.Invoke(buttonIndex);
+            SelectButton();
+        }
+
+
+        public void OnPointerClick(PointerEventData data)
+        {
+            eventOnClick.Invoke(buttonIndex);
         }
 
         #endregion
