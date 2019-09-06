@@ -45,6 +45,8 @@ namespace VoiceActing
         private TextMeshProUGUI textEXP;
         [SerializeField]
         private TextMeshProUGUI textExpBonus;
+        [SerializeField]
+        private TextMeshProUGUI[] textEmotionUsed;
 
         [Header("UI")]
         [SerializeField]
@@ -144,6 +146,7 @@ namespace VoiceActing
             }
             actorsOldLevel = new int[contract.VoiceActors.Count];
             actorsOldStats = new EmotionStat[contract.VoiceActors.Count];
+            DrawEmotionUsed(con.EmotionsUsed);
         }
 
 
@@ -216,7 +219,21 @@ namespace VoiceActing
 
 
 
-
+        private void DrawEmotionUsed(List<EmotionUsed> emotionUseds)
+        {
+            int[] res = new int[9];
+            for(int i = 0; i < emotionUseds.Count; i++)
+            {
+                for(int j = 0; j < emotionUseds[i].emotions.Length; j++)
+                {
+                    res[(int)emotionUseds[i].emotions[j]] += 1;
+                }
+            }
+            for(int i = 1; i < res.Length; i++)
+            {
+                textEmotionUsed[i - 1].text = res[i].ToString();
+            }
+        }
 
 
 

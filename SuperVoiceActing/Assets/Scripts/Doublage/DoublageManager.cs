@@ -649,8 +649,8 @@ namespace VoiceActing
                 {
                     inputController.gameObject.SetActive(false);
 
-                    Emotion[] emotionsUsed = { lastAttack[0].GetEmotion(), lastAttack[1].GetEmotion(), lastAttack[2].GetEmotion() };
-                    contrat.EmotionsUsed[indexPhrase].emotions = emotionsUsed;
+                    //Emotion[] emotionsUsed = { lastAttack[0].GetEmotion(), lastAttack[1].GetEmotion(), lastAttack[2].GetEmotion() };
+                    contrat.EmotionsUsed.Add(new EmotionUsed(lastAttack));
                     indexPhrase += 1;
                     killCount += 1;
                     if (currentLineNumber != null)
@@ -1021,7 +1021,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(false);
             actorsManager.ShowHealthBar();
-            sessionRecapManager.DrawContract(contrat);
+            sessionRecapManager.DrawContract(contrat, indexPhrase);
         }
 
         public void RecapToSession()

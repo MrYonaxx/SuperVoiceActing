@@ -20,6 +20,8 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
+        ImageDictionnary emotionDictionnary;
+        [SerializeField]
         Animator animatorRecap;
         [SerializeField]
         InputController inputController;
@@ -67,7 +69,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(false);
         }
 
-        public void DrawContract(Contract contract)
+        public void DrawContract(Contract contract, int indexPhrase)
         {
             inputController.gameObject.SetActive(true);
             animatorRecap.gameObject.SetActive(true);
@@ -77,20 +79,20 @@ namespace VoiceActing
             textContractHype.text = "0";// contract.fan.ToString();
             textContractMoney.text = contract.Money.ToString();
             textContractDescription.text = contract.Description;
-            DrawSessionLines(contract);
+            DrawSessionLines(contract, indexPhrase);
             MoveScrollList(9999);
 
         }
 
-        public void DrawSessionLines(Contract contract)
+        public void DrawSessionLines(Contract contract, int indexPhrase)
         {
-            for (int i = listSessionLines.Count; i < contract.CurrentLine; i++)
+            for (int i = listSessionLines.Count; i < indexPhrase; i++)
             {
                 listSessionLines.Add(Instantiate(sessionPrefab, sessionScrollList));
                 listSessionLines[i].DrawRecapLine(contract.Characters[contract.TextData[i].Interlocuteur].Name,
                                                   contract.Characters[contract.TextData[i].Interlocuteur].RoleSprite,
-                                                  contract.TextData[i].Text,
-                                                  contract.EmotionsUsed[i].emotions);
+                                                  contract.TextData[i].Text, 
+                                                  GetEmotionSprite(contract.EmotionsUsed[i].emotions));
             }
         }
 
@@ -98,6 +100,16 @@ namespace VoiceActing
         public void MoveScrollList(int amount)
         {
             sessionScrollList.anchoredPosition += new Vector2(0,amount);
+        }
+
+        private Sprite[] GetEmotionSprite(Emotion[] emotions)
+        {
+            Sprite[] res = new Sprite[emotions.Length];
+            for(int i = 0; i < res.Length; i++)
+            {
+                res[i] = emotionDictionnary.GetSprite((int)emotions[i]);
+            }
+            return res;
         }
         
         #endregion

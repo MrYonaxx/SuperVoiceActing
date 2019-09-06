@@ -17,6 +17,21 @@ namespace VoiceActing
     {
         [SerializeField]
         public Emotion[] emotions = new Emotion[3];
+
+        public EmotionUsed(EmotionCard[] combo)
+        {
+            for(int i = 0; i< emotions.Length; i++)
+            {
+                if(i > combo.Length)
+                {
+                    emotions[i] = Emotion.Neutre;
+                }
+                else if(combo[i] != null)
+                {
+                    emotions[i] = combo[i].GetEmotion();
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -462,7 +477,7 @@ namespace VoiceActing
             }
             totalLine = textData.Count;
 
-
+            emotionsUsed = new List<EmotionUsed>(textData.Count);
 
         }
 
