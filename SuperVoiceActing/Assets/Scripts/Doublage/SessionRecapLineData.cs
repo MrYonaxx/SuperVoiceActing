@@ -50,7 +50,13 @@ namespace VoiceActing
         public void DrawRecapLine(string roleName, Sprite roleSprite, string line, Sprite[] emotions)
         {
             this.gameObject.SetActive(true);
-            imageRole.sprite = roleSprite;
+            if (roleSprite == null)
+                imageRole.enabled = false;
+            else
+            {
+                imageRole.enabled = true;
+                imageRole.sprite = roleSprite;
+            }
             textRoleName.text = roleName;
             textRoleLine.text = line;
             for(int i = 0; i < imagesEmotions.Length; i++)

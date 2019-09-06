@@ -1018,7 +1018,7 @@ namespace VoiceActing
         {
             emotionAttackManager.SwitchCardTransformToRessource();
             emotionAttackManager.ShowComboSlot(false);
-            inputController.gameObject.SetActive(true);
+            inputController.gameObject.SetActive(false);
             recIcon.SetActive(false);
             actorsManager.ShowHealthBar();
             sessionRecapManager.DrawContract(contrat, indexPhrase);
