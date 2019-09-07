@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: SkillTrishTsundere
   m_EditorClassIdentifier: 
   skillName: Tsundere
-  description: "Apr\xE8s une attaque contenant 1 de Col\xE8re, Trish a 40% de chance
-    de perdre 5 points en Col\xE8re et de gagner 5 points en Douceur."
-  descriptionBattle: "-5 en Col\xE8re / +5 en Douceur"
+  description: "Apr\xE8s une attaque contenant 1 de Col\xE8re, Trish a 50% de chance
+    de gagner 1 point de Douceur."
+  descriptionBattle: +1 Douceur
   skillType: 0
-  skillTarget: 0
-  turnActive: 0
-  refresh: 0
-  addBuffTurn: 0
+  buffData:
+    turnActive: 0
+    refresh: 0
+    addBuffTurn: 0
+    canAddMultiple: 0
   skillEffects:
   - eventNode: 1
     skillEffectCardGain:
@@ -35,21 +36,20 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
+      skillTarget: 1
       inPercentage: 0
-      statVariance: 0
       emotionStat:
         neutral: 0
         joy: 0
         sadness: 0
         disgust: 0
-        anger: -5
+        anger: 0
         surprise: 0
-        sweetness: 5
+        sweetness: 1
         fear: 0
         trust: 0
+      statVariance: 0
     skillEffectEmotionDamage:
-      inPercentage: 0
-      damageVariance: 0
       emotionDamage:
         neutral: 0
         joy: 0
@@ -60,19 +60,24 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      damageVariance: 0
     skillEffectHealth:
+      skillTarget: 0
       inPercentage: 0
+      restoreChipDamage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
-      inPercentage: 0
       turnGain: 0
       turnVariance: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+    skillEffectResistance:
+      resistancePercentage: 0
   producerCost: 0
-  afterStart: 0
-  afterAttack: 1
-  afterCritical: 0
-  afterKill: 0
+  activationTiming: 1
+  onlyWhenMain: 1
   phraseType:
     neutral: 0
     joy: 0
@@ -84,6 +89,7 @@ MonoBehaviour:
     fear: 0
     trust: 0
   hpInterval: {x: 0, y: 100}
-  percentageActivation: 40
+  percentageActivation: 50
   onlyOnce: 0
+  bigAnimation: 0
   isMalus: 0

@@ -12,6 +12,15 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
+    [System.Serializable]
+    public enum SkillActiveTiming
+    {
+        AfterStart,
+        AfterAttack,
+        AfterCritical,
+        AfterKill
+    }
+
     [CreateAssetMenu(fileName = "SkillActorData", menuName = "Skills/SkillActorData", order = 1)]
     public class SkillActorData : SkillData
 	{
@@ -21,7 +30,13 @@ namespace VoiceActing
         [Title("Conditions d'Activation")]
 
         [SerializeField]
-        private bool afterStart;
+        private SkillActiveTiming activationTiming;
+        public SkillActiveTiming ActivationTiming
+        {
+            get { return activationTiming; }
+        }
+
+        /*private bool afterStart;
         public bool AfterStart
         {
             get { return afterStart; }
@@ -46,6 +61,12 @@ namespace VoiceActing
         public bool AfterKill
         {
             get { return afterKill; }
+        }*/
+        [SerializeField]
+        private bool onlyWhenMain = true;
+        public bool OnlyWhenMain
+        {
+            get { return onlyWhenMain; }
         }
 
         [HideLabel]
@@ -82,6 +103,12 @@ namespace VoiceActing
         [Space]
         [Space]
         [Title("Animation")]
+        [SerializeField]
+        private bool bigAnimation = true;
+        public bool BigAnimation
+        {
+            get { return bigAnimation; }
+        }
         [SerializeField]
         private bool isMalus;
         public bool IsMalus

@@ -374,6 +374,10 @@ namespace VoiceActing
             // HP Regain
             if(damage > 0)
                 actorsHealthRegain[indexCurrentActor] += damage / 2;
+            else
+                actorsHealthRegain[indexCurrentActor] += damage;
+            if (actorsHealthRegain[indexCurrentActor] <= 0)
+                actorsHealthRegain[indexCurrentActor] = 0;
             ratioHPRegain = actors[indexCurrentActor].Hp + actorsHealthRegain[indexCurrentActor];
             if(ratioHPRegain > actors[indexCurrentActor].HpMax) { ratioHPRegain = 1; }
             ratioHPRegain = ratioHPRegain / actors[indexCurrentActor].HpMax;

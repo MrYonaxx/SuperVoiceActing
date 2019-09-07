@@ -7,6 +7,7 @@
 
 using Sirenix.OdinInspector;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -414,6 +415,8 @@ namespace VoiceActing
             emotionAttackManager.CardAttack();
             emotionAttackManager.SwitchCardTransformToRessource();
 
+            skillManager.HideSkillWindow();
+
         }
 
 
@@ -489,20 +492,19 @@ namespace VoiceActing
                 yield break;
             }
 
+            emotionAttackManager.ResetCard();
+            emotionAttackManager.SwitchCardTransformToBattle(true);
             // Check Role Attack =================================================================
             if (roleManager.IsAttacking() == true)
             {
                 yield return new WaitForSeconds(0.1f);
                 cameraController.EnemySkill();
-                emotionAttackManager.SwitchCardTransformToBattle(false);
                 roleManager.EnemyAttackActivation();
                 endAttack = false;
-                emotionAttackManager.ShowComboSlot(false);
                 while (endAttack == false)
                 {
                     yield return null;
                 }
-                emotionAttackManager.ShowComboSlot(true);
             }
 
             // Check Producer Attack ==============================================================
@@ -517,25 +519,18 @@ namespace VoiceActing
             }
 
             // Check Skill ========================================================================
-            if(skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Attack", lastAttack) == true)
-            {
-                while (skillManager.InSkillAnimation() == true)
-                {
-                    yield return null;
-                }
-            }
+            List<SkillActiveTiming> activeTimings = new List<SkillActiveTiming> {SkillActiveTiming.AfterAttack };
             if (enemyManager.GetLastAttackCritical() == true)
-            {
-                if (skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Critical", lastAttack) == true)
-                {
-                    while (skillManager.InSkillAnimation() == true)
-                    {
-                        yield return null;
-                    }
-                }
-            }
+                activeTimings.Add(SkillActiveTiming.AfterCritical);
+            if (enemyManager.GetHpPercentage() == 0)
+                activeTimings.Add(SkillActiveTiming.AfterKill);
 
+            skillManager.CheckSkillCondition(contrat.VoiceActors, activeTimings, lastAttack, false);
 
+            yield return skillManager.ActivateBigSkill();
+
+            // Les skills se font tous check en même temps, du coup ça peut empêcher certains combos.
+            //skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), activeTimings, lastAttack, true); 
             // New turn ===========================================================================
             NewTurn();
         }
@@ -606,6 +601,7 @@ namespace VoiceActing
             }
             else // Nouveau tour
             {
+                skillManager.ActivateMinorSkills();
                 emotionAttackManager.ResetCard();
                 emotionAttackManager.SwitchCardTransformToBattle();
                 inputController.gameObject.SetActive(true);
@@ -776,11 +772,8 @@ namespace VoiceActing
             if (intro == true)
             {
                 //lastAttack[0] = Emotion.Neutre;
-                if (skillManager.CheckSkillCondition(actorsManager.GetCurrentActor(), "Start", lastAttack) == true)
-                {
-                    while (skillManager.InSkillAnimation() == true)
-                        yield return null;
-                }
+                skillManager.CheckSkillCondition(contrat.VoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttack, false);
+                yield return skillManager.ActivateBigSkill();
                 intro = false;
                 yield return new WaitForSeconds(0.5f);
             }

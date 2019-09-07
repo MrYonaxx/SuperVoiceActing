@@ -72,9 +72,10 @@ namespace VoiceActing
         [SerializeField]
         Transform panelDoubleurDefault;
         [SerializeField]
-        Transform panelDoubleurPotential;
-        [SerializeField]
         CharacterDialogueController doubleur;
+        [SerializeField]
+        Transform panelDoubleurPotential;
+
 
         [SerializeField]
         Animator animationPotentiel;
@@ -82,6 +83,17 @@ namespace VoiceActing
         GameObject animationSkillName;
         [SerializeField]
         ParticleSystem particleSpeedLines;
+
+
+        [Header("Minor Skills")]
+        [SerializeField]
+        MinorSkillWindow minorSkillPrefab;
+        [SerializeField]
+        RectTransform minorSkillPanel;
+
+        List<SkillActorData> skillsToActivate = new List<SkillActorData>();
+
+        List<MinorSkillWindow> listSkillWindow = new List<MinorSkillWindow>();
 
         CameraController cameraController;
         DoublageManager doublageManager;
@@ -91,8 +103,8 @@ namespace VoiceActing
         [Header("Buff")]
         List<string> bannedSkills = new List<string>();
 
-
-
+        private int skillWindowIndex = 0;
+        private int minorSkillIndex = 0;
 
         private IEnumerator coroutineSkill = null;
         private bool reprintTextEnemy = false;
@@ -150,73 +162,57 @@ namespace VoiceActing
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///   C O N D I T I O N
 
+        // Aucune gestion de priorité, càd que on check tout les skills en même temps, pas les un après les autres. peut enlever certains combos.
 
-        public bool CheckSkillCondition(VoiceActor voiceActor, string phase, EmotionCard[] emotions) 
+        public void CheckSkillCondition(List<VoiceActor> voiceActors, List<SkillActiveTiming> phases, EmotionCard[] emotions, bool minorSkill) 
         {
-            /*if (emotions == null)
-                return false;*/
             bool next = false;
-            for(int i = 0; i < voiceActor.Potentials.Length; i++)
+            bool currentMainActor = false;
+            skillWindowIndex = 0;
+            for (int k = 0; k < voiceActors.Count; k++)
             {
-                SkillActorData skill = voiceActor.Potentials[i];
-                Debug.Log(skill.SkillName);
-                switch(phase)
+                if (voiceActors[k] == currentVoiceActor)
+                    currentMainActor = true;
+                else
+                    currentMainActor = false;
+
+                for (int i = 0; i < voiceActors[k].Potentials.Length; i++)
                 {
-                    case "Start":
-                        if (skill.AfterStart == true)
-                            next = true;
-                        break;
-
-                    case "Selection":
-                        if (skill.AfterAttack == true)
-                            next = true;
-                        break;
-
-                    case "Attack":
-                        if(skill.AfterAttack == true)
-                            next = true;
-                        break;
-
-                    case "Critical":
-                        if (skill.AfterCritical == true)
-                            next = true;
-                        break;
-
-                    case "Counter":
-                        if (skill.AfterAttack == true)
-                            next = true;
-                        break;
-
-                    case "Kill":
-                        if (skill.AfterKill == true)
-                            next = true;
-                        break;
-                }
-
-                if(next == true)
-                {
-                    if (CheckHP((voiceActor.Hp / (float)voiceActor.HpMax), skill.HpInterval))
+                    next = false;
+                    SkillActorData skill = voiceActors[k].Potentials[i];
+                    if (currentMainActor == false && skill.OnlyWhenMain == true)
+                        continue;
+                    for (int j = 0; j < phases.Count; j++)
                     {
-                        if (CheckPercentage(skill.PercentageActivation))
+                        if (skill.ActivationTiming == phases[j])
                         {
-                            if (CheckAttackType(emotions, skill.PhraseType))
+                            next = true;
+                            break;
+                        }
+                    }
+
+                    if (next == true)
+                    {
+                        if (CheckHP((voiceActors[k].Hp / (float)voiceActors[k].HpMax), skill.HpInterval))
+                        {
+                            if (CheckPercentage(skill.PercentageActivation))
                             {
-                                if (CheckBannedSkills(skill.SkillName))
+                                if (CheckAttackType(emotions, skill.PhraseType))
                                 {
-                                    if (skill.OnlyOnce == true)
-                                        bannedSkills.Add(skill.SkillName);
-                                    SetSkillText(voiceActor, skill);
-                                    ActorSkillFeedback();
-                                    skill.ApplySkill(doublageManager);
-                                    //ApplySkill(skill);
-                                    return true; // On verra pour l'activation de compétence multiple plus tard
+                                    if (CheckBannedSkills(skill.SkillName))
+                                    {
+                                        if (skill.OnlyOnce == true)
+                                            bannedSkills.Add(skill.SkillName);
+                                        skillsToActivate.Add(skill);
+                                        Debug.Log(skill.SkillName);
+                                        DrawMinorSkills(voiceActors[k], skill);
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            return false;
         }
 
         public void SetSkillText(VoiceActor va, SkillActorData skill)
@@ -284,6 +280,86 @@ namespace VoiceActing
 
 
 
+        public IEnumerator ActivateBigSkill()
+        {
+            for(int i = 0; i < skillsToActivate.Count; i++)
+            {
+                if(skillsToActivate[i].BigAnimation == true)
+                {
+                    SetSkillText(currentVoiceActor, skillsToActivate[i]);
+                    ActorSkillFeedback();
+                    while (inSkillAnimation == true)
+                        yield return null;
+                    skillsToActivate[i].ApplySkill(doublageManager);
+                    skillsToActivate.RemoveAt(i);
+                    i-=1;
+                }
+                
+            }
+        }
+
+
+
+        public void HideSkillWindow()
+        {
+            for (int i = 0; i < skillWindowIndex; i++)
+            {
+                listSkillWindow[i].HideFeedback();
+            }
+            skillWindowIndex = 0;
+        }
+
+        public void DrawMinorSkills(VoiceActor actor, SkillActorData skill)
+        {
+            if (skill.BigAnimation == false)
+            {
+                if (listSkillWindow.Count <= skillWindowIndex)
+                {
+                    listSkillWindow.Add(Instantiate(minorSkillPrefab, minorSkillPanel));
+                    listSkillWindow[listSkillWindow.Count - 1].SetTransform(listSkillWindow.Count - 1);
+                    listSkillWindow[listSkillWindow.Count - 1].DrawSkill(actor.SpriteSheets.SpriteIcon, skill.SkillName, skill.DescriptionBattle);
+                }
+                else
+                {
+                    listSkillWindow[skillWindowIndex].DrawSkill(actor.SpriteSheets.SpriteIcon, skill.SkillName, skill.DescriptionBattle);
+                }
+                skillWindowIndex += 1;
+            }
+        }
+
+        public void ActivateMinorSkills()
+        {
+            if (skillsToActivate.Count == 0)
+                return;
+
+            for (int i = 0; i < skillsToActivate.Count; i++)
+            {
+                if (skillsToActivate[i].BigAnimation == false)
+                {
+                    skillsToActivate[i].ApplySkill(doublageManager);
+                    skillsToActivate.RemoveAt(i);
+                    i -= 1;
+                }
+            }
+            minorSkillIndex = 0;
+            listSkillWindow[minorSkillIndex].ActivateFeedback();
+        }
+
+
+        // Appelé par Window Minor Skill Prefab suite à ActivateMinorSkills()
+        public void ActivateNextMinorSkill()
+        {
+            minorSkillIndex += 1;
+            if (minorSkillIndex == skillWindowIndex)
+            {
+                minorSkillIndex = 0;
+                return;
+            }
+            listSkillWindow[minorSkillIndex].ActivateFeedback();
+        }
+
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///   A P P L Y    S K I L L
 
@@ -301,20 +377,6 @@ namespace VoiceActing
 
 
 
-
-
-        /*public void CheckBuffs(List<Buff> buffs, SkillTarget skillTarget)
-        {
-            for (int i = 0; i < buffs.Count; i++)
-            {
-                buffs[i].Turn -= 1;
-                if (buffs[i].Turn == 0)
-                {
-                    //buffs[i].SkillEffectbuff.RemoveSkillEffect(skillTarget, actorsManager, enemyManager, doublageManager);
-                    buffs.RemoveAt(i);
-                }
-            }
-        }*/
 
 
 

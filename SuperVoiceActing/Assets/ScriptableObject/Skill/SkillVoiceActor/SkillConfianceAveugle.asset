@@ -64,6 +64,7 @@ MonoBehaviour:
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
+      restoreChipDamage: 0
       hpDamage: 0
       hpDamageVariance: 0
     skillEffectTurn:
@@ -75,10 +76,8 @@ MonoBehaviour:
     skillEffectResistance:
       resistancePercentage: 0
   producerCost: 0
-  afterStart: 0
-  afterAttack: 1
-  afterCritical: 0
-  afterKill: 0
+  activationTiming: 1
+  onlyWhenMain: 1
   phraseType:
     neutral: 0
     joy: 0
@@ -92,4 +91,5 @@ MonoBehaviour:
   hpInterval: {x: 0, y: 50}
   percentageActivation: 100
   onlyOnce: 1
+  bigAnimation: 1
   isMalus: 0

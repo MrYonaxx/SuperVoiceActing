@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "Apr\xE8s une attaque contenant <color=yellow>1 de Douceur</color>,
     D\xE9a \xE0  <color=yellow>20%</color> de chance de <color=yellow>soigner de 5%</color>
     toute l'\xE9quipe."
-  descriptionBattle: "Restaure 5% d'HP \xE0 tous les alli\xE9s"
+  descriptionBattle: HP + 5%
   skillType: 0
   buffData:
     turnActive: 0
@@ -39,7 +39,6 @@ MonoBehaviour:
     skillEffectEmotionStat:
       skillTarget: 0
       inPercentage: 0
-      statVariance: 0
       emotionStat:
         neutral: 0
         joy: 0
@@ -50,8 +49,8 @@ MonoBehaviour:
         sweetness: -10
         fear: 0
         trust: 0
+      statVariance: 0
     skillEffectEmotionDamage:
-      damageVariance: 0
       emotionDamage:
         neutral: 0
         joy: 0
@@ -62,9 +61,11 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+      damageVariance: 0
     skillEffectHealth:
       skillTarget: 1
       inPercentage: 1
+      restoreChipDamage: 0
       hpDamage: -5
       hpDamageVariance: 0
     skillEffectTurn:
@@ -76,10 +77,8 @@ MonoBehaviour:
     skillEffectResistance:
       resistancePercentage: 0
   producerCost: 0
-  afterStart: 0
-  afterAttack: 1
-  afterCritical: 0
-  afterKill: 0
+  activationTiming: 1
+  onlyWhenMain: 1
   phraseType:
     neutral: 0
     joy: 0
@@ -93,4 +92,5 @@ MonoBehaviour:
   hpInterval: {x: 0, y: 100}
   percentageActivation: 20
   onlyOnce: 0
+  bigAnimation: 0
   isMalus: 0
