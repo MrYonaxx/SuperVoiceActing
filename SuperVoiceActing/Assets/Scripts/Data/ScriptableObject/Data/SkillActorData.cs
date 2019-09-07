@@ -18,7 +18,8 @@ namespace VoiceActing
         AfterStart,
         AfterAttack,
         AfterCritical,
-        AfterKill
+        AfterKill,
+        AfterCardSelection
     }
 
     [CreateAssetMenu(fileName = "SkillActorData", menuName = "Skills/SkillActorData", order = 1)]
@@ -36,32 +37,6 @@ namespace VoiceActing
             get { return activationTiming; }
         }
 
-        /*private bool afterStart;
-        public bool AfterStart
-        {
-            get { return afterStart; }
-        }
-
-        [SerializeField]
-        private bool afterAttack;
-        public bool AfterAttack
-        {
-            get { return afterAttack; }
-        }
-
-        [SerializeField]
-        private bool afterCritical;
-        public bool AfterCritical
-        {
-            get { return afterCritical; }
-        }
-
-        [SerializeField]
-        private bool afterKill;
-        public bool AfterKill
-        {
-            get { return afterKill; }
-        }*/
         [SerializeField]
         private bool onlyWhenMain = true;
         public bool OnlyWhenMain
