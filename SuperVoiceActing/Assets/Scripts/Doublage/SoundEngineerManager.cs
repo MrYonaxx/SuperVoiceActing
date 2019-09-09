@@ -343,7 +343,7 @@ namespace VoiceActing
             if (skills[indexList].PackSelection)
                 emotionAttackManager.SelectPack(emotion);
             else
-                emotionAttackManager.SelectCard(emotion);
+                emotionAttackManager.SelectCard(emotion, false);
         }
 
 

@@ -437,36 +437,36 @@ namespace VoiceActing
 
 
         // sélectionne une carte avec un nom
-        public EmotionCard SelectCard(string emotion)
+        public EmotionCard SelectCard(string emotion, bool drawInfo = true)
         {
             if (comboCount == comboMax)
                 return null;
             switch (emotion)
             {
                 case "Joie":
-                    return SelectCard(Emotion.Joie);
+                    return SelectCard(Emotion.Joie, drawInfo);
                 case "Tristesse":
-                    return SelectCard(Emotion.Tristesse);
+                    return SelectCard(Emotion.Tristesse, drawInfo);
                 case "Dégoût":
-                    return SelectCard(Emotion.Dégoût);
+                    return SelectCard(Emotion.Dégoût, drawInfo);
                 case "Colère":
-                    return SelectCard(Emotion.Colère);
+                    return SelectCard(Emotion.Colère, drawInfo);
                 case "Surprise":
-                    return SelectCard(Emotion.Surprise);
+                    return SelectCard(Emotion.Surprise, drawInfo);
                 case "Douceur":
-                    return SelectCard(Emotion.Douceur);
+                    return SelectCard(Emotion.Douceur, drawInfo);
                 case "Peur":
-                    return SelectCard(Emotion.Peur);
+                    return SelectCard(Emotion.Peur, drawInfo);
                 case "Confiance":
-                    return SelectCard(Emotion.Confiance);
+                    return SelectCard(Emotion.Confiance, drawInfo);
                 case "Neutre":
-                    return SelectCard(Emotion.Neutre);
+                    return SelectCard(Emotion.Neutre, drawInfo);
             }
             return null;
         }
 
         // selectionne une carte et décale l'ordre de 1
-        public EmotionCard SelectCard(Emotion emotion)
+        public EmotionCard SelectCard(Emotion emotion, bool drawInfo)
         {
             if (comboCount == comboMax-1)
                 return null;
@@ -498,7 +498,8 @@ namespace VoiceActing
                             emotionCards[i].Cards[j] = null;
                         }
                     }
-                    DrawComboName();
+                    if(drawInfo == true)
+                        DrawComboName();
                     return comboCardEmotion[comboCount];
                 }
             }

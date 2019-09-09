@@ -26,6 +26,8 @@ namespace VoiceActing
         [SerializeField]
         Image imageEnemy;
         [SerializeField]
+        Image imageEnemyLower;
+        [SerializeField]
         Image imageEnemyEffect;
         [SerializeField]
         Animator spotEnemy;
@@ -41,10 +43,15 @@ namespace VoiceActing
         TextMeshProUGUI textSkillDescription;
         [SerializeField]
         TextMeshProUGUI textSkillDescriptionBattle;
+        [SerializeField]
+        TextMeshProUGUI textSkillInfluenceValue;
 
         [SerializeField]
         InputController input;
-
+        [SerializeField]
+        EmotionAttackManager emotionAttackManager;
+        [SerializeField]
+        CameraController cameraController;
 
         [Title("Best Stat Marker")]
         [SerializeField]
@@ -61,7 +68,8 @@ namespace VoiceActing
         List<Role> roles;
 
         int indexCurrentRole = 0;
-        private SkillData currentAttack = null;
+        int currentAttackInfluence;
+        private SkillRoleData currentAttack = null;
         private SkillManager skillManager = null;
 
         #endregion
@@ -128,7 +136,7 @@ namespace VoiceActing
             {
                 if (roles[indexCurrentRole].RoleAI[i].CheckEnemyAI(phase, line, turn, enemyHP))
                 {
-                    currentAttack = roles[indexCurrentRole].RoleAI[i].Skills[Random.Range(0, roles[indexCurrentRole].RoleAI[i].Skills.Length)];
+                    currentAttack = (SkillRoleData) roles[indexCurrentRole].RoleAI[i].Skills[Random.Range(0, roles[indexCurrentRole].RoleAI[i].Skills.Length)];
                     if (currentAttack != null)
                     {
                         readyToAttack = true;
@@ -173,24 +181,26 @@ namespace VoiceActing
                 firstTime = true;
             }
             enemyAttack.SetBool("Appear", true);
-            enemyAttackFace.SetBool("Appear", true);
+            enemyAttackFace.SetTrigger("Appear");
             imageEnemy.sprite = roles[indexCurrentRole].RoleSprite;
+            imageEnemyLower.sprite = roles[indexCurrentRole].RoleSprite;
             imageEnemyEffect.sprite = roles[indexCurrentRole].RoleSprite;
             textSkillName.text = currentAttack.SkillName;
             textSkillDescription.text = currentAttack.Description;
             textSkillDescriptionBattle.text = currentAttack.DescriptionBattle;
-            //StartCoroutine(WaitInput(60));
+            if(currentAttack.InfluenceValue > 0)
+            {
+                currentAttackInfluence = currentAttack.InfluenceValue;
+                currentAttackInfluence += Random.Range(-currentAttack.InfluenceRandom, currentAttack.InfluenceRandom);
+            }
+            else
+            {
+                currentAttackInfluence = roles[indexCurrentRole].Defense * currentAttack.InfluenceMultiplier;
+                currentAttackInfluence += Random.Range(-currentAttack.InfluenceRandom, currentAttack.InfluenceRandom);
+            }
+            textSkillInfluenceValue.text = currentAttackInfluence.ToString();
         }
 
-        private IEnumerator WaitInput(int time = 30)
-        {
-            while(time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
-            ActivateInput();
-        }
 
         // Appelé via l'animator enemyAttackFace
         public void ActivateInput()
@@ -201,11 +211,23 @@ namespace VoiceActing
 
         public void StopEnemyActivation()
         {
-
+            cameraController.EnemySkillCancel();
             skillManager.ApplySkill(currentAttack);
             input.gameObject.SetActive(false);
             enemyAttack.SetBool("Appear", false);
-            enemyAttackFace.SetBool("Appear", false);
+            enemyAttackFace.SetTrigger("Disappear");
+            spotEnemy.SetBool("Appear", false);
+        }
+
+
+        public void EnemyAttackCounter()
+        {
+            cameraController.EnemySkillCounter();
+
+            input.gameObject.SetActive(false);
+            enemyAttackFace.SetTrigger("Counter");
+
+            enemyAttack.SetBool("Appear", false);
             spotEnemy.SetBool("Appear", false);
         }
 
@@ -216,10 +238,48 @@ namespace VoiceActing
 
 
 
+        public void SelectEmotion(string emotion)
+        {
+            EmotionCard card = emotionAttackManager.SelectCard(emotion, false);
+            if (card != null)
+            {
+                currentAttackInfluence -= card.GetStat();
+                if (currentAttackInfluence <= 0)
+                {
+                    //currentAttackInfluence = 0;
+                    enemyAttackFace.ResetTrigger("UnSlice");
+                    enemyAttackFace.SetTrigger("Slice");
+                }
+                textSkillInfluenceValue.text = currentAttackInfluence.ToString();
+            }
+        }
 
+        public void RemoveCard()
+        {
+            EmotionCard card = emotionAttackManager.RemoveCard();
+            if (card != null)
+            {
+                currentAttackInfluence += card.GetStat();
+                if (currentAttackInfluence > 0)
+                {
+                    enemyAttackFace.ResetTrigger("Slice");
+                    enemyAttackFace.SetTrigger("UnSlice");
+                }
+            }
+            textSkillInfluenceValue.text = currentAttackInfluence.ToString();
+        }
 
-
-
+        public void Defence()
+        {
+            if (currentAttackInfluence > 0)
+            {
+                StopEnemyActivation();
+            }
+            else
+            {
+                EnemyAttackCounter();
+            }
+        }
 
 
 

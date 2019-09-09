@@ -56,6 +56,10 @@ namespace VoiceActing
         CameraMovementData[] cameraMovementSoundEngi;
         [SerializeField]
         CameraMovementData[] cameraMovementEndSequence;
+        [SerializeField]
+        CameraMovementData cameraMovementRoleAttack;
+        [SerializeField]
+        CameraMovementData cameraMovementRoleCounter;
 
         [Space]
         [SerializeField]
@@ -573,7 +577,24 @@ namespace VoiceActing
                 StopCoroutine(movCoroutine);
 
             noCameraEffect = true;
-            CameraMovement(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
+            CameraDataMovement(cameraMovementRoleAttack);
+            //CameraMovement(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
+            /*RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
+            MoveCamera(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, 40);
+            RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 600);*/
+        }
+
+        [ContextMenu("enemySkill")]
+        public void EnemySkillCounter()
+        {
+            //StartCoroutine(MoveTextCoroutine(textAttackPosition.position.x, textAttackPosition.position.y, textAttackPosition.position.z, 40));
+            if (movCoroutine != null)
+                StopCoroutine(movCoroutine);
+
+            cameraPlacement = 0;
+            noCameraEffect = false;
+            CameraDataMovement(cameraMovementRoleCounter);
+            //CameraMovement(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
             /*RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
             MoveCamera(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, 40);
             RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 600);*/

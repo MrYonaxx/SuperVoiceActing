@@ -114,19 +114,6 @@ namespace VoiceActing
             get { return skillType; }
         }
 
-        /*[Space]
-        [Space]
-        [Title("Target")]
-        [SerializeField]
-        [HorizontalGroup]
-        [HideLabel]
-        private SkillTarget skillTarget;
-        public SkillTarget SkillTarget
-        {
-            get { return skillTarget; }
-        }*/
-
-
         [Space]
         [Space]
         [ShowIf("skillType", SkillType.Buff)]

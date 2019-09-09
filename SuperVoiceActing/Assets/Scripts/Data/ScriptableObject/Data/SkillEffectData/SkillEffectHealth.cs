@@ -29,7 +29,10 @@ namespace VoiceActing
         [SerializeField]
         int hpDamageVariance;
 
+        /*public override void PreviewSkill(DoublageManager doublageManager)
+        {
 
+        }*/
 
 
         public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
@@ -85,45 +88,6 @@ namespace VoiceActing
 
 
 
-
-
-
-        /*public override void RemoveSkillEffect(SkillTarget skill, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
-        {
-            int currentHP = 0;
-            float damage = 0;
-            switch (skill)
-            {
-                case SkillTarget.VoiceActor:
-                    if (inPercentage == true)
-                    {
-                        currentHP = actorsManager.GetCurrentActorHPMax();
-                        damage = currentHP * (hpDamage / 100f);
-                    }
-                    else
-                    {
-                        damage = hpDamage;
-                    }
-                    damage += Random.Range(-hpDamageVariance, hpDamageVariance);
-                    actorsManager.ActorTakeDamage((int)-damage);
-                    break;
-
-
-                case SkillTarget.Sentence:
-                    if (inPercentage == true)
-                    {
-                        currentHP = enemyManager.GetHpMax();
-                        damage = currentHP * (hpDamage / 100f);
-                    }
-                    else
-                    {
-                        damage = hpDamage;
-                    }
-                    damage += Random.Range(-hpDamageVariance, hpDamageVariance);
-                    enemyManager.SetHp(enemyManager.GetHp() + (int)damage);
-                    break;
-            }
-        }*/
 
 
 

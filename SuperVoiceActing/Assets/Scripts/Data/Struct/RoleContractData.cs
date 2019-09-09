@@ -117,6 +117,22 @@ namespace VoiceActing
             get { return atkMax; }
         }
 
+        [VerticalGroup("RoleStat/Data/Middle")]
+        [SerializeField]
+        private int defMin;
+        public int DefMin
+        {
+            get { return defMin; }
+        }
+        [VerticalGroup("RoleStat/Data/Right")]
+        [HideLabel]
+        [SerializeField]
+        private int defMax;
+        public int DefMax
+        {
+            get { return defMax; }
+        }
+
         [MinMaxSlider(-10, 10)]
         [SerializeField]
         [HorizontalGroup("RoleStat/Timbre")]
