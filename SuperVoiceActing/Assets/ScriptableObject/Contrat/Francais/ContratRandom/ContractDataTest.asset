@@ -32,7 +32,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Lia
-      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
       lineMin: 0
       lineMax: 0
       fanMin: 0
@@ -63,8 +63,19 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 5
-      actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
+      actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
       artificialIntelligence:
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 0
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
       - memo: 
         startPhrase: 0
         startAttack: 0
@@ -75,7 +86,7 @@ MonoBehaviour:
           mathOperator: 0
           conditionValue: 1
         skills:
-        - {fileID: 11400000, guid: 7aa1838180444fa4fb227dfd709db4ff, type: 2}
+        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
@@ -150,7 +161,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
+      actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
       artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []

@@ -24,10 +24,10 @@ namespace VoiceActing
 
 
         // Remove les effets généraux lié aux acteurs/phrases
-        /*public virtual void RemoveSkillEffect(SkillTarget skillTarget, ActorsManager actorsManager, EnemyManager enemyManager, DoublageManager doublageManager)
+        public virtual void RemoveSkillEffect(DoublageManager doublageManager)
         {
 
-        }*/
+        }
 
         // Remove les effets lié aux actors
         public virtual void RemoveSkillEffectActor(VoiceActor card)

@@ -41,13 +41,15 @@ MonoBehaviour:
       - Richard
       - Simon
       - Trevor
-      roleSprite: {fileID: 0}
+      roleSprite: {fileID: 21300000, guid: 1eba9f3f71db5964880d475872f98dd7, type: 3}
       lineMin: 50
       lineMax: 100
       fanMin: 400
       fanMax: 800
       atkMin: 7
       atkMax: 14
+      defMin: 5
+      defMax: 8
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -78,13 +80,15 @@ MonoBehaviour:
     - names:
       - Seigneur Vampire
       - Vampire
-      roleSprite: {fileID: 0}
+      roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
       lineMin: 50
       lineMax: 100
       fanMin: 500
       fanMax: 1800
       atkMin: 10
       atkMax: 18
+      defMin: 6
+      defMax: 10
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -108,7 +112,48 @@ MonoBehaviour:
         fear: 0
         trust: 30
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 2
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 3
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
+        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 6
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
+        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
+        - {fileID: 0}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 2
+          conditionValue: 9
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
+        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
+        - {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:

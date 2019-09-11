@@ -173,7 +173,13 @@ namespace VoiceActing
         }
 
 
-
+        public void RemoveSkill(DoublageManager doublageManager)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(doublageManager);
+            }
+        }
 
 
         public void ManualTarget(Emotion[] emotion, bool selectionByPack)

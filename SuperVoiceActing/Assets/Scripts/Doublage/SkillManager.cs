@@ -164,7 +164,7 @@ namespace VoiceActing
 
         // Aucune gestion de priorité, càd que on check tout les skills en même temps, pas les un après les autres. peut enlever certains combos.
 
-        public void CheckSkillCondition(List<VoiceActor> voiceActors, List<SkillActiveTiming> phases, EmotionCard[] emotions, bool minorSkill) 
+        public void CheckSkillCondition(List<VoiceActor> voiceActors, List<SkillActiveTiming> phases, Emotion[] emotions, bool minorSkill) 
         {
             bool next = false;
             bool currentMainActor = false;
@@ -223,7 +223,7 @@ namespace VoiceActing
             animationPotentiel.SetBool("isMalus", skill.IsMalus);
         }
 
-        private bool CheckAttackType(EmotionCard[] emotions, EmotionStat emotionCheck)
+        private bool CheckAttackType(Emotion[] emotions, EmotionStat emotionCheck)
         {
             EmotionStat attackCheck = new EmotionStat(emotionCheck.Joy, emotionCheck.Sadness, emotionCheck.Disgust, emotionCheck.Anger,
                                                       emotionCheck.Surprise, emotionCheck.Sweetness, emotionCheck.Fear, emotionCheck.Trust
@@ -232,11 +232,11 @@ namespace VoiceActing
             {
                 for (int i = 0; i < emotions.Length; i++)
                 {
-                    if (emotions[i] == null)
+                    /*if (emotions[i] == null)
                     {
                         continue;
-                    }
-                    attackCheck.Add((int)emotions[i].GetEmotion(), -1);
+                    }*/
+                    attackCheck.Add((int)emotions[i], -1);
                 }
             }
             if (attackCheck.Neutral > 0) return false;
@@ -366,6 +366,16 @@ namespace VoiceActing
         public void ApplySkill(SkillData skill)
         {
             skill.ApplySkill(doublageManager);
+        }
+
+        public void RemoveSkill(SkillData skill)
+        {
+            skill.RemoveSkill(doublageManager);
+        }
+
+        public void RemoveSkillEffect(SkillEffectData skillEffect)
+        {
+            skillEffect.RemoveSkillEffect(doublageManager);
         }
 
         public void ForceSkill(SkillActorData skill)

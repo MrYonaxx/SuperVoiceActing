@@ -158,7 +158,11 @@ namespace VoiceActing
         protected int turnCount = 15;
         protected int killCount = 0;
 
+
+        // Y'a un truc qui va pas là, y'a doublon
         protected EmotionCard[] lastAttack = null;
+        protected Emotion[] lastAttackEmotion = null;
+
 
 
 
@@ -180,6 +184,10 @@ namespace VoiceActing
         public ActorsManager ActorsManager
         {
             get { return actorsManager; }
+        }
+        public RoleManager RolesManager
+        {
+            get { return roleManager; }
         }
 
         #endregion
@@ -343,6 +351,18 @@ namespace VoiceActing
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Card =================================================================
+        // Appelé par les boutons
+        public void SelectCard(int emotion)
+        {
+            EmotionCard card = emotionAttackManager.SelectCard((Emotion) emotion, true);
+            if (card != null)
+            {
+                AudioManager.Instance.PlaySound(audioClipAttack2);
+                actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                toneManager.HighlightTone(card.GetEmotion(), true);
+            }
+        }
+
         public void SelectCard(string emotion)
         {
             EmotionCard card = emotionAttackManager.SelectCard(emotion);
@@ -400,6 +420,7 @@ namespace VoiceActing
             HideUIButton();
 
             lastAttack = emotionAttackManager.GetComboEmotionCard();
+            lastAttackEmotion = emotionAttackManager.GetComboEmotion();
             textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, 
                                                                       textAppearManager.GetWordSelected(), 
                                                                       actorsManager.GetCurrentActorDamageVariance()),
@@ -409,7 +430,7 @@ namespace VoiceActing
             if (actorsManager.GetCurrentActorHP() == 0)
             {
                 AudioManager.Instance.StopMusic(300);
-                textAppearManager.SetLetterSpeed(12);
+                textAppearManager.SetLetterSpeed(8);
             }
 
             emotionAttackManager.CardAttack();
@@ -519,13 +540,14 @@ namespace VoiceActing
             }
 
             // Check Skill ========================================================================
+            Debug.Log(lastAttack[0]);
             List<SkillActiveTiming> activeTimings = new List<SkillActiveTiming> {SkillActiveTiming.AfterAttack };
             if (enemyManager.GetLastAttackCritical() == true)
                 activeTimings.Add(SkillActiveTiming.AfterCritical);
             if (enemyManager.GetHpPercentage() == 0)
                 activeTimings.Add(SkillActiveTiming.AfterKill);
 
-            skillManager.CheckSkillCondition(contrat.VoiceActors, activeTimings, lastAttack, false);
+            skillManager.CheckSkillCondition(contrat.VoiceActors, activeTimings, lastAttackEmotion, false);
 
             yield return skillManager.ActivateBigSkill();
 
@@ -607,7 +629,7 @@ namespace VoiceActing
                 inputController.gameObject.SetActive(true);
                 actorsManager.CheckBuffsActors();
                 actorsManager.CheckBuffsCards();
-                actorsManager.DrawBuffIcon();
+                RolesManager.CheckBuffsRoles();
                 ShowUIButton(buttonUIA);
                 ShowUIButton(buttonUIB);
                 if (enemyManager.GetHpPercentage() == 0)
@@ -772,7 +794,7 @@ namespace VoiceActing
             if (intro == true)
             {
                 //lastAttack[0] = Emotion.Neutre;
-                skillManager.CheckSkillCondition(contrat.VoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttack, false);
+                skillManager.CheckSkillCondition(contrat.VoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttackEmotion, false);
                 yield return skillManager.ActivateBigSkill();
                 intro = false;
                 yield return new WaitForSeconds(0.5f);

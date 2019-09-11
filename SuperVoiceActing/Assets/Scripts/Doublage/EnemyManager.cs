@@ -450,7 +450,10 @@ namespace VoiceActing
 
 
         int lastAttackScore = 0;
+        float criticalMultiplier = 0.25f;
+
         bool lastAttackCritical = false;
+        bool damageOnlyCritical = false;
 
         #endregion
 
@@ -507,6 +510,11 @@ namespace VoiceActing
         public bool GetLastAttackCritical()
         {
             return lastAttackCritical;
+        }
+
+        public void SetDamageOnlyCritical(bool b)
+        {
+            damageOnlyCritical = b;
         }
 
         #endregion
@@ -588,10 +596,15 @@ namespace VoiceActing
             totalDamage = normalDamage * ((100 + multiplier) / 100f);
             totalDamage += ApplyWordBonus(totalDamage, word);
             totalDamage += Random.Range(-damageVariance, damageVariance+1);
-            if(totalDamage <= 0)
+
+            if (damageOnlyCritical == true && lastAttackCritical == false)
             {
-                totalDamage = 1;
+                NullifyFeedback();
+                return 100 - ((float)enemyHP / (float)enemyHPMax) * 100;
             }
+
+            if (totalDamage <= 0)
+                totalDamage = 1;
 
             lastAttackScore = multiplier + (int)(totalDamage / 10);
 
@@ -622,7 +635,7 @@ namespace VoiceActing
             {
                 if (word == enemyWeakPoints[i].WordIndex)
                 {
-                    bonusDamage = totalDamage * 0.25f;
+                    bonusDamage = totalDamage * criticalMultiplier;
                     lastAttackCritical = true;
                     if (criticalFeedback != null)
                     {
@@ -811,6 +824,12 @@ namespace VoiceActing
                     return;
                 }
             }
+        }
+
+
+        public void NullifyFeedback()
+        {
+
         }
 
 

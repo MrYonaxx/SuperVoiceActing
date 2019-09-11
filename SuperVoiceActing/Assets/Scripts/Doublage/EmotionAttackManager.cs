@@ -355,6 +355,20 @@ namespace VoiceActing
             return emotionCards;
         }
 
+        public void DestroyCombo()
+        {
+            for(int i = 0; i < comboCardEmotion.Length; i++)
+            {
+                if (comboCardEmotion[i] != null)
+                {
+                    Destroy(comboCardEmotion[i].gameObject);
+                    comboCardEmotion[i] = null;
+                    comboEmotion[i] = Emotion.Neutre;
+                    comboCount -= 1;
+                }
+            }
+        }
+
         public void AddComboMax(int addComboMax)
         {
             comboMax += addComboMax;
@@ -666,7 +680,13 @@ namespace VoiceActing
 
 
 
-
+        public void ComboAnimationRoleDescription(bool show)
+        {
+            if(show == true)
+                animatorCombo.SetTrigger("ShowRole");
+            else
+                animatorCombo.SetTrigger("HideRole");
+        }
 
         public void CardAttack()
         {

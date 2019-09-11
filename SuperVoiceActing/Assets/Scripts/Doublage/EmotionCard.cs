@@ -6,6 +6,7 @@
 ******************************************************************/
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the EmotionCard class
     /// </summary>
-    public class EmotionCard : MonoBehaviour
+    public class EmotionCard : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         #region Attributes 
 
@@ -25,11 +26,12 @@ namespace VoiceActing
         \* ======================================== */
 
         private IEnumerator coroutine = null;
+        [SerializeField]
         private RectTransform rectTransform;
-        private Image image;
-
         [SerializeField]
         Image imageCard;
+
+        [Space]
         [SerializeField]
         TextMeshProUGUI textStat;
         [SerializeField]
@@ -54,6 +56,9 @@ namespace VoiceActing
         private float damagePercentage = 1;
 
         private List<Buff> buffs = new List<Buff>();
+
+        [SerializeField]
+        UnityEventInt clickEvent;
 
 
         #endregion
@@ -97,12 +102,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        private void Start()
-        {
-            rectTransform = GetComponent<RectTransform>();
-            image = GetComponent<Image>();
-        }
-
         public void SetEmotion(Emotion emo)
         {
             emotion = emo;
@@ -124,9 +123,9 @@ namespace VoiceActing
         {
             this.transform.SetParent(newTransform);
             rectTransform.localScale = new Vector3(1, 1, 1);
+
             if (coroutine != null)
                 StopCoroutine(coroutine);
-
             coroutine = MoveToOrigin(speed);
             StartCoroutine(coroutine);
         }
@@ -148,8 +147,8 @@ namespace VoiceActing
             {
                 feedback.transform.position = this.transform.position;//.anchoredPosition;
                 feedback.rectTransform.localScale = this.rectTransform.localScale;
-                feedback.sprite = image.sprite;
-                feedback.color = image.color;
+                feedback.sprite = imageCard.sprite;
+                feedback.color = imageCard.color;
                 StartCoroutine(FeedbackCoroutine(feedback, 20));
             }
         }
@@ -304,6 +303,21 @@ namespace VoiceActing
                     statBonus[i].gameObject.SetActive(false);
                 }
             }
+        }
+
+        public void OnPointerClick(PointerEventData pointer)
+        {
+            clickEvent.Invoke((int)emotion);
+        }
+
+        public void OnPointerEnter(PointerEventData pointer)
+        {
+            imageCard.color = Color.black;
+        }
+
+        public void OnPointerExit(PointerEventData pointer)
+        {
+            imageCard.color = Color.white;
         }
 
         #endregion

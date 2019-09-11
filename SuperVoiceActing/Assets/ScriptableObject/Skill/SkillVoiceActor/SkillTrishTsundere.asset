@@ -23,18 +23,18 @@ MonoBehaviour:
     addBuffTurn: 0
     canAddMultiple: 0
   skillEffects:
-  - eventNode: 1
+  - eventNode: 0
     skillEffectCardGain:
       cardGain:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 1
+        sadness: 1
+        disgust: 1
+        anger: 1
+        surprise: 1
+        sweetness: 1
+        fear: 1
+        trust: 1
     skillEffectEmotionStat:
       skillTarget: 1
       inPercentage: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
     fear: 0
     trust: 0
   hpInterval: {x: 0, y: 100}
-  percentageActivation: 50
+  percentageActivation: 100
   onlyOnce: 0
   bigAnimation: 0
   isMalus: 0

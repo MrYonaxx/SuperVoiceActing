@@ -42,8 +42,6 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textSkillDescription;
         [SerializeField]
-        TextMeshProUGUI textSkillDescriptionBattle;
-        [SerializeField]
         TextMeshProUGUI textSkillInfluenceValue;
 
         [SerializeField]
@@ -62,6 +60,12 @@ namespace VoiceActing
         RectTransform secondBestStatIcon;
 
 
+        [Space]
+        [SerializeField]
+        Image[] currentRoleBuff;
+        [SerializeField]
+        TextMeshProUGUI[] currentRoleBuffTimer;
+
         bool firstTime = false;
         bool readyToAttack = false;
 
@@ -71,6 +75,8 @@ namespace VoiceActing
         int currentAttackInfluence;
         private SkillRoleData currentAttack = null;
         private SkillManager skillManager = null;
+
+        int[] roleInfluenceBonus = { 0, 0, 0 };
 
         #endregion
 
@@ -89,6 +95,11 @@ namespace VoiceActing
         public int GetRoleAttack()
         {
             return roles[indexCurrentRole].Attack;
+        }
+
+        public List<Buff> GetBuffList()
+        {
+            return roles[indexCurrentRole].Buffs;
         }
 
         #endregion
@@ -116,6 +127,106 @@ namespace VoiceActing
             roles[indexCurrentRole].RolePerformance += lastAttackScore;
             roles[indexCurrentRole].RoleBestScore += lastBestScore;
         }
+
+
+        public int GetCurrentRoleDefense()
+        {
+            return roles[indexCurrentRole].Defense;
+        }
+
+        public void AddRoleBonus(int value)
+        {
+            roleInfluenceBonus[indexCurrentRole] += value;
+        }
+
+
+
+
+
+        public bool AddBuff(Buff buff)
+        {
+            for (int i = 0; i < roles[indexCurrentRole].Buffs.Count; i++)
+            {
+                if (roles[indexCurrentRole].Buffs[i].SkillEffectbuff == buff.SkillEffectbuff)
+                {
+                    if (buff.BuffData.CanAddMultiple == false)
+                    {
+                        if (buff.BuffData.Refresh == true)
+                        {
+                            roles[indexCurrentRole].Buffs[i].Turn = buff.BuffData.TurnActive;
+                        }
+                        else if (buff.BuffData.AddBuffTurn == true)
+                        {
+                            roles[indexCurrentRole].Buffs[i].Turn += buff.BuffData.TurnActive;
+                        }
+                        return false;
+                    }
+                }
+            }
+            roles[indexCurrentRole].Buffs.Add(buff);
+            DrawBuffIcon();
+            return true;
+        }
+
+        public void DrawBuffIcon()
+        {
+            for (int i = 0; i < currentRoleBuff.Length; i++)
+            {
+                if (i < roles[indexCurrentRole].Buffs.Count)
+                {
+                    currentRoleBuff[i].gameObject.SetActive(true);
+                    if (roles[indexCurrentRole].Buffs[i].Turn < 0)
+                    {
+                        currentRoleBuffTimer[i].text = "";
+                    }
+                    else
+                    {
+                        currentRoleBuffTimer[i].text = roles[indexCurrentRole].Buffs[i].Turn.ToString();
+                    }
+                }
+                else
+                {
+                    currentRoleBuff[i].gameObject.SetActive(false);
+                }
+            }
+        }
+
+
+
+        public void CheckBuffsRoles()
+        {
+            for (int i = 0; i < roles.Count; i++)
+            {
+                for (int j = 0; j < roles[i].Buffs.Count; j++)
+                {
+                    roles[i].Buffs[j].Turn -= 1;
+                    if (roles[i].Buffs[j].Turn == 0)
+                    {
+                        skillManager.RemoveSkillEffect(roles[i].Buffs[j].SkillEffectbuff);
+                        roles[i].Buffs.RemoveAt(j);
+                        j -= 1;
+                    }
+                }
+            }
+            DrawBuffIcon();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -187,18 +298,18 @@ namespace VoiceActing
             imageEnemyEffect.sprite = roles[indexCurrentRole].RoleSprite;
             textSkillName.text = currentAttack.SkillName;
             textSkillDescription.text = currentAttack.Description;
-            textSkillDescriptionBattle.text = currentAttack.DescriptionBattle;
             if(currentAttack.InfluenceValue > 0)
             {
-                currentAttackInfluence = currentAttack.InfluenceValue;
+                currentAttackInfluence = currentAttack.InfluenceValue + roleInfluenceBonus[indexCurrentRole];
                 currentAttackInfluence += Random.Range(-currentAttack.InfluenceRandom, currentAttack.InfluenceRandom);
             }
             else
             {
-                currentAttackInfluence = roles[indexCurrentRole].Defense * currentAttack.InfluenceMultiplier;
+                currentAttackInfluence = (roles[indexCurrentRole].Defense + roleInfluenceBonus[indexCurrentRole]) * currentAttack.InfluenceMultiplier;
                 currentAttackInfluence += Random.Range(-currentAttack.InfluenceRandom, currentAttack.InfluenceRandom);
             }
             textSkillInfluenceValue.text = currentAttackInfluence.ToString();
+            emotionAttackManager.ComboAnimationRoleDescription(false);
         }
 
 
@@ -217,18 +328,25 @@ namespace VoiceActing
             enemyAttack.SetBool("Appear", false);
             enemyAttackFace.SetTrigger("Disappear");
             spotEnemy.SetBool("Appear", false);
+            emotionAttackManager.ComboAnimationRoleDescription(true);
+            enemyAttack.ResetTrigger("HideDescription");
+            enemyAttack.ResetTrigger("ShowDescription");
         }
 
 
         public void EnemyAttackCounter()
         {
             cameraController.EnemySkillCounter();
+            emotionAttackManager.ResetCard();
+            emotionAttackManager.SwitchCardTransformToRessource();
 
             input.gameObject.SetActive(false);
             enemyAttackFace.SetTrigger("Counter");
 
             enemyAttack.SetBool("Appear", false);
             spotEnemy.SetBool("Appear", false);
+            enemyAttack.ResetTrigger("HideDescription");
+            enemyAttack.ResetTrigger("ShowDescription");
         }
 
 
@@ -252,6 +370,11 @@ namespace VoiceActing
                 }
                 textSkillInfluenceValue.text = currentAttackInfluence.ToString();
             }
+            if (emotionAttackManager.GetComboCount() == 0)
+            {
+                enemyAttack.SetTrigger("HideDescription");
+                emotionAttackManager.ComboAnimationRoleDescription(true);
+            }
         }
 
         public void RemoveCard()
@@ -265,19 +388,25 @@ namespace VoiceActing
                     enemyAttackFace.ResetTrigger("Slice");
                     enemyAttackFace.SetTrigger("UnSlice");
                 }
+                textSkillInfluenceValue.text = currentAttackInfluence.ToString();
             }
-            textSkillInfluenceValue.text = currentAttackInfluence.ToString();
+            if (emotionAttackManager.GetComboCount() == -1)
+            {
+                enemyAttack.SetTrigger("ShowDescription");
+                emotionAttackManager.ComboAnimationRoleDescription(false);
+            }
         }
 
         public void Defence()
         {
-            if (currentAttackInfluence > 0)
+            if (emotionAttackManager.GetComboCount() == -1)
             {
                 StopEnemyActivation();
             }
-            else
+            else if (currentAttackInfluence <= 0)
             {
                 EnemyAttackCounter();
+                emotionAttackManager.DestroyCombo();
             }
         }
 
