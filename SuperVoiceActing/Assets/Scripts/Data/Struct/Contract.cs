@@ -22,7 +22,7 @@ namespace VoiceActing
         {
             for(int i = 0; i< emotions.Length; i++)
             {
-                if(i > combo.Length)
+                if(i >= combo.Length)
                 {
                     emotions[i] = Emotion.Neutre;
                 }

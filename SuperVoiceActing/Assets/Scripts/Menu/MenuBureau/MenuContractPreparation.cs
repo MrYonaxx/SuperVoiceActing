@@ -54,6 +54,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleCadence;
         [SerializeField]
+        TextMeshProUGUI textRoleInfluence;
+        [SerializeField]
         RectTransform transformRoleTimbre;
 
         [Header("InfoActeur")]
@@ -274,6 +276,7 @@ namespace VoiceActing
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
             textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();
             textRoleCadence.text = currentContract.Characters[indexSelected].Attack.ToString();
+            textRoleInfluence.text = currentContract.Characters[indexSelected].Defense.ToString();
             if (currentContract.Characters[indexSelected].RoleSprite != null)
             {
                 roleSprite.enabled = true;

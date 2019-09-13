@@ -30,7 +30,12 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleCadence;
         [SerializeField]
+        TextMeshProUGUI textRoleInfluence;
+        [SerializeField]
         RectTransform transformTimbre;
+
+        [SerializeField]
+        Image roleFace;
 
         [Header("")]
 
@@ -75,6 +80,17 @@ namespace VoiceActing
             textRoleFan.text = role.Fan.ToString();
             textRoleLine.text = role.Line.ToString();
             textRoleCadence.text = role.Attack.ToString();
+            textRoleInfluence.text = role.Defense.ToString();
+
+            if(role.RoleSprite == null)
+            {
+                roleFace.enabled = false;
+            }
+            else
+            {
+                roleFace.enabled = true;
+                roleFace.sprite = role.RoleSprite;
+            }
 
             transformTimbre.anchorMin = new Vector2((role.Timbre.x + 10) / 20f, 0);
             transformTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 1);

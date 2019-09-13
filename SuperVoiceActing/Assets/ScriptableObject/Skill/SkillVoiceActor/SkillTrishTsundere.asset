@@ -23,7 +23,7 @@ MonoBehaviour:
     addBuffTurn: 0
     canAddMultiple: 0
   skillEffects:
-  - eventNode: 0
+  - eventNode: 1
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -75,6 +75,11 @@ MonoBehaviour:
       secondEmotion: 0
     skillEffectResistance:
       resistancePercentage: 0
+    skillEffectInfluenceBonus:
+      inPercentage: 0
+      influenceBonus: 0
+    skillEffectState:
+      state: 0
   producerCost: 0
   activationTiming: 1
   onlyWhenMain: 0
@@ -89,7 +94,7 @@ MonoBehaviour:
     fear: 0
     trust: 0
   hpInterval: {x: 0, y: 100}
-  percentageActivation: 100
+  percentageActivation: 50
   onlyOnce: 0
   bigAnimation: 0
   isMalus: 0
