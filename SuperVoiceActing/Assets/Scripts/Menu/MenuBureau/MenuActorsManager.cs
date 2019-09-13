@@ -91,6 +91,8 @@ namespace VoiceActing
         [SerializeField]
         RectTransform[] jaugeStatsActor;
         [SerializeField]
+        RectTransform[] jaugeStatsVoxographyActor;
+        [SerializeField]
         TextMeshProUGUI[] textStatsRole;
         [SerializeField]
         RectTransform[] jaugeStatsRole;
@@ -135,8 +137,6 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleLine;
         [SerializeField]
-        TextMeshProUGUI textRoleCostEstimate;
-        [SerializeField]
         Image imageContractIcon;
         [SerializeField]
         MenuContractMoney menuContractMoney;
@@ -178,6 +178,8 @@ namespace VoiceActing
         MenuActorsAudition menuActorsAudition;
         [SerializeField]
         SortManager sortManager;
+        [SerializeField]
+        MenuVoxography menuVoxography;
 
         private List<ButtonVoiceActor> buttonsActors = new List<ButtonVoiceActor>();
 
@@ -470,6 +472,7 @@ namespace VoiceActing
 
                     textStatsActor[i].text = currentStatActor.ToString();
                     StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
+                    //DrawVoxographyBonusStat(jaugeStatsVoxographyActor[i], currentStatActor / 100f, actor.StatVoxography.GetEmotion(i + 1) / 100f);
                 }
                 else
                 {
@@ -568,7 +571,6 @@ namespace VoiceActing
             {
                 yield break;
             }
-
             Vector3 speed = new Vector3((target - jaugeStat.transform.localScale.x) / time, 0, 0);
             while (time != 0)
             {
@@ -576,6 +578,13 @@ namespace VoiceActing
                 jaugeStat.transform.localScale += speed;
                 yield return null;
             }
+        }
+
+        private void DrawVoxographyBonusStat(RectTransform jaugeStatBonus, float target, float targetScale)
+        {
+            jaugeStatBonus.anchoredPosition = new Vector2(50 + (target * 500), jaugeStatBonus.anchoredPosition.y);
+            jaugeStatBonus.transform.localScale = new Vector3(targetScale, jaugeStatBonus.transform.localScale.y, jaugeStatBonus.transform.localScale.z);
+            
         }
 
 
@@ -788,7 +797,7 @@ namespace VoiceActing
             if (actorsList[indexActorSelected].Availability == false)
                 return;
 
-            animatorFeedbackButtonAudition.SetTrigger("Feedback");
+            //animatorFeedbackButtonAudition.SetTrigger("Feedback");
             statImageActorAnimator.SetTrigger("Feedback");
             animatorSelection.SetTrigger("Validate");
             StartCoroutine(WaitFeedback());
@@ -837,6 +846,10 @@ namespace VoiceActing
             {
                 menuActorsAudition.IncreaseBudget();
             }
+            else
+            {
+                ShowVoxographyMenu(true);
+            }
         }
 
         public void ReduceAuditionBudget()
@@ -845,8 +858,19 @@ namespace VoiceActing
             {
                 menuActorsAudition.ReduceBudget();
             }
+            else
+            {
+                ShowVoxographyMenu(true);
+            }
         }
 
+        public void ShowVoxographyMenu(bool b)
+        {
+            menuVoxography.ShowVoxographyPanel(b);
+            inputController.gameObject.SetActive(!b);
+            if (b == true)
+                menuVoxography.DrawVoxography(actorsList[indexActorSelected].Voxography);
+        }
 
         public void ShowSortMenu()
         {

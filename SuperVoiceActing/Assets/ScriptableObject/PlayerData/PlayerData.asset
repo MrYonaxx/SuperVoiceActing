@@ -68,6 +68,7 @@ MonoBehaviour:
     characters: []
     voiceActors: []
     textData: []
+    emotionsUsed: []
     eventData: []
     expGain: 0
     expBonus: 0
@@ -83,17 +84,17 @@ MonoBehaviour:
     isNull: 1
   contractAccepted: []
   contractAvailable:
-  - name: Entreprise Ekavox
-    description: "Nous r\xE9alisons un film \xE0 l'attention de nos employ\xE9s pour
-      notre Entreprise Ekavox."
-    contractType: 0
-    level: 1
-    money: 1290
+  - name: Nouvelle voiture Panther
+    description: "La publicit\xE9 de notre nouvelle voiture Panther, cependant nous
+      souhaitons aborder le propos avec un th\xE8me plus touchant."
+    contractType: 3
+    level: 2
+    money: 3990
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 3
+    weekRemaining: 4
     currentLine: 0
-    totalLine: 6
+    totalLine: 10
     currentMixing: 0
     totalMixing: 0
     score: 0
@@ -114,29 +115,33 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: Narrateur
+    - name: "P\xE8re"
       roleSprite: {fileID: 0}
-      line: 19
+      line: 44
       fan: 0
-      attack: 4
-      timbre: {x: 0, y: 0}
+      attack: 11
+      defense: 0
+      timbre: {x: 3, y: 10}
       characterStat:
-        neutral: 2
+        neutral: 3
         joy: 6
-        sadness: 0
-        disgust: 4
-        anger: 0
-        surprise: 0
+        sadness: 12
+        disgust: 5
+        anger: 1
+        surprise: 1
         sweetness: 0
-        fear: 6
-        trust: 6
-      bestStat: 6
+        fear: 0
+        trust: 2
+      bestStat: 12
       secondBestStat: 6
+      bestStatEmotion: 2
+      secondBestStatEmotion: 0
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
       characterLock: {fileID: 0}
       roleAI: []
+      buffs: []
     voiceActors:
     - fan: 0
       price: 0
@@ -155,6 +160,16 @@ MonoBehaviour:
         fear: 0
         trust: 0
       statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
         neutral: 0
         joy: 0
         sadness: 0
@@ -194,522 +209,827 @@ MonoBehaviour:
       roleDefense: 0
       potentials: []
       buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 12
+      text: Rapide...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 13
+      text: Audacieuse...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 0
+        sweetness: 70
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 14
+      text: Et dangereuse...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
+        disgust: 50
+        anger: 50
+        surprise: 0
+        sweetness: 50
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+    - interlocuteur: 0
+      hpMax: 20
+      text: "C'est comme \xE7a... comme \xE7a qu'elle m'a quitt\xE9."
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 40
+        anger: 0
+        surprise: -80
+        sweetness: -25
+        fear: 0
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 2
+      - wordIndex: 8
+    - interlocuteur: 0
+      hpMax: 22
+      text: Est-ce que je regrette ?
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 18
+      text: "Bien s\xFBr."
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+    - interlocuteur: 0
+      hpMax: 23
+      text: "Est-ce que je souhaite retourner en arri\xE8re ?"
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
+      enemyWeakPoints:
+      - wordIndex: 4
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 20
+      text: Evidemment.
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 24
+      text: "Mais c'est pour \xE7a que je continuerai de conduire."
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 100
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 10
+        fear: -50
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 18
+      text: Pour elle, et son sourire.
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 100
+        disgust: -80
+        anger: -80
+        surprise: -80
+        sweetness: 50
+        fear: -80
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+    emotionsUsed: []
+    eventData:
+    - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
+    expGain: 30
+    expBonus: 50
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Sound Design
+    description: "Nous avons besoin d'un sound designer pour finaliser notre film.\nLes
+      d\xE9lais sont s\xE9rr\xE9s mais nous sommes pr\xEAt \xE0 payer g\xE9n\xE9reusement."
+    contractType: 0
+    level: 0
+    money: 11780
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 3
+    currentLine: 0
+    totalLine: 0
+    currentMixing: 0
+    totalMixing: 42
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters: []
+    voiceActors: []
+    textData: []
+    emotionsUsed: []
+    eventData: []
+    expGain: 0
+    expBonus: 0
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Turbo Gazon
+    description: "Bonjour, je recherche un studio de doublage avec \"peu\" d'exp\xE9rience
+      pour s'occuper de ma publicit\xE9. La pub se veut cool."
+    contractType: 3
+    level: 1
+    money: 3690
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 5
+    currentLine: 0
+    totalLine: 8
+    currentMixing: 0
+    totalMixing: 0
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: Narrateur
+      roleSprite: {fileID: 0}
+      line: 22
+      fan: 0
+      attack: 5
+      defense: 0
+      timbre: {x: 0, y: 0}
+      characterStat:
+        neutral: 2
+        joy: 4
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 8
+        sweetness: 0
+        fear: 0
+        trust: 6
+      bestStat: 8
+      secondBestStat: 6
+      bestStatEmotion: 5
+      secondBestStatEmotion: 8
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - fan: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      actorSprite: {fileID: 0}
+      spriteSheets: {fileID: 0}
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
       actorMentalState: 0
       availability: 0
       isNull: 1
     textData:
     - interlocuteur: 0
       hpMax: 10
-      text: "L'ins\xE9curit\xE9..."
+      text: "Le jardin est dans un \xE9tat d\xE9sastreux."
       enemyResistance:
         neutral: 0
-        joy: -50
+        joy: -80
+        sadness: 50
+        disgust: 50
+        anger: 100
+        surprise: 0
+        sweetness: -50
+        fear: 50
+        trust: -60
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 10
+      text: "Les mauvaises herbes ont m\xEAme attir\xE9 des animaux sauvages."
+      enemyResistance:
+        neutral: 0
+        joy: -30
         sadness: 30
-        disgust: 30
-        anger: 30
-        surprise: -50
+        disgust: 50
+        anger: 50
+        surprise: 30
         sweetness: -50
         fear: 50
         trust: -30
       enemyWeakPoints:
-      - wordIndex: 0
+      - wordIndex: 2
+      - wordIndex: 8
     - interlocuteur: 0
-      hpMax: 11
-      text: Elles entrainent la peur dans nos coeurs...
+      hpMax: 12
+      text: Mais c'est sans compter l'aide de la tondeuse TURBO GAZON !
       enemyResistance:
-        neutral: 0
-        joy: -50
-        sadness: 30
-        disgust: 30
-        anger: 10
-        surprise: -30
-        sweetness: 0
-        fear: 60
-        trust: -30
+        neutral: -80
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 100
+        sweetness: -30
+        fear: -50
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 8
+      - wordIndex: 9
+    - interlocuteur: 0
+      hpMax: 13
+      text: Waouh ! Je n'en reviens PAS !
+      enemyResistance:
+        neutral: -80
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 100
+        sweetness: -30
+        fear: -80
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 4
+    - interlocuteur: 0
+      hpMax: 12
+      text: "Avec cette tondeuse r\xE9volutionnaire, plus de probl\xE8mes de mauvaise
+        herbe !"
+      enemyResistance:
+        neutral: -50
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 100
+        sweetness: -30
+        fear: -80
+        trust: 20
       enemyWeakPoints:
       - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 12
+      text: "La poigne et les suspensions intelligente permettent un contr\xF4le tr\xE8s
+        pr\xE9cis"
+      enemyResistance:
+        neutral: -50
+        joy: 30
+        sadness: -30
+        disgust: -50
+        anger: -50
+        surprise: 50
+        sweetness: -30
+        fear: -80
+        trust: 20
+      enemyWeakPoints:
+      - wordIndex: 5
+      - wordIndex: 10
+    - interlocuteur: 0
+      hpMax: 12
+      text: Son moteur thermique surpasse celle d'une moto !
+      enemyResistance:
+        neutral: -50
+        joy: 30
+        sadness: -30
+        disgust: -50
+        anger: -50
+        surprise: 80
+        sweetness: -30
+        fear: -50
+        trust: 0
+      enemyWeakPoints:
       - wordIndex: 6
     - interlocuteur: 0
-      hpMax: 12
-      text: "Eh oui, \xEAtre au travail, ne signifie pas d\xE9laisser son hygi\xE8ne
-        dentaire !"
-      enemyResistance:
-        neutral: 0
-        joy: 60
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 30
-        sweetness: 0
-        fear: -50
-        trust: 60
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 12
-      text: "C'est pourquoi chez Ekavox, nous nous engageons \xE0 accorder 10 minutes..."
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: -50
-        trust: 30
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 11
-      text: '...Au brossage de dents de toutes l''entreprise !'
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 30
-        sweetness: 0
-        fear: -50
-        trust: 30
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 11
-      text: "Les 30 minutes de repas seront donc consacr\xE9es \xE0 30% au brossage
-        de dents !"
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: -50
-        trust: 50
-      enemyWeakPoints: []
-    eventData:
-    - {fileID: 11400000, guid: 60354efe6c241734dbd7544a43f1045b, type: 2}
-    expGain: 20
-    expBonus: 50
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Action Kids+
-    description: "Action Kids+ est une marque de jouet pour enfants.\nLa publicit\xE9
-      vise \xE0 vendre un nouveau produit de la licence."
-    contractType: 3
-    level: 1
-    money: 2300
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 3
-    currentLine: 0
-    totalLine: 6
-    currentMixing: 0
-    totalMixing: 0
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Narrateur
-      roleSprite: {fileID: 0}
-      line: 16
-      fan: 13
-      attack: 5
-      timbre: {x: 0, y: 0}
-      characterStat:
-        neutral: 2
-        joy: 7
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 9
-        sweetness: 0
-        fear: 0
-        trust: 1
-      bestStat: 9
-      secondBestStat: 7
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-    voiceActors:
-    - fan: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      actorSprite: {fileID: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 11
-      text: "Paris est menac\xE9 !"
-      enemyResistance:
-        neutral: -10
-        joy: -50
-        sadness: 0
-        disgust: 0
-        anger: 50
-        surprise: 30
-        sweetness: -50
-        fear: 10
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 15
-      text: "Mais qui voil\xE0 !? Les Action Kids+ !!!"
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 0
-        surprise: 100
-        sweetness: -50
-        fear: 0
-        trust: 30
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 13
-      text: Et avec une nouvelle arme !?
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 30
-        surprise: 100
-        sweetness: -50
-        fear: 0
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 3
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 16
-      text: Le Super-Micro-Blaster !!!
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 30
-        surprise: 100
-        sweetness: -50
-        fear: 0
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 13
-      text: Ils repoussent les menaces anti-gouvernementales.
-      enemyResistance:
-        neutral: 30
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 30
-        surprise: 0
-        sweetness: -30
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 1
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 17
-      text: Les jouets Action Kids+ ne conviennent pas aux enfants de moins de 14
-        ans.
-      enemyResistance:
-        neutral: 50
-        joy: 50
-        sadness: 0
-        disgust: -50
-        anger: 0
-        surprise: 0
-        sweetness: 30
-        fear: -30
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 12
-    eventData:
-    - {fileID: 11400000, guid: 2d3e2b37862018b4b89caaa6a72bc6dc, type: 2}
-    expGain: 25
-    expBonus: 50
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: "Ligne t\xE9l\xE9phonique Telefonika"
-    description: "L'entreprise Telefonika cherche une voix sympathique pour accompagner
-      ses clients dans leurs d\xE9marches."
-    contractType: 3
-    level: 1
-    money: 1710
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 3
-    currentLine: 0
-    totalLine: 4
-    currentMixing: 0
-    totalMixing: 0
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: "R\xE9pondeur"
-      roleSprite: {fileID: 0}
-      line: 22
-      fan: 0
-      attack: 4
-      timbre: {x: -25, y: 80}
-      characterStat:
-        neutral: 3
-        joy: 7
-        sadness: 2
-        disgust: 0
-        anger: 0
-        surprise: 1
-        sweetness: 8
-        fear: 1
-        trust: 5
-      bestStat: 8
-      secondBestStat: 7
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-    voiceActors:
-    - fan: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      actorSprite: {fileID: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 8
-      text: "Bonjour, vous \xEAtes bien chez Telefonika."
-      enemyResistance:
-        neutral: 30
-        joy: 30
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: 100
-        fear: -50
-        trust: 30
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 8
-      text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
-      enemyResistance:
-        neutral: 30
-        joy: 30
-        sadness: 0
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: 100
-        fear: -50
-        trust: 30
-      enemyWeakPoints: []
-    - interlocuteur: 0
       hpMax: 10
-      text: "Nous nous efforcons d'\xE9courter votre attente."
+      text: "Turbo gazon, la tondeuse du futur et au-del\xE0 !"
       enemyResistance:
-        neutral: 30
+        neutral: -40
         joy: 30
-        sadness: 30
+        sadness: -30
         disgust: -50
         anger: -50
-        surprise: -50
-        sweetness: 100
-        fear: -50
-        trust: 300
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 17
-      text: "Le temps de r\xE9ponse moyen de cet appel est d'environ 2 minutes"
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: 100
-        fear: -50
+        surprise: -30
+        sweetness: 30
+        fear: -80
         trust: 30
       enemyWeakPoints: []
-    eventData:
-    - {fileID: 11400000, guid: 714426cc46973b54aa8356c4049bece9, type: 2}
-    expGain: 27
-    expBonus: 30
+    emotionsUsed: []
+    eventData: []
+    expGain: 20
+    expBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenAccepted: {fileID: 11400000, guid: 27dbb406e90a51e4e9d327cac9bbabf1,
+      type: 2}
+    storyEventWhenEnd: {fileID: 11400000, guid: f6e3c190af53b1446ba7eb2ca0c50951,
+      type: 2}
     storyEventWhenGameOver: {fileID: 0}
     sessionLock: 0
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
-  contractGacha: []
-  contractGachaCooldown: []
+  contractGacha:
+  - {fileID: 11400000, guid: 797e26e64cccd93499e77240c6b041f8, type: 2}
+  - {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
+  - {fileID: 11400000, guid: 453cf1d29fd1c4843bf8e9429444b8cd, type: 2}
+  - {fileID: 11400000, guid: 7aee77c77a7dffe408a74b482e37108f, type: 2}
+  - {fileID: 11400000, guid: 0d829c8fedec7a143b428862167f9e68, type: 2}
+  - {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
+  - {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
+  - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
+  - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
+  - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
+  - {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
+  - {fileID: 11400000, guid: e1a59a024da49b7458213ed01964ad5c, type: 2}
+  - {fileID: 11400000, guid: 2b0bbe1dd66b5d346b9a2217cbaad58c, type: 2}
+  - {fileID: 11400000, guid: 9f28d6ac5eeab734a8d7b9400bc876a0, type: 2}
+  - {fileID: 11400000, guid: 53cd95d492cc2ab42a2cbf2e646d2385, type: 2}
+  - {fileID: 11400000, guid: 39162772652748b4b86d71d3d4888833, type: 2}
+  - {fileID: 11400000, guid: 9cfcc9e654405b7448d7778b8ba9c00d, type: 2}
+  contractGachaCooldown:
+  - contract: {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
+    cooldown: 4
+  - contract: {fileID: 11400000, guid: 33b6ae084b9c43c4d8f39926640add64, type: 2}
+    cooldown: 4
+  - contract: {fileID: 11400000, guid: d85d0a7830fd8144e94f5930fa02981b, type: 2}
+    cooldown: 5
   voiceActors:
+  - fan: 0
+    price: 6
+    level: 1
+    hp: 200
+    hpMax: 200
+    timbre: {x: -8, y: -7}
+    statistique:
+      neutral: 5
+      joy: 20
+      sadness: 3
+      disgust: 2
+      anger: 2
+      surprise: 3
+      sweetness: 5
+      fear: 3
+      trust: 3
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 112
+      joy: 215
+      sadness: 95
+      disgust: 96
+      anger: 107
+      surprise: 92
+      sweetness: 100
+      fear: 91
+      trust: 104
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0, z: 0}
+    actorSprite: {fileID: 21300000, guid: 3a668133cccfc9747baf7a6ce61737be, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 8e3d2645f02a6cf4e86d96d96778ffec, type: 2}
+    damageVariance: 3
+    roleDefense: 8
+    potentials:
+    - {fileID: 11400000, guid: 8b3dd6ba44529d546a1b98096b42d41a, type: 2}
+    buffs: []
+    voxography:
+    - contractName: yiu
+      roles:
+      - name: zbla
+        roleSprite: {fileID: 0}
+        line: 0
+        fan: 0
+        attack: 0
+        defense: 0
+        timbre: {x: 0, y: 0}
+        characterStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        bestStat: 0
+        secondBestStat: 0
+        bestStatEmotion: 0
+        secondBestStatEmotion: 0
+        roleScore: 0
+        rolePerformance: 0
+        roleBestScore: 0
+        characterLock: {fileID: 0}
+        roleAI: []
+        buffs: []
+      emotionGained: 01000000
+    - contractName: dfsdgsdg
+      roles:
+      - name: trtrt
+        roleSprite: {fileID: 0}
+        line: 0
+        fan: 0
+        attack: 0
+        defense: 0
+        timbre: {x: 0, y: 0}
+        characterStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        bestStat: 0
+        secondBestStat: 0
+        bestStatEmotion: 0
+        secondBestStatEmotion: 0
+        roleScore: 0
+        rolePerformance: 0
+        roleBestScore: 0
+        characterLock: {fileID: 0}
+        roleAI: []
+        buffs: []
+      emotionGained: 02000000
+    - contractName: dgdgdgdgd
+      roles:
+      - name: gfdgdhdh
+        roleSprite: {fileID: 0}
+        line: 0
+        fan: 0
+        attack: 0
+        defense: 0
+        timbre: {x: 0, y: 0}
+        characterStat:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        bestStat: 0
+        secondBestStat: 0
+        bestStatEmotion: 0
+        secondBestStatEmotion: 0
+        roleScore: 0
+        rolePerformance: 0
+        roleBestScore: 0
+        characterLock: {fileID: 0}
+        roleAI: []
+        buffs: []
+      emotionGained: 04000000
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - fan: 5000
+    price: 15
+    level: 20
+    hp: 500
+    hpMax: 500
+    timbre: {x: 5, y: 10}
+    statistique:
+      neutral: 22
+      joy: 14
+      sadness: 28
+      disgust: 25
+      anger: 40
+      surprise: 15
+      sweetness: 18
+      fear: 10
+      trust: 30
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 108
+      joy: 60
+      sadness: 150
+      disgust: 150
+      anger: 200
+      surprise: 60
+      sweetness: 100
+      fear: 40
+      trust: 110
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0, z: 0}
+    actorSprite: {fileID: 21300000, guid: eaf70e16aa03d624195400b4fc4f3524, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
+    damageVariance: 2
+    roleDefense: 8
+    potentials:
+    - {fileID: 11400000, guid: ddec83d64cbc8eb4db092c623d87c95d, type: 2}
+    - {fileID: 11400000, guid: 9a3b1a80640cb074b8372c066579f3bc, type: 2}
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - fan: 0
+    price: 11
+    level: 1
+    hp: 230
+    hpMax: 230
+    timbre: {x: -6, y: -1}
+    statistique:
+      neutral: 5
+      joy: 5
+      sadness: 8
+      disgust: 1
+      anger: 9
+      surprise: 7
+      sweetness: 0
+      fear: 6
+      trust: 5
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 113
+      joy: 130
+      sadness: 99
+      disgust: 87
+      anger: 69
+      surprise: 82
+      sweetness: 207
+      fear: 134
+      trust: 102
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0.1, y: 0.15, z: 0}
+    actorSprite: {fileID: 21300000, guid: 9c18fffd71189cd449bcb6e395f6ae6d, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 5a8ca4d0dc3e59a418e33d3fb3664009, type: 2}
+    damageVariance: 2
+    roleDefense: 8
+    potentials:
+    - {fileID: 11400000, guid: ddec83d64cbc8eb4db092c623d87c95d, type: 2}
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
   - fan: 0
     price: 6
     level: 1
@@ -736,16 +1056,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 113
-      joy: 155
-      sadness: 149
-      disgust: 99
-      anger: 60
+      joy: 161
+      sadness: 155
+      disgust: 98
+      anger: 55
       surprise: 70
-      sweetness: 154
+      sweetness: 150
       fear: 68
-      trust: 155
+      trust: 153
     currentGrowth:
       neutral: 0
       joy: 0
@@ -763,29 +1093,32 @@ MonoBehaviour:
     actorSprite: {fileID: 21300000, guid: 34bcc4fed29754b40be5ac6ddaa91b7c, type: 3}
     spriteSheets: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483, type: 2}
     damageVariance: 2
-    roleDefense: 0
+    roleDefense: 8
     potentials:
     - {fileID: 11400000, guid: 4693805a529dd554694916f79f88a756, type: 2}
+    - {fileID: 11400000, guid: ddec83d64cbc8eb4db092c623d87c95d, type: 2}
+    - {fileID: 11400000, guid: 9a3b1a80640cb074b8372c066579f3bc, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 2
-    price: 7
+  - fan: 1
+    price: 6
     level: 1
-    hp: 230
-    hpMax: 230
-    timbre: {x: 3, y: 8}
+    hp: 183
+    hpMax: 210
+    timbre: {x: -2, y: 4}
     statistique:
       neutral: 5
-      joy: 3
-      sadness: 7
-      disgust: 2
-      anger: 7
-      surprise: 8
-      sweetness: 4
-      fear: 4
-      trust: 5
+      joy: 6
+      sadness: 5
+      disgust: 3
+      anger: 5
+      surprise: 4
+      sweetness: 8
+      fear: 1
+      trust: 8
     statModifier:
       neutral: 0
       joy: 0
@@ -796,16 +1129,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
-      neutral: 75
-      joy: 44
-      sadness: 104
-      disgust: 36
-      anger: 123
-      surprise: 143
-      sweetness: 38
-      fear: 51
-      trust: 66
+      neutral: 101
+      joy: 60
+      sadness: 116
+      disgust: 170
+      anger: 97
+      surprise: 63
+      sweetness: 47
+      fear: 145
+      trust: 112
     currentGrowth:
       neutral: 0
       joy: 0
@@ -817,35 +1160,36 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 99
     relation: 0
-    skillOffset: {x: 0, y: 0, z: 0}
-    actorSprite: {fileID: 21300000, guid: 4b2b505279296714389b8c9aa33e900e, type: 3}
-    spriteSheets: {fileID: 11400000, guid: 2948c4fa15ea58248a73d156c4ea7c5a, type: 2}
+    skillOffset: {x: 0.07, y: 0.08, z: 0}
+    actorSprite: {fileID: 21300000, guid: 3714e73c1c67fd54597f673dbdcf4a27, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 8a2080d9b91350341ae62d050794000a, type: 2}
     damageVariance: 0
-    roleDefense: 0
+    roleDefense: 8
     potentials:
-    - {fileID: 11400000, guid: fe2b460ab6c33c5438451e9405371970, type: 2}
+    - {fileID: 11400000, guid: 852f41409bb26604c912aae6d044a65c, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
-    price: 7
+  - fan: 1
+    price: 6
     level: 1
-    hp: 200
-    hpMax: 200
-    timbre: {x: -2, y: 5}
+    hp: 260
+    hpMax: 260
+    timbre: {x: -2, y: 4}
     statistique:
       neutral: 5
-      joy: 5
-      sadness: 2
-      disgust: 10
-      anger: 8
-      surprise: 3
+      joy: 4
+      sadness: 5
+      disgust: 7
+      anger: 5
+      surprise: 6
       sweetness: 2
-      fear: 5
-      trust: 7
+      fear: 9
+      trust: 2
     statModifier:
       neutral: 0
       joy: 0
@@ -856,16 +1200,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
-      neutral: 106
-      joy: 66
-      sadness: 34
-      disgust: 161
-      anger: 147
-      surprise: 148
-      sweetness: 52
-      fear: 144
-      trust: 98
+      neutral: 111
+      joy: 73
+      sadness: 90
+      disgust: 118
+      anger: 72
+      surprise: 89
+      sweetness: 109
+      fear: 170
+      trust: 169
     currentGrowth:
       neutral: 0
       joy: 0
@@ -879,14 +1233,15 @@ MonoBehaviour:
     experience: 0
     nextEXP: 120
     relation: 0
-    skillOffset: {x: 0, y: 0, z: 0}
-    actorSprite: {fileID: 21300000, guid: e61aa106a3754ba46ac44f719075e171, type: 3}
-    spriteSheets: {fileID: 11400000, guid: 08309466ffd0d154aa1afbfeb762576e, type: 2}
-    damageVariance: 2
-    roleDefense: 0
+    skillOffset: {x: 0.07, y: 0.12, z: 0}
+    actorSprite: {fileID: 21300000, guid: 953d9856487265944a6a54c45c909be0, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 7919096dd34fc5243b9c76237f92419b, type: 2}
+    damageVariance: 0
+    roleDefense: 8
     potentials:
-    - {fileID: 11400000, guid: b53f701b2317a6a449a15ad33e6b431c, type: 2}
+    - {fileID: 11400000, guid: 20175402815609f40b3f9ee3f621c691, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -917,16 +1272,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 112
-      joy: 227
-      sadness: 99
-      disgust: 91
-      anger: 98
-      surprise: 100
+      joy: 197
+      sadness: 108
+      disgust: 97
+      anger: 107
+      surprise: 90
       sweetness: 105
-      fear: 90
-      trust: 90
+      fear: 96
+      trust: 100
     currentGrowth:
       neutral: 0
       joy: 0
@@ -948,6 +1313,78 @@ MonoBehaviour:
     potentials:
     - {fileID: 11400000, guid: 8b3dd6ba44529d546a1b98096b42d41a, type: 2}
     buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - fan: 0
+    price: 7
+    level: 1
+    hp: 200
+    hpMax: 200
+    timbre: {x: -2, y: 5}
+    statistique:
+      neutral: 5
+      joy: 5
+      sadness: 2
+      disgust: 10
+      anger: 8
+      surprise: 3
+      sweetness: 2
+      fear: 5
+      trust: 7
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 106
+      joy: 75
+      sadness: 35
+      disgust: 169
+      anger: 151
+      surprise: 145
+      sweetness: 49
+      fear: 131
+      trust: 95
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0, z: 0}
+    actorSprite: {fileID: 21300000, guid: e61aa106a3754ba46ac44f719075e171, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 08309466ffd0d154aa1afbfeb762576e, type: 2}
+    damageVariance: 2
+    roleDefense: 0
+    potentials:
+    - {fileID: 11400000, guid: b53f701b2317a6a449a15ad33e6b431c, type: 2}
+    buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -977,16 +1414,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 113
-      joy: 128
-      sadness: 109
+      joy: 117
+      sadness: 92
       disgust: 85
-      anger: 49
-      surprise: 88
-      sweetness: 203
-      fear: 131
-      trust: 117
+      anger: 53
+      surprise: 85
+      sweetness: 231
+      fear: 134
+      trust: 113
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1008,6 +1455,7 @@ MonoBehaviour:
     potentials:
     - {fileID: 11400000, guid: ddec83d64cbc8eb4db092c623d87c95d, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -1037,16 +1485,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 130
-      joy: 119
-      sadness: 130
-      disgust: 144
-      anger: 135
-      surprise: 127
-      sweetness: 142
-      fear: 123
-      trust: 120
+      joy: 140
+      sadness: 135
+      disgust: 136
+      anger: 136
+      surprise: 123
+      sweetness: 130
+      fear: 115
+      trust: 125
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1067,6 +1525,78 @@ MonoBehaviour:
     roleDefense: 0
     potentials: []
     buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - fan: 2
+    price: 7
+    level: 1
+    hp: 230
+    hpMax: 230
+    timbre: {x: 3, y: 8}
+    statistique:
+      neutral: 5
+      joy: 3
+      sadness: 7
+      disgust: 2
+      anger: 7
+      surprise: 8
+      sweetness: 4
+      fear: 4
+      trust: 5
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 75
+      joy: 54
+      sadness: 93
+      disgust: 38
+      anger: 125
+      surprise: 132
+      sweetness: 55
+      fear: 41
+      trust: 67
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0, z: 0}
+    actorSprite: {fileID: 21300000, guid: 4b2b505279296714389b8c9aa33e900e, type: 3}
+    spriteSheets: {fileID: 11400000, guid: 2948c4fa15ea58248a73d156c4ea7c5a, type: 2}
+    damageVariance: 0
+    roleDefense: 0
+    potentials:
+    - {fileID: 11400000, guid: fe2b460ab6c33c5438451e9405371970, type: 2}
+    buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -1096,16 +1626,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 101
-      joy: 49
-      sadness: 122
-      disgust: 171
-      anger: 94
-      surprise: 60
-      sweetness: 56
-      fear: 157
-      trust: 101
+      joy: 51
+      sadness: 124
+      disgust: 167
+      anger: 92
+      surprise: 93
+      sweetness: 43
+      fear: 140
+      trust: 100
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1127,6 +1667,7 @@ MonoBehaviour:
     potentials:
     - {fileID: 11400000, guid: 852f41409bb26604c912aae6d044a65c, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -1156,7 +1697,7 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
-    growth:
+    statVoxography:
       neutral: 0
       joy: 0
       sadness: 0
@@ -1166,6 +1707,16 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    growth:
+      neutral: 111
+      joy: 57
+      sadness: 93
+      disgust: 122
+      anger: 68
+      surprise: 64
+      sweetness: 118
+      fear: 190
+      trust: 178
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1187,6 +1738,7 @@ MonoBehaviour:
     potentials:
     - {fileID: 11400000, guid: 20175402815609f40b3f9ee3f621c691, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -1216,16 +1768,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 101
-      joy: 47
-      sadness: 113
-      disgust: 175
-      anger: 100
-      surprise: 65
-      sweetness: 54
-      fear: 155
-      trust: 101
+      joy: 52
+      sadness: 110
+      disgust: 169
+      anger: 98
+      surprise: 67
+      sweetness: 53
+      fear: 148
+      trust: 113
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1246,6 +1808,7 @@ MonoBehaviour:
     roleDefense: 0
     potentials: []
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -1275,16 +1838,26 @@ MonoBehaviour:
       sweetness: 0
       fear: 0
       trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     growth:
       neutral: 102
-      joy: 119
-      sadness: 68
-      disgust: 125
+      joy: 125
+      sadness: 75
+      disgust: 132
       anger: 125
-      surprise: 76
+      surprise: 60
       sweetness: 125
-      fear: 74
-      trust: 108
+      fear: 63
+      trust: 115
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1306,6 +1879,7 @@ MonoBehaviour:
     potentials:
     - {fileID: 11400000, guid: 9a3b1a80640cb074b8372c066579f3bc, type: 2}
     buffs: []
+    voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
@@ -1318,9 +1892,10 @@ MonoBehaviour:
     artificeGauge: 10
     mixingPower: 10
     skills:
-    - {fileID: 11400000, guid: df0262e08d8fbd7439d10b081f5fa072, type: 2}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: f6a80f3dbec333342afd2573abd21a0a, type: 2}
+    - {fileID: 11400000, guid: c1a6727d4dbb75148a46ce6ac59fdfd9, type: 2}
+    - {fileID: 11400000, guid: 8d0e70ac38e4ee748a713affd2acbc1c, type: 2}
+    - {fileID: 11400000, guid: 0eb8b1e693761c1468ae479b4dbacd56, type: 2}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -1331,7 +1906,8 @@ MonoBehaviour:
     formationSkillTime: 0
     formationSkillTotalTime: 0
     isNull: 0
-  nextStoryEvents: []
+  nextStoryEvents:
+  - {fileID: 11400000, guid: 2fe103b1f458b114bb0bc8ecbda4fa37, type: 2}
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
   tutoEvent: []
@@ -1344,30 +1920,34 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  inventoryFormation: []
+  inventoryFormation:
+  - {fileID: 11400000, guid: 72faee5879233c743b424a7891a1661c, type: 2}
+  - {fileID: 11400000, guid: 23018171066101a4ea4cd98e7a1250cf, type: 2}
+  - {fileID: 11400000, guid: b5f0ca801d6250249aed17bd2ef4e3f8, type: 2}
+  - {fileID: 11400000, guid: 62885ecb0c436474d9a4cb1989a1605c, type: 2}
   researchesLevels:
   - researchLevel: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   currentChapter: 1
   currentObjective: "Pr\xE9parez-vous pour la semaine 18."
   maintenance: 6000
-  money: 30000
-  researchPoint: 0
+  money: 36000
+  researchPoint: 10
   date:
-    week: 10
-    month: 3
+    week: 22
+    month: 6
     year: 1
   timer: 0
-  season: 0
-  comboMax: 1
+  season: 1
+  comboMax: 3
   deck:
-    neutral: 0
+    neutral: 1
     joy: 1
     sadness: 1
     disgust: 1
     anger: 1
-    surprise: 0
-    sweetness: 0
-    fear: 0
+    surprise: 1
+    sweetness: 1
+    fear: 1
     trust: 1
   atkBonus:
     neutral: 0

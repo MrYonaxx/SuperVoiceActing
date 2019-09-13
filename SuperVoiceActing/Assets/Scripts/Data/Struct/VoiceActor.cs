@@ -20,6 +20,48 @@ namespace VoiceActing
         Absent
     }
 
+    [System.Serializable]
+    public class Voxography
+    {
+        [SerializeField]
+        private string contractName;
+        public string ContractName
+        {
+            get { return contractName; }
+            set { contractName = value; }
+        }
+
+        [SerializeField]
+        private List<Role> roles;
+        public List<Role> Roles
+        {
+            get { return roles; }
+            set { roles = value; }
+        }
+
+        [SerializeField]
+        private List<Emotion> emotionGained;
+        public List<Emotion> EmotionGained
+        {
+            get { return emotionGained; }
+            set { emotionGained = value; }
+        }
+
+        public Voxography(string cName)
+        {
+            contractName = cName;
+            this.roles = new List<Role>(3);
+            this.emotionGained = new List<Emotion>(3);
+        }
+
+        public void AddVoxography(Role role, Emotion emotion)
+        {
+            roles.Add(role);
+            emotionGained.Add(emotion);
+        }
+
+    }
+
 
     /// <summary>
     /// Definition of the VoiceActor class
@@ -113,6 +155,14 @@ namespace VoiceActing
         {
             get { return statModifier; }
             set { statModifier = value; }
+        }
+
+        [SerializeField]
+        private EmotionStat statVoxography;
+        public EmotionStat StatVoxography
+        {
+            get { return statVoxography; }
+            set { statVoxography = value; }
         }
 
         [SerializeField]
@@ -214,6 +264,14 @@ namespace VoiceActing
             set { buffs = value; }
         }
 
+        [SerializeField]
+        private List<Voxography> voxography;
+        public List<Voxography> Voxography
+        {
+            get { return voxography; }
+            set { voxography = value; }
+        }
+
 
         [SerializeField]
         private VoiceActorState actorMentalState;
@@ -274,7 +332,6 @@ namespace VoiceActing
         public VoiceActor(VoiceActorData actorData)
         {
             isNull = false;
-            //name = actorData.Name;
             level = actorData.Level;
             fan = actorData.Fan;
             price = actorData.Price;
@@ -295,25 +352,32 @@ namespace VoiceActing
             skillOffset = actorData.SkillOffset;
             spriteSheets = actorData.SpriteSheets;
 
-            statistique = new EmotionStat( actorData.Statistique);
+            statistique = new EmotionStat(actorData.Statistique);
             statModifier = new EmotionStat();
+            statVoxography = new EmotionStat();
+
             growth = new EmotionStat(actorData.Growth);
             currentGrowth = new EmotionStat(actorData.Growth);
+
+            // Attention si je modifie la voxography de l'acteur a un moment dans le jeu, voice actor data va prendre aussi
+            voxography = new List<Voxography>(actorData.Voxography.Length);
+            for (int i = 0; i < actorData.Voxography.Length; i++)
+            {
+                voxography.Add(actorData.Voxography[i]);
+            }
 
             buffs = new List<Buff>();
             availability = true;
 
-            // Repartition aléatoire
-            /*int totalPoint = actorData.GrowthRandom.Joy + actorData.GrowthRandom.Sadness + actorData.GrowthRandom.Disgust +
-                             actorData.GrowthRandom.Anger + actorData.GrowthRandom.Surprise + actorData.GrowthRandom.Sweetness +
-                             actorData.GrowthRandom.Fear + actorData.GrowthRandom.Trust;*/
 
             int point = 0;
             int pointCumul = 0;
 
-            for (int i = 0; i < 8; i++)
-            {             
-                switch(i)
+            for (int i = 1; i < 9; i++)
+            {
+                point = Random.Range(-actorData.GrowthRandom.GetEmotion(i), actorData.GrowthRandom.GetEmotion(i)+1);
+                currentGrowth.Add(i, point);
+                /*switch (i)
                 {
                     case 0:
                         point = Random.Range(-actorData.GrowthRandom.Joy, actorData.GrowthRandom.Joy+1);
@@ -347,21 +411,25 @@ namespace VoiceActing
                         point = Random.Range(-actorData.GrowthRandom.Trust, actorData.GrowthRandom.Trust+1);
                         currentGrowth.Trust += point;
                         break;
-                }
+                }*/
                 pointCumul += point;
             }
 
 
             int result = 0;
 
-            List<int> possibilities = new List<int>(8) { 0, 1, 2, 3, 4, 5, 6, 7 };
+            List<int> possibilities = new List<int>(8) { 1, 2, 3, 4, 5, 6, 7, 8 };
             int choiceEmotion = 0;
+            int emotionSelected = 0;
             choiceEmotion = Random.Range(0, possibilities.Count);
 
             while (pointCumul != 0)
             {
+                emotionSelected = possibilities[choiceEmotion];
+                result = EquilibrateStat(currentGrowth.GetEmotion(emotionSelected), actorData.Growth.GetEmotion(emotionSelected), actorData.GrowthRandom.GetEmotion(emotionSelected), pointCumul);
+                currentGrowth.Add(emotionSelected, result);
                 //Debug.Log(possibilities[choiceEmotion]);
-                switch (possibilities[choiceEmotion])
+                /*switch (possibilities[choiceEmotion])
                 {
                     case 0:
                         result = EquilibrateStat(currentGrowth.Joy, actorData.Growth.Joy, actorData.GrowthRandom.Joy, pointCumul);
@@ -395,7 +463,7 @@ namespace VoiceActing
                         result = EquilibrateStat(currentGrowth.Trust, actorData.Growth.Trust, actorData.GrowthRandom.Trust, pointCumul);
                         currentGrowth.Trust += result;
                         break;
-                }
+                }*/
 
                 if (result == 0)
                 {
@@ -422,18 +490,8 @@ namespace VoiceActing
 
             growth = new EmotionStat(currentGrowth);
             currentGrowth = new EmotionStat(0, 0, 0, 0, 0, 0, 0, 0);
-            /*Debug.Log(growth.Joy);
-            Debug.Log(growth.Sadness);
-            Debug.Log(growth.Disgust);
-            Debug.Log(growth.Anger);
-            Debug.Log(growth.Surprise);
-            Debug.Log(growth.Sweetness);
-            Debug.Log(growth.Fear);
-            Debug.Log(growth.Trust);
-            Debug.Log(growth.Joy + growth.Sadness + growth.Disgust + growth.Anger + growth.Surprise + growth.Sweetness + growth.Fear + growth.Trust);*/
-            
-
         }
+
 
 
         private int EquilibrateStat(int growthToEquilibrate, int growthToCompare, int growthRandom, int pointCumul)
@@ -471,61 +529,21 @@ namespace VoiceActing
 
         public void LevelUp()
         {
-            currentGrowth.Joy += growth.Joy;
+            for(int i = 1; i < 9; i++)
+            {
+                currentGrowth.Add(i, growth.GetEmotion(i));
+                while (currentGrowth.GetEmotion(i) >= 100)
+                {
+                    currentGrowth.Add(i, -100);
+                    statistique.Add(i, 1);
+                }
+            }
+            /*currentGrowth.Joy += growth.Joy;
             while(currentGrowth.Joy >= 100)
             {
                 currentGrowth.Joy -= 100;
                 statistique.Joy += 1;
-            }
-
-            currentGrowth.Sadness += growth.Sadness;
-            while (currentGrowth.Sadness >= 100)
-            {
-                currentGrowth.Sadness -= 100;
-                statistique.Sadness += 1;
-            }
-
-            currentGrowth.Disgust += growth.Disgust;
-            while (currentGrowth.Disgust >= 100)
-            {
-                currentGrowth.Disgust -= 100;
-                statistique.Disgust += 1;
-            }
-
-            currentGrowth.Anger += growth.Anger;
-            while (currentGrowth.Anger >= 100)
-            {
-                currentGrowth.Anger -= 100;
-                statistique.Anger += 1;
-            }
-
-            currentGrowth.Surprise += growth.Surprise;
-            while (currentGrowth.Surprise >= 100)
-            {
-                currentGrowth.Surprise -= 100;
-                statistique.Surprise += 1;
-            }
-
-            currentGrowth.Sweetness += growth.Sweetness;
-            while (currentGrowth.Sweetness >= 100)
-            {
-                currentGrowth.Sweetness -= 100;
-                statistique.Sweetness += 1;
-            }
-
-            currentGrowth.Fear += growth.Fear;
-            while (currentGrowth.Fear >= 100)
-            {
-                currentGrowth.Fear -= 100;
-                statistique.Fear += 1;
-            }
-
-            currentGrowth.Trust += growth.Trust;
-            while (currentGrowth.Trust >= 100)
-            {
-                currentGrowth.Trust -= 100;
-                statistique.Trust += 1;
-            }
+            }*/
             statistique.Neutral = (statistique.Joy + statistique.Sadness + statistique.Disgust + statistique.Anger + 
                                    statistique.Surprise + statistique.Sweetness + statistique.Fear + statistique.Trust) / 8;
             hp += (growth.Neutral / 8);
@@ -541,8 +559,6 @@ namespace VoiceActing
             {
                 return;
             }
-
-
 
             // Si le comédien était mort il passe en fatigué
             if (actorMentalState == VoiceActorState.Dead)
@@ -601,6 +617,17 @@ namespace VoiceActing
         }
 
 
+
+        public void CreateVoxography(string contractName)
+        {
+            voxography.Add(new Voxography(contractName));
+        }
+
+        public void AddVoxography(Role role, Emotion emotion)
+        {
+            voxography[voxography.Count-1].AddVoxography(role, emotion);
+            statVoxography.Add((int)emotion, 1);
+        }
 
         #endregion
 

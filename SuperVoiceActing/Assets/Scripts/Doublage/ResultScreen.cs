@@ -180,6 +180,7 @@ namespace VoiceActing
             {
                 expBonus = contract.ExpBonus;
                 StartCoroutine(ExpGainCoroutine(textExpBonus, expBonus, 1));
+                AddVoxography();
             }
             // Coroutine
             StartCoroutine(LineGainCoroutine());
@@ -498,8 +499,22 @@ namespace VoiceActing
 
 
 
-    #endregion
 
-} // ResultScreen class
+        public void AddVoxography()
+        {
+            for (int i = 0; i < contract.VoiceActors.Count; i++)
+            {
+                contract.VoiceActors[i].CreateVoxography(contract.Name);
+            }
+            for (int i = 0; i < contract.Characters.Count; i++)
+            {
+                contract.VoiceActors[i].AddVoxography(contract.Characters[i], (Emotion)contract.Characters[i].BestStatEmotion);
+            }
+        }
+
+
+        #endregion
+
+    } // ResultScreen class
 	
 }// #PROJECTNAME# namespace

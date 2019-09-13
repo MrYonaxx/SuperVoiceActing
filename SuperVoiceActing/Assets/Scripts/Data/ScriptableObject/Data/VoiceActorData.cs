@@ -99,6 +99,12 @@ namespace VoiceActing
             get { return growthRandom; }
         }
 
+        [SerializeField]
+        private Voxography[] voxography;
+        public Voxography[] Voxography
+        {
+            get { return voxography; }
+        }
 
 
         [Space]

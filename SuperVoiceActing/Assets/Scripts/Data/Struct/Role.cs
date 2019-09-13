@@ -18,7 +18,8 @@ namespace VoiceActing
         Antagoniste,
         Enfant,
         Vieux,
-        VoixOff
+        VoixOff,
+        Comique
     }
 
     [System.Serializable]
@@ -105,7 +106,9 @@ namespace VoiceActing
             get { return secondBestStat; }
         }
 
-
+        /// <summary>
+        /// Emotion ID of the best stat the role have
+        /// </summary>
         [SerializeField]
         private int bestStatEmotion;
         public int BestStatEmotion
