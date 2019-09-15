@@ -354,6 +354,22 @@ namespace VoiceActing
             get { return researchesLevels; }
         }
 
+        [SerializeField]
+        private bool[] gameManualUnlocked;
+        public bool[] GameManualUnlocked
+        {
+            get { return gameManualUnlocked; }
+        }
+
+        [SerializeField]
+        private bool[] storyResumeUnlocked;
+        public bool[] StoryResumeUnlocked
+        {
+            get { return storyResumeUnlocked; }
+        }
+
+
+
         private Sprite currentBestActor;
         public Sprite CurrentBestActor
         {
@@ -610,6 +626,17 @@ namespace VoiceActing
                 {
                     researchesLevels[i].ResearchLevel[j] = 0;
                 }
+            }
+
+            gameManualUnlocked = new bool[initialPlayerData.GameManualDatabase.RecapDatas.Length];
+            for (int i = 0; i < initialPlayerData.GameManualDatabase.RecapDatas.Length; i++)
+            {
+                gameManualUnlocked[i] = false;
+            }
+            storyResumeUnlocked = new bool[initialPlayerData.StoryResumeDatabase.RecapDatas.Length];
+            for (int i = 0; i < initialPlayerData.StoryResumeDatabase.RecapDatas.Length; i++)
+            {
+                storyResumeUnlocked[i] = false;
             }
         }
 

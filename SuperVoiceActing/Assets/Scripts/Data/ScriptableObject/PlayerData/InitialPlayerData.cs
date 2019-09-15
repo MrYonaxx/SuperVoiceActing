@@ -54,6 +54,19 @@ namespace VoiceActing
             get { return researchDatabase; }
         }
 
+        [SerializeField]
+        private RecapDatabase gameManualDatabase;
+        public RecapDatabase GameManualDatabase
+        {
+            get { return gameManualDatabase; }
+        }
+        [SerializeField]
+        private RecapDatabase storyResumeDatabase;
+        public RecapDatabase StoryResumeDatabase
+        {
+            get { return storyResumeDatabase; }
+        }
+
         ///////////////////////////////////////////////////////////////////////////////////
         ///
         [Space]

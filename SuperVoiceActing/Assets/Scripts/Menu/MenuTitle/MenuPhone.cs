@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -24,8 +25,11 @@ namespace VoiceActing
         [SerializeField]
         Animator phone;
 
+        [HorizontalGroup]
         [SerializeField]
         GameObject[] menus;
+
+        [HorizontalGroup]
         [SerializeField]
         bool[] horizontal;
 
