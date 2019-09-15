@@ -20,6 +20,8 @@ namespace VoiceActing
         private float musicVolumeMax = 1;
         [SerializeField]
         private float soundVolumeMax = 1;
+        [SerializeField]
+        private float voiceVolumeMax = 1;
 
         [SerializeField]
         private AudioSource audioMusic;
@@ -134,6 +136,27 @@ namespace VoiceActing
         public void PlaySound(AudioClip sound, float volumeMultiplier = 1)
         {
             audioSound.PlayOneShot(sound, soundVolumeMax * volumeMultiplier);
+        }
+
+
+
+
+
+        public void SetMusicVolume(int value)
+        {
+            musicVolumeMax = (value / 100f);
+            audioMusic.volume = musicVolumeMax;
+        }
+
+        public void SetSoundVolume(int value)
+        {
+            soundVolumeMax = (value / 100f);
+            audioSound.volume = soundVolumeMax;
+        }
+
+        public void SetVoiceVolume(int value)
+        {
+            voiceVolumeMax = (value / 100f);
         }
 
 

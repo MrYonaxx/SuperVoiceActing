@@ -66,6 +66,10 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent eventRightDown;
 
+        [Header("Joystick Options")]
+        [SerializeField]
+        UnityEvent eventBoutonStart;
+
         [SerializeField]
         bool canRepeatJoystickLeft = false;
 
@@ -73,14 +77,6 @@ namespace VoiceActing
         bool inputRightStickEnter = false;
         bool inputRightTrigger = false;
         bool inputLeftTrigger = false;
-
-
-
-        [Header("Buttons Icon")]
-        [SerializeField]
-        GameObject[] mouseButtons;
-        [SerializeField]
-        GameObject[] controllerButtons;
 
         #endregion
 
@@ -128,11 +124,11 @@ namespace VoiceActing
             }
             if (Input.GetButtonDown("ControllerA"))
             {
-                if(Input.GetKey(KeyCode.Space))
-                    ChangeButtonIcon(false);
-                else
-                    ChangeButtonIcon(true);
                 eventBoutonA.Invoke();
+            }
+            if (Input.GetButtonDown("ControllerStart"))
+            {
+                eventBoutonStart.Invoke();
             }
         }
 
@@ -189,25 +185,21 @@ namespace VoiceActing
             {
                 eventLeftRight.Invoke();
                 inputLeftStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (Input.GetAxis("ControllerLeftHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftVertical")) < joystickDeadZone)
             {
                 eventLeftLeft.Invoke();
                 inputLeftStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (Input.GetAxis("ControllerLeftVertical") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone)
             {
                 eventLeftUp.Invoke();
                 inputLeftStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (Input.GetAxis("ControllerLeftVertical") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerLeftHorizontal")) < joystickDeadZone)
             {
                 eventLeftDown.Invoke();
                 inputLeftStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (canRepeatJoystickLeft == true)
             {
@@ -231,37 +223,25 @@ namespace VoiceActing
             {
                 eventRightRight.Invoke();
                 inputRightStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (Input.GetAxis("ControllerRightHorizontal") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightVertical")) < joystickDeadZone)
             {
                 eventRightLeft.Invoke();
                 inputRightStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (Input.GetAxis("ControllerRightVertical") < -joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) < joystickDeadZone)
             {
                 eventRightUp.Invoke();
                 inputRightStickEnter = true;
-                ChangeButtonIcon(true);
             }
             else if (Input.GetAxis("ControllerRightVertical") > joystickDeadZone && Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) < joystickDeadZone)
             {
                 eventRightDown.Invoke();
                 inputRightStickEnter = true;
-                ChangeButtonIcon(true);
             }
         }
 
 
-        private void ChangeButtonIcon(bool b)
-        {
-            for (int i = 0; i < controllerButtons.Length; i++)
-            {
-                controllerButtons[i].SetActive(b);
-                mouseButtons[i].SetActive(!b);
-            }
-        }
 
         #endregion
 
