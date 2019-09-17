@@ -308,6 +308,8 @@ namespace VoiceActing
                 currentAttackInfluence = (roles[indexCurrentRole].Defense + roleInfluenceBonus[indexCurrentRole]) * currentAttack.InfluenceMultiplier;
                 currentAttackInfluence += Random.Range(-currentAttack.InfluenceRandom, currentAttack.InfluenceRandom);
             }
+            if (currentAttackInfluence <= 0)
+                currentAttackInfluence = 1;
             textSkillInfluenceValue.text = currentAttackInfluence.ToString();
             emotionAttackManager.ComboAnimationRoleDescription(false);
         }
@@ -317,12 +319,14 @@ namespace VoiceActing
         public void ActivateInput()
         {
             input.gameObject.SetActive(true);
+            skillManager.PreviewSkill(currentAttack);
         }
 
 
         public void StopEnemyActivation()
         {
             cameraController.EnemySkillCancel();
+            skillManager.StopPreview(currentAttack);
             skillManager.ApplySkill(currentAttack);
             input.gameObject.SetActive(false);
             enemyAttack.SetBool("Appear", false);
@@ -336,6 +340,7 @@ namespace VoiceActing
 
         public void EnemyAttackCounter()
         {
+            skillManager.StopPreview(currentAttack);
             cameraController.EnemySkillCounter();
             emotionAttackManager.ResetCard();
             emotionAttackManager.SwitchCardTransformToRessource();
@@ -361,6 +366,7 @@ namespace VoiceActing
             EmotionCard card = emotionAttackManager.SelectCard(emotion, false);
             if (card != null)
             {
+                card.HidePreview();
                 currentAttackInfluence -= card.GetStat();
                 if (currentAttackInfluence <= 0)
                 {
@@ -382,6 +388,7 @@ namespace VoiceActing
             EmotionCard card = emotionAttackManager.RemoveCard();
             if (card != null)
             {
+                card.ShowPreview();
                 currentAttackInfluence += card.GetStat();
                 if (currentAttackInfluence > 0)
                 {
@@ -405,8 +412,8 @@ namespace VoiceActing
             }
             else if (currentAttackInfluence <= 0)
             {
-                EnemyAttackCounter();
                 emotionAttackManager.DestroyCombo();
+                EnemyAttackCounter();
             }
         }
 

@@ -223,7 +223,6 @@ namespace VoiceActing
                 }
             }
             actorsManager.DrawBuffIcon();
-
         }
 
         #endregion
@@ -281,6 +280,19 @@ namespace VoiceActing
                 soundEngineerManager.SetManagers(skillManager, contrat.SoundEngineer);
             toneManager.DrawTone();
             characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
+            SetPlayerSettings();
+        }
+
+        private void SetPlayerSettings()
+        {
+            int showCommand = PlayerPrefs.GetInt("ShowCommand");
+            if (showCommand == 1)
+            {
+                buttonUIA.enabled = false;
+                buttonUIB.enabled = false;
+                buttonUIA.gameObject.SetActive(false);
+                buttonUIB.gameObject.SetActive(false);
+            }
         }
 
         private IEnumerator IntroductionSequence()
@@ -957,6 +969,8 @@ namespace VoiceActing
 
         public void ShowUIButton(Animator animButton)
         {
+            if (animButton.enabled == false)
+                return;
             animButton.gameObject.SetActive(true);
             animButton.SetTrigger("Appear");
             animButton.ResetTrigger("Disappear");
@@ -967,12 +981,22 @@ namespace VoiceActing
         {
             if (buttonUIA == null)
                 return;
-            buttonUIY.SetTrigger("Disappear");
-            buttonUIY.ResetTrigger("Appear");
-            buttonUIA.SetTrigger("Disappear");
-            buttonUIA.ResetTrigger("Appear");
-            buttonUIB.SetTrigger("Disappear");
-            buttonUIB.ResetTrigger("Appear");
+
+            if (buttonUIY.gameObject.activeInHierarchy == true)
+            {
+                buttonUIY.SetTrigger("Disappear");
+                buttonUIY.ResetTrigger("Appear");
+            }
+            if (buttonUIA.enabled == true)
+            {
+                buttonUIA.SetTrigger("Disappear");
+                buttonUIA.ResetTrigger("Appear");
+            }
+            if (buttonUIB.enabled == true)
+            {
+                buttonUIB.SetTrigger("Disappear");
+                buttonUIB.ResetTrigger("Appear");
+            }
         }
 
         public IEnumerator WaitSkillManager()

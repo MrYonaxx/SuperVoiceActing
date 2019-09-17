@@ -575,6 +575,8 @@ namespace VoiceActing
             //StartCoroutine(MoveTextCoroutine(textAttackPosition.position.x, textAttackPosition.position.y, textAttackPosition.position.z, 40));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
+            if (movTextCoroutine != null)
+                StopCoroutine(movTextCoroutine);
 
             noCameraEffect = true;
             CameraDataMovement(cameraMovementRoleAttack);
@@ -590,6 +592,8 @@ namespace VoiceActing
             //StartCoroutine(MoveTextCoroutine(textAttackPosition.position.x, textAttackPosition.position.y, textAttackPosition.position.z, 40));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
+            if (movTextCoroutine != null)
+                StopCoroutine(movTextCoroutine);
 
             cameraPlacement = 0;
             noCameraEffect = false;
@@ -606,6 +610,8 @@ namespace VoiceActing
             //StartCoroutine(MoveTextCoroutine(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 40));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
+            if (movTextCoroutine != null)
+                StopCoroutine(movTextCoroutine);
 
             cameraPlacement = 0;
             noCameraEffect = false;

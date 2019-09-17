@@ -386,9 +386,15 @@ namespace VoiceActing
         }
 
 
+        public void PreviewSkill(SkillData skill)
+        {
+            skill.PreviewTarget(doublageManager);
+        }
 
-
-
+        public void StopPreview(SkillData skill)
+        {
+            skill.StopPreview(doublageManager);
+        }
 
 
 

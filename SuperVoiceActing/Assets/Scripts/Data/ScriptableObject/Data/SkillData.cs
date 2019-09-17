@@ -191,6 +191,23 @@ namespace VoiceActing
         }
 
 
+        public void PreviewTarget(DoublageManager doublageManager)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().PreviewTarget(doublageManager);
+            }
+        }
+
+        public void StopPreview(DoublageManager doublageManager)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().StopPreview(doublageManager);
+            }
+        }
+
+
     } // SkillData class
 
 } // #PROJECTNAME# namespace

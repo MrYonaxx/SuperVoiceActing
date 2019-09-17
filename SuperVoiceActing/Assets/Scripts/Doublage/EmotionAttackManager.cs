@@ -345,7 +345,8 @@ namespace VoiceActing
                             break;
                         if (emotionCards[i].Cards[j] != null)
                         {
-                            Destroy(emotionCards[i].Cards[j]);
+                            emotionCards[i].Cards[j].DestroyCard();
+                            // Destroy(emotionCards[i].Cards[j].gameObject);
                             emotionCards[i].Cards[j] = null;
                             cardNumber += 1;
                         }
@@ -361,7 +362,8 @@ namespace VoiceActing
             {
                 if (comboCardEmotion[i] != null)
                 {
-                    Destroy(comboCardEmotion[i].gameObject);
+                    //Destroy(comboCardEmotion[i].gameObject);
+                    comboCardEmotion[i].DestroyCard();
                     comboCardEmotion[i] = null;
                     comboEmotion[i] = Emotion.Neutre;
                     comboCount -= 1;

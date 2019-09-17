@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -46,6 +47,16 @@ namespace VoiceActing
         Color colorBonusStat;
         [SerializeField]
         Color colorMalusStat;
+        [SerializeField]
+        Coffee.UIExtensions.UIDissolve uiDissolve;
+
+        [Title("Preview")]
+        [SerializeField]
+        GameObject previewPanel;
+        [SerializeField]
+        TextMeshProUGUI textPreview;
+        [SerializeField]
+        TextMeshProUGUI textPreviewStat;
 
         private Emotion emotion;
 
@@ -54,6 +65,8 @@ namespace VoiceActing
         private int valueActorBonus = 0;
 
         private float damagePercentage = 1;
+
+        private bool inPreview = false;
 
         private List<Buff> buffs = new List<Buff>();
 
@@ -180,7 +193,7 @@ namespace VoiceActing
 
         public void AddStatPercentage(int statToAdd)
         {
-            statToAdd = value * (statToAdd / 100);
+            statToAdd = (int)(value * (statToAdd / 100f));
             valueBonus += statToAdd;
             DrawStat();
         }
@@ -304,6 +317,79 @@ namespace VoiceActing
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+        //    P R E V I E W    S T A T
+
+        public void DrawPreview()
+        {
+            previewPanel.SetActive(true);
+            inPreview = true;
+        }
+
+        public void DrawPreviewStat(int previewValue, bool inPercentage = false)
+        {
+            DrawPreview();
+            textPreviewStat.gameObject.SetActive(true);
+            if(inPercentage == true)
+                previewValue = (int)(value * (previewValue / 100f));
+            textPreviewStat.text = previewValue.ToString();
+        }
+
+        public void DrawPreviewText(string text)
+        {
+            DrawPreview();
+            textPreview.gameObject.SetActive(true);
+            textPreview.text = text;
+        }
+
+        public void StopPreview()
+        {
+            previewPanel.SetActive(false);
+            textPreview.gameObject.SetActive(false);
+            textPreviewStat.gameObject.SetActive(false);
+            inPreview = false;
+        }
+
+        public void ShowPreview()
+        {
+            if(inPreview == true)
+                previewPanel.SetActive(true);
+        }
+
+        public void HidePreview()
+        {
+            previewPanel.SetActive(false);
+        }
+
+
+
+
+
+
+        public void DestroyCard()
+        {
+            uiDissolve.Play();
+            StartCoroutine(DestroyCoroutine(uiDissolve.duration));
+        }
+
+        private IEnumerator DestroyCoroutine(float time)
+        {
+            yield return new WaitForSeconds(time);
+            Destroy(this.gameObject);
+        }
+
+
+
+
 
         public void OnPointerClick(PointerEventData pointer)
         {

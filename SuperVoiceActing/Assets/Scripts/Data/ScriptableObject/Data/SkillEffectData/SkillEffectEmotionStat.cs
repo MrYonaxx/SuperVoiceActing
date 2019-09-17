@@ -244,6 +244,27 @@ namespace VoiceActing
             }
         }
 
+
+
+        public override void PreviewTarget(DoublageManager doublageManager)
+        {
+            base.PreviewTarget(doublageManager);
+
+            EmotionCardTotal[] cards = doublageManager.EmotionAttackManager.GetCards();
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (emotionStat.GetEmotion(i) != 0)
+                {
+                    for (int j = 0; j < cards[i].Cards.Length; j++)
+                    {
+                        if (cards[i].Cards[j] != null)
+                            cards[i].Cards[j].DrawPreviewStat(emotionStat.GetEmotion(i), inPercentage);
+                    }
+                }
+            }
+        }
+
     } // SkillEffectEmotionStat class
 	
 }// #PROJECTNAME# namespace

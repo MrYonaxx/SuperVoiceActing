@@ -242,6 +242,23 @@ namespace VoiceActing
         }
 
 
+        public void EventButtonA()
+        {
+            eventBoutonA.Invoke();
+        }
+        public void EventButtonB()
+        {
+            eventBoutonB.Invoke();
+        }
+        public void EventButtonY()
+        {
+            eventBoutonY.Invoke();
+        }
+        public void EventStart()
+        {
+            eventBoutonStart.Invoke();
+        }
+
 
         #endregion
 

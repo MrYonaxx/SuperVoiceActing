@@ -85,7 +85,47 @@ namespace VoiceActing
 
 
 
+        public override void PreviewTarget(DoublageManager doublageManager)
+        {
+            base.PreviewTarget(doublageManager);
 
+            // Fonction ?
+            int currentHP = 0;
+            float damage = 0;
+            if (inPercentage == true)
+            {
+                currentHP = doublageManager.ActorsManager.GetCurrentActorHPMax();
+                damage = currentHP * (hpDamage / 100f);
+            }
+            else
+            {
+                damage = hpDamage;
+            }
+            //
+
+            doublageManager.ActorsManager.AddAttackDamage((int)damage, 1);
+            doublageManager.ActorsManager.DrawDamagePrevisualization();
+        }
+
+        public override void StopPreview(DoublageManager doublageManager)
+        {
+            // Fonction ?
+            int currentHP = 0;
+            float damage = 0;
+            if (inPercentage == true)
+            {
+                currentHP = doublageManager.ActorsManager.GetCurrentActorHPMax();
+                damage = currentHP * (hpDamage / 100f);
+            }
+            else
+            {
+                damage = hpDamage;
+            }
+            //
+
+            doublageManager.ActorsManager.AddAttackDamage((int)-damage, 1);
+            doublageManager.ActorsManager.DrawDamagePrevisualization();
+        }
 
 
 

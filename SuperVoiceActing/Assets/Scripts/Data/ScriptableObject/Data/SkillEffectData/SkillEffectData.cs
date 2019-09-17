@@ -48,6 +48,26 @@ namespace VoiceActing
 
         }
 
+        // Manual target pour les effets de cartes
+        public virtual void PreviewTarget(DoublageManager doublageManager)
+        {
+
+        }
+
+        // Manual target pour les effets de cartes
+        public virtual void StopPreview(DoublageManager doublageManager)
+        {
+            EmotionCardTotal[] cards = doublageManager.EmotionAttackManager.GetCards();
+            for (int i = 0; i < cards.Length; i++)
+            {
+                for (int j = 0; j < cards[i].Cards.Length; j++)
+                {
+                    if(cards[i].Cards[j] != null)
+                        cards[i].Cards[j].StopPreview();
+                }
+            }
+        }
+
     } // SkillEffectData class
 	
 }// #PROJECTNAME# namespace
