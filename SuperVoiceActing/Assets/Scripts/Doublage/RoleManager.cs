@@ -35,12 +35,16 @@ namespace VoiceActing
         Animator enemyAttack;
         [SerializeField]
         Animator enemyAttackFace;
+        [SerializeField]
+        Shake shakeFeedback;
 
         [Title("InfoAttack")]
         [SerializeField]
         TextMeshProUGUI textSkillName;
         [SerializeField]
         TextMeshProUGUI textSkillDescription;
+        [SerializeField]
+        TextMeshProUGUI textSkillDescriptionBattle;
         [SerializeField]
         TextMeshProUGUI textSkillInfluenceValue;
 
@@ -68,6 +72,7 @@ namespace VoiceActing
 
         bool firstTime = false;
         bool readyToAttack = false;
+        bool selectingCounter = false;
 
         List<Role> roles;
 
@@ -298,7 +303,8 @@ namespace VoiceActing
             imageEnemyEffect.sprite = roles[indexCurrentRole].RoleSprite;
             textSkillName.text = currentAttack.SkillName;
             textSkillDescription.text = currentAttack.Description;
-            if(currentAttack.InfluenceValue > 0)
+            textSkillDescriptionBattle.text = "[ " + currentAttack.DescriptionBattle + " ]";
+            if (currentAttack.InfluenceValue > 0)
             {
                 currentAttackInfluence = currentAttack.InfluenceValue + roleInfluenceBonus[indexCurrentRole];
                 currentAttackInfluence += Random.Range(-currentAttack.InfluenceRandom, currentAttack.InfluenceRandom);
@@ -325,6 +331,7 @@ namespace VoiceActing
 
         public void StopEnemyActivation()
         {
+            selectingCounter = false;
             cameraController.EnemySkillCancel();
             skillManager.StopPreview(currentAttack);
             skillManager.ApplySkill(currentAttack);
@@ -335,11 +342,13 @@ namespace VoiceActing
             emotionAttackManager.ComboAnimationRoleDescription(true);
             enemyAttack.ResetTrigger("HideDescription");
             enemyAttack.ResetTrigger("ShowDescription");
+            shakeFeedback.ShakeRectEffect();
         }
 
 
         public void EnemyAttackCounter()
         {
+            selectingCounter = false;
             skillManager.StopPreview(currentAttack);
             cameraController.EnemySkillCounter();
             emotionAttackManager.ResetCard();
@@ -378,13 +387,20 @@ namespace VoiceActing
             }
             if (emotionAttackManager.GetComboCount() == 0)
             {
+                selectingCounter = true;
                 enemyAttack.SetTrigger("HideDescription");
+                enemyAttack.ResetTrigger("ShowDescription");
                 emotionAttackManager.ComboAnimationRoleDescription(true);
             }
         }
 
         public void RemoveCard()
         {
+            if (selectingCounter == false)
+            {
+                StopEnemyActivation();
+                return;
+            }
             EmotionCard card = emotionAttackManager.RemoveCard();
             if (card != null)
             {
@@ -399,7 +415,9 @@ namespace VoiceActing
             }
             if (emotionAttackManager.GetComboCount() == -1)
             {
+                selectingCounter = false;
                 enemyAttack.SetTrigger("ShowDescription");
+                enemyAttack.ResetTrigger("HideDescription");
                 emotionAttackManager.ComboAnimationRoleDescription(false);
             }
         }
@@ -408,7 +426,10 @@ namespace VoiceActing
         {
             if (emotionAttackManager.GetComboCount() == -1)
             {
-                StopEnemyActivation();
+                selectingCounter = true;
+                enemyAttack.SetTrigger("HideDescription");
+                enemyAttack.ResetTrigger("ShowDescription");
+                emotionAttackManager.ComboAnimationRoleDescription(true);
             }
             else if (currentAttackInfluence <= 0)
             {

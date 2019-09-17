@@ -108,6 +108,10 @@ namespace VoiceActing
             buttonSaveLoad[indexSelected].SelectButton();
         }
 
+        public void Validate(int index)
+        {
+            indexSelected = index;
+        }
 
         public void Validate(PlayerData playerData)
         {

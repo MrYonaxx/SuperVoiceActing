@@ -39,7 +39,7 @@ namespace VoiceActing
         [SerializeField]
         Image imageSeason;
         [SerializeField]
-        TextMeshProUGUI textResearch;
+        MenuRessourceResearch menuResearch;
 
         [Header("MenuInfo")]
         [SerializeField]
@@ -79,8 +79,7 @@ namespace VoiceActing
 
         public void DrawResearch(int researchPoint)
         {
-            // destiné a changer quand j'aurai une vrai interface
-            textResearch.text = researchPoint + " Point de recherche";
+            menuResearch.DrawResearchPoint(researchPoint);
         }
 
 

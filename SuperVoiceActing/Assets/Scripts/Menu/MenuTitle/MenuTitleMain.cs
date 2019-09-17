@@ -26,6 +26,8 @@ namespace VoiceActing
         [SerializeField]
         RectTransform scrollRythmo;
         [SerializeField]
+        RectTransform barreRythmo;
+        [SerializeField]
         TextMeshProUGUI[] textOptions;
         [SerializeField]
         Animator animatorMainMenu;
@@ -72,7 +74,11 @@ namespace VoiceActing
 
 
 
-
+        public void Validate(int index)
+        {
+            indexSelected = index;
+            Validate();
+        }
 
 
         public void Validate()
@@ -108,7 +114,15 @@ namespace VoiceActing
 
 
 
-
+        public void Selection(int index)
+        {
+            BeforeSelection();
+            indexSelected = index;
+            textOptions[indexSelected].fontStyle = FontStyles.Bold;
+            //AfterSelection();
+            barreRythmo.anchoredPosition = new Vector2(-700, 220 - indexSelected * buttonSize);
+            //MoveScrollRect();
+        }
 
 
 
@@ -136,6 +150,7 @@ namespace VoiceActing
         private IEnumerator MoveScrollRythmoCoroutine()
         {
             float time = 10f;
+            //barreRythmo.anchoredPosition = new Vector2(-700, 220);
             //int ratio = indexLimit - scrollSize;
             Vector2 speed = new Vector2(0, (scrollRythmo.anchoredPosition.y - indexSelected * buttonSize) / time);
             while (time != 0)

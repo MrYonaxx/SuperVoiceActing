@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace VoiceActing
 {
-	public class ButtonSaveLoad : MonoBehaviour
+	public class ButtonSaveLoad : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 	{
         #region Attributes 
 
@@ -52,7 +53,10 @@ namespace VoiceActing
 
         [SerializeField]
         TextMeshProUGUI textSlotNumber;
+        [SerializeField]
+        UnityEventInt eventOnClick;
 
+        int buttonIndex;
 
         #endregion
 
@@ -74,7 +78,8 @@ namespace VoiceActing
         public void DrawButton(SaveData saveData, ImageDictionnary seasonData, int index)
         {
             this.gameObject.SetActive(true);
-            if(index < 10)
+            buttonIndex = index;
+            if (index < 10)
             {
                 textSlotNumber.text = "0" + index;
             }
@@ -126,9 +131,25 @@ namespace VoiceActing
         {
             return rectTransform;
         }
-        
+
+        public void OnPointerEnter(PointerEventData pointerEventData)
+        {
+            SelectButton();
+        }
+
+        public void OnPointerExit(PointerEventData pointerEventData)
+        {
+            UnselectButton();
+        }
+
+        public void OnPointerClick(PointerEventData pointerEventData)
+        {
+            if (pointerEventData.button == PointerEventData.InputButton.Left)
+                eventOnClick.Invoke(buttonIndex);
+        }
+
         #endregion
-		
-	} // ButtonSaveLoad class
+
+    } // ButtonSaveLoad class
 	
 }// #PROJECTNAME# namespace

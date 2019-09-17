@@ -57,7 +57,7 @@ namespace VoiceActing
         TextMeshProUGUI textResearchNextDescription;
 
         [SerializeField]
-        TextMeshProUGUI textResearch;
+        MenuRessourceResearch menuResearch;
 
 
 
@@ -277,7 +277,7 @@ namespace VoiceActing
 
         public void DrawResearch()
         {
-            textResearch.text = playerData.ResearchPoint.ToString();
+            menuResearch.DrawResearchPoint(playerData.ResearchPoint);
         }
 
 

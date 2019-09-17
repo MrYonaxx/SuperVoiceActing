@@ -548,7 +548,7 @@ namespace VoiceActing
             noCameraEffect = false;
             moving = false;
             MoveToInitialPosition(30);
-            TextMovement(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 0, 0, 0, 30);
+            TextMovement(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 0, 90, 0, 30);
             cameraPlacement = 0;
         }
 

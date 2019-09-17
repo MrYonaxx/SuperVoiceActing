@@ -153,6 +153,8 @@ namespace VoiceActing
 
         public void EraseText()
         {
+            if (inputField.text.Length == 0)
+                return;
             inputField.text = inputField.text.Remove(inputField.text.Length-1);
         }
 

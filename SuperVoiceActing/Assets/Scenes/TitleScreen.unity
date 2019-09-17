@@ -1195,6 +1195,7 @@ GameObject:
   - component: {fileID: 303289407}
   - component: {fileID: 303289409}
   - component: {fileID: 303289408}
+  - component: {fileID: 303289410}
   m_Layer: 0
   m_Name: TextBonus
   m_TagString: Untagged
@@ -1344,6 +1345,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303289406}
   m_CullTransparentMesh: 0
+--- !u!114 &303289410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303289406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 3
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &310364548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1585,11 +1636,12 @@ PrefabInstance:
         type: 3}
       propertyPath: storyEventData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: a85e4de5c5c75b94489fee3a238f3658,
+        type: 2}
     - target: {fileID: 2682235938617044564, guid: c4649e376cba29a4ca09eaedb6dfcc13,
         type: 3}
       propertyPath: nextScene
-      value: EventSceneNameField
+      value: EventScene
       objectReference: {fileID: 0}
     - target: {fileID: 2682235940037342246, guid: c4649e376cba29a4ca09eaedb6dfcc13,
         type: 3}
@@ -3071,6 +3123,7 @@ GameObject:
   - component: {fileID: 1063420716}
   - component: {fileID: 1063420718}
   - component: {fileID: 1063420717}
+  - component: {fileID: 1063420719}
   m_Layer: 0
   m_Name: TextLoadGame
   m_TagString: Untagged
@@ -3220,6 +3273,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063420715}
   m_CullTransparentMesh: 0
+--- !u!114 &1063420719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063420715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 1
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1069944981
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,6 +3558,7 @@ GameObject:
   - component: {fileID: 1140679794}
   - component: {fileID: 1140679796}
   - component: {fileID: 1140679795}
+  - component: {fileID: 1140679797}
   m_Layer: 0
   m_Name: TextOptions
   m_TagString: Untagged
@@ -3604,6 +3708,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140679793}
   m_CullTransparentMesh: 0
+--- !u!114 &1140679797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140679793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 6
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1153831602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4238,7 @@ GameObject:
   - component: {fileID: 1256241649}
   - component: {fileID: 1256241651}
   - component: {fileID: 1256241650}
+  - component: {fileID: 1256241652}
   m_Layer: 0
   m_Name: TextFreeplay
   m_TagString: Untagged
@@ -4233,6 +4388,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256241648}
   m_CullTransparentMesh: 0
+--- !u!114 &1256241652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256241648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 2
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1256819800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,6 +4560,7 @@ GameObject:
   - component: {fileID: 1320688700}
   - component: {fileID: 1320688702}
   - component: {fileID: 1320688701}
+  - component: {fileID: 1320688703}
   m_Layer: 0
   m_Name: TextCustom
   m_TagString: Untagged
@@ -4504,6 +4710,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320688699}
   m_CullTransparentMesh: 0
+--- !u!114 &1320688703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320688699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 4
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1383848770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,8 +5253,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1517298815}
   - component: {fileID: 1517298816}
+  - component: {fileID: 1517298817}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: InputController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5182,7 +5439,50 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  eventBoutonStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   canRepeatJoystickLeft: 1
+--- !u!114 &1517298817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517298814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c53a08c2cb6e4ebb6d001693e6be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventLeftClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventRightClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventWheelUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventWheelDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  buttonAttack: {fileID: 0}
   mouseButtons: []
   controllerButtons: []
 --- !u!1 &1524928671
@@ -6010,6 +6310,7 @@ GameObject:
   - component: {fileID: 1669320051}
   - component: {fileID: 1669320053}
   - component: {fileID: 1669320052}
+  - component: {fileID: 1669320054}
   m_Layer: 0
   m_Name: TextNewGame
   m_TagString: Untagged
@@ -6159,6 +6460,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669320050}
   m_CullTransparentMesh: 0
+--- !u!114 &1669320054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669320050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 0
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1704972167
 GameObject:
   m_ObjectHideFlags: 0
@@ -6350,6 +6701,7 @@ MonoBehaviour:
   - {fileID: 1939189528}
   - {fileID: 1140679794}
   scrollRythmo: {fileID: 286926715}
+  barreRythmo: {fileID: 527528553}
   textOptions:
   - {fileID: 1669320052}
   - {fileID: 1063420717}
@@ -6362,7 +6714,7 @@ MonoBehaviour:
   animatorMainMenuDescription: {fileID: 1704972171}
   indexNewGame: 0
   playerData: {fileID: 11400000, guid: 1c7907ef99e7b76478510af20a83fbd9, type: 2}
-  newGamePlayerData: {fileID: 11400000, guid: dc19df6f43b31054fa83f6bda706f015, type: 2}
+  newGamePlayerData: {fileID: 11400000, guid: e7b5a45ba4fdca6408e5316cd8be2f2a, type: 2}
   menuNewGame: {fileID: 310364550}
   indexLoadGame: 1
   menuSaveLoadManager: {fileID: 1994914116}
@@ -6696,6 +7048,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840410488}
   m_CullTransparentMesh: 0
+--- !u!1 &1853115882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853115883}
+  - component: {fileID: 1853115884}
+  m_Layer: 0
+  m_Name: MouseController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1853115883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853115882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2021525906}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853115884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853115882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c53a08c2cb6e4ebb6d001693e6be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventLeftClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2021525907}
+        m_MethodName: EventButtonA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventRightClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventWheelUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventWheelDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  buttonAttack: {fileID: 0}
+  mouseButtons: []
+  controllerButtons: []
 --- !u!1 &1855029430
 GameObject:
   m_ObjectHideFlags: 0
@@ -7003,6 +7437,7 @@ GameObject:
   - component: {fileID: 1939189528}
   - component: {fileID: 1939189530}
   - component: {fileID: 1939189529}
+  - component: {fileID: 1939189531}
   m_Layer: 0
   m_Name: TextGallery
   m_TagString: Untagged
@@ -7152,6 +7587,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939189527}
   m_CullTransparentMesh: 0
+--- !u!114 &1939189531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939189527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d056d3b9780f43924ecba69ff5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonIndex: 5
+  eventOnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Validate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723563430}
+        m_MethodName: Selection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  eventOnClickExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VoiceActing.UnityEventInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1944966878
 GameObject:
   m_ObjectHideFlags: 0
@@ -8155,7 +8640,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1853115883}
   m_Father: {fileID: 1076381135}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8174,17 +8660,50 @@ MonoBehaviour:
   joystickDeadZone: 0.25
   eventBoutonY:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2021525907}
+        m_MethodName: EventButtonA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventBoutonX:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2021525907}
+        m_MethodName: EventButtonA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventBoutonB:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2021525907}
+        m_MethodName: EventButtonA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   eventBoutonA:
@@ -8312,9 +8831,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  eventBoutonStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   canRepeatJoystickLeft: 0
-  mouseButtons: []
-  controllerButtons: []
 --- !u!1 &2032819690
 GameObject:
   m_ObjectHideFlags: 0

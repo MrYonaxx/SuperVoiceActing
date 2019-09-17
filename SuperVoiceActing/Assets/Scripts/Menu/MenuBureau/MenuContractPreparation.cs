@@ -119,6 +119,8 @@ namespace VoiceActing
         [Header("Feedbacks")]
         [SerializeField]
         Animator animatorFeedbackSpriteAudition;
+        [SerializeField]
+        MenuRessourceResearch menuRessourceResearch;
 
 
 
@@ -175,6 +177,7 @@ namespace VoiceActing
 
         public void SwitchToMenuContractManager()
         {
+            menuRessourceResearch.ShowMenu();
             menuActorsManager.AuditionMode(false, null);
             StopAllCoroutines();
             menuContractManager.gameObject.SetActive(true);
@@ -432,6 +435,7 @@ namespace VoiceActing
         {
             if (currentContract.SessionLock == true)
             {
+                menuRessourceResearch.ShowMenu();
                 inSessionPossible = false;
                 inSessionObject.gameObject.SetActive(false);
                 return;
@@ -440,11 +444,13 @@ namespace VoiceActing
             {
                 if (currentContract.VoiceActors[i].IsNull == true)
                 {
+                    menuRessourceResearch.ShowMenu();
                     inSessionPossible = false;
                     inSessionObject.gameObject.SetActive(false);
                     return;
                 }
             }
+            menuRessourceResearch.HideMenu();
             inSessionPossible = true;
             inSessionObject.gameObject.SetActive(true);
             inSessionObject.SetTrigger("Appear");
