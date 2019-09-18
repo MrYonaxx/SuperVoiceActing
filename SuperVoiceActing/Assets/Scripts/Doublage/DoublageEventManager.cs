@@ -464,7 +464,6 @@ namespace VoiceActing
 
         public bool CheckEvent(Contract contrat, int indexPhrase, bool startLine, float hp)
         {
-
             for (int i = 0; i < contrat.EventData.Count; i++)
             {
                 if (CheckEventCondition(contrat.EventData[i], indexPhrase, startLine, hp) == true)

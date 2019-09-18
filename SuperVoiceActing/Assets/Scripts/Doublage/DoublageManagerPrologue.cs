@@ -22,7 +22,11 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-
+        [Space]
+        [Space]
+        [Space]
+        [Space]
+        [Space]
         [Header("-------------------------------------------------------------")]
         [Header("Changement d'ambiance")]
         [SerializeField]
@@ -155,7 +159,7 @@ namespace VoiceActing
                 if(time == 300)
                 {
                     cameraController.SetNoCameraEffect(true);
-                    //cameraController.MoveCamera(-6.5f,2.9f,0,400);
+                    cameraController.CameraMovement(-6.5f,2.9f,0,0,90,0,400);
                 }
                 if(time < 300)
                 {
