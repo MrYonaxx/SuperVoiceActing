@@ -237,7 +237,12 @@ namespace VoiceActing
                 }
             }
             indexSelected = 0;
-            if(currentContract.Characters[indexSelected].CharacterLock != null)
+            if (currentContract.Characters.Count == 0)
+            {
+                menuActorsManager.AuditionMode(false, null);
+                return;
+            }
+            if (currentContract.Characters[indexSelected].CharacterLock != null)
                 menuActorsManager.AuditionMode(false, currentContract.Characters[indexSelected]);
             else
                 menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);

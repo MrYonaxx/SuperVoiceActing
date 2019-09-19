@@ -159,6 +159,13 @@ namespace VoiceActing
             get { return initialTurn; }
         }
 
+        [SerializeField]
+        private bool menuStudioUnlocked = true;
+        public bool MenuStudioUnlocked
+        {
+            get { return menuStudioUnlocked; }
+        }
+
         [HorizontalGroup("Initial Equipement")]
         [SerializeField]
         private EquipementCategory[] equipementCategories;

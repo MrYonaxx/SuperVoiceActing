@@ -20,6 +20,8 @@ namespace VoiceActing
 
         public EmotionUsed(EmotionCard[] combo)
         {
+            if (combo == null)
+                return;
             for(int i = 0; i< emotions.Length; i++)
             {
                 if(i >= combo.Length)

@@ -42,6 +42,9 @@ namespace VoiceActing
         [SerializeField]
         GameObject[] characterShadows;
 
+        [SerializeField]
+        GameObject buttonSoudEngi;
+
 
 
 
@@ -112,9 +115,19 @@ namespace VoiceActing
         public void SetManagers(SkillManager sM, SoundEngineer soundEngi)
         {
             skillManager = sM;
-            characterSoundEngineer.SetStoryCharacterData(soundEngi.SpritesSheets);
-            skills = soundEngi.Skills;              
-            InitializeSoundEngineer();
+            if (soundEngi.IsNull == false)
+            {
+                characterSoundEngineer.SetStoryCharacterData(soundEngi.SpritesSheets);
+                skills = soundEngi.Skills;
+                InitializeSoundEngineer();
+                buttonSoudEngi.gameObject.SetActive(true);
+            }
+            else
+            {
+                if(buttonSoudEngi != null)
+                    buttonSoudEngi.gameObject.SetActive(false);
+            }
+
         }
 
         public void InitializeSoundEngineer()
@@ -127,6 +140,11 @@ namespace VoiceActing
                     textCosts[i].text = skills[i].ProducerCost.ToString();
                 }
             }
+        }
+
+        public bool CanMixTable()
+        {
+            return buttonSoudEngi.activeInHierarchy;
         }
 
         public void SwitchToMixingTable()

@@ -139,6 +139,8 @@ namespace VoiceActing
 
         public void ModifyTone(EmotionCard[] emotions)
         {
+            if (emotions == null)
+                return;
             EmotionStat toneAddValue = new EmotionStat(0,0,0,0,0,0,0,0);
             EmotionStat toneSubstractValue = new EmotionStat(-1, -1, -1, -1, -1, -1, -1, -1);
             for (int i = 0; i < emotions.Length; i++)

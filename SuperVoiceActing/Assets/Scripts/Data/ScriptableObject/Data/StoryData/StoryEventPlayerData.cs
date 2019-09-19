@@ -37,6 +37,8 @@ namespace VoiceActing
         string newObjective;
         [SerializeField]
         bool skipNextWeek;
+        [SerializeField]
+        bool unlockStudio;
 
         public void SetNode(PlayerData playerData)
         {
@@ -128,6 +130,8 @@ namespace VoiceActing
             {
                 playerData.IsLoading = true;
             }
+            if (unlockStudio == true)
+                playerData.MenuStudioUnlocked = true;
 
 
         }

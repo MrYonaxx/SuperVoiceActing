@@ -506,6 +506,16 @@ namespace VoiceActing
 
 
 
+
+        [SerializeField]
+        private bool menuStudioUnlocked = false;
+        public bool MenuStudioUnlocked
+        {
+            get { return menuStudioUnlocked; }
+            set { menuStudioUnlocked = value; }
+        }
+
+
         private DebugSave bla = null;
 
         private bool isLoading = false;
@@ -616,6 +626,7 @@ namespace VoiceActing
             defBonus = new EmotionStat(initialPlayerData.InitialDefBonus);
 
             timer = 0;
+            menuStudioUnlocked = initialPlayerData.MenuStudioUnlocked;
 
             researchPoint = initialPlayerData.StartResearchPoint;
             researchesLevels = new ResearchPlayerLevel[initialPlayerData.ResearchDatabase.ResearchesData.Length];

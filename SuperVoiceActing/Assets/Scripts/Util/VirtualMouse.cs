@@ -81,6 +81,8 @@ namespace VoiceActing
                 if (virtualMouse.anchoredPosition.x - lastPositionX >= changeScreenVelocity)
                 {             
                     eventMouseRight.Invoke();
+                    if (this.gameObject.activeInHierarchy == false)
+                        return;
                     mouseHeldDown = true;
                     cursorCoroutine = WaitRepeat();
                     StartCoroutine(cursorCoroutine);
@@ -88,6 +90,8 @@ namespace VoiceActing
                 else if (virtualMouse.anchoredPosition.x - lastPositionX <= -changeScreenVelocity)
                 {
                     eventMouseLeft.Invoke();
+                    if (this.gameObject.activeInHierarchy == false)
+                        return;
                     mouseHeldDown = true;
                     cursorCoroutine = WaitRepeat();
                     StartCoroutine(cursorCoroutine);
@@ -111,18 +115,6 @@ namespace VoiceActing
             mouseHeldDown = false;
         }
 
-       /* private IEnumerator ParticleCoroutine()
-        {
-            while (true)
-            {
-                for (int i = 0; i < particleMouse.Length; i++)
-                {
-                    particleMouse[i].Play();
-                    particleMouse[i].transform.position = virtualMouse.transform.position;
-                    yield return new WaitForSeconds(0.1f / particleMouse.Length);
-                }
-            }
-        }*/
 
         #endregion
 

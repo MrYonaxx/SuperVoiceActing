@@ -34,6 +34,8 @@ namespace VoiceActing
         [SerializeField]
         SpriteRenderer spriteRendererCharacterDoremi;
         [SerializeField]
+        SpriteRenderer spriteRendererEye;
+        [SerializeField]
         RectTransform blackRectUpper;
         [SerializeField]
         RectTransform blackRectLower;
@@ -111,7 +113,7 @@ namespace VoiceActing
             }
             else if (indexPhrase == 3)
             {
-                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Tristesse);
                 textAppearManager.ApplyDamage(100);
                 inputController.gameObject.SetActive(true);
                 ShowUIButton(buttonUIY);
@@ -168,6 +170,7 @@ namespace VoiceActing
                 }
                 color -= new Color(speedColor, speedColor, speedColor, 0);
                 spriteRendererCharacterDoremi.color = color;
+                spriteRendererEye.color = color;
                 lightAmbient.intensity -= speedLight;
                 time -= 1;
                 yield return null;
@@ -176,6 +179,7 @@ namespace VoiceActing
             yield return new WaitForSeconds(2);
             color = new Color(1, 1, 1, 1);
             spriteRendererCharacterDoremi.color = color;
+            spriteRendererEye.color = color;
             newAmbiance.Invoke();
             AudioManager.Instance.PlaySound(audioClipSpotlight);
             AudioManager.Instance.PlayMusic(battleThemePrologue);
@@ -183,7 +187,7 @@ namespace VoiceActing
             newAmbiance2.Invoke();
             emotionAttackManager.SwitchCardTransformIntro();
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Joie);
             textAppearManager.ApplyDamage(100);
             inputController.gameObject.SetActive(true);
             cameraController.enabled = true;

@@ -119,10 +119,12 @@ namespace VoiceActing
             {
                 inputTutoActivate[currentTuto].gameObject.SetActive(true);
                 inputTutoDesactivate[currentTuto].gameObject.SetActive(false);
+                menuManagers.SetActive(false);
             }
             else
             {
                 currentTuto = -1;
+                menuManagers.SetActive(true);
             }
         }
 

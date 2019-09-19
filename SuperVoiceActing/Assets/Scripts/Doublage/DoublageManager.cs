@@ -274,10 +274,10 @@ namespace VoiceActing
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
-            if(contrat.SoundEngineer.IsNull)
+            /*if(contrat.SoundEngineer.IsNull)
                 soundEngineerManager.SetManagers(skillManager, playerData.SoundEngineers[0]);
-            else 
-                soundEngineerManager.SetManagers(skillManager, contrat.SoundEngineer);
+            else */
+            soundEngineerManager.SetManagers(skillManager, contrat.SoundEngineer);
             toneManager.DrawTone();
             characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
             SetPlayerSettings();
@@ -1032,6 +1032,8 @@ namespace VoiceActing
 
         public void SwitchToMixingTable()
         {
+            if (soundEngineerManager.CanMixTable() == false)
+                return;
             soundEngineerManager.SwitchToMixingTable();
             emotionAttackManager.ResetCard();
             //emotionAttackManager.SwitchCardTransformToRessource();

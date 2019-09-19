@@ -48,6 +48,12 @@ namespace VoiceActing
         [SerializeField]
         private MenuContractMoney moneyManager;
 
+        [Header("Managers")]
+        [SerializeField]
+        private GameObject menuStudioBlackscreen;
+        [SerializeField]
+        private MenuStudioMain menuStudioMain;
+
         [Header("a")]
         [SerializeField]
         private MenuNextWeek menuNextWeek;
@@ -107,7 +113,8 @@ namespace VoiceActing
                 storyEventTexture.SetActive(true);
                 storyEventStartWeek.CreateScene(playerData.NextStoryEventsStartWeek[0]);
             }
-
+            menuStudioMain.gameObject.SetActive(playerData.MenuStudioUnlocked);
+            menuStudioBlackscreen.SetActive(!playerData.MenuStudioUnlocked);
             menuNextWeek.StartNextWeek();
         }
 
