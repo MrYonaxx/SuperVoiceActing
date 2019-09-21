@@ -45,14 +45,6 @@ namespace VoiceActing
         [SerializeField]
         UnityEvent newAmbiance2;
 
-        [Header("Akihabara")]
-        [SerializeField]
-        Image transitionImage;
-        [SerializeField]
-        GameObject akihabara;
-        [SerializeField]
-        GameObject studio;
-
 
         [SerializeField]
         AudioClip battleThemePrologue;
@@ -117,11 +109,6 @@ namespace VoiceActing
                 textAppearManager.ApplyDamage(100);
                 inputController.gameObject.SetActive(true);
                 ShowUIButton(buttonUIY);
-            }
-            else if (indexPhrase == 6)
-            {
-                TransitionToAkihabara();
-                base.SetPhrase();
             }
             else if (indexPhrase == 11)
             {
@@ -197,37 +184,6 @@ namespace VoiceActing
             //SwitchToDoublage();
         }
 
-
-        private void TransitionToAkihabara()
-        {
-            StartCoroutine(TransitionAkihabaraCoroutine());
-        }
-
-        private IEnumerator TransitionAkihabaraCoroutine()
-        {
-            yield return new WaitForSeconds(10);
-            float time = 600;
-            float speedColor = 1 / time;
-            Color color = new Color(1, 1, 1, 0);
-            while (time != 0)
-            {
-                color += new Color(1, 1, 1, speedColor);
-                transitionImage.color = color;
-                time -= 1;
-                yield return null;
-            }
-            akihabara.SetActive(true);
-            studio.SetActive(false);
-            yield return new WaitForSeconds(5);
-            time = 600;
-            while (time != 0)
-            {
-                color -= new Color(1, 1, 1, speedColor);
-                transitionImage.color = color;
-                time -= 1;
-                yield return null;
-            }
-        }
 
         #endregion
 

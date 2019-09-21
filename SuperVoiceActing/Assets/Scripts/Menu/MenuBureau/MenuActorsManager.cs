@@ -31,12 +31,18 @@ namespace VoiceActing
         private RectTransform buttonListTransform;
         [SerializeField]
         private ButtonVoiceActor prefabButtonVoiceActor;
+
+        [Header("SelectionButton")]
         [SerializeField]
         private Animator animatorSelection;
         [SerializeField]
         private TextMeshProUGUI textMeshSelection;
         [SerializeField]
+        private Image actorFaceSelection;
+        [SerializeField]
         private Image imageButtonSelection;
+        [SerializeField]
+        private RectTransform transformActorHPSelection;
 
         [Header("Info Panel")]
         [SerializeField]
@@ -139,6 +145,8 @@ namespace VoiceActing
         [SerializeField]
         Image imageContractIcon;
         [SerializeField]
+        RectTransform roleTimbre;
+        [SerializeField]
         MenuContractMoney menuContractMoney;
 
         [Header("Feedbacks")]
@@ -150,6 +158,8 @@ namespace VoiceActing
         [Header("Menu Input")]
         [SerializeField]
         private InputController inputController;
+        [SerializeField]
+        private GameObject mouseController;
         [SerializeField]
         private int scrollSize = 11;
         [SerializeField]
@@ -340,6 +350,8 @@ namespace VoiceActing
                 SetActorGaugeToZero();
                 textMeshSelection.text = "Audition";
                 textMeshSelection.color = colorNameNormal;
+                transformActorHPSelection.localScale = Vector3.zero;
+                actorFaceSelection.enabled = false;
                 menuActorsAudition.DrawAuditionPanel(true);
                 imageButtonSelection.gameObject.SetActive(true);
                 statLevelActorSelection.gameObject.SetActive(false);
@@ -354,6 +366,9 @@ namespace VoiceActing
             }
 
             textMeshSelection.text = actor.Name;
+            actorFaceSelection.enabled = true;
+            actorFaceSelection.sprite = actor.SpriteSheets.SpriteIcon;
+            transformActorHPSelection.localScale = new Vector3(1 - (actor.Hp / (float)actor.HpMax), 1, 1);
 
             if (actor.Availability == true)
             {
@@ -460,7 +475,7 @@ namespace VoiceActing
 
         private void DrawGaugeInfo(VoiceActor actor)
         {
-            actor.RoleDefense = 8;
+            //actor.RoleDefense = 8;
             StopAllCoroutines(); // sauf le scroll 
             for (int i = 0; i < textStatsActor.Length; i++)
             {
@@ -491,17 +506,17 @@ namespace VoiceActing
                     if (currentStatActor >= currentStatRole)
                     {
                         feedbackBestStat[i].color = new Color(1, 1, 0, 0.5f);
-                        imageStatIcon[i].color = new Color(1, 1, 0);
-                        jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
+                        imageStatIcon[i].color = new Color(1, 1, 0, imageStatIcon[i].color.a);
+                        //jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
                         jaugeEmptyActor[i].color = jaugeEmpty[i].color;
                         jaugeEmptyRole[i].color = jaugeEmpty[i].color;
                     }
                     else
                     {
-                        actor.RoleDefense -= 1;
+                       // actor.RoleDefense -= 1;
                         feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
-                        imageStatIcon[i].color = new Color(1, 1, 1);
-                        jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
+                        imageStatIcon[i].color = new Color(1, 1, 1, imageStatIcon[i].color.a);
+                        //jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                         jaugeEmptyActor[i].color = jaugeEmpty[i].color;
                         jaugeEmptyRole[i].color = jaugeEmpty[i].color;
                     }
@@ -515,33 +530,7 @@ namespace VoiceActing
             int currentStatRole = 0;
             for (int i = 0; i < textStatsActor.Length; i++)
             {
-                switch (i)
-                {
-                    case 0:
-                        currentStatRole = auditionRole.CharacterStat.Joy;
-                        break;
-                    case 1:
-                        currentStatRole = auditionRole.CharacterStat.Sadness;
-                        break;
-                    case 2:
-                        currentStatRole = auditionRole.CharacterStat.Disgust;
-                        break;
-                    case 3:
-                        currentStatRole = auditionRole.CharacterStat.Anger;
-                        break;
-                    case 4:
-                        currentStatRole = auditionRole.CharacterStat.Surprise;
-                        break;
-                    case 5:
-                        currentStatRole = auditionRole.CharacterStat.Sweetness;
-                        break;
-                    case 6:
-                        currentStatRole = auditionRole.CharacterStat.Fear;
-                        break;
-                    case 7:
-                        currentStatRole = auditionRole.CharacterStat.Trust;
-                        break;
-                }
+                currentStatRole = auditionRole.CharacterStat.GetEmotion(i + 1);
 
                 if (gaugeCursorMode == false)
                 {
@@ -555,10 +544,18 @@ namespace VoiceActing
 
                 if(currentStatRole == auditionRole.BestStat || currentStatRole == auditionRole.SecondBestStat)
                 {
+                    textStatsActor[i].color = new Color(textStatsActor[i].color.r, textStatsActor[i].color.g, textStatsActor[i].color.b, 1f);
+                    textStatsRole[i].color = new Color(textStatsRole[i].color.r, textStatsRole[i].color.g, textStatsRole[i].color.b, 1f);
+                    imageStatIcon[i].color = new Color(imageStatIcon[i].color.r, imageStatIcon[i].color.g, imageStatIcon[i].color.b, 1f);
+                    jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
                     feedbackBestStat[i].gameObject.SetActive(true);
                 }
                 else
                 {
+                    textStatsActor[i].color = new Color(textStatsActor[i].color.r, textStatsActor[i].color.g, textStatsActor[i].color.b, 0.5f);
+                    textStatsRole[i].color = new Color(textStatsRole[i].color.r, textStatsRole[i].color.g, textStatsRole[i].color.b, 0.5f);
+                    imageStatIcon[i].color = new Color(imageStatIcon[i].color.r, imageStatIcon[i].color.g, imageStatIcon[i].color.b, 0.5f);
+                    jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                     feedbackBestStat[i].gameObject.SetActive(false);
                 }
             }
@@ -636,8 +633,8 @@ namespace VoiceActing
                     textStatsActor[i].text = "0";
                     StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], 0 / 100f));
                     feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
-                    imageStatIcon[i].color = new Color(1, 1, 1);
-                    jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
+                    imageStatIcon[i].color = new Color(1, 1, 1, imageStatIcon[i].color.a);
+                    //jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                 }
 
             }
@@ -648,8 +645,8 @@ namespace VoiceActing
                     textStatsActor2[i].text = "0";
                     StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], 0 / 100f));
                     feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
-                    imageStatIcon[i].color = new Color(1, 1, 1);
-                    jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
+                    imageStatIcon[i].color = new Color(1, 1, 1, imageStatIcon[i].color.a);
+                    //jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                 }
             }
         }
@@ -731,6 +728,11 @@ namespace VoiceActing
 
         private void DrawAuditionInfo(Role role)
         {
+
+            roleTimbre.anchorMin = new Vector2((role.Timbre.x + 10) / 20f, 0);
+            roleTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 1);
+            roleTimbre.anchoredPosition = Vector3.zero;
+
             textRoleName.text = role.Name;
             textRoleFan.text = role.Fan.ToString();
             textRoleLine.text = role.Line.ToString();
@@ -783,10 +785,12 @@ namespace VoiceActing
             {
                 if(menuActorsAudition.CheckCost() == true)
                 {
+                    mouseController.gameObject.SetActive(false);
                     StartCoroutine(GachaEffect());
                     menuActorsAudition.AnimAudition(auditionRole);
                     menuContractMoney.AddSalaryFast(-menuActorsAudition.GetBudget());
                     menuContractMoney.AuditionFeedback();
+
                 }
                 return;
             }
@@ -807,12 +811,14 @@ namespace VoiceActing
         private IEnumerator WaitFeedback()
         {
             inputController.gameObject.SetActive(false);
+            mouseController.gameObject.SetActive(false);
             int time = 20;
             while (time != 0)
             {
                 time -= 1;
                 yield return null;
             }
+            mouseController.gameObject.SetActive(true);
             cameraManager.MoveToCamera(2);
             menuContractPreparation.SetActor(actorsList[indexActorSelected]);
         }
@@ -902,6 +908,8 @@ namespace VoiceActing
 
         public void SelectActor(int index)
         {
+            if (mouseController.activeInHierarchy == false)
+                return;
             indexActorSelected = index;
             if (auditionMode == true && indexActorSelected == buttonsActors.Count - 1)
             {

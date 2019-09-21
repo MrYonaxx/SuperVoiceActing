@@ -182,7 +182,7 @@ namespace VoiceActing
         {
             if(inPercentage == true)
             {
-
+                card.AddStatPercentage(-emotionStat.GetEmotion((int)card.GetEmotion()));
             }
             else
             {
@@ -207,8 +207,6 @@ namespace VoiceActing
             for (int i = 0; i < emotion.Length; i++)
             {
                 stat = emotionStat.GetEmotion((int)(emotion[i]));
-                Debug.Log(emotion[i]);
-                Debug.Log(stat);
                 if (stat != 0)
                 {
                     if (selectionByPack == true)

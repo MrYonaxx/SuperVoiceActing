@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -38,8 +39,6 @@ namespace VoiceActing
 
         [SerializeField]
         TextMeshProUGUI textBox;
-
-
 
 
         StoryEventChoices choicesData;
@@ -119,6 +118,14 @@ namespace VoiceActing
 
             animatorsChoices[indexSelected].SetTrigger("Selected");
         }
+
+
+        public void Validate(int index)
+        {
+            indexSelected = index;
+            Validate();
+        }
+
 
         public void Validate()
         {

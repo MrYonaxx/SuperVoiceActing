@@ -60,9 +60,13 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        protected void Start()
+        protected void OnEnable()
         {
-            //StartCoroutine(ParticleCoroutine());
+            float screenRatioX = Input.mousePosition.x / Screen.width;
+            float screenRatioY = Input.mousePosition.y / Screen.height;
+
+            virtualMouse.anchoredPosition = new Vector2((-1920 / 2) + 1920 * screenRatioX, (-1080 / 2) + 1080 * screenRatioY);
+            lastPositionX = virtualMouse.anchoredPosition.x;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FlyThroughController : MonoBehaviour {
 
-	[SerializeField]
+	/*[SerializeField]
 	GameObject QueryObject;
 
 	float speed;
@@ -127,6 +127,6 @@ public class FlyThroughController : MonoBehaviour {
 
 		GUI.Box( new Rect(30 , 10, 150, 30), "speed = " + speed);
 		
-	}
+	}*/
 
 }

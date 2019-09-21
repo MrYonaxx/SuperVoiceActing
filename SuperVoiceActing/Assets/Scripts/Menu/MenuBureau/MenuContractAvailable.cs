@@ -88,6 +88,8 @@ namespace VoiceActing
         [SerializeField]
         private InputController inputController;
         [SerializeField]
+        private GameObject mouseController;
+        [SerializeField]
         private int scrollSize = 8;
         [SerializeField]
         private int buttonSize = 85; // à voir si on peut pas automatiser
@@ -312,9 +314,12 @@ namespace VoiceActing
         private IEnumerator WaitValidate(float time)
         {
             inputController.gameObject.SetActive(false);
+            mouseController.SetActive(false);
             yield return new WaitForSeconds(time);
+            mouseController.SetActive(true);
             SwitchToMenuContractManager();
             menuContractManager.CheckPhoneEvent();
+
         }
 
         public void ShowCharacterInfo()

@@ -3896,7 +3896,6 @@ MonoBehaviour:
   characters: []
   storyEventChoiceManager: {fileID: 2184066759805023187}
   storyEventEffectManager: {fileID: 1443104133}
-  doublageEventManager: {fileID: 0}
   unityEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4267,6 +4266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4853472777504535348}
   - component: {fileID: 3740779678427953407}
+  - component: {fileID: 2850244277802993081}
   m_Layer: 0
   m_Name: InputControllerChoices
   m_TagString: Untagged
@@ -4419,9 +4419,82 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  eventBoutonStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   canRepeatJoystickLeft: 0
-  mouseButtons: []
-  controllerButtons: []
+--- !u!114 &2850244277802993081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868318291261180202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c53a08c2cb6e4ebb6d001693e6be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventLeftClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3740779678427953407}
+        m_MethodName: EventButtonA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventRightClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventWheelUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2184066759805023187}
+        m_MethodName: SelectUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventWheelDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2184066759805023187}
+        m_MethodName: SelectDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  eventDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1873728205019042146
 GameObject:
   m_ObjectHideFlags: 0

@@ -137,8 +137,11 @@ namespace VoiceActing
 
         public void OnPointerEnter(PointerEventData data)
         {
-            eventOnSelect.Invoke(buttonIndex);
-            SelectButton();
+            if (!Input.GetMouseButton(0))
+            {
+                eventOnSelect.Invoke(buttonIndex);
+                SelectButton();
+            }
         }
         public void OnPointerExit(PointerEventData data)
         {

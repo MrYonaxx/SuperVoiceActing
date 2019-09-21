@@ -204,7 +204,6 @@ namespace VoiceActing
                                         if (skill.OnlyOnce == true)
                                             bannedSkills.Add(skill.SkillName);
                                         skillsToActivate.Add(skill);
-                                        Debug.Log(skill.SkillName);
                                         DrawMinorSkills(voiceActors[k], skill);
                                     }
                                 }

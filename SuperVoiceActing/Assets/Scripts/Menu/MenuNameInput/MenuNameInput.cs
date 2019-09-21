@@ -97,6 +97,7 @@ namespace VoiceActing
 
         private void Start()
         {
+            Cursor.visible = true;
             textMeshTable = new TMPro.TextMeshProUGUI[characterPositions.Length];
             for (int i = 0; i < characterPositions.Length; i++)
             {

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ZRNGUIController : MonoBehaviour {
 
-	private float hSliderValue = 0.0f;
+	/*private float hSliderValue = 0.0f;
 	private bool menuVisible = false;
 	private int operateCameraNumber;
 	private bool shadowOn;
@@ -225,6 +225,6 @@ public class ZRNGUIController : MonoBehaviour {
 
 
 
-	}
+	}*/
 
 }

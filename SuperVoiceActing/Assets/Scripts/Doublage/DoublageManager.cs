@@ -552,7 +552,6 @@ namespace VoiceActing
             }
 
             // Check Skill ========================================================================
-            Debug.Log(lastAttack[0]);
             List<SkillActiveTiming> activeTimings = new List<SkillActiveTiming> {SkillActiveTiming.AfterAttack };
             if (enemyManager.GetLastAttackCritical() == true)
                 activeTimings.Add(SkillActiveTiming.AfterCritical);
@@ -821,16 +820,17 @@ namespace VoiceActing
                     yield return null;
                 }
             }
+
             // Role Decision ======================================================================
             roleManager.RoleDecision("STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage());
             if (roleManager.IsAttacking() == true)
             {
                 yield return new WaitForSeconds(0.1f);
                 cameraController.EnemySkill();
-                emotionAttackManager.SwitchCardTransformToBattle(false);
+                emotionAttackManager.SwitchCardTransformToBattle(true);
                 roleManager.EnemyAttackActivation();    
                 endAttack = false;
-                emotionAttackManager.ShowComboSlot(false);
+                emotionAttackManager.ShowComboSlot(true);
                 while (endAttack == false)
                 {
                     yield return null;

@@ -68,6 +68,8 @@ namespace VoiceActing
         VoiceActor va;
         int budget;
 
+        bool actorSpriteLocked = false;
+
         #endregion
 
         #region GettersSetters 
@@ -114,6 +116,10 @@ namespace VoiceActing
             budget = budgetInitialValue * (int)sliderBudget.value;
             textBudget.text = budget.ToString();
             menuActorsManager.DrawBudgetAudition();
+            if(actorSpriteLocked == true)
+            {
+                return;
+            }
             if (b == true)
                 actorsSprite.enabled = false;
             else
@@ -132,7 +138,7 @@ namespace VoiceActing
             animatorAudition.SetTrigger("Audition");
             animatorAuditionInfo.SetTrigger("Disappear");
             inputActor.gameObject.SetActive(false);
-
+            actorSpriteLocked = true;
 
             Audition(roleToAudition);
 
@@ -146,6 +152,7 @@ namespace VoiceActing
             menuActorsManager.StopGachaEffect(va);
             inputAudition.gameObject.SetActive(true);
             AudioManager.Instance.PlaySound(auditionSpotlight);
+            actorSpriteLocked = false;
         }
 
 

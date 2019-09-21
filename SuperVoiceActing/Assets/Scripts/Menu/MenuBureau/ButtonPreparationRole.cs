@@ -32,6 +32,8 @@ namespace VoiceActing
         TextMeshProUGUI textActorHP;
         [SerializeField]
         TextMeshProUGUI textActorCost;
+        [SerializeField]
+        Image imageActorFace;
 
         [SerializeField]
         Animator animatorSelection;
@@ -104,6 +106,7 @@ namespace VoiceActing
             textActorLevel.text = voiceActor.Level.ToString();
             textActorHP.text = voiceActor.Hp.ToString();
             textActorCost.text = (role.Line * voiceActor.Price).ToString();
+            imageActorFace.sprite = voiceActor.SpriteSheets.SpriteIcon;
         }
 
         public void SelectButton()

@@ -107,6 +107,25 @@ namespace VoiceActing
             targetAcquired = true;
         }
 
+        public override void PreviewTarget(DoublageManager doublageManager)
+        {
+            base.PreviewTarget(doublageManager);
+
+            EmotionCardTotal[] cards = doublageManager.EmotionAttackManager.GetCards();
+
+            for (int j = 0; j < cards[(int)firstEmotion].Cards.Length; j++)
+            {
+                if (cards[(int)firstEmotion].Cards[j] != null)
+                    cards[(int)firstEmotion].Cards[j].DrawPreviewText("Inversion");
+            }
+
+            for (int j = 0; j < cards[(int)secondEmotion].Cards.Length; j++)
+            {
+                if (cards[(int)secondEmotion].Cards[j] != null)
+                    cards[(int)secondEmotion].Cards[j].DrawPreviewText("Inversion");
+            }
+        }
+
 
     } // SkillEffectTradeStat class
 	

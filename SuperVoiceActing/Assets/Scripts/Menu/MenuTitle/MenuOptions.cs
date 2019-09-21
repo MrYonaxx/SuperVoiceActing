@@ -126,9 +126,10 @@ namespace VoiceActing
         {
             base.Start();
             resolutions = Screen.resolutions;
+            System.Array.Reverse(resolutions);
             optionDatas[indexResolution].options = new string[resolutions.Length];
             int tmpIndex = 0;
-            for (int i = resolutions.Length-1; i >= 0; i--)
+            for (int i = 0; i <= resolutions.Length; i++)
             {
                 optionDatas[indexResolution].options[tmpIndex] = resolutions[i].width + "x" + resolutions[i].height;
                 tmpIndex += 1;
@@ -202,6 +203,7 @@ namespace VoiceActing
 
         public void ApplyChange()
         {
+            LoadPlayerOptionData();
             ActivateFullscreen();
             ChangeResolution();
             ChangeMusicVolume();
@@ -267,11 +269,14 @@ namespace VoiceActing
 
         public void ActivateFullscreen()
         {
-            Screen.fullScreen = true;
+            if(indexOptions[indexFullscreen] == 0)
+                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            else
+                Screen.fullScreenMode = FullScreenMode.Windowed;
         }
         public void ChangeResolution()
         {
-            Screen.SetResolution(resolutions[indexOptions[indexResolution]].width, resolutions[indexOptions[indexResolution]].height, true);
+            Screen.SetResolution(resolutions[indexOptions[indexResolution]].width, resolutions[indexOptions[indexResolution]].height, Screen.fullScreen);
         }
 
         public void ChangeMusicVolume()

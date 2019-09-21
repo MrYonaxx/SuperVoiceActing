@@ -133,6 +133,7 @@ namespace VoiceActing
 
         protected void Start()
         {
+            Cursor.visible = true;
             cameraComponent = GetComponent<Camera>();
         }
 

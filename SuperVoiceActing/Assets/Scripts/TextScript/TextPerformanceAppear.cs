@@ -252,14 +252,18 @@ namespace VoiceActing
 
         public void ApplyDamage(float percentage)
         {
-            float damage = (textMeshPro.textInfo.characterCount) * (percentage / 100);
-            for(int i = 0; i < textMeshPro.textInfo.characterCount; i++)
+            float damage = (textMeshPro.textInfo.characterCount-1) * (percentage / 100);
+            for(int i = 0; i < textMeshPro.textInfo.characterCount-1; i++)
             {
                 if(i < damage)
                     vertexAnim[i].damage = true;
                 else
                     vertexAnim[i].damage = false;
             }
+            if(percentage >= 100)
+                vertexAnim[textMeshPro.textInfo.characterCount-1].damage = true;
+            else
+                vertexAnim[textMeshPro.textInfo.characterCount-1].damage = false;
             CalculateDamageColor(percentage);
             //ReprintText();
         }

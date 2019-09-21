@@ -43,6 +43,8 @@ namespace VoiceActing
 
         [SerializeField]
         InputController inputController;
+        [SerializeField]
+        GameObject mouseController;
 
         [Header("MenuManagers")]
         [SerializeField]
@@ -96,6 +98,7 @@ namespace VoiceActing
             storyEventManager.StartStoryEventData(playerData.PhoneStoryEvents[0]);
             playerData.PhoneStoryEvents.RemoveAt(0);
             this.gameObject.SetActive(false);
+            mouseController.gameObject.SetActive(false);
         }
 
         public void SetContractList(List<Contract> contracts)
@@ -146,6 +149,7 @@ namespace VoiceActing
                 phoneObject.SetActive(true);
                 storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
                 eventPhone = true;
+                mouseController.gameObject.SetActive(false);
             }
         }
 
@@ -170,6 +174,7 @@ namespace VoiceActing
         public void ActivateInput(bool b)
         {
             inputController.gameObject.SetActive(b);
+            mouseController.gameObject.SetActive(b);
         }
 
 
@@ -203,6 +208,7 @@ namespace VoiceActing
             {
                 this.gameObject.SetActive(false);
                 eventPhone = false;
+                mouseController.gameObject.SetActive(false);
             }
         }
 

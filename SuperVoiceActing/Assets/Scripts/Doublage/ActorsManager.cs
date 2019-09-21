@@ -458,6 +458,7 @@ namespace VoiceActing
             float damagePercentage = (float) attackDamage / actors[indexCurrentActor].Hp;
             damagePreviz.anchorMin = new Vector2(1 - damagePercentage, 0);
             damagePreviz.offsetMin = new Vector2(0, 0);
+            textCurrentHp.text = (actors[indexCurrentActor].Hp - attackDamage).ToString();
 
             if (damagePercentage >= 1)
             {

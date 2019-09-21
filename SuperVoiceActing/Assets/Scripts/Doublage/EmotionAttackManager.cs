@@ -727,7 +727,10 @@ namespace VoiceActing
         // ================================================= //
         public void StartTurnCardFeedback()
         {
-            animatorCardLeft.SetTrigger("Feedback");
+            if (animatorCardLeft != null)
+                animatorCardLeft.SetTrigger("Feedback");
+            if(animatorCardRight != null)
+                animatorCardRight.SetTrigger("Feedback");
         }
 
         private void ParticleSelectEmotion(Emotion emotion)
