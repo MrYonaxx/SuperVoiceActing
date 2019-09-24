@@ -307,20 +307,20 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private List<StoryEventData> randomEventsAvailable;
-        public List<StoryEventData> RandomEventsAvailable
+        private List<int> nextRandomEvent;
+        public List<int> NextRandomEvent
         {
-            get { return randomEventsAvailable; }
-            set { randomEventsAvailable = value; }
+            get { return nextRandomEvent; }
+            set { nextRandomEvent = value; }
         }
 
-        [SerializeField]
-        private List<StoryEventData> randomEventsStandby;
-        public List<StoryEventData> RandomEventsStandby
+        /*[SerializeField]
+        private List<int> randomEventsStandby;
+        public List<int> RandomEventsStandby
         {
             get { return randomEventsStandby; }
             set { randomEventsStandby = value; }
-        }
+        }*/
 
 
 
@@ -612,6 +612,7 @@ namespace VoiceActing
             nextStoryEvents = new List<StoryEventData>();
             nextStoryEventsStartWeek = new List<StoryEventData>();
             phoneStoryEvents = new List<StoryEventData>();
+            nextRandomEvent = new List<int>();
 
             date = new Date(initialPlayerData.Week, initialPlayerData.Month, initialPlayerData.Year);
 

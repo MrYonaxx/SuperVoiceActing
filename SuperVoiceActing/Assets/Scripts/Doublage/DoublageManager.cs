@@ -1132,7 +1132,7 @@ namespace VoiceActing
                 if (playerData.CurrentContract.StoryEventWhenEnd != null)
                     playerData.NextStoryEvents.Add(playerData.CurrentContract.StoryEventWhenEnd);
             }
-            if (playerData.NextStoryEvents.Count != 0)
+            if (playerData.NextStoryEvents.Count != 0 || playerData.NextRandomEvent.Count != 0)
                 resultScreenManager.ChangeEndScene("EventScene");
             resultScreen.SetActive(true);
             resultScreenManager.SetContract(contrat);

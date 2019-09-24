@@ -264,9 +264,7 @@ namespace VoiceActing
 
         private void AddRandomEvents()
         {
-            StoryEventData randomEvent = randomEventDatabase.GetStoryRandomEvent(playerData);
-            if (randomEvent != null)
-                playerData.NextStoryEvents.Add(randomEvent);
+            randomEventDatabase.AddRandomEvent(playerData);
         }
 
 
@@ -283,7 +281,7 @@ namespace VoiceActing
 
         public void ReloadScene()
         {
-            if(playerData.NextStoryEvents.Count == 0)
+            if(playerData.NextStoryEvents.Count == 0 && playerData.NextRandomEvent.Count == 0)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             else
                 SceneManager.LoadScene("EventScene");

@@ -251,7 +251,7 @@ namespace VoiceActing
                 actorsImage[i].gameObject.SetActive(true);
                 actorsExpOutline[i].gameObject.SetActive(true);
 
-                actorsImage[i].sprite = contract.VoiceActors[i].ActorSprite;
+                actorsImage[i].sprite = contract.VoiceActors[i].SpriteSheets.SpriteNormal[0];
                 actorsImage[i].SetNativeSize();
                 textsLevel[i].text = contract.VoiceActors[i].Level.ToString();
                 textsNext[i].text = (contract.VoiceActors[i].NextEXP).ToString();// - contract.VoiceActors[i].Experience).ToString();

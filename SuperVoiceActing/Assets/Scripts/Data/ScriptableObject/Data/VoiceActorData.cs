@@ -158,24 +158,10 @@ namespace VoiceActing
         [Header("Graphics")]
 
         [SerializeField]
-        private AudioClip voice;
-        public AudioClip Voice
-        {
-            get { return voice; }
-        }
-
-        [SerializeField]
         private Vector3 skillOffset;
         public Vector3 SkillOffset
         {
             get { return skillOffset; }
-        }
-
-        [SerializeField]
-        private Sprite actorSprite;
-        public Sprite ActorSprite
-        {
-            get { return actorSprite; }
         }
 
         [SerializeField]

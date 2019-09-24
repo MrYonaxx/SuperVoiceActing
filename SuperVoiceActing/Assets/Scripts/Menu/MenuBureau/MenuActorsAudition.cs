@@ -101,7 +101,7 @@ namespace VoiceActing
         public void Audition(Role role)
         {
             va = playerData.GachaVoiceActors(role);
-            actorsSprite.sprite = va.ActorSprite;
+            actorsSprite.sprite = va.SpriteSheets.SpriteNormal[0];
             actorsSprite.SetNativeSize();
         }
 

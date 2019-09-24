@@ -14,9 +14,13 @@ namespace VoiceActing
 {
 	public class EventEndWeekManager : MonoBehaviour
 	{
+        [Sirenix.OdinInspector.Title("Database")]
         [SerializeField]
         PlayerData playerData;
+        [SerializeField]
+        RandomEventDatabase randomEventDatabase;
 
+        [Sirenix.OdinInspector.Title("StoryEventManager")]
         [SerializeField]
         StoryEventManager storyEventManager;
 
@@ -34,6 +38,11 @@ namespace VoiceActing
             {
                 storyEventManager.StartStoryEventDataWithScene(playerData.NextStoryEvents[playerData.NextStoryEvents.Count-1]);
                 playerData.NextStoryEvents.RemoveAt(playerData.NextStoryEvents.Count-1);
+            }
+            else if (playerData.NextRandomEvent.Count != 0)
+            {
+                storyEventManager.StartStoryEventDataWithScene(randomEventDatabase.GetRandomEvent(playerData.NextRandomEvent[0]));
+                playerData.NextRandomEvent.RemoveAt(0);
             }
             else
             {

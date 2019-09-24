@@ -39,7 +39,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void SelectNextRandomEvent()
+        /*public void SelectNextRandomEvent()
         {
             int rand = Random.Range(-playerData.RandomEventsAvailable.Count, playerData.RandomEventsAvailable.Count);
             if (rand < 0)
@@ -48,13 +48,13 @@ namespace VoiceActing
             {
                 playerData.NextStoryEvents.Add(playerData.RandomEventsAvailable[rand]);
             }
-        }
+        }*/
 
-        public void AddEventAvailable()
+        /*public void AddEventAvailable()
         {
             
             
-        }
+        }*/
         
         #endregion
 		

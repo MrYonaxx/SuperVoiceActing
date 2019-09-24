@@ -216,14 +216,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private Sprite actorSprite;
-        public Sprite ActorSprite
-        {
-            get { return actorSprite; }
-            set { actorSprite = value; }
-        }
-
-        [SerializeField]
         private StoryCharacterData spriteSheets;
         public StoryCharacterData SpriteSheets
         {
@@ -337,7 +329,6 @@ namespace VoiceActing
             price = actorData.Price;
             hp = actorData.Hp;
             hpMax = actorData.Hp;
-            actorSprite = actorData.ActorSprite;
             damageVariance = actorData.FourchetteMax;
             roleDefense = 0;
             timbre = actorData.Timbre;
@@ -377,41 +368,6 @@ namespace VoiceActing
             {
                 point = Random.Range(-actorData.GrowthRandom.GetEmotion(i), actorData.GrowthRandom.GetEmotion(i)+1);
                 currentGrowth.Add(i, point);
-                /*switch (i)
-                {
-                    case 0:
-                        point = Random.Range(-actorData.GrowthRandom.Joy, actorData.GrowthRandom.Joy+1);
-                        currentGrowth.Joy += point;
-                        break;
-                    case 1:
-                        point = Random.Range(-actorData.GrowthRandom.Sadness, actorData.GrowthRandom.Sadness+1);
-                        currentGrowth.Sadness += point;
-                        break;
-                    case 2:
-                        point = Random.Range(-actorData.GrowthRandom.Disgust, actorData.GrowthRandom.Disgust+1);
-                        currentGrowth.Disgust += point;
-                        break;
-                    case 3:
-                        point = Random.Range(-actorData.GrowthRandom.Anger, actorData.GrowthRandom.Anger+1);
-                        currentGrowth.Anger += point;
-                        break;
-                    case 4:
-                        point = Random.Range(-actorData.GrowthRandom.Surprise, actorData.GrowthRandom.Surprise+1);
-                        currentGrowth.Surprise += point;
-                        break;
-                    case 5:
-                        point = Random.Range(-actorData.GrowthRandom.Sweetness, actorData.GrowthRandom.Sweetness+1);
-                        currentGrowth.Sweetness += point;
-                        break;
-                    case 6:
-                        point = Random.Range(-actorData.GrowthRandom.Fear, actorData.GrowthRandom.Fear+1);
-                        currentGrowth.Fear += point;
-                        break;
-                    case 7:
-                        point = Random.Range(-actorData.GrowthRandom.Trust, actorData.GrowthRandom.Trust+1);
-                        currentGrowth.Trust += point;
-                        break;
-                }*/
                 pointCumul += point;
             }
 
@@ -428,42 +384,6 @@ namespace VoiceActing
                 emotionSelected = possibilities[choiceEmotion];
                 result = EquilibrateStat(currentGrowth.GetEmotion(emotionSelected), actorData.Growth.GetEmotion(emotionSelected), actorData.GrowthRandom.GetEmotion(emotionSelected), pointCumul);
                 currentGrowth.Add(emotionSelected, result);
-                //Debug.Log(possibilities[choiceEmotion]);
-                /*switch (possibilities[choiceEmotion])
-                {
-                    case 0:
-                        result = EquilibrateStat(currentGrowth.Joy, actorData.Growth.Joy, actorData.GrowthRandom.Joy, pointCumul);
-                        currentGrowth.Joy += result;
-                        break;
-                    case 1:
-                        result = EquilibrateStat(currentGrowth.Sadness, actorData.Growth.Sadness, actorData.GrowthRandom.Sadness, pointCumul);
-                        currentGrowth.Sadness += result;
-                        break;
-                    case 2:
-                        result = EquilibrateStat(currentGrowth.Disgust, actorData.Growth.Disgust, actorData.GrowthRandom.Disgust, pointCumul);
-                        currentGrowth.Disgust += result;
-                        break;
-                    case 3:
-                        result = EquilibrateStat(currentGrowth.Anger, actorData.Growth.Anger, actorData.GrowthRandom.Anger, pointCumul);
-                        currentGrowth.Anger += result;
-                        break;
-                    case 4:
-                        result = EquilibrateStat(currentGrowth.Surprise, actorData.Growth.Surprise, actorData.GrowthRandom.Surprise, pointCumul);
-                        currentGrowth.Surprise += result;
-                        break;
-                    case 5:
-                        result = EquilibrateStat(currentGrowth.Sweetness, actorData.Growth.Sweetness, actorData.GrowthRandom.Sweetness, pointCumul);
-                        currentGrowth.Sweetness += result;
-                        break;
-                    case 6:
-                        result = EquilibrateStat(currentGrowth.Fear, actorData.Growth.Fear, actorData.GrowthRandom.Fear, pointCumul);
-                        currentGrowth.Fear += result;
-                        break;
-                    case 7:
-                        result = EquilibrateStat(currentGrowth.Trust, actorData.Growth.Trust, actorData.GrowthRandom.Trust, pointCumul);
-                        currentGrowth.Trust += result;
-                        break;
-                }*/
 
                 if (result == 0)
                 {

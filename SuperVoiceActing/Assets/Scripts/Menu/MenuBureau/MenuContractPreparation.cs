@@ -85,10 +85,17 @@ namespace VoiceActing
         [Header("PanelFinal")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
+        Image[] iconEmotion;
+
+        [SerializeField]
+        Image[] gaugeStatActor;
+        [SerializeField]
         TextMeshProUGUI[] textStatsActor;
         [SerializeField]
         RectTransform[] jaugeStatsActor;
 
+        [SerializeField]
+        Image[] gaugeStatRole;
         [SerializeField]
         TextMeshProUGUI[] textStatsRole;
         [SerializeField]
@@ -151,6 +158,7 @@ namespace VoiceActing
 
         List<MenuContractPreparationAnnexe> listAnnexTeamTech = new List<MenuContractPreparationAnnexe>();
         private int indexSelectedTeamTech = 0;
+
 
         #endregion
 
@@ -327,7 +335,7 @@ namespace VoiceActing
                 textActorPVMax.text = currentContract.VoiceActors[indexSelected].HpMax.ToString();
                 transformGaugeHP.localScale = new Vector3((float)currentContract.VoiceActors[indexSelected].Hp / currentContract.VoiceActors[indexSelected].HpMax, 1, 1);
                 imageActorSprite.enabled = true;
-                imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].ActorSprite;
+                imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].SpriteSheets.SpriteNormal[0];
                 imageActorSprite.SetNativeSize();
             }
             else
@@ -351,6 +359,13 @@ namespace VoiceActing
         private void DrawGaugeInfo(bool hasActor)
         {
             StopAllCoroutines();
+
+            Color colorStatActorNormal = new Color(textStatsActor[0].color.r, textStatsActor[0].color.g, textStatsActor[0].color.b, 1);
+            Color colorStatActorTransparent = new Color(textStatsActor[0].color.r, textStatsActor[0].color.g, textStatsActor[0].color.b, 0.5f);
+
+            Color colorStatRoleNormal = new Color(textStatsRole[0].color.r, textStatsRole[0].color.g, textStatsRole[0].color.b, 1);
+            Color colorStatRoleTransparent = new Color(textStatsRole[0].color.r, textStatsRole[0].color.g, textStatsRole[0].color.b, 0.5f);
+
             for (int i = 0; i < textStatsRole.Length; i++)
             {
                 int currentStatRole = currentContract.Characters[indexSelected].CharacterStat.GetEmotion(i+1);
@@ -367,6 +382,23 @@ namespace VoiceActing
                 {
                     textStatsActor[i].text = "0";
                     jaugeStatsActor[i].transform.localScale = new Vector3(0, jaugeStatsRole[i].transform.localScale.y, jaugeStatsRole[i].transform.localScale.z);
+                }
+
+                if(i == currentContract.Characters[indexSelected].BestStatEmotion-1 || i == currentContract.Characters[indexSelected].SecondBestStatEmotion - 1)
+                {
+                    iconEmotion[i].color = new Color(iconEmotion[i].color.r, iconEmotion[i].color.g, iconEmotion[i].color.b, 1);
+                    gaugeStatActor[i].color = new Color(gaugeStatActor[i].color.r, gaugeStatActor[i].color.g, gaugeStatActor[i].color.b, 0.7f);
+                    gaugeStatRole[i].color = new Color(gaugeStatRole[i].color.r, gaugeStatRole[i].color.g, gaugeStatRole[i].color.b, 0.7f);
+                    textStatsActor[i].color = colorStatActorNormal;
+                    textStatsRole[i].color = colorStatRoleNormal;
+                }
+                else
+                {
+                    iconEmotion[i].color = new Color(iconEmotion[i].color.r, iconEmotion[i].color.g, iconEmotion[i].color.b, 0.5f);
+                    gaugeStatActor[i].color = new Color(gaugeStatActor[i].color.r, gaugeStatActor[i].color.g, gaugeStatActor[i].color.b, 0.4f);
+                    gaugeStatRole[i].color = new Color(gaugeStatRole[i].color.r, gaugeStatRole[i].color.g, gaugeStatRole[i].color.b, 0.4f);
+                    textStatsActor[i].color = colorStatActorTransparent;
+                    textStatsRole[i].color = colorStatRoleTransparent;
                 }
             }
         }
@@ -385,6 +417,13 @@ namespace VoiceActing
                 yield return null;
             }
         }
+
+
+
+
+
+
+
 
 
 
@@ -666,38 +705,9 @@ namespace VoiceActing
 
         private void MoveScrollRect()
         {
-            /*if (coroutineScroll != null)
-            {
-                StopCoroutine(coroutineScroll);
-            }
-            if (indexSelected > indexLimit)
-            {
-                indexLimit = indexSelected;
-                coroutineScroll = MoveScrollRectCoroutine();
-                StartCoroutine(coroutineScroll);
-            }
-            else if (indexSelected < indexLimit - scrollSize)
-            {
-                indexLimit = indexSelected + scrollSize;
-                coroutineScroll = MoveScrollRectCoroutine();
-                StartCoroutine(coroutineScroll);
-            }*/
-
         }
 
-        /*private IEnumerator MoveScrollRectCoroutine()
-        {
-            int time = 10;
-            int ratio = indexLimit - scrollSize;
-            float speed = (buttonListTransform.anchoredPosition.y - ratio * buttonSize) / time;
-            while (time != 0)
-            {
-                buttonListTransform.anchoredPosition -= new Vector2(0, speed);
-                time -= 1;
-                yield return null;
-            }
 
-        }*/
 
 
 

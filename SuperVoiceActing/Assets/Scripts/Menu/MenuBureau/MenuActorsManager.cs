@@ -397,8 +397,8 @@ namespace VoiceActing
 
 
 
-            statImageActor.sprite = actor.ActorSprite;
-            statOutlineImageActor.sprite = actor.ActorSprite;
+            statImageActor.sprite = actor.SpriteSheets.SpriteNormal[0];
+            statOutlineImageActor.sprite = actor.SpriteSheets.SpriteNormal[0];
             statImageActor.SetNativeSize();
             statOutlineImageActor.SetNativeSize();
 
@@ -730,7 +730,7 @@ namespace VoiceActing
         {
 
             roleTimbre.anchorMin = new Vector2((role.Timbre.x + 10) / 20f, 0);
-            roleTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 1);
+            roleTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 0.5f);
             roleTimbre.anchoredPosition = Vector3.zero;
 
             textRoleName.text = role.Name;

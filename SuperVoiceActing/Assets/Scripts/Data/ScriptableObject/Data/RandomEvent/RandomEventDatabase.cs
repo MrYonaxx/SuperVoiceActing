@@ -52,35 +52,58 @@ namespace VoiceActing
         [SerializeField]
         RandomEventStoryDatabase[] randomStoryEvents;
 
-        [TabGroup("RandomEffectEvents")]
+        /*[TabGroup("RandomEffectEvents")]
         [SerializeField]
-        RandomEventEffectDatabase[] randomEffectEvents;
+        RandomEventEffectDatabase[] randomEffectEvents;*/
 
 
-        public StoryEventData GetStoryRandomEvent(PlayerData playerData)
+
+        public List<int> SelectRandomEventAvailable(PlayerData playerData)
         {
-            int rand = Random.Range(0, randomStoryEvents.Length);
-            if(randomStoryEvents[rand] != null)
+            List<int> randomEventAvailable = new List<int>();
+            for(int i = 0; i < randomStoryEvents.Length; i++)
             {
-                if (randomStoryEvents[rand].randomStoryEventCondition != null)
+                if(randomStoryEvents[i].randomStoryEvent == null)
                 {
-                    if (randomStoryEvents[rand].randomStoryEventCondition.CheckCondition(playerData) == true)
-                    {
-                        return randomStoryEvents[rand].randomStoryEvent;
-                    }
+                    continue;
+                }
+                if (randomStoryEvents[i].randomStoryEventCondition != null)
+                {
+                    if (randomStoryEvents[i].randomStoryEventCondition.CheckCondition(playerData) == true)
+                        randomEventAvailable.Add(i);
                 }
                 else
-                {
-                    return randomStoryEvents[rand].randomStoryEvent;
-                }
-
+                    randomEventAvailable.Add(i);
             }
-            return null;
+            return randomEventAvailable;
+
         }
 
-        public RandomEvent GetRandomEvent()
+
+        public void AddRandomEvent(PlayerData playerData)
         {
-            return null;
+            List<int> randomEventAvailable = SelectRandomEventAvailable(playerData);
+            int number = Random.Range(0, 12);
+            if (number <= 5)
+                number = 0;
+            else if (number <= 10)
+                number = 1;
+            else
+                number = 2;
+
+            for(int i = 0; i < number; i++)
+            {
+                if (randomEventAvailable.Count == 0)
+                    return;
+                int rand = Random.Range(0, randomEventAvailable.Count);
+                playerData.NextRandomEvent.Add(randomEventAvailable[rand]);
+                randomEventAvailable.RemoveAt(i);
+            }
+        }
+
+        public StoryEventData GetRandomEvent(int index)
+        {
+            return randomStoryEvents[index].randomStoryEvent;
         }
 
     } // RandomEventDatabase class

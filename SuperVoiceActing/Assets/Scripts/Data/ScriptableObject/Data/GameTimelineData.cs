@@ -167,6 +167,11 @@ namespace VoiceActing
         }
 
 
+
+
+
+
+
         public void CheckContractTimeline(PlayerData playerData)
         {
             for (int i = 0; i < ContractTimeline[playerData.Date.week].contractsData.addContracts.Length; i++)

@@ -228,7 +228,11 @@ namespace VoiceActing
             else
                 textStat.color = Color.white;
 
-            textStat.text = (value + valueBonus + valueActorBonus).ToString();
+            int finalValue = (value + valueBonus + valueActorBonus);
+            if (finalValue < 0)
+                textStat.text = "0";
+            else
+                textStat.text = finalValue.ToString();
         }
 
         public void DrawStat(int baseStat)
