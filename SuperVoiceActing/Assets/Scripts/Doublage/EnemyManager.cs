@@ -401,59 +401,59 @@ namespace VoiceActing
         [Header("TextData")]
         [Space]
         [SerializeField]
-        TextData currentTextData;
+        protected TextData currentTextData;
 
-        int enemyHP = 100;
+        protected int enemyHP = 100;
         //int enemyHPMax = 100;
 
 
         [Header("Feedbacks")]
         [SerializeField]
-        ParticleSystem[] particleFeedbacks;
+        protected ParticleSystem[] particleFeedbacks;
         [SerializeField]
-        Color[] colorsEmotions;
+        protected Color[] colorsEmotions;
         [SerializeField]
-        Image haloCurrentEmotion;
+        protected Image haloCurrentEmotion;
         [SerializeField]
-        TextMeshPro damageText;
+        protected TextMeshPro damageText;
         [SerializeField]
-        TextMeshPro[] damageTextCritical;
+        protected TextMeshPro[] damageTextCritical;
         [SerializeField]
-        ParticleSystem[] particleCritical;
+        protected ParticleSystem[] particleCritical;
 
         [HorizontalGroup]
         [SerializeField]
-        float[] damageLevel;
+        protected float[] damageLevel;
         [HorizontalGroup]
         [SerializeField]
-        Color[] damageColorLevel;
+        protected Color[] damageColorLevel;
 
         [HorizontalGroup("textResult")]
         [SerializeField]
-        float[] damageLevelText;
+        protected float[] damageLevelText;
         [HorizontalGroup("textResult")]
         [SerializeField]
-        string[] textResult;
+        protected string[] textResult;
         [HorizontalGroup("textResult")]
         [SerializeField]
-        TextMeshProUGUI[] textMeshResult;
+        protected TextMeshProUGUI[] textMeshResult;
 
 
         [SerializeField]
-        GameObject criticalFeedback;
+        protected GameObject criticalFeedback;
         [SerializeField]
-        GameObject criticalFeedback2;
+        protected GameObject criticalFeedback2;
 
-        Animator damageTextAnimator;
-
-
+        protected Animator damageTextAnimator;
 
 
-        int lastAttackScore = 0;
-        float criticalMultiplier = 0.25f;
 
-        bool lastAttackCritical = false;
-        bool damageOnlyCritical = false;
+
+        protected int lastAttackScore = 0;
+        protected float criticalMultiplier = 0.25f;
+
+        protected bool lastAttackCritical = false;
+        protected bool damageOnlyCritical = false;
 
         #endregion
 
@@ -532,7 +532,7 @@ namespace VoiceActing
                 damageTextAnimator = damageText.GetComponent<Animator>();
         }
 
-        public void SetTextData(TextData newTextData)
+        public virtual void SetTextData(TextData newTextData)
         {
             currentTextData = newTextData;
             enemyHP = currentTextData.HPMax;
@@ -615,7 +615,7 @@ namespace VoiceActing
             ChangeParticleAttack();
             ChangeHaloEmotion(colorEmotion, comboSize);
 
-            PrintDamage(totalDamage, normalDamage);
+            PrintDamage(totalDamage);
 
             float percentage = 0;
             if (currentTextData.HPMax != 0)
@@ -666,6 +666,11 @@ namespace VoiceActing
             }
             return bestStat;
         }
+
+
+
+
+
 
 
 
@@ -724,7 +729,7 @@ namespace VoiceActing
         //        Feedback          //
         // ======================== //
 
-        private void ChangeParticleAttack()
+        protected void ChangeParticleAttack()
         {
             for (int i = 0; i < particleFeedbacks.Length-2; i++)
             {
@@ -732,7 +737,7 @@ namespace VoiceActing
             }
         }
 
-        private void ChangeHaloEmotion(Color colorEmotion, int size)
+        protected void ChangeHaloEmotion(Color colorEmotion, int size)
         {
             // Attention aux combo de 2 emotion quand il y a 3 slot, emotions peut retourner [emotion, emotion, neutre]
             if (haloCurrentEmotion == null)
@@ -762,7 +767,7 @@ namespace VoiceActing
         }
 
 
-        private void DrawTextResult(int multiplier, TextMeshProUGUI textMesh, int emotion)
+        protected void DrawTextResult(int multiplier, TextMeshProUGUI textMesh, int emotion)
         {
             textMesh.gameObject.SetActive(false);
             for (int i = 0; i < damageLevelText.Length; i++)
@@ -777,7 +782,7 @@ namespace VoiceActing
         }
 
 
-        private void PrintDamage(float totalDamage, float normalDamage)
+        protected void PrintDamage(float totalDamage)
         {
             if (damageText == null)
                 return;
@@ -786,10 +791,10 @@ namespace VoiceActing
             damageText.transform.localScale = new Vector3(1, 1, 1);
             int timeFeedback = 40;
             float speed = (totalDamage / timeFeedback);
-            StartCoroutine(DamageTextCoroutine(normalDamage, speed, timeFeedback, 120));
+            StartCoroutine(DamageTextCoroutine(totalDamage, speed, timeFeedback, 120));
         }
 
-        private IEnumerator DamageTextCoroutine(float normalDamage, float speed, int timeFeedback, int time)
+        private IEnumerator DamageTextCoroutine(float totalDamage, float speed, int timeFeedback, int time)
         {
             float currentDamage = 0;
             while (time != 0)
@@ -799,7 +804,7 @@ namespace VoiceActing
                 {
                     timeFeedback -= 1;
                     currentDamage += speed;
-                    ChangeTextColor(normalDamage, currentDamage);
+                    ChangeTextColor(totalDamage, currentDamage);
                     damageText.text = ((int)currentDamage).ToString();
                 }
                 else if (timeFeedback == 0)

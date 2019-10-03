@@ -202,6 +202,19 @@ namespace VoiceActing
 
         }
 
+        public void ExplodeLetter(float damage, Emotion emotion)
+        {
+            if (coroutineWaitEndLine != null)
+            {
+                StopCoroutine(coroutineWaitEndLine);
+            }
+            wordID = GetWordSelected();
+            currentText.ExplodeLetter(damage, 60);
+            currentText = SelectTextEffect(emotion);
+
+            StartCoroutine(WaitFrame(60, damage));
+        }
+
         private IEnumerator WaitFrame(float time, float damage)
         {
             while(time != 0)

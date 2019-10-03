@@ -64,30 +64,28 @@ namespace VoiceActing
         [SerializeField]
         VoiceActorData voiceActorData;
 
-
-        [Title("Card (Debug)")]
-        [SerializeField]
         SeiyuuBattleCard seiyuuHandNextCard;
-        [SerializeField]
         List<SeiyuuBattleCard> seiyuuHand = new List<SeiyuuBattleCard>();
-        [SerializeField]
-        List<SeiyuuBattleCard> seiyuuGraveyard;
+        List<SeiyuuBattleCard> seiyuuGraveyard = new List<SeiyuuBattleCard>();
 
         [Title("CardPosition")]
         [SerializeField]
         RectTransform cardSelection;
         [SerializeField]
-        RectTransform[] cardsPositions;
-        [SerializeField]
         RectTransform nextCardPosition;
-
+        [SerializeField]
+        RectTransform comboPosition;
+        [SerializeField]
+        RectTransform discardPosition;
+        [SerializeField]
+        RectTransform[] cardsPositions;
 
 
         [SerializeField]
         EmotionCard cardPrefab;
-
         EmotionCard[] handCards;
         EmotionCard nextCard;
+        List<EmotionCard> comboCards = new List<EmotionCard>();
 
 
 
@@ -98,11 +96,58 @@ namespace VoiceActing
         float timerValue = 3f;
         float timer = 0f;
 
+        [Title("ATB")]
+        [SerializeField]
+        SeiyuuATBManager atbManager;
+        [SerializeField]
+        int atbAttackValue;
+        [SerializeField]
+        int atbDiscardValue;
+
+        [Title("Event")]
+        [SerializeField]
+        InputController inputTurnActive;
+        [SerializeField]
+        UnityEvent eventATBEndDiscard;
+        [SerializeField]
+        UnityEvent eventATBEndBattle;
+
+
+        bool isDiscarding = false;
+        bool isAttacking = false;
+
+
         int indexSelection = 0;
         VoiceActor voiceActor;
 
 
+        [Title("Combo")]
+        [SerializeField]
+        TextMeshProUGUI textComboCount;
+        [SerializeField]
+        TextMeshProUGUI textComboDamage;
+        [SerializeField]
+        int maxCombo;
 
+        Emotion[] comboEmotion;
+        int comboCount = 0;
+        int comboDamage = 0;
+
+        [Title("Feedback")]
+        [SerializeField]
+        Animator handActiveFace;
+        [SerializeField]
+        Image feedbackSelectCard;
+        [SerializeField]
+        Animator feedbackSelectCardAnimator;
+        [SerializeField]
+        ParticleSystem particle;
+        [SerializeField]
+        Image haloEmotion;
+        [SerializeField]
+        Animator haloEmotionAnimator;
+        [SerializeField]
+        Color[] colorParticle;
 
 
         [SerializeField]
@@ -114,6 +159,7 @@ namespace VoiceActing
         protected int currentRepeatInterval = -1;
         protected int lastDirection = 0; // 2 c'est bas, 8 c'est haut (voir numpad)
         private IEnumerator coroutineSelection;
+        private IEnumerator coroutineTimerSelection;
 
         #endregion
 
@@ -122,6 +168,31 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+        public int GetComboCount()
+        {
+            return maxCombo-(comboCount+1);
+        }
+
+        public int GetIndex()
+        {
+            return indexSelection;
+        }
+
+        public EmotionCard[] GetCardsInHand()
+        {
+            return handCards;
+        }
+
+        public Emotion[] GetEmotions()
+        {
+            return comboEmotion;
+        }
+
+        public int GetDamage()
+        {
+            return comboDamage;
+        }
 
         #endregion
 
@@ -146,6 +217,10 @@ namespace VoiceActing
             {
                 DrawCard();
             }
+
+            comboEmotion = new Emotion[maxCombo];
+            for (int i = 0; i < maxCombo; i++)
+                comboEmotion[i] = Emotion.Neutre;
         }
 
         public void DrawNextCard()
@@ -194,25 +269,120 @@ namespace VoiceActing
             }
         }
 
+        public void DestroyComboCards()
+        {
+            for(int i = 0; i < comboCards.Count; i++)
+            {
+                comboCards[i].DestroyCard();
+            }
+            comboCards.Clear();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void CheckComboCardPreview()
+        {
+            for (int i = 0; i < handCards.Length; i++)
+            {
+                if (handCards[i].GetEmotion() == comboEmotion[comboCount])
+                    handCards[i].DrawPreview();
+                else
+                    handCards[i].StopPreview();
+            }
+        }
+
+        public void StopComboCardPreview()
+        {
+            for (int i = 0; i < handCards.Length; i++)
+            {
+                handCards[i].StopPreview();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
         public void SelectCard()
         {
+            if (isDiscarding == true)
+                return;
 
+
+            if (isAttacking == true)
+            {
+                if (comboEmotion[comboCount] != handCards[indexSelection].GetEmotion())
+                {
+                    comboCount += 1;
+                    if (comboCount >= maxCombo)
+                        return;
+                    comboEmotion[comboCount] = handCards[indexSelection].GetEmotion();
+                    textComboCount.text = (maxCombo - (comboCount+1)).ToString();
+                }
+            }
+            else
+            {
+                isAttacking = true;
+                comboEmotion[comboCount] = handCards[indexSelection].GetEmotion();
+                textComboCount.text = (maxCombo - (comboCount+1)).ToString();
+            }
+            comboDamage += handCards[indexSelection].GetBaseValue();
+            textComboDamage.text = comboDamage.ToString();
+            CheckComboCardPreview();
+            handCards[indexSelection].StopPreview();
+
+            handCards[indexSelection].FeedbackCardSelected(feedbackSelectCard);
+            feedbackSelectCardAnimator.SetTrigger("Feedback");
+            ParticleSelectEmotion(handCards[indexSelection].GetEmotion());
+
+            seiyuuGraveyard.Add(seiyuuHand[indexSelection]);
+            seiyuuHand[indexSelection] = null;
+            handCards[indexSelection].MoveCard(comboPosition, 1.1f);
+            comboCards.Add(handCards[indexSelection]);
+            handCards[indexSelection] = null;
+
+            StartTimer();
+            DrawCard();
+            atbManager.AddATB(atbAttackValue);
         }
 
         public void DiscardCard()
         {
+            if (isAttacking == true)
+                return;
+            isDiscarding = true;
             seiyuuGraveyard.Add(seiyuuHand[indexSelection]);
             seiyuuHand[indexSelection] = null;
 
-            Destroy(handCards[indexSelection].gameObject);
+            handCards[indexSelection].MoveCard(discardPosition, 1.1f);
+            handCards[indexSelection].DestroyCard();
             handCards[indexSelection] = null;
 
             StartTimer();
-
             DrawCard();
+            atbManager.AddATB(atbDiscardValue);
+
+            // modifyTone
         }
 
 
@@ -221,12 +391,20 @@ namespace VoiceActing
         {
             textTimer.gameObject.SetActive(true);
             timer = timerValue;
-            StartCoroutine(TimerSelectionCoroutine());
+
+            if (coroutineTimerSelection != null)
+                StopCoroutine(coroutineTimerSelection);
+            coroutineTimerSelection = TimerSelectionCoroutine();
+            StartCoroutine(coroutineTimerSelection);
         }
 
-        public void RefreshTimer()
+        public void SkipTimer()
         {
-
+            if (timer == 0)
+                return;
+            if (coroutineTimerSelection != null)
+                StopCoroutine(coroutineTimerSelection);
+            ATBEnd();
         }
 
         private IEnumerator TimerSelectionCoroutine()
@@ -244,6 +422,85 @@ namespace VoiceActing
                     textTimer.text = second + " : " + frame;
                 yield return null;
             }
+            ATBEnd();
+        }
+
+        public void ATBEnd()
+        {
+            timer = 0;
+            textTimer.gameObject.SetActive(false);
+            SelectionActivate(false);
+            StopComboCardPreview();
+            if (isDiscarding == true)
+            {
+                atbManager.StartATB();
+                isDiscarding = false;
+                eventATBEndDiscard.Invoke();
+            }
+            if (isAttacking == true)
+            {
+                isAttacking = false;
+                textComboCount.text = "";
+                textComboDamage.text = "";
+                eventATBEndBattle.Invoke();
+            }
+        }
+
+
+
+
+
+
+
+
+
+        public void SelectionActivate(bool b)
+        {
+            inputTurnActive.gameObject.SetActive(b);
+            textComboCount.gameObject.SetActive(b);
+            if(b == true)
+            {
+                comboCount = 0;
+                comboDamage = 0;
+                for (int i = 0; i < maxCombo; i++)
+                    comboEmotion[i] = Emotion.Neutre;
+                handActiveFace.gameObject.SetActive(true);
+                handActiveFace.SetTrigger("Feedback");
+
+                textComboCount.text = (maxCombo - comboCount).ToString();
+                textComboDamage.text = "";
+                int size = seiyuuGraveyard.Count;
+                for (int i = 0; i < size; i++)
+                {
+                    seiyuuDeck.SeiyuuBattleCards.Add(seiyuuGraveyard[0]);
+                    seiyuuGraveyard.RemoveAt(0);
+                }
+            }
+            else
+            {
+                handActiveFace.SetTrigger("Disappear");
+            }
+        }
+
+
+
+
+
+
+
+        private void ParticleSelectEmotion(Emotion emotion)
+        {
+            if (particle == null)
+                return;
+            if (haloEmotion == null)
+                return;
+
+            var particleColor = particle.main;
+            Color colorEmotion = colorParticle[(int)emotion];
+            particleColor.startColor = colorEmotion;
+            haloEmotion.color = new Color(colorEmotion.r, colorEmotion.g, colorEmotion.b, 0);
+            haloEmotionAnimator.SetTrigger("Feedback");
+            particle.Play();
         }
 
 
@@ -258,18 +515,8 @@ namespace VoiceActing
             }
             if (CheckRepeat() == false)
                 return;
-            indexSelection -= 1;
-            if (indexSelection == -1)
-            {
-                indexSelection += 1;
-                return;
-            }
 
-
-            if (coroutineSelection != null)
-                StopCoroutine(coroutineSelection);
-            coroutineSelection = HandSelectionCoroutine();
-            StartCoroutine(coroutineSelection);
+            SelectLeft();
         }
 
         public void SelectCardRight()
@@ -282,18 +529,40 @@ namespace VoiceActing
             if (CheckRepeat() == false)
                 return;
 
+            SelectRight();
+        }
+
+
+
+        public void SelectRight()
+        {
             indexSelection += 1;
             if (indexSelection == seiyuuDeck.HandSize)
             {
                 indexSelection -= 1;
                 return;
             }
-
             if (coroutineSelection != null)
                 StopCoroutine(coroutineSelection);
             coroutineSelection = HandSelectionCoroutine();
             StartCoroutine(coroutineSelection);
         }
+
+        public void SelectLeft()
+        {
+            indexSelection -= 1;
+            if (indexSelection == -1)
+            {
+                indexSelection += 1;
+                return;
+            }
+            if (coroutineSelection != null)
+                StopCoroutine(coroutineSelection);
+            coroutineSelection = HandSelectionCoroutine();
+            StartCoroutine(coroutineSelection);
+        }
+
+
 
         private IEnumerator HandSelectionCoroutine()
         {

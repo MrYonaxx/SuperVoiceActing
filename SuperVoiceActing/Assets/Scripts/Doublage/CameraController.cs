@@ -75,7 +75,7 @@ namespace VoiceActing
 
         CameraMovementData currentCamMovement;
 
-        bool moving = true;
+        bool moving = false;
 
         private bool pauseCoroutine = false;
         private int cameraPlacement = 0;
@@ -252,7 +252,6 @@ namespace VoiceActing
                 currentCamMovement = cameraMovementSet2[Random.Range(0, cameraMovementSet2.Length)];
                 cameraPlacement = 0;
             }
-            //Debug.Log(currentCamMovement.name);
             CameraDataMovement(currentCamMovement);
 
         }

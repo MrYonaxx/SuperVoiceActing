@@ -53,6 +53,17 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void AddATB(float value)
+        {
+            atbCurrentValue += value;
+            atbGauge.localScale = new Vector3((atbCurrentValue / atbMaxValue), atbGauge.localScale.y, atbGauge.localScale.z);
+        }
+
+        public void StartATB()
+        {
+            StartCoroutine(ATBCoroutine());
+        }
+
         public void StartATB(float value)
         {
             atbCurrentValue = value;
