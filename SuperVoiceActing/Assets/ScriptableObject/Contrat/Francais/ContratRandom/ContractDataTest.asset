@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ContractDataTest
   m_EditorClassIdentifier: 
   contractName: Contrat Test
-  level: 0
+  level: 1
   contractType: 0
-  salaryMin: 0
-  salaryMax: 0
+  salaryMin: 5000
+  salaryMax: 5000
   mixingMin: 5
   mixingMax: 8
   weekMin: 5
@@ -25,16 +25,18 @@ MonoBehaviour:
   expBonus: 0
   contractDictionnary: []
   description:
-  - Je suis une description.
+  - "Ce contrat a uniquement pour but de tester le syst\xE8me de jeu de Super Voice
+    Acting.\n\nLa conversation est plut\xF4t banale. Le premier personnage est tr\xE8s
+    enthousiaste, l\xE0 o\xF9 le second est un peu plus en col\xE8re."
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
       - Lia
-      roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
-      lineMin: 0
-      lineMax: 0
+      roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
+      lineMin: 20
+      lineMax: 20
       fanMin: 0
       fanMax: 0
       atkMin: 10
@@ -45,37 +47,26 @@ MonoBehaviour:
       timbreRand: {x: 0, y: 0}
       characterStatMin:
         neutral: 0
-        joy: 5
-        sadness: 5
+        joy: 0
+        sadness: 0
         disgust: 0
-        anger: 0
-        surprise: 0
+        anger: 9
+        surprise: 7
         sweetness: 0
         fear: 0
         trust: 5
       characterStatMax:
         neutral: 0
-        joy: 5
-        sadness: 5
+        joy: 0
+        sadness: 0
         disgust: 0
-        anger: 0
-        surprise: 0
+        anger: 9
+        surprise: 7
         sweetness: 0
         fear: 0
         trust: 5
-      actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
+      actorLocked: {fileID: 0}
       artificialIntelligence:
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 0
-        skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
       - memo: 
         startPhrase: 0
         startAttack: 0
@@ -86,15 +77,15 @@ MonoBehaviour:
           mathOperator: 0
           conditionValue: 1
         skills:
-        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
+        - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
       - Yonax
-      roleSprite: {fileID: 21300000, guid: af4b0cc7b2e184542a69981b4b93abb9, type: 3}
-      lineMin: 0
-      lineMax: 0
+      roleSprite: {fileID: 0}
+      lineMin: 6
+      lineMax: 6
       fanMin: 0
       fanMax: 0
       atkMin: 10
@@ -108,7 +99,7 @@ MonoBehaviour:
         joy: 0
         sadness: 0
         disgust: 0
-        anger: 10
+        anger: 40
         surprise: 0
         sweetness: 0
         fear: 0
@@ -118,50 +109,12 @@ MonoBehaviour:
         joy: 0
         sadness: 0
         disgust: 0
-        anger: 10
+        anger: 40
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-      actorLocked: {fileID: 11400000, guid: 9a0ca61c72ee77f43b506ae0ffb5e77e, type: 2}
-      artificialIntelligence: []
-  - mainCharacter: 1
-    optional: 0
-    charactersProfil:
-    - names:
-      - Hey
-      roleSprite: {fileID: 0}
-      lineMin: 0
-      lineMax: 0
-      fanMin: 0
-      fanMax: 0
-      atkMin: 0
-      atkMax: 0
-      defMin: 0
-      defMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
-      characterStatMin:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      characterStatMax:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
+      actorLocked: {fileID: 0}
       artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
@@ -280,7 +233,7 @@ MonoBehaviour:
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
-  changeBGM: 0
-  battleTheme: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
   victoryTheme: {fileID: 0}
   sessionLock: 0

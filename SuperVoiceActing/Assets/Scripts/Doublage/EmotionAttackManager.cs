@@ -205,9 +205,13 @@ namespace VoiceActing
         [SerializeField]
         Image feedbackSelectCard;
         [SerializeField]
+        Animator feedbackSelectCardAnimator;
+        [SerializeField]
         ParticleSystem particle;
         [SerializeField]
         Image haloEmotion;
+        [SerializeField]
+        Animator haloEmotionAnimator;
         [SerializeField]
         Color[] colorParticle;
 
@@ -498,6 +502,7 @@ namespace VoiceActing
                     if (emotionCards[i].Cards[0] != null && emotionCards[i].Cards[0].gameObject.activeInHierarchy == true)
                     {
                         emotionCards[i].Cards[0].FeedbackCardSelected(feedbackSelectCard);
+                        feedbackSelectCardAnimator.SetTrigger("Feedback");
                         ParticleSelectEmotion(emotion);
                         comboCount += 1;
                         comboEmotion[comboCount] = emotion;
@@ -625,6 +630,7 @@ namespace VoiceActing
                         return null;
 
                     emotionCards[i].Cards[0].FeedbackCardSelected(feedbackSelectCard);
+                    feedbackSelectCardAnimator.SetTrigger("Feedback");
                     comboCount += 1;
                     comboEmotion[comboCount] = emotion;
                     for (int j = 0; j < emotionCards[i].Cards.Length; j++)
@@ -743,28 +749,39 @@ namespace VoiceActing
             var particleColor = particle.main;
             Color colorEmotion = colorParticle[(int) emotion];
             particleColor.startColor = colorEmotion;
-            StartCoroutine(HaloEmotionCoroutine(colorEmotion, 0.1f, 10, 10));
+            haloEmotion.color = new Color(colorEmotion.r, colorEmotion.g, colorEmotion.b, 0);
+            haloEmotionAnimator.SetTrigger("Feedback");
+            //StartCoroutine(HaloEmotionCoroutine(colorEmotion, 0.1f, 10, 10));
             particle.Play();
         }
 
-        private IEnumerator HaloEmotionCoroutine(Color initialColor, float alpha, int time1, int time2)
+        /*private IEnumerator HaloEmotionCoroutine(Color initialColor, float alpha, int time1, int time2)
         {
+
             haloEmotion.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
-            float speedAlpha = alpha / time1;
-            float speedAlpha2 = alpha / time2;
-            while (time1 != 0)
+            //float speedAlpha = alpha / time1;
+            //float speedAlpha2 = alpha / time2;
+            Color haloStartColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+            Color haloEndColor = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
+            float t = 0f;
+            while (t < 1f)
             {
-                haloEmotion.color += new Color(0, 0, 0, speedAlpha);
-                time1 -= 1;
+                t += Time.deltaTime / time1;
+                haloEmotion.color += Color.Lerp(haloStartColor, haloEndColor, t);
+                //haloEmotion.color += new Color(0, 0, 0, speedAlpha);
+                //time1 -= 1;
                 yield return null;
             }
+            t = 0f;
             while (time2 != 0)
             {
-                haloEmotion.color -= new Color(0, 0, 0, speedAlpha2);
-                time2 -= 1;
+                t += Time.deltaTime / time1;
+                haloEmotion.color += Color.Lerp(haloEndColor, haloStartColor, t);
+                //haloEmotion.color -= new Color(0, 0, 0, speedAlpha2);
+                //time2 -= 1;
                 yield return null;
             }
-        }
+        }*/
 
         #endregion
 

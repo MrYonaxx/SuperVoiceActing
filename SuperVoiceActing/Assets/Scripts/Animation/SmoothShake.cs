@@ -93,20 +93,36 @@ namespace VoiceActing
             moving = false;
         }
 
-        private IEnumerator MoveCoroutine(float x, float y, float z, float time)
+        /*private IEnumerator MoveCoroutine(float x, float y, float z, float time)
         {
-            /*float speedX = (x - this.transform.position.x) / time;
-            float speedY = (y - this.transform.position.y) / time;
-            float speedZ = (z - this.transform.position.z) / time;*/
             Vector3 speed = new Vector3((x - this.transform.position.x) / time, (y - this.transform.position.y) / time, (z -this.transform.position.z) / time);
             moving = true;
             while (time != 0)
             {
                 this.transform.position += speed;
-                /*speedX /= 1.01f;
-                speedY /= 1.01f;*/
                 speed /= 1.01f;
                 time -= 1;
+                yield return null;
+            }
+            moving = false;
+        }*/
+
+        private IEnumerator MoveCoroutine(float x, float y, float z, float time)
+        {
+            time /= 60;
+            //Vector3 speed = new Vector3((x - this.transform.position.x) / time, (y - this.transform.position.y) / time, (z - this.transform.position.z) / time);
+            moving = true;
+            Vector3 finalPosition = new Vector3(x - this.transform.position.x, y - this.transform.position.y, z - this.transform.position.z);
+            Vector3 currentPosition = this.transform.position;
+            float t = 0;
+            while (t < 1)
+            {
+                t += (Time.deltaTime / time);
+                Debug.Log(t);
+                this.transform.position = Vector3.Lerp(currentPosition, finalPosition, t);
+                //this.transform.position += speed;
+                //speed /= 1.01f;
+                //time -= 1;
                 yield return null;
             }
             moving = false;

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SkillTerreurVivifiante
   m_EditorClassIdentifier: 
   skillName: Terreur Vivifiante
-  description: "Apr\xE8s une attaque critique contenant <color=yellow>1</color> de
-    Peur, Moine-Maeda r\xE9cup\xE8re <color=yellow>5%</color> de HP."
+  description: "Apr\xE8s une prise critique contenant <color=yellow>1</color> de Peur,
+    Moine-Maeda r\xE9cup\xE8re <color=yellow>5%</color> d'endurance."
   descriptionBattle: Restaure 5% d'HP
   skillType: 0
   buffData:
@@ -75,6 +75,11 @@ MonoBehaviour:
       secondEmotion: 0
     skillEffectResistance:
       resistancePercentage: 0
+    skillEffectInfluenceBonus:
+      inPercentage: 0
+      influenceBonus: 0
+    skillEffectState:
+      state: 0
   producerCost: 0
   activationTiming: 2
   onlyWhenMain: 1

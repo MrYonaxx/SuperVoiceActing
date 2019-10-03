@@ -143,11 +143,30 @@ namespace VoiceActing
             StartCoroutine(coroutine);
         }
 
-        private IEnumerator MoveToOrigin(float speed)
+        /*private IEnumerator MoveToOrigin(float speed)
         {
             while (rectTransform.anchoredPosition != Vector2.zero)
             {
                 rectTransform.anchoredPosition /= speed;
+                yield return null;
+            }
+            rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
+            coroutine = null;
+        }*/
+
+        private IEnumerator MoveToOrigin(float speed)
+        {
+            speed = 0.1f;
+            float time = 1f;
+            float t = 0f;
+            float blend = 0f;
+            Vector2 finalPosition = Vector2.zero;
+
+            while (t < 1f)
+            {
+                t += Time.deltaTime / time;
+                blend = 1f - Mathf.Pow(1f - speed, Time.deltaTime * 60);
+                rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, finalPosition, blend);
                 yield return null;
             }
             rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
@@ -162,11 +181,11 @@ namespace VoiceActing
                 feedback.rectTransform.localScale = this.rectTransform.localScale;
                 feedback.sprite = imageCard.sprite;
                 feedback.color = imageCard.color;
-                StartCoroutine(FeedbackCoroutine(feedback, 20));
+                //StartCoroutine(FeedbackCoroutine(feedback, 20));
             }
         }
 
-        private IEnumerator FeedbackCoroutine(Image feedback, int time)
+        /*private IEnumerator FeedbackCoroutine(Image feedback, int time)
         {
             while (time != 0)
             {
@@ -175,7 +194,7 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-        }
+        }*/
 
 
 
