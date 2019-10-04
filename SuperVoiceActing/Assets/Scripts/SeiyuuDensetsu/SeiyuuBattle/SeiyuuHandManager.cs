@@ -149,6 +149,11 @@ namespace VoiceActing
         [SerializeField]
         Color[] colorParticle;
 
+        [SerializeField]
+        AudioClip audioClipStartTurn;
+        [SerializeField]
+        AudioClip audioClipSelection;
+
 
         [SerializeField]
         protected int timeBeforeRepeat = 10;
@@ -245,6 +250,15 @@ namespace VoiceActing
             handCards[0].MoveCard(cardsPositions[0], 1.1f);
 
             DrawNextCard();
+        }
+
+        public void DrawCardUntilHandFull()
+        {
+            for(int i = 0; i < seiyuuHand.Count; i++)
+            {
+                if(seiyuuHand[i] == null)
+                    DrawCard();
+            }
         }
 
         private void ShiftHand()
@@ -370,6 +384,8 @@ namespace VoiceActing
         {
             if (isAttacking == true)
                 return;
+            if (seiyuuHand[indexSelection] == null)
+                return;
             isDiscarding = true;
             seiyuuGraveyard.Add(seiyuuHand[indexSelection]);
             seiyuuHand[indexSelection] = null;
@@ -450,7 +466,21 @@ namespace VoiceActing
 
 
 
+        public void StopRound()
+        {
+            DestroyComboCards();
+            if (coroutineTimerSelection != null)
+                StopCoroutine(coroutineTimerSelection);
+            timer = 0;
+            textTimer.gameObject.SetActive(false);
+            StopComboCardPreview();
+            isAttacking = false;
+            isDiscarding = false;
+            textComboCount.text = "";
+            textComboDamage.text = "";
 
+            SelectionActivate(false);
+        }
 
 
 
@@ -475,6 +505,7 @@ namespace VoiceActing
                     seiyuuDeck.SeiyuuBattleCards.Add(seiyuuGraveyard[0]);
                     seiyuuGraveyard.RemoveAt(0);
                 }
+                AudioManager.Instance.PlaySound(audioClipStartTurn, 1f);
             }
             else
             {
@@ -490,6 +521,7 @@ namespace VoiceActing
 
         private void ParticleSelectEmotion(Emotion emotion)
         {
+            AudioManager.Instance.PlaySound(audioClipSelection, 0.8f);
             if (particle == null)
                 return;
             if (haloEmotion == null)

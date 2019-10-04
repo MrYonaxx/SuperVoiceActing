@@ -90,6 +90,10 @@ namespace VoiceActing
 
         }
 
+        public void StopATB()
+        {
+            StopAllCoroutines();
+        }
 
         #endregion
 

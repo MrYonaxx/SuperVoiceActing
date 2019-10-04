@@ -76,6 +76,20 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorMomentum;
 
+        [Title("Screen")]
+        [SerializeField]
+        RawImage mainScreen;
+        [SerializeField]
+        Animator subScreen;
+        [SerializeField]
+        CameraMovementData camMovRoundPlayerWinner;
+        [SerializeField]
+        CameraMovementData camMovRoundEnemyWinner;
+        [SerializeField]
+        CameraMovementData camMovNewRound;
+        [SerializeField]
+        float mainScreenSpeedAppear = 20f;
+
         [Title("Sound")]
         [SerializeField]
         protected AudioClip audioClipBattleTheme;
@@ -96,6 +110,10 @@ namespace VoiceActing
         int indexLine = 0;
 
         bool isAttacking = false;
+
+        bool currentWinnerIsPlayer = true;
+        int playerScore = 0;
+        int enemyScore = 0;
 
         #endregion
 
@@ -131,6 +149,8 @@ namespace VoiceActing
 
         public void NewPhrase()
         {
+            timerPlayer.ReinitializeTimer();
+            timerEnemy.ReinitializeTimer();
             enemyManager.SetTextData(contract.TextData[indexLine]);
             enemyIA.SetTextData(contract.TextData[indexLine]);
             textAppearManager.NewPhrase(contract.TextData[indexLine].Text, enemyManager.GetEmotionHint());
@@ -156,7 +176,7 @@ namespace VoiceActing
             timerPlayer.StopTimer();
             timerEnemy.StopTimer();
             playerATB.StartATB();
-            AudioManager.Instance.PlaySound(audioClipAttack, 0.5f);
+            AudioManager.Instance.PlaySound(audioClipAttack, 1f);
             AudioManager.Instance.PlaySound(audioClipAttack2, 0.8f);
 
             playerHand.DestroyComboCards();
@@ -179,7 +199,7 @@ namespace VoiceActing
             timerPlayer.StopTimer();
             timerEnemy.StopTimer();
             enemyATB.StartATB();
-            AudioManager.Instance.PlaySound(audioClipAttack, 0.5f);
+            AudioManager.Instance.PlaySound(audioClipAttack, 1f);
             AudioManager.Instance.PlaySound(audioClipAttack2, 0.8f);
 
             enemyHand.DestroyComboCards();
@@ -245,6 +265,72 @@ namespace VoiceActing
                 animatorMomentum.enabled = true;
                 animatorMomentum.SetBool("PlayerMomentum", false);
             }
+        }
+
+
+
+
+
+        public void EndRound(bool playerWinner)
+        {
+            AudioManager.Instance.PlaySound(audioClipAttack, 1f);
+            AudioManager.Instance.PlaySound(audioClipAttack2, 0.8f);
+
+            timerPlayer.StopTimer();
+            timerEnemy.StopTimer();
+
+            playerATB.StopATB();
+            enemyATB.StopATB();
+
+            playerHand.StopRound();
+            enemyHand.StopRound();
+
+            currentWinnerIsPlayer = playerWinner;
+            mainScreen.gameObject.SetActive(false);
+            subScreen.gameObject.SetActive(true);
+            subScreen.SetBool("WinnerPlayer", playerWinner);
+
+            textAppearManager.TextPop();
+        }
+
+        public void CameraWinnerFeedback()
+        {
+            if(currentWinnerIsPlayer == true)
+                cameraController.CameraDataMovement(camMovRoundPlayerWinner);
+            else
+                cameraController.CameraDataMovement(camMovRoundEnemyWinner);
+        }
+
+
+        public void SetNextPhrase()
+        {
+            StartCoroutine(SetNextPhraseCoroutine());
+        }
+
+        private IEnumerator SetNextPhraseCoroutine()
+        {
+            cameraController.CameraDataMovement(camMovNewRound);
+            indexLine += 1;
+            NewPhrase();
+
+            mainScreen.gameObject.SetActive(true);
+            float t = 0f;
+            Color colorStart = new Color(1, 1, 1, 0);
+            Color colorEnd = new Color(1, 1, 1, 1);
+            while (t < 1f)
+            {
+                t += Time.deltaTime / (mainScreenSpeedAppear / 60f);
+                mainScreen.color = Color.Lerp(colorStart, colorEnd, t);
+                yield return null;
+            }
+
+            subScreen.gameObject.SetActive(false);
+            yield return new WaitForSeconds(3);
+            playerATB.AddATB(1);
+            enemyATB.AddATB(1);
+            playerATB.StartATB();
+            enemyATB.StartATB();
+
         }
 
 

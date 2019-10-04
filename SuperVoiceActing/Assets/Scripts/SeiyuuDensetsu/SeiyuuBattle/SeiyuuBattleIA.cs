@@ -89,6 +89,7 @@ namespace VoiceActing
 
         public void SetTextData(TextData textData)
         {
+            weaknessKnowledge = new EmotionStat(0, 0, 0, 0, 0, 0, 0, 0);
             int rand = Random.Range(weaknessKnowedAtStartMin, weaknessKnowedAtStartMax+1);
             weaknessNotKnown = new List<int>{ 1, 2, 3, 4, 5, 6, 7, 8 };
             for (int i = 0; i < rand; i++)
