@@ -113,13 +113,13 @@ namespace VoiceActing
             //Vector3 speed = new Vector3((x - this.transform.position.x) / time, (y - this.transform.position.y) / time, (z - this.transform.position.z) / time);
             moving = true;
             Vector3 finalPosition = new Vector3(x - this.transform.position.x, y - this.transform.position.y, z - this.transform.position.z);
-            Vector3 currentPosition = this.transform.position;
+            //Vector3 currentPosition = this.transform.position;
             float t = 0;
             while (t < 1)
             {
                 t += (Time.deltaTime / time);
-                Debug.Log(t);
-                this.transform.position = Vector3.Lerp(currentPosition, finalPosition, t);
+                //Debug.Log(t);
+                this.transform.position = Vector3.Lerp(this.transform.position, finalPosition, 0.025f);
                 //this.transform.position += speed;
                 //speed /= 1.01f;
                 //time -= 1;

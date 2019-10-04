@@ -74,7 +74,7 @@ namespace VoiceActing
 
 
         CameraMovementData currentCamMovement;
-
+        [SerializeField]
         bool moving = false;
 
         private bool pauseCoroutine = false;
