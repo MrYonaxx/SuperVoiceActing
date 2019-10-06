@@ -25,6 +25,8 @@ namespace VoiceActing
         [SerializeField]
         float shakeTime = 60;
         [SerializeField]
+        float shakePower = 0.025f;
+        [SerializeField]
         bool isRectTransform = false;
 
         bool moving = false;
@@ -109,26 +111,20 @@ namespace VoiceActing
 
         private IEnumerator MoveCoroutine(float x, float y, float z, float time)
         {
-            time /= 60;
-            //Vector3 speed = new Vector3((x - this.transform.position.x) / time, (y - this.transform.position.y) / time, (z - this.transform.position.z) / time);
+            time /= 60f;
             moving = true;
             Vector3 finalPosition = new Vector3(x - this.transform.position.x, y - this.transform.position.y, z - this.transform.position.z);
-            //Vector3 currentPosition = this.transform.position;
             float t = 0;
             while (t < 1)
             {
                 t += (Time.deltaTime / time);
-                //Debug.Log(t);
-                this.transform.position = Vector3.Lerp(this.transform.position, finalPosition, 0.025f);
-                //this.transform.position += speed;
-                //speed /= 1.01f;
-                //time -= 1;
+                this.transform.position = Vector3.Lerp(this.transform.position, finalPosition, shakePower);
                 yield return null;
             }
             moving = false;
         }
 
-        private IEnumerator MoveCoroutineRectTransform(float x, float y, float time)
+        /*private IEnumerator MoveCoroutineRectTransform(float x, float y, float time)
         {
             float speedX = (x - rectTransform.anchoredPosition.x) / time;
             float speedY = (y - rectTransform.anchoredPosition.y) / time;
@@ -139,6 +135,22 @@ namespace VoiceActing
                 speedX /= 1.01f;
                 speedY /= 1.01f;
                 time -= 1;
+                yield return null;
+            }
+            moving = false;
+        }*/
+
+        private IEnumerator MoveCoroutineRectTransform(float x, float y, float time)
+        {
+            time /= 60f;
+            Vector2 finalPosition = new Vector2(x, y);
+            moving = true;
+
+            float t = 0;
+            while (t < 1)
+            {
+                t += (Time.deltaTime / time);
+                rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, finalPosition, shakePower);
                 yield return null;
             }
             moving = false;

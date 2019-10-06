@@ -55,6 +55,8 @@ namespace VoiceActing
             {
                 angleValues[i] = lines[i].transform.eulerAngles.z;
             }
+            coroutine = RotateCameraCoroutine(200, 10);
+            StartCoroutine(coroutine);
         }
 
         public void FeedbackLinesMenu()
