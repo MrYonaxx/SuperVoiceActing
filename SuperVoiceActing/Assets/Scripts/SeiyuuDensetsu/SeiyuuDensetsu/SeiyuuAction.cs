@@ -16,17 +16,27 @@ namespace VoiceActing
     public abstract class SeiyuuAction : ScriptableObject
     {
         [SerializeField]
-        private string actionName;
+        protected string actionName;
         public string ActionName
         {
             get { return actionName; }
         }
 
         [SerializeField]
-        private int cost;
+        protected int cost;
         public int Cost
         {
             get { return cost; }
+        }
+
+        public virtual void ApplyDay(SeiyuuData seiyuuData)
+        {
+
+        }
+
+        public virtual void ApplyWeek(SeiyuuData seiyuuData)
+        {
+
         }
     } 
 

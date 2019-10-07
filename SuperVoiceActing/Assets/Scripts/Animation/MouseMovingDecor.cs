@@ -61,40 +61,78 @@ public class MouseMovingDecor : MonoBehaviour {
 
     void Start ()
     {
-		original_view_x = rectTransform.anchoredPosition.x;
-		original_view_y = rectTransform.anchoredPosition.y;
-	}
-
-    void Update ()
-    {
-        Vector2 tmp;
-        if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.1f)
+        if (rectTransform)
         {
-            tmp = new Vector2(Screen.width * Input.GetAxis("ControllerRightHorizontal"), Screen.height * -Input.GetAxis("ControllerRightVertical"));
-
-        }
-        else if (focusPoint == null)
-        {
-            tmp = Input.mousePosition;
-            tmp.x -= Screen.width * 0.5f;
-            tmp.y -= Screen.height * 0.5f;
-            tmp = new Vector2(Screen.width * (tmp.x / (Screen.width * 0.5f)), Screen.height * (tmp.y / (Screen.height * 0.5f)));
+            original_view_x = rectTransform.anchoredPosition.x;
+            original_view_y = rectTransform.anchoredPosition.y;
         }
         else
-            tmp = focusPoint.position;
+        {
+            original_view_x = this.transform.position.x;
+            original_view_y = this.transform.position.y;
+        }
+	}
 
-        actual_view_x = 0;
-        actual_view_y = 0;
+    void Update()
+    {
+        if (rectTransform)
+        {
+            Vector2 tmp;
+            if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.1f)
+            {
+                tmp = new Vector2(Screen.width * Input.GetAxis("ControllerRightHorizontal"), Screen.height * -Input.GetAxis("ControllerRightVertical"));
 
-        actual_view_x += (tmp.x);
-        actual_view_x /= amplitude;
-        actual_view_x += original_view_x;
+            }
+            else if (focusPoint == null)
+            {
+                tmp = Input.mousePosition;
+                tmp.x -= Screen.width * 0.5f;
+                tmp.y -= Screen.height * 0.5f;
+                tmp = new Vector2(Screen.width * (tmp.x / (Screen.width * 0.5f)), Screen.height * (tmp.y / (Screen.height * 0.5f)));
+            }
+            else
+                tmp = focusPoint.position;
 
-        actual_view_y += (tmp.y);
-        actual_view_y /= amplitude;
-        actual_view_y += original_view_y;
+            actual_view_x = 0;
+            actual_view_y = 0;
 
-        rectTransform.anchoredPosition -= new Vector2((rectTransform.anchoredPosition.x - actual_view_x) * Time.deltaTime * speed, (rectTransform.anchoredPosition.y - actual_view_y) * Time.deltaTime * speed);
+            actual_view_x += (tmp.x);
+            actual_view_x /= amplitude;
+            actual_view_x += original_view_x;
+
+            actual_view_y += (tmp.y);
+            actual_view_y /= amplitude;
+            actual_view_y += original_view_y;
+
+            rectTransform.anchoredPosition -= new Vector2((rectTransform.anchoredPosition.x - actual_view_x) * Time.deltaTime * speed, (rectTransform.anchoredPosition.y - actual_view_y) * Time.deltaTime * speed);
+
+        }
+        else
+        {
+            Vector3 tmp;
+            if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.1f)
+            {
+                tmp = Camera.main.ScreenToWorldPoint(new Vector3(1920 * Input.GetAxis("ControllerRightHorizontal"), 1080 * -Input.GetAxis("ControllerRightVertical"), 0));
+            }
+            else if (focusPoint == null)
+                tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            else
+                tmp = focusPoint.position;
+
+            actual_view_x = 0;
+            actual_view_y = 0;
+
+            actual_view_x += (tmp.x);
+            actual_view_x /= amplitude;
+            actual_view_x += original_view_x;
+
+            actual_view_y += (tmp.y);
+            actual_view_y /= amplitude;
+            actual_view_y += original_view_y;
+
+            transform.position -= new Vector3((transform.position.x - actual_view_x) * Time.deltaTime * speed,
+                                                (transform.position.y - actual_view_y) * Time.deltaTime * speed,
+                                                0);
+        }
     }
-
 }

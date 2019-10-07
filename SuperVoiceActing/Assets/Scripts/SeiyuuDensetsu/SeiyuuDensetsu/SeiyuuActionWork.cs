@@ -34,6 +34,25 @@ namespace VoiceActing
             get { return hpDamage; }
         }
 
+        [SerializeField]
+        private int chanceOfBadDay;
+        public int ChanceOfBadDay
+        {
+            get { return chanceOfBadDay; }
+        }
+        [SerializeField]
+        private int chanceOfNormalDay;
+        public int ChanceOfNormalDay
+        {
+            get { return chanceOfNormalDay; }
+        }
+        [SerializeField]
+        private int chanceOfGoodDay;
+        public int ChanceOfGoodDay
+        {
+            get { return chanceOfGoodDay; }
+        }
+
 
         #endregion
 
@@ -51,6 +70,34 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public override void ApplyDay(SeiyuuData seiyuuData)
+        {
+            float health = seiyuuData.VoiceActor.Hp / seiyuuData.VoiceActor.HpMax;
+            int stat = seiyuuData.VoiceActor.Statistique.GetEmotion(0);
+            float rand = stat * (health / 0.5f);
+            rand *= 100;
+            rand += Random.Range(-10, 10);
+            if(rand <= chanceOfBadDay)
+            {
+                seiyuuData.VoiceActor.Hp -= (int)(hpDamage * 1.25f);
+                seiyuuData.Money += (int)(cost * 0.75f);
+            }
+            else if (rand <= chanceOfNormalDay)
+            {
+                seiyuuData.VoiceActor.Hp -= hpDamage;
+                seiyuuData.Money += (int)(cost);
+            }
+            else if (rand <= chanceOfGoodDay)
+            {
+                seiyuuData.VoiceActor.Hp -= (int)(hpDamage * 0.75f);
+                seiyuuData.Money += (int)(cost * 1.25f);
+            }
+        }
+
+        public override void ApplyWeek(SeiyuuData seiyuuData)
+        {
+            seiyuuData.VoiceActor.Statistique.Add(emotionGain);
+        }
 
         #endregion
 

@@ -40,7 +40,12 @@ namespace VoiceActing
         [SerializeField]
         SeiyuuActorManager seiyuuActorManager;
         [SerializeField]
+        SeiyuuActionManager seiyuuActionManager;
+        [SerializeField]
         Animator animatorBackground;
+
+        [Title("WeekProgress")]
+
 
         [Title("Calendar")]
         [SerializeField]
@@ -92,6 +97,18 @@ namespace VoiceActing
 
         }
 
+        // Call each day
+        public void ApplyDay()
+        {
+
+        }
+
+        // Call at the end of week
+        public void ApplyWeek()
+        {
+
+        }
+
         public void MoveMenuCenter(bool b)
         {
             animatorBackground.SetBool("Center", b);
@@ -122,6 +139,7 @@ namespace VoiceActing
         {
             animatorCalendar.SetBool("Appear", b);
         }
+
 
 
 
