@@ -47,6 +47,7 @@ namespace VoiceActing
             set { indexButton = value; }
         }
 
+        private IEnumerator coroutine;
         bool isClickable = false;
 
         #endregion
@@ -68,17 +69,30 @@ namespace VoiceActing
         public void DrawSeiyuuAction(SeiyuuAction seiyuuAction, int index = -1)
         {
             textActionName.text = seiyuuAction.ActionName;
-            textActionCost.text = seiyuuAction.Cost + "<sprite=9>";
+
+            if (seiyuuAction.Cost == 0)
+                textActionCost.text = "";
+            else
+                textActionCost.text = seiyuuAction.Cost + "<sprite=9>";
 
             if (index != -1)
                 indexButton = index;
+
         }
 
+        public void ButtonFeedback()
+        {
+            animatorButton.SetTrigger("Feedback");
+        }
 
-        public void ButtonAppear(bool b)
+        public void ButtonAppear(bool b, float time)
         {
             isClickable = b;
-            animatorButton.SetBool("Appear", b);
+
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = CoroutineAppear(b, time);
+            StartCoroutine(coroutine);
         }
 
         public void ButtonSelected(bool b)
@@ -86,6 +100,11 @@ namespace VoiceActing
             animatorButton.SetBool("Selected", b);
         }
 
+        private IEnumerator CoroutineAppear(bool b, float time)
+        {
+            yield return new WaitForSeconds(time);
+            animatorButton.SetBool("Appear", b);
+        }
 
         public void OnPointerEnter(PointerEventData pointerEventData)
         {
@@ -105,6 +124,7 @@ namespace VoiceActing
             if (isClickable == false)
                 return;
             eventClick.Invoke(indexButton);
+            ButtonFeedback();
         }
 
         #endregion

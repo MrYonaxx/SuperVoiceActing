@@ -71,6 +71,7 @@ namespace VoiceActing
         public void ShowSeiyuuActionMenu(int tab)
         {
             //indexSelected = -1;
+            this.gameObject.SetActive(true);
             currentTab = tab;
             buttonsList.Clear();
             for (int i = 0; i < seiyuuDatabase.GetSeiyuuActions(tab).Length; i++)
@@ -80,11 +81,11 @@ namespace VoiceActing
 
                 buttonsList.Add(seiyuuActionButton[seiyuuActionButton.Count - 1].RectTransform);
                 seiyuuActionButton[i].DrawSeiyuuAction(seiyuuDatabase.GetSeiyuuActions(tab)[i], i);
-                seiyuuActionButton[i].ButtonAppear(true);
+                seiyuuActionButton[i].ButtonAppear(true, i * 0.05f);
             }
             for (int i = seiyuuDatabase.GetSeiyuuActions(tab).Length; i < seiyuuActionButton.Count; i++)
             {
-                seiyuuActionButton[i].ButtonAppear(false);
+                seiyuuActionButton[i].ButtonAppear(false, 0f);
             }
         }
 
@@ -92,8 +93,9 @@ namespace VoiceActing
         {
             for (int i = 0; i < seiyuuActionButton.Count; i++)
             {
-                seiyuuActionButton[i].ButtonAppear(false);
+                seiyuuActionButton[i].ButtonAppear(false, i * 0.05f);
             }
+            this.gameObject.SetActive(false);
         }
 
 
@@ -111,11 +113,39 @@ namespace VoiceActing
 
         public void SelectAction(int index)
         {
-
+            indexSelected = index;
+            SelectAction();
         }
+
         public void SelectAction()
         {
+            if (seiyuuActionDay == null)
+            {
+                seiyuuActionDay = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected];
+                textSeiyuuActionDay.text = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected].ActionName;
+                animatorSeiyuuActionDay.SetBool("Appear", true);
+            }
+            else if (seiyuuActionNight == null)
+            {
+                seiyuuActionNight = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected];
+                textSeiyuuActionNight.text = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected].ActionName;
+                animatorSeiyuuActionNight.SetBool("Appear", true);
+                QuitSeiyuuActionMenu();
+            }
+        }
 
+        public void RemoveAction()
+        {
+            if (seiyuuActionNight != null)
+            {
+                seiyuuActionNight = null;
+                animatorSeiyuuActionNight.SetBool("Appear", false);
+            }
+            else if (seiyuuActionDay != null)
+            {
+                seiyuuActionDay = null;
+                animatorSeiyuuActionDay.SetBool("Appear", false);
+            }
         }
 
         #endregion

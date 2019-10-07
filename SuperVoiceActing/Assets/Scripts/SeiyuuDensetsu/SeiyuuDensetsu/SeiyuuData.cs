@@ -12,7 +12,8 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    public class SeiyuuData: MonoBehaviour
+    [CreateAssetMenu(fileName = "SeiyuuuData", menuName = "SeiyuuDensetsu/SeiyuuData", order = 1)]
+    public class SeiyuuData: ScriptableObject
     {
         #region Attributes 
 
@@ -39,6 +40,13 @@ namespace VoiceActing
         public Date Date
         {
             get { return date; }
+        }
+
+        [SerializeField]
+        private Season season;
+        public Season Season
+        {
+            get { return season; }
         }
 
         [SerializeField]
@@ -76,6 +84,14 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public SeiyuuData(VoiceActorData voiceActorData, Date initialDate, Season initialSeason, int initialMoney, int initialBill)
+        {
+            voiceActor = new VoiceActor(voiceActorData);
+            date = new Date( initialDate.week, initialDate.month, initialDate.year);
+            season = initialSeason;
+            money = initialMoney;
+            bill = initialBill;       
+        }
 
         #endregion
 
