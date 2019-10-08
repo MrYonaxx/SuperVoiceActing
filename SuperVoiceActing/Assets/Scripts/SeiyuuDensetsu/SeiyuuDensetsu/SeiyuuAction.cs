@@ -29,9 +29,9 @@ namespace VoiceActing
             get { return cost; }
         }
 
-        public virtual void ApplyDay(SeiyuuData seiyuuData)
+        public virtual int ApplyDay(SeiyuuData seiyuuData)
         {
-
+            return 0;
         }
 
         public virtual void ApplyWeek(SeiyuuData seiyuuData)

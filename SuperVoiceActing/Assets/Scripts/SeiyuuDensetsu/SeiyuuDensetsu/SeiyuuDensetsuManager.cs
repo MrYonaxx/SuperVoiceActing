@@ -65,6 +65,9 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI[] textCalendarNextDays;
 
+        SeiyuuAction seiyuuActionDay;
+        SeiyuuAction seiyuuActionNight;
+
         #endregion
 
         #region GettersSetters 
@@ -94,13 +97,14 @@ namespace VoiceActing
 
         public void StartWeek()
         {
-
+            animatorBackground.SetTrigger("Week");
         }
 
         // Call each day
         public void ApplyDay()
         {
-
+            seiyuuActionDay.ApplyDay(seiyuuData);
+            seiyuuActorManager.DrawActorStat(seiyuuData.VoiceActor);
         }
 
         // Call at the end of week

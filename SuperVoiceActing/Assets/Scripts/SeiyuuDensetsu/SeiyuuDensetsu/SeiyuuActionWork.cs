@@ -70,7 +70,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public override void ApplyDay(SeiyuuData seiyuuData)
+        public override int ApplyDay(SeiyuuData seiyuuData)
         {
             float health = seiyuuData.VoiceActor.Hp / seiyuuData.VoiceActor.HpMax;
             int stat = seiyuuData.VoiceActor.Statistique.GetEmotion(0);
@@ -81,17 +81,21 @@ namespace VoiceActing
             {
                 seiyuuData.VoiceActor.Hp -= (int)(hpDamage * 1.25f);
                 seiyuuData.Money += (int)(cost * 0.75f);
+                return -1;
             }
             else if (rand <= chanceOfNormalDay)
             {
                 seiyuuData.VoiceActor.Hp -= hpDamage;
                 seiyuuData.Money += (int)(cost);
+                return 0;
             }
             else if (rand <= chanceOfGoodDay)
             {
                 seiyuuData.VoiceActor.Hp -= (int)(hpDamage * 0.75f);
                 seiyuuData.Money += (int)(cost * 1.25f);
+                return 1;
             }
+            return 0;
         }
 
         public override void ApplyWeek(SeiyuuData seiyuuData)
