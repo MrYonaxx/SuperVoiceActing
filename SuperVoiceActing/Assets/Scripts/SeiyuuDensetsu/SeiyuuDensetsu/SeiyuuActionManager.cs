@@ -54,6 +54,16 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public SeiyuuAction GetSeiyuuActionDay()
+        {
+            return seiyuuActionDay;
+        }
+
+        public SeiyuuAction GetSeiyuuActionNight()
+        {
+            return seiyuuActionNight;
+        }
+
         #endregion
 
         #region Functions 

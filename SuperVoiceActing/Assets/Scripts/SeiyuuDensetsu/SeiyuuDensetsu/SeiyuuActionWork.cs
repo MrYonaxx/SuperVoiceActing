@@ -28,6 +28,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private int hpMaxGain;
+        public int HpMaxGain
+        {
+            get { return hpMaxGain; }
+        }
+
+        [SerializeField]
         private int hpDamage;
         public int HpDamage
         {
@@ -89,18 +96,26 @@ namespace VoiceActing
                 seiyuuData.Money += (int)(cost);
                 return 0;
             }
-            else if (rand <= chanceOfGoodDay)
+            else
             {
                 seiyuuData.VoiceActor.Hp -= (int)(hpDamage * 0.75f);
                 seiyuuData.Money += (int)(cost * 1.25f);
                 return 1;
             }
-            return 0;
         }
 
         public override void ApplyWeek(SeiyuuData seiyuuData)
         {
             seiyuuData.VoiceActor.Statistique.Add(emotionGain);
+        }
+
+        // Used for showing changement
+        public override void ApplyWeek(SeiyuuData seiyuuData, SeiyuuActorManager seiyuuActorManager)
+        {
+            seiyuuData.VoiceActor.Statistique.Add(emotionGain);
+            seiyuuData.VoiceActor.HpMax += hpMaxGain;
+
+            seiyuuActorManager.ShowActorStatModification(emotionGain);
         }
 
         #endregion

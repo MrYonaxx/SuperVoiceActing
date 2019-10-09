@@ -86,6 +86,14 @@ namespace VoiceActing
         [SerializeField]
         Image[] jaugeEmpty;
 
+        [Title("Animator")]
+        [SerializeField]
+        Animator animatorStatPanel;
+        [SerializeField]
+        Animator animatorStatMediaPanel;
+        [SerializeField]
+        Animator animatorSkillPanel;
+
         private bool auditionMode = false;
         private Role auditionRole = null;
 
@@ -219,6 +227,37 @@ namespace VoiceActing
                 }
             }
         }
+
+
+
+
+        public void HideAllActorInfo()
+        {
+            animatorStatPanel.SetBool("Appear", false);
+            animatorStatMediaPanel.SetBool("Appear", false);
+            animatorSkillPanel.SetBool("Appear", false);
+        }
+        public void ShowAllActorInfo()
+        {
+            animatorStatPanel.SetBool("Appear", true);
+            animatorStatMediaPanel.SetBool("Appear", true);
+            animatorSkillPanel.SetBool("Appear", true);
+        }
+
+        public void ShowActorHPModification()
+        {
+
+        }
+
+        public void ShowActorStatModification(EmotionStat emotionStat)
+        {
+            animatorStatPanel.SetBool("Appear", true);
+        }
+
+
+
+
+
 
         #endregion
 

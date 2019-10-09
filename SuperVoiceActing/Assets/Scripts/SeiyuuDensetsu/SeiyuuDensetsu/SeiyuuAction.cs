@@ -38,6 +38,11 @@ namespace VoiceActing
         {
 
         }
+
+        // Used for showing changement
+        public virtual void ApplyWeek(SeiyuuData seiyuuData, SeiyuuActorManager seiyuuActorManager)
+        {
+        }
     } 
 
 } // #PROJECTNAME# namespace

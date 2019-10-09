@@ -93,6 +93,15 @@ namespace VoiceActing
             bill = initialBill;       
         }
 
+        public void CreateSeiyuuData(VoiceActorData voiceActorData, Date initialDate, Season initialSeason, int initialMoney, int initialBill)
+        {
+            voiceActor = new VoiceActor(voiceActorData);
+            date = new Date(initialDate.week, initialDate.month, initialDate.year);
+            season = initialSeason;
+            money = initialMoney;
+            bill = initialBill;
+        }
+
         #endregion
 
     } 

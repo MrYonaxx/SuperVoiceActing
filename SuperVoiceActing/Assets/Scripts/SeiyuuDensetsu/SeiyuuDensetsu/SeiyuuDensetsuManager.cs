@@ -45,7 +45,14 @@ namespace VoiceActing
         Animator animatorBackground;
 
         [Title("WeekProgress")]
-
+        [SerializeField]
+        Animator[] animatorsWeek;
+        [SerializeField]
+        TextMeshProUGUI textCurrentAction;
+        [SerializeField]
+        InputController inputWeekProgress;
+        [SerializeField]
+        Animator animatorButtons;
 
         [Title("Calendar")]
         [SerializeField]
@@ -68,6 +75,8 @@ namespace VoiceActing
         SeiyuuAction seiyuuActionDay;
         SeiyuuAction seiyuuActionNight;
 
+        int day = 0;
+
         #endregion
 
         #region GettersSetters 
@@ -85,7 +94,8 @@ namespace VoiceActing
         \* ======================================== */
         protected void Start()
         {
-            seiyuuData = new SeiyuuData(voiceActorDebug, dateDebug, initialSeason, initialMoney, initialBill);
+            seiyuuData.CreateSeiyuuData(voiceActorDebug, dateDebug, initialSeason, initialMoney, initialBill);
+            //seiyuuData = new SeiyuuData(voiceActorDebug, dateDebug, initialSeason, initialMoney, initialBill);
             NewWeek();
         }
 
@@ -93,24 +103,70 @@ namespace VoiceActing
         {
             DrawDate();
             seiyuuActorManager.DrawActorStat(seiyuuData.VoiceActor);
+            seiyuuActorManager.ShowAllActorInfo();
+            ShowCalendar(true);
+            animatorButtons.SetBool("Appear", true);
         }
 
         public void StartWeek()
         {
+            day = 0;
             animatorBackground.SetTrigger("Week");
+            seiyuuActionDay = seiyuuActionManager.GetSeiyuuActionDay();
+            seiyuuActionNight = seiyuuActionManager.GetSeiyuuActionNight();
+            textCurrentAction.text = seiyuuActionDay.ActionName;
+            seiyuuActorManager.HideAllActorInfo();
+            ShowCalendar(false);
+            animatorButtons.SetBool("Appear", false);
         }
 
         // Call each day
         public void ApplyDay()
         {
-            seiyuuActionDay.ApplyDay(seiyuuData);
+            animatorsWeek[day].SetTrigger("Feedback");
+            if (seiyuuActionDay != null)
+            {
+                seiyuuActionDay.ApplyDay(seiyuuData);
+            }
+            else
+            {
+                seiyuuActionNight.ApplyDay(seiyuuData);
+            }
             seiyuuActorManager.DrawActorStat(seiyuuData.VoiceActor);
+            day += 1;
         }
 
         // Call at the end of week
         public void ApplyWeek()
         {
+            if (seiyuuActionDay != null)
+            {
+                seiyuuActionDay.ApplyWeek(seiyuuData, seiyuuActorManager);
+            }
+            else
+            {
+                seiyuuActionNight.ApplyWeek(seiyuuData, seiyuuActorManager);
+            }
+            inputWeekProgress.gameObject.SetActive(true);
 
+        }
+
+        // Call by inputWeekProgress
+        public void ContinueWeek()
+        {
+            inputWeekProgress.gameObject.SetActive(false);
+            if (seiyuuActionDay != null)
+            {
+                seiyuuActorManager.HideAllActorInfo();
+                animatorBackground.SetTrigger("WeekNight");
+                seiyuuActionDay = null;
+            }
+            else
+            {
+                NewWeek();
+                seiyuuActionNight = null;
+            }
+            day = 0;
         }
 
         public void MoveMenuCenter(bool b)
