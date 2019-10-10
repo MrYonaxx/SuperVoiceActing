@@ -789,15 +789,31 @@ namespace VoiceActing
             damageText.gameObject.SetActive(true);
             damageText.text = totalDamage.ToString();
             damageText.transform.localScale = new Vector3(1, 1, 1);
-            int timeFeedback = 40;
+            float timeFeedback = 40 / 60f;
             float speed = (totalDamage / timeFeedback);
-            StartCoroutine(DamageTextCoroutine(totalDamage, speed, timeFeedback, 120));
+            StartCoroutine(DamageTextCoroutine(totalDamage, speed, timeFeedback, 120/60f));
         }
 
-        private IEnumerator DamageTextCoroutine(float totalDamage, float speed, int timeFeedback, int time)
+        private IEnumerator DamageTextCoroutine(float totalDamage, float speed, float timeFeedback, float time)
         {
             float currentDamage = 0;
-            while (time != 0)
+            float t = 0f;
+            
+            while (t < 1f)
+            {
+                t += (Time.deltaTime / time);
+                if (t < (timeFeedback / time))
+                {
+                    damageText.text = ((int)(totalDamage * (t / (timeFeedback / time)))).ToString();
+                }
+                else
+                {
+                    damageText.text = ((int)totalDamage).ToString();
+                    damageTextAnimator.enabled = true;
+                }
+                yield return null;
+            }
+            /*while (time != 0)
             {
                 time -= 1;
                 if(timeFeedback > 0)
@@ -812,7 +828,7 @@ namespace VoiceActing
                     damageTextAnimator.enabled = true;
                 }
                 yield return null;
-            }
+            }*/
             damageText.text = "";
             damageTextAnimator.enabled = false;
             damageText.gameObject.SetActive(false);

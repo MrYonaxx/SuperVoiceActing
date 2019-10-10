@@ -47,6 +47,41 @@ namespace VoiceActing
             month = m;
             year = y;
         }
+
+
+
+        public void NextWeek()
+        {
+            week += 1;
+            if (week > 52)
+            {
+                week = 1;
+                month = 1;
+                year += 1;
+            }
+        }
+        public void NextWeek(CalendarData calendar)
+        {
+            NextWeek();
+            CheckMonth(calendar);
+        }
+
+
+        public void CheckMonth(CalendarData calendar)
+        {
+            if(month == 0)
+            {
+                if (week == calendar.MonthDate[11])
+                {
+                    month += 1;
+                }
+            }
+            else if (week == calendar.MonthDate[month - 1])
+            {
+                month += 1;
+            }
+        }
+
     }
 
     [System.Serializable]

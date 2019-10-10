@@ -588,12 +588,13 @@ namespace VoiceActing
 
         private IEnumerator WaitFrame(int frame)
         {
-            int time = frame;
+            yield return new WaitForSeconds(frame / 60f);
+            /*int time = frame;
             while (time != 0)
             {
                 time -= 1;
                 yield return null;
-            }
+            }*/
         }
 
 
@@ -744,11 +745,12 @@ namespace VoiceActing
 
         private IEnumerator WaitCoroutineNextPhrase(float time)
         {
-            while (time != 0)
+            yield return new WaitForSeconds(time / 60f);
+            /*while (time != 0)
             {
                 time -= 1;
                 yield return null;
-            }
+            }*/
             SetPhrase();
         }
 

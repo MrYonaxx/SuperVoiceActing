@@ -101,6 +101,7 @@ namespace VoiceActing
 
         public void NewWeek()
         {
+            seiyuuData.Date.NextWeek(calendarData);
             DrawDate();
             seiyuuActorManager.DrawActorStat(seiyuuData.VoiceActor);
             seiyuuActorManager.ShowAllActorInfo();
@@ -160,11 +161,14 @@ namespace VoiceActing
                 seiyuuActorManager.HideAllActorInfo();
                 animatorBackground.SetTrigger("WeekNight");
                 seiyuuActionDay = null;
+                seiyuuActionManager.RemoveAction(false);
+                textCurrentAction.text = seiyuuActionNight.ActionName;
             }
             else
             {
                 NewWeek();
                 seiyuuActionNight = null;
+                seiyuuActionManager.RemoveAction(true);
             }
             day = 0;
         }

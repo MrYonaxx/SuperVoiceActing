@@ -566,7 +566,7 @@ namespace VoiceActing
 
                 loopCount += 1;
 
-                yield return null;//new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(1/60f);
             }
         }
 
@@ -712,7 +712,8 @@ namespace VoiceActing
                     textMeshPro.UpdateGeometry(textInfo.meshInfo[i].mesh, i);
                 }
                 time -= 1;
-                yield return null;
+                yield return new WaitForSeconds(1/60f);
+                //yield return null;
             }
 
             /*coroutine = AnimateVertexColors();

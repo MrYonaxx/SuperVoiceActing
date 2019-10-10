@@ -217,11 +217,12 @@ namespace VoiceActing
 
         private IEnumerator WaitFrame(float time, float damage)
         {
-            while(time != 0)
+            /*while(time != 0)
             {
                 time -= 1;
                 yield return null;
-            }
+            }*/
+            yield return new WaitForSeconds(time / 60f);
             currentText.NewMouthAnim(mouth);
             currentText.SetParticle(particleEnd, particleLineDead1, particleLineDead2);
             currentText.CalculateDamageColor(damage);

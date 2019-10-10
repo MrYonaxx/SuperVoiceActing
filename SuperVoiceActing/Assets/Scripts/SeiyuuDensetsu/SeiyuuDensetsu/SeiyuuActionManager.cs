@@ -39,6 +39,11 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textSeiyuuActionNight;
 
+        [SerializeField]
+        Animator animatorButtonStartWeek;
+        [SerializeField]
+        InputController inputController;
+
         SeiyuuAction seiyuuActionDay;
         SeiyuuAction seiyuuActionNight;
 
@@ -97,6 +102,7 @@ namespace VoiceActing
             {
                 seiyuuActionButton[i].ButtonAppear(false, 0f);
             }
+            animatorButtonStartWeek.SetBool("Appear", false);
         }
 
         public void QuitSeiyuuActionMenu()
@@ -140,22 +146,30 @@ namespace VoiceActing
                 seiyuuActionNight = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected];
                 textSeiyuuActionNight.text = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected].ActionName;
                 animatorSeiyuuActionNight.SetBool("Appear", true);
-                QuitSeiyuuActionMenu();
+                animatorButtonStartWeek.SetBool("Appear", true);
+                inputController.EventButtonB();
             }
         }
 
-        public void RemoveAction()
+        public void RemoveAction(bool action)
         {
-            if (seiyuuActionNight != null)
+            if (action == true)
             {
                 seiyuuActionNight = null;
                 animatorSeiyuuActionNight.SetBool("Appear", false);
+                animatorButtonStartWeek.SetBool("Appear", false);
             }
-            else if (seiyuuActionDay != null)
+            else if (action == false)
             {
                 seiyuuActionDay = null;
                 animatorSeiyuuActionDay.SetBool("Appear", false);
+                animatorButtonStartWeek.SetBool("Appear", false);
             }
+        }
+
+        public void HideButtonStartWeek()
+        {
+            animatorButtonStartWeek.SetBool("Appear", false);
         }
 
         #endregion
