@@ -146,6 +146,9 @@ namespace VoiceActing
                 seiyuuActionNight = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected];
                 textSeiyuuActionNight.text = seiyuuDatabase.GetSeiyuuActions(currentTab)[indexSelected].ActionName;
                 animatorSeiyuuActionNight.SetBool("Appear", true);
+            }
+            if (seiyuuActionDay != null && seiyuuActionNight != null)
+            {
                 animatorButtonStartWeek.SetBool("Appear", true);
                 inputController.EventButtonB();
             }

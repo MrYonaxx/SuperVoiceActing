@@ -42,6 +42,8 @@ namespace VoiceActing
         [SerializeField]
         SeiyuuActionManager seiyuuActionManager;
         [SerializeField]
+        MenuContractMoney menuContractMoney;
+        [SerializeField]
         Animator animatorBackground;
 
         [Title("WeekProgress")]
@@ -66,6 +68,8 @@ namespace VoiceActing
         Image seasonSprite2;
         [SerializeField]
         TextMeshProUGUI textDate;
+        [SerializeField]
+        TextMeshProUGUI textMoneyGainTMP;
         [SerializeField]
         Animator animatorCalendar;
 
@@ -101,12 +105,13 @@ namespace VoiceActing
 
         public void NewWeek()
         {
-            seiyuuData.Date.NextWeek(calendarData);
+            seiyuuData.NextWeek(calendarData);
             DrawDate();
             seiyuuActorManager.DrawActorStat(seiyuuData.VoiceActor);
             seiyuuActorManager.ShowAllActorInfo();
             ShowCalendar(true);
             animatorButtons.SetBool("Appear", true);
+            menuContractMoney.UpdateMoney();
         }
 
         public void StartWeek()
@@ -133,6 +138,8 @@ namespace VoiceActing
             {
                 seiyuuActionNight.ApplyDay(seiyuuData);
             }
+            textMoneyGainTMP.gameObject.SetActive(true);
+            textMoneyGainTMP.text = "<sprite=9>   +" + seiyuuData.MoneyGain;
             seiyuuActorManager.DrawActorStat(seiyuuData.VoiceActor);
             day += 1;
         }
@@ -143,12 +150,17 @@ namespace VoiceActing
             if (seiyuuActionDay != null)
             {
                 seiyuuActionDay.ApplyWeek(seiyuuData, seiyuuActorManager);
+                menuContractMoney.AddSalaryDatas(seiyuuActionDay.ActionName, seiyuuData.MoneyGain);
             }
             else
             {
                 seiyuuActionNight.ApplyWeek(seiyuuData, seiyuuActorManager);
+                menuContractMoney.AddSalaryDatas(seiyuuActionNight.ActionName, seiyuuData.MoneyGain);
             }
+            seiyuuData.MoneyGain = 0;
+            textMoneyGainTMP.gameObject.SetActive(false);
             inputWeekProgress.gameObject.SetActive(true);
+
 
         }
 
@@ -163,6 +175,7 @@ namespace VoiceActing
                 seiyuuActionDay = null;
                 seiyuuActionManager.RemoveAction(false);
                 textCurrentAction.text = seiyuuActionNight.ActionName;
+                menuContractMoney.UpdateMoney();
             }
             else
             {
@@ -187,7 +200,7 @@ namespace VoiceActing
         {
             seasonSprite1.sprite = seasonData.GetSprite((int)seiyuuData.Season);
             seasonSprite2.sprite = seasonSprite1.sprite;
-            textDate.text = calendarData.MonthName[seiyuuData.Date.month] + "/ Semaine " + seiyuuData.Date.week;
+            textDate.text = calendarData.MonthName[seiyuuData.Date.month] + " / Semaine " + seiyuuData.Date.week;
             for(int i =0; i < textCalendarNextDays.Length; i++)
             {
                 int week = seiyuuData.Date.week + (i + 1);

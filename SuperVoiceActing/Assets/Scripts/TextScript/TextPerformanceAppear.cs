@@ -245,7 +245,6 @@ namespace VoiceActing
                 else
                     vertexAnim[i].feedback = true;
             }
-            Debug.Log("Ham");
         }
 
 
@@ -271,7 +270,6 @@ namespace VoiceActing
         public void CalculateDamageColor(float percentage)
         {
             coloredCharacterCount = (int) ((textMeshPro.textInfo.characterCount) * (percentage / 100));
-            //Debug.Log("Colored Character Count : " + coloredCharacterCount);
             if (coloredCharacterCount <= 0)
             {
                 coloredCharacterCount = 1;
@@ -387,6 +385,7 @@ namespace VoiceActing
             // Create an Array which contains pre-computed Angle Ranges and Speeds for a bunch of characters.
             InitializeVertex();
             Color32[] newVertexColors = InitializeVertexColor();
+            float t = 0;
 
             if(mouth != null)
                 mouth.ActivateMouth();
@@ -406,7 +405,13 @@ namespace VoiceActing
                     hasTextChanged = false;
                 }
 
-                if (actualTime == letterInterval && characterCount < textInfo.characterCount)
+                while(t > letterInterval / 60f && characterCount < textInfo.characterCount)
+                {
+                    characterCount += 1;
+                    t -= letterInterval / 60f;
+                }
+
+                /*if (actualTime == letterInterval && characterCount < textInfo.characterCount)
                 {
                     characterCount += 1;
                     actualTime = 0;
@@ -414,7 +419,7 @@ namespace VoiceActing
                 else if (characterCount < textInfo.characterCount)
                 {
                     actualTime += 1;
-                }
+                }*/
 
                 if(characterCount == textInfo.characterCount && mouth != null)
                     mouth.DesactivateMouth();
@@ -566,7 +571,9 @@ namespace VoiceActing
 
                 loopCount += 1;
 
-                yield return new WaitForSeconds(1/60f);
+                //yield return new WaitForSeconds(0.1f);
+                t += Time.deltaTime;
+                yield return null;
             }
         }
 
@@ -668,7 +675,7 @@ namespace VoiceActing
             textInfo = textMeshPro.textInfo;
             //Matrix4x4 matrix;
             TMP_MeshInfo[] cachedMeshInfo = textInfo.CopyMeshInfoVertexData();
-            Vector3 scale = new Vector3(1.02f, 1.02f, 1.02f);
+            Vector3 scale = new Vector3(1.02f, 1.02f, 1f);
 
             float[] randomParameter = new float[characterCount];
             for (int i = 0; i < characterCount; i++)
@@ -712,7 +719,8 @@ namespace VoiceActing
                     textMeshPro.UpdateGeometry(textInfo.meshInfo[i].mesh, i);
                 }
                 time -= 1;
-                yield return new WaitForSeconds(1/60f);
+                yield return null;
+                //yield return new WaitForSeconds(1/60f);
                 //yield return null;
             }
 

@@ -65,6 +65,13 @@ namespace VoiceActing
             set { money = value; }
         }
 
+        [SerializeField]
+        private int moneyGain;
+        public int MoneyGain
+        {
+            get { return moneyGain; }
+            set { moneyGain = value; }
+        }
 
 
 
@@ -100,6 +107,11 @@ namespace VoiceActing
             season = initialSeason;
             money = initialMoney;
             bill = initialBill;
+        }
+
+        public void NextWeek(CalendarData calendar)
+        {
+            date.NextWeek(calendar);
         }
 
         #endregion

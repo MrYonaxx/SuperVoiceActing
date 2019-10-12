@@ -94,6 +94,13 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorSkillPanel;
 
+
+        [Title("StatGain")]
+        [SerializeField]
+        Animator[] animatorStatGainFeedback;
+        [SerializeField]
+        TextMeshProUGUI[] textStatGain;
+
         private bool auditionMode = false;
         private Role auditionRole = null;
 
@@ -147,7 +154,7 @@ namespace VoiceActing
         }
 
 
-        private void DrawGaugeInfo(VoiceActor actor)
+        public void DrawGaugeInfo(VoiceActor actor)
         {
             for (int i = 0; i < textStatsActor.Length; i++)
             {
@@ -188,6 +195,7 @@ namespace VoiceActing
                         jaugeEmptyRole[i].color = jaugeEmpty[i].color;
                     }
                 }
+                textStatGain[i].text = "";
 
             }
         }
@@ -252,8 +260,20 @@ namespace VoiceActing
         public void ShowActorStatModification(EmotionStat emotionStat)
         {
             animatorStatPanel.SetBool("Appear", true);
+            for(int i = 1; i < emotionStat.GetLength(); i++)
+            {
+                if(emotionStat.GetEmotion(i) != 0)
+                {
+                    textStatGain[i-1].text = "+" + emotionStat.GetEmotion(i);
+                    animatorStatGainFeedback[i-1].SetTrigger("Feedback");
+                }
+            }
         }
 
+        /*private IEnumerator CoroutineStat()
+        {
+
+        }*/
 
 
 

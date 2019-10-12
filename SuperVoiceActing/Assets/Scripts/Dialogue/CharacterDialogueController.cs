@@ -285,20 +285,23 @@ namespace VoiceActing
         [ContextMenu("Shake")]
         public void Shake()
         {
-            StartCoroutine(ShakeCoroutine(0.03f, 60));
+            StartCoroutine(ShakeCoroutine(0.06f, 60));
         }
 
         private IEnumerator ShakeCoroutine(float intensity, float time)
         {
             Vector3 origin = this.transform.position;
+
             time /= 60f;
             float t = 0f;
             float currentIntensity = intensity;
+            float blend = 0;
             while (t < 1f)
             {
                 t += Time.deltaTime / time;
                 this.transform.position = origin + new Vector3(Random.Range(-currentIntensity, currentIntensity), Random.Range(-currentIntensity, currentIntensity), Random.Range(-currentIntensity, currentIntensity));
-                currentIntensity = intensity * (1 - t);
+                blend = 1f - Mathf.Pow(1f - 0.1f, Time.deltaTime * 60);
+                currentIntensity = Mathf.Lerp(currentIntensity, 0, blend);
                 yield return null;
             }
             /*while (time != 0)
