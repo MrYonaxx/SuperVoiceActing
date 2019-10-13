@@ -730,7 +730,7 @@ namespace VoiceActing
         {
 
             roleTimbre.anchorMin = new Vector2((role.Timbre.x + 10) / 20f, 0);
-            roleTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 0.5f);
+            roleTimbre.anchorMax = new Vector2((role.Timbre.y + 10) / 20f, 1);
             roleTimbre.anchoredPosition = Vector3.zero;
 
             textRoleName.text = role.Name;

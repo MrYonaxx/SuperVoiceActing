@@ -1,0 +1,354 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: PrincessMuffinSaison1BossIndiecade
+  m_EditorClassIdentifier: 
+  contractName: Princess Muffin S1
+  level: 3
+  contractType: 1
+  salaryMin: 10000
+  salaryMax: 10000
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 10
+  weekMax: 10
+  expGain: 0
+  expBonus: 0
+  contractDictionnary: []
+  description:
+  - "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de nouveaux alli\xE9s
+    pour affronter les forces de la religieuse. Cependant cette derni\xE8re semble
+    avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer la ville, pendant
+    que Charlotte est en rendez-vous amoureux avec Mathieu.\n\nC'est donc au tour
+    des nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Opera
+      roleSprite: {fileID: 0}
+      lineMin: 200
+      lineMax: 250
+      fanMin: 0
+      fanMax: 0
+      atkMin: 12
+      atkMax: 15
+      defMin: 0
+      defMax: 0
+      timbre: {x: -10, y: 2}
+      timbreRand: {x: -10, y: 2}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 12
+        disgust: 8
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 15
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 12
+        disgust: 8
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 15
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Nougat
+      roleSprite: {fileID: 0}
+      lineMin: 100
+      lineMax: 150
+      fanMin: 0
+      fanMax: 0
+      atkMin: 13
+      atkMax: 17
+      defMin: 0
+      defMax: 0
+      timbre: {x: -7, y: 2}
+      timbreRand: {x: -6, y: 2}
+      characterStatMin:
+        neutral: 0
+        joy: 5
+        sadness: 10
+        disgust: 0
+        anger: 20
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 5
+        sadness: 10
+        disgust: 0
+        anger: 20
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Praline
+      roleSprite: {fileID: 0}
+      lineMin: 100
+      lineMax: 200
+      fanMin: 0
+      fanMax: 0
+      atkMin: 8
+      atkMax: 10
+      defMin: 0
+      defMax: 0
+      timbre: {x: -8, y: 0}
+      timbreRand: {x: -8, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 7
+        sweetness: 5
+        fear: 0
+        trust: 15
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 7
+        sweetness: 5
+        fear: 0
+        trust: 15
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: "Bravo les filles ! On a gagn\xE9 !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+    - text: Qu'est-ce que... !?
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 20
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: -100
+        anger: 50
+        surprise: 100
+        sweetness: -100
+        fear: 100
+        trust: -100
+      enemyWeakPoints:
+      - wordIndex: 0
+    - text: Qu'est-ce que c'est que ce monstre !?
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 35
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 0
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - text: "Il poss\xE8de une quantit\xE9 d'\xE9nergie ph\xE9nom\xE9nale !"
+      textStats:
+        interlocuteurID: 2
+        linked: 0
+        hpMin: 35
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 0
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - text: "Prends \xE7a !"
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 40
+        hpMax: 40
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: -90
+        disgust: -90
+        anger: 100
+        surprise: 50
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - text: "Quoi ? \xE7a n'a eu aucun effet !"
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 45
+        hpMax: 45
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 50
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 4
+    - text: On ne peut pas le vaincre ! On va tous y passer !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 45
+        hpMax: 45
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: 0
+        anger: 100
+        surprise: 0
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 8
+    - text: "N'abandonne pas ! Si on ne l'arr\xEAte pas, il va attaquer la ville."
+      textStats:
+        interlocuteurID: 2
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: -90
+        disgust: -90
+        anger: 50
+        surprise: -90
+        sweetness: 0
+        fear: 50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - text: "C'est notre devoir de la prot\xE9ger !"
+      textStats:
+        interlocuteurID: 2
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: -90
+        fear: 0
+        trust: 120
+      enemyWeakPoints:
+      - wordIndex: 2
+    - text: Attention Nougat !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: -90
+        anger: 100
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 1
+  eventData:
+  - {fileID: 11400000, guid: 12fd5333e3029db4ab83c43c9d203b3d, type: 2}
+  - {fileID: 11400000, guid: c6a95885890b96e4d9a7608f958549ad, type: 2}
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

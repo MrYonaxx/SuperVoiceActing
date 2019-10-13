@@ -22,6 +22,9 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [SerializeField]
+        TextMeshProUGUI textRoleName;
+
         [Title("FeedbacksAttack")]
         [SerializeField]
         Image imageEnemy;
@@ -94,6 +97,7 @@ namespace VoiceActing
         public void SetIndexRole(int newIndex)
         {
             indexCurrentRole = newIndex;
+            textRoleName.text = roles[indexCurrentRole].Name;
             SetBestStatIcon();
         }
 
@@ -123,7 +127,8 @@ namespace VoiceActing
         public void SetRoles(List<Role> contractRoles)
         {
             roles = contractRoles;
-            if(bestStatIcon != null)
+            textRoleName.text = roles[indexCurrentRole].Name;
+            if (bestStatIcon != null)
                 SetBestStatIcon();
         }
 

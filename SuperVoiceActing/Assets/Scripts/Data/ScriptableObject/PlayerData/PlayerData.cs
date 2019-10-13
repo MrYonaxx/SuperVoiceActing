@@ -591,12 +591,24 @@ namespace VoiceActing
             for (int i = 0; i < initialPlayerData.VoiceActorsDebug.Count; i++)
             {
                 voiceActors.Add(new VoiceActor(initialPlayerData.VoiceActorsDebug[i]));
+                // Debug
+                while(voiceActors[voiceActors.Count-1].Level != 20)
+                {
+                    voiceActors[voiceActors.Count - 1].LevelUp();
+                }
+                // Debug
             }
 
             voiceActorsGacha = new List<VoiceActor>(initialPlayerData.VoiceActorsGachaDebug.Count);
             for (int i = 0; i < initialPlayerData.VoiceActorsGachaDebug.Count; i++)
             {
                 voiceActorsGacha.Add(new VoiceActor(initialPlayerData.VoiceActorsGachaDebug[i]));
+                // Debug
+                while (voiceActorsGacha[voiceActors.Count - 1].Level != 20)
+                {
+                    voiceActorsGacha[voiceActors.Count - 1].LevelUp();
+                }
+                // Debug
             }
 
             soundEngineers = new List<SoundEngineer>(initialPlayerData.SoundEngineerDebug.Count);
