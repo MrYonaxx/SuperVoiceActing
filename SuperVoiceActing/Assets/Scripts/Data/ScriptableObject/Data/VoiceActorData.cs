@@ -147,9 +147,14 @@ namespace VoiceActing
 
 
 
-
-
-
+        [Space]
+        [Header("SeiyuuDensetsu")]
+        [SerializeField]
+        private EmotionStat humorAffinity;
+        public EmotionStat HumorAffinity
+        {
+            get { return humorAffinity; }
+        }
 
 
 

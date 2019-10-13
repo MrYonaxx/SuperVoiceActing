@@ -164,7 +164,7 @@ namespace VoiceActing
         protected Emotion[] lastAttackEmotion = null;
 
 
-
+        protected bool defencePhase = false;
 
 
 
@@ -366,6 +366,11 @@ namespace VoiceActing
         // Appelé par les boutons
         public void SelectCard(int emotion)
         {
+            if(defencePhase == true)
+            {
+                roleManager.SelectEmotion(emotion);
+                return;
+            }
             EmotionCard card = emotionAttackManager.SelectCard((Emotion) emotion, true);
             if (card != null)
             {
@@ -504,7 +509,7 @@ namespace VoiceActing
             if (actorsManager.GetCurrentActorHP() == 0)
             {
                 yield return new WaitForSeconds(1f);
-                yield return actorsManager.DeathCoroutine(eventManager.GetCharacterSprites(actorsManager.GetCurrentActorIndex()));
+                //yield return actorsManager.DeathCoroutine(eventManager.GetCharacterSprites(actorsManager.GetCurrentActorIndex()));
                 AudioManager.Instance.PlaySound(audioClipSpotlight);
                 introBlackScreen.gameObject.SetActive(true);
                 introBlackScreen.enabled = true;
@@ -534,10 +539,12 @@ namespace VoiceActing
                 cameraController.EnemySkill();
                 roleManager.EnemyAttackActivation();
                 endAttack = false;
+                defencePhase = true;
                 while (endAttack == false)
                 {
                     yield return null;
                 }
+                defencePhase = false;
             }
 
             // Check Producer Attack ==============================================================

@@ -38,6 +38,8 @@ namespace VoiceActing
         [SerializeField]
         SeiyuuData seiyuuData;
         [SerializeField]
+        GameTimelineData gameTimeline;
+        [SerializeField]
         SeiyuuActorManager seiyuuActorManager;
         [SerializeField]
         SeiyuuActionManager seiyuuActionManager;
@@ -111,7 +113,7 @@ namespace VoiceActing
             seiyuuActorManager.ShowAllActorInfo();
             ShowCalendar(true);
             animatorButtons.SetBool("Appear", true);
-            menuContractMoney.UpdateMoney();
+            menuContractMoney.DrawMoneyGain();
         }
 
         public void StartWeek()
@@ -175,7 +177,7 @@ namespace VoiceActing
                 seiyuuActionDay = null;
                 seiyuuActionManager.RemoveAction(false);
                 textCurrentAction.text = seiyuuActionNight.ActionName;
-                menuContractMoney.UpdateMoney();
+                menuContractMoney.DrawMoneyGain();
             }
             else
             {

@@ -133,6 +133,15 @@ namespace VoiceActing
         }
 
 
+
+
+
+
+
+
+
+
+
         public void ActivateEstimate()
         {
             if (estimateMode == false)

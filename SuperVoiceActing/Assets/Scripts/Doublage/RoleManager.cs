@@ -297,7 +297,15 @@ namespace VoiceActing
                 firstTime = true;
             }
             enemyAttack.SetBool("Appear", true);
+            enemyAttack.ResetTrigger("HideDescription");
+            enemyAttack.ResetTrigger("ShowDescription");
+
+            enemyAttackFace.ResetTrigger("Appear");
+            enemyAttackFace.ResetTrigger("Disappear");
+            enemyAttackFace.ResetTrigger("Slice");
+            enemyAttackFace.ResetTrigger("UnSlice");
             enemyAttackFace.SetTrigger("Appear");
+
             imageEnemy.sprite = roles[indexCurrentRole].RoleSprite;
             imageEnemyLower.sprite = roles[indexCurrentRole].RoleSprite;
             imageEnemyEffect.sprite = roles[indexCurrentRole].RoleSprite;
@@ -367,12 +375,21 @@ namespace VoiceActing
 
 
 
-
+        public void SelectEmotion(int emotion)
+        {
+            EmotionCard card = emotionAttackManager.SelectCard((Emotion)emotion, false);
+            SelectEmotion(card);
+        }
 
 
         public void SelectEmotion(string emotion)
         {
             EmotionCard card = emotionAttackManager.SelectCard(emotion, false);
+            SelectEmotion(card);
+        }
+
+        public void SelectEmotion(EmotionCard card)
+        {
             if (card != null)
             {
                 card.HidePreview();

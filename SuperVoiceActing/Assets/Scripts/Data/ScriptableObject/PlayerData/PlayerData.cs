@@ -258,8 +258,8 @@ namespace VoiceActing
         }
 
 
-
-        // Contrat Gacha
+        //!\ (N'est pas sauvegardable)
+        // Contrat Gacha ( n'est pas sauvegardé)
         [SerializeField]
         private List<ContractData> contractGacha;
         public List<ContractData> ContractGacha
@@ -268,6 +268,7 @@ namespace VoiceActing
             set { contractGacha = value; }
         }
 
+        //!\ (N'est pas sauvegardable)
         // Contrat Gacha qui sont en standby et qui ne peuvent pas être tiré
         [SerializeField]
         private List<ContractCooldown> contractGachaCooldown;

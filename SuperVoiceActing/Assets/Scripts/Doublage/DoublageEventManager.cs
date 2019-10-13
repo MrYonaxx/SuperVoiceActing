@@ -123,10 +123,10 @@ namespace VoiceActing
             }
         }
 
-        public Transform GetCharacterSprites(int actorIndex)
+        /*public Transform GetCharacterSprites(int actorIndex)
         {
             return characters[actorIndex].GetSpriteRenderer().transform;
-        }
+        }*/
 
 
         public bool CheckStopSession()

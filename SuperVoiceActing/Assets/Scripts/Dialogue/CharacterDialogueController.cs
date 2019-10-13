@@ -22,32 +22,30 @@ namespace VoiceActing
         \* ======================================== */
         [Header("CharacterData")]
         [SerializeField]
-        StoryCharacterData storyCharacterData;
+        protected StoryCharacterData storyCharacterData;
         [SerializeField]
         SpriteRenderer spriteRenderer;
         [SerializeField]
-        Yeux eyesScript;
+        protected Yeux eyesScript;
 
 
         [Header("Mouth")]
         [SerializeField]
-        bool mouthEmitSound = true;
+        protected bool mouthEmitSound = true;
         [SerializeField]
-        float speedMouth = 5;
+        protected float speedMouth = 5;
         [SerializeField]
-        AudioSource voice = null;
-        [SerializeField]
-        FeedbackSon soundVisualizer;
+        protected AudioSource voice = null;
 
         [Header("Autres")]
         [SerializeField]
-        Animator animatorBalloon;
+        protected Animator animatorBalloon;
 
 
-        bool speak = false;
-        private Sprite[] currentSprites;
+        protected bool speak = false;
+        protected Sprite[] currentSprites;
 
-        IEnumerator mouthCoroutine = null;
+        protected IEnumerator mouthCoroutine = null;
 
 
         #endregion
@@ -58,11 +56,12 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        public SpriteRenderer GetSpriteRenderer()
+        /*public SpriteRenderer GetSpriteRenderer()
         {
             return spriteRenderer;
-        }
-        public Sprite GetSprite()
+        }*/
+
+        public virtual Sprite GetSprite()
         {
             return spriteRenderer.sprite;
         }
@@ -153,8 +152,6 @@ namespace VoiceActing
             if (spriteRenderer != null && currentSprites.Length != 0)
                 spriteRenderer.sprite = currentSprites[0];
 
-            if (soundVisualizer != null)
-                soundVisualizer.StopVisualizer();
         }
 
         public void DesactivateMouth()
@@ -166,33 +163,33 @@ namespace VoiceActing
         private IEnumerator MouthAnim()
         {
             int i = 0;
-            float speed = speedMouth;
-            while (speed > 0)
+            //float speed = speedMouth;
+            float t = 0f;
+            while (true)
             {
-                speed -= 1;
-                yield return null;
-                if (speed == 0)
+                //speed -= 1;
+                t += Time.deltaTime;
+                if (t >= speedMouth / 60f)
                 {
                     i += Random.Range(1, 2);
                     if (currentSprites != null)
                     {
                         if (i >= currentSprites.Length)
                             i = 0;
-                        ChangeMouthSprite(i);
                     }
-                    speed = speedMouth;
-                    if (soundVisualizer != null)
-                        soundVisualizer.SetVisualizer();
+                    ChangeMouthSprite(i);
+                    t -= (speedMouth / 60f);
                 }
+                yield return null;
             }
         }
 
         public void ChangeMouthSprite(int index)
         {
-            if (mouthEmitSound == true)
-                PlayVoice();
             if (speak == true)
                 return;
+            if (mouthEmitSound == true)
+                PlayVoice();
             if (index < currentSprites.Length)
                 spriteRenderer.sprite = currentSprites[index];
         }

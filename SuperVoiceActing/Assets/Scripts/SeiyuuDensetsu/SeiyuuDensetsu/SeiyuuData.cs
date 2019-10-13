@@ -73,6 +73,29 @@ namespace VoiceActing
             set { moneyGain = value; }
         }
 
+        [SerializeField]
+        private List<Contract> contractProposal;
+        public List<Contract> ContractProposal
+        {
+            get { return contractProposal; }
+            set { contractProposal = value; }
+        }
+
+        [SerializeField]
+        private List<Contract> contractAccepted;
+        public List<Contract> ContractAccepted
+        {
+            get { return contractAccepted; }
+            set { contractAccepted = value; }
+        }
+
+        [SerializeField]
+        private List<int> roleID;
+        public List<int> RoleID
+        {
+            get { return roleID; }
+            set { roleID = value; }
+        }
 
 
         #endregion
@@ -107,6 +130,10 @@ namespace VoiceActing
             season = initialSeason;
             money = initialMoney;
             bill = initialBill;
+
+            contractProposal = new List<Contract>();
+            contractAccepted = new List<Contract>();
+            roleID = new List<int>();
         }
 
         public void NextWeek(CalendarData calendar)

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f45b52c613ac42409f00e97d55d97cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 97473f8cd80a6f748bf16cfb122bc9ab, type: 3}
   m_Name: SeiyuuStudyBodyExpression
   m_EditorClassIdentifier: 
   actionName: Expression corporelle
@@ -26,6 +26,9 @@ MonoBehaviour:
     trust: 0
   hpMaxGain: 4
   hpDamage: 20
-  chanceOfBadDay: 0
-  chanceOfNormalDay: 0
-  chanceOfGoodDay: 0
+  chanceOfBadDay: 50
+  damageMultiplierBadDay: 1.5
+  chanceOfNormalDay: 80
+  damageMultiplierNormalDay: 1
+  chanceOfGoodDay: 999
+  damageMultiplierGoodDay: 0.5
