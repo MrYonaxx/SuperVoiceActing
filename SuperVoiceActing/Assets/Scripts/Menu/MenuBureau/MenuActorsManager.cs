@@ -148,6 +148,10 @@ namespace VoiceActing
         RectTransform roleTimbre;
         [SerializeField]
         MenuContractMoney menuContractMoney;
+        [SerializeField]
+        Image imageTimbreOutline;
+        [SerializeField]
+        Image imageTimbreActor;
 
         [Header("Feedbacks")]
         [SerializeField]
@@ -523,6 +527,39 @@ namespace VoiceActing
                 }
 
             }
+
+            if (auditionMode == true)
+            {
+                if (CheckTimbreIntersection(actor.Timbre, auditionRole.Timbre))
+                {
+                    imageTimbreOutline.color = new Color(imageTimbreOutline.color.r, imageTimbreOutline.color.g, imageTimbreOutline.color.b, 0.7f);
+                    imageTimbreActor.color = new Color(imageTimbreActor.color.r, imageTimbreActor.color.g, imageTimbreActor.color.b, 1);
+                }
+                else
+                {
+                    imageTimbreOutline.color = new Color(imageTimbreOutline.color.r, imageTimbreOutline.color.g, imageTimbreOutline.color.b, 0.4f);
+                    imageTimbreActor.color = new Color(imageTimbreActor.color.r, imageTimbreActor.color.g, imageTimbreActor.color.b, 0.6f);
+                }
+            }
+            else
+            {
+                imageTimbreOutline.color = new Color(imageTimbreOutline.color.r, imageTimbreOutline.color.g, imageTimbreOutline.color.b, 0.4f);
+                imageTimbreActor.color = new Color(imageTimbreActor.color.r, imageTimbreActor.color.g, imageTimbreActor.color.b, 1);
+            }
+
+        }
+
+        private bool CheckTimbreIntersection(Vector2Int timbreActor, Vector2Int timbreRole)
+        {
+            if(timbreActor.x <= timbreRole.y && timbreActor.x >= timbreRole.x)
+            {
+                return true;
+            }
+            else if (timbreActor.y <= timbreRole.y && timbreActor.y >= timbreRole.x)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void DrawGaugeRoleInfo()

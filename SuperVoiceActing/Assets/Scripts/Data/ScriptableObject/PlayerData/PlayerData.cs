@@ -604,9 +604,9 @@ namespace VoiceActing
             {
                 voiceActorsGacha.Add(new VoiceActor(initialPlayerData.VoiceActorsGachaDebug[i]));
                 // Debug
-                while (voiceActorsGacha[voiceActors.Count - 1].Level != 20)
+                while (voiceActorsGacha[voiceActorsGacha.Count - 1].Level != 20)
                 {
-                    voiceActorsGacha[voiceActors.Count - 1].LevelUp();
+                    voiceActorsGacha[voiceActorsGacha.Count - 1].LevelUp();
                 }
                 // Debug
             }
