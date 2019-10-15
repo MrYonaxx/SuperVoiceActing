@@ -148,13 +148,13 @@ namespace VoiceActing
                 if (emotions[i] == null)
                     continue;
                 if(i == 0)
-                    toneAddValue.Add((int)emotions[i].GetEmotion(), 2);
+                    toneAddValue.Add((int)emotions[i].GetEmotion(), 1);//2);
                 else
                     toneAddValue.Add((int)emotions[i].GetEmotion(), 1);
                 toneSubstractValue.SetValue((int)emotions[i].GetEmotion(), 0);
             }
             toneValue.Add(toneAddValue);
-            toneValue.Add(toneSubstractValue);
+            //toneValue.Add(toneSubstractValue);
             toneValue.Clamp(0, 100);
             DrawTone();
             StopHighlight();

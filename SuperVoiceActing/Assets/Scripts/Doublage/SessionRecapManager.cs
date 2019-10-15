@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace VoiceActing
@@ -37,6 +38,16 @@ namespace VoiceActing
         TextMeshProUGUI textContractMoney;
         [SerializeField]
         TextMeshProUGUI textContractDescription;
+
+        [Space]
+        [SerializeField]
+        GameObject recapPanel;
+        [SerializeField]
+        GameObject recapCharactersPanel;
+        [SerializeField]
+        PanelContractCharacter[] panelContractCharacters;
+        [SerializeField]
+        Image[] voiceActorsFace;
 
         [Space]
         [SerializeField]
@@ -79,9 +90,23 @@ namespace VoiceActing
             textContractHype.text = "0";// contract.fan.ToString();
             textContractMoney.text = contract.Money.ToString();
             textContractDescription.text = contract.Description;
+            for(int i = 0; i < contract.Characters.Count; i++)
+            {
+                panelContractCharacters[i].gameObject.SetActive(true);
+                panelContractCharacters[i].DrawPanel(contract.Characters[i]);
+                voiceActorsFace[i].gameObject.SetActive(true);
+                voiceActorsFace[i].sprite = contract.VoiceActors[i].SpriteSheets.SpriteIcon;
+            }
             DrawSessionLines(contract, indexPhrase);
             MoveScrollList(9999);
 
+        }
+
+        public void ChangeCategory()
+        {
+            recapPanel.gameObject.SetActive(!recapPanel.gameObject.activeInHierarchy);
+            recapCharactersPanel.gameObject.SetActive(!recapCharactersPanel.gameObject.activeInHierarchy);
+            MoveScrollList(9999);
         }
 
         public void DrawSessionLines(Contract contract, int indexPhrase)

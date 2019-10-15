@@ -71,7 +71,7 @@ namespace VoiceActing
         TextAppearManager textToStop;
         [SerializeField]
         Transform panelDoubleurDefault;
-        [SerializeField]
+        //[SerializeField]
         CharacterDialogueController doubleur;
         [SerializeField]
         Transform panelDoubleurPotential;
@@ -152,10 +152,16 @@ namespace VoiceActing
         }
 
 
-        public void SetCurrentVoiceActor(VoiceActor voiceActor)
+        public void SetCurrentVoiceActor(VoiceActor voiceActor, CharacterDialogueController character)
         {
             currentVoiceActor = voiceActor;
+            doubleur = character;
         }
+
+        /*public void SetCurrentCharacterController(CharacterDialogueController character)
+        {
+            doubleur = character;
+        }*/
 
 
 

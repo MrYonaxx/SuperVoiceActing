@@ -270,7 +270,7 @@ namespace VoiceActing
             eventManager.SetManagers(skillManager);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
             skillManager.SetManagers(this, cameraController);
-            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor());
+            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
@@ -376,7 +376,7 @@ namespace VoiceActing
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
                 actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
-                toneManager.HighlightTone(card.GetEmotion(), true);
+                //toneManager.HighlightTone(card.GetEmotion(), true);
             }
         }
 
@@ -387,7 +387,7 @@ namespace VoiceActing
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
                 actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
-                toneManager.HighlightTone(card.GetEmotion(), true);
+                //toneManager.HighlightTone(card.GetEmotion(), true);
             }
         }
 
@@ -397,7 +397,7 @@ namespace VoiceActing
             if (card != null)
             {
                 actorsManager.RemoveAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
-                toneManager.HighlightTone(card.GetEmotion(), false);
+                //toneManager.HighlightTone(card.GetEmotion(), false);
             }
         }
 
@@ -412,7 +412,7 @@ namespace VoiceActing
             {
                 if (emotionAttackManager.GetComboCount() == -1)
                 {
-                    SelectCard("Neutre");
+                    //SelectCard("Neutre");
                     return;
                 }
                 HideUIButton();
@@ -442,7 +442,7 @@ namespace VoiceActing
                                                                       textAppearManager.GetWordSelected(), 
                                                                       actorsManager.GetCurrentActorDamageVariance()),
                                             lastAttack);
-            toneManager.ModifyTone(lastAttack);
+            //toneManager.ModifyTone(lastAttack);
             characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()).ChangeEmotion(lastAttack[0].GetEmotion());
             if (actorsManager.GetCurrentActorHP() == 0)
             {
@@ -781,7 +781,7 @@ namespace VoiceActing
             actorsManager.DrawActorStat();
             actorsManager.DrawBuffIcon();
             textAppearManager.SetMouth(characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
-            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor());
+            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
         }
 
         // Appelé par l'event Switch Actors
