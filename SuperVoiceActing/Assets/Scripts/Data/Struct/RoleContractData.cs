@@ -68,6 +68,22 @@ namespace VoiceActing
             get { return roleSprite; }
         }
 
+        [VerticalGroup("RoleStat/Data/Middle")]
+        [HideLabel]
+        [SerializeField]
+        private RoleType roleType;
+        public RoleType RoleType
+        {
+            get { return roleType; }
+        }
+        [VerticalGroup("RoleStat/Data/Right")]
+        [HideLabel]
+        [SerializeField]
+        private RolePersonality rolePersonality;
+        public RolePersonality RolePersonality
+        {
+            get { return rolePersonality; }
+        }
 
         [VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]

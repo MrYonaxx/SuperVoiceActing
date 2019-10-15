@@ -17,8 +17,8 @@ MonoBehaviour:
   contractType: 0
   salaryMin: 5000
   salaryMax: 5000
-  mixingMin: 5
-  mixingMax: 8
+  mixingMin: 0
+  mixingMax: 0
   weekMin: 10
   weekMax: 10
   expGain: 1250
@@ -35,8 +35,10 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - names:
-      - Femme
-      roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
+      - Woman
+      roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 7
       lineMin: 20
       lineMax: 20
       fanMin: 0
@@ -68,24 +70,15 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
+      artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
-      - Homme
+      - Man
       roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 2
       lineMin: 6
       lineMax: 6
       fanMin: 0
@@ -173,7 +166,6 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 5
-      - wordIndex: 1
       - wordIndex: 7
   - textDataCondition:
       all: 1
@@ -201,8 +193,8 @@ MonoBehaviour:
         trust: -80
       enemyWeakPoints:
       - wordIndex: 2
-      - wordIndex: 5
-      - wordIndex: 7
+      - wordIndex: 3
+      - wordIndex: 6
   - textDataCondition:
       all: 1
       nbPhraseMin: 0
@@ -229,8 +221,12 @@ MonoBehaviour:
         trust: -80
       enemyWeakPoints:
       - wordIndex: 1
-      - wordIndex: 7
-  eventData: []
+      - wordIndex: 4
+  eventData:
+  - {fileID: 11400000, guid: 18a9df3ef4717aa42b23b108cfba6263, type: 2}
+  - {fileID: 11400000, guid: bd45970deac1ed14eaeb024e25a0667d, type: 2}
+  - {fileID: 11400000, guid: 66515705a789f924bbd86a7d3bbff97a, type: 2}
+  - {fileID: 11400000, guid: a4c0de120984ef544a583e7be96406e7, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0

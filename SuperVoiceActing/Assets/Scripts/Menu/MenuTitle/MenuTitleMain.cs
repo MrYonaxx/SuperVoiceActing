@@ -72,8 +72,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-
-
         public void Validate(int index)
         {
             indexSelected = index;
@@ -96,6 +94,7 @@ namespace VoiceActing
         {
             if (indexSelected == indexNewGame)
             {
+                playerData.ResetDebugSave();
                 menuNewGame.gameObject.SetActive(true);
                 this.gameObject.SetActive(false);
                 playerData.CreateList(newGamePlayerData);

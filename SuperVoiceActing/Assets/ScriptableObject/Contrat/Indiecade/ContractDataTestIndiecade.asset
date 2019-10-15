@@ -17,8 +17,8 @@ MonoBehaviour:
   contractType: 0
   salaryMin: 5000
   salaryMax: 5000
-  mixingMin: 5
-  mixingMax: 8
+  mixingMin: 0
+  mixingMax: 0
   weekMin: 10
   weekMax: 10
   expGain: 1250
@@ -34,7 +34,9 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - Femme
-      roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
+      roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 7
       lineMin: 20
       lineMax: 20
       fanMin: 0
@@ -66,24 +68,15 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
+      artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
       - Homme
       roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 2
       lineMin: 6
       lineMax: 6
       fanMin: 0
@@ -232,7 +225,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d931e2247846b9e48998e2694781f063, type: 2}
   - {fileID: 11400000, guid: f2450d901aaf3c242a1c126c791cce81, type: 2}
   - {fileID: 11400000, guid: 524713bb9ce5fed46a150e4ce120585e, type: 2}
-  - {fileID: 11400000, guid: 061a6b6959dc8f14ca085458a838c902, type: 2}
   - {fileID: 11400000, guid: 084cbd850d357d347be50e11bef44ca4, type: 2}
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

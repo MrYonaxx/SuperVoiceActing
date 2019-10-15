@@ -47,6 +47,13 @@ namespace VoiceActing
             set { emotionGained = value; }
         }
 
+        public Voxography(string cName, List<Role> cRole, List<Emotion> cEmotions)
+        {
+            contractName = cName;
+            this.roles = cRole;
+            this.emotionGained = cEmotions;
+        }
+
         public Voxography(string cName)
         {
             contractName = cName;
@@ -350,11 +357,10 @@ namespace VoiceActing
             growth = new EmotionStat(actorData.Growth);
             currentGrowth = new EmotionStat(actorData.Growth);
 
-            // Attention si je modifie la voxography de l'acteur a un moment dans le jeu, voice actor data va prendre aussi
             voxography = new List<Voxography>(actorData.Voxography.Length);
             for (int i = 0; i < actorData.Voxography.Length; i++)
             {
-                voxography.Add(actorData.Voxography[i]);
+                voxography.Add(new Voxography(actorData.Voxography[i].ContractName, actorData.Voxography[i].Roles, actorData.Voxography[i].EmotionGained));
             }
 
             buffs = new List<Buff>();

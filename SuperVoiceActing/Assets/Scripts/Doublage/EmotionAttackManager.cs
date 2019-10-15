@@ -292,9 +292,12 @@ namespace VoiceActing
                     cardNumber = 3;
                 for (int j = 0; j < cardNumber; j++)
                 {
-                    emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
-                    emotionCards[i].Cards[j].SetEmotion((Emotion) i);
-                    emotionCards[i].Cards[j].SetSprite(emotionSprite[(int) emotionCards[i].Emotion]);
+                    if (emotionCards[i].Cards[j] == null)
+                    {
+                        emotionCards[i].Cards[j] = Instantiate(prefab, emotionCardsPosition[i].TransformRessource);
+                        emotionCards[i].Cards[j].SetEmotion((Emotion)i);
+                        emotionCards[i].Cards[j].SetSprite(emotionSprite[(int)emotionCards[i].Emotion]);
+                    }
                 }
             }
             return emotionCards;

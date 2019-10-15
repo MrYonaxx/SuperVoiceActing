@@ -1,0 +1,507 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: CastlemaniaIndiecadeEnglish
+  m_EditorClassIdentifier: 
+  contractName: '[Nom]'
+  level: 4
+  contractType: 2
+  salaryMin: 3000
+  salaryMax: 4000
+  mixingMin: 11
+  mixingMax: 18
+  weekMin: 10
+  weekMax: 10
+  expGain: 30
+  expBonus: 0
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Castlemania
+    - Dungeonmania
+    - Higamania
+  description:
+  - "[Nom] est un jeu d'action et d'exploration d'un grand ch\xE2teau habit\xE9 par
+    un vampire.\n\nLa sc\xE8ne cl\xE9 est l'\xE9change entre le h\xE9ros et le ma\xEEtre
+    des lieux avant leur combat fatidique."
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Richard
+      roleSprite: {fileID: 21300000, guid: 1eba9f3f71db5964880d475872f98dd7, type: 3}
+      roleType: 1
+      rolePersonality: 4
+      lineMin: 50
+      lineMax: 100
+      fanMin: 400
+      fanMax: 800
+      atkMin: 14
+      atkMax: 21
+      defMin: 10
+      defMax: 18
+      timbre: {x: 1, y: 7}
+      timbreRand: {x: 1, y: 7}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 15
+        anger: 10
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 25
+        anger: 15
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 0
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 0}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 4
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 5
+        skills:
+        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 0}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 7
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 8
+        skills:
+        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 0}
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Vampire lord
+      - Vampire
+      roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
+      roleType: 2
+      rolePersonality: 6
+      lineMin: 50
+      lineMax: 100
+      fanMin: 500
+      fanMax: 1800
+      atkMin: 18
+      atkMax: 24
+      defMin: 15
+      defMax: 20
+      timbre: {x: 3, y: 8}
+      timbreRand: {x: 3, y: 8}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 30
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 40
+      actorLocked: {fileID: 0}
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 2
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 3
+        skills:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 9
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 9
+        skills:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Die monster.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 80
+        hpMax: 100
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 100
+        anger: 50
+        surprise: -100
+        sweetness: -100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - text: You don't belong in this world!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 80
+        hpMax: 100
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 100
+        anger: 50
+        surprise: -100
+        sweetness: -100
+        fear: 0
+        trust: 20
+      enemyWeakPoints:
+      - wordIndex: 2
+    - text: It was not by my hand that i am once again given flesh.
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 100
+        hpMax: 120
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -90
+        disgust: -90
+        anger: 0
+        surprise: 0
+        sweetness: -50
+        fear: -100
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 5
+      - wordIndex: 12
+    - text: I was called here by humans who wish to pay me tribute.
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 100
+        hpMax: 120
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -90
+        disgust: -90
+        anger: 0
+        surprise: -50
+        sweetness: -50
+        fear: -100
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 5
+      - wordIndex: 10
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Tribute!?!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 70
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: 0
+        disgust: 100
+        anger: 50
+        surprise: 100
+        sweetness: -100
+        fear: 0
+        trust: -100
+      enemyWeakPoints:
+      - wordIndex: 0
+    - text: You steals men's souls and make them your slaves!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 100
+        hpMax: 120
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: 100
+        disgust: 100
+        anger: 100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 3
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Perhaps the same could be said of all religions...
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 80
+        hpMax: 100
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 50
+        sweetness: 50
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 7
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: Your words are as empty as your soul!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 100
+        hpMax: 120
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: 100
+        anger: 100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 4
+    - text: Mankind ill needs a savior such as you!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 100
+        hpMax: 120
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: 100
+        anger: 100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 4
+      - wordIndex: 7
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      dictID: 
+      dictCondition: 
+    textDataPossible:
+    - text: What is a man?
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 60
+        hpMax: 100
+      enemyResistance:
+        neutral: 0
+        joy: 20
+        sadness: -90
+        disgust: 0
+        anger: 100
+        surprise: 100
+        sweetness: 20
+        fear: -100
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 3
+    - text: A miserable little pile of secrets
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 60
+        hpMax: 100
+      enemyResistance:
+        neutral: 0
+        joy: 20
+        sadness: -90
+        disgust: 40
+        anger: 100
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 4
+      - wordIndex: 5
+    - text: But enough talk...
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 60
+        hpMax: 100
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: -100
+        disgust: -100
+        anger: 100
+        surprise: -90
+        sweetness: -50
+        fear: -90
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 1
+    - text: Have at you!
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 80
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: -100
+        anger: 100
+        surprise: -100
+        sweetness: -100
+        fear: -100
+        trust: -100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 2
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0

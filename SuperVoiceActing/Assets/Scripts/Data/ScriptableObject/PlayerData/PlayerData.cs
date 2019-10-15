@@ -584,6 +584,19 @@ namespace VoiceActing
 
         public void CreatePlayerData(InitialPlayerData initialPlayerData)
         {
+            voiceActors.Clear();
+            voiceActorsGacha.Clear();
+            contractAccepted.Clear();
+            soundEngineers.Clear();
+            tutoEvent.Clear();
+            inventoryEquipement.Clear();
+            inventoryFormation.Clear();
+            contractGacha.Clear();
+            contractGachaCooldown.Clear();
+            nextStoryEvents.Clear();
+            nextStoryEventsStartWeek.Clear();
+            phoneStoryEvents.Clear();
+
             currentContract = new Contract();
             contractAccepted = new List<Contract>(3);
 
@@ -712,6 +725,11 @@ namespace VoiceActing
                 NextWeek();
             }
 
+        }
+
+        public void ResetDebugSave()
+        {
+            bla = null;
         }
 
         public bool GetPlayerDebugSave()
@@ -869,7 +887,7 @@ namespace VoiceActing
 
         public VoiceActor GachaVoiceActors(Role role)
         {
-            int playerRank = 1;
+            int playerRank = 20;
             int[] randomDraw = new int[voiceActorsGacha.Count + voiceActors.Count];
             int currentMaxValue = 0;
 

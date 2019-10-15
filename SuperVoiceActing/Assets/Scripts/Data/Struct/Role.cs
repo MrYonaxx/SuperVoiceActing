@@ -14,12 +14,23 @@ namespace VoiceActing
 
     public enum RoleType
     {
+        None,
         Protagoniste,
         Antagoniste,
-        Enfant,
-        Vieux,
-        VoixOff,
-        Comique
+        VoixOff
+    }
+    public enum RolePersonality
+    {
+        None,
+        Timide,
+        SangChaud,
+        Leader,
+        Courageux,
+        Intelligent,
+        Charismatique,
+        Joyeux,
+        Pervers,
+        Déprimé
     }
 
     [System.Serializable]
@@ -74,6 +85,19 @@ namespace VoiceActing
         public int Defense
         {
             get { return defense; }
+        }
+
+        [SerializeField]
+        private RoleType roleType;
+        public RoleType RoleType
+        {
+            get { return roleType; }
+        }
+        [SerializeField]
+        private RolePersonality rolePersonality;
+        public RolePersonality RolePersonality
+        {
+            get { return rolePersonality; }
         }
 
         [SerializeField]
@@ -196,6 +220,10 @@ namespace VoiceActing
                 this.name = data.Names[Random.Range(0, data.Names.Length)];
             else
                 this.name = "";
+
+            this.rolePersonality = data.RolePersonality;
+            this.roleType = data.RoleType;
+
             this.line = Random.Range(data.LineMin, data.LineMax);
             this.fan = Random.Range(data.FanMin, data.FanMax);
 

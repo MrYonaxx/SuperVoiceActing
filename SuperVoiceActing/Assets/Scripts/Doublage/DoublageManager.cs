@@ -424,6 +424,7 @@ namespace VoiceActing
         private void AttackFeedbackPhase()
         {
             actorsManager.ActorAttackDamage();
+            ShakeCurrentCharacter();
             AudioManager.Instance.PlaySound(audioClipAttack, 0.5f);
             AudioManager.Instance.PlaySound(audioClipAttack2, 0.8f);
             turnCount -= 1;
@@ -778,6 +779,7 @@ namespace VoiceActing
             roleManager.SetIndexRole(enemyManager.GetInterlocutor());
 
             emotionAttackManager.SwitchCardTransformToRessource();
+            actorsManager.SetCards(emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
             actorsManager.DrawActorStat();
             actorsManager.DrawBuffIcon();
             textAppearManager.SetMouth(characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));

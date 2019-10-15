@@ -48,6 +48,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleName;
         [SerializeField]
+        TextMeshProUGUI textRolePersonality;
+        [SerializeField]
         TextMeshProUGUI textRoleFan;
         [SerializeField]
         TextMeshProUGUI textRoleLine;
@@ -288,6 +290,7 @@ namespace VoiceActing
                 menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
             //menuActorsManager.AuditionMode(true, currentContract.Characters[indexSelected]);
 
+            textRolePersonality.text = currentContract.Characters[indexSelected].RoleType + " - " + currentContract.Characters[indexSelected].RolePersonality;
             textRoleName.text = currentContract.Characters[indexSelected].Name;
             textRoleFan.text = currentContract.Characters[indexSelected].Fan.ToString();
             textRoleLine.text = currentContract.Characters[indexSelected].Line.ToString();

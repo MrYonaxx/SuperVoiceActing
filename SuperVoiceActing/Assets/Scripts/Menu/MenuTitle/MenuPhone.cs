@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 
 namespace VoiceActing
@@ -32,6 +33,9 @@ namespace VoiceActing
         [HorizontalGroup]
         [SerializeField]
         bool[] horizontal;
+
+        [SerializeField]
+        int indexTitleScreen = 5;
 
         #endregion
 
@@ -61,6 +65,11 @@ namespace VoiceActing
             if(horizontal[indexSelected] == true)
             {
                 phone.SetTrigger("Horizontal");
+            }
+
+            if (indexSelected == indexTitleScreen)
+            {
+                SceneManager.LoadScene("TitleScreen");
             }
         }
 

@@ -37,6 +37,8 @@ MonoBehaviour:
     - names:
       - Opera
       roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 1
       lineMin: 200
       lineMax: 250
       fanMin: 0
@@ -75,6 +77,8 @@ MonoBehaviour:
     - names:
       - Nougat
       roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 2
       lineMin: 100
       lineMax: 150
       fanMin: 0
@@ -113,6 +117,8 @@ MonoBehaviour:
     - names:
       - Praline
       roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 3
       lineMin: 100
       lineMax: 200
       fanMin: 0
@@ -160,8 +166,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 20
-        hpMax: 20
+        hpMin: 40
+        hpMax: 40
       enemyResistance:
         neutral: 0
         joy: 100
@@ -179,8 +185,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 20
-        hpMax: 20
+        hpMin: 40
+        hpMax: 40
       enemyResistance:
         neutral: 0
         joy: -100
@@ -197,8 +203,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 35
-        hpMax: 35
+        hpMin: 70
+        hpMax: 70
       enemyResistance:
         neutral: 0
         joy: -90
@@ -215,8 +221,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 2
         linked: 0
-        hpMin: 35
-        hpMax: 35
+        hpMin: 70
+        hpMax: 70
       enemyResistance:
         neutral: 0
         joy: -90
@@ -233,8 +239,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 40
-        hpMax: 40
+        hpMin: 80
+        hpMax: 80
       enemyResistance:
         neutral: 0
         joy: -90
@@ -252,8 +258,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 45
-        hpMax: 45
+        hpMin: 90
+        hpMax: 90
       enemyResistance:
         neutral: 0
         joy: -90
@@ -271,8 +277,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 45
-        hpMax: 45
+        hpMin: 90
+        hpMax: 90
       enemyResistance:
         neutral: 0
         joy: -90
@@ -290,8 +296,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 2
         linked: 0
-        hpMin: 50
-        hpMax: 50
+        hpMin: 100
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: -90
@@ -309,8 +315,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 2
         linked: 0
-        hpMin: 50
-        hpMax: 50
+        hpMin: 100
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: 100
@@ -323,24 +329,6 @@ MonoBehaviour:
         trust: 120
       enemyWeakPoints:
       - wordIndex: 2
-    - text: Attention Nougat !
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 50
-        hpMax: 50
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 100
-        disgust: -90
-        anger: 100
-        surprise: 100
-        sweetness: -90
-        fear: 100
-        trust: -90
-      enemyWeakPoints:
-      - wordIndex: 1
   eventData:
   - {fileID: 11400000, guid: 12fd5333e3029db4ab83c43c9d203b3d, type: 2}
   - {fileID: 11400000, guid: c6a95885890b96e4d9a7608f958549ad, type: 2}

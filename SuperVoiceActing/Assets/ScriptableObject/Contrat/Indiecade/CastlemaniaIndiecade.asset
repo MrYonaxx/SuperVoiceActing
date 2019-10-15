@@ -40,6 +40,8 @@ MonoBehaviour:
     - names:
       - Richard
       roleSprite: {fileID: 21300000, guid: 1eba9f3f71db5964880d475872f98dd7, type: 3}
+      roleType: 1
+      rolePersonality: 4
       lineMin: 50
       lineMax: 100
       fanMin: 400
@@ -71,7 +73,54 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 0
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 0}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 4
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 5
+        skills:
+        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 0}
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 7
+        - condition: 2
+          mathOperator: 3
+          conditionValue: 8
+        skills:
+        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 0}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
@@ -79,14 +128,16 @@ MonoBehaviour:
       - Seigneur Vampire
       - Vampire
       roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
+      roleType: 2
+      rolePersonality: 6
       lineMin: 50
       lineMax: 100
       fanMin: 500
       fanMax: 1800
       atkMin: 18
       atkMax: 24
-      defMin: 10
-      defMax: 15
+      defMin: 15
+      defMax: 20
       timbre: {x: 3, y: 8}
       timbreRand: {x: 3, y: 8}
       characterStatMin:
@@ -112,6 +163,17 @@ MonoBehaviour:
       actorLocked: {fileID: 0}
       artificialIntelligence:
       - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
+      - memo: 
         startPhrase: 0
         startAttack: 0
         endAttack: 1
@@ -124,21 +186,20 @@ MonoBehaviour:
           mathOperator: 3
           conditionValue: 3
         skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
       - memo: 
-        startPhrase: 0
+        startPhrase: 1
         startAttack: 0
-        endAttack: 1
+        endAttack: 0
         endPhrase: 0
         conditions:
         - condition: 2
           mathOperator: 0
-          conditionValue: 6
+          conditionValue: 9
         skills:
         - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
-        - {fileID: 0}
       - memo: 
         startPhrase: 0
         startAttack: 0
@@ -146,12 +207,12 @@ MonoBehaviour:
         endPhrase: 0
         conditions:
         - condition: 2
-          mathOperator: 2
+          mathOperator: 4
           conditionValue: 9
         skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
         - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -167,8 +228,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 40
-        hpMax: 50
+        hpMin: 80
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: 0
@@ -181,12 +242,13 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 0
+      - wordIndex: 1
     - text: "Tu n'appartiens pas \xE0 ce monde."
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 40
-        hpMax: 50
+        hpMin: 80
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: 0
@@ -203,8 +265,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 50
-        hpMax: 60
+        hpMin: 100
+        hpMax: 120
       enemyResistance:
         neutral: 0
         joy: 30
@@ -222,8 +284,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 50
-        hpMax: 60
+        hpMin: 100
+        hpMax: 120
       enemyResistance:
         neutral: 0
         joy: 30
@@ -249,8 +311,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 20
-        hpMax: 30
+        hpMin: 50
+        hpMax: 70
       enemyResistance:
         neutral: 0
         joy: -100
@@ -267,8 +329,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 50
-        hpMax: 60
+        hpMin: 100
+        hpMax: 120
       enemyResistance:
         neutral: 0
         joy: -100
@@ -294,8 +356,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 40
-        hpMax: 50
+        hpMin: 80
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: 50
@@ -320,8 +382,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 50
-        hpMax: 60
+        hpMin: 100
+        hpMax: 120
       enemyResistance:
         neutral: 0
         joy: -100
@@ -338,8 +400,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 50
-        hpMax: 60
+        hpMin: 100
+        hpMax: 120
       enemyResistance:
         neutral: 0
         joy: -100
@@ -364,8 +426,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 30
-        hpMax: 50
+        hpMin: 60
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: 20
@@ -382,8 +444,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 30
-        hpMax: 50
+        hpMin: 60
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: 20
@@ -400,8 +462,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 30
-        hpMax: 50
+        hpMin: 60
+        hpMax: 100
       enemyResistance:
         neutral: 0
         joy: -50
@@ -418,8 +480,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 1
         linked: 0
-        hpMin: 40
-        hpMax: 40
+        hpMin: 80
+        hpMax: 80
       enemyResistance:
         neutral: 0
         joy: -100
