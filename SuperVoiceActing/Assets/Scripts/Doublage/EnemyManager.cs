@@ -428,6 +428,10 @@ namespace VoiceActing
         [SerializeField]
         protected Color[] damageColorLevel;
 
+        [SerializeField]
+        protected Animator animatorDamageTextResult;
+        [SerializeField]
+        protected Animator animatorLightFeedback;
         [HorizontalGroup("textResult")]
         [SerializeField]
         protected float[] damageLevelText;
@@ -586,8 +590,8 @@ namespace VoiceActing
                 }
             }
 
-
-
+            animatorDamageTextResult.gameObject.SetActive(true);
+            animatorLightFeedback.gameObject.SetActive(true);
 
 
 

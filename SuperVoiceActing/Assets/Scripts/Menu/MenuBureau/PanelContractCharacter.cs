@@ -32,6 +32,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textRoleInfluence;
         [SerializeField]
+        TextMeshProUGUI textCharacterType;
+        [SerializeField]
         RectTransform transformTimbre;
 
         [SerializeField]
@@ -81,8 +83,11 @@ namespace VoiceActing
             textRoleLine.text = role.Line.ToString();
             textRoleCadence.text = role.Attack.ToString();
             textRoleInfluence.text = role.Defense.ToString();
-
-            if(role.RoleSprite == null)
+            if(textCharacterType != null)
+            {
+                textCharacterType.text = role.RoleType + " - " + role.RolePersonality;
+            }
+            if (role.RoleSprite == null)
             {
                 roleFace.enabled = false;
             }

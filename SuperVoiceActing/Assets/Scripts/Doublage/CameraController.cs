@@ -129,7 +129,7 @@ namespace VoiceActing
                 Application.targetFrameRate = 60;
             else
                 Application.targetFrameRate = -1;
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
 
         protected void Start()
