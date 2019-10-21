@@ -104,6 +104,15 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private int fanGain;
+        public int FanGain
+        {
+            get { return fanGain; }
+            set { fanGain = value; }
+        }
+
+
+        [SerializeField]
         private int price;
         public int Price
         {
@@ -332,6 +341,7 @@ namespace VoiceActing
         {
             isNull = false;
             level = actorData.Level;
+            fanGain = 0;
             fan = actorData.Fan;
             price = actorData.Price;
             hp = actorData.Hp;
@@ -464,12 +474,6 @@ namespace VoiceActing
                     statistique.Add(i, 1);
                 }
             }
-            /*currentGrowth.Joy += growth.Joy;
-            while(currentGrowth.Joy >= 100)
-            {
-                currentGrowth.Joy -= 100;
-                statistique.Joy += 1;
-            }*/
             statistique.Neutral = (statistique.Joy + statistique.Sadness + statistique.Disgust + statistique.Anger + 
                                    statistique.Surprise + statistique.Sweetness + statistique.Fear + statistique.Trust) / 8;
             hp += (growth.Neutral / 8);
@@ -477,6 +481,11 @@ namespace VoiceActing
             level += 1;
 
         }
+
+
+
+
+
 
 
         public void WorkForWeek(ExperienceCurveData experienceCurve)
@@ -541,7 +550,6 @@ namespace VoiceActing
                 availability = false;
             }
         }
-
 
 
         public void CreateVoxography(string contractName)

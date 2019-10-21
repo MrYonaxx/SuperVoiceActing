@@ -304,7 +304,15 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
-
+        public int GetHype()
+        {
+            int res = 0;
+            for(int i = 0; i < characters.Count; i++)
+            {
+                res += characters[i].Fan;
+            }
+            return res;
+        }
 
         #endregion
 

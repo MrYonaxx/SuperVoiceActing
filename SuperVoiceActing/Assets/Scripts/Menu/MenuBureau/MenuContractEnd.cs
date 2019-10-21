@@ -66,6 +66,9 @@ namespace VoiceActing
         [SerializeField]
         private MenuContractMoney moneyManager;
 
+        [SerializeField]
+        private MenuContractEndFanCalculator fanCalculator;
+
         int totalRevenu = 0;
         int soundEngiOldLevel;
         int soundEngiExpGained;
@@ -77,6 +80,35 @@ namespace VoiceActing
 
 
         #region Functions 
+
+
+
+        // ========================================================================
+        public void CalculTotalScore(Contract contract)
+        {
+            int finalScore = 0;
+            int finalHighScore = 0;
+            int totalFan = contract.GetHype();
+            for (int i = 0; i < contract.Characters.Count; i++)
+            {
+                // Score Stat
+                contract.Characters[i].RolePerformance /= contract.TotalLine;
+                contract.Characters[i].RoleBestScore /= contract.TotalLine; // Vu que je divise ici, si j'ajoute du score d'une autre source que le combat les calculs sont faussés
+                CalculateRoleScore(contract.Characters[i], contract.VoiceActors[i]);
+
+                // Fan
+                fanCalculator.AddScoreToRole(contract.VoiceActors[i], contract.Characters[i], totalFan);
+                fanCalculator.CalculateFanGain(contract.VoiceActors[i], contract.Characters[i]);
+
+                finalScore += contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance;
+                finalHighScore += contract.Characters[i].RoleBestScore;
+
+            }
+            contract.Score = finalScore;
+            contract.HighScore = finalHighScore;
+            CalculateContractReward(contract);
+        }
+
 
         public void CalculateRoleScore(Role role, VoiceActor voiceActor)
         {
@@ -93,42 +125,6 @@ namespace VoiceActing
                 statGain = 0;
                 statRole = role.CharacterStat.GetEmotion(i + 1);
                 statActor = voiceActor.Statistique.GetEmotion(i + 1);
-                /*switch (i)
-                {
-                    case 0:
-                        statRole = role.CharacterStat.Joy;
-                        statActor = voiceActor.Statistique.Joy;
-                        break;
-                    case 1:
-                        statRole = role.CharacterStat.Sadness;
-                        statActor = voiceActor.Statistique.Sadness;
-                        break;
-                    case 2:
-                        statRole = role.CharacterStat.Disgust;
-                        statActor = voiceActor.Statistique.Disgust;
-                        break;
-                    case 3:
-                        statRole = role.CharacterStat.Anger;
-                        statActor = voiceActor.Statistique.Anger;
-                        break;
-                    case 4:
-                        statRole = role.CharacterStat.Surprise;
-                        statActor = voiceActor.Statistique.Surprise;
-                        break;
-                    case 5:
-                        statRole = role.CharacterStat.Sweetness;
-                        statActor = voiceActor.Statistique.Sweetness;
-                        break;
-                    case 6:
-                        statRole = role.CharacterStat.Fear;
-                        statActor = voiceActor.Statistique.Fear;
-                        break;
-                    case 7:
-                        statRole = role.CharacterStat.Trust;
-                        statActor = voiceActor.Statistique.Trust;
-                        break;
-
-                }*/
 
                 if (statRole == role.BestStat)
                     multiplier = 3;
@@ -167,25 +163,18 @@ namespace VoiceActing
 
 
         }
-        
-
-        public void CalculTotalScore(Contract contract)
+      
+        /*private void CalculateRoleTimbreScore(Role role, VoiceActor voiceActor)
         {
-            int finalScore = 0;
-            int finalHighScore = 0;
-            for(int i = 0; i < contract.Characters.Count; i++)
-            {
-                contract.Characters[i].RolePerformance /= contract.TotalLine;
-                contract.Characters[i].RoleBestScore /= contract.TotalLine; // Vu que je divise ici, si j'ajoute du score d'une autre source que le combat les calculs sont faussés
-                CalculateRoleScore(contract.Characters[i], contract.VoiceActors[i]);
-                finalScore += contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance;
-                finalHighScore += contract.Characters[i].RoleBestScore;
-            }
-            contract.Score = finalScore;
-            contract.HighScore = finalHighScore;
-            CalculateContractReward(contract);
-        }
+            int pitchRoleValue = role.Timbre.y - role.Timbre.x;
+            if (pitchRoleValue == 20)
+                pitchRoleValue = 0;
+            pitchRoleValue = Mathf.Clamp(pitchRoleValue, 1, 5);
+            int pitchActorValueX = Mathf.Max(role.Timbre.x, voiceActor.Timbre.x);
+            int pitchActorValueY = Mathf.Min(role.Timbre.y, voiceActor.Timbre.y);
+            int pitchActorValue = Mathf.Max(pitchActorValueY - pitchActorValueX, 0);
 
+        }*/
 
 
         public void CalculateContractReward(Contract contract)
@@ -222,11 +211,17 @@ namespace VoiceActing
                 return;
             soundEngiOldLevel = soundEngineer.Level;
             soundEngiExpGained = exp + Random.Range(80, 100);
-            if (soundEngineer.GainExp(soundEngiExpGained))
+            /*if (soundEngineer.GainExp(soundEngiExpGained))
             {
 
-            }
+            }*/
         }
+        // ========================================================================
+
+
+
+
+
 
         // ========================================================================
 
@@ -244,12 +239,13 @@ namespace VoiceActing
                             b = true;
                             contractsEnd.Add(playerData.ContractAccepted[i]);
                             CalculTotalScore(playerData.ContractAccepted[i]);
+
                             playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
                             playerData.ResearchPoint += playerData.ContractAccepted[i].Level;
+
                             SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
                             playerData.ContractAccepted.RemoveAt(i);
                             i -= 1;
-                            //playerData.ContractAccepted.Add(null);
                         }
                     }
                 }
@@ -260,6 +256,7 @@ namespace VoiceActing
                 animatorEnd.gameObject.SetActive(true);
                 DrawAllContracts();
             }
+            fanCalculator.AddFan(playerData.VoiceActors);
             return b;
         }
 
@@ -284,6 +281,7 @@ namespace VoiceActing
             inputController.SetActive(true);
             DrawContractReward(contractsEnd[0]);
         }
+
 
         public void DrawContractReward(Contract contract)
         {

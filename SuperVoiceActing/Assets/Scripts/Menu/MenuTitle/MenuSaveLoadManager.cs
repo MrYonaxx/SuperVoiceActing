@@ -168,7 +168,11 @@ namespace VoiceActing
             string filePath = string.Format("{0}/saves/{1}.json", Application.persistentDataPath, saveAllDataName);
 
             Debug.Log(filePath);
-            //FileInfo fileInfo = new FileInfo(filePath);
+            FileInfo fileInfo = new FileInfo(filePath);
+            if (!fileInfo.Directory.Exists)
+            {
+                Directory.CreateDirectory(fileInfo.Directory.FullName);
+            }
             File.WriteAllText(filePath, json);
         }
 
