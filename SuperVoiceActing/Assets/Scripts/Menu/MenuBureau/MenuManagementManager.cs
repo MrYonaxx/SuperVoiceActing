@@ -26,6 +26,8 @@ namespace VoiceActing
         [SerializeField]
         PlayerData playerData;
         [SerializeField]
+        CalendarData calendarData;
+        [SerializeField]
         private RandomEventDatabase randomEventDatabase;
         [SerializeField]
         private GameTimelineData gameTimelineData;
@@ -115,20 +117,10 @@ namespace VoiceActing
             }
             menuStudioMain.gameObject.SetActive(playerData.MenuStudioUnlocked);
             menuStudioBlackscreen.SetActive(!playerData.MenuStudioUnlocked);
-            menuNextWeek.StartNextWeek();
+            menuNextWeek.StartNextWeek(playerData.Date);
         }
 
-        private void NextWeek()
-        {
-            playerData.CreateList(playerDataDebug);
-            AddRandomEvents();
-            gameTimelineData.CheckContractTimeline(playerData);
-            gameTimelineData.CheckEventsTimeline(playerData);
-            playerData.VoiceActorWork();
-            playerData.GachaContract();
-            playerData.SetBestActor();
-        }
-
+        // Initialise la phase de bureau
         private void InitialiazeManagers()
         {
             AudioManager.Instance.PlayMusic(defaultDekstopTheme);
@@ -138,14 +130,26 @@ namespace VoiceActing
             soundEngiFormation.CreateButtonFormation(playerData.InventoryFormation);
             researchManager.SetResearchPlayerLevels(playerData);
             moneyManager.DrawMoney(playerData.Money);
-            infoManager.DrawDate(playerData.Date, (int)playerData.Season, playerData.MonthName[playerData.Date.month - 1], playerData.MonthDate[playerData.Date.month - 1]);
+
+            infoManager.DrawDate(playerData.Date, (int)playerData.Season);
             infoManager.DrawObjective(playerData.CurrentChapter, playerData.CurrentObjective);
             infoManager.DrawInfo(0, actorsManagers.GetActorUnavailable());
             infoManager.DrawInfo(1, soundEngiManager.GetFormationComplete());
             infoManager.DrawResearch(playerData.ResearchPoint);
         }
 
+        private void NextWeek()
+        {
+            // PlayerData.NextWeek
+            playerData.CreateList(playerDataDebug, calendarData);
 
+            AddRandomEvents();
+            gameTimelineData.CheckContractTimeline(playerData);
+            gameTimelineData.CheckEventsTimeline(playerData);
+            playerData.VoiceActorWork();
+            playerData.GachaContract();
+            playerData.SetBestActor();
+        }
 
 
         // Appelé après l'anim de next week
@@ -232,7 +236,8 @@ namespace VoiceActing
         public void CheckMoneyGain()
         {
             contractManager.ActivateInput(true);
-            if (playerData.Date.week == playerData.MonthDate[playerData.Date.month - 2]) // Nouveau mois
+            //if (playerData.Date.week == playerData.MonthDate[playerData.Date.month - 2]) // Nouveau mois
+            if (playerData.Date.week == calendarData.GetMonthDate(playerData.Date.month - 2)) // Nouveau mois
             {
                 moneyManager.AddSalaryDatas("Entretien", -playerData.Maintenance);
             }

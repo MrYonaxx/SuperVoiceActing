@@ -33,6 +33,10 @@ namespace VoiceActing
         [SerializeField]
         PlayerData playerData;
 
+        [Title("Managers")]
+        [SerializeField]
+        CalendarData calendarData;
+
         [Title("EventText")]
         [SerializeField]
         Image imageBackground;
@@ -136,7 +140,7 @@ namespace VoiceActing
 
         public void CreateScene(StoryEventData newStoryEvent)
         {
-            textDate.text = playerData.MonthName[playerData.Date.month-1] + " - Semaine " + playerData.Date.week;
+            textDate.text = calendarData.GetMonthName(playerData.Date.month-1) + " - Semaine " + playerData.Date.week;
             for (int i = 0; i < characters.Count; i++)
             {
                 Destroy(characters[i].gameObject);

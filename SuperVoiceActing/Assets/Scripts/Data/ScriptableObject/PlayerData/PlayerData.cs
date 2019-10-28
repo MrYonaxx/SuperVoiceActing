@@ -60,29 +60,17 @@ namespace VoiceActing
                 year += 1;
             }
         }
+
         public void NextWeek(CalendarData calendar)
         {
             NextWeek();
-            CheckMonth(calendar);
-        }
-
-
-        public void CheckMonth(CalendarData calendar)
-        {
-            if(month == 0)
-            {
-                if (week == calendar.MonthDate[11])
-                {
-                    month += 1;
-                }
-            }
-            else if (week == calendar.MonthDate[month - 1])
+            if(calendar.CheckMonth(week, month))
             {
                 month += 1;
             }
         }
-
     }
+
 
     [System.Serializable]
     public class ContractCooldown
@@ -126,57 +114,6 @@ namespace VoiceActing
             get { return experienceCurve; }
         }
 
-        [Space]
-        [Space]
-        [Space]
-        [Title("Calendar")]
-
-
-
-        [Space]
-        [FoldoutGroup("Configuration")]
-        [SerializeField]
-        private int springDate;
-        public int SpringDate
-        {
-            get { return springDate; }
-        }
-        [FoldoutGroup("Configuration")]
-        [SerializeField]
-        private int summerDate;
-        public int SummerDate
-        {
-            get { return summerDate; }
-        }
-        [FoldoutGroup("Configuration")]
-        [SerializeField]
-        private int autumnDate;
-        public int AutumnDate
-        {
-            get { return autumnDate; }
-        }
-        [FoldoutGroup("Configuration")]
-        [SerializeField]
-        private int winterDate;
-        public int WinterDate
-        {
-            get { return winterDate; }
-        }
-
-        [HorizontalGroup("Configuration/hey")]
-        [SerializeField]
-        private string[] monthName;
-        public string[] MonthName
-        {
-            get { return monthName; }
-        }
-        [HorizontalGroup("Configuration/hey")]
-        [SerializeField]
-        private int[] monthDate;
-        public int[] MonthDate
-        {
-            get { return monthDate; }
-        }
 
 
         [HorizontalGroup("InitialEquipement")]
@@ -230,7 +167,7 @@ namespace VoiceActing
         }
 
 
-        // Contrat en cours à doubler
+        // Contrat en cours à doubler  ------------------------------------------------------------------------------------------
         [SerializeField]
         private Contract currentContract;
         public Contract CurrentContract
@@ -257,6 +194,26 @@ namespace VoiceActing
             set { contractAvailable = value; }
         }
 
+        // Contrat Realise 
+        [SerializeField]
+        private List<Contract> contractHistoric;
+        public List<Contract> ContractHistoric
+        {
+            get { return contractHistoric; }
+            set { contractHistoric = value; }
+        }
+
+        // x = contractID, y = franchise series
+        [SerializeField]
+        private List<Vector2> contractFranchise;
+        public List<Vector2> ContractFranchise
+        {
+            get { return contractFranchise; }
+            set { contractFranchise = value; }
+        }
+
+
+
 
         //!\ (N'est pas sauvegardable)
         // Contrat Gacha ( n'est pas sauvegardé)
@@ -280,7 +237,7 @@ namespace VoiceActing
 
 
 
-        // Liste des Acteurs
+        // Liste des Acteurs ------------------------------------------------------------------------------------------
         [SerializeField]
         private List<VoiceActor> voiceActors;
         public List<VoiceActor> VoiceActors
@@ -298,7 +255,7 @@ namespace VoiceActing
         }
 
 
-        // Liste des IngéSon
+        // Liste des IngéSon  ------------------------------------------------------------------------------------------
         [SerializeField]
         private List<SoundEngineer> soundEngineers;
         public List<SoundEngineer> SoundEngineers
@@ -308,6 +265,7 @@ namespace VoiceActing
         }
 
 
+        // List Story  ------------------------------------------------------------------------------------------
         [SerializeField]
         private List<StoryEventData> nextStoryEvents;
         public List<StoryEventData> NextStoryEvents
@@ -720,9 +678,17 @@ namespace VoiceActing
                 bla = new DebugSave(true);
                 CreatePlayerData(initialPlayerData);
             }
+        }
+        public void CreateList(InitialPlayerData initialPlayerData, CalendarData calendarData)
+        {
+            if (bla == null)
+            {
+                bla = new DebugSave(true);
+                CreatePlayerData(initialPlayerData);
+            }
             else
             {
-                NextWeek();
+                NextWeek(calendarData);
             }
 
         }
@@ -750,53 +716,24 @@ namespace VoiceActing
             money -= maintenance;
         }
 
-        public void NextWeek()
+        public void NextWeek(CalendarData calendar)
         {
-            date.week += 1;
+            date.NextWeek(calendar);
+            if (calendar.CheckMonth(date.week) == true)
+                PayMaintenance();
+            calendar.CheckSeason(season, date.week);
+            /*date.week += 1;
             if (date.week > 52)
             {
                 date.week = 1;
                 date.month = 1;
                 date.year += 1;
-            }
-            CheckMonth();
-            CheckSeason();
+            }*/
+            //CheckMonth();
+            //CheckSeason();
 
             ContractNextWeek();
             CheckContractCooldown();
-        }
-
-
-        public void CheckMonth()
-        {
-            if (date.week == monthDate[date.month - 1])
-            {
-                date.month += 1;
-                PayMaintenance();
-            }
-        }
-
-        public void CheckSeason()
-        {
-            switch (season)
-            {
-                case Season.Spring:
-                    if (date.week == summerDate)
-                        season = Season.Summer;
-                    break;
-                case Season.Summer:
-                    if (date.week == autumnDate)
-                        season = Season.Autumn;
-                    break;
-                case Season.Autumn:
-                    if (date.week == winterDate)
-                        season = Season.Winter;
-                    break;
-                case Season.Winter:
-                    if (date.week == springDate)
-                        season = Season.Spring;
-                    break;
-            }
         }
 
         public void ContractNextWeek()

@@ -41,7 +41,8 @@ namespace VoiceActing
             float roleFanExpectationRatio = 0.01f;
             float actorFanExpectationRatio = 0.005f;
 
-            role.RoleBestScore += (int)((role.Fan * roleFanExpectationRatio) *  (role.Fan / totalHype));
+            if(totalHype != 0)
+                role.RoleBestScore += (int)((role.Fan * roleFanExpectationRatio) *  (role.Fan / totalHype));
             role.RoleBestScore += (int)(voiceActor.FanGain * actorFanExpectationRatio);
         }
 
@@ -50,9 +51,11 @@ namespace VoiceActing
 
             float scoreThreshold = 0.5f;
             float maxFanGainPercentage = 0.25f;
-
-            float ratio = (role.RoleScore / role.RoleBestScore) - scoreThreshold;
-            voiceActor.FanGain += (int)((role.Fan * maxFanGainPercentage) * (ratio / scoreThreshold));
+            if (role.RoleBestScore != 0)
+            {
+                float ratio = (role.RoleScore / role.RoleBestScore) - scoreThreshold;
+                voiceActor.FanGain += (int)((role.Fan * maxFanGainPercentage) * (ratio / scoreThreshold));
+            }
         }
 
 
@@ -66,10 +69,8 @@ namespace VoiceActing
 
             for(int i = 0; i < voiceActors.Count;i++)
             {
-                Debug.Log(voiceActors[i].Name + " " + voiceActors[i].FanGain);
                 voiceActors[i].Fan += (int)(voiceActors[i].FanGain + Random.Range(-voiceActors[i].FanGain * fanRandomGain, voiceActors[i].FanGain * fanRandomGain));
                 voiceActors[i].FanGain = (int)(voiceActors[i].FanGain * fanGainDecreaseRatio);
-                Debug.Log(voiceActors[i].Name + " " + voiceActors[i].FanGain);
                 if (voiceActors[i].FanGain <= 0)
                     voiceActors[i].Fan -= Random.Range(0, voiceActors[i].Level);
                 else if (voiceActors[i].FanGain <= voiceActors[i].Level)

@@ -23,6 +23,8 @@ namespace VoiceActing
 
         [Header("MenuInfo")]
         [SerializeField]
+        private CalendarData calendarData;
+        [SerializeField]
         private ImageDictionnary seasonData;
 
         [Header("MenuDate")]
@@ -67,12 +69,14 @@ namespace VoiceActing
         \* ======================================== */
 
 
-        public void DrawDate(Date date, int season, string debugMonthName, int debugMonthDate)
+        public void DrawDate(Date date, int season)
         {
             textWeek.text = date.week.ToString();
-            textMonth.text = debugMonthName;// playerData.MonthName[playerData.Date.month - 1];
+            textMonth.text = calendarData.GetMonthName(date.month-1);
+
             textYear.text = date.year.ToString();
-            textNextMonth.text = (debugMonthDate - date.week).ToString(); //playerData.MonthDate[playerData.Date.month - 1]
+            textNextMonth.text = (calendarData.GetMonthDate(date.month - 1) - date.week).ToString();
+
             imageSeason.sprite = seasonData.GetSprite(season);
             imageSeasonOutline.sprite = imageSeason.sprite;
         }

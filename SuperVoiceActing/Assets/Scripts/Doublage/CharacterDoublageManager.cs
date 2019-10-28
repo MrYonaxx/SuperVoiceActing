@@ -19,6 +19,8 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
+        private CharacterSpriteDatabase characterSpriteDatabase;
+        [SerializeField]
         private CharacterDialogueController[] characters;
         //0 = centre ; 1 = gauche ; 2 = droite
         [SerializeField]

@@ -72,15 +72,18 @@ namespace VoiceActing
             get { return condition; }
         }
 
-        /*[HorizontalGroup("ConditionPerso", LabelWidth = 100, Width = 100)]
+        [Header("PersoCondition")]
+        [HorizontalGroup("ConditionPerso", LabelWidth = 100, Width = 100)]
         [ShowIf("condition")]
         [SerializeField]
+        [HideLabel]
         private int characterCondition;
         public int CharacterCondition
         {
             get { return characterCondition; }
-        }*/
+        }
 
+        [Header("DictCondition")]
         [HorizontalGroup("Dictionnary", LabelWidth = 100, Width = 100)]
         [ShowIf("condition")]
         [SerializeField]
@@ -374,6 +377,19 @@ namespace VoiceActing
             get { return description; }
         }
 
+        [SerializeField]
+        private bool isFranchise;
+        public bool IsFranchise
+        {
+            get { return isFranchise; }
+        }
+        [SerializeField]
+        private string[] franchiseNames;
+        public string[] FranchiseNames
+        {
+            get { return franchiseNames; }
+        }
+
         [Space]
         [Space]
         [Space]
@@ -392,12 +408,6 @@ namespace VoiceActing
         [Space]
 
         [Title("Product Manager")]
-        /*[SerializeField]
-        private string myVar;
-        public string MyProperty
-        {
-            get { return myVar; }
-        }*/
         [SerializeField]
         private int producerMP;
         public int ProducerMP

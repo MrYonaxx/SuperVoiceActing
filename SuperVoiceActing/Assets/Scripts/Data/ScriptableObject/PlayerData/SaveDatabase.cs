@@ -108,7 +108,7 @@ namespace VoiceActing
             savePlayerName = playerData.PlayerName;
             saveStudioName = playerData.StudioName;
 
-            saveMonth = playerData.MonthName[playerData.Date.month - 1];
+            saveMonth = "Oups";// playerData.MonthName[playerData.Date.month - 1];
             saveWeek = playerData.Date.week.ToString();
 
             //

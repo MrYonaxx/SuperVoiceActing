@@ -24,17 +24,10 @@ namespace VoiceActing
         [HorizontalGroup]
         [SerializeField]
         private string[] monthName;
-        public string[] MonthName
-        {
-            get { return monthName; }
-        }
+
         [HorizontalGroup]
         [SerializeField]
         private int[] monthDate;
-        public int[] MonthDate
-        {
-            get { return monthDate; }
-        }
 
         [SerializeField]
         private int[] seasonDate;
@@ -51,6 +44,21 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+        public string GetMonthName(int i)
+        {
+            if (i < 0)
+                i += monthName.Length;
+            return monthName[i];
+        }
+
+        public int GetMonthDate(int i)
+        {
+            if (i < 0)
+                i += monthDate.Length;
+            return monthDate[i];
+        }
+
+
         #endregion
 
         #region Functions 
@@ -59,6 +67,32 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+
+        // return true if change Month
+        public bool CheckMonth(int playerWeek)
+        {
+            for (int i = 0; i < monthDate.Length; i++)
+            {
+                if (playerWeek == monthDate[i])
+                    return true;
+            }
+            return false;
+        }
+
+        // return true if change Month
+        public bool CheckMonth(int playerWeek, int playerMonth)
+        {
+            return (playerWeek == monthDate[playerMonth - 1]);
+        }
+
+        public void CheckSeason(Season playerSeason, int playerWeek)
+        {
+            for(int i = 0; i < seasonDate.Length; i++)
+            {
+                if(playerWeek == seasonDate[i])
+                    playerSeason = (Season) i;
+            }
+        }
 
         #endregion
 

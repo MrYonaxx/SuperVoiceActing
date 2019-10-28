@@ -202,7 +202,7 @@ namespace VoiceActing
         {
             seasonSprite1.sprite = seasonData.GetSprite((int)seiyuuData.Season);
             seasonSprite2.sprite = seasonSprite1.sprite;
-            textDate.text = calendarData.MonthName[seiyuuData.Date.month] + " / Semaine " + seiyuuData.Date.week;
+            textDate.text = calendarData.GetMonthName(seiyuuData.Date.month) + " / Semaine " + seiyuuData.Date.week;
             for(int i =0; i < textCalendarNextDays.Length; i++)
             {
                 int week = seiyuuData.Date.week + (i + 1);
