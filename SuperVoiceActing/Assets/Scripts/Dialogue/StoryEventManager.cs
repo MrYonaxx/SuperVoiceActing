@@ -157,7 +157,8 @@ namespace VoiceActing
             {
                 characters.Add(Instantiate(characterPrefab, transformCharacter));
                 characters[characters.Count - 1].SetStoryCharacterData(newStoryEvent.Characters[i].CharacterToMove);
-                characters[characters.Count - 1].transform.localPosition = newStoryEvent.Characters[i].NewPosition;
+                characters[characters.Count - 1].SetPosition(newStoryEvent.Characters[i].NewPosition);
+                //characters[characters.Count - 1].transform.localPosition = newStoryEvent.Characters[i].NewPosition;
                 characters[characters.Count - 1].transform.localScale = newStoryEvent.Characters[i].NewScale;
                 characters[characters.Count - 1].transform.eulerAngles = newStoryEvent.Characters[i].NewRotation;
                 characters[characters.Count - 1].FadeCharacter(newStoryEvent.Characters[i].FadeIn, 1);

@@ -33,7 +33,7 @@ namespace VoiceActing
         float time = 60;
 
         [SerializeField]
-        private Vector3 newPosition = new Vector3(0, -5.2f, 0);
+        private Vector3 newPosition = new Vector3(0, 0, 0);
         public Vector3 NewPosition
         {
             get { return newPosition; }
@@ -47,7 +47,7 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        Vector3 newScale = new Vector3(0.45f,0.45f,0.45f);
+        Vector3 newScale = new Vector3(0.5f,0.5f,0.5f);
         public Vector3 NewScale
         {
             get { return newScale; }
@@ -55,7 +55,7 @@ namespace VoiceActing
 
         [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]
-        bool fadeIn = false;
+        bool fadeIn = true;
         public bool FadeIn
         {
             get { return fadeIn; }
@@ -109,30 +109,29 @@ namespace VoiceActing
 
         public IEnumerator MoveCoroutine()
         {
-            // Initialization
-            float actualTime = time;
-            if (Input.GetButton("ControllerB"))
-            {
-                actualTime = 1;
-            }
-            float speedX = (newPosition.x - character.transform.localPosition.x) / actualTime;
-            float speedY = (newPosition.y - character.transform.localPosition.y) / actualTime;
-            float speedRotateY = (newRotation.y - character.transform.eulerAngles.y) / actualTime;
             if (fadeIn == true)
             {
-                character.FadeIn(actualTime);
+                character.FadeIn(time);
             }
             else if (fadeOut == true)
             {
-                character.FadeOut(actualTime);
+                character.FadeOut(time);
             }
 
-
-            while (actualTime != 0)
+            float t = 0;
+            float rate = (60f / time);
+            if (Input.GetButton("ControllerB"))
             {
-                character.transform.localPosition += new Vector3(speedX, speedY, 0);
-                character.transform.eulerAngles += new Vector3(0, speedRotateY, 0);
-                actualTime -= 1;
+                t = 1f;
+            }
+
+            Vector3 initialPosition = character.GetPosition();
+            Vector3 initialRotation = character.transform.eulerAngles;
+            while (t < 1f)
+            {
+                t += Time.deltaTime * rate;
+                character.SetPosition(Vector3.Lerp(initialPosition, newPosition, t));
+                character.transform.eulerAngles = Vector3.Lerp(initialRotation, newRotation, t);
                 yield return null;
             }
         }

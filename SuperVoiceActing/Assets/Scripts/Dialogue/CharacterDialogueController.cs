@@ -56,15 +56,24 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        /*public SpriteRenderer GetSpriteRenderer()
-        {
-            return spriteRenderer;
-        }*/
-
         public virtual Sprite GetSprite()
         {
             return spriteRenderer.sprite;
         }
+        public StoryCharacterData GetStoryCharacterData()
+        {
+            return storyCharacterData;
+        }
+
+        public virtual Vector3 GetPosition()
+        {
+            return this.transform.localPosition;
+        }
+        public virtual void SetPosition(Vector3 transform)
+        {
+            this.transform.localPosition = transform;
+        }
+
 
         public void ChangeEmotion(Emotion emotionBattle)
         {
@@ -94,7 +103,9 @@ namespace VoiceActing
             }
         }
 
-        public void SetStoryCharacterData(StoryCharacterData sprites)
+
+
+        public virtual void SetStoryCharacterData(StoryCharacterData sprites)
         {
             if(sprites.CharacterVoice != null && voice != null)
                 voice.clip = sprites.CharacterVoice;
@@ -106,17 +117,14 @@ namespace VoiceActing
                 eyesScript.SetSprite(sprites.SpriteEye);
         }
 
-        public void LoadCharacterDataSprites()
+        public virtual void LoadCharacterDataSprites()
         {
             currentSprites = storyCharacterData.SpriteNormal;
             if (spriteRenderer != null)
                 spriteRenderer.sprite = currentSprites[0];
         }
 
-        public StoryCharacterData GetStoryCharacterData()
-        {
-            return storyCharacterData;
-        }
+
 
 
         public void SetFlip(bool flip)
@@ -125,6 +133,9 @@ namespace VoiceActing
         }
 
         #endregion
+
+
+
 
         #region Functions 
 
@@ -144,7 +155,7 @@ namespace VoiceActing
             StartCoroutine(mouthCoroutine);
         }
 
-        public void StopMouth()
+        public virtual void StopMouth()
         {
             if (mouthCoroutine != null)
                 StopCoroutine(mouthCoroutine);
@@ -163,11 +174,9 @@ namespace VoiceActing
         private IEnumerator MouthAnim()
         {
             int i = 0;
-            //float speed = speedMouth;
             float t = 0f;
             while (true)
             {
-                //speed -= 1;
                 t += Time.deltaTime;
                 if (t >= speedMouth / 60f)
                 {
@@ -184,7 +193,7 @@ namespace VoiceActing
             }
         }
 
-        public void ChangeMouthSprite(int index)
+        public virtual void ChangeMouthSprite(int index)
         {
             if (speak == true)
                 return;
@@ -237,7 +246,7 @@ namespace VoiceActing
         }
 
         // Peut etre a déplacer dans StoryEventMoveCharacter
-        private IEnumerator Fade(bool appear, float time)
+        protected virtual IEnumerator Fade(bool appear, float time)
         {
             float alphaSpeed = 1 / time;
             if (appear == false)
@@ -257,6 +266,7 @@ namespace VoiceActing
             if (eyesScript != null)
                 eyesScript.ChangeTint(spriteRenderer.color);
         }
+
 
         public void ModifyCharacter(DoublageEventMoveCharacter data)
         {

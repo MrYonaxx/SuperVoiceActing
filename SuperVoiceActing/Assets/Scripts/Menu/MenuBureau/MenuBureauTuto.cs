@@ -100,9 +100,9 @@ namespace VoiceActing
 
         public void StartTuto(int i)
         {
-            if(playerData.TutoEvent.Contains(tutoDatabase[i]))
+            if(playerData.TutoEvent.Contains(i))
             {
-                playerData.TutoEvent.Remove(tutoDatabase[i]);
+                playerData.TutoEvent.Remove(i);
                 eventManager.StartStoryEventData(tutoDatabase[i]);
                 eventBox.SetActive(true);
                 menuManagers.SetActive(false);

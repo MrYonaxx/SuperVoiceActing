@@ -377,6 +377,8 @@ namespace VoiceActing
             get { return description; }
         }
 
+        [Space]
+        [Space]
         [SerializeField]
         private bool isFranchise;
         public bool IsFranchise

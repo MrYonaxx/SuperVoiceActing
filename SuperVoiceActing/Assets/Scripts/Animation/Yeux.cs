@@ -1,36 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Yeux : MonoBehaviour
 {
     [SerializeField]
     bool forceStopBlink = false;
+    [SerializeField]
+    bool isRect = false;
 
-	int waitTime = 0;
+    //int waitTime = 0;
+
     SpriteRenderer spriteRenderer;
+    Image imageRenderer;
+
     IEnumerator coroutine = null;
 
+
+    // -------------------------------------------------------------------
 	// Use this for initialization
 	void Start ()
     {
-        if(spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        if(isRect == true)
+        {
+            if (imageRenderer == null)
+                imageRenderer = GetComponent<Image>();
+        }
+        else
+        {
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
         if (forceStopBlink == false)
         {
             coroutine = BlinkEye();
             StartCoroutine(coroutine);
         }
-
     }
 
     public void SetSprite(Sprite eyes)
     {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = eyes;
+        if (isRect == true)
+        {
+            if (imageRenderer == null)
+                imageRenderer = GetComponent<Image>();
+            imageRenderer.sprite = eyes;
+            imageRenderer.SetNativeSize();
+        }
+        else
+        {
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = eyes;
+        }
     }
 
+
+
+
+
+    // -------------------------------------------------------------------
     public void StartBlink()
     {
         if(coroutine != null)
@@ -54,31 +85,58 @@ public class Yeux : MonoBehaviour
     {
         while(true)
         {
-            waitTime -= 1;
-            if (waitTime == 0)
-            {
-                spriteRenderer.enabled = true;
-            }
-            else if (waitTime == -4)
-            {
+            if (isRect == true)
+                imageRenderer.enabled = false;
+            else
                 spriteRenderer.enabled = false;
-                waitTime = Random.Range(90, 600);
-            }
-            yield return null;
+
+            yield return new WaitForSeconds(Random.Range(90, 600)/60f);
+
+            if (isRect == true)
+                imageRenderer.enabled = true;
+            else
+                spriteRenderer.enabled = true;
+
+            yield return new WaitForSeconds(0.07f);
         }
     }
 
+
+
+
+
+    // -------------------------------------------------------------------
     public void ChangeTint(Color newColor)
     {
-        if (spriteRenderer == null)
-            return;
-        spriteRenderer.color = newColor;
+        if (isRect == true)
+        {
+            if (imageRenderer == null)
+                return;
+            imageRenderer.color = newColor;
+        }
+        else
+        {
+            if (spriteRenderer == null)
+                return;
+            spriteRenderer.color = newColor;
+        }
+
     }
 
     public void ChangeOrderInLayer(int newOrder)
     {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sortingOrder = newOrder;
+        if (isRect == true)
+        {
+            /*if (imageRenderer == null)
+                imageRenderer = GetComponent<Image>();
+            imageRenderer.sortingOrder = newOrder;*/
+            return;
+        }
+        else
+        {
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sortingOrder = newOrder;
+        }
     }
 }

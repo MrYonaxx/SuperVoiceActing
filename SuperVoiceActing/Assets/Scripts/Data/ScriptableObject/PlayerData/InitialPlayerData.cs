@@ -216,8 +216,8 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<StoryEventData> initialTutoEvent = new List<StoryEventData>();
-        public List<StoryEventData> InitialTutoEvent
+        private List<int> initialTutoEvent = new List<int>();
+        public List<int> InitialTutoEvent
         {
             get { return initialTutoEvent; }
         }

@@ -291,8 +291,8 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<StoryEventData> tutoEvent;
-        public List<StoryEventData> TutoEvent
+        private List<int> tutoEvent;
+        public List<int> TutoEvent
         {
             get { return tutoEvent; }
             set { tutoEvent = value; }
@@ -594,7 +594,7 @@ namespace VoiceActing
                 contractAvailable.Add(new Contract(initialPlayerData.ContractAvailableDebug[i]));
             }
 
-            tutoEvent = new List<StoryEventData>(initialPlayerData.InitialTutoEvent.Count);
+            tutoEvent = new List<int>(initialPlayerData.InitialTutoEvent.Count);
             for (int i = 0; i < initialPlayerData.InitialTutoEvent.Count; i++)
             {
                 tutoEvent.Add(initialPlayerData.InitialTutoEvent[i]);

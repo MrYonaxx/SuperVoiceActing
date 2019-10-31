@@ -14,21 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voiceActor:
     fan: 0
-    price: 0
-    level: 0
-    hp: 0
-    hpMax: 0
-    timbre: {x: 0, y: 0}
+    fanGain: 0
+    price: 6
+    level: 1
+    hp: 200
+    hpMax: 200
+    timbre: {x: -7, y: 3}
     statistique:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
+      neutral: 5
+      joy: 8
+      sadness: 10
+      disgust: 5
+      anger: 2
+      surprise: 3
+      sweetness: 8
+      fear: 1
+      trust: 10
     statModifier:
       neutral: 0
       joy: 0
@@ -50,15 +51,15 @@ MonoBehaviour:
       fear: 0
       trust: 0
     growth:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
+      neutral: 113
+      joy: 156
+      sadness: 153
+      disgust: 105
+      anger: 59
+      surprise: 69
+      sweetness: 153
+      fear: 68
+      trust: 147
     currentGrowth:
       neutral: 0
       joy: 0
@@ -72,20 +73,25 @@ MonoBehaviour:
     experience: 0
     nextEXP: 120
     relation: 0
-    skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 0}
-    damageVariance: 0
+    skillOffset: {x: 0.14, y: 0.12, z: 0}
+    spriteSheets: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483, type: 2}
+    damageVariance: 2
     roleDefense: 0
-    potentials: []
+    potentials:
+    - {fileID: 11400000, guid: 4693805a529dd554694916f79f88a756, type: 2}
     buffs: []
     voxography: []
     actorMentalState: 0
-    availability: 0
-    isNull: 1
+    availability: 1
+    isNull: 0
   date:
-    week: 0
-    month: 0
-    year: 0
-  season: 0
-  bill: 0
-  money: 0
+    week: 1
+    month: 1
+    year: 1
+  season: 3
+  bill: 200
+  money: 300
+  moneyGain: 0
+  contractProposal: []
+  contractAccepted: []
+  roleID: 
