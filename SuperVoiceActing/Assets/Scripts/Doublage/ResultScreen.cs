@@ -21,6 +21,10 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [Header("Database")]
+        [SerializeField]
+        private CharacterSpriteDatabase characterSpriteDatabase;
+
         [Header("NextScene")]
         [SerializeField]
         private string nextScene = "Bureau";
@@ -251,7 +255,7 @@ namespace VoiceActing
                 actorsImage[i].gameObject.SetActive(true);
                 actorsExpOutline[i].gameObject.SetActive(true);
 
-                actorsImage[i].sprite = contract.VoiceActors[i].SpriteSheets.SpriteNormal[0];
+                actorsImage[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[i].SpriteSheets).SpriteNormal[0];
                 actorsImage[i].SetNativeSize();
                 textsLevel[i].text = contract.VoiceActors[i].Level.ToString();
                 textsNext[i].text = (contract.VoiceActors[i].NextEXP).ToString();// - contract.VoiceActors[i].Experience).ToString();
@@ -393,9 +397,9 @@ namespace VoiceActing
             else
             {
                 resultScreen.SetInteger("LevelUp", -1);
-                resultScreen.SetTrigger("NextLevelUp");
-                actorsImage[0].sprite = contract.VoiceActors[previousActorLevelUp].SpriteSheets.SpriteNormal[0];
-                actorsImage[1].sprite = contract.VoiceActors[id].SpriteSheets.SpriteNormal[0];
+                resultScreen.SetTrigger("NextLevelUp");            
+                actorsImage[0].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[previousActorLevelUp].SpriteSheets).SpriteNormal[0];
+                actorsImage[1].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[id].SpriteSheets).SpriteNormal[0];
                 StartCoroutine(OldstatCoroutine(id));
             }
             actorsLevelUp[id] = false;

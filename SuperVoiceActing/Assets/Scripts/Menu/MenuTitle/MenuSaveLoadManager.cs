@@ -25,6 +25,8 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
 
         [Header("Menu Save")]
         [SerializeField]
@@ -66,14 +68,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        /*protected override void Start()
-        {
-            base.Start();
-            LoadPlayerSavesData();
-            maxSlot = saveDatabase.SavesDatas.Length;
-            CreateButton();
-        }*/
-
         protected override void Start()
         {
             base.Start();
@@ -90,7 +84,8 @@ namespace VoiceActing
                 {
                     buttonSaveLoad.Add(Instantiate(buttonSavePrefab, buttonScrollListTransform));
                     buttonsList.Add(buttonSaveLoad[buttonSaveLoad.Count - 1].GetRectTransform());
-                    buttonSaveLoad[i].DrawButton(saveDatabase.SavesDatas[i], seasonData, i);
+                    StoryCharacterData loadSprite = characterSpriteDatabase.GetCharacterData(saveDatabase.SavesDatas[i].SaveBestVA);
+                    buttonSaveLoad[i].DrawButton(saveDatabase.SavesDatas[i], seasonData, loadSprite, i);
                 }
             }
         }
@@ -116,7 +111,8 @@ namespace VoiceActing
         public void Validate(PlayerData playerData)
         {
             SavePlayerProfile(playerData, indexSelected);
-            buttonSaveLoad[indexSelected].DrawButton(saveDatabase.SavesDatas[indexSelected], seasonData, indexSelected);
+            StoryCharacterData loadSprite = characterSpriteDatabase.GetCharacterData(saveDatabase.SavesDatas[indexSelected].SaveBestVA);
+            buttonSaveLoad[indexSelected].DrawButton(saveDatabase.SavesDatas[indexSelected], seasonData, loadSprite, indexSelected);
             buttonSaveLoad[indexSelected].FeedbackSave();
         }
 

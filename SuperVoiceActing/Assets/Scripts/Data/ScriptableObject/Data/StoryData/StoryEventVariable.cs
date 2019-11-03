@@ -76,13 +76,13 @@ namespace VoiceActing
             if(VA == null)
                 valueText = "";
             else
-                valueText = VA.Name;
+                valueText = VA.VoiceActorName;
         }
 
         public string GetActorName()
         {
             if (voiceActor != null)
-                return voiceActor.Name;
+                return voiceActor.VoiceActorName;
             return "";
         }
 

@@ -362,8 +362,8 @@ namespace VoiceActing
 
 
 
-        private Sprite currentBestActor;
-        public Sprite CurrentBestActor
+        private string currentBestActor;
+        public string CurrentBestActor
         {
             get { return currentBestActor; }
             set { currentBestActor = value; }
@@ -767,7 +767,7 @@ namespace VoiceActing
                 {
                     if (i < voiceActorsGacha.Count)
                     {
-                        Debug.Log(voiceActorsGacha[i].Name);
+                        //Debug.Log(voiceActorsGacha[i].Name);
                         voiceActors.Add(voiceActorsGacha[i]);
                         result = voiceActorsGacha[i];
                         voiceActorsGacha.RemoveAt(i);
@@ -867,7 +867,7 @@ namespace VoiceActing
                 statGain *= multiplier;
                 finalScore += statGain;
             }
-            Debug.Log(va.Name + " | " + finalScore);
+            Debug.Log(va.VoiceActorName + " | " + finalScore);
             return (int) (finalScore * finalMultiplier);
         }
 
@@ -879,7 +879,7 @@ namespace VoiceActing
         public void SetBestActor()
         {
             if(currentContract.IsNull == false)
-                currentBestActor = currentContract.VoiceActors[Random.Range(0, CurrentContract.VoiceActors.Count)].SpriteSheets.SpriteIcon;
+                currentBestActor = currentContract.VoiceActors[Random.Range(0, CurrentContract.VoiceActors.Count)].SpriteSheets;
         }
 
         public void SetNewChapter(int newChapter, string newObjective)

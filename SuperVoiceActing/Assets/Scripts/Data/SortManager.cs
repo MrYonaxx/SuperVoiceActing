@@ -167,16 +167,7 @@ namespace VoiceActing
 
         private int CompareByName(VoiceActor a, VoiceActor b)
         {
-            /*Vector3 va = a.Vector;
-            Vector3 vb = b.Vector;*/
-            return a.Name.CompareTo(b.Name);
-            /*if (a.Name.CompareTo(b.Name) == 1)
-            if (Mathf.Abs(va.x - vb.x) < 0.001f)
-            {
-                if (Mathf.Abs(va.y - vb.y) < 0.001f) return 0;
-                return va.y < vb.y ? -1 : 1;
-            }
-            return va.x < vb.x ? -1 : 1;*/
+            return a.VoiceActorName.CompareTo(b.VoiceActorName);
 
         }
 

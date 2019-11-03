@@ -88,7 +88,7 @@ namespace VoiceActing
                 {
                     for (int i = 0; i < playerData.VoiceActors.Count; i++)
                     {
-                        if (playerData.VoiceActors[i].Name == voiceActorToAdd.Name)
+                        if (playerData.VoiceActors[i].VoiceActorName == voiceActorToAdd.Name)
                             playerData.VoiceActors.RemoveAt(i);
                     }
                 }
@@ -101,7 +101,7 @@ namespace VoiceActing
                 {
                     for (int i = 0; i < playerData.VoiceActors.Count; i++)
                     {
-                        if (playerData.VoiceActors[i].Name == voiceActorToAdd.Name)
+                        if (playerData.VoiceActors[i].VoiceActorName == voiceActorToAdd.Name)
                         {
                             playerData.VoiceActors[i].Availability = false;
                             playerData.VoiceActors[i].ActorMentalState = VoiceActorState.Absent;
@@ -112,7 +112,7 @@ namespace VoiceActing
                 {
                     for (int i = 0; i < playerData.VoiceActors.Count; i++)
                     {
-                        if (playerData.VoiceActors[i].Name == voiceActorToAdd.Name)
+                        if (playerData.VoiceActors[i].VoiceActorName == voiceActorToAdd.Name)
                         {
                             playerData.VoiceActors[i].Availability = true;
                             playerData.VoiceActors[i].ActorMentalState = VoiceActorState.Fine;
@@ -145,7 +145,7 @@ namespace VoiceActing
                     // On cherche l'acteur dans le monde
                     for (int j = 0; j < playerData.VoiceActors.Count; j++)
                     {
-                        if (newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].Name)
+                        if (newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].VoiceActorName)
                         {
                             newContract.VoiceActors[i] = playerData.VoiceActors[j];
                             break;

@@ -26,6 +26,8 @@ namespace VoiceActing
         private List<VoiceActor> actorsList = new List<VoiceActor>();
         [Header("Data")]
         [SerializeField]
+        private CharacterSpriteDatabase characterSpriteDatabase;
+        [SerializeField]
         private SkillDatabase skillDatabase;
 
         [Header("Prefab")]
@@ -298,7 +300,8 @@ namespace VoiceActing
             {
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
                 buttonsActors[i].gameObject.SetActive(true);
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].SpriteSheets.SpriteIcon);
+                buttonsActors[i].DrawActor(actorsList[i].VoiceActorName, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability,
+                                            characterSpriteDatabase.GetCharacterData(actorsList[i].SpriteSheets).SpriteIcon);
                 buttonsActors[i].SetButtonIndex(i);
                 if (actorsList[i].Availability == false)
                 {
@@ -326,7 +329,6 @@ namespace VoiceActing
             buttonsActors.RemoveAt(buttonsActors.Count - 1);
         }
 
-
         public void DestroyButtonList()
         {
             firstDraw = true;
@@ -342,9 +344,16 @@ namespace VoiceActing
         {
             for (int i = 0; i < actorsList.Count; i++)
             {
-                buttonsActors[i].DrawActor(actorsList[i].Name, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability, actorsList[i].SpriteSheets.SpriteIcon);
+                buttonsActors[i].DrawActor(actorsList[i].VoiceActorName, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability,
+                                           characterSpriteDatabase.GetCharacterData(actorsList[i].SpriteSheets).SpriteIcon);
             }
         }
+
+
+
+
+
+
 
         private void DrawActorStat(VoiceActor actor)
         {
@@ -371,9 +380,11 @@ namespace VoiceActing
                 menuActorsAudition.DrawAuditionPanel(false);
             }
 
-            textMeshSelection.text = actor.Name;
+            StoryCharacterData actorSprite = characterSpriteDatabase.GetCharacterData(actor.SpriteSheets);
+
+            textMeshSelection.text = actor.VoiceActorName;
             actorFaceSelection.enabled = true;
-            actorFaceSelection.sprite = actor.SpriteSheets.SpriteIcon;
+            actorFaceSelection.sprite = actorSprite.SpriteIcon;
             transformActorHPSelection.localScale = new Vector3(1 - (actor.Hp / (float)actor.HpMax), 1, 1);
 
             if (actor.Availability == true)
@@ -403,8 +414,8 @@ namespace VoiceActing
 
 
 
-            statImageActor.sprite = actor.SpriteSheets.SpriteNormal[0];
-            statOutlineImageActor.sprite = actor.SpriteSheets.SpriteNormal[0];
+            statImageActor.sprite = actorSprite.SpriteNormal[0];
+            statOutlineImageActor.sprite = actorSprite.SpriteNormal[0];
             statImageActor.SetNativeSize();
             statOutlineImageActor.SetNativeSize();
 
@@ -412,8 +423,8 @@ namespace VoiceActing
             statTimbre.anchorMax = new Vector2((actor.Timbre.y + 10) / 20f, 1);
             statTimbre.anchoredPosition = Vector3.zero;
 
-            statNameStylishActor.text = actor.Name;
-            statNameActor.text = actor.Name;
+            statNameStylishActor.text = actor.VoiceActorName;
+            statNameActor.text = actor.VoiceActorName;
             statNameActor.transform.eulerAngles = new Vector3(0, 0, Random.Range(-2, 2));
             statNameStylishActor.transform.eulerAngles = statNameActor.transform.eulerAngles;
 
@@ -701,7 +712,7 @@ namespace VoiceActing
             string newActorName = menuActorsAudition.GetAuditionName();
             for(int i = 0; i < actorsList.Count; i++)
             {
-                if(actorsList[i].Name == newActorName)
+                if(actorsList[i].VoiceActorName == newActorName)
                 {
                     indexActorSelected = i;
                     textMeshSelection.text = newActorName;

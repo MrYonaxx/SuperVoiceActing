@@ -299,7 +299,7 @@ namespace VoiceActing
                 textMaxHp.color = healthCriticalColor;
             }
 
-            textActorName.text = actors[indexCurrentActor].Name;
+            textActorName.text = actors[indexCurrentActor].VoiceActorName;
             textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
             textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();
 

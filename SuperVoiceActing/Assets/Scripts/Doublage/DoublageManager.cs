@@ -268,7 +268,6 @@ namespace VoiceActing
             actorsManager.SetActors(contrat.VoiceActors);
             //actorsManager.ActorTakeDamage(0);
             eventManager.SetManagers(skillManager);
-            eventManager.SetCharactersSprites(contrat.VoiceActors);
             skillManager.SetManagers(this, cameraController, contrat.VoiceActors);
             skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
@@ -279,6 +278,7 @@ namespace VoiceActing
             else */
             soundEngineerManager.SetManagers(skillManager, contrat.SoundEngineer);
             toneManager.DrawTone();
+            characterDoublageManager.SetCharactersSprites(contrat.VoiceActors);
             characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
             SetPlayerSettings();
         }
@@ -519,11 +519,11 @@ namespace VoiceActing
                 textIntro.SetActive(true);
                 introText.NewPhrase(" ");
                 yield return new WaitForSeconds(1f);
-                introText.NewPhrase(actorsManager.GetCurrentActor().Name + " ?");
+                introText.NewPhrase(actorsManager.GetCurrentActor().VoiceActorName + " ?");
                 yield return new WaitForSeconds(2f);
-                introText.NewPhrase(actorsManager.GetCurrentActor().Name + " !");
+                introText.NewPhrase(actorsManager.GetCurrentActor().VoiceActorName + " !");
                 yield return new WaitForSeconds(2f);
-                introText.NewPhrase(actorsManager.GetCurrentActor().Name.ToUpper() + " !");
+                introText.NewPhrase(actorsManager.GetCurrentActor().VoiceActorName.ToUpper() + " !");
                 yield return new WaitForSeconds(2f);
                 introText.NewPhrase(" ");
                 yield return new WaitForSeconds(1f);

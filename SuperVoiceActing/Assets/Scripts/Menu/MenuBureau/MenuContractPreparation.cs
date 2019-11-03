@@ -27,6 +27,8 @@ namespace VoiceActing
         PlayerData playerData;
         [SerializeField]
         ImageDictionnary typeContractData;
+        [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
 
         [Header("Info")]
         [SerializeField]
@@ -238,7 +240,8 @@ namespace VoiceActing
                 {
                     listButtonRoles[i].gameObject.SetActive(true);
                     listButtonRoles[i].SetButtonIndex(i);
-                    listButtonRoles[i].DrawButton(currentContract.Characters[i], currentContract.VoiceActors[i]);
+                    listButtonRoles[i].DrawButton(currentContract.Characters[i], currentContract.VoiceActors[i], 
+                                                  characterSpriteDatabase.GetCharacterData(currentContract.VoiceActors[i].SpriteSheets));
                     listButtonRoles[i].UnselectButton();
                 }
                 else
@@ -326,7 +329,7 @@ namespace VoiceActing
             //panelActor.SetActive(hasActor);
             if (hasActor == true)
             {
-                textActorName.text = currentContract.VoiceActors[indexSelected].Name;
+                textActorName.text = currentContract.VoiceActors[indexSelected].VoiceActorName;
                 textActorFan.text = currentContract.VoiceActors[indexSelected].Fan.ToString();
                 textActorCost.text = currentContract.VoiceActors[indexSelected].Price.ToString();
                 textActorCadence.text = "-" + (currentContract.VoiceActors[indexSelected].RoleDefense * 5) + " %";
@@ -338,7 +341,7 @@ namespace VoiceActing
                 textActorPVMax.text = currentContract.VoiceActors[indexSelected].HpMax.ToString();
                 transformGaugeHP.localScale = new Vector3((float)currentContract.VoiceActors[indexSelected].Hp / currentContract.VoiceActors[indexSelected].HpMax, 1, 1);
                 imageActorSprite.enabled = true;
-                imageActorSprite.sprite = currentContract.VoiceActors[indexSelected].SpriteSheets.SpriteNormal[0];
+                imageActorSprite.sprite = characterSpriteDatabase.GetCharacterData(currentContract.VoiceActors[indexSelected].SpriteSheets).SpriteNormal[0];
                 imageActorSprite.SetNativeSize();
             }
             else
@@ -467,7 +470,7 @@ namespace VoiceActing
             currentContract.VoiceActors[indexSelected] = actor;
             DrawRoleInfo();
             animatorFeedbackSpriteAudition.SetTrigger("Feedback");
-            listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor);
+            listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor, characterSpriteDatabase.GetCharacterData(actor.SpriteSheets).SpriteIcon);
             textContractTotalCost.text = "-" + GetTotalCost().ToString();
             CheckButtonInSession();
         }

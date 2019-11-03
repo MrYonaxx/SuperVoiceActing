@@ -87,10 +87,10 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        //private string name;
-        public string Name
+        private string voiceActorName;
+        public string VoiceActorName
         {
-            get { return spriteSheets.GetName(); }
+            get { return voiceActorName; }
         }
 
 
@@ -232,8 +232,8 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private StoryCharacterData spriteSheets;
-        public StoryCharacterData SpriteSheets
+        private string spriteSheets;
+        public string SpriteSheets
         {
             get { return spriteSheets; }
             set { spriteSheets = value; }
@@ -339,6 +339,7 @@ namespace VoiceActing
         // Rappel : les classes ne sont pas dupliqué par défaut, à la place les deux variable auront la meme reference donc bug potentiel
         public VoiceActor(VoiceActorData actorData)
         {
+            voiceActorName = actorData.SpriteSheets.GetName();
             isNull = false;
             level = actorData.Level;
             fanGain = 0;
@@ -358,7 +359,7 @@ namespace VoiceActing
 
 
             skillOffset = actorData.SkillOffset;
-            spriteSheets = actorData.SpriteSheets;
+            spriteSheets = actorData.SpriteSheets.name;
 
             statistique = new EmotionStat(actorData.Statistique);
             statModifier = new EmotionStat();

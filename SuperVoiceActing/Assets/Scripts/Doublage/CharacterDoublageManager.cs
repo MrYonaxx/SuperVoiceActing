@@ -55,6 +55,22 @@ namespace VoiceActing
 
         #endregion
 
+
+
+
+
+        public void SetCharactersSprites(List<VoiceActor> actorsContract)
+        {
+            for (int i = 0; i < actorsContract.Count; i++)
+            {
+                if (actorsContract[i] != null)
+                {
+                    characters[i].SetStoryCharacterData(characterSpriteDatabase.GetCharacterData(actorsContract[i].SpriteSheets));
+                    characters[i].gameObject.SetActive(true);
+                }
+            }
+        }
+
         public CharacterDialogueController GetCharacter(int indexCharacter)
         {
             return characters[indexCharacter];

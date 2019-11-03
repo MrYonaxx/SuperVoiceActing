@@ -22,6 +22,8 @@ namespace VoiceActing
         \* ======================================== */
         [SerializeField]
         PlayerData playerData;
+        [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
 
         [SerializeField]
         Animator animatorAudition;
@@ -94,14 +96,14 @@ namespace VoiceActing
 
         public string GetAuditionName()
         {
-            return va.Name;
+            return va.VoiceActorName;
         }
 
 
         public void Audition(Role role)
         {
             va = playerData.GachaVoiceActors(role);
-            actorsSprite.sprite = va.SpriteSheets.SpriteNormal[0];
+            actorsSprite.sprite = characterSpriteDatabase.GetCharacterData(va.SpriteSheets).SpriteNormal[0];
             actorsSprite.SetNativeSize();
         }
 

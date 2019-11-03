@@ -79,13 +79,13 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawButton(Role role, VoiceActor voiceActor)
+        public void DrawButton(Role role, VoiceActor voiceActor, StoryCharacterData spriteIcon)
         {
             buttonRole.color = roleUnlocked;
             textRoleName.text = role.Name;
             if(voiceActor.IsNull != true)
             {
-                DrawActor(role, voiceActor);
+                DrawActor(role, voiceActor, spriteIcon.SpriteIcon);
             }
             else
             {
@@ -94,7 +94,7 @@ namespace VoiceActing
             }
         }
 
-        public void DrawActor(Role role, VoiceActor voiceActor)
+        public void DrawActor(Role role, VoiceActor voiceActor, Sprite spriteIcon)
         {
             if(role.CharacterLock != null)
             {
@@ -102,11 +102,11 @@ namespace VoiceActing
             }
             panelNoActor.SetActive(false);
             panelActor.SetActive(true);
-            textActorName.text = voiceActor.Name;
+            textActorName.text = voiceActor.VoiceActorName;
             textActorLevel.text = voiceActor.Level.ToString();
             textActorHP.text = voiceActor.Hp.ToString();
             textActorCost.text = (role.Line * voiceActor.Price).ToString();
-            imageActorFace.sprite = voiceActor.SpriteSheets.SpriteIcon;
+            imageActorFace.sprite = spriteIcon;
         }
 
         public void SelectButton()

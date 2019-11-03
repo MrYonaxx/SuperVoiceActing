@@ -129,8 +129,8 @@ namespace VoiceActing
             statTimbre.anchorMax = new Vector2((actor.Timbre.y + 10) / 20f, 1);
             statTimbre.anchoredPosition = Vector3.zero;
 
-            statNameStylishActor.text = actor.Name;
-            statNameActor.text = actor.Name;
+            statNameStylishActor.text = actor.VoiceActorName;
+            statNameActor.text = actor.VoiceActorName;
             statFanActor.text = actor.Fan.ToString();
 
             statCurrentHpActor.text = actor.Hp.ToString();

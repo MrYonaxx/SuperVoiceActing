@@ -21,6 +21,9 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
+
+        [SerializeField]
         Animator animatorEnd;
 
         [SerializeField]
@@ -321,8 +324,8 @@ namespace VoiceActing
             {
                 if(i < contract.VoiceActors.Count)
                 {
-                    imageActors[i].gameObject.SetActive(true);
-                    imageActors[i].sprite = contract.VoiceActors[i].SpriteSheets.SpriteIcon;
+                    imageActors[i].gameObject.SetActive(true);                 
+                    imageActors[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[i].SpriteSheets).SpriteIcon;
                     textActors[i].text = (contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance) + " / " + contract.Characters[i].RoleBestScore;
                 }
                 else

@@ -21,6 +21,10 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
+
+
+        [SerializeField]
         ImageDictionnary emotionDictionnary;
         [SerializeField]
         Animator animatorRecap;
@@ -94,8 +98,8 @@ namespace VoiceActing
             {
                 panelContractCharacters[i].gameObject.SetActive(true);
                 panelContractCharacters[i].DrawPanel(contract.Characters[i]);
-                voiceActorsFace[i].gameObject.SetActive(true);
-                voiceActorsFace[i].sprite = contract.VoiceActors[i].SpriteSheets.SpriteIcon;
+                voiceActorsFace[i].gameObject.SetActive(true);               
+                voiceActorsFace[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[i].SpriteSheets).SpriteIcon;
             }
             DrawSessionLines(contract, indexPhrase);
             MoveScrollList(9999);

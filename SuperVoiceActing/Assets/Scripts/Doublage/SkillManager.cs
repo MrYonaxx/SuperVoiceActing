@@ -60,6 +60,8 @@ namespace VoiceActing
 
         [Header("Managers")]
         [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
+        [SerializeField]
         SkillDatabase skillDatabase;
 
         [Header("Text")]
@@ -239,7 +241,7 @@ namespace VoiceActing
 
         public void SetSkillText(VoiceActor va, SkillActorData skill)
         {
-            textMeshActorName.text = va.Name;
+            textMeshActorName.text = va.VoiceActorName;
             textMeshSkillName.text = skill.SkillName;
             textMeshSkillDesc.text = skill.DescriptionBattle;
             animationPotentiel.SetBool("isMalus", skill.IsMalus);
@@ -334,12 +336,12 @@ namespace VoiceActing
                 if (listSkillWindow.Count <= skillWindowIndex)
                 {
                     listSkillWindow.Add(Instantiate(minorSkillPrefab, minorSkillPanel));
-                    listSkillWindow[listSkillWindow.Count - 1].SetTransform(listSkillWindow.Count - 1);
-                    listSkillWindow[listSkillWindow.Count - 1].DrawSkill(actor.SpriteSheets.SpriteIcon, skill.SkillName, skill.DescriptionBattle);
+                    listSkillWindow[listSkillWindow.Count - 1].SetTransform(listSkillWindow.Count - 1);                   
+                    listSkillWindow[listSkillWindow.Count - 1].DrawSkill(characterSpriteDatabase.GetCharacterData(actor.SpriteSheets).SpriteIcon, skill.SkillName, skill.DescriptionBattle);
                 }
                 else
                 {
-                    listSkillWindow[skillWindowIndex].DrawSkill(actor.SpriteSheets.SpriteIcon, skill.SkillName, skill.DescriptionBattle);
+                    listSkillWindow[skillWindowIndex].DrawSkill(characterSpriteDatabase.GetCharacterData(actor.SpriteSheets).SpriteIcon, skill.SkillName, skill.DescriptionBattle);
                 }
                 skillWindowIndex += 1;
             }

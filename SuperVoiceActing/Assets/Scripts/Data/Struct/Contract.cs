@@ -502,7 +502,7 @@ namespace VoiceActing
                     // On cherche l'acteur dans le monde
                     for (int j = 0; j < voicesActorsPlayer.Count; j++)
                     {
-                        if (Characters[i].CharacterLock.Name == voicesActorsPlayer[j].Name)
+                        if (Characters[i].CharacterLock.Name == voicesActorsPlayer[j].VoiceActorName)
                         {
                             VoiceActors[i] = voicesActorsPlayer[j];
                             continue;

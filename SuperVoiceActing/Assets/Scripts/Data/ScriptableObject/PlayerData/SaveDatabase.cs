@@ -91,8 +91,8 @@ namespace VoiceActing
             set { saveMoney = value; }
         }
         [SerializeField]
-        Sprite saveBestVA;
-        public Sprite SaveBestVA
+        string saveBestVA;
+        public string SaveBestVA
         {
             get { return saveBestVA; }
             set { saveBestVA = value; }
