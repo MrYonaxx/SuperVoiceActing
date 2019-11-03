@@ -257,8 +257,8 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private SkillActorData[] potentials;
-        public SkillActorData[] Potentials
+        private string[] potentials;
+        public string[] Potentials
         {
             get { return potentials; }
             set { potentials = value; }
@@ -350,10 +350,10 @@ namespace VoiceActing
             roleDefense = 0;
             timbre = actorData.Timbre;
 
-            potentials = new SkillActorData[actorData.Potentials.Length];
+            potentials = new string[actorData.Potentials.Length];
             for(int i = 0; i < actorData.Potentials.Length; i++)
             {
-                potentials[i] = actorData.Potentials[i];
+                potentials[i] = actorData.Potentials[i].name;
             }
 
 

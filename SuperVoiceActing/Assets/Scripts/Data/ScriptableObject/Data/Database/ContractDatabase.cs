@@ -12,33 +12,31 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    public class ContractDatabase: MonoBehaviour
+    [CreateAssetMenu(fileName = "ContractDatabase", menuName = "Database/ContractDatabase", order = 1)]
+    public class ContractDatabase: ScriptableObject
     {
-        #region Attributes 
+        //Get tout les ContractData de l'onglet scriptableObject
+        //[AssetList(Path = "/ScriptableObject/")]
 
-        /* ======================================== *\
-         *               ATTRIBUTES                 *
-        \* ======================================== */
+        // Pour ajouter un bouton + sur le coté
+        //[ListDrawerSettings(HideAddButton = true, OnTitleBarGUI = "DrawTitleBarGUI")]
 
-
-        #endregion
-
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-
-        #endregion
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
+        //[ValueDropdown("myValues")]
 
 
-        #endregion
+
+
+        [AssetList(AutoPopulate = true, Path = "/ScriptableObject/Contrat/Francais")]
+        [SerializeField]
+        List<ContractData> contractDatabase;
+
+
+
+
+        public ContractData GetContractData(string contractName)
+        {
+            return contractDatabase.Find(x => x.name == contractName);
+        }
 
     } 
 

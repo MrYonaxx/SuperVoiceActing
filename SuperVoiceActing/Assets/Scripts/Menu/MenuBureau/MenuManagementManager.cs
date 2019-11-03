@@ -34,6 +34,8 @@ namespace VoiceActing
 
         [Header("Managers")]
         [SerializeField]
+        private MenuManagementContract managementContract;
+        [SerializeField]
         private MenuContratManager contractManager;
         [SerializeField]
         private MenuContractInfo infoManager;
@@ -147,7 +149,11 @@ namespace VoiceActing
             gameTimelineData.CheckContractTimeline(playerData);
             gameTimelineData.CheckEventsTimeline(playerData);
             playerData.VoiceActorWork();
-            playerData.GachaContract();
+
+            managementContract.GachaContract(playerData);
+            managementContract.ContractNextWeek(playerData);
+            managementContract.CheckContractCooldown(playerData);
+
             playerData.SetBestActor();
         }
 

@@ -114,16 +114,6 @@ namespace VoiceActing
     [CreateAssetMenu(fileName = "TimelineEventData", menuName = "TimelineEvents", order = 1)]
     public class GameTimelineData : ScriptableObject
 	{
-        [TabGroup("Contract")]
-        [Space]
-        [Title("Contrat ajoutés directement aux contrats disponibles")]
-        [SerializeField]
-        private GameTimelineContractBox[] contractTimeline;
-        public GameTimelineContractBox[] ContractTimeline
-        {
-            get { return contractTimeline; }
-        }
-
 
         [TabGroup("RandomContract")]
         [Space]
@@ -149,10 +139,6 @@ namespace VoiceActing
         [Button]
         private void SetTitles()
         {
-            for (int i = 0; i < contractTimeline.Length; i++)
-            {
-                contractTimeline[i].SetTitle(i);
-            }
 
             for (int i = 0; i < contractRandomTimeline.Length; i++)
             {
@@ -174,14 +160,9 @@ namespace VoiceActing
 
         public void CheckContractTimeline(PlayerData playerData)
         {
-            for (int i = 0; i < ContractTimeline[playerData.Date.week].contractsData.addContracts.Length; i++)
-            {
-                playerData.ContractAvailable.Add(new Contract(ContractTimeline[playerData.Date.week].contractsData.addContracts[i]));
-            }
-
             for (int i = 0; i < ContractRandomTimeline[playerData.Date.week].contractsData.addContracts.Length; i++)
             {
-                playerData.ContractGacha.Add(ContractRandomTimeline[playerData.Date.week].contractsData.addContracts[i]);
+                playerData.ContractGacha.Add(ContractRandomTimeline[playerData.Date.week].contractsData.addContracts[i].name);
             }
 
         }

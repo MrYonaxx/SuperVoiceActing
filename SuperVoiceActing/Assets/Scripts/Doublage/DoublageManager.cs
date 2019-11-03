@@ -269,7 +269,7 @@ namespace VoiceActing
             //actorsManager.ActorTakeDamage(0);
             eventManager.SetManagers(skillManager);
             eventManager.SetCharactersSprites(contrat.VoiceActors);
-            skillManager.SetManagers(this, cameraController);
+            skillManager.SetManagers(this, cameraController, contrat.VoiceActors);
             skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);

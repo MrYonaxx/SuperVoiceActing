@@ -58,6 +58,10 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Header("Managers")]
+        [SerializeField]
+        SkillDatabase skillDatabase;
+
         [Header("Text")]
         [SerializeField]
         TextMeshProUGUI textMeshActorName;
@@ -71,10 +75,10 @@ namespace VoiceActing
         TextAppearManager textToStop;
         [SerializeField]
         Transform panelDoubleurDefault;
-        //[SerializeField]
-        CharacterDialogueController doubleur;
         [SerializeField]
         Transform panelDoubleurPotential;
+
+        CharacterDialogueController doubleur;
 
 
         [SerializeField]
@@ -91,6 +95,7 @@ namespace VoiceActing
         [SerializeField]
         RectTransform minorSkillPanel;
 
+        List<SkillActorData> skillsActors = new List<SkillActorData>();
         List<SkillActorData> skillsToActivate = new List<SkillActorData>();
 
         List<MinorSkillWindow> listSkillWindow = new List<MinorSkillWindow>();
@@ -144,11 +149,12 @@ namespace VoiceActing
             return false;
         }
 
-        public void SetManagers(DoublageManager dm, CameraController cC)
+        public void SetManagers(DoublageManager dm, CameraController cC, List<VoiceActor> voiceActors)
         {
             doublageManager = dm;
             cameraController = cC;
             initialSkillPosition = panelDoubleurPotential.localPosition;
+            SetSkills(voiceActors);
         }
 
 
@@ -158,10 +164,16 @@ namespace VoiceActing
             doubleur = character;
         }
 
-        /*public void SetCurrentCharacterController(CharacterDialogueController character)
+        private void SetSkills(List<VoiceActor> voiceActors)
         {
-            doubleur = character;
-        }*/
+            for (int k = 0; k < voiceActors.Count; k++)
+            {
+                for (int i = 0; i < voiceActors[k].Potentials.Length; i++)
+                {
+                    skillsActors.Add((SkillActorData)skillDatabase.GetSkillData(voiceActors[k].Potentials[i]));
+                }
+            }
+        }
 
 
 
@@ -175,6 +187,7 @@ namespace VoiceActing
             bool next = false;
             bool currentMainActor = false;
             skillWindowIndex = 0;
+            int n = 0;
             for (int k = 0; k < voiceActors.Count; k++)
             {
                 if (voiceActors[k] == currentVoiceActor)
@@ -185,7 +198,10 @@ namespace VoiceActing
                 for (int i = 0; i < voiceActors[k].Potentials.Length; i++)
                 {
                     next = false;
-                    SkillActorData skill = voiceActors[k].Potentials[i];
+                    // Cette partie est dangereuse et peut potentiellement provoquer des bugs à surveiller
+                    SkillActorData skill = skillsActors[n];
+                    n+=1;
+                    //
                     if (currentMainActor == false && skill.OnlyWhenMain == true)
                         continue;
                     for (int j = 0; j < phases.Count; j++)
@@ -216,6 +232,7 @@ namespace VoiceActing
                             }
                         }
                     }
+                    //
                 }
             }
         }
@@ -237,10 +254,6 @@ namespace VoiceActing
             {
                 for (int i = 0; i < emotions.Length; i++)
                 {
-                    /*if (emotions[i] == null)
-                    {
-                        continue;
-                    }*/
                     attackCheck.Add((int)emotions[i], -1);
                 }
             }

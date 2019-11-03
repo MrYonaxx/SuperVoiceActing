@@ -24,7 +24,9 @@ namespace VoiceActing
         // Pour les tests
 
         private List<VoiceActor> actorsList = new List<VoiceActor>();
-
+        [Header("Data")]
+        [SerializeField]
+        private SkillDatabase skillDatabase;
 
         [Header("Prefab")]
         [SerializeField]
@@ -445,13 +447,16 @@ namespace VoiceActing
             for (int i = 0; i < statSkillsActor.Length; i++)
             {
                 if (i < actor.Potentials.Length)
-                    statSkillsActor[i].text = actor.Potentials[i].SkillName;
+                {
+                    SkillData skill = skillDatabase.GetSkillData(actor.Potentials[i]);
+                    statSkillsActor[i].text = skill.SkillName;
+                }
                 else
                     statSkillsActor[i].text = " ";
             }
 
-            if (actor.Potentials.Length != 0)
-                statSkillActorDescription.text = actor.Potentials[0].Description;
+            /*if (actor.Potentials.Length != 0)
+                statSkillActorDescription.text = actor.Potentials[0].Description;*/
 
             if (firstDraw == true)
                 firstDraw = false;

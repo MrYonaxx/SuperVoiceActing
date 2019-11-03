@@ -75,10 +75,10 @@ namespace VoiceActing
     [System.Serializable]
     public class ContractCooldown
     {
-        public ContractData contract;
+        public string contract;
         public int cooldown;
 
-        public ContractCooldown(ContractData cd, int c)
+        public ContractCooldown(string cd, int c)
         {
             contract = cd;
             cooldown = c;
@@ -215,17 +215,15 @@ namespace VoiceActing
 
 
 
-        //!\ (N'est pas sauvegardable)
-        // Contrat Gacha ( n'est pas sauvegardé)
+        // Contrat Gacha
         [SerializeField]
-        private List<ContractData> contractGacha;
-        public List<ContractData> ContractGacha
+        private List<string> contractGacha;
+        public List<string> ContractGacha
         {
             get { return contractGacha; }
             set { contractGacha = value; }
         }
 
-        //!\ (N'est pas sauvegardable)
         // Contrat Gacha qui sont en standby et qui ne peuvent pas être tiré
         [SerializeField]
         private List<ContractCooldown> contractGachaCooldown;
@@ -562,24 +560,12 @@ namespace VoiceActing
             for (int i = 0; i < initialPlayerData.VoiceActorsDebug.Count; i++)
             {
                 voiceActors.Add(new VoiceActor(initialPlayerData.VoiceActorsDebug[i]));
-                // Debug
-                while(voiceActors[voiceActors.Count-1].Level != 20)
-                {
-                    voiceActors[voiceActors.Count - 1].LevelUp();
-                }
-                // Debug
             }
 
             voiceActorsGacha = new List<VoiceActor>(initialPlayerData.VoiceActorsGachaDebug.Count);
             for (int i = 0; i < initialPlayerData.VoiceActorsGachaDebug.Count; i++)
             {
                 voiceActorsGacha.Add(new VoiceActor(initialPlayerData.VoiceActorsGachaDebug[i]));
-                // Debug
-                while (voiceActorsGacha[voiceActorsGacha.Count - 1].Level != 20)
-                {
-                    voiceActorsGacha[voiceActorsGacha.Count - 1].LevelUp();
-                }
-                // Debug
             }
 
             soundEngineers = new List<SoundEngineer>(initialPlayerData.SoundEngineerDebug.Count);
@@ -626,7 +612,7 @@ namespace VoiceActing
 
 
 
-            contractGacha = new List<ContractData>();
+            contractGacha = new List<string>();
             contractGachaCooldown = new List<ContractCooldown>();
             nextStoryEvents = new List<StoryEventData>();
             nextStoryEventsStartWeek = new List<StoryEventData>();
@@ -722,46 +708,9 @@ namespace VoiceActing
             if (calendar.CheckMonth(date.week) == true)
                 PayMaintenance();
             calendar.CheckSeason(season, date.week);
-            /*date.week += 1;
-            if (date.week > 52)
-            {
-                date.week = 1;
-                date.month = 1;
-                date.year += 1;
-            }*/
-            //CheckMonth();
-            //CheckSeason();
-
-            ContractNextWeek();
-            CheckContractCooldown();
         }
 
-        public void ContractNextWeek()
-        {
-            for (int i = 0; i < contractAccepted.Count; i++)
-            {
-                if (contractAccepted[i] != null)
-                {
-                    contractAccepted[i].WeekRemaining -= 1;
-                    if(contractAccepted[i].CurrentLine == contractAccepted[i].TotalLine)
-                    {
-                        continue;
-                    }
-                    if (contractAccepted[i].WeekRemaining <= 0)
-                    {
-                        contractAccepted.RemoveAt(i);
-                    }
-                }
-            }
-            for (int i = 0; i < contractAvailable.Count; i++)
-            {
-                contractAvailable[i].WeekRemaining -= 1;
-                if (contractAvailable[i].WeekRemaining <= 0)
-                {
-                    contractAvailable.RemoveAt(i);
-                }
-            }
-        }
+
 
         public void VoiceActorWork()
         {
@@ -772,53 +721,7 @@ namespace VoiceActing
         }
 
 
-        public void GachaContract()
-        {
-            int nbContract = 0;
-            if (contractAvailable.Count == 0)
-            {
-                nbContract = Random.Range(2, 4);
-            }
-            else if (contractAvailable.Count <= 3)
-            {
-                nbContract = Random.Range(1, 4);
-            }
-            else if (contractAvailable.Count <= 6)
-            {
-                nbContract = Random.Range(0, 3);
-            }
-            else if (contractAvailable.Count > 6)
-            {
-                nbContract = Random.Range(0, 2);
-            }
 
-
-            if (contractGacha.Count != 0)
-            {
-                nbContract = Mathf.Clamp(nbContract, 0, contractGacha.Count);
-                for (int i = 0; i < nbContract; i++)
-                {
-                    int rand = Random.Range(0, contractGacha.Count);
-                    Contract contractSelected = new Contract(contractGacha[rand]);
-                    contractAvailable.Add(contractSelected);
-                    contractGachaCooldown.Add(new ContractCooldown(contractGacha[rand], contractGacha[rand].WeekMax));
-                    contractGacha.Remove(contractGacha[rand]);
-                }
-            }
-        }
-
-        public void CheckContractCooldown()
-        {
-            for (int i = 0; i < contractGachaCooldown.Count; i++)
-            {
-                contractGachaCooldown[i].cooldown -= 1;
-                if (contractGachaCooldown[i].cooldown <= 0)
-                {
-                    contractGacha.Add(contractGachaCooldown[i].contract);
-                    contractGachaCooldown.RemoveAt(i);
-                }
-            }
-        }
 
 
 
@@ -969,6 +872,10 @@ namespace VoiceActing
         }
 
 
+
+
+
+
         public void SetBestActor()
         {
             if(currentContract.IsNull == false)
@@ -980,6 +887,9 @@ namespace VoiceActing
             currentChapter = newChapter;
             currentObjective = newObjective;
         }
+
+
+
 
 
 
