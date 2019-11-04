@@ -14,61 +14,517 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   language: 0
   experienceCurve: {fileID: 11400000, guid: 5e5132f9a7a29934db6bfca9b9481e2e, type: 2}
-  springDate: 13
-  summerDate: 26
-  autumnDate: 39
-  winterDate: 52
-  monthName:
-  - Janvier
-  - "F\xE9vrier"
-  - Mars
-  - Avril
-  - Mai
-  - Juin
-  - Juillet
-  - Aout
-  - Septembre
-  - Octobre
-  - Novembre
-  - Decembre
-  monthDate: 05000000090000000d00000012000000160000001a0000001f00000023000000270000002c0000003000000035000000
   equipementCategories: 0000000001000000020000000300000003000000
   playerName: Louis
   studioName: Reverie
   currentContract:
-    name: 
-    description: 
-    contractType: 0
-    level: 0
-    money: 0
+    name: Princess Muffin S1 EP01-05
+    description: "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de
+      nouveaux alli\xE9s pour affronter les forces de la religieuse. Cependant cette
+      derni\xE8re semble avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer
+      la ville, pendant que Charlotte est en rendez-vous amoureux avec Mathieu.\nC'est
+      donc au tour des nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
+    contractType: 1
+    level: 3
+    money: 10000
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 0
-    currentLine: 0
-    totalLine: 0
+    weekRemaining: 9
+    currentLine: 3
+    totalLine: 10
     currentMixing: 0
-    totalMixing: 0
+    totalMixing: 21
     score: 0
     highScore: 0
     soundEngineer:
-      engineerName: 
-      level: 0
+      engineerName: Zaques
+      level: 1
       experience: 0
       salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
+      experienceCurve: {fileID: 11400000, guid: c5c1392fe5ebaa4478a43506558835b9,
+        type: 2}
+      artificeGauge: 10
+      mixingPower: 10
+      skills:
+      - {fileID: 11400000, guid: f6a80f3dbec333342afd2573abd21a0a, type: 2}
+      - {fileID: 11400000, guid: c1a6727d4dbb75148a46ce6ac59fdfd9, type: 2}
+      - {fileID: 11400000, guid: 41f4df423b6d6c645b205365fe6a500b, type: 2}
+      - {fileID: 11400000, guid: 8d0e70ac38e4ee748a713affd2acbc1c, type: 2}
+      - {fileID: 11400000, guid: 0eb8b1e693761c1468ae479b4dbacd56, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      spritesSheets: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
       formationSkillID: 0
       formationSkill: {fileID: 0}
       formationSkillTime: 0
       formationSkillTotalTime: 0
-      isNull: 1
-    characters: []
-    voiceActors: []
-    textData: []
-    emotionsUsed: []
+      isNull: 0
+    characters:
+    - name: Opera
+      roleSprite: {fileID: 0}
+      line: 240
+      fan: 0
+      attack: 13
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -10, y: 2}
+      characterStat:
+        neutral: 4
+        joy: 0
+        sadness: 12
+        disgust: 8
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 15
+        trust: 0
+      bestStat: 15
+      secondBestStat: 12
+      bestStatEmotion: 7
+      secondBestStatEmotion: 3
+      roleScore: 0
+      rolePerformance: 281
+      roleBestScore: 300
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    - name: Nougat
+      roleSprite: {fileID: 0}
+      line: 114
+      fan: 0
+      attack: 13
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -7, y: 2}
+      characterStat:
+        neutral: 4
+        joy: 5
+        sadness: 10
+        disgust: 0
+        anger: 20
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      bestStat: 20
+      secondBestStat: 10
+      bestStatEmotion: 4
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    - name: Praline
+      roleSprite: {fileID: 0}
+      line: 140
+      fan: 0
+      attack: 8
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -8, y: 0}
+      characterStat:
+        neutral: 3
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 7
+        sweetness: 5
+        fear: 0
+        trust: 15
+      bestStat: 15
+      secondBestStat: 7
+      bestStatEmotion: 8
+      secondBestStatEmotion: 6
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: "Dor\xE9mi"
+      fan: 0
+      fanGain: 0
+      price: 6
+      level: 1
+      hp: 0
+      hpMax: 200
+      timbre: {x: -7, y: 3}
+      statistique:
+        neutral: 5
+        joy: 8
+        sadness: 10
+        disgust: 5
+        anger: 2
+        surprise: 3
+        sweetness: 8
+        fear: 1
+        trust: 10
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 113
+        joy: 158
+        sadness: 151
+        disgust: 105
+        anger: 58
+        surprise: 65
+        sweetness: 155
+        fear: 66
+        trust: 152
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0.14, y: 0.12, z: 0}
+      spriteSheets: Character-Doremi
+      damageVariance: 2
+      roleDefense: 0
+      potentials:
+      - SkillConfianceAveugle
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 1
+      isNull: 0
+    - voiceActorName: Moine-Maeda
+      fan: 1
+      fanGain: 0
+      price: 6
+      level: 1
+      hp: 260
+      hpMax: 260
+      timbre: {x: -2, y: 4}
+      statistique:
+        neutral: 5
+        joy: 4
+        sadness: 5
+        disgust: 7
+        anger: 5
+        surprise: 6
+        sweetness: 2
+        fear: 9
+        trust: 2
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 111
+        joy: 56
+        sadness: 101
+        disgust: 137
+        anger: 61
+        surprise: 79
+        sweetness: 100
+        fear: 181
+        trust: 175
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0.07, y: 0.12, z: 0}
+      spriteSheets: Character-Moine-Maeda
+      damageVariance: 0
+      roleDefense: 0
+      potentials:
+      - SkillTerreurVivifiante
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 1
+      isNull: 0
+    - voiceActorName: "Dor\xE9mi"
+      fan: 0
+      fanGain: 0
+      price: 6
+      level: 1
+      hp: 0
+      hpMax: 200
+      timbre: {x: -7, y: 3}
+      statistique:
+        neutral: 5
+        joy: 8
+        sadness: 10
+        disgust: 5
+        anger: 2
+        surprise: 3
+        sweetness: 8
+        fear: 1
+        trust: 10
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 113
+        joy: 158
+        sadness: 151
+        disgust: 105
+        anger: 58
+        surprise: 65
+        sweetness: 155
+        fear: 66
+        trust: 152
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0.14, y: 0.12, z: 0}
+      spriteSheets: Character-Doremi
+      damageVariance: 2
+      roleDefense: 0
+      potentials:
+      - SkillConfianceAveugle
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 1
+      isNull: 0
+    textData:
+    - interlocuteur: 0
+      hpMax: 20
+      text: "Bravo les filles ! On a gagn\xE9 !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+    - interlocuteur: 0
+      hpMax: 20
+      text: Qu'est-ce que... !?
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: -100
+        anger: 50
+        surprise: 100
+        sweetness: -100
+        fear: 100
+        trust: -100
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 35
+      text: Qu'est-ce que c'est que ce monstre !?
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 0
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - interlocuteur: 2
+      hpMax: 35
+      text: "Il poss\xE8de une quantit\xE9 d'\xE9nergie ph\xE9nom\xE9nale !"
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 0
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - interlocuteur: 1
+      hpMax: 40
+      text: "Prends \xE7a !"
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: -90
+        disgust: -90
+        anger: 100
+        surprise: 50
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - interlocuteur: 1
+      hpMax: 45
+      text: "Quoi ? \xE7a n'a eu aucun effet !"
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 50
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 4
+    - interlocuteur: 0
+      hpMax: 45
+      text: On ne peut pas le vaincre ! On va tous y passer !
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: 0
+        anger: 100
+        surprise: 0
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 8
+    - interlocuteur: 2
+      hpMax: 50
+      text: "N'abandonne pas ! Si on ne l'arr\xEAte pas, il va attaquer la ville."
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: -90
+        disgust: -90
+        anger: 50
+        surprise: -90
+        sweetness: 0
+        fear: 50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - interlocuteur: 2
+      hpMax: 50
+      text: "C'est notre devoir de la prot\xE9ger !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: -90
+        fear: 0
+        trust: 120
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 50
+      text: Attention Nougat !
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: -90
+        anger: 100
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 1
+    emotionsUsed:
+    - emotions: 010000000000000000000000
+    - emotions: 040000000700000000000000
+    - emotions: 050000000700000000000000
     eventData: []
     expGain: 0
     expBonus: 0
@@ -79,10 +535,530 @@ MonoBehaviour:
     storyEventWhenEnd: {fileID: 0}
     storyEventWhenGameOver: {fileID: 0}
     sessionLock: 0
-    battleTheme: {fileID: 0}
+    battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
     victoryTheme: {fileID: 0}
-    isNull: 1
-  contractAccepted: []
+    isNull: 0
+  contractAccepted:
+  - name: Princess Muffin S1 EP01-05
+    description: "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de
+      nouveaux alli\xE9s pour affronter les forces de la religieuse. Cependant cette
+      derni\xE8re semble avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer
+      la ville, pendant que Charlotte est en rendez-vous amoureux avec Mathieu.\nC'est
+      donc au tour des nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
+    contractType: 1
+    level: 3
+    money: 10000
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 9
+    currentLine: 3
+    totalLine: 10
+    currentMixing: 0
+    totalMixing: 21
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: Zaques
+      level: 1
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 11400000, guid: c5c1392fe5ebaa4478a43506558835b9,
+        type: 2}
+      artificeGauge: 10
+      mixingPower: 10
+      skills:
+      - {fileID: 11400000, guid: f6a80f3dbec333342afd2573abd21a0a, type: 2}
+      - {fileID: 11400000, guid: c1a6727d4dbb75148a46ce6ac59fdfd9, type: 2}
+      - {fileID: 11400000, guid: 41f4df423b6d6c645b205365fe6a500b, type: 2}
+      - {fileID: 11400000, guid: 8d0e70ac38e4ee748a713affd2acbc1c, type: 2}
+      - {fileID: 11400000, guid: 0eb8b1e693761c1468ae479b4dbacd56, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      spritesSheets: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 0
+    characters:
+    - name: Opera
+      roleSprite: {fileID: 0}
+      line: 240
+      fan: 0
+      attack: 13
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -10, y: 2}
+      characterStat:
+        neutral: 4
+        joy: 0
+        sadness: 12
+        disgust: 8
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 15
+        trust: 0
+      bestStat: 15
+      secondBestStat: 12
+      bestStatEmotion: 7
+      secondBestStatEmotion: 3
+      roleScore: 0
+      rolePerformance: 281
+      roleBestScore: 300
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    - name: Nougat
+      roleSprite: {fileID: 0}
+      line: 114
+      fan: 0
+      attack: 13
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -7, y: 2}
+      characterStat:
+        neutral: 4
+        joy: 5
+        sadness: 10
+        disgust: 0
+        anger: 20
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      bestStat: 20
+      secondBestStat: 10
+      bestStatEmotion: 4
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    - name: Praline
+      roleSprite: {fileID: 0}
+      line: 140
+      fan: 0
+      attack: 8
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -8, y: 0}
+      characterStat:
+        neutral: 3
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 7
+        sweetness: 5
+        fear: 0
+        trust: 15
+      bestStat: 15
+      secondBestStat: 7
+      bestStatEmotion: 8
+      secondBestStatEmotion: 6
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: "Dor\xE9mi"
+      fan: 0
+      fanGain: 0
+      price: 6
+      level: 1
+      hp: 0
+      hpMax: 200
+      timbre: {x: -7, y: 3}
+      statistique:
+        neutral: 5
+        joy: 8
+        sadness: 10
+        disgust: 5
+        anger: 2
+        surprise: 3
+        sweetness: 8
+        fear: 1
+        trust: 10
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 113
+        joy: 158
+        sadness: 151
+        disgust: 105
+        anger: 58
+        surprise: 65
+        sweetness: 155
+        fear: 66
+        trust: 152
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0.14, y: 0.12, z: 0}
+      spriteSheets: Character-Doremi
+      damageVariance: 2
+      roleDefense: 0
+      potentials:
+      - SkillConfianceAveugle
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 1
+      isNull: 0
+    - voiceActorName: Moine-Maeda
+      fan: 1
+      fanGain: 0
+      price: 6
+      level: 1
+      hp: 260
+      hpMax: 260
+      timbre: {x: -2, y: 4}
+      statistique:
+        neutral: 5
+        joy: 4
+        sadness: 5
+        disgust: 7
+        anger: 5
+        surprise: 6
+        sweetness: 2
+        fear: 9
+        trust: 2
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 111
+        joy: 56
+        sadness: 101
+        disgust: 137
+        anger: 61
+        surprise: 79
+        sweetness: 100
+        fear: 181
+        trust: 175
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0.07, y: 0.12, z: 0}
+      spriteSheets: Character-Moine-Maeda
+      damageVariance: 0
+      roleDefense: 0
+      potentials:
+      - SkillTerreurVivifiante
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 1
+      isNull: 0
+    - voiceActorName: "Dor\xE9mi"
+      fan: 0
+      fanGain: 0
+      price: 6
+      level: 1
+      hp: 0
+      hpMax: 200
+      timbre: {x: -7, y: 3}
+      statistique:
+        neutral: 5
+        joy: 8
+        sadness: 10
+        disgust: 5
+        anger: 2
+        surprise: 3
+        sweetness: 8
+        fear: 1
+        trust: 10
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 113
+        joy: 158
+        sadness: 151
+        disgust: 105
+        anger: 58
+        surprise: 65
+        sweetness: 155
+        fear: 66
+        trust: 152
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0.14, y: 0.12, z: 0}
+      spriteSheets: Character-Doremi
+      damageVariance: 2
+      roleDefense: 0
+      potentials:
+      - SkillConfianceAveugle
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 1
+      isNull: 0
+    textData:
+    - interlocuteur: 0
+      hpMax: 20
+      text: "Bravo les filles ! On a gagn\xE9 !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+    - interlocuteur: 0
+      hpMax: 20
+      text: Qu'est-ce que... !?
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: -100
+        anger: 50
+        surprise: 100
+        sweetness: -100
+        fear: 100
+        trust: -100
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 35
+      text: Qu'est-ce que c'est que ce monstre !?
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 0
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - interlocuteur: 2
+      hpMax: 35
+      text: "Il poss\xE8de une quantit\xE9 d'\xE9nergie ph\xE9nom\xE9nale !"
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 0
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - interlocuteur: 1
+      hpMax: 40
+      text: "Prends \xE7a !"
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: -90
+        disgust: -90
+        anger: 100
+        surprise: 50
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - interlocuteur: 1
+      hpMax: 45
+      text: "Quoi ? \xE7a n'a eu aucun effet !"
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: -90
+        anger: 50
+        surprise: 100
+        sweetness: -90
+        fear: 50
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 4
+    - interlocuteur: 0
+      hpMax: 45
+      text: On ne peut pas le vaincre ! On va tous y passer !
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: 0
+        anger: 100
+        surprise: 0
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 8
+    - interlocuteur: 2
+      hpMax: 50
+      text: "N'abandonne pas ! Si on ne l'arr\xEAte pas, il va attaquer la ville."
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: -90
+        disgust: -90
+        anger: 50
+        surprise: -90
+        sweetness: 0
+        fear: 50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 1
+    - interlocuteur: 2
+      hpMax: 50
+      text: "C'est notre devoir de la prot\xE9ger !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: -90
+        fear: 0
+        trust: 120
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 50
+      text: Attention Nougat !
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 100
+        disgust: -90
+        anger: 100
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints:
+      - wordIndex: 1
+    emotionsUsed:
+    - emotions: 010000000000000000000000
+    - emotions: 040000000700000000000000
+    - emotions: 050000000700000000000000
+    eventData: []
+    expGain: 0
+    expBonus: 0
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
+    victoryTheme: {fileID: 0}
+    isNull: 0
   contractAvailable:
   - name: Contrat Tutoriel
     description: "Ce contrat a uniquement pour but de tester le syst\xE8me de jeu
@@ -93,11 +1069,11 @@ MonoBehaviour:
     money: 5000
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 10
+    weekRemaining: 9
     currentLine: 0
     totalLine: 4
     currentMixing: 0
-    totalMixing: 0
+    totalMixing: 7
     score: 0
     highScore: 0
     soundEngineer:
@@ -117,13 +1093,13 @@ MonoBehaviour:
       isNull: 1
     characters:
     - name: Femme
-      roleSprite: {fileID: 0}
+      roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
       line: 20
       fan: 0
       attack: 20
-      defense: 20
-      roleType: 1
-      rolePersonality: 7
+      defense: 24
+      roleType: 0
+      rolePersonality: 0
       timbre: {x: -10, y: -2}
       characterStat:
         neutral: 3
@@ -143,7 +1119,18 @@ MonoBehaviour:
       rolePerformance: 0
       roleBestScore: 0
       characterLock: {fileID: 0}
-      roleAI: []
+      roleAI:
+      - memo: 
+        startPhrase: 0
+        startAttack: 0
+        endAttack: 1
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
       buffs: []
     - name: Homme
       roleSprite: {fileID: 0}
@@ -151,8 +1138,8 @@ MonoBehaviour:
       fan: 0
       attack: 20
       defense: 0
-      roleType: 1
-      rolePersonality: 2
+      roleType: 0
+      rolePersonality: 0
       timbre: {x: 2, y: 10}
       characterStat:
         neutral: 5
@@ -175,7 +1162,8 @@ MonoBehaviour:
       roleAI: []
       buffs: []
     voiceActors:
-    - fan: 0
+    - voiceActorName: 
+      fan: 0
       fanGain: 0
       price: 0
       level: 0
@@ -236,7 +1224,7 @@ MonoBehaviour:
       nextEXP: 120
       relation: 0
       skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
+      spriteSheets: 
       damageVariance: 0
       roleDefense: 0
       potentials: []
@@ -245,7 +1233,8 @@ MonoBehaviour:
       actorMentalState: 0
       availability: 0
       isNull: 1
-    - fan: 0
+    - voiceActorName: 
+      fan: 0
       fanGain: 0
       price: 0
       level: 0
@@ -306,7 +1295,7 @@ MonoBehaviour:
       nextEXP: 120
       relation: 0
       skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
+      spriteSheets: 
       damageVariance: 0
       roleDefense: 0
       potentials: []
@@ -382,11 +1371,7 @@ MonoBehaviour:
       - wordIndex: 1
       - wordIndex: 7
     emotionsUsed: []
-    eventData:
-    - {fileID: 11400000, guid: d931e2247846b9e48998e2694781f063, type: 2}
-    - {fileID: 11400000, guid: f2450d901aaf3c242a1c126c791cce81, type: 2}
-    - {fileID: 11400000, guid: 524713bb9ce5fed46a150e4ce120585e, type: 2}
-    - {fileID: 11400000, guid: 084cbd850d357d347be50e11bef44ca4, type: 2}
+    eventData: []
     expGain: 1250
     expBonus: 0
     producerMP: 0
@@ -399,1759 +1384,14 @@ MonoBehaviour:
     battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: Chipsala Vanille
-    description: "Les nouvelles Chipsala sont sortis.\n\nNous recherchons un studio
-      de voix off pour donner vie \xE0 notre publicit\xE9 et arracher un sourire aux
-      enfants."
-    contractType: 3
-    level: 2
-    money: 2500
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 5
-    currentMixing: 0
-    totalMixing: 0
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Narrateur
-      roleSprite: {fileID: 0}
-      line: 14
-      fan: 35
-      attack: 12
-      defense: 0
-      roleType: 3
-      rolePersonality: 7
-      timbre: {x: -10, y: 10}
-      characterStat:
-        neutral: 4
-        joy: 13
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 9
-        sweetness: 11
-        fear: 0
-        trust: 0
-      bestStat: 13
-      secondBestStat: 11
-      bestStatEmotion: 1
-      secondBestStatEmotion: 6
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 19
-      text: "Des chips \xE0 la rentr\xE9e !?"
-      enemyResistance:
-        neutral: -30
-        joy: 30
-        sadness: -30
-        disgust: 0
-        anger: -30
-        surprise: 100
-        sweetness: 0
-        fear: 30
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 20
-      text: "Et oui ! Chipsala Rentr\xE9e !"
-      enemyResistance:
-        neutral: -50
-        joy: 50
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: 50
-        sweetness: 0
-        fear: 0
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 16
-      text: "Ces fines chips fourr\xE9es \xE0 la Vanille."
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: -50
-        disgust: -80
-        anger: -50
-        surprise: 50
-        sweetness: 50
-        fear: -30
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 25
-      text: Chipsala Vanille !
-      enemyResistance:
-        neutral: -100
-        joy: 80
-        sadness: -90
-        disgust: -90
-        anger: -90
-        surprise: 80
-        sweetness: 30
-        fear: -90
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 25
-      text: "Chipsala Rentr\xE9e !"
-      enemyResistance:
-        neutral: -90
-        joy: 80
-        sadness: -90
-        disgust: -90
-        anger: -90
-        surprise: 80
-        sweetness: 30
-        fear: -90
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 1
-    emotionsUsed: []
-    eventData: []
-    expGain: 30
-    expBonus: 60
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: "Sant\xE9 pr\xE9vention jeunesse"
-    description: "Dans le cadre du programme de pr\xE9vention de sant\xE9 chez les
-      jeunes, nous recherchons un studio pour r\xE9aliser le voice-over de notre nouvelle
-      publicit\xE9."
+  - name: Lessive Skop
+    description: La lessive Skop est notre nouveau produit.
     contractType: 3
     level: 1
-    money: 2220
+    money: 1960
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 4
-    currentMixing: 0
-    totalMixing: 0
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Narrateur
-      roleSprite: {fileID: 0}
-      line: 16
-      fan: 0
-      attack: 13
-      defense: 0
-      roleType: 3
-      rolePersonality: 7
-      timbre: {x: -10, y: 10}
-      characterStat:
-        neutral: 3
-        joy: 11
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 13
-        fear: 0
-        trust: 0
-      bestStat: 13
-      secondBestStat: 11
-      bestStatEmotion: 6
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 8
-      text: Pour bien grandir ...
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: 0
-        sweetness: 0
-        fear: -50
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 17
-      text: "Mange au moins 5 fruits et l\xE9gumes par jour."
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: 0
-        fear: -50
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 3
-      - wordIndex: 4
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 11
-      text: "Pour \xEAtre en forme..."
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: -50
-        disgust: -50
-        anger: -50
-        surprise: 0
-        sweetness: 0
-        fear: -50
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 0
-      hpMax: 12
-      text: "Evite de grignoter dans la journ\xE9e."
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 20
-        disgust: 20
-        anger: 20
-        surprise: -50
-        sweetness: 20
-        fear: -50
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 2
-      - wordIndex: 5
-    emotionsUsed: []
-    eventData: []
-    expGain: 20
-    expBonus: 50
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Ligne B
-    description: "Pour l'ouverture de la nouvelle ligne de m\xE9tro nous avons besoin
-      d'une nouvelle voix pour assister les passagers."
-    contractType: 3
-    level: 3
-    money: 2470
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 7
-    currentMixing: 0
-    totalMixing: 5
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Annonceur
-      roleSprite: {fileID: 0}
-      line: 23
-      fan: 0
-      attack: 16
-      defense: 0
-      roleType: 3
-      rolePersonality: 0
-      timbre: {x: -10, y: 10}
-      characterStat:
-        neutral: 3
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 24
-        fear: 0
-        trust: 0
-      bestStat: 24
-      secondBestStat: -1
-      bestStatEmotion: 6
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 33
-      text: Direction
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 33
-      text: Bourses
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 30
-      text: Prochain train dans...
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 34
-      text: 3 minutes.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 30
-      text: Terminus.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 33
-      text: "Attention \xE0 la marche en descendant du train."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 0
-      hpMax: 32
-      text: "Attention, des pickpockets peuvent \xEAtre pr\xE9sents \xE0 bord."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 2
-    emotionsUsed: []
-    eventData: []
-    expGain: 30
-    expBonus: 50
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Nouvelle voiture Liberty
-    description: "La publicit\xE9 de notre nouvelle voiture Liberty, cependant nous
-      souhaitons aborder le propos avec un th\xE8me plus touchant."
-    contractType: 3
-    level: 2
-    money: 2680
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 10
-    currentMixing: 0
-    totalMixing: 10
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: "P\xE8re"
-      roleSprite: {fileID: 0}
-      line: 46
-      fan: 0
-      attack: 11
-      defense: 0
-      roleType: 3
-      rolePersonality: 9
-      timbre: {x: 3, y: 10}
-      characterStat:
-        neutral: 7
-        joy: 11
-        sadness: 21
-        disgust: 12
-        anger: 13
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      bestStat: 21
-      secondBestStat: 13
-      bestStatEmotion: 2
-      secondBestStatEmotion: 4
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 50
-      text: Rapide...
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 50
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 57
-      text: Audacieuse...
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 50
-        surprise: 0
-        sweetness: 70
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 58
-      text: Et dangereuse...
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 50
-        disgust: 50
-        anger: 50
-        surprise: 0
-        sweetness: 50
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 95
-      text: "C'est comme \xE7a... comme \xE7a que je l'ai perdu."
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 40
-        anger: 0
-        surprise: -80
-        sweetness: -25
-        fear: 0
-        trust: -80
-      enemyWeakPoints:
-      - wordIndex: 2
-      - wordIndex: 8
-    - interlocuteur: 0
-      hpMax: 84
-      text: Est-ce que je regrette ?
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 0
-        anger: 0
-        surprise: 20
-        sweetness: -25
-        fear: 0
-        trust: 20
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 0
-      hpMax: 75
-      text: "Bien s\xFBr."
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 30
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 88
-      text: "Est-ce que je souhaite retourner en arri\xE8re ?"
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 30
-        anger: 0
-        surprise: 20
-        sweetness: -25
-        fear: 0
-        trust: 20
-      enemyWeakPoints:
-      - wordIndex: 4
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 78
-      text: Evidemment.
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 30
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 119
-      text: "Mais c'est pour \xE7a que je continuerai de conduire."
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 100
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: 10
-        fear: -50
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 150
-      text: Pour elle, et son sourire.
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 100
-        disgust: -80
-        anger: -80
-        surprise: -80
-        sweetness: 50
-        fear: -80
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 1
-    emotionsUsed: []
-    eventData:
-    - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
-    expGain: 30
-    expBonus: 50
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Parfum
-    description: 'La nouvelle gamme de parfum est sortie.
-
-
-      Nous recherchons une voix sensuelle pour sa promotion.'
-    contractType: 3
-    level: 3
-    money: 3740
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 3
-    currentMixing: 0
-    totalMixing: 9
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Femme
-      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
-      line: 69
-      fan: 0
-      attack: 13
-      defense: 11
-      roleType: 3
-      rolePersonality: 8
-      timbre: {x: -10, y: 0}
-      characterStat:
-        neutral: 4
-        joy: 0
-        sadness: 0
-        disgust: 8
-        anger: 0
-        surprise: 0
-        sweetness: 26
-        fear: 0
-        trust: 0
-      bestStat: 26
-      secondBestStat: 8
-      bestStatEmotion: 6
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 2
-        skills:
-        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 36
-      text: Cette douce odeur...
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: -50
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 45
-      text: Hmmm...
-      enemyResistance:
-        neutral: 0
-        joy: 20
-        sadness: 0
-        disgust: 20
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 50
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 73
-      text: Parfum [Nom], une fragrance euphorique.
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: -50
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 1
-      - wordIndex: 4
-    emotionsUsed: []
-    eventData: []
-    expGain: 40
-    expBonus: 60
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Higamania
-    description: "Higamania est un jeu d'action et d'exploration d'un grand ch\xE2teau
-      habit\xE9 par un vampire.\n\nLa sc\xE8ne cl\xE9 est l'\xE9change entre le h\xE9ros
-      et le ma\xEEtre des lieux avant leur combat fatidique."
-    contractType: 2
-    level: 4
-    money: 3600
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 13
-    currentMixing: 0
-    totalMixing: 16
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Richard
-      roleSprite: {fileID: 21300000, guid: 1eba9f3f71db5964880d475872f98dd7, type: 3}
-      line: 84
-      fan: 464
-      attack: 14
-      defense: 10
-      roleType: 1
-      rolePersonality: 4
-      timbre: {x: 1, y: 7}
-      characterStat:
-        neutral: 4
-        joy: 0
-        sadness: 0
-        disgust: 24
-        anger: 12
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      bestStat: 24
-      secondBestStat: 12
-      bestStatEmotion: 3
-      secondBestStatEmotion: 4
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI:
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 1
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
-        - {fileID: 0}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 4
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 5
-        skills:
-        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
-        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
-        - {fileID: 0}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 7
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 8
-        skills:
-        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
-        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
-        - {fileID: 0}
-      buffs: []
-    - name: Vampire
-      roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
-      line: 86
-      fan: 809
-      attack: 19
-      defense: 17
-      roleType: 2
-      rolePersonality: 6
-      timbre: {x: 3, y: 8}
-      characterStat:
-        neutral: 4
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 33
-      bestStat: 33
-      secondBestStat: -1
-      bestStatEmotion: 8
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 2
-        skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 2
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 3
-        skills:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 9
-        skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 9
-        skills:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 93
-      text: Meurs, monstre.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: -100
-        sweetness: -100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 95
-      text: "Tu n'appartiens pas \xE0 ce monde."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: -100
-        sweetness: -100
-        fear: 0
-        trust: 20
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 1
-      hpMax: 100
-      text: "Ce n'est pas par ma main que la chair m'a \xE9tait rendue."
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -90
-        disgust: -90
-        anger: 0
-        surprise: 0
-        sweetness: -50
-        fear: -100
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 7
-    - interlocuteur: 1
-      hpMax: 117
-      text: "J'ai \xE9t\xE9 appel\xE9 ici par les humains qui souhaitaient me rendre
-        hommage."
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -90
-        disgust: -90
-        anger: 0
-        surprise: -50
-        sweetness: -50
-        fear: -100
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 6
-      - wordIndex: 9
-    - interlocuteur: 0
-      hpMax: 56
-      text: Hommage !?!
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: 100
-        sweetness: -100
-        fear: 0
-        trust: -100
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 102
-      text: "Vous volez l'\xE2me des humains et en faites vos esclaves !"
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: 100
-        disgust: 100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 1
-      - wordIndex: 9
-    - interlocuteur: 1
-      hpMax: 86
-      text: "Peut-\xEAtre peut-on en dire autant de toute religion..."
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 50
-        sweetness: 50
-        fear: -50
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 107
-      text: "Vos mots sont aussi vides que votre \xE2me !"
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: 100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: -50
-      enemyWeakPoints:
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 109
-      text: "L'humanit\xE9 n'a gu\xE8re besoin d'un sauveur tel que vous !"
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: 100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: -50
-      enemyWeakPoints:
-      - wordIndex: 8
-    - interlocuteur: 1
-      hpMax: 92
-      text: Qu'est-ce qu'un homme ?
-      enemyResistance:
-        neutral: 0
-        joy: 20
-        sadness: -90
-        disgust: 0
-        anger: 100
-        surprise: 100
-        sweetness: 20
-        fear: -100
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 1
-      hpMax: 65
-      text: "Un mis\xE9rable tas de secrets."
-      enemyResistance:
-        neutral: 0
-        joy: 20
-        sadness: -90
-        disgust: 40
-        anger: 100
-        surprise: -90
-        sweetness: -90
-        fear: -90
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 4
-    - interlocuteur: 1
-      hpMax: 96
-      text: "Mais assez bavard\xE9..."
-      enemyResistance:
-        neutral: 0
-        joy: -50
-        sadness: -100
-        disgust: -100
-        anger: 100
-        surprise: -90
-        sweetness: -50
-        fear: -90
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 1
-      hpMax: 80
-      text: En garde !
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: -100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: -100
-      enemyWeakPoints:
-      - wordIndex: 1
-    emotionsUsed: []
-    eventData: []
-    expGain: 30
-    expBonus: 0
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Princess Muffin S1
-    description: "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de
-      nouveaux alli\xE9s pour affronter les forces de la religieuse. Cependant cette
-      derni\xE8re semble avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer
-      la ville, pendant que Charlotte est en rendez-vous amoureux avec Mathieu.\n\nC'est
-      donc au tour des nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
-    contractType: 1
-    level: 3
-    money: 10000
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
+    weekRemaining: 7
     currentLine: 0
     totalLine: 9
     currentMixing: 0
@@ -2174,1315 +1414,248 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: Opera
+    - name: "Bact\xE9rie"
       roleSprite: {fileID: 0}
-      line: 239
+      line: 41
       fan: 0
-      attack: 13
+      attack: 8
       defense: 0
-      roleType: 1
-      rolePersonality: 1
-      timbre: {x: -10, y: 2}
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: 0, y: 0}
       characterStat:
-        neutral: 4
+        neutral: 2
         joy: 0
-        sadness: 12
-        disgust: 8
-        anger: 0
-        surprise: 0
+        sadness: 0
+        disgust: 7
+        anger: 8
+        surprise: 3
         sweetness: 0
-        fear: 15
+        fear: 4
         trust: 0
-      bestStat: 15
-      secondBestStat: 12
-      bestStatEmotion: 7
-      secondBestStatEmotion: 3
+      bestStat: 8
+      secondBestStat: 7
+      bestStatEmotion: 4
+      secondBestStatEmotion: 0
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
       characterLock: {fileID: 0}
       roleAI: []
       buffs: []
-    - name: Nougat
-      roleSprite: {fileID: 0}
-      line: 103
+    voiceActors:
+    - voiceActorName: 
       fan: 0
-      attack: 14
-      defense: 0
-      roleType: 1
-      rolePersonality: 2
-      timbre: {x: -7, y: 2}
-      characterStat:
-        neutral: 4
-        joy: 5
-        sadness: 10
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
         disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 12
+      text: "Bwah je suis une t\xE2che ind\xE9l\xE9bile !"
+      enemyResistance:
+        neutral: -30
+        joy: 10
+        sadness: -30
+        disgust: 50
+        anger: 50
+        surprise: 0
+        sweetness: -50
+        fear: 0
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+    - interlocuteur: 0
+      hpMax: 13
+      text: "Personne ne r\xE9ussira \xE0 m'extirper de ce magnifique jean blanc !"
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: 50
+        anger: 50
+        surprise: 0
+        sweetness: -50
+        fear: -50
+        trust: 50
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 10
+      text: "Je d\xE9teste la lessive !"
+      enemyResistance:
+        neutral: -50
+        joy: -30
+        sadness: -50
+        disgust: 50
+        anger: 100
+        surprise: 0
+        sweetness: -100
+        fear: 0
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 15
+      text: Surtout la lessive de la marque Skop !
+      enemyResistance:
+        neutral: -50
+        joy: 0
+        sadness: -50
+        disgust: 50
+        anger: 100
+        surprise: 0
+        sweetness: -100
+        fear: 0
+        trust: -30
+      enemyWeakPoints:
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 15
+      text: "Qui apporte de l'\xE9clat \xE0 vos v\xEAtements."
+      enemyResistance:
+        neutral: -50
+        joy: -30
+        sadness: 0
+        disgust: 100
+        anger: 50
+        surprise: 0
+        sweetness: -50
+        fear: -30
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 10
+      text: Noooon ! Cette personne au grand sourire utilise la lessive Skop sur moi
+        !
+      enemyResistance:
+        neutral: -50
+        joy: -50
+        sadness: -30
+        disgust: 50
+        anger: 100
+        surprise: 50
+        sweetness: -100
+        fear: 50
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 15
+      text: "Je la d\xE9teste !!"
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -50
+        disgust: 50
+        anger: 100
+        surprise: -50
+        sweetness: -100
+        fear: -20
+        trust: -50
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 15
+      text: "Je ne peux pas y r\xE9sister..."
+      enemyResistance:
+        neutral: -50
+        joy: -50
+        sadness: 10
+        disgust: 70
+        anger: 50
+        surprise: 50
+        sweetness: 0
+        fear: 50
+        trust: -50
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 10
+      text: "La lessive Skop, pour des v\xEAtements d'un blanc... Eclatant."
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
         anger: 20
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-      bestStat: 20
-      secondBestStat: 10
-      bestStatEmotion: 4
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    - name: Praline
-      roleSprite: {fileID: 0}
-      line: 120
-      fan: 0
-      attack: 8
-      defense: 0
-      roleType: 1
-      rolePersonality: 3
-      timbre: {x: -8, y: 0}
-      characterStat:
-        neutral: 3
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 7
-        sweetness: 5
-        fear: 0
-        trust: 15
-      bestStat: 15
-      secondBestStat: 7
-      bestStatEmotion: 8
-      secondBestStatEmotion: 6
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 40
-      text: "Bravo les filles ! On a gagn\xE9 !"
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 50
       enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 5
-    - interlocuteur: 0
-      hpMax: 40
-      text: Qu'est-ce que... !?
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: -100
-        anger: 50
-        surprise: 100
-        sweetness: -100
-        fear: 100
-        trust: -100
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 70
-      text: Qu'est-ce que c'est que ce monstre !?
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 0
-        disgust: -90
-        anger: 50
-        surprise: 100
-        sweetness: -90
-        fear: 100
-        trust: -50
-      enemyWeakPoints:
-      - wordIndex: 5
-    - interlocuteur: 2
-      hpMax: 70
-      text: "Il poss\xE8de une quantit\xE9 d'\xE9nergie ph\xE9nom\xE9nale !"
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 0
-        disgust: -90
-        anger: 50
-        surprise: 100
-        sweetness: -90
-        fear: 100
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 5
-    - interlocuteur: 1
-      hpMax: 80
-      text: "Prends \xE7a !"
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: -90
-        disgust: -90
-        anger: 100
-        surprise: 50
-        sweetness: -90
-        fear: 50
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 1
-    - interlocuteur: 1
-      hpMax: 90
-      text: "Quoi ? \xE7a n'a eu aucun effet !"
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 100
-        disgust: -90
-        anger: 50
-        surprise: 100
-        sweetness: -90
-        fear: 50
-        trust: -90
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 90
-      text: On ne peut pas le vaincre ! On va tous y passer !
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 100
-        disgust: 0
-        anger: 100
-        surprise: 0
-        sweetness: -90
-        fear: 100
-        trust: -90
-      enemyWeakPoints:
-      - wordIndex: 3
+      - wordIndex: 2
       - wordIndex: 8
-    - interlocuteur: 2
-      hpMax: 100
-      text: "N'abandonne pas ! Si on ne l'arr\xEAte pas, il va attaquer la ville."
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: -90
-        disgust: -90
-        anger: 50
-        surprise: -90
-        sweetness: 0
-        fear: 50
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 1
-    - interlocuteur: 2
-      hpMax: 100
-      text: "C'est notre devoir de la prot\xE9ger !"
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: -90
-        disgust: -90
-        anger: -90
-        surprise: -90
-        sweetness: -90
-        fear: 0
-        trust: 120
-      enemyWeakPoints:
-      - wordIndex: 2
-    emotionsUsed: []
-    eventData:
-    - {fileID: 11400000, guid: 12fd5333e3029db4ab83c43c9d203b3d, type: 2}
-    - {fileID: 11400000, guid: c6a95885890b96e4d9a7608f958549ad, type: 2}
-    expGain: 0
-    expBonus: 0
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Contract English
-    description: 'The sole purpose of this contract is to test the gameplay of Super
-      Voice Acting.
-
-
-      The conversation is rather normal. The first character is very enthusiastic,
-      where the second is a little more angry.'
-    contractType: 0
-    level: 1
-    money: 5000
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 4
-    currentMixing: 0
-    totalMixing: 0
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Woman
-      roleSprite: {fileID: 0}
-      line: 20
-      fan: 0
-      attack: 20
-      defense: 21
-      roleType: 1
-      rolePersonality: 7
-      timbre: {x: -10, y: -2}
-      characterStat:
-        neutral: 3
-        joy: 25
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      bestStat: 25
-      secondBestStat: -1
-      bestStatEmotion: 1
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    - name: Man
-      roleSprite: {fileID: 0}
-      line: 6
-      fan: 0
-      attack: 20
-      defense: 0
-      roleType: 1
-      rolePersonality: 2
-      timbre: {x: 2, y: 10}
-      characterStat:
-        neutral: 5
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 40
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      bestStat: 40
-      secondBestStat: -1
-      bestStatEmotion: 4
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 80
-      text: Ah ! What a lovely day !
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: -80
-        disgust: -80
-        anger: -80
-        surprise: -20
-        sweetness: -20
-        fear: -80
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 0
-      hpMax: 100
-      text: I'm ready to give the best of myself !
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: -80
-        disgust: -80
-        anger: -80
-        surprise: -50
-        sweetness: -50
-        fear: -80
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 5
-      - wordIndex: 7
-    - interlocuteur: 1
-      hpMax: 150
-      text: Shut up, you're making too much noise !
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: -50
-        disgust: 0
-        anger: 100
-        surprise: -50
-        sweetness: -80
-        fear: -80
-        trust: -80
-      enemyWeakPoints:
-      - wordIndex: 2
-      - wordIndex: 3
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 60
-      text: Oh sorry, i got carried away.
-      enemyResistance:
-        neutral: 0
-        joy: -50
-        sadness: 100
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: -20
-        fear: 0
-        trust: -80
-      enemyWeakPoints:
-      - wordIndex: 1
-      - wordIndex: 4
-    emotionsUsed: []
-    eventData:
-    - {fileID: 11400000, guid: 18a9df3ef4717aa42b23b108cfba6263, type: 2}
-    - {fileID: 11400000, guid: bd45970deac1ed14eaeb024e25a0667d, type: 2}
-    - {fileID: 11400000, guid: 66515705a789f924bbd86a7d3bbff97a, type: 2}
-    - {fileID: 11400000, guid: a4c0de120984ef544a583e7be96406e7, type: 2}
-    expGain: 1250
-    expBonus: 0
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Castlemania
-    description: 'Castlemania is an action-adventure game who takes place in a big
-      castle habited by a vampire.
-
-
-      The scene is between the protagonist and the vampire before their final battle.'
-    contractType: 2
-    level: 4
-    money: 3530
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 10
-    currentLine: 0
-    totalLine: 13
-    currentMixing: 0
-    totalMixing: 15
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Richard
-      roleSprite: {fileID: 21300000, guid: 1eba9f3f71db5964880d475872f98dd7, type: 3}
-      line: 61
-      fan: 635
-      attack: 20
-      defense: 11
-      roleType: 1
-      rolePersonality: 4
-      timbre: {x: 1, y: 7}
-      characterStat:
-        neutral: 3
-        joy: 0
-        sadness: 0
-        disgust: 19
-        anger: 11
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      bestStat: 19
-      secondBestStat: 11
-      bestStatEmotion: 3
-      secondBestStatEmotion: 4
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI:
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 1
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
-        - {fileID: 0}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 4
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 5
-        skills:
-        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
-        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
-        - {fileID: 0}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 7
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 8
-        skills:
-        - {fileID: 11400000, guid: a7b74a00cdbff5d48b7b760ff4138363, type: 2}
-        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
-        - {fileID: 0}
-      buffs: []
-    - name: Vampire
-      roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
-      line: 67
-      fan: 897
-      attack: 20
-      defense: 15
-      roleType: 2
-      rolePersonality: 6
-      timbre: {x: 3, y: 8}
-      characterStat:
-        neutral: 4
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 38
-      bestStat: 38
-      secondBestStat: -1
-      bestStatEmotion: 8
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 2
-        skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 2
-        - condition: 2
-          mathOperator: 3
-          conditionValue: 3
-        skills:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 9
-        skills:
-        - {fileID: 11400000, guid: e7ea3a8a9114ae941838c1db2157b347, type: 2}
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 9
-        skills:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
-      buffs: []
-    voiceActors:
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    - fan: 0
-      fanGain: 0
-      price: 0
-      level: 0
-      hp: 0
-      hpMax: 0
-      timbre: {x: 0, y: 0}
-      statistique:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      currentGrowth:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      experience: 0
-      nextEXP: 120
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: {fileID: 0}
-      damageVariance: 0
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography: []
-      actorMentalState: 0
-      availability: 0
-      isNull: 1
-    textData:
-    - interlocuteur: 0
-      hpMax: 82
-      text: Die monster.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: -100
-        sweetness: -100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 80
-      text: You don't belong in this world!
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: -100
-        sweetness: -100
-        fear: 0
-        trust: 20
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 1
-      hpMax: 115
-      text: It was not by my hand that i am once again given flesh.
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -90
-        disgust: -90
-        anger: 0
-        surprise: 0
-        sweetness: -50
-        fear: -100
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 5
-      - wordIndex: 12
-    - interlocuteur: 1
-      hpMax: 106
-      text: I was called here by humans who wish to pay me tribute.
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -90
-        disgust: -90
-        anger: 0
-        surprise: -50
-        sweetness: -50
-        fear: -100
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 5
-      - wordIndex: 10
-    - interlocuteur: 0
-      hpMax: 68
-      text: Tribute!?!
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: 100
-        sweetness: -100
-        fear: 0
-        trust: -100
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 103
-      text: You steals men's souls and make them your slaves!
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: 100
-        disgust: 100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 1
-      hpMax: 87
-      text: Perhaps the same could be said of all religions...
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 50
-        sweetness: 50
-        fear: -50
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 7
-    - interlocuteur: 0
-      hpMax: 101
-      text: Your words are as empty as your soul!
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: 100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: -50
-      enemyWeakPoints:
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 111
-      text: Mankind ill needs a savior such as you!
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: 100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: -50
-      enemyWeakPoints:
-      - wordIndex: 4
-      - wordIndex: 7
-    - interlocuteur: 1
-      hpMax: 74
-      text: What is a man?
-      enemyResistance:
-        neutral: 0
-        joy: 20
-        sadness: -90
-        disgust: 0
-        anger: 100
-        surprise: 100
-        sweetness: 20
-        fear: -100
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 1
-      hpMax: 68
-      text: A miserable little pile of secrets
-      enemyResistance:
-        neutral: 0
-        joy: 20
-        sadness: -90
-        disgust: 40
-        anger: 100
-        surprise: -90
-        sweetness: -90
-        fear: -90
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 4
-      - wordIndex: 5
-    - interlocuteur: 1
-      hpMax: 81
-      text: But enough talk...
-      enemyResistance:
-        neutral: 0
-        joy: -50
-        sadness: -100
-        disgust: -100
-        anger: 100
-        surprise: -90
-        sweetness: -50
-        fear: -90
-        trust: 100
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 1
-      hpMax: 80
-      text: Have at you!
-      enemyResistance:
-        neutral: 0
-        joy: -100
-        sadness: -100
-        disgust: -100
-        anger: 100
-        surprise: -100
-        sweetness: -100
-        fear: -100
-        trust: -100
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 2
     emotionsUsed: []
     eventData: []
-    expGain: 30
-    expBonus: 0
+    expGain: 20
+    expBonus: 50
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -3493,46 +1666,50 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
+  contractHistoric: []
+  contractFranchise: []
   contractGacha:
-  - {fileID: 11400000, guid: 797e26e64cccd93499e77240c6b041f8, type: 2}
-  - {fileID: 11400000, guid: e41f45d40e33b1e4193aa402fb969d56, type: 2}
-  - {fileID: 11400000, guid: 453cf1d29fd1c4843bf8e9429444b8cd, type: 2}
-  - {fileID: 11400000, guid: 7aee77c77a7dffe408a74b482e37108f, type: 2}
-  - {fileID: 11400000, guid: 0d829c8fedec7a143b428862167f9e68, type: 2}
-  - {fileID: 11400000, guid: cac6d8dace36bdf4bb4d3d7877282782, type: 2}
-  - {fileID: 11400000, guid: d85d0a7830fd8144e94f5930fa02981b, type: 2}
-  - {fileID: 11400000, guid: a31cd4d786e120d4892f88f3ec9aede8, type: 2}
-  - {fileID: 11400000, guid: 6c7aa628314ed5741994c26060462f68, type: 2}
-  - {fileID: 11400000, guid: 3f2a6353792d8df4580074e1f3095472, type: 2}
-  - {fileID: 11400000, guid: 8c24e377e4a4f064299a1e813288b11b, type: 2}
-  - {fileID: 11400000, guid: fb2aac31462b8934c8eaebe40b89d295, type: 2}
-  - {fileID: 11400000, guid: 72b8286506a13164baefd1a96d333219, type: 2}
-  - {fileID: 11400000, guid: e1a59a024da49b7458213ed01964ad5c, type: 2}
-  - {fileID: 11400000, guid: 2b0bbe1dd66b5d346b9a2217cbaad58c, type: 2}
-  - {fileID: 11400000, guid: 9f28d6ac5eeab734a8d7b9400bc876a0, type: 2}
-  - {fileID: 11400000, guid: 33b6ae084b9c43c4d8f39926640add64, type: 2}
-  - {fileID: 11400000, guid: 53cd95d492cc2ab42a2cbf2e646d2385, type: 2}
-  - {fileID: 11400000, guid: 39162772652748b4b86d71d3d4888833, type: 2}
-  - {fileID: 11400000, guid: 9cfcc9e654405b7448d7778b8ba9c00d, type: 2}
-  contractGachaCooldown: []
+  - ChipsoLv1
+  - ChipsalaLv1
+  - FilmEtudiantLv1
+  - ParfumLv1
+  - SanteJeunesseLv1
+  - TurboGazonLv1
+  - JambonLv1
+  - LigneTelephoniqueLv1
+  - EntrepriseEkavoxLv1
+  - KidGIGNLv1
+  - BolognaiseLv1
+  - VoitureLv1
+  - FightingBattleLv1
+  - ClimClimaxLv2
+  - PhilosophieLv1
+  - SoundDesignLv1
+  - CastlemaniaLv1
+  - MetroLv1
+  - ParfumLv2
+  contractGachaCooldown:
+  - contract: LessiveArioleLv1
+    cooldown: 8
   voiceActors:
-  - fan: 0
+  - voiceActorName: Moine-Maeda
+    fan: 1
     fanGain: 0
     price: 6
-    level: 20
-    hp: 466
-    hpMax: 466
-    timbre: {x: -7, y: 3}
+    level: 1
+    hp: 260
+    hpMax: 260
+    timbre: {x: -2, y: 4}
     statistique:
-      neutral: 27
-      joy: 38
-      sadness: 38
-      disgust: 23
-      anger: 13
-      surprise: 16
-      sweetness: 37
-      fear: 13
-      trust: 38
+      neutral: 5
+      joy: 4
+      sadness: 5
+      disgust: 7
+      anger: 5
+      surprise: 6
+      sweetness: 2
+      fear: 9
+      trust: 2
     statModifier:
       neutral: 0
       joy: 0
@@ -3554,40 +1731,41 @@ MonoBehaviour:
       fear: 0
       trust: 0
     growth:
-      neutral: 113
-      joy: 162
-      sadness: 150
-      disgust: 97
+      neutral: 111
+      joy: 56
+      sadness: 101
+      disgust: 137
       anger: 61
-      surprise: 69
-      sweetness: 153
-      fear: 67
-      trust: 151
+      surprise: 79
+      sweetness: 100
+      fear: 181
+      trust: 175
     currentGrowth:
       neutral: 0
-      joy: 78
-      sadness: 50
-      disgust: 43
-      anger: 59
-      surprise: 11
-      sweetness: 7
-      fear: 73
-      trust: 69
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
     nextEXP: 120
     relation: 0
-    skillOffset: {x: 0.14, y: 0.12, z: 0}
-    spriteSheets: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483, type: 2}
-    damageVariance: 2
+    skillOffset: {x: 0.07, y: 0.12, z: 0}
+    spriteSheets: Character-Moine-Maeda
+    damageVariance: 0
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: 4693805a529dd554694916f79f88a756, type: 2}
+    - SkillTerreurVivifiante
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 4975
+  - voiceActorName: Bocca
+    fan: 4988
     fanGain: 0
     price: 15
     level: 20
@@ -3648,7 +1826,7 @@ MonoBehaviour:
     nextEXP: 120
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
+    spriteSheets: Character-AllezNagais
     damageVariance: 2
     roleDefense: 0
     potentials: []
@@ -4029,23 +2207,24 @@ MonoBehaviour:
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
+  - voiceActorName: Dea
+    fan: 0
     fanGain: 0
     price: 11
-    level: 20
-    hp: 496
-    hpMax: 496
+    level: 1
+    hp: 189
+    hpMax: 230
     timbre: {x: -6, y: -1}
     statistique:
-      neutral: 26
-      joy: 28
-      sadness: 26
-      disgust: 19
-      anger: 18
-      surprise: 22
-      sweetness: 43
-      fear: 31
-      trust: 25
+      neutral: 5
+      joy: 5
+      sadness: 8
+      disgust: 1
+      anger: 9
+      surprise: 7
+      sweetness: 0
+      fear: 6
+      trust: 5
     statModifier:
       neutral: 0
       joy: 0
@@ -4068,55 +2247,56 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 124
-      sadness: 96
-      disgust: 95
-      anger: 49
-      surprise: 79
-      sweetness: 227
-      fear: 132
-      trust: 108
+      joy: 112
+      sadness: 125
+      disgust: 89
+      anger: 43
+      surprise: 75
+      sweetness: 234
+      fear: 129
+      trust: 103
     currentGrowth:
       neutral: 0
-      joy: 56
-      sadness: 24
-      disgust: 5
-      anger: 31
-      surprise: 1
-      sweetness: 13
-      fear: 8
-      trust: 52
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 103
     relation: 0
     skillOffset: {x: 0.1, y: 0.15, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 5a8ca4d0dc3e59a418e33d3fb3664009, type: 2}
+    spriteSheets: Character-Dea
     damageVariance: 2
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: ddec83d64cbc8eb4db092c623d87c95d, type: 2}
+    - SkillDeaBienvaillance
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
+  - voiceActorName: "Dor\xE9mi"
+    fan: 0
     fanGain: 0
     price: 6
-    level: 20
-    hp: 507
-    hpMax: 507
-    timbre: {x: -2, y: 4}
+    level: 1
+    hp: 0
+    hpMax: 200
+    timbre: {x: -7, y: 3}
     statistique:
-      neutral: 25
-      joy: 13
-      sadness: 24
-      disgust: 29
-      anger: 19
-      surprise: 24
-      sweetness: 20
-      fear: 44
-      trust: 32
+      neutral: 5
+      joy: 8
+      sadness: 10
+      disgust: 5
+      anger: 2
+      surprise: 3
+      sweetness: 8
+      fear: 1
+      trust: 10
     statModifier:
       neutral: 0
       joy: 0
@@ -4138,56 +2318,57 @@ MonoBehaviour:
       fear: 0
       trust: 0
     growth:
-      neutral: 111
-      joy: 52
-      sadness: 104
-      disgust: 120
-      anger: 74
-      surprise: 99
-      sweetness: 96
-      fear: 185
-      trust: 160
+      neutral: 113
+      joy: 158
+      sadness: 151
+      disgust: 105
+      anger: 58
+      surprise: 65
+      sweetness: 155
+      fear: 66
+      trust: 152
     currentGrowth:
       neutral: 0
-      joy: 88
-      sadness: 76
-      disgust: 80
-      anger: 6
-      surprise: 81
-      sweetness: 24
-      fear: 15
-      trust: 40
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
     nextEXP: 120
     relation: 0
-    skillOffset: {x: 0.07, y: 0.12, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 7919096dd34fc5243b9c76237f92419b, type: 2}
-    damageVariance: 0
+    skillOffset: {x: 0.14, y: 0.12, z: 0}
+    spriteSheets: Character-Doremi
+    damageVariance: 2
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: 20175402815609f40b3f9ee3f621c691, type: 2}
+    - SkillConfianceAveugle
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
+  - voiceActorName: Jean-Christophe
+    fan: 1
     fanGain: 0
     price: 6
-    level: 20
-    hp: 438
-    hpMax: 438
+    level: 1
+    hp: 210
+    hpMax: 210
     timbre: {x: -2, y: 4}
     statistique:
-      neutral: 23
-      joy: 13
-      sadness: 27
-      disgust: 36
-      anger: 18
-      surprise: 19
-      sweetness: 19
-      fear: 31
-      trust: 27
+      neutral: 5
+      joy: 6
+      sadness: 5
+      disgust: 3
+      anger: 5
+      surprise: 4
+      sweetness: 8
+      fear: 1
+      trust: 8
     statModifier:
       neutral: 0
       joy: 0
@@ -4210,56 +2391,57 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 41
-      sadness: 119
-      disgust: 175
-      anger: 70
-      surprise: 81
-      sweetness: 60
-      fear: 160
-      trust: 104
+      joy: 65
+      sadness: 130
+      disgust: 168
+      anger: 71
+      surprise: 69
+      sweetness: 49
+      fear: 153
+      trust: 105
     currentGrowth:
       neutral: 0
-      joy: 79
-      sadness: 61
-      disgust: 25
-      anger: 30
-      surprise: 39
-      sweetness: 40
-      fear: 40
-      trust: 76
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
     nextEXP: 120
     relation: 0
     skillOffset: {x: 0.07, y: 0.08, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 8a2080d9b91350341ae62d050794000a, type: 2}
+    spriteSheets: Character-Jean-Christophe
     damageVariance: 0
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: 852f41409bb26604c912aae6d044a65c, type: 2}
+    - SkillJeanChristophePleineForme
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
   voiceActorsGacha:
-  - fan: 0
+  - voiceActorName: Ara
+    fan: 0
     fanGain: 0
     price: 6
-    level: 20
-    hp: 466
-    hpMax: 466
+    level: 1
+    hp: 200
+    hpMax: 200
     timbre: {x: -8, y: -7}
     statistique:
-      neutral: 26
-      joy: 50
-      sadness: 23
-      disgust: 22
-      anger: 21
-      surprise: 22
-      sweetness: 24
-      fear: 23
-      trust: 23
+      neutral: 5
+      joy: 20
+      sadness: 3
+      disgust: 2
+      anger: 2
+      surprise: 3
+      sweetness: 5
+      fear: 3
+      trust: 3
     statModifier:
       neutral: 0
       joy: 0
@@ -4282,125 +2464,56 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 158
+      joy: 183
       sadness: 110
-      disgust: 110
+      disgust: 93
       anger: 102
-      surprise: 100
-      sweetness: 101
-      fear: 109
-      trust: 110
+      surprise: 102
+      sweetness: 110
+      fear: 94
+      trust: 106
     currentGrowth:
       neutral: 0
-      joy: 2
-      sadness: 90
-      disgust: 90
-      anger: 38
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
       surprise: 0
-      sweetness: 19
-      fear: 71
-      trust: 90
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
     nextEXP: 120
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 8e3d2645f02a6cf4e86d96d96778ffec, type: 2}
+    spriteSheets: Character-Ara
     damageVariance: 3
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: 8b3dd6ba44529d546a1b98096b42d41a, type: 2}
+    - SkillAra-Perdu
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
-    fanGain: 0
-    price: 6
-    level: 20
-    hp: 484
-    hpMax: 484
-    timbre: {x: -9, y: -4}
-    statistique:
-      neutral: 27
-      joy: 27
-      sadness: 28
-      disgust: 26
-      anger: 24
-      surprise: 25
-      sweetness: 27
-      fear: 31
-      trust: 30
-    statModifier:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    statVoxography:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
-    growth:
-      neutral: 130
-      joy: 128
-      sadness: 132
-      disgust: 126
-      anger: 111
-      surprise: 119
-      sweetness: 130
-      fear: 150
-      trust: 144
-    currentGrowth:
-      neutral: 0
-      joy: 32
-      sadness: 8
-      disgust: 94
-      anger: 9
-      surprise: 61
-      sweetness: 70
-      fear: 50
-      trust: 36
-    experience: 0
-    nextEXP: 120
-    relation: 0
-    skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 11400000, guid: a3b5dbca44912f24e821ac501f49f24e, type: 2}
-    damageVariance: 2
-    roleDefense: 0
-    potentials: []
-    buffs: []
-    voxography: []
-    actorMentalState: 0
-    availability: 1
-    isNull: 0
-  - fan: 0
+  - voiceActorName: Bodler
+    fan: 0
     fanGain: 0
     price: 7
-    level: 20
-    hp: 447
-    hpMax: 447
+    level: 1
+    hp: 200
+    hpMax: 200
     timbre: {x: -2, y: 5}
     statistique:
-      neutral: 24
-      joy: 17
-      sadness: 7
-      disgust: 46
-      anger: 35
-      surprise: 27
-      sweetness: 9
-      fear: 33
-      trust: 25
+      neutral: 5
+      joy: 5
+      sadness: 2
+      disgust: 10
+      anger: 8
+      surprise: 3
+      sweetness: 2
+      fear: 5
+      trust: 7
     statModifier:
       neutral: 0
       joy: 0
@@ -4423,54 +2536,342 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 106
-      joy: 67
-      sadness: 29
-      disgust: 194
-      anger: 143
-      surprise: 129
-      sweetness: 41
-      fear: 150
-      trust: 97
+      joy: 89
+      sadness: 32
+      disgust: 170
+      anger: 156
+      surprise: 139
+      sweetness: 33
+      fear: 130
+      trust: 101
     currentGrowth:
       neutral: 0
-      joy: 73
-      sadness: 51
-      disgust: 86
-      anger: 17
-      surprise: 51
-      sweetness: 79
-      fear: 50
-      trust: 43
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
     nextEXP: 120
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 08309466ffd0d154aa1afbfeb762576e, type: 2}
+    spriteSheets: Character-Bodler
     damageVariance: 2
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: b53f701b2317a6a449a15ad33e6b431c, type: 2}
+    - SkillBodlerVicieux
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
+  - voiceActorName: Dea
+    fan: 0
     fanGain: 0
-    price: 0
-    level: 20
-    hp: 200
-    hpMax: 200
-    timbre: {x: 0, y: 0}
+    price: 11
+    level: 1
+    hp: 230
+    hpMax: 230
+    timbre: {x: -6, y: -1}
     statistique:
       neutral: 5
-      joy: 9
+      joy: 5
       sadness: 8
-      disgust: 7
-      anger: 6
-      surprise: 5
-      sweetness: 4
+      disgust: 1
+      anger: 9
+      surprise: 7
+      sweetness: 0
+      fear: 6
+      trust: 5
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 113
+      joy: 116
+      sadness: 96
+      disgust: 92
+      anger: 45
+      surprise: 88
+      sweetness: 224
+      fear: 135
+      trust: 114
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0.1, y: 0.15, z: 0}
+    spriteSheets: Character-Dea
+    damageVariance: 2
+    roleDefense: 0
+    potentials:
+    - SkillDeaBienvaillance
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - voiceActorName: Gertrude
+    fan: 0
+    fanGain: 0
+    price: 6
+    level: 1
+    hp: 180
+    hpMax: 180
+    timbre: {x: -9, y: -4}
+    statistique:
+      neutral: 3
+      joy: 3
+      sadness: 3
+      disgust: 3
+      anger: 3
+      surprise: 3
+      sweetness: 3
       fear: 3
+      trust: 3
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 130
+      joy: 122
+      sadness: 139
+      disgust: 114
+      anger: 130
+      surprise: 143
+      sweetness: 139
+      fear: 125
+      trust: 128
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0, z: 0}
+    spriteSheets: Character-Gertrude
+    damageVariance: 2
+    roleDefense: 0
+    potentials: []
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - voiceActorName: Jeau
+    fan: 2
+    fanGain: 0
+    price: 7
+    level: 1
+    hp: 230
+    hpMax: 230
+    timbre: {x: 3, y: 8}
+    statistique:
+      neutral: 5
+      joy: 3
+      sadness: 7
+      disgust: 2
+      anger: 7
+      surprise: 8
+      sweetness: 4
+      fear: 4
+      trust: 5
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 75
+      joy: 49
+      sadness: 102
+      disgust: 31
+      anger: 121
+      surprise: 138
+      sweetness: 44
+      fear: 50
+      trust: 70
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0, z: 0}
+    spriteSheets: Character-NeoStan
+    damageVariance: 0
+    roleDefense: 0
+    potentials:
+    - "SkillJeauCr\xE9dule"
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - voiceActorName: Jean-Christophe
+    fan: 1
+    fanGain: 0
+    price: 6
+    level: 1
+    hp: 210
+    hpMax: 210
+    timbre: {x: -2, y: 4}
+    statistique:
+      neutral: 5
+      joy: 6
+      sadness: 5
+      disgust: 3
+      anger: 5
+      surprise: 4
+      sweetness: 8
+      fear: 1
+      trust: 8
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 101
+      joy: 58
+      sadness: 118
+      disgust: 170
+      anger: 69
+      surprise: 73
+      sweetness: 59
+      fear: 145
+      trust: 118
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0.07, y: 0.08, z: 0}
+    spriteSheets: Character-Jean-Christophe
+    damageVariance: 0
+    roleDefense: 0
+    potentials:
+    - SkillJeanChristophePleineForme
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - voiceActorName: Moine-Maeda
+    fan: 1
+    fanGain: 0
+    price: 6
+    level: 1
+    hp: 260
+    hpMax: 260
+    timbre: {x: -2, y: 4}
+    statistique:
+      neutral: 5
+      joy: 4
+      sadness: 5
+      disgust: 7
+      anger: 5
+      surprise: 6
+      sweetness: 2
+      fear: 9
       trust: 2
     statModifier:
       neutral: 0
@@ -4493,15 +2894,15 @@ MonoBehaviour:
       fear: 0
       trust: 0
     growth:
-      neutral: 0
-      joy: 0
-      sadness: 0
-      disgust: 0
-      anger: 0
-      surprise: 0
-      sweetness: 0
-      fear: 0
-      trust: 0
+      neutral: 111
+      joy: 62
+      sadness: 86
+      disgust: 123
+      anger: 64
+      surprise: 66
+      sweetness: 120
+      fear: 190
+      trust: 179
     currentGrowth:
       neutral: 0
       joy: 0
@@ -4515,33 +2916,35 @@ MonoBehaviour:
     experience: 0
     nextEXP: 120
     relation: 0
-    skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}
+    skillOffset: {x: 0.07, y: 0.12, z: 0}
+    spriteSheets: Character-Moine-Maeda
     damageVariance: 0
     roleDefense: 0
-    potentials: []
+    potentials:
+    - SkillTerreurVivifiante
     buffs: []
     voxography: []
     actorMentalState: 0
     availability: 1
     isNull: 0
-  - fan: 0
+  - voiceActorName: Roulaf
+    fan: 0
     fanGain: 0
     price: 6
-    level: 20
-    hp: 411
-    hpMax: 411
-    timbre: {x: 2, y: 5}
+    level: 1
+    hp: 280
+    hpMax: 280
+    timbre: {x: -3, y: 3}
     statistique:
-      neutral: 19
-      joy: 27
-      sadness: 10
-      disgust: 12
-      anger: 25
-      surprise: 38
-      sweetness: 16
-      fear: 16
-      trust: 14
+      neutral: 5
+      joy: 1
+      sadness: 6
+      disgust: 11
+      anger: 3
+      surprise: 3
+      sweetness: 1
+      fear: 11
+      trust: 4
     statModifier:
       neutral: 0
       joy: 0
@@ -4563,34 +2966,105 @@ MonoBehaviour:
       fear: 0
       trust: 0
     growth:
-      neutral: 78
-      joy: 106
-      sadness: 45
-      disgust: 49
-      anger: 105
-      surprise: 149
-      sweetness: 58
-      fear: 63
-      trust: 55
+      neutral: 101
+      joy: 46
+      sadness: 119
+      disgust: 171
+      anger: 77
+      surprise: 100
+      sweetness: 44
+      fear: 148
+      trust: 105
     currentGrowth:
       neutral: 0
-      joy: 14
-      sadness: 55
-      disgust: 31
-      anger: 95
-      surprise: 31
-      sweetness: 2
-      fear: 97
-      trust: 45
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
     experience: 0
     nextEXP: 120
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
-    spriteSheets: {fileID: 11400000, guid: 73c9ecc5379c01e4b97f238d08b23afa, type: 2}
-    damageVariance: 0
+    spriteSheets: Character-Roulaf
+    damageVariance: 2
+    roleDefense: 0
+    potentials: []
+    buffs: []
+    voxography: []
+    actorMentalState: 0
+    availability: 1
+    isNull: 0
+  - voiceActorName: Trish
+    fan: 100
+    fanGain: 0
+    price: 8
+    level: 1
+    hp: 300
+    hpMax: 300
+    timbre: {x: 0, y: 0}
+    statistique:
+      neutral: 5
+      joy: 5
+      sadness: 3
+      disgust: 8
+      anger: 10
+      surprise: 3
+      sweetness: 5
+      fear: 3
+      trust: 8
+    statModifier:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    statVoxography:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    growth:
+      neutral: 102
+      joy: 115
+      sadness: 61
+      disgust: 133
+      anger: 125
+      surprise: 71
+      sweetness: 125
+      fear: 71
+      trust: 119
+    currentGrowth:
+      neutral: 0
+      joy: 0
+      sadness: 0
+      disgust: 0
+      anger: 0
+      surprise: 0
+      sweetness: 0
+      fear: 0
+      trust: 0
+    experience: 0
+    nextEXP: 120
+    relation: 0
+    skillOffset: {x: 0, y: 0.1, z: 0}
+    spriteSheets: Character-Meuf
+    damageVariance: 1
     roleDefense: 0
     potentials:
-    - {fileID: 11400000, guid: 44e156829f798a244adb439c8e6c4a95, type: 2}
+    - SkillTrishTsundere
     buffs: []
     voxography: []
     actorMentalState: 0
@@ -4622,11 +3096,15 @@ MonoBehaviour:
   nextStoryEvents: []
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
-  tutoEvent:
-  - {fileID: 11400000, guid: 429fe30c85cb4734faf46197704d9151, type: 2}
+  tutoEvent: 
   nextRandomEvent: 
   inventoryEquipement: []
-  currentEquipement: []
+  currentEquipement:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   inventoryFormation:
   - {fileID: 11400000, guid: 72faee5879233c743b424a7891a1661c, type: 2}
   - {fileID: 11400000, guid: 23018171066101a4ea4cd98e7a1250cf, type: 2}
@@ -4639,15 +3117,15 @@ MonoBehaviour:
   currentChapter: 1
   currentObjective: "Pr\xE9parez-vous pour la semaine 18."
   maintenance: 6000
-  money: 40000
-  researchPoint: 20
+  money: 33036
+  researchPoint: 10
   date:
     week: 21
     month: 5
     year: 1
-  timer: 10.977903
-  season: 0
-  comboMax: 2
+  timer: 0
+  season: 1
+  comboMax: 3
   deck:
     neutral: 1
     joy: 1
@@ -4681,5 +3159,5 @@ MonoBehaviour:
   criticalRate: 0
   enemyHealthMalus: 0
   healthActorsBonus: 0
-  turnLimit: 20
+  turnLimit: 15
   menuStudioUnlocked: 1
