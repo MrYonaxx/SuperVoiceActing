@@ -52,6 +52,15 @@ namespace VoiceActing
         }
     }
 
+    [System.Serializable]
+    public struct TileDictionnary
+    {
+        public int tileID;
+        public Tile tile;
+
+
+
+    }
 
     public class MenuResearchDungeonCreator: MonoBehaviour
     {
@@ -72,10 +81,14 @@ namespace VoiceActing
         [SerializeField]
         public ResearchDungeonLayout researchDungeon;
 
-        [SerializeField]
-        public Grid grid;
+        [Space]
+        [Space]
+        [Space]
 
-        public Tilemap tilemaps;
+        public Tilemap tilemap;
+
+        public TileDictionnary[] tileDictionnaries;
+
 
 
         #endregion
@@ -96,18 +109,75 @@ namespace VoiceActing
         [Button("Generate the dungeon")]
         private void GenerateDungeon()
         {
-            //string filePath = string.Format("{0}/saves/{1}{2}.json", Application.persistentDataPath, saveFileName, index);
-            //Debug.Log(filePath);
             if (File.Exists(jsonPath))
             {
                 string dataAsJson = File.ReadAllText(jsonPath);
                 JsonUtility.FromJsonOverwrite(dataAsJson, mvMapData);
             }
             researchDungeon = new ResearchDungeonLayout(mvMapData);
-            /*TileBase tile;
-            tile.name;
-            tilemaps.SetTile
-            tilemaps.GetTile*/
+        }
+
+
+        [Button("Render the dungeon on the grid")]
+        private void RenderDungeonTilemap()
+        {
+            for (int x = 0; x < researchDungeon.dungeonLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < researchDungeon.dungeonLayout.GetLength(1); y++)
+                {
+                    if(researchDungeon.dungeonLayout[x,y] != 0)
+                        tilemap.SetTile(new Vector3Int(x, y, 0), GetCorrespondingTile(researchDungeon.dungeonLayout[x, y]));
+                    else
+                        tilemap.SetTile(new Vector3Int(x, y, 0), null);
+                }
+            }
+        }
+
+
+        [Button("Test")]
+        private void GenerateDungeonFromTilemap()
+        {
+            BoundsInt bounds = tilemap.cellBounds;
+            TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
+
+            researchDungeon.dungeonLayout = new int[bounds.size.x, bounds.size.y];
+            for (int x = 0; x < bounds.size.x; x++)
+            {
+                for (int y = 0; y < bounds.size.y; y++)
+                {
+                    TileBase tile = allTiles[x + y * bounds.size.x];
+                    if (tile != null)
+                    {
+                        researchDungeon.dungeonLayout[x, y] = GetCorrespondingID(tile.name);
+                    }
+                    else
+                    {
+                        researchDungeon.dungeonLayout[x, y] = 0;
+                    }
+                }
+            }
+        }
+
+
+
+        public Tile GetCorrespondingTile(int id)
+        {
+            for(int i = 0; i < tileDictionnaries.Length; i++)
+            {
+                if (id == tileDictionnaries[i].tileID)
+                    return tileDictionnaries[i].tile;
+            }
+            return null;
+        }
+
+        public int GetCorrespondingID(string tile)
+        {
+            for (int i = 0; i < tileDictionnaries.Length; i++)
+            {
+                if (tile == tileDictionnaries[i].tile.name)
+                    return tileDictionnaries[i].tileID;
+            }
+            return 0;
         }
 
         #endregion
