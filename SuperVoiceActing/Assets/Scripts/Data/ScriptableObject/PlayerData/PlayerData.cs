@@ -228,6 +228,7 @@ namespace VoiceActing
 
 
         // Liste des Acteurs ------------------------------------------------------------------------------------------
+        [Title("Voice Actor Data")]
         [SerializeField]
         private List<VoiceActor> voiceActors;
         public List<VoiceActor> VoiceActors
@@ -246,6 +247,7 @@ namespace VoiceActing
 
 
         // Liste des IngéSon  ------------------------------------------------------------------------------------------
+        [Title("SoundEngi Data")]
         [SerializeField]
         private List<SoundEngineer> soundEngineers;
         public List<SoundEngineer> SoundEngineers
@@ -256,6 +258,7 @@ namespace VoiceActing
 
 
         // List Story  ------------------------------------------------------------------------------------------
+        [Title("Story Data")]
         [SerializeField]
         private List<StoryEventData> nextStoryEvents;
         public List<StoryEventData> NextStoryEvents
@@ -298,17 +301,14 @@ namespace VoiceActing
             set { nextRandomEvent = value; }
         }
 
-        /*[SerializeField]
-        private List<int> randomEventsStandby;
-        public List<int> RandomEventsStandby
-        {
-            get { return randomEventsStandby; }
-            set { randomEventsStandby = value; }
-        }*/
 
 
 
+        // List Studio Data  ------------------------------------------------------------------------------------------
 
+
+
+        [Title("Equipement Data")]
         [SerializeField]
         private List<EquipementData> inventoryEquipement;
         public List<EquipementData> InventoryEquipement
@@ -323,7 +323,7 @@ namespace VoiceActing
         }
 
 
-
+        [Title("Formation Data")]
         [SerializeField]
         private List<FormationData> inventoryFormation;
         public List<FormationData> InventoryFormation
@@ -338,6 +338,44 @@ namespace VoiceActing
             get { return researchesLevels; }
         }
 
+
+        [Title("Research Data")]
+        [SerializeField]
+        private Vector2Int researchPlayerPosition;
+        public Vector2Int ResearchPlayerPosition
+        {
+            get { return researchPlayerPosition; }
+        }
+
+        [SerializeField]
+        private int researchExplorationCount;
+        public int ResearchExplorationCount
+        {
+            get { return researchExplorationCount; }
+        }
+
+        [SerializeField]
+        private int researchExplorationTotal;
+        public int ResearchExplorationTotal
+        {
+            get { return researchExplorationTotal; }
+        }
+
+        [SerializeField]
+        private int[,] researchExplorationLayout;
+        public int[,] ResearchExplorationLayout
+        {
+            get { return researchExplorationLayout; }
+        }
+        [SerializeField]
+        private int[,] researchExplorationEvents;
+        public int[,] ResearchExplorationEvents
+        {
+            get { return researchExplorationEvents; }
+        }
+
+        // List Studio Data  ------------------------------------------------------------------------------------------
+        [Title("Options Data")]
         [SerializeField]
         private bool[] gameManualUnlocked;
         public bool[] GameManualUnlocked
@@ -353,7 +391,7 @@ namespace VoiceActing
         }
 
 
-
+        [Title("Player Stat Data")]
         private string currentBestActor;
         public string CurrentBestActor
         {

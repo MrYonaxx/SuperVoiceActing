@@ -22,9 +22,9 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        ResearchDungeonLayout debugLayout;
+        ResearchDungeonData dungeonLayout;
         [SerializeField]
-        ResearchDungeonLayout explorationLayout;
+        int[,] explorationLayout;
 
         [SerializeField]
         Tilemap explorationTilemap;
@@ -64,7 +64,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        [Button("Test")]
+        /*[Button("Test")]
         private void CreateExplorationLayout()
         {
             explorationLayout.dungeonLayout = new int[debugLayout.dungeonLayout.GetLength(0), debugLayout.dungeonLayout.GetLength(1)];
@@ -91,12 +91,12 @@ namespace VoiceActing
                         explorationTilemap.SetTile(new Vector3Int(x, y, 0), tileUnexplored);
                 }
             }
-        }
+        }*/
 
 
         public void Start()
         {
-            playerPosition = debugLayout.startPosition;
+            playerPosition = dungeonLayout.StartPosition;
             SetCharacter(playerPosition);
         }
 
@@ -133,14 +133,14 @@ namespace VoiceActing
         {
             // Check si prochaine case est traversable
             Vector2Int directionNormalized = new Vector2Int((int)direction.normalized.x, (int)direction.normalized.y);
-            if(debugLayout.dungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
+            if(dungeonLayout.ResearchDungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
             {
                 moveCoroutine = MoveCoroutine(direction);
                 StartCoroutine(moveCoroutine);
                 playerPosition += new Vector2Int(directionNormalized.x, directionNormalized.y);
 
                 explorationTilemap.SetTile(new Vector3Int(playerPosition.x, playerPosition.y, 0), null);
-                explorationLayout.dungeonLayout[playerPosition.x, playerPosition.y] = -1;
+                //explorationLayout.dungeonLayout[playerPosition.x, playerPosition.y] = -1;
             }
             else
             {

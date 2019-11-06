@@ -27,40 +27,9 @@ namespace VoiceActing
         public int[] data;
     }
 
-    [System.Serializable]
-    public class ResearchDungeonLayout
-    {
-        [SerializeField]
-        public Vector2Int startPosition;
-
-        [ShowInInspector]
-        [BoxGroup("Labled table")]
-        [TableMatrix(IsReadOnly = true)]
-        public int[,] dungeonLayout = new int[1,1];
-
-        public ResearchDungeonLayout(RPGMakerMVMapData mapData)
-        {
-            dungeonLayout = new int[mapData.width, mapData.height];
-
-            for(int y = 0; y < mapData.height; y++ )
-            {
-                for(int x = 0; x < mapData.width; x++)
-                {
-                    dungeonLayout[x, y] = mapData.data[mapData.width * y + x];
-                }
-            }
-        }
-    }
-
-    [System.Serializable]
-    public struct TileDictionnary
-    {
-        public int tileID;
-        public Tile tile;
 
 
 
-    }
 
     public class MenuResearchDungeonCreator: MonoBehaviour
     {
@@ -69,27 +38,25 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [Title("Rpg maker MV")]
         [FilePath]
         public string jsonPath;
-
         [SerializeField]
         public RPGMakerMVMapData mvMapData;
 
         [Space]
         [Space]
-        [Space]
+        [Title("Data")]
         [SerializeField]
-        public ResearchDungeonLayout researchDungeon;
+        public ResearchDungeonData researchDungeon;
 
         [Space]
         [Space]
-        [Space]
+        [Title("Renderer")]
 
         public Tilemap tilemap;
 
-        public TileDictionnary[] tileDictionnaries;
-
-
+        [Title("Function")]
 
         #endregion
 
@@ -106,7 +73,7 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-        [Button("Generate the dungeon")]
+        [Button("Generate the dungeon from a rpg maker mv file")]
         private void GenerateDungeon()
         {
             if (File.Exists(jsonPath))
@@ -114,33 +81,17 @@ namespace VoiceActing
                 string dataAsJson = File.ReadAllText(jsonPath);
                 JsonUtility.FromJsonOverwrite(dataAsJson, mvMapData);
             }
-            researchDungeon = new ResearchDungeonLayout(mvMapData);
+            researchDungeon.CreateResearchDungeonLayout(mvMapData);
         }
 
 
-        [Button("Render the dungeon on the grid")]
-        private void RenderDungeonTilemap()
-        {
-            for (int x = 0; x < researchDungeon.dungeonLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < researchDungeon.dungeonLayout.GetLength(1); y++)
-                {
-                    if(researchDungeon.dungeonLayout[x,y] != 0)
-                        tilemap.SetTile(new Vector3Int(x, y, 0), GetCorrespondingTile(researchDungeon.dungeonLayout[x, y]));
-                    else
-                        tilemap.SetTile(new Vector3Int(x, y, 0), null);
-                }
-            }
-        }
-
-
-        [Button("Test")]
+        [Button("Generate the dungeon from the tilemap")]
         private void GenerateDungeonFromTilemap()
         {
             BoundsInt bounds = tilemap.cellBounds;
             TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
 
-            researchDungeon.dungeonLayout = new int[bounds.size.x, bounds.size.y];
+            researchDungeon.CreateResearchDungeonLayout(bounds.size.x, bounds.size.y);
             for (int x = 0; x < bounds.size.x; x++)
             {
                 for (int y = 0; y < bounds.size.y; y++)
@@ -148,40 +99,34 @@ namespace VoiceActing
                     TileBase tile = allTiles[x + y * bounds.size.x];
                     if (tile != null)
                     {
-                        researchDungeon.dungeonLayout[x, y] = GetCorrespondingID(tile.name);
+                        researchDungeon.ResearchDungeonLayout[x, y] = researchDungeon.GetCorrespondingID(tile.name);
                     }
                     else
                     {
-                        researchDungeon.dungeonLayout[x, y] = 0;
+                        researchDungeon.ResearchDungeonLayout[x, y] = 0;
                     }
                 }
             }
         }
 
 
-
-        public Tile GetCorrespondingTile(int id)
+        [Button("Render the dungeon on the grid")]
+        private void RenderDungeonTilemap()
         {
-            for(int i = 0; i < tileDictionnaries.Length; i++)
+            for (int x = 0; x < researchDungeon.ResearchDungeonLayout.GetLength(0); x++)
             {
-                if (id == tileDictionnaries[i].tileID)
-                    return tileDictionnaries[i].tile;
+                for (int y = 0; y < researchDungeon.ResearchDungeonLayout.GetLength(1); y++)
+                {
+                    if (researchDungeon.ResearchDungeonLayout[x, y] != 0)
+                        tilemap.SetTile(new Vector3Int(x, y, 0), researchDungeon.GetCorrespondingTile(x, y));
+                    else
+                        tilemap.SetTile(new Vector3Int(x, y, 0), null);
+                }
             }
-            return null;
-        }
-
-        public int GetCorrespondingID(string tile)
-        {
-            for (int i = 0; i < tileDictionnaries.Length; i++)
-            {
-                if (tile == tileDictionnaries[i].tile.name)
-                    return tileDictionnaries[i].tileID;
-            }
-            return 0;
         }
 
         #endregion
 
-    } 
+    }
 
 } // #PROJECTNAME# namespace
