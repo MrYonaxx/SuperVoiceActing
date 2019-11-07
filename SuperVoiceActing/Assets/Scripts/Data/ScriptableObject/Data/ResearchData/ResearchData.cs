@@ -48,6 +48,12 @@ namespace VoiceActing
             get { return researchValue; }
         }
 
+
+        public virtual void ApplyResearchEffect(PlayerData playerData)
+        {
+
+        }
+
         public virtual void ApplyResearchEffect(PlayerData playerData, int researchLevel)
         {
     

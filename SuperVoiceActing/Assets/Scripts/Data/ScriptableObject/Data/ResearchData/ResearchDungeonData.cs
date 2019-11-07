@@ -24,15 +24,18 @@ namespace VoiceActing
 
     }
 
-    [System.Serializable]
-    public struct ResearchEvent
+    /*[System.Serializable]
+    public class ResearchEventDatabase
     {
         [HorizontalGroup]
-        public int researchEventID;
+        public int eventID;
         [HorizontalGroup]
-        [HideLabel]
+        public bool canCollide = false;
+        [HorizontalGroup]
         public ResearchData researchData;
-    }
+
+    }*/
+
 
     [CreateAssetMenu(fileName = "ResearchDungeon", menuName = "Research/ResearchDungeon", order = 1)]
     public class ResearchDungeonData: SerializedScriptableObject
@@ -73,13 +76,21 @@ namespace VoiceActing
             get { return researchEventLayout; }
         }
 
-        [Space]
+        /*[Space]
         [SerializeField]
-        private ResearchEvent[] researchEventsDictionnary;
-        public ResearchEvent[] ResearchEventsDictionnary
+        private ResearchEventDictionnary researchEventDictionnary;
+        public ResearchEventDictionnary ResearchEventDictionnary
         {
-            get { return researchEventsDictionnary; }
-        }
+            get { return researchEventDictionnary; }
+        }*/
+
+        /*[Space]
+        [SerializeField]
+        private ResearchDatabase researchDatabase;
+        public ResearchDatabase ResearchDatabase
+        {
+            get { return researchDatabase; }
+        }*/
 
 
 
@@ -136,6 +147,29 @@ namespace VoiceActing
                     return tileDictionnaries[i].tileID;
             }
             return 0;
+        }
+
+
+
+
+
+
+
+
+
+
+        public int[,] CreateExplorationLayout()
+        {
+            int[,] res = new int[researchDungeonLayout.GetLength(0), researchDungeonLayout.GetLength(1)];
+
+            for (int y = 0; y < researchDungeonLayout.GetLength(1); y++)
+            {
+                for (int x = 0; x < researchDungeonLayout.GetLength(0); x++)
+                {
+                    res[x, y] = Mathf.Clamp(researchDungeonLayout[x, y], 0, 1);
+                }
+            }
+            return res;
         }
 
 

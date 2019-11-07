@@ -21,10 +21,18 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [Title("Data")]
         [SerializeField]
-        ResearchDungeonData dungeonLayout;
+        int dungeonID = 0;
         [SerializeField]
-        int[,] explorationLayout;
+        ResearchDungeonData[] dungeonLayouts;
+        [SerializeField]
+        ResearchEventDatabase researchEventDatabase;
+
+        [SerializeField]
+        Transform researchEventTransform;
+        [SerializeField]
+        List<Animator> researchEventList = new List<Animator>();
 
         [SerializeField]
         Tilemap explorationTilemap;
@@ -35,8 +43,7 @@ namespace VoiceActing
         PlayerData playerData;
         [SerializeField]
         InputController inputController;
-        [SerializeField]
-        Vector2Int playerPosition;
+
 
         [Title("Movement")]
         [SerializeField]
@@ -45,6 +52,12 @@ namespace VoiceActing
         float cellSize = 0.48f;
         [SerializeField]
         Transform character;
+
+        [Title("Camera")]
+        [SerializeField]
+        GameObject cameraStudio;
+        [SerializeField]
+        GameObject cameraTilemap;
 
         private IEnumerator moveCoroutine;
 
@@ -94,11 +107,52 @@ namespace VoiceActing
         }*/
 
 
-        public void Start()
+        private void CreateEvents()
         {
-            playerPosition = dungeonLayout.StartPosition;
-            SetCharacter(playerPosition);
+            ResearchEvent currentEvent;
+            int[,] eventLayout = dungeonLayouts[dungeonID].ResearchEventLayout;
+
+            for (int x = 0; x < eventLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < eventLayout.GetLength(1); y++)
+                {
+                    if (eventLayout[x, y] > 0)
+                    {
+                        currentEvent = researchEventDatabase.GetResearchEvent(eventLayout[x, y]);
+                        if(currentEvent != null)
+                        {
+                            if (currentEvent.CanInstantiate() == true)
+                            {
+                                researchEventList.Add(currentEvent.InstantiateEvent(researchEventTransform, cellSize, x, y));
+                            }
+                        }
+                    }
+                }
+            }
+            // Note les obstacles des interrupteurs doivent etre avant les switch dans la database 
         }
+
+        private void OnEnable()
+        {
+            cameraStudio.SetActive(false);
+            cameraTilemap.SetActive(true);
+
+            SetCharacter(playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition);
+            if (moveCoroutine != null)
+                StopCoroutine(moveCoroutine);
+            CreateEvents();
+        }
+
+        public void QuitMenu()
+        {
+            cameraStudio.SetActive(true);
+            cameraTilemap.SetActive(false);
+
+            this.gameObject.SetActive(false);
+        }
+
+
+
 
         public void SetCharacter(Vector2Int position)
         {
@@ -133,25 +187,48 @@ namespace VoiceActing
         {
             // Check si prochaine case est traversable
             Vector2Int directionNormalized = new Vector2Int((int)direction.normalized.x, (int)direction.normalized.y);
-            if(dungeonLayout.ResearchDungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
+            Vector2Int playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
+
+            // Check si prochaine case est un event
+            int caseEventID = dungeonLayouts[dungeonID].ResearchEventLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y];
+            if (caseEventID != 0)
+            {
+                if (researchEventDatabase.GetResearchEvent(caseEventID) != null)
+                {
+                    // Active research event animator
+
+                    // Active research event dans le playerData et Apply research event effect
+                    researchEventDatabase.GetResearchEvent(caseEventID).ApplyEvent(playerData, caseEventID);
+                }
+
+                if (researchEventDatabase.GetCanCollide(caseEventID) == true)
+                {
+                    return;
+                }
+            }
+
+            if (playerData.ResearchPoint == 0)
+                return;
+
+            // Check si la prochaine case n'est pas un mur
+            if (dungeonLayouts[dungeonID].ResearchDungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
             {
                 moveCoroutine = MoveCoroutine(direction);
                 StartCoroutine(moveCoroutine);
-                playerPosition += new Vector2Int(directionNormalized.x, directionNormalized.y);
 
-                explorationTilemap.SetTile(new Vector3Int(playerPosition.x, playerPosition.y, 0), null);
-                //explorationLayout.dungeonLayout[playerPosition.x, playerPosition.y] = -1;
-            }
-            else
-            {
-                // Wall
+                // Deplace la position du perso dans le player data
+                playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition += new Vector2Int(directionNormalized.x, directionNormalized.y);
+                playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
             }
 
-
-
-            // Deplace la position du perso dans le player data
 
             // Ajoute la case decouverte au pourcentage
+            if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x, playerPosition.y] > 0)
+            {
+                explorationTilemap.SetTile(new Vector3Int(playerPosition.x, playerPosition.y, 0), null);
+                playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x, playerPosition.y] = -1;
+                //playerData.ResearchPoint -= 1;
+            }
         }
 
         private IEnumerator MoveCoroutine(Vector3 destination)
@@ -159,7 +236,7 @@ namespace VoiceActing
             Vector3 finalPosition = character.transform.localPosition + destination;
             Vector3 position = character.transform.localPosition;
             float t = 0f;
-            while(t<1f)
+            while(t < 1f)
             {
                 t += Time.deltaTime * (time / 60f);
                 character.transform.localPosition = Vector3.Lerp(position, finalPosition, t);

@@ -30,6 +30,16 @@ namespace VoiceActing
             get { return battleStat; }
         }
 
+        public override void ApplyResearchEffect(PlayerData playerData)
+        {
+            switch (battleStat)
+            {
+                case BattleSessionStat.Turn:
+                    playerData.TurnLimit += researchValue[0];
+                    break;
+            }
+        }
+
         public override void ApplyResearchEffect(PlayerData playerData, int researchLevel)
         {
             switch(battleStat)

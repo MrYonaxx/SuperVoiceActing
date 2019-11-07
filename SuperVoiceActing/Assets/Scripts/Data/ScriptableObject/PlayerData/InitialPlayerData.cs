@@ -47,12 +47,31 @@ namespace VoiceActing
             get { return startResearchPoint; }
         }
 
+
+
+
         [SerializeField]
         private ResearchDatabase researchDatabase;
         public ResearchDatabase ResearchDatabase
         {
             get { return researchDatabase; }
         }
+
+        [SerializeField]
+        private ResearchDungeonData[] researchDungeonData;
+        public ResearchDungeonData[] ResearchDungeonData
+        {
+            get { return researchDungeonData; }
+        }
+        [SerializeField]
+        private ResearchEventDatabase researchEventDatabase;
+        public ResearchEventDatabase ResearchEventDatabase
+        {
+            get { return researchEventDatabase; }
+        }
+
+
+
 
         [SerializeField]
         private RecapDatabase gameManualDatabase;
@@ -238,42 +257,6 @@ namespace VoiceActing
 
         #endregion
 
-
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
-        protected void Awake()
-        {
-            
-        }
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-        /// </summary>
-        protected virtual void Start()
-        {
-            
-        }
-        
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        protected void Update()
-        {
-            
-        }
-        
-        #endregion
 		
 	} // InitialPlayerData class
 	

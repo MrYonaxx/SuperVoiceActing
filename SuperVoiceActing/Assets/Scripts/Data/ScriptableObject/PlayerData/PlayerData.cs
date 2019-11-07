@@ -85,6 +85,99 @@ namespace VoiceActing
         }
     }
 
+
+    [System.Serializable]
+    public class ResearchExplorationData
+    {
+        [SerializeField]
+        private Vector2Int researchPlayerPosition;
+        public Vector2Int ResearchPlayerPosition
+        {
+            get { return researchPlayerPosition; }
+            set { researchPlayerPosition = value; }
+        }
+
+
+        [SerializeField]
+        private int researchExplorationChest;
+        public int ResearchExplorationChest
+        {
+            get { return researchExplorationChest; }
+            set { researchExplorationChest = value; }
+        }
+        [SerializeField]
+        private int researchExplorationTotalChest;
+        public int ResearchExplorationTotalChest
+        {
+            get { return researchExplorationTotalChest; }
+            set { researchExplorationTotalChest = value; }
+        }
+
+
+        [SerializeField]
+        private int researchExplorationCount;
+        public int ResearchExplorationCount
+        {
+            get { return researchExplorationCount; }
+            set { researchExplorationCount = value; }
+        }
+        [SerializeField]
+        private int researchExplorationTotal;
+        public int ResearchExplorationTotal
+        {
+            get { return researchExplorationTotal; }
+            set { researchExplorationTotal = value; }
+        }
+
+        [SerializeField]
+        [TableMatrix]
+        private int[,] researchExplorationLayout;
+        public int[,] ResearchExplorationLayout
+        {
+            get { return researchExplorationLayout; }
+            set { researchExplorationLayout = value; }
+        }
+
+        public ResearchExplorationData(Vector2Int startPos, int[,] explorationLayout)
+        {
+            researchPlayerPosition = startPos;
+            researchExplorationChest = 0;
+            //researchExplorationTotalChest
+            researchExplorationCount = 0;
+            //researchExplorationTotal
+            researchExplorationLayout = explorationLayout;
+        }
+    }
+
+
+
+    [System.Serializable]
+    public class ResearchEventSave
+    {
+        [SerializeField]
+        private int eventID;
+        public int EventID
+        {
+            get { return eventID; }
+            set { eventID = value; }
+        }
+
+        [SerializeField]
+        private bool eventActive;
+        public bool EventActive
+        {
+            get { return eventActive; }
+            set { eventActive = value; }
+        }
+
+        public ResearchEventSave(int id)
+        {
+            eventID = id;
+            eventActive = false;
+        }
+    }
+
+
     /// <summary>
     /// Definition of the PlayerData class
     /// </summary>
@@ -339,39 +432,19 @@ namespace VoiceActing
         }
 
 
-        [Title("Research Data")]
+        [Title("Research Data")]   // ------------------------------------------------------------------------------------------
         [SerializeField]
-        private Vector2Int researchPlayerPosition;
-        public Vector2Int ResearchPlayerPosition
+        private ResearchExplorationData[] researchExplorationDatas;
+        public ResearchExplorationData[] ResearchExplorationDatas
         {
-            get { return researchPlayerPosition; }
+            get { return researchExplorationDatas; }
         }
 
         [SerializeField]
-        private int researchExplorationCount;
-        public int ResearchExplorationCount
+        private List<ResearchEventSave> researchEventSaves = new List<ResearchEventSave>();
+        public List<ResearchEventSave> ResearchEventSaves
         {
-            get { return researchExplorationCount; }
-        }
-
-        [SerializeField]
-        private int researchExplorationTotal;
-        public int ResearchExplorationTotal
-        {
-            get { return researchExplorationTotal; }
-        }
-
-        [SerializeField]
-        private int[,] researchExplorationLayout;
-        public int[,] ResearchExplorationLayout
-        {
-            get { return researchExplorationLayout; }
-        }
-        [SerializeField]
-        private int[,] researchExplorationEvents;
-        public int[,] ResearchExplorationEvents
-        {
-            get { return researchExplorationEvents; }
+            get { return researchEventSaves; }
         }
 
         // List Studio Data  ------------------------------------------------------------------------------------------
@@ -674,6 +747,26 @@ namespace VoiceActing
                     researchesLevels[i].ResearchLevel[j] = 0;
                 }
             }
+
+
+            researchExplorationDatas = new ResearchExplorationData[initialPlayerData.ResearchDungeonData.Length];
+            for(int i = 0; i < initialPlayerData.ResearchDungeonData.Length; i++)
+            {
+                researchExplorationDatas[i] = new ResearchExplorationData(initialPlayerData.ResearchDungeonData[i].StartPosition, 
+                                                                          initialPlayerData.ResearchDungeonData[i].CreateExplorationLayout());
+                //researchExplorationDatas[i].ResearchExplorationLayout = initialPlayerData.ResearchDungeonData[i].CreateExplorationLayout();
+            }
+
+            researchEventSaves.Clear();
+            for (int i = 0; i < initialPlayerData.ResearchEventDatabase.ResearchEvents.Length; i++)
+            {
+                if(initialPlayerData.ResearchEventDatabase.ResearchEvents[i].researchData.CanAddToPlayerDataSave() == true)
+                {
+                    researchEventSaves.Add(new ResearchEventSave(initialPlayerData.ResearchEventDatabase.ResearchEvents[i].eventID));
+                }
+            }
+
+
 
             gameManualUnlocked = new bool[initialPlayerData.GameManualDatabase.RecapDatas.Length];
             for (int i = 0; i < initialPlayerData.GameManualDatabase.RecapDatas.Length; i++)
