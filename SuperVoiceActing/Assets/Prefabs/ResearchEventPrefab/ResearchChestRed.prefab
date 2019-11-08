@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8141151796254715340}
   - component: {fileID: 8141151796254715338}
+  - component: {fileID: 3753566524926693997}
   m_Layer: 12
   m_Name: ResearchChestRed
   m_TagString: Untagged
@@ -130,3 +131,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3753566524926693997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141151796254715341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f36a57e5b0363c419e670d02bb348df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canCollide: 1
+  animator: {fileID: 8141151796254715338}
+  researchData: {fileID: 11400000, guid: 619d3bd3fdb840a4992604896bb8362c, type: 2}

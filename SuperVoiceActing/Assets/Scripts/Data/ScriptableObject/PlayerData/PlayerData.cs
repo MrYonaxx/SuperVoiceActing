@@ -170,11 +170,26 @@ namespace VoiceActing
             set { eventActive = value; }
         }
 
+        // à fusionner ?
+        [SerializeField]
+        private int eventValue;
+        public int EventValue
+        {
+            get { return eventValue; }
+            set { eventValue = value; }
+        }
+
         public ResearchEventSave(int id)
         {
             eventID = id;
             eventActive = false;
         }
+        public ResearchEventSave(int id, bool b)
+        {
+            eventID = id;
+            eventActive = b;
+        }
+
     }
 
 
@@ -760,7 +775,7 @@ namespace VoiceActing
             researchEventSaves.Clear();
             for (int i = 0; i < initialPlayerData.ResearchEventDatabase.ResearchEvents.Length; i++)
             {
-                if(initialPlayerData.ResearchEventDatabase.ResearchEvents[i].researchData.CanAddToPlayerDataSave() == true)
+                if(initialPlayerData.ResearchEventDatabase.ResearchEvents[i].researchEvent.CanAddToPlayerDataSave() == true)
                 {
                     researchEventSaves.Add(new ResearchEventSave(initialPlayerData.ResearchEventDatabase.ResearchEvents[i].eventID));
                 }

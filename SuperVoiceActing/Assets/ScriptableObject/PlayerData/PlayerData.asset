@@ -80,7 +80,7 @@ MonoBehaviour:
     currentLine: 0
     totalLine: 10
     currentMixing: 0
-    totalMixing: 25
+    totalMixing: 23
     score: 0
     highScore: 0
     soundEngineer:
@@ -101,9 +101,9 @@ MonoBehaviour:
     characters:
     - name: Opera
       roleSprite: {fileID: 0}
-      line: 219
+      line: 218
       fan: 0
-      attack: 12
+      attack: 14
       defense: 0
       roleType: 0
       rolePersonality: 0
@@ -130,9 +130,9 @@ MonoBehaviour:
       buffs: []
     - name: Nougat
       roleSprite: {fileID: 0}
-      line: 140
+      line: 126
       fan: 0
-      attack: 14
+      attack: 16
       defense: 0
       roleType: 0
       rolePersonality: 0
@@ -159,9 +159,9 @@ MonoBehaviour:
       buffs: []
     - name: Praline
       roleSprite: {fileID: 0}
-      line: 138
+      line: 181
       fan: 0
-      attack: 8
+      attack: 9
       defense: 0
       roleType: 0
       rolePersonality: 0
@@ -585,7 +585,7 @@ MonoBehaviour:
     currentLine: 0
     totalLine: 4
     currentMixing: 0
-    totalMixing: 6
+    totalMixing: 8
     score: 0
     highScore: 0
     soundEngineer:
@@ -609,7 +609,7 @@ MonoBehaviour:
       line: 20
       fan: 0
       attack: 20
-      defense: 22
+      defense: 24
       roleType: 0
       rolePersonality: 0
       timbre: {x: -10, y: -2}
@@ -896,16 +896,17 @@ MonoBehaviour:
     battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: "Cordons bleus Pamov\xE9"
-    description: ' '
+  - name: Action Kids+
+    description: "Action Kids+ est une marque de jouet pour enfants.\nLa publicit\xE9
+      vise \xE0 vendre un nouveau produit de la licence."
     contractType: 3
     level: 1
-    money: 2350
+    money: 1730
     moneyBonus: 0
     sessionNumber: 0
     weekRemaining: 4
     currentLine: 0
-    totalLine: 4
+    totalLine: 5
     currentMixing: 0
     totalMixing: 0
     score: 0
@@ -928,7 +929,7 @@ MonoBehaviour:
     characters:
     - name: Narrateur
       roleSprite: {fileID: 0}
-      line: 33
+      line: 10
       fan: 0
       attack: 5
       defense: 0
@@ -936,18 +937,18 @@ MonoBehaviour:
       rolePersonality: 0
       timbre: {x: 0, y: 0}
       characterStat:
-        neutral: 0
-        joy: 0
+        neutral: 2
+        joy: 3
         sadness: 0
         disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 7
+        anger: 4
+        surprise: 9
+        sweetness: 0
         fear: 0
-        trust: 0
-      bestStat: 7
-      secondBestStat: -1
-      bestStatEmotion: 6
+        trust: 2
+      bestStat: 9
+      secondBestStat: 4
+      bestStatEmotion: 5
       secondBestStatEmotion: 0
       roleScore: 0
       rolePerformance: 0
@@ -1029,72 +1030,624 @@ MonoBehaviour:
       isNull: 1
     textData:
     - interlocuteur: 0
+      hpMax: 13
+      text: "Paris est menac\xE9 !"
+      enemyResistance:
+        neutral: -10
+        joy: -50
+        sadness: 0
+        disgust: 0
+        anger: 100
+        surprise: 100
+        sweetness: -50
+        fear: 10
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 12
+      text: "Mais qui voil\xE0 !? Les Action Kids+ !!!"
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 0
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
       hpMax: 10
-      text: "Hee-ho,, les cordons bleus de chez Pamov\xE9 ..."
+      text: Et avec une nouvelle arme !?
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 4
+    - interlocuteur: 0
+      hpMax: 12
+      text: Le Super-Micro-Blaster !!!
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 1
+    - interlocuteur: 0
+      hpMax: 17
+      text: Les jouets Action Kids+ ne conviennent pas aux enfants de moins de 14
+        ans.
+      enemyResistance:
+        neutral: 50
+        joy: 50
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 30
+        fear: -30
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 12
+    emotionsUsed: []
+    eventData: []
+    expGain: 25
+    expBonus: 50
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: "Ligne T\xE9l\xE9phonique Telefonika"
+    description: "L'entreprise Telefonika cherche une voix sympathique pour accompagner
+      ses clients dans leurs d\xE9marches."
+    contractType: 3
+    level: 1
+    money: 1610
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 7
+    currentLine: 0
+    totalLine: 6
+    currentMixing: 0
+    totalMixing: 0
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: "R\xE9pondeur"
+      roleSprite: {fileID: 0}
+      line: 22
+      fan: 0
+      attack: 4
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -25, y: 80}
+      characterStat:
+        neutral: 1
+        joy: 7
+        sadness: 1
+        disgust: 1
+        anger: 0
+        surprise: 0
+        sweetness: 5
+        fear: 0
+        trust: 1
+      bestStat: 7
+      secondBestStat: 5
+      bestStatEmotion: 1
+      secondBestStatEmotion: 6
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 8
+      text: "Bonjour, vous \xEAtes bien chez Telefonika."
+      enemyResistance:
+        neutral: 30
+        joy: 30
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+    - interlocuteur: 0
+      hpMax: 14
+      text: Veuillez ne pas quitter, nous allons prendre votre appel.
+      enemyResistance:
+        neutral: 30
+        joy: 30
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 11
+      text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
+      enemyResistance:
+        neutral: 30
+        joy: 30
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 1
+    - interlocuteur: 0
+      hpMax: 14
+      text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
+      enemyResistance:
+        neutral: 30
+        joy: 30
+        sadness: 0
+        disgust: -90
+        anger: -50
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 12
+      text: "Nous vous souhaitons de bonnes f\xEAtes."
+      enemyResistance:
+        neutral: 30
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 11
+      text: Chez Telefonika, 93% des clients sont satisfaits.
+      enemyResistance:
+        neutral: 30
+        joy: 70
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: 100
+        fear: -90
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 2
+    emotionsUsed: []
+    eventData: []
+    expGain: 30
+    expBonus: 30
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Nouvelle voiture Khiruul
+    description: "La publicit\xE9 de notre nouvelle voiture Khiruul, cependant nous
+      souhaitons aborder le propos avec un th\xE8me plus touchant."
+    contractType: 3
+    level: 2
+    money: 3940
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 3
+    currentLine: 0
+    totalLine: 10
+    currentMixing: 0
+    totalMixing: 0
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: "P\xE8re"
+      roleSprite: {fileID: 0}
+      line: 34
+      fan: 0
+      attack: 9
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: 3, y: 10}
+      characterStat:
+        neutral: 3
+        joy: 5
+        sadness: 12
+        disgust: 5
+        anger: 1
+        surprise: 1
+        sweetness: 0
+        fear: 0
+        trust: 1
+      bestStat: 12
+      secondBestStat: 5
+      bestStatEmotion: 2
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 12
+      text: Rapide...
       enemyResistance:
         neutral: 0
         joy: 50
-        sadness: -60
-        disgust: -100
-        anger: -50
-        surprise: 30
-        sweetness: 30
-        fear: -100
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 0
+        sweetness: 100
+        fear: 0
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
     - interlocuteur: 0
-      hpMax: 10
-      text: "Du fromage de qualit\xE9 sup\xE9rieure..."
+      hpMax: 13
+      text: Audacieuse...
       enemyResistance:
         neutral: 0
-        joy: 25
-        sadness: -60
-        disgust: -100
-        anger: -100
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 50
         surprise: 0
-        sweetness: 80
-        fear: -100
+        sweetness: 70
+        fear: 0
         trust: 50
       enemyWeakPoints:
-      - wordIndex: 1
-      - wordIndex: 4
+      - wordIndex: 0
     - interlocuteur: 0
-      hpMax: 10
-      text: "Du jambon de cochons de pays, tu\xE9s \xE0 la main..."
+      hpMax: 13
+      text: Et dangereuse...
       enemyResistance:
         neutral: 0
-        joy: 25
-        sadness: -10
-        disgust: -80
-        anger: -100
+        joy: 50
+        sadness: 50
+        disgust: 50
+        anger: 50
         surprise: 0
-        sweetness: 80
+        sweetness: 50
         fear: 0
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
-      - wordIndex: 6
-      - wordIndex: 9
     - interlocuteur: 0
-      hpMax: 10
-      text: Il n'y a rien de meilleur !
+      hpMax: 23
+      text: "C'est comme \xE7a... comme \xE7a qu'elle m'a quitt\xE9."
       enemyResistance:
         neutral: 0
-        joy: 50
-        sadness: -60
-        disgust: -100
-        anger: -100
-        surprise: 0
-        sweetness: 100
-        fear: -100
-        trust: 50
+        joy: -80
+        sadness: 100
+        disgust: 40
+        anger: 0
+        surprise: -80
+        sweetness: -25
+        fear: 0
+        trust: -80
+      enemyWeakPoints:
+      - wordIndex: 2
+      - wordIndex: 8
+    - interlocuteur: 0
+      hpMax: 23
+      text: Est-ce que je regrette ?
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
       enemyWeakPoints:
       - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 17
+      text: "Bien s\xFBr."
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+    - interlocuteur: 0
+      hpMax: 23
+      text: "Est-ce que je souhaite retourner en arri\xE8re ?"
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
+      enemyWeakPoints:
+      - wordIndex: 4
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 18
+      text: Evidemment.
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 25
+      text: "Mais c'est pour \xE7a que je continuerai de conduire."
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 100
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 10
+        fear: -50
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 19
+      text: Pour elle, et son sourire.
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 100
+        disgust: -80
+        anger: -80
+        surprise: -80
+        sweetness: 50
+        fear: -80
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
     emotionsUsed: []
-    eventData: []
-    expGain: 20
-    expBonus: 30
+    eventData:
+    - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
+    expGain: 30
+    expBonus: 50
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -1115,11 +1668,9 @@ MonoBehaviour:
   - ParfumLv1
   - SanteJeunesseLv1
   - TurboGazonLv1
-  - LigneTelephoniqueLv1
+  - JambonLv1
   - EntrepriseEkavoxLv1
-  - KidGIGNLv1
   - BolognaiseLv1
-  - VoitureLv1
   - FightingBattleLv1
   - ClimClimaxLv2
   - PhilosophieLv1
@@ -1128,7 +1679,11 @@ MonoBehaviour:
   - MetroLv1
   - ParfumLv2
   contractGachaCooldown:
-  - contract: JambonLv1
+  - contract: KidGIGNLv1
+    cooldown: 6
+  - contract: LigneTelephoniqueLv1
+    cooldown: 7
+  - contract: VoitureLv1
     cooldown: 3
   voiceActors:
   - voiceActorName: Moine-Maeda
@@ -1136,7 +1691,7 @@ MonoBehaviour:
     fanGain: 0
     price: 6
     level: 1
-    hp: 260
+    hp: 234
     hpMax: 260
     timbre: {x: -2, y: 4}
     statistique:
@@ -1171,14 +1726,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 62
-      sadness: 94
-      disgust: 135
-      anger: 76
-      surprise: 79
+      joy: 65
+      sadness: 99
+      disgust: 123
+      anger: 67
+      surprise: 81
       sweetness: 91
-      fear: 178
-      trust: 175
+      fear: 190
+      trust: 174
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1190,7 +1745,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 98
     relation: 0
     skillOffset: {x: 0.07, y: 0.12, z: 0}
     spriteSheets: Character-Moine-Maeda
@@ -1204,7 +1759,7 @@ MonoBehaviour:
     availability: 1
     isNull: 0
   - voiceActorName: Bocca
-    fan: 4996
+    fan: 4992
     fanGain: 0
     price: 15
     level: 20
@@ -1686,14 +2241,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 120
-      sadness: 118
-      disgust: 85
-      anger: 39
-      surprise: 76
-      sweetness: 232
-      fear: 128
-      trust: 112
+      joy: 130
+      sadness: 117
+      disgust: 94
+      anger: 48
+      surprise: 79
+      sweetness: 211
+      fear: 127
+      trust: 104
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1723,7 +2278,7 @@ MonoBehaviour:
     fanGain: 0
     price: 6
     level: 1
-    hp: 175
+    hp: 200
     hpMax: 200
     timbre: {x: -7, y: 3}
     statistique:
@@ -1758,14 +2313,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 157
-      sadness: 148
+      joy: 158
+      sadness: 155
       disgust: 99
       anger: 64
-      surprise: 73
-      sweetness: 152
-      fear: 72
-      trust: 145
+      surprise: 67
+      sweetness: 148
+      fear: 70
+      trust: 149
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1777,7 +2332,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 95
+    nextEXP: 120
     relation: 0
     skillOffset: {x: 0.14, y: 0.12, z: 0}
     spriteSheets: Character-Doremi
@@ -1830,14 +2385,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 48
-      sadness: 128
-      disgust: 166
-      anger: 89
-      surprise: 63
-      sweetness: 53
-      fear: 146
-      trust: 117
+      joy: 49
+      sadness: 118
+      disgust: 172
+      anger: 62
+      surprise: 89
+      sweetness: 45
+      fear: 156
+      trust: 119
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1903,14 +2458,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 214
-      sadness: 103
-      disgust: 97
-      anger: 96
-      surprise: 92
-      sweetness: 101
-      fear: 97
-      trust: 100
+      joy: 174
+      sadness: 107
+      disgust: 98
+      anger: 110
+      surprise: 105
+      sweetness: 97
+      fear: 100
+      trust: 109
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1975,14 +2530,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 106
-      joy: 92
-      sadness: 31
-      disgust: 178
-      anger: 150
-      surprise: 114
-      sweetness: 52
-      fear: 140
-      trust: 93
+      joy: 66
+      sadness: 36
+      disgust: 180
+      anger: 152
+      surprise: 124
+      sweetness: 45
+      fear: 150
+      trust: 97
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2047,14 +2602,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 116
-      sadness: 107
-      disgust: 85
-      anger: 63
-      surprise: 75
-      sweetness: 231
-      fear: 125
-      trust: 108
+      joy: 124
+      sadness: 100
+      disgust: 93
+      anger: 62
+      surprise: 78
+      sweetness: 211
+      fear: 129
+      trust: 113
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2119,14 +2674,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 130
-      joy: 146
-      sadness: 116
-      disgust: 145
-      anger: 132
-      surprise: 118
+      joy: 124
+      sadness: 120
+      disgust: 121
+      anger: 150
+      surprise: 133
       sweetness: 120
-      fear: 119
-      trust: 144
+      fear: 122
+      trust: 150
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2190,14 +2745,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 75
-      joy: 43
-      sadness: 92
-      disgust: 46
+      joy: 55
+      sadness: 89
+      disgust: 40
       anger: 117
-      surprise: 142
-      sweetness: 35
-      fear: 52
-      trust: 78
+      surprise: 139
+      sweetness: 55
+      fear: 50
+      trust: 60
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2262,14 +2817,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 57
-      sadness: 120
-      disgust: 169
-      anger: 84
-      surprise: 60
-      sweetness: 55
-      fear: 151
-      trust: 114
+      joy: 50
+      sadness: 118
+      disgust: 175
+      anger: 72
+      surprise: 76
+      sweetness: 45
+      fear: 154
+      trust: 120
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2334,14 +2889,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 68
-      sadness: 107
-      disgust: 115
-      anger: 78
-      surprise: 64
-      sweetness: 99
-      fear: 189
-      trust: 170
+      joy: 71
+      sadness: 100
+      disgust: 112
+      anger: 86
+      surprise: 69
+      sweetness: 113
+      fear: 175
+      trust: 164
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2406,14 +2961,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 40
-      sadness: 123
-      disgust: 175
-      anger: 79
-      surprise: 69
-      sweetness: 60
-      fear: 150
-      trust: 114
+      joy: 59
+      sadness: 111
+      disgust: 165
+      anger: 90
+      surprise: 78
+      sweetness: 43
+      fear: 159
+      trust: 105
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2477,14 +3032,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 102
-      joy: 116
-      sadness: 64
-      disgust: 140
+      joy: 110
+      sadness: 73
+      disgust: 129
       anger: 125
-      surprise: 68
+      surprise: 66
       sweetness: 125
-      fear: 67
-      trust: 115
+      fear: 80
+      trust: 112
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2536,7 +3091,7 @@ MonoBehaviour:
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
   tutoEvent: 
-  nextRandomEvent: 00000000
+  nextRandomEvent: 
   inventoryEquipement: []
   currentEquipement:
   - {fileID: 0}
@@ -2552,11 +3107,14 @@ MonoBehaviour:
   researchesLevels:
   - researchLevel: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   researchExplorationDatas:
-  - researchPlayerPosition: {x: 0, y: 0}
+  - researchPlayerPosition: {x: 2, y: 1}
     researchExplorationChest: 0
     researchExplorationTotalChest: 0
     researchExplorationCount: 0
     researchExplorationTotal: 0
+  researchEventSaves:
+  - eventID: 1
+    eventActive: 1
   gameManualUnlocked: 00000000
   storyResumeUnlocked: 00
   currentChapter: 1

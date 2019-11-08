@@ -54,8 +54,6 @@ namespace VoiceActing
         [SerializeField]
         MenuContractPreparation menuContractPreparation;
         [SerializeField]
-        MenuManagementManager menuManagementManager;
-        [SerializeField]
         MenuActorsManager menuActorsManager;
 
 

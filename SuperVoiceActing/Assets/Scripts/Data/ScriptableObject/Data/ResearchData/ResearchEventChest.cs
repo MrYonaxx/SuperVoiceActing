@@ -12,12 +12,10 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "ResearchEventChest", menuName = "Research/ResearchEvent/ResearchEventChest", order = 1)]
     public class ResearchEventChest: ResearchEvent
     {
-
-        public ResearchData researchData;
-
+        [SerializeField]
+        private ResearchData researchData;
 
 
         public override bool CanAddToPlayerDataSave()
@@ -26,13 +24,17 @@ namespace VoiceActing
         }
 
 
-        public override void ApplyEvent(PlayerData playerData, int eventID)
+        public override IEnumerator ApplyEvent(MenuResearchMovementManager menuResearch, int eventID)
         {
-            if(CheckResearchEventInPlayerData(playerData.ResearchEventSaves, eventID) == false)
+            if(isActive == false)
             {
-                SetResearchEventInPlayerData(playerData.ResearchEventSaves, eventID);
-                researchData.ApplyResearchEffect(playerData);
+                isActive = true;
+                SetResearchEventInPlayerData(menuResearch.PlayerData.ResearchEventSaves, eventID);
+                researchData.ApplyResearchEffect(menuResearch.PlayerData);
+                animator.SetTrigger("Opening");
+                yield return new WaitForSeconds(0.4f);
             }
+            yield return null;
 
         }
 

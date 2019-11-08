@@ -32,7 +32,12 @@ namespace VoiceActing
         [SerializeField]
         Transform researchEventTransform;
         [SerializeField]
-        List<Animator> researchEventList = new List<Animator>();
+        List<ResearchEventData> researchEventList = new List<ResearchEventData>();
+        public List<ResearchEventData> ResearchEventList
+        {
+            get { return researchEventList; }
+        }
+
 
         [SerializeField]
         Tilemap explorationTilemap;
@@ -41,6 +46,11 @@ namespace VoiceActing
 
         [SerializeField]
         PlayerData playerData;
+        public PlayerData PlayerData
+        {
+            get { return playerData; }
+        }
+
         [SerializeField]
         InputController inputController;
 
@@ -59,7 +69,14 @@ namespace VoiceActing
         [SerializeField]
         GameObject cameraTilemap;
 
+        [Title("Chest Open")]
+
         private IEnumerator moveCoroutine;
+
+
+
+
+        private int[,] currentEventLayout;
 
         #endregion
 
@@ -91,26 +108,61 @@ namespace VoiceActing
                         explorationLayout.dungeonLayout[x, y] = 0;
                 }
             }
-        }
+        }*/
 
-        [Button("Test2")]
         private void RenderExplorationLayout()
         {
-            for (int x = 0; x < explorationLayout.dungeonLayout.GetLength(0); x++)
+            explorationTilemap.ClearAllTiles();
+            for (int x = 0; x < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(0); x++)
             {
-                for (int y = 0; y < explorationLayout.dungeonLayout.GetLength(1); y++)
+                for (int y = 0; y < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(1); y++)
                 {
-                    if (explorationLayout.dungeonLayout[x, y] > 0)
+                    if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[x, y] > 0)
                         explorationTilemap.SetTile(new Vector3Int(x, y, 0), tileUnexplored);
                 }
             }
-        }*/
+        }
 
+        private ResearchEvent GetFromResearchEventList(int eventID)
+        {
+            for(int i = 0; i < researchEventList.Count; i++)
+            {
+                if(researchEventList[i].eventID == eventID)
+                {
+                    return researchEventList[i].researchEvent;
+                }
+            }
+            return null;
+        }
+
+
+        protected bool CheckResearchEventInPlayerData(int eventID)
+        {
+            for (int i = 0; i < playerData.ResearchEventSaves.Count; i++)
+            {
+                if (playerData.ResearchEventSaves[i].EventID == eventID)
+                {
+                    return playerData.ResearchEventSaves[i].EventActive;
+                }
+            }
+            return false;
+        }
+
+        private void DestroyResearchEventList()
+        {
+            for(int i = 0; i < researchEventList.Count; i++)
+            {
+                Destroy(researchEventList[i].researchEvent.gameObject);
+            }
+            researchEventList.Clear();
+        }
 
         private void CreateEvents()
         {
+            DestroyResearchEventList();
             ResearchEvent currentEvent;
             int[,] eventLayout = dungeonLayouts[dungeonID].ResearchEventLayout;
+            currentEventLayout = new int[eventLayout.GetLength(0), eventLayout.GetLength(1)];
 
             for (int x = 0; x < eventLayout.GetLength(0); x++)
             {
@@ -119,18 +171,21 @@ namespace VoiceActing
                     if (eventLayout[x, y] > 0)
                     {
                         currentEvent = researchEventDatabase.GetResearchEvent(eventLayout[x, y]);
-                        if(currentEvent != null)
+                        if (currentEvent != null)
                         {
-                            if (currentEvent.CanInstantiate() == true)
-                            {
-                                researchEventList.Add(currentEvent.InstantiateEvent(researchEventTransform, cellSize, x, y));
-                            }
+                            researchEventList.Add(new ResearchEventData(eventLayout[x, y], Instantiate(currentEvent, researchEventTransform)));
+                            researchEventList[researchEventList.Count - 1].researchEvent.transform.localPosition += new Vector3(cellSize * x + (cellSize / 2f), cellSize * (y + 1), 0);
+                            researchEventList[researchEventList.Count - 1].researchEvent.SetActive(CheckResearchEventInPlayerData(eventLayout[x, y]));
                         }
                     }
+                    currentEventLayout[x, y] = eventLayout[x, y];
                 }
             }
-            // Note les obstacles des interrupteurs doivent etre avant les switch dans la database 
         }
+
+
+
+
 
         private void OnEnable()
         {
@@ -141,6 +196,7 @@ namespace VoiceActing
             if (moveCoroutine != null)
                 StopCoroutine(moveCoroutine);
             CreateEvents();
+            RenderExplorationLayout();
         }
 
         public void QuitMenu()
@@ -167,69 +223,82 @@ namespace VoiceActing
             switch(direction)
             {
                 case 2:
-                    Move(new Vector3(0, 0.48f, 0));
+                    StartCoroutine(Move(new Vector3(0, 0.48f, 0)));
                     break;
                 case 4:
-                    Move(new Vector3(-0.48f, 0, 0));
+                    StartCoroutine(Move(new Vector3(-0.48f, 0, 0)));
                     break;
                 case 6:
-                    Move(new Vector3(0.48f, 0, 0));
+                    StartCoroutine(Move(new Vector3(0.48f, 0, 0)));
                     break;
                 case 8:
-                    Move(new Vector3(0, -0.48f, 0));
+                    StartCoroutine(Move(new Vector3(0, -0.48f, 0)));
                     break;
 
             }
 
         }
 
-        public void Move(Vector3 direction)
+
+
+        public IEnumerator Move(Vector3 direction)
         {
+            inputController.gameObject.SetActive(false);
             // Check si prochaine case est traversable
             Vector2Int directionNormalized = new Vector2Int((int)direction.normalized.x, (int)direction.normalized.y);
             Vector2Int playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
+            ResearchEvent rsEvent = null;
 
             // Check si prochaine case est un event
-            int caseEventID = dungeonLayouts[dungeonID].ResearchEventLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y];
+            int caseEventID = currentEventLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y];
             if (caseEventID != 0)
             {
-                if (researchEventDatabase.GetResearchEvent(caseEventID) != null)
+                rsEvent = GetFromResearchEventList(caseEventID);
+                if (rsEvent.CanCollide() == true)
                 {
-                    // Active research event animator
-
-                    // Active research event dans le playerData et Apply research event effect
-                    researchEventDatabase.GetResearchEvent(caseEventID).ApplyEvent(playerData, caseEventID);
-                }
-
-                if (researchEventDatabase.GetCanCollide(caseEventID) == true)
-                {
-                    return;
+                    yield return rsEvent.ApplyEvent(this, caseEventID);
+                    ExploreTile(playerPosition + directionNormalized);
+                    inputController.gameObject.SetActive(true);
+                    yield break;
                 }
             }
 
-            if (playerData.ResearchPoint == 0)
-                return;
+
 
             // Check si la prochaine case n'est pas un mur
             if (dungeonLayouts[dungeonID].ResearchDungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
             {
                 moveCoroutine = MoveCoroutine(direction);
-                StartCoroutine(moveCoroutine);
+                //StartCoroutine(moveCoroutine);
 
                 // Deplace la position du perso dans le player data
-                playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition += new Vector2Int(directionNormalized.x, directionNormalized.y);
+                playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition += directionNormalized;
                 playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
             }
 
 
+            ExploreTile(playerPosition);
+
+            yield return moveCoroutine;
+            if (rsEvent != null)
+                yield return rsEvent.ApplyEvent(this, caseEventID);
+            moveCoroutine = null;
+            inputController.gameObject.SetActive(true);
+        }
+
+
+        private void ExploreTile(Vector2Int position)
+        {
             // Ajoute la case decouverte au pourcentage
-            if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x, playerPosition.y] > 0)
+            if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] > 0)
             {
-                explorationTilemap.SetTile(new Vector3Int(playerPosition.x, playerPosition.y, 0), null);
-                playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x, playerPosition.y] = -1;
+                explorationTilemap.SetTile(new Vector3Int(position.x, position.y, 0), null);
+                playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] = -1;
                 //playerData.ResearchPoint -= 1;
             }
         }
+
+
 
         private IEnumerator MoveCoroutine(Vector3 destination)
         {
@@ -242,9 +311,17 @@ namespace VoiceActing
                 character.transform.localPosition = Vector3.Lerp(position, finalPosition, t);
                 yield return null;
             }
-            moveCoroutine = null;
         }
 
+
+
+        public IEnumerator DrawResearchText(ResearchData research)
+        {
+            while(Input.GetButton("ButtonA"))
+            {
+                yield return null;
+            }
+        }
 
         #endregion
 

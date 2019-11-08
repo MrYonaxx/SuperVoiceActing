@@ -20,8 +20,23 @@ namespace VoiceActing
 
         [HorizontalGroup]
         [HideLabel]
-        public ResearchEvent researchData;
+        public ResearchEvent researchEvent;
+
+        public ResearchEventData(int id, ResearchEvent eventR)
+        {
+            eventID = id;
+            researchEvent = eventR;
+        }
     }
+
+
+
+
+
+
+
+
+
 
     [CreateAssetMenu(fileName = "ResearchEventDatabase", menuName = "Research/ResearchEvent/ResearchEventDatabase", order = 1)]
     public class ResearchEventDatabase: ScriptableObject
@@ -44,23 +59,12 @@ namespace VoiceActing
             {
                 if(researchEvents[i].eventID == id)
                 {
-                    return researchEvents[i].researchData;
+                    return researchEvents[i].researchEvent;
                 }
             }
             return null;
         }
 
-        public bool GetCanCollide(int id)
-        {
-            for (int i = 0; i < researchEvents.Length; i++)
-            {
-                if (researchEvents[i].eventID == id)
-                {
-                    return researchEvents[i].researchData.CanCollide();
-                }
-            }
-            return false;
-        }
 
     } 
 

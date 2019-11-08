@@ -12,11 +12,18 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    public class ResearchEvent : ScriptableObject
+    public class ResearchEvent : MonoBehaviour
     {
-        public bool canCollide;
-        public Animator animatorPrefab;
-
+        [SerializeField]
+        protected bool isActive;
+        public bool IsActive()
+        {
+            return isActive;
+        }
+        [SerializeField]
+        protected bool canCollide;
+        [SerializeField]
+        protected Animator animator;
 
 
 
@@ -31,42 +38,23 @@ namespace VoiceActing
         }
 
 
-        public virtual bool CanInstantiate()
+
+
+        public virtual void SetActive(bool b)
         {
-            return animatorPrefab != null;
+            animator.SetBool("Active", b);
+            isActive = b;
+        }
+
+        // Trouver un moyen de ne pas etre dependant de menuresearchManager genre que ça soit relou
+        public virtual IEnumerator ApplyEvent(MenuResearchMovementManager menuResearch, int eventID)
+        {
+            yield return null;
         }
 
 
 
 
-        public virtual Animator InstantiateEvent(Transform transformEvent, float cellSize, int positionX, int positionY)
-        {
-
-            Animator res = Instantiate(animatorPrefab, transformEvent);
-            res.transform.localPosition += new Vector3(cellSize * positionX + (cellSize / 2f), cellSize * (positionY + 1), 0);
-            return res;
-        }
-
-        public virtual void ApplyEvent(PlayerData playerData, int eventID)
-        {
-
-        }
-
-
-
-
-
-        protected bool CheckResearchEventInPlayerData(List<ResearchEventSave> playerResearch, int eventID)
-        {
-            for (int i = 0; i < playerResearch.Count; i++)
-            {
-                if (playerResearch[i].EventID == eventID)
-                {
-                    return playerResearch[i].EventActive;
-                }
-            }
-            return false;
-        }
 
         protected void SetResearchEventInPlayerData(List<ResearchEventSave> playerResearch, int eventID)
         {

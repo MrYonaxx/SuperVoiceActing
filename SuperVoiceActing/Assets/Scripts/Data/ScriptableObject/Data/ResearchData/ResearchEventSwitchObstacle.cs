@@ -12,18 +12,32 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "ResearchEventSwitchObstacle", menuName = "Research/ResearchEvent/ResearchEventSwitchObstacle", order = 1)]
+    // Ce truc est pas opti il ajoute une entrée dans la list du playerData alors que techniquement c'est tout le temps la meme chose que l'interrupteur
     public class ResearchEventSwitchObstacle: ResearchEvent
     {
-        public int eventSwitchBind;
 
-        public override bool CanCollide()
+        [SerializeField]
+        bool reverseObstacle = false;
+
+        public override void SetActive(bool b)
         {
-            /*if(CheckResearchEventInPlayerData(playerData, eventSwitchBind) == canCollide)
+            if (reverseObstacle == false)
             {
-                return true;
-            }*/
-            return false;
+                animator.gameObject.SetActive(!b);
+                isActive = b;
+                canCollide = !b;
+            }
+            else
+            {
+                animator.gameObject.SetActive(b);
+                isActive = !b;
+                canCollide = b;
+            }
+        }
+
+        public override bool CanAddToPlayerDataSave()
+        {
+            return true;
         }
 
     } 
