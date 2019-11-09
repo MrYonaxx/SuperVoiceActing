@@ -244,7 +244,7 @@ namespace VoiceActing
                             CalculTotalScore(playerData.ContractAccepted[i]);
 
                             playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
-                            playerData.ResearchPoint += playerData.ContractAccepted[i].Level;
+                            playerData.ResearchPoint += playerData.ContractAccepted[i].Level + 10;
 
                             SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
                             playerData.ContractAccepted.RemoveAt(i);

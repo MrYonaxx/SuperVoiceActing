@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Sirenix.OdinInspector;
 using UnityEngine.Tilemaps;
 
@@ -54,6 +55,9 @@ namespace VoiceActing
         [SerializeField]
         InputController inputController;
 
+        [Title("Research")]
+        [SerializeField]
+        MenuRessourceResearch menuRessourceResearch;
 
         [Title("Movement")]
         [SerializeField]
@@ -70,6 +74,19 @@ namespace VoiceActing
         GameObject cameraTilemap;
 
         [Title("Chest Open")]
+        [SerializeField]
+        InputController inputChest;
+        [SerializeField]
+        Animator animatorChest;
+        [SerializeField]
+        TextMeshProUGUI textResearchName;
+        [SerializeField]
+        TextMeshProUGUI textResearchDescription;
+
+        private bool skipChest = false;
+
+
+
 
         private IEnumerator moveCoroutine;
 
@@ -197,6 +214,7 @@ namespace VoiceActing
                 StopCoroutine(moveCoroutine);
             CreateEvents();
             RenderExplorationLayout();
+            menuRessourceResearch.DrawResearchPoint(playerData.ResearchPoint);
         }
 
         public void QuitMenu()
@@ -234,9 +252,7 @@ namespace VoiceActing
                 case 8:
                     StartCoroutine(Move(new Vector3(0, -0.48f, 0)));
                     break;
-
             }
-
         }
 
 
@@ -263,21 +279,23 @@ namespace VoiceActing
                 }
             }
 
-
+            if (playerData.ResearchPoint == 0 && playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] > 0)
+            {
+                inputController.gameObject.SetActive(true);
+                yield break;
+            }
+            else
+                ExploreTile(playerPosition + directionNormalized, true);
 
             // Check si la prochaine case n'est pas un mur
             if (dungeonLayouts[dungeonID].ResearchDungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
             {
                 moveCoroutine = MoveCoroutine(direction);
-                //StartCoroutine(moveCoroutine);
 
                 // Deplace la position du perso dans le player data
                 playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition += directionNormalized;
                 playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
             }
-
-
-            ExploreTile(playerPosition);
 
             yield return moveCoroutine;
             if (rsEvent != null)
@@ -287,16 +305,22 @@ namespace VoiceActing
         }
 
 
-        private void ExploreTile(Vector2Int position)
+        private void ExploreTile(Vector2Int position, bool researchLost = false)
         {
             // Ajoute la case decouverte au pourcentage
             if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] > 0)
             {
                 explorationTilemap.SetTile(new Vector3Int(position.x, position.y, 0), null);
                 playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] = -1;
-                //playerData.ResearchPoint -= 1;
+                if (researchLost == true)
+                {
+                    playerData.ResearchPoint -= 1;
+                    menuRessourceResearch.DrawResearchPoint(playerData.ResearchPoint);
+                }
             }
         }
+
+
 
 
 
@@ -314,14 +338,26 @@ namespace VoiceActing
         }
 
 
-
+        public void SkipChest()
+        {
+            skipChest = true;
+        }
         public IEnumerator DrawResearchText(ResearchData research)
         {
-            while(Input.GetButton("ButtonA"))
+            animatorChest.gameObject.SetActive(true);
+            animatorChest.SetBool("Appear", true);
+            textResearchName.text = research.ResearchName;
+            textResearchDescription.text = research.ResearchDescription;
+            yield return new WaitForSeconds(0.6f);
+            skipChest = false;
+            while (skipChest == false)
             {
                 yield return null;
             }
+            skipChest = false;
+            animatorChest.SetBool("Appear", false);
         }
+
 
         #endregion
 

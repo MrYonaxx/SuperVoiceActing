@@ -17,8 +17,15 @@ namespace VoiceActing
         [SerializeField]
         int moverDirection;
 
+        private bool resetAfterMove = false;
+
         public override IEnumerator ApplyEvent(MenuResearchMovementManager menuResearch, int eventID)
         {
+            if (menuResearch.PlayerData.ResearchPoint == 0)
+            {
+                resetAfterMove = true;
+            }
+            menuResearch.PlayerData.ResearchPoint += 1;
             switch (moverDirection)
             {
                 case 2:
@@ -33,7 +40,11 @@ namespace VoiceActing
                 case 8:
                     yield return menuResearch.Move(new Vector3(0, -0.48f, 0));
                     break;
-
+            }
+            if (resetAfterMove == true)
+            {
+                resetAfterMove = false;
+                menuResearch.PlayerData.ResearchPoint = 0;
             }
 
         }

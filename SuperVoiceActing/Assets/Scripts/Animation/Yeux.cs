@@ -12,8 +12,8 @@ public class Yeux : MonoBehaviour
 
     //int waitTime = 0;
 
-    SpriteRenderer spriteRenderer;
-    Image imageRenderer;
+    SpriteRenderer spriteRenderer = null;
+    Image imageRenderer = null;
 
     IEnumerator coroutine = null;
 

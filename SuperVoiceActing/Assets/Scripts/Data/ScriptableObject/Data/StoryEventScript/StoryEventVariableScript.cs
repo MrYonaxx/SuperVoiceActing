@@ -13,7 +13,15 @@ namespace VoiceActing
 {
 
 
+    [System.Serializable]
+    public class StoryEventCustomScript : ScriptableObject
+    {
 
+        public virtual void ApplyCustomScript(PlayerData playerData)
+        {
+        }
+
+    }
     [System.Serializable]
 	public class StoryEventVariableScript : ScriptableObject
 	{

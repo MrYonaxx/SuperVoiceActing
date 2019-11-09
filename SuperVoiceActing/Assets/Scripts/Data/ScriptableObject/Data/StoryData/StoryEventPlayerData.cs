@@ -40,6 +40,9 @@ namespace VoiceActing
         [SerializeField]
         bool unlockStudio;
 
+        [SerializeField]
+        StoryEventCustomScript storyEventCustomScript;
+
         public void SetNode(PlayerData playerData)
         {
 
@@ -47,7 +50,7 @@ namespace VoiceActing
             if(currentContract != null)
             {
                 playerData.CurrentContract = new Contract(currentContract);
-                CheckCharacterLock(playerData, playerData.CurrentContract);
+                playerData.CurrentContract.CheckCharacterLock(playerData.VoiceActors);
             }
 
 
@@ -133,34 +136,15 @@ namespace VoiceActing
             if (unlockStudio == true)
                 playerData.MenuStudioUnlocked = true;
 
-
-        }
-
-        public void CheckCharacterLock(PlayerData playerData, Contract newContract)
-        {
-            for (int i = 0; i < newContract.Characters.Count; i++)
+            if(storyEventCustomScript != null)
             {
-                if (newContract.Characters[i].CharacterLock != null)
-                {
-                    // On cherche l'acteur dans le monde
-                    for (int j = 0; j < playerData.VoiceActors.Count; j++)
-                    {
-                        if (newContract.Characters[i].CharacterLock.Name == playerData.VoiceActors[j].VoiceActorName)
-                        {
-                            newContract.VoiceActors[i] = playerData.VoiceActors[j];
-                            break;
-                        }
-                    }
-                    // Si l'acteur n'est pas dans la liste, on l'invoque
-                    if (newContract.VoiceActors[i] == null)
-                    {
-                        playerData.VoiceActors.Add(new VoiceActor(newContract.Characters[i].CharacterLock));
-                        newContract.VoiceActors[i] = playerData.VoiceActors[playerData.VoiceActors.Count-1];
-                    }
-
-                }
+                storyEventCustomScript.ApplyCustomScript(playerData);
             }
+
         }
+
+
+
 
         protected override IEnumerator StoryEventCoroutine()
         {

@@ -32,7 +32,8 @@ namespace VoiceActing
                 SetResearchEventInPlayerData(menuResearch.PlayerData.ResearchEventSaves, eventID);
                 researchData.ApplyResearchEffect(menuResearch.PlayerData);
                 animator.SetTrigger("Opening");
-                yield return new WaitForSeconds(0.4f);
+                yield return menuResearch.DrawResearchText(researchData);
+                yield return new WaitForSeconds(0.2f);
             }
             yield return null;
 
