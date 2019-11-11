@@ -64,6 +64,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -81,8 +82,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -137,6 +137,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -154,8 +155,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -168,7 +168,7 @@ MonoBehaviour:
           type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
-        text: Ouais, enfin on vient de perdre 10 000 NE
+        text: Ouais, enfin on vient de perdre 10 000 NE.
         mouthSpeed: 1
         forceSkip: 0
         ignorePlayerInput: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -227,8 +228,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -283,6 +283,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -300,8 +301,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -356,6 +356,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -373,8 +374,151 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
+  - dataBox:
+      eventNode: 9
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        fadeIn: 1
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
+        unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 1
+        variableName: Loto
+        mathOperation: 0
+        newValue: 1000
+        newValueRandom: 1000
+        customScript: {fileID: 11400000, guid: d2c3222e9a1bd6c4c9f53e81d7fcaa0e, type: 2}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+        storyEvent: {fileID: 0}
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
+  - dataBox:
+      eventNode: 6
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        fadeIn: 1
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 11400000, guid: cdaa31664104c004f8385d2add724432, type: 2}
+        saveSceneConfiguration: 0
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
+        unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []

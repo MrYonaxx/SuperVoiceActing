@@ -25,9 +25,16 @@ namespace VoiceActing
         StoryEventManager storyEventManager;
 
 
+        List<int> randomEventList;
+
         private void Start()
         {
-            if(storyEventManager.DebugData() == false)
+            //Créer une copie pour que si un random event ajoute un random event, ce random event ne sera pas joué la même semaine.
+            randomEventList = new List<int>(playerData.NextRandomEvent.Count);
+            for (int i = 0; i < playerData.NextRandomEvent.Count; i++)
+                randomEventList.Add(playerData.NextRandomEvent[i]);
+
+            if (storyEventManager.DebugData() == false)
                 CheckEventEndWeek();
         }
 
@@ -39,10 +46,11 @@ namespace VoiceActing
                 storyEventManager.StartStoryEventDataWithScene(playerData.NextStoryEvents[playerData.NextStoryEvents.Count-1]);
                 playerData.NextStoryEvents.RemoveAt(playerData.NextStoryEvents.Count-1);
             }
-            else if (playerData.NextRandomEvent.Count != 0)
+            else if (randomEventList.Count != 0)
             {
-                storyEventManager.StartStoryEventDataWithScene(randomEventDatabase.GetRandomEvent(playerData.NextRandomEvent[0]));
+                storyEventManager.StartStoryEventDataWithScene(randomEventDatabase.GetRandomEvent(randomEventList[0]));
                 playerData.NextRandomEvent.RemoveAt(0);
+                randomEventList.RemoveAt(0);
             }
             else
             {

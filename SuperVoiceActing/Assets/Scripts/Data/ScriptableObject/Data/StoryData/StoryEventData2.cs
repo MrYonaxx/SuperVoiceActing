@@ -13,7 +13,7 @@ namespace VoiceActing
 {
 
     [System.Serializable]
-    public class StoryEventDataNode2
+    public class StoryEventDataNode2 : StoryEventData
     {
         //[Header("====================================================================================================================================")]
         [HorizontalGroup("Hey", Width = 0.2f)]
@@ -88,12 +88,6 @@ namespace VoiceActing
         public StoryEventConditions[] storyEventCondition = null;
 
         [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", StoryEventNode.EndCondition)]
-        [SerializeField]
-        [HideLabel]
-        public StoryEventEndConditions[] storyEventEndCondition = null;
-
-        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.ConditionActor)]
         [SerializeField]
         [HideLabel]
@@ -122,8 +116,6 @@ namespace VoiceActing
                     return eventNode.ToString() + " : [" + storyEventVariable[0].VariableName + "]";
                 case StoryEventNode.Condition:
                     return eventNode.ToString() + " ------------------------------------------------------------------------------------------------------------------------";
-                case StoryEventNode.EndCondition:
-                    return " ";
                 default:
                     return eventNode.ToString();
             }
@@ -208,8 +200,6 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventVariable[0];
                 case StoryEventNode.Condition:
                     return eventNodes[index].dataBox.storyEventCondition[0];
-                case StoryEventNode.EndCondition:
-                    return eventNodes[index].dataBox.storyEventEndCondition[0];
                 case StoryEventNode.ConditionActor:
                     return eventNodes[index].dataBox.storyEventConditionActor[0];
             }

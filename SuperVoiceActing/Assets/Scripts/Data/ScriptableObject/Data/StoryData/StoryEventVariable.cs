@@ -144,7 +144,16 @@ namespace VoiceActing
                 int finalValue = newValue;
                 if (globalVariable == true)
                 {
-                //
+                    for (int i = 0; i < playerData.GlobalVariables.Count; i++)
+                    {
+                        if (playerData.GlobalVariables[i].variableName == variableName)
+                        {
+                            variable = playerData.GlobalVariables[i];
+                        }
+                    }
+                    if (newValueRandom >= newValue)
+                        finalValue = Random.Range(newValue, newValueRandom + 1);
+                    variable.ApplyMathOperation(mathOperation, finalValue);
                 }
                 else
                 {
@@ -155,16 +164,16 @@ namespace VoiceActing
                             variable = localVariable[i];
                         }
                     }
-                }
-                if (newValueRandom >= newValue)
-                    finalValue = Random.Range(newValue, newValueRandom + 1);
-                variable.ApplyMathOperation(mathOperation, finalValue);             
+                    if (newValueRandom >= newValue)
+                        finalValue = Random.Range(newValue, newValueRandom + 1);
+                    variable.ApplyMathOperation(mathOperation, finalValue);
+                    localVariable.Add(variable);
+                }  
             }
             else
             {
                 variable = customScript.CreateStoryVariable(variableName, playerData);
             }
-            localVariable.Add(variable);
             AddToDictionnary(dictionary, variable.variableName, variable.valueText);
         }
 

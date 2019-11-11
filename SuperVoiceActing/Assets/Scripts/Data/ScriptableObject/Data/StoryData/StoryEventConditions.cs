@@ -27,6 +27,15 @@ namespace VoiceActing
         [SerializeField]
         int value;
 
+        [HideLabel]
+        [SerializeField]
+        StoryEventData storyEvent;
+        public StoryEventData StoryEvent
+        {
+            get { return storyEvent; }
+        }
+
+
         public bool CheckCondition(List<StoryVariable> localVariable, PlayerData playerData)
         {
             int variableValue = 0;

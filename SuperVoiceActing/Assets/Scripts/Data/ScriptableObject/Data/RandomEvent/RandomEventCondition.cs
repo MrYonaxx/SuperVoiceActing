@@ -11,7 +11,8 @@ using UnityEngine;
 
 namespace VoiceActing
 {
-	public class RandomEventCondition : ScriptableObject
+    [CreateAssetMenu(fileName = "Condition", menuName = "StoryEvent/Condition/Condition", order = 1)]
+    public class RandomEventCondition : ScriptableObject
 	{
 
         public virtual bool CheckCondition(PlayerData playerData)

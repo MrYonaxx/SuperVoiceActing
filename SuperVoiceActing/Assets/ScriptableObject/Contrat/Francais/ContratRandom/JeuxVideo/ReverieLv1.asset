@@ -25,6 +25,8 @@ MonoBehaviour:
   expBonus: 500
   contractDictionnary: []
   description: []
+  isFranchise: 0
+  franchiseNames: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -32,12 +34,16 @@ MonoBehaviour:
     - names:
       - Lia
       roleSprite: {fileID: 21300000, guid: b2f67d0bce549f0418c9dbe13cbcae95, type: 3}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 800
       lineMax: 1200
       fanMin: 500
       fanMax: 10000
       atkMin: 11
       atkMax: 11
+      defMin: 0
+      defMax: 0
       timbre: {x: -9, y: -3}
       timbreRand: {x: -9, y: -3}
       characterStatMin:
@@ -72,7 +78,7 @@ MonoBehaviour:
           mathOperator: 0
           conditionValue: 0
         skills:
-        - {fileID: 11400000, guid: 4ca55e96a3e61e644a17105fb475f349, type: 2}
+        - {fileID: 0}
       - memo: 
         startPhrase: 0
         startAttack: 0
@@ -83,21 +89,25 @@ MonoBehaviour:
           mathOperator: 0
           conditionValue: 0
         skills:
-        - {fileID: 11400000, guid: 257761d94cf195c409490deab4fc5d08, type: 2}
+        - {fileID: 0}
         - {fileID: 11400000, guid: 45924b486b651de4cb6f365e671fdfde, type: 2}
-        - {fileID: 11400000, guid: 127577ac5f07dfd4f81de1136cb9a8d0, type: 2}
+        - {fileID: 0}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
       - Yonax
       roleSprite: {fileID: 21300000, guid: af4b0cc7b2e184542a69981b4b93abb9, type: 3}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 400
       lineMax: 700
       fanMin: 6000
       fanMax: 15000
       atkMin: 15
       atkMax: 15
+      defMin: 0
+      defMax: 0
       timbre: {x: 1, y: 6}
       timbreRand: {x: 1, y: 6}
       characterStatMin:
@@ -132,19 +142,23 @@ MonoBehaviour:
           mathOperator: 0
           conditionValue: 0
         skills:
-        - {fileID: 11400000, guid: fbf88f60b67afa64384de3d13340fc72, type: 2}
+        - {fileID: 0}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - names:
       - "L\xE9mina"
       roleSprite: {fileID: 21300000, guid: 5f137aa969ba982408143fd8791389eb, type: 3}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 400
       lineMax: 700
       fanMin: 7000
       fanMax: 14000
       atkMin: 10
       atkMax: 10
+      defMin: 0
+      defMax: 0
       timbre: {x: -4, y: 0}
       timbreRand: {x: -4, y: 0}
       characterStatMin:
@@ -179,7 +193,7 @@ MonoBehaviour:
           mathOperator: 0
           conditionValue: 0
         skills:
-        - {fileID: 11400000, guid: e67a73bc6621eb14984c3f1a67b07a04, type: 2}
+        - {fileID: 0}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -188,49 +202,16 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
-    - text: allo?
+    - text: 
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 1
-        hpMax: 1
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 100
-        disgust: 100
-        anger: 100
-        surprise: 100
-        sweetness: 100
-        fear: 100
-        trust: 100
-      enemyWeakPoints: []
-    - text: olla?
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 1
-        hpMax: 1
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    - text: euh...
-      textStats:
-        interlocuteurID: 2
-        linked: 0
-        hpMin: 1
-        hpMax: 1
+        hpMin: 0
+        hpMax: 0
       enemyResistance:
         neutral: 0
         joy: 0

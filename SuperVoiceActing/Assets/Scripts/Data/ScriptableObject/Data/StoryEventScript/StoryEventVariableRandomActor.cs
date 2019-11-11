@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "VariableRandomActor", menuName = "StoryVariableScript/RandomActor", order = 1)]
+    [CreateAssetMenu(fileName = "VariableRandomActor", menuName = "StoryEvent/StoryEventVariable/RandomActor", order = 1)]
     public class StoryEventVariableRandomActor : StoryEventVariableScript
 	{
 

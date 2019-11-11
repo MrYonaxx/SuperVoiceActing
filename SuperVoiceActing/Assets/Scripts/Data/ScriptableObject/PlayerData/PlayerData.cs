@@ -392,6 +392,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private List<StoryVariable> globalVariables = new List<StoryVariable>();
+        public List<StoryVariable> GlobalVariables
+        {
+            get { return globalVariables; }
+        }
+
+        [SerializeField]
         private List<int> tutoEvent;
         public List<int> TutoEvent
         {
@@ -670,6 +677,7 @@ namespace VoiceActing
             nextStoryEvents.Clear();
             nextStoryEventsStartWeek.Clear();
             phoneStoryEvents.Clear();
+            globalVariables.Clear();
 
             currentContract = new Contract();
             contractAccepted = new List<Contract>(3);
@@ -794,6 +802,17 @@ namespace VoiceActing
                 storyResumeUnlocked[i] = false;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
 
         public void CreateList(InitialPlayerData initialPlayerData)
         {

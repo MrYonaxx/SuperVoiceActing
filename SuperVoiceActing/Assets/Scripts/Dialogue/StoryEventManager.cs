@@ -245,17 +245,15 @@ namespace VoiceActing
                 {
                     StoryEventVariable node = (StoryEventVariable)currentNode;
                     node.SetNode(localVariables, playerData, dictionary);
+
                 }
                 else if (currentNode is StoryEventConditions)
                 {
                     StoryEventConditions node = (StoryEventConditions)currentNode;
                     if(node.CheckCondition(localVariables, playerData) == false)
                     {
-                        while(!(currentNode is StoryEventEndConditions))
-                        {
-                            i += 1;
-                            currentNode = storyEventData.GetEventNode(i);
-                        }
+                        storyEventData = node.StoryEvent;
+                        i = -1;
                     }
                 }
                 else if (currentNode is StoryEventConditionActor)

@@ -76,11 +76,11 @@ MonoBehaviour:
     money: 10000
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 9
+    weekRemaining: 6
     currentLine: 0
     totalLine: 10
     currentMixing: 0
-    totalMixing: 23
+    totalMixing: 24
     score: 0
     highScore: 0
     soundEngineer:
@@ -101,7 +101,7 @@ MonoBehaviour:
     characters:
     - name: Opera
       roleSprite: {fileID: 0}
-      line: 218
+      line: 232
       fan: 0
       attack: 14
       defense: 0
@@ -130,9 +130,9 @@ MonoBehaviour:
       buffs: []
     - name: Nougat
       roleSprite: {fileID: 0}
-      line: 126
+      line: 148
       fan: 0
-      attack: 16
+      attack: 15
       defense: 0
       roleType: 0
       rolePersonality: 0
@@ -159,9 +159,9 @@ MonoBehaviour:
       buffs: []
     - name: Praline
       roleSprite: {fileID: 0}
-      line: 181
+      line: 129
       fan: 0
-      attack: 9
+      attack: 8
       defense: 0
       roleType: 0
       rolePersonality: 0
@@ -581,7 +581,7 @@ MonoBehaviour:
     money: 5000
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 9
+    weekRemaining: 6
     currentLine: 0
     totalLine: 4
     currentMixing: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
       line: 20
       fan: 0
       attack: 20
-      defense: 24
+      defense: 21
       roleType: 0
       rolePersonality: 0
       timbre: {x: -10, y: -2}
@@ -896,17 +896,17 @@ MonoBehaviour:
     battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: Action Kids+
-    description: "Action Kids+ est une marque de jouet pour enfants.\nLa publicit\xE9
-      vise \xE0 vendre un nouveau produit de la licence."
-    contractType: 3
+  - name: Entreprise Ekavox
+    description: "Nous r\xE9alisons un film \xE0 l'attention de nos employ\xE9s pour
+      notre Entreprise Ekavox."
+    contractType: 0
     level: 1
-    money: 1730
+    money: 2220
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 4
+    weekRemaining: 5
     currentLine: 0
-    totalLine: 5
+    totalLine: 7
     currentMixing: 0
     totalMixing: 0
     score: 0
@@ -929,27 +929,27 @@ MonoBehaviour:
     characters:
     - name: Narrateur
       roleSprite: {fileID: 0}
-      line: 10
+      line: 35
       fan: 0
-      attack: 5
+      attack: 4
       defense: 0
       roleType: 0
       rolePersonality: 0
       timbre: {x: 0, y: 0}
       characterStat:
         neutral: 2
-        joy: 3
+        joy: 6
         sadness: 0
-        disgust: 0
-        anger: 4
-        surprise: 9
+        disgust: 3
+        anger: 0
+        surprise: 0
         sweetness: 0
-        fear: 0
-        trust: 2
-      bestStat: 9
-      secondBestStat: 4
-      bestStatEmotion: 5
-      secondBestStatEmotion: 0
+        fear: 8
+        trust: 5
+      bestStat: 8
+      secondBestStat: 6
+      bestStatEmotion: 7
+      secondBestStatEmotion: 3
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
@@ -1030,85 +1030,116 @@ MonoBehaviour:
       isNull: 1
     textData:
     - interlocuteur: 0
-      hpMax: 13
-      text: "Paris est menac\xE9 !"
-      enemyResistance:
-        neutral: -10
-        joy: -50
-        sadness: 0
-        disgust: 0
-        anger: 100
-        surprise: 100
-        sweetness: -50
-        fear: 10
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 12
-      text: "Mais qui voil\xE0 !? Les Action Kids+ !!!"
+      hpMax: 10
+      text: "L'ins\xE9curit\xE9..."
       enemyResistance:
         neutral: 0
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 0
-        surprise: 100
+        joy: -90
+        sadness: 30
+        disgust: 30
+        anger: 50
+        surprise: -50
         sweetness: -50
-        fear: 0
-        trust: 30
+        fear: 100
+        trust: -30
       enemyWeakPoints:
-      - wordIndex: 2
+      - wordIndex: 0
     - interlocuteur: 0
       hpMax: 10
-      text: Et avec une nouvelle arme !?
+      text: Les carries...
       enemyResistance:
         neutral: 0
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 30
-        surprise: 100
-        sweetness: -50
-        fear: 0
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 3
-      - wordIndex: 4
-    - interlocuteur: 0
-      hpMax: 12
-      text: Le Super-Micro-Blaster !!!
-      enemyResistance:
-        neutral: 0
-        joy: 30
-        sadness: -10
-        disgust: -50
-        anger: 30
-        surprise: 100
-        sweetness: -50
-        fear: 0
-        trust: 30
+        joy: -90
+        sadness: 30
+        disgust: 30
+        anger: 50
+        surprise: -50
+        sweetness: 0
+        fear: 100
+        trust: -30
       enemyWeakPoints:
       - wordIndex: 1
     - interlocuteur: 0
-      hpMax: 17
-      text: Les jouets Action Kids+ ne conviennent pas aux enfants de moins de 14
-        ans.
+      hpMax: 10
+      text: "La mort de la dignit\xE9"
       enemyResistance:
-        neutral: 50
-        joy: 50
-        sadness: 0
-        disgust: -50
-        anger: 0
-        surprise: 0
-        sweetness: 30
-        fear: -30
-        trust: 30
+        neutral: 0
+        joy: -90
+        sadness: 30
+        disgust: 30
+        anger: 30
+        surprise: -20
+        sweetness: 0
+        fear: 100
+        trust: 0
       enemyWeakPoints:
-      - wordIndex: 12
+      - wordIndex: 1
+      - wordIndex: 4
+    - interlocuteur: 0
+      hpMax: 12
+      text: "Eh oui, \xEAtre au travail, ne signifie pas d\xE9laisser son hygi\xE8ne
+        dentaire !"
+      enemyResistance:
+        neutral: 0
+        joy: 60
+        sadness: -90
+        disgust: -90
+        anger: -50
+        surprise: 30
+        sweetness: 0
+        fear: -50
+        trust: 60
+      enemyWeakPoints:
+      - wordIndex: 8
+    - interlocuteur: 0
+      hpMax: 10
+      text: "C'est pourquoi chez Ekavox, nous nous engageons \xE0 accorder 10 minutes..."
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -50
+        surprise: 0
+        sweetness: 50
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 12
+      text: '...Au brossage de dents de toutes l''entreprise !'
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -50
+        surprise: 30
+        sweetness: 50
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 5
+    - interlocuteur: 0
+      hpMax: 10
+      text: "Les 30 minutes de repas seront donc consacr\xE9es \xE0 30% au brossage
+        de dents !"
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -90
+        disgust: -90
+        anger: -50
+        surprise: 0
+        sweetness: 50
+        fear: -50
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 0
     emotionsUsed: []
     eventData: []
-    expGain: 25
+    expGain: 20
     expBonus: 50
     producerMP: 0
     artificialIntelligence: []
@@ -1120,17 +1151,18 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: "Ligne T\xE9l\xE9phonique Telefonika"
-    description: "L'entreprise Telefonika cherche une voix sympathique pour accompagner
-      ses clients dans leurs d\xE9marches."
+  - name: "Sant\xE9 pr\xE9vention jeunesse"
+    description: "Dans le cadre du programme de pr\xE9vention de sant\xE9 chez les
+      jeunes, nous recherchons un studio pour r\xE9aliser le voice-over de notre nouvelle
+      publicit\xE9."
     contractType: 3
     level: 1
-    money: 1610
+    money: 2180
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 7
+    weekRemaining: 3
     currentLine: 0
-    totalLine: 6
+    totalLine: 5
     currentMixing: 0
     totalMixing: 0
     score: 0
@@ -1151,27 +1183,27 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: "R\xE9pondeur"
+    - name: Homme
       roleSprite: {fileID: 0}
-      line: 22
+      line: 17
       fan: 0
-      attack: 4
+      attack: 6
       defense: 0
       roleType: 0
       rolePersonality: 0
-      timbre: {x: -25, y: 80}
+      timbre: {x: 0, y: 0}
       characterStat:
-        neutral: 1
-        joy: 7
-        sadness: 1
-        disgust: 1
+        neutral: 3
+        joy: 14
+        sadness: 0
+        disgust: 0
         anger: 0
         surprise: 0
-        sweetness: 5
+        sweetness: 11
         fear: 0
-        trust: 1
-      bestStat: 7
-      secondBestStat: 5
+        trust: 0
+      bestStat: 14
+      secondBestStat: 11
       bestStatEmotion: 1
       secondBestStatEmotion: 6
       roleScore: 0
@@ -1254,100 +1286,88 @@ MonoBehaviour:
       isNull: 1
     textData:
     - interlocuteur: 0
-      hpMax: 8
-      text: "Bonjour, vous \xEAtes bien chez Telefonika."
+      hpMax: 13
+      text: Pour bien grandir ...
       enemyResistance:
-        neutral: 30
-        joy: 30
-        sadness: -90
-        disgust: -90
-        anger: -90
-        surprise: -90
-        sweetness: 100
-        fear: -90
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 5
-    - interlocuteur: 0
-      hpMax: 14
-      text: Veuillez ne pas quitter, nous allons prendre votre appel.
-      enemyResistance:
-        neutral: 30
-        joy: 30
-        sadness: 0
+        neutral: 0
+        joy: 50
+        sadness: -50
         disgust: -50
-        anger: 0
-        surprise: -90
-        sweetness: 100
-        fear: -90
-        trust: 30
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 10
+      text: "Mange au moins 5 fruits et l\xE9gumes par jour."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 4
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 13
+      text: "Pour \xEAtre en forme ..."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
       enemyWeakPoints:
       - wordIndex: 3
     - interlocuteur: 0
-      hpMax: 11
-      text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
+      hpMax: 13
+      text: "Evite de grignoter dans la journ\xE9e."
       enemyResistance:
-        neutral: 30
-        joy: 30
+        neutral: 0
+        joy: 50
+        sadness: 20
+        disgust: 20
+        anger: 20
+        surprise: -50
+        sweetness: 20
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 2
+      - wordIndex: 5
+    - interlocuteur: 0
+      hpMax: 15
+      text: "D\xE9pense-toi bien !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
         sadness: 0
         disgust: -50
-        anger: 0
-        surprise: -90
-        sweetness: 100
-        fear: -90
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 14
-      text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
-      enemyResistance:
-        neutral: 30
-        joy: 30
-        sadness: 0
-        disgust: -90
         anger: -50
-        surprise: -90
-        sweetness: 100
-        fear: -90
-        trust: 30
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
       enemyWeakPoints:
       - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 12
-      text: "Nous vous souhaitons de bonnes f\xEAtes."
-      enemyResistance:
-        neutral: 30
-        joy: 100
-        sadness: -90
-        disgust: -90
-        anger: -90
-        surprise: -90
-        sweetness: 100
-        fear: -90
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 11
-      text: Chez Telefonika, 93% des clients sont satisfaits.
-      enemyResistance:
-        neutral: 30
-        joy: 70
-        sadness: -90
-        disgust: -90
-        anger: -90
-        surprise: -90
-        sweetness: 100
-        fear: -90
-        trust: 30
-      enemyWeakPoints:
-      - wordIndex: 2
     emotionsUsed: []
     eventData: []
-    expGain: 30
-    expBonus: 30
+    expGain: 20
+    expBonus: 50
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -1358,17 +1378,16 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: Nouvelle voiture Khiruul
-    description: "La publicit\xE9 de notre nouvelle voiture Khiruul, cependant nous
-      souhaitons aborder le propos avec un th\xE8me plus touchant."
+  - name: Cordons bleus Roi du Sandwich
+    description: ' '
     contractType: 3
-    level: 2
-    money: 3940
+    level: 1
+    money: 2290
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 3
+    weekRemaining: 1
     currentLine: 0
-    totalLine: 10
+    totalLine: 4
     currentMixing: 0
     totalMixing: 0
     score: 0
@@ -1389,28 +1408,28 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: "P\xE8re"
+    - name: Narrateur
       roleSprite: {fileID: 0}
-      line: 34
+      line: 22
       fan: 0
-      attack: 9
+      attack: 5
       defense: 0
       roleType: 0
       rolePersonality: 0
-      timbre: {x: 3, y: 10}
+      timbre: {x: 0, y: 0}
       characterStat:
-        neutral: 3
-        joy: 5
-        sadness: 12
-        disgust: 5
-        anger: 1
-        surprise: 1
-        sweetness: 0
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 7
         fear: 0
-        trust: 1
-      bestStat: 12
-      secondBestStat: 5
-      bestStatEmotion: 2
+        trust: 0
+      bestStat: 7
+      secondBestStat: -1
+      bestStatEmotion: 6
       secondBestStatEmotion: 0
       roleScore: 0
       rolePerformance: 0
@@ -1492,162 +1511,556 @@ MonoBehaviour:
       isNull: 1
     textData:
     - interlocuteur: 0
-      hpMax: 12
-      text: Rapide...
+      hpMax: 10
+      text: Hee-ho,, les cordons bleus de chez Roi du Sandwich ...
       enemyResistance:
         neutral: 0
         joy: 50
+        sadness: -60
+        disgust: -100
+        anger: -50
+        surprise: 30
+        sweetness: 30
+        fear: -100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 10
+      text: "Du jambon de cochons de pays, tu\xE9s \xE0 la main..."
+      enemyResistance:
+        neutral: 0
+        joy: 25
+        sadness: -10
+        disgust: -80
+        anger: -100
+        surprise: 0
+        sweetness: 80
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 6
+      - wordIndex: 9
+    - interlocuteur: 0
+      hpMax: 10
+      text: "Du fromage de qualit\xE9 sup\xE9rieure..."
+      enemyResistance:
+        neutral: 0
+        joy: 25
+        sadness: -60
+        disgust: -100
+        anger: -100
+        surprise: 0
+        sweetness: 80
+        fear: -100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+    - interlocuteur: 0
+      hpMax: 10
+      text: Il n'y a rien de meilleur !
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -60
+        disgust: -100
+        anger: -100
+        surprise: 0
+        sweetness: 100
+        fear: -100
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+    emotionsUsed: []
+    eventData: []
+    expGain: 20
+    expBonus: 30
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Parfum
+    description: 'La nouvelle gamme de Parfum est sorti.
+
+      Nous recherchons une voix sensuelle pour sa promotion.'
+    contractType: 3
+    level: 1
+    money: 4110
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 8
+    currentLine: 0
+    totalLine: 4
+    currentMixing: 0
+    totalMixing: 0
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: Homme
+      roleSprite: {fileID: 0}
+      line: 64
+      fan: 0
+      attack: 8
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: 0, y: 10}
+      characterStat:
+        neutral: 2
+        joy: 0
+        sadness: 0
+        disgust: 9
+        anger: 0
+        surprise: 0
+        sweetness: 13
+        fear: 0
+        trust: 0
+      bestStat: 13
+      secondBestStat: 9
+      bestStatEmotion: 6
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
         sadness: 0
         disgust: 0
-        anger: 50
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 23
+      text: Cette douce odeur...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
         surprise: 0
         sweetness: 100
         fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 0
+        trust: 0
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 13
-      text: Audacieuse...
+      hpMax: 17
+      text: Ce parfum...
       enemyResistance:
         neutral: 0
-        joy: 50
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 26
+      text: Ha...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 35
+      text: Parfum [Nom], une fragrance euphorique.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+    emotionsUsed: []
+    eventData: []
+    expGain: 30
+    expBonus: 20
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Omega warriors Turbo
+    description: "Nous lancons notre nouveau jeu de combat Omega warriors Turbo.\n\nIl
+      nous faut une voix \xE9nergique pour encourager les joueurs \xE0 s'affronter."
+    contractType: 2
+    level: 2
+    money: 6490
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 3
+    currentLine: 0
+    totalLine: 9
+    currentMixing: 0
+    totalMixing: 15
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: Annonceur
+      roleSprite: {fileID: 0}
+      line: 106
+      fan: 105
+      attack: 11
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: -10, y: 10}
+      characterStat:
+        neutral: 6
+        joy: 14
         sadness: 0
         disgust: 0
+        anger: 16
+        surprise: 0
+        sweetness: 9
+        fear: 0
+        trust: 16
+      bestStat: 16
+      secondBestStat: 16
+      bestStatEmotion: 4
+      secondBestStatEmotion: 8
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: {fileID: 0}
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 55
+      text: Omega warriors !
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -100
+        disgust: -100
         anger: 50
         surprise: 0
-        sweetness: 70
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 0
+        sweetness: 30
+        fear: -100
+        trust: 100
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 13
-      text: Et dangereuse...
+      hpMax: 40
+      text: Entrainement !
       enemyResistance:
         neutral: 0
         joy: 50
-        sadness: 50
-        disgust: 50
+        sadness: -90
+        disgust: -90
         anger: 50
-        surprise: 0
+        surprise: -90
         sweetness: 50
-        fear: 0
+        fear: -90
         trust: 50
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 42
+      text: Options !
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -90
+        disgust: -90
+        anger: 0
+        surprise: -90
+        sweetness: 50
+        fear: -90
+        trust: 50
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 43
+      text: Combat !
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -90
+        disgust: -90
+        anger: 50
+        surprise: -90
+        sweetness: 50
+        fear: -90
+        trust: 50
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 45
+      text: '... est le gagnant !'
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -100
+        disgust: -90
+        anger: -50
+        surprise: 80
+        sweetness: 20
+        fear: -90
+        trust: 100
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 47
+      text: "Partie termin\xE9e."
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 40
+        disgust: 40
+        anger: 40
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
       enemyWeakPoints:
       - wordIndex: 1
     - interlocuteur: 0
-      hpMax: 23
-      text: "C'est comme \xE7a... comme \xE7a qu'elle m'a quitt\xE9."
+      hpMax: 52
+      text: La roue du destin est sur le point de tourner...
       enemyResistance:
         neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 40
-        anger: 0
-        surprise: -80
-        sweetness: -25
-        fear: 0
-        trust: -80
-      enemyWeakPoints:
-      - wordIndex: 2
-      - wordIndex: 8
-    - interlocuteur: 0
-      hpMax: 23
-      text: Est-ce que je regrette ?
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
+        joy: 0
+        sadness: 0
         disgust: 0
         anger: 0
-        surprise: 20
-        sweetness: -25
+        surprise: 0
+        sweetness: 0
         fear: 0
-        trust: 20
+        trust: 0
       enemyWeakPoints:
       - wordIndex: 3
     - interlocuteur: 0
-      hpMax: 17
-      text: "Bien s\xFBr."
+      hpMax: 45
+      text: Partez !
       enemyResistance:
         neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 30
-        anger: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: 80
         surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 50
-      enemyWeakPoints:
-      - wordIndex: 1
-    - interlocuteur: 0
-      hpMax: 23
-      text: "Est-ce que je souhaite retourner en arri\xE8re ?"
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 30
-        anger: 0
-        surprise: 20
-        sweetness: -25
-        fear: 0
-        trust: 20
-      enemyWeakPoints:
-      - wordIndex: 4
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 18
-      text: Evidemment.
-      enemyResistance:
-        neutral: 0
-        joy: -80
-        sadness: 100
-        disgust: 30
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 50
+        sweetness: -50
+        fear: -90
+        trust: 100
       enemyWeakPoints:
       - wordIndex: 0
     - interlocuteur: 0
-      hpMax: 25
-      text: "Mais c'est pour \xE7a que je continuerai de conduire."
+      hpMax: 29
+      text: Fini !
       enemyResistance:
         neutral: 0
         joy: 100
-        sadness: 100
-        disgust: -50
-        anger: -50
-        surprise: -50
-        sweetness: 10
-        fear: -50
-        trust: 0
+        sadness: 0
+        disgust: -90
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: -90
+        trust: 100
       enemyWeakPoints:
-      - wordIndex: 6
-    - interlocuteur: 0
-      hpMax: 19
-      text: Pour elle, et son sourire.
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 100
-        disgust: -80
-        anger: -80
-        surprise: -80
-        sweetness: 50
-        fear: -80
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 1
+      - wordIndex: 0
     emotionsUsed: []
-    eventData:
-    - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
-    expGain: 30
-    expBonus: 50
+    eventData: []
+    expGain: 20
+    expBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -1661,17 +2074,14 @@ MonoBehaviour:
   contractHistoric: []
   contractFranchise: []
   contractGacha:
-  - ChipsoLv1
   - ChipsalaLv1
   - FilmEtudiantLv1
   - LessiveArioleLv1
-  - ParfumLv1
-  - SanteJeunesseLv1
   - TurboGazonLv1
-  - JambonLv1
-  - EntrepriseEkavoxLv1
+  - LigneTelephoniqueLv1
+  - KidGIGNLv1
   - BolognaiseLv1
-  - FightingBattleLv1
+  - VoitureLv1
   - ClimClimaxLv2
   - PhilosophieLv1
   - SoundDesignLv1
@@ -1679,19 +2089,25 @@ MonoBehaviour:
   - MetroLv1
   - ParfumLv2
   contractGachaCooldown:
-  - contract: KidGIGNLv1
-    cooldown: 6
-  - contract: LigneTelephoniqueLv1
-    cooldown: 7
-  - contract: VoitureLv1
-    cooldown: 3
+  - contract: EntrepriseEkavoxLv1
+    cooldown: 5
+  - contract: ChipsoLv1
+    cooldown: 1
+  - contract: SanteJeunesseLv1
+    cooldown: 5
+  - contract: JambonLv1
+    cooldown: 1
+  - contract: ParfumLv1
+    cooldown: 10
+  - contract: FightingBattleLv1
+    cooldown: 5
   voiceActors:
   - voiceActorName: Moine-Maeda
     fan: 1
     fanGain: 0
     price: 6
     level: 1
-    hp: 234
+    hp: 260
     hpMax: 260
     timbre: {x: -2, y: 4}
     statistique:
@@ -1726,14 +2142,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 65
-      sadness: 99
-      disgust: 123
-      anger: 67
-      surprise: 81
-      sweetness: 91
-      fear: 190
-      trust: 174
+      joy: 67
+      sadness: 89
+      disgust: 140
+      anger: 58
+      surprise: 80
+      sweetness: 98
+      fear: 178
+      trust: 180
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1745,7 +2161,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 98
+    nextEXP: 120
     relation: 0
     skillOffset: {x: 0.07, y: 0.12, z: 0}
     spriteSheets: Character-Moine-Maeda
@@ -1759,7 +2175,7 @@ MonoBehaviour:
     availability: 1
     isNull: 0
   - voiceActorName: Bocca
-    fan: 4992
+    fan: 4953
     fanGain: 0
     price: 15
     level: 20
@@ -2206,7 +2622,7 @@ MonoBehaviour:
     fanGain: 0
     price: 11
     level: 1
-    hp: 230
+    hp: 207
     hpMax: 230
     timbre: {x: -6, y: -1}
     statistique:
@@ -2241,14 +2657,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 130
-      sadness: 117
-      disgust: 94
+      joy: 112
+      sadness: 120
+      disgust: 90
       anger: 48
-      surprise: 79
-      sweetness: 211
-      fear: 127
-      trust: 104
+      surprise: 77
+      sweetness: 228
+      fear: 129
+      trust: 106
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2260,7 +2676,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 77
     relation: 0
     skillOffset: {x: 0.1, y: 0.15, z: 0}
     spriteSheets: Character-Dea
@@ -2278,7 +2694,7 @@ MonoBehaviour:
     fanGain: 0
     price: 6
     level: 1
-    hp: 200
+    hp: 196
     hpMax: 200
     timbre: {x: -7, y: 3}
     statistique:
@@ -2313,14 +2729,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 158
-      sadness: 155
-      disgust: 99
-      anger: 64
-      surprise: 67
-      sweetness: 148
-      fear: 70
-      trust: 149
+      joy: 155
+      sadness: 149
+      disgust: 102
+      anger: 62
+      surprise: 69
+      sweetness: 154
+      fear: 71
+      trust: 148
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2332,7 +2748,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 74
     relation: 0
     skillOffset: {x: 0.14, y: 0.12, z: 0}
     spriteSheets: Character-Doremi
@@ -2350,7 +2766,7 @@ MonoBehaviour:
     fanGain: 0
     price: 6
     level: 1
-    hp: 210
+    hp: 207
     hpMax: 210
     timbre: {x: -2, y: 4}
     statistique:
@@ -2385,14 +2801,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 49
-      sadness: 118
-      disgust: 172
-      anger: 62
-      surprise: 89
-      sweetness: 45
-      fear: 156
-      trust: 119
+      joy: 35
+      sadness: 110
+      disgust: 168
+      anger: 81
+      surprise: 97
+      sweetness: 56
+      fear: 149
+      trust: 114
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2404,7 +2820,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 90
     relation: 0
     skillOffset: {x: 0.07, y: 0.08, z: 0}
     spriteSheets: Character-Jean-Christophe
@@ -2458,14 +2874,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 174
-      sadness: 107
-      disgust: 98
-      anger: 110
-      surprise: 105
-      sweetness: 97
+      joy: 212
+      sadness: 90
+      disgust: 104
+      anger: 90
+      surprise: 91
+      sweetness: 106
       fear: 100
-      trust: 109
+      trust: 107
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2530,14 +2946,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 106
-      joy: 66
-      sadness: 36
-      disgust: 180
-      anger: 152
-      surprise: 124
-      sweetness: 45
-      fear: 150
-      trust: 97
+      joy: 76
+      sadness: 23
+      disgust: 190
+      anger: 157
+      surprise: 141
+      sweetness: 38
+      fear: 135
+      trust: 90
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2602,14 +3018,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 124
-      sadness: 100
-      disgust: 93
-      anger: 62
-      surprise: 78
-      sweetness: 211
-      fear: 129
-      trust: 113
+      joy: 122
+      sadness: 90
+      disgust: 92
+      anger: 68
+      surprise: 79
+      sweetness: 217
+      fear: 132
+      trust: 110
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2674,14 +3090,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 130
-      joy: 124
-      sadness: 120
+      joy: 138
+      sadness: 122
       disgust: 121
-      anger: 150
-      surprise: 133
-      sweetness: 120
-      fear: 122
-      trust: 150
+      anger: 138
+      surprise: 136
+      sweetness: 137
+      fear: 124
+      trust: 124
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2745,14 +3161,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 75
-      joy: 55
-      sadness: 89
-      disgust: 40
+      joy: 50
+      sadness: 103
+      disgust: 39
       anger: 117
-      surprise: 139
-      sweetness: 55
-      fear: 50
-      trust: 60
+      surprise: 144
+      sweetness: 41
+      fear: 40
+      trust: 71
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2817,14 +3233,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 50
-      sadness: 118
-      disgust: 175
-      anger: 72
-      surprise: 76
-      sweetness: 45
-      fear: 154
-      trust: 120
+      joy: 43
+      sadness: 122
+      disgust: 167
+      anger: 90
+      surprise: 83
+      sweetness: 52
+      fear: 151
+      trust: 102
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2889,14 +3305,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 71
-      sadness: 100
-      disgust: 112
-      anger: 86
-      surprise: 69
-      sweetness: 113
-      fear: 175
-      trust: 164
+      joy: 62
+      sadness: 95
+      disgust: 109
+      anger: 58
+      surprise: 84
+      sweetness: 118
+      fear: 187
+      trust: 177
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2961,14 +3377,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 59
-      sadness: 111
-      disgust: 165
-      anger: 90
-      surprise: 78
-      sweetness: 43
-      fear: 159
-      trust: 105
+      joy: 60
+      sadness: 118
+      disgust: 169
+      anger: 69
+      surprise: 94
+      sweetness: 41
+      fear: 142
+      trust: 117
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3032,14 +3448,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 102
-      joy: 110
-      sadness: 73
-      disgust: 129
+      joy: 111
+      sadness: 76
+      disgust: 131
       anger: 125
-      surprise: 66
+      surprise: 75
       sweetness: 125
-      fear: 80
-      trust: 112
+      fear: 60
+      trust: 117
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3107,24 +3523,34 @@ MonoBehaviour:
   researchesLevels:
   - researchLevel: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   researchExplorationDatas:
-  - researchPlayerPosition: {x: 2, y: 1}
+  - researchPlayerPosition: {x: 13, y: 1}
     researchExplorationChest: 0
     researchExplorationTotalChest: 0
     researchExplorationCount: 0
     researchExplorationTotal: 0
   researchEventSaves:
   - eventID: 1
-    eventActive: 1
+    eventActive: 0
+    eventValue: 0
+  - eventID: 2
+    eventActive: 0
+    eventValue: 0
+  - eventID: 3
+    eventActive: 0
+    eventValue: 0
+  - eventID: 4
+    eventActive: 0
+    eventValue: 0
   gameManualUnlocked: 00000000
   storyResumeUnlocked: 00
   currentChapter: 1
   currentObjective: "Pr\xE9parez-vous pour la semaine 18."
   maintenance: 6000
-  money: 36000
-  researchPoint: 10
+  money: 20000
+  researchPoint: 0
   date:
-    week: 21
-    month: 5
+    week: 24
+    month: 6
     year: 1
   timer: 0
   season: 1

@@ -26,6 +26,8 @@ MonoBehaviour:
   contractDictionnary: []
   description:
   - 
+  isFranchise: 0
+  franchiseNames: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -33,12 +35,16 @@ MonoBehaviour:
     - names:
       - Valkyrie
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 0
       lineMax: 0
       fanMin: 350
       fanMax: 500
       atkMin: 10
       atkMax: 10
+      defMin: 0
+      defMax: 0
       timbre: {x: -5, y: 2}
       timbreRand: {x: -5, y: 2}
       characterStatMin:
@@ -68,9 +74,10 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -113,6 +120,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -172,6 +180,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -299,6 +308,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -324,6 +334,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -367,6 +378,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -392,6 +404,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
@@ -451,6 +464,7 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
     textDataPossible:
