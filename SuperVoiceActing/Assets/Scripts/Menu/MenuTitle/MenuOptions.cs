@@ -122,18 +122,18 @@ namespace VoiceActing
             menuOption.gameObject.SetActive(false);
         }
 
-        protected override void Start()
+        protected void Awake()
         {
             base.Start();
             resolutions = Screen.resolutions;
             System.Array.Reverse(resolutions);
             optionDatas[indexResolution].options = new string[resolutions.Length];
-            int tmpIndex = 0;
-            for (int i = 0; i <= resolutions.Length; i++)
+            for (int i = 0; i < resolutions.Length; i++)
             {
-                optionDatas[indexResolution].options[tmpIndex] = resolutions[i].width + "x" + resolutions[i].height;
-                tmpIndex += 1;
+                optionDatas[indexResolution].options[i] = resolutions[i].width + "x" + resolutions[i].height;
             }
+            optionDatas[indexLanguage].options = I2.Loc.LocalizationManager.GetAllLanguages().ToArray();
+
             LoadPlayerOptionData();
             DrawOptionsValue();
         }
@@ -152,6 +152,7 @@ namespace VoiceActing
             indexOptions[indexMouthSpeed] = PlayerPrefs.GetInt("MouthSpeed");
             indexOptions[indexLanguage] = PlayerPrefs.GetInt("Language");
         }
+
         private void DrawOptionsValue()
         {
             for(int i = 0; i < indexOptions.Length; i++)
@@ -209,6 +210,7 @@ namespace VoiceActing
             ChangeMusicVolume();
             ChangeSoundVolume();
             ChangeVoiceVolume();
+            ChangeLanguage();
 
             this.gameObject.SetActive(false);
             menuOption.gameObject.SetActive(false);
@@ -238,6 +240,7 @@ namespace VoiceActing
             }
             indexOptions[indexSelected] = indexCurrentOption;
             optionDatas[indexSelected].textOptionData.text = optionDatas[indexSelected].options[indexCurrentOption];
+            Debug.Log(optionDatas[indexSelected].options[indexCurrentOption]);
         }
 
         public void MoveValueSlider(bool left)
@@ -290,6 +293,12 @@ namespace VoiceActing
         public void ChangeVoiceVolume()
         {
             AudioManager.Instance.SetVoiceVolume(indexOptions[indexVoice]);
+        }
+
+        public void ChangeLanguage()
+        {
+            I2.Loc.LocalizationManager.CurrentLanguage = optionDatas[indexLanguage].options[indexOptions[indexLanguage]];
+            I2.Loc.LocalizationManager.LocalizeAll();
         }
 
         #endregion

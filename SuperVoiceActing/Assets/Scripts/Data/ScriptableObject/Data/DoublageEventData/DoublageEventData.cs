@@ -261,6 +261,13 @@ namespace VoiceActing
 
         }
 
+
+        public int GetEventSize()
+        {
+            return doublageEvent.Length;
+        }
+
+
         public DoublageEvent GetEventNode(int index)
         {
             if (index == doublageEvent.Length)

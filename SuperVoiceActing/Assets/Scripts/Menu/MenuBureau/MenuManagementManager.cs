@@ -123,7 +123,7 @@ namespace VoiceActing
             }
             menuStudioMain.gameObject.SetActive(playerData.MenuStudioUnlocked);
             menuStudioBlackscreen.SetActive(!playerData.MenuStudioUnlocked);
-            menuNextWeek.StartNextWeek(playerData.Date);
+            menuNextWeek.StartNextWeek(playerData.Date, playerData.Season);
         }
 
         // Initialise la phase de bureau

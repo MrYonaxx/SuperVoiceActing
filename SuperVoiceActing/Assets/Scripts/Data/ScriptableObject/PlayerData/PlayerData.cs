@@ -668,6 +668,7 @@ namespace VoiceActing
             voiceActors.Clear();
             voiceActorsGacha.Clear();
             contractAccepted.Clear();
+            contractHistoric.Clear();
             soundEngineers.Clear();
             tutoEvent.Clear();
             inventoryEquipement.Clear();

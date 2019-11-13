@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeverDestroy: 0
-  UserAgreesToHaveItOnTheScene: 0
+  UserAgreesToHaveItOnTheScene: 1
   UserAgreesToHaveItInsideThePluginsFolder: 0
   GoogleLiveSyncIsUptoDate: 1
   Spreadsheet_LocalFileName: 
@@ -60,10 +60,40 @@ MonoBehaviour:
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
   GoogleUpdateDelay: 5
-  mLanguages: []
+  mLanguages:
+  - Name: French
+    Code: fr
+    Flags: 0
+  - Name: English
+    Code: en
+    Flags: 0
   IgnoreDeviceLanguage: 0
   _AllowUnloadingLanguages: 1
-  mTerms: []
+  mTerms:
+  - Term: Contrats
+    TermType: 0
+    Description: 
+    Languages:
+    - Contrats
+    - Contract
+    Flags: 0000
+    Languages_Touch: []
+  - Term: Langues
+    TermType: 0
+    Description: 
+    Languages:
+    - Langues
+    - Languages
+    Flags: 0000
+    Languages_Touch: []
+  - Term: Ajouter un Contrat
+    TermType: 0
+    Description: 
+    Languages:
+    - Ajouter un contrat
+    - Add a contract
+    Flags: 0000
+    Languages_Touch: []
   CaseInsensitiveTerms: 0
   OnMissingTranslation: 1
   mTerm_AppName: 

@@ -18,6 +18,8 @@ namespace VoiceActing
 
         [SerializeField]
         private CalendarData calendarData;
+        [SerializeField]
+        private ImageDictionnary seasonData;
 
         [SerializeField]
         float buttonSize = 140;
@@ -25,6 +27,10 @@ namespace VoiceActing
 
         [SerializeField]
         TextMeshProUGUI textCurrentMonth;
+        [SerializeField]
+        Image imageSeasonLeft;
+        [SerializeField]
+        Image imageSeasonRight;
         [SerializeField]
         TextMeshProUGUI textCurrentPreviousMonth;
 
@@ -66,23 +72,25 @@ namespace VoiceActing
         }
 
 
-        public void StartNextWeek(Date currentDate)
+        public void StartNextWeek(Date currentDate, Season season)
         {
-            textCurrentMonth.text = calendarData.GetMonthName(currentDate.month - 1); //playerData.MonthName[playerData.Date.month - 1];
+            textCurrentMonth.text = calendarData.GetMonthName(currentDate.month - 1);
+            imageSeasonLeft.sprite = seasonData.GetSprite((int)season);
+            imageSeasonRight.sprite = imageSeasonLeft.sprite;
 
-            int weekRemaining = calendarData.GetMonthDate(currentDate.month - 1) - currentDate.week;  //(playerData.MonthDate[playerData.Date.month - 1] - playerData.Date.week);
+            int weekRemaining = calendarData.GetMonthDate(currentDate.month - 1) - currentDate.week;
 
-            int weekNumberPrevious = calendarData.GetMonthDate(currentDate.month - 2); // playerData.MonthDate[GetPreviousMonth()];
+            int weekNumberPrevious = calendarData.GetMonthDate(currentDate.month - 2);
             if (weekNumberPrevious == 53)
                 weekNumberPrevious = 1;
 
-            int weekNumber = calendarData.GetMonthDate(currentDate.month - 1) - weekNumberPrevious; // (playerData.MonthDate[playerData.Date.month - 1] - weekNumberPrevious);
+            int weekNumber = calendarData.GetMonthDate(currentDate.month - 1) - weekNumberPrevious;
 
             if(weekRemaining == weekNumber) // Nouveau mois
             {
                 lastMonthWeeks.gameObject.SetActive(true);
                 textCurrentPreviousMonth.gameObject.SetActive(true);
-                textCurrentPreviousMonth.text = calendarData.GetMonthName(currentDate.month - 2);  //playerData.MonthName[GetPreviousMonth()];
+                textCurrentPreviousMonth.text = calendarData.GetMonthName(currentDate.month - 2);
                 DrawLastMonthWeek(currentDate.month);
             }
             else

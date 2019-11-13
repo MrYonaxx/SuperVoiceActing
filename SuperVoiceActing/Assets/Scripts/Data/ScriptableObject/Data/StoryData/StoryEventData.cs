@@ -185,7 +185,10 @@ namespace VoiceActing
         [SerializeField]
         StoryEventDataBox[] eventNodes;
 
-
+        public int GetEventSize()
+        {
+            return eventNodes.Length;
+        }
 
         public StoryEvent GetEventNode(int index)
         {
