@@ -32,8 +32,6 @@ MonoBehaviour:
   - "Unlimited [Nom] est une s\xE9rie de science et surtout de fiction.\n\nLe personnage
     principal utilise une arme \xE0 feu tirant des balles d'\xE9motions. Sa voix doit
     refleter la munition utilis\xE9."
-  isFranchise: 0
-  franchiseNames: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -47,10 +45,10 @@ MonoBehaviour:
       rolePersonality: 6
       lineMin: 0
       lineMax: 0
-      fanMin: 0
-      fanMax: 0
-      atkMin: 0
-      atkMax: 0
+      fanMin: 50
+      fanMax: 200
+      atkMin: 5
+      atkMax: 10
       defMin: 0
       defMax: 0
       timbre: {x: 4, y: 8}
@@ -88,24 +86,26 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "J'ai d\xE9cid\xE9 d'utiliser contre toi ces trois fragments d'\xE9motions
         !"
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 30
+        hpMax: 30
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 50
+        sadness: -90
+        disgust: 50
+        anger: 100
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: 50
       enemyWeakPoints: []
   - textDataCondition:
       all: 1
@@ -115,6 +115,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Un rayon de soleil et d'espoir...
       textStats:
@@ -158,6 +160,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Les larmes d\xE9chirant le ciel..."
       textStats:
@@ -201,6 +205,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "La puanteur naus\xE9abonde de l'hypocrisie..."
       textStats:
@@ -244,6 +250,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Le grondement du coeur...
       textStats:
@@ -287,6 +295,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Un instant de doute ou de bonheur ...
       textStats:
@@ -330,6 +340,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: La passion de la fantaisie...
       textStats:
@@ -373,6 +385,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Le conflit du courage...
       textStats:
@@ -416,6 +430,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Un poing enserrant la lune ...
       textStats:
@@ -459,6 +475,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Et pour finir...
       textStats:
@@ -503,3 +521,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

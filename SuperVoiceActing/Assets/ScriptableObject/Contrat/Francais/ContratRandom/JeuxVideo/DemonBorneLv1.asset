@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: DemonBorneLv1
   m_EditorClassIdentifier: 
-  contractName: 
-  level: 0
-  contractType: 0
+  contractName: '[Nom]'
+  level: 3
+  contractType: 2
   salaryMin: 0
   salaryMax: 0
   mixingMin: 0
@@ -23,10 +23,12 @@ MonoBehaviour:
   weekMax: 0
   expGain: 0
   expBonus: 0
-  contractDictionnary: []
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Demonborne
+    - Bloodsouls
   description: []
-  isFranchise: 0
-  franchiseNames: []
   characters:
   - mainCharacter: 1
     optional: 0
@@ -34,7 +36,7 @@ MonoBehaviour:
     - names:
       - "Poup\xE9e"
       roleSprite: {fileID: 0}
-      roleType: 0
+      roleType: 1
       rolePersonality: 0
       lineMin: 0
       lineMax: 0
@@ -73,6 +75,7 @@ MonoBehaviour:
     charactersProfil:
     - names:
       - "P\xE8re Gascogne"
+      - 
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -119,13 +122,15 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Bonjour, brave chasseur.
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -141,8 +146,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -158,8 +163,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -175,8 +180,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -192,8 +197,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -209,8 +214,8 @@ MonoBehaviour:
       textStats:
         interlocuteurID: 0
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -230,13 +235,15 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Des monstres partout autour de moi...
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -250,10 +257,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: "... Vous serez comme eux, t\xF4t ou tard..."
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -267,10 +274,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: '... Quelle est cette odeur ?'
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -284,10 +291,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: "Le sang parfum\xE9, oh, il chante pour moi."
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -301,10 +308,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: Il peut rendre malade un homme...
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -318,10 +325,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: Haahahahahahaha !
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -335,10 +342,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: "Trop de fiert\xE9 pour montrer votre v\xE9ritable visage, hein ?"
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -352,10 +359,10 @@ MonoBehaviour:
       enemyWeakPoints: []
     - text: "Mais c'\xE9tait de la chasse sportive !"
       textStats:
-        interlocuteurID: 0
+        interlocuteurID: 1
         linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 50
       enemyResistance:
         neutral: 0
         joy: 0
@@ -376,3 +383,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 50
+  debugHPMax: 50

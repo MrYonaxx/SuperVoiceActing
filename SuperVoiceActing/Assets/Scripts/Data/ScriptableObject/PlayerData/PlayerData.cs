@@ -193,6 +193,42 @@ namespace VoiceActing
     }
 
 
+
+    [System.Serializable]
+    public class FranchiseSave
+    {
+        [SerializeField]
+        private string franchiseName;
+        public string FranchiseName
+        {
+            get { return franchiseName; }
+        }
+
+        [SerializeField]
+        private int currentFranchiseNumber;
+        public int CurrentFranchiseNumber
+        {
+            get { return currentFranchiseNumber; }
+            set { currentFranchiseNumber = value; }
+        }
+
+        [SerializeField]
+        private List<Contract> contractPreviousInstallements;
+        public List<Contract> ContractPreviousInstallements
+        {
+            get { return contractPreviousInstallements; }
+        }
+
+
+        public FranchiseSave(string frName, int contractLenght)
+        {
+            franchiseName = frName;
+            currentFranchiseNumber = 0;
+            contractPreviousInstallements = new List<Contract>(contractLenght);
+        }
+
+    }
+
     /// <summary>
     /// Definition of the PlayerData class
     /// </summary>
@@ -305,8 +341,8 @@ namespace VoiceActing
 
         // x = contractID, y = franchise series
         [SerializeField]
-        private List<Vector2> contractFranchise;
-        public List<Vector2> ContractFranchise
+        private List<FranchiseSave> contractFranchise;
+        public List<FranchiseSave> ContractFranchise
         {
             get { return contractFranchise; }
             set { contractFranchise = value; }
@@ -510,6 +546,12 @@ namespace VoiceActing
 
 
 
+        [SerializeField]
+        private int playerStudioLevel;
+        public int PlayerStudioLevel
+        {
+            get { return playerStudioLevel; }
+        }
         [SerializeField]
         private int maintenance;
         public int Maintenance

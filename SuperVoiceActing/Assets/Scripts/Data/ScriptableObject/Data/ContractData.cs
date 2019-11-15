@@ -30,7 +30,7 @@ namespace VoiceActing
         public string[] namesDictionnary;
     }
 
-    // TextDataCondition Contract ===================================================================
+    // TextDataCondition Contract =================================================================================================================
     [System.Serializable]
     public class TextDataCondition
     {
@@ -103,6 +103,30 @@ namespace VoiceActing
         {
             get { return dictCondition; }
         }
+
+        [Space]
+
+
+
+        [HorizontalGroup("Copy", LabelWidth = 100, Width = 100)]
+        [SerializeField]
+        private bool copy;
+        public bool Copy
+        {
+            get { return copy; }
+        }
+
+        [HorizontalGroup("Copy2", LabelWidth = 100, Width = 100)]
+        [ShowIf("copy")]
+        [SerializeField]
+        [HideLabel]
+        private int textCopy = -1;
+        public int TextCopy
+        {
+            get { return textCopy; }
+        }
+
+
     }
 
     // TextData Contract ===================================================================
@@ -197,6 +221,13 @@ namespace VoiceActing
         {
             get { return evadeMax; }
         }*/
+
+        public void SetDebugHP(int hp, int hpM)
+        {
+            hpMin = hp;
+            hpMax = hpM;
+        }
+
     }
 
 
@@ -297,6 +328,7 @@ namespace VoiceActing
             get { return contractType; }
         }
 
+        [Space]
         [HorizontalGroup("Salary")]
         [SerializeField]
         private int salaryMin;
@@ -304,6 +336,7 @@ namespace VoiceActing
         {
             get { return salaryMin; }
         }
+        [Space]
         [HorizontalGroup("Salary")]
         [SerializeField]
         private int salaryMax;
@@ -329,14 +362,14 @@ namespace VoiceActing
 
         [HorizontalGroup("Semaine")]
         [SerializeField]
-        private int weekMin;
+        private int weekMin = 3;
         public int WeekMin
         {
             get { return weekMin; }
         }
         [HorizontalGroup("Semaine")]
         [SerializeField]
-        private int weekMax;
+        private int weekMax = 7;
         public int WeekMax
         {
             get { return weekMax; }
@@ -344,14 +377,14 @@ namespace VoiceActing
 
         [HorizontalGroup("EXP")]
         [SerializeField]
-        private int expGain;
+        private int expGain = 20;
         public int ExpGain
         {
             get { return expGain; }
         }
         [HorizontalGroup("EXP")]
         [SerializeField]
-        private int expBonus;
+        private int expBonus = 100;
         public int ExpBonus
         {
             get { return expBonus; }
@@ -377,20 +410,6 @@ namespace VoiceActing
             get { return description; }
         }
 
-        [Space]
-        [Space]
-        [SerializeField]
-        private bool isFranchise;
-        public bool IsFranchise
-        {
-            get { return isFranchise; }
-        }
-        [SerializeField]
-        private string[] franchiseNames;
-        public string[] FranchiseNames
-        {
-            get { return franchiseNames; }
-        }
 
         [Space]
         [Space]
@@ -453,28 +472,27 @@ namespace VoiceActing
         [Space]
 
         [Title("Events")]
-
         [SerializeField]
         private DoublageEventData[] eventData;
         public DoublageEventData[] EventData
         {
             get { return eventData; }
         }
-
-        [Space]
-        [Space]
+        [FoldoutGroup("Events")]
         [SerializeField]
         private StoryEventData eventAcceptedContract;
         public StoryEventData EventAcceptedContract
         {
             get { return eventAcceptedContract; }
         }
+        [FoldoutGroup("Events")]
         [SerializeField]
         private StoryEventData eventEndContract;
         public StoryEventData EventEndContract
         {
             get { return eventEndContract; }
         }
+        [FoldoutGroup("Events")]
         [Space]
         [SerializeField]
         private bool canGameOver;
@@ -482,6 +500,7 @@ namespace VoiceActing
         {
             get { return canGameOver; }
         }
+        [FoldoutGroup("Events")]
         [SerializeField]
         private DoublageEventData eventGameOver;
         public DoublageEventData EventGameOver
@@ -500,7 +519,6 @@ namespace VoiceActing
             get { return changeBGM; }
         }
 
-        [HorizontalGroup("MusiqueContrat", LabelWidth = 130)]
         [ShowIf("changeBGM", true)]
         [SerializeField]
         private AudioClip battleTheme;
@@ -508,8 +526,6 @@ namespace VoiceActing
         {
             get { return battleTheme; }
         }
-
-        [HorizontalGroup("MusiqueContrat", LabelWidth = 130)]
         [ShowIf("changeBGM", true)]
         [SerializeField]
         private AudioClip victoryTheme;
@@ -519,8 +535,6 @@ namespace VoiceActing
         }
 
         [Space]
-        [Space]
-        [Space]
         [SerializeField]
         private bool sessionLock;
         public bool SessionLock
@@ -529,6 +543,25 @@ namespace VoiceActing
         }
 
 
+        [Space]
+        [Space]
+        [Space]
+        [Title("Debug")]
+        [SerializeField]
+        public int debugHPMin;
+        public int debugHPMax;
+
+        [Button]
+        private void AssignDebugHP()
+        {
+            for (int i = 0; i < textDataContract.Length; i++)
+            {
+                for (int j = 0; j < textDataContract[i].TextDataPossible.Length; j++)
+                {
+                    textDataContract[i].TextDataPossible[j].TextStats.SetDebugHP(debugHPMin, debugHPMax);
+                }
+            }
+        }
 
         #endregion
 

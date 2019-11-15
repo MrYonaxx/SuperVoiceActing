@@ -224,6 +224,14 @@ namespace VoiceActing
             set { expBonus = value; }
         }
 
+        [SerializeField]
+        private int researchBonus;
+        public int ResearchBonus
+        {
+            get { return researchBonus; }
+            set { researchBonus = value; }
+        }
+
 
         [SerializeField]
         private int producerMP;
@@ -349,6 +357,16 @@ namespace VoiceActing
             }
         }
 
+
+
+
+
+
+
+
+
+
+
         public Contract(ContractData data)
         {
             this.name = data.Name;
@@ -365,7 +383,7 @@ namespace VoiceActing
             this.totalMixing = Random.Range(data.MixingMin, data.MixingMax+1);
 
             this.score = 0;
-            this.highScore = 0; // Là on met des algo
+            this.highScore = 0;
 
             this.expGain = data.ExpGain;
             this.expBonus = data.ExpBonus;
@@ -375,7 +393,6 @@ namespace VoiceActing
 
             this.canGameOver = data.CanGameOver;
             this.storyEventWhenGameOver = data.EventGameOver;
-
             this.storyEventWhenAccepted = data.EventAcceptedContract;
             this.storyEventWhenEnd = data.EventEndContract;
 
@@ -521,10 +538,11 @@ namespace VoiceActing
             return b;
         }
 
-        /*private string ReplaceText()
+        public Contract(Contract previousContract, int i)
         {
 
-        }*/
+        }
+
 
         public void ProgressMixing()
         {

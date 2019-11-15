@@ -150,7 +150,7 @@ namespace VoiceActing
             playerData.CreateList(playerDataDebug, calendarData);
 
             AddRandomEvents();
-            gameTimelineData.CheckContractTimeline(playerData);
+            //gameTimelineData.CheckContractTimeline(playerData);
             gameTimelineData.CheckEventsTimeline(playerData);
             menuActorsLifeManager.VoiceActorWork(playerData.VoiceActors);
 

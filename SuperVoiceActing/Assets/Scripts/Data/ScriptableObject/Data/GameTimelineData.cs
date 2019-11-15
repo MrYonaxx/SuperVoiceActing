@@ -13,7 +13,7 @@ using Sirenix.OdinInspector;
 namespace VoiceActing
 {
 
-    [System.Serializable]
+    /*[System.Serializable]
     public class GameTimelineContractData
     {
         [HorizontalGroup("Hey", PaddingLeft = 50)]
@@ -47,7 +47,7 @@ namespace VoiceActing
                 }
             }
         }
-    }
+    }*/
 
 
 
@@ -115,7 +115,7 @@ namespace VoiceActing
     public class GameTimelineData : ScriptableObject
 	{
 
-        [TabGroup("RandomContract")]
+        /*[TabGroup("RandomContract")]
         [Space]
         [Title("Contrat ajoutés à la liste de contrat pouvant apparaitre dans les contrats disponibles")]
         [SerializeField]
@@ -123,9 +123,9 @@ namespace VoiceActing
         public GameTimelineContractBox[] ContractRandomTimeline
         {
             get { return contractRandomTimeline; }
-        }
+        }*/
 
-        [TabGroup("Events")]
+        //[TabGroup("Events")]
         [Space]
         [Title("Event")]
         [SerializeField]
@@ -140,10 +140,10 @@ namespace VoiceActing
         private void SetTitles()
         {
 
-            for (int i = 0; i < contractRandomTimeline.Length; i++)
+            /*for (int i = 0; i < contractRandomTimeline.Length; i++)
             {
                 contractRandomTimeline[i].SetTitle(i);
-            }
+            }*/
 
 
             for (int i = 0; i < eventsTimeline.Length; i++)
@@ -158,14 +158,14 @@ namespace VoiceActing
 
 
 
-        public void CheckContractTimeline(PlayerData playerData)
+        /*public void CheckContractTimeline(PlayerData playerData)
         {
             for (int i = 0; i < ContractRandomTimeline[playerData.Date.week].contractsData.addContracts.Length; i++)
             {
                 playerData.ContractGacha.Add(ContractRandomTimeline[playerData.Date.week].contractsData.addContracts[i].name);
             }
 
-        }
+        }*/
 
         public void CheckEventsTimeline(PlayerData playerData)
         {

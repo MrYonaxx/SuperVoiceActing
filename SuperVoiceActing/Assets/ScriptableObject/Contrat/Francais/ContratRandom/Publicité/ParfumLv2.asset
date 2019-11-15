@@ -35,6 +35,8 @@ MonoBehaviour:
     - names:
       - Femme
       roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 30
       lineMax: 70
       fanMin: 0
@@ -92,6 +94,8 @@ MonoBehaviour:
     - names:
       - Homme
       roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 30
       lineMax: 70
       fanMin: 0
@@ -154,8 +158,11 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 2
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Cette douce odeur...
       textStats:
@@ -196,8 +203,11 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 4
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Hmmm...
       textStats:
@@ -272,8 +282,11 @@ MonoBehaviour:
       nbPhraseMin: 1
       nbPhraseMax: 1
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Parfum [Nom], une fragrance euphorique.
       textStats:
@@ -303,3 +316,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0
