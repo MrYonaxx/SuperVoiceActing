@@ -51,16 +51,18 @@ namespace VoiceActing
         [FoldoutGroup("RoleStat")]
         [HorizontalGroup("RoleStat/Data")]
         [VerticalGroup("RoleStat/Data/Left")]
+        [HideLabel]
         [SerializeField]
-        private string[] names;
-        public string[] Names
+        private string roleName;
+        public string RoleName
         {
-            get { return names; }
-            set { names = value; }
+            get { return roleName; }
+            set { roleName = value; }
         }
 
         [VerticalGroup("RoleStat/Data/Left")]
         [LabelWidth(80)]
+        [HideLabel]
         [SerializeField]
         private Sprite roleSprite;
         public Sprite RoleSprite

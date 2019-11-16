@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2580de6655b414692775c527cb6d5e, type: 3}
   m_Name: InitialPlayerDataChapter2
   m_EditorClassIdentifier: 
+  playerLevel: 3
   startMoney: 40000
   startMaintenance: 6000
   startResearchPoint: 10
   researchDatabase: {fileID: 11400000, guid: 93d5653b0db86ac4ab01c9f31026cc03, type: 2}
+  researchDungeonData: []
+  researchEventDatabase: {fileID: 0}
   gameManualDatabase: {fileID: 11400000, guid: 178313475ebf8824ab4e480a0a95ef2b, type: 2}
   storyResumeDatabase: {fileID: 11400000, guid: 1ee0190f096f46d448b4927f8eb94f36,
     type: 2}
@@ -57,6 +60,7 @@ MonoBehaviour:
   initialCriticalRate: 0
   initialTemperature: 0
   initialTurn: 15
+  menuStudioUnlocked: 1
   equipementCategories: 0000000001000000020000000300000003000000
   initialEquipement: []
   contractAvailableDebug: []
@@ -75,7 +79,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a0ca61c72ee77f43b506ae0ffb5e77e, type: 2}
   soundEngineerDebug:
   - {fileID: 11400000, guid: fe9ac234fa222bf43afb48cd38d527ce, type: 2}
-  initialTutoEvent: []
+  initialTutoEvent: 
   inventoryDebug: []
   formationDebug:
   - {fileID: 11400000, guid: 72faee5879233c743b424a7891a1661c, type: 2}

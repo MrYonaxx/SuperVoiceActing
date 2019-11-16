@@ -53,6 +53,7 @@ MonoBehaviour:
     eventData: []
     expGain: 0
     expBonus: 0
+    researchBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -63,678 +64,7 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 1
-  contractAccepted:
-  - name: Message d'annonce Ligne D
-    description: "Pour l'ouverture de la nouvelle ligne de m\xE9tro nous avons besoin
-      d'une nouvelle voix pour assister les passagers."
-    contractType: 4
-    level: 3
-    money: 2980
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 6
-    currentLine: 0
-    totalLine: 10
-    currentMixing: 0
-    totalMixing: 7
-    score: 0
-    highScore: 0
-    soundEngineer:
-      engineerName: 
-      level: 0
-      experience: 0
-      salary: 0
-      experienceCurve: {fileID: 0}
-      artificeGauge: 0
-      mixingPower: 0
-      skills: []
-      spritesSheets: {fileID: 0}
-      formationSkillID: 0
-      formationSkill: {fileID: 0}
-      formationSkillTime: 0
-      formationSkillTotalTime: 0
-      isNull: 1
-    characters:
-    - name: Annonceur
-      roleSprite: {fileID: 0}
-      line: 0
-      fan: 0
-      attack: 0
-      defense: 0
-      roleType: 0
-      rolePersonality: 0
-      timbre: {x: 0, y: 0}
-      characterStat:
-        neutral: 2
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 22
-        fear: 0
-        trust: 0
-      bestStat: 22
-      secondBestStat: -1
-      bestStatEmotion: 6
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - voiceActorName: Bocca
-      fan: 5000
-      fanGain: 0
-      price: 15
-      level: 21
-      hp: 434
-      hpMax: 513
-      timbre: {x: 5, y: 10}
-      statistique:
-        neutral: 23
-        joy: 14
-        sadness: 29
-        disgust: 26
-        anger: 42
-        surprise: 15
-        sweetness: 19
-        fear: 10
-        trust: 31
-      statModifier:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVoxography:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      growth:
-        neutral: 108
-        joy: 60
-        sadness: 150
-        disgust: 150
-        anger: 200
-        surprise: 60
-        sweetness: 100
-        fear: 40
-        trust: 110
-      currentGrowth:
-        neutral: 0
-        joy: 60
-        sadness: 50
-        disgust: 50
-        anger: 0
-        surprise: 60
-        sweetness: 0
-        fear: 40
-        trust: 10
-      experience: 0
-      nextEXP: 3982
-      relation: 0
-      skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: Character-AllezNagais
-      damageVariance: 2
-      roleDefense: 0
-      potentials: []
-      buffs: []
-      voxography:
-      - contractName: 'Ragab VI : Tears from the battlefield'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 02000000
-      - contractName: 'Ragab V : New Threat'
-        roles:
-        - name: 
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 00000000
-      - contractName: Blitzkrieg
-        roles:
-        - name: Sanders
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 06000000
-      - contractName: 'Ragab IV : Twin Brothers'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Bhaguar
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: "P\xE8re de Ragab"
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 040000000400000006000000
-      - contractName: 'Ragab III : Crap0''s Catharsis'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 02000000
-      - contractName: 'Ragab II : The fight continue'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 08000000
-      - contractName: Bobar le cafard
-        roles:
-        - name: Kankrela
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Kankrela Junior
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Kankrela Senior
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 030000000300000003000000
-      - contractName: RaGaB
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 08000000
-      actorMentalState: 0
-      availability: 1
-      isNull: 0
-    textData:
-    - interlocuteur: 0
-      hpMax: 32
-      text: Direction
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 33
-      text: "Maurice Lach\xE2tre"
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 33
-      text: Prochain train dans...
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 33
-      text: 3 minutes.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 32
-      text: Terminus.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 31
-      text: Attention, cette station est en forte pente
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 5
-    - interlocuteur: 0
-      hpMax: 31
-      text: "Attention \xE0 la marche en descendant du train."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 0
-      hpMax: 32
-      text: "Attention, des pickpocket peuvent \xEAtre pr\xE9sent \xE0 bord."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 32
-      text: "Nous vous rappellons que provoquer les contr\xF4leurs en duel sur la
-        voie est interdit."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    - interlocuteur: 0
-      hpMax: 34
-      text: "Pour votre s\xE9curit\xE9, ne fixez pas le chien du personnel de s\xE9curit\xE9
-        dans les yeux."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    emotionsUsed: []
-    eventData: []
-    expGain: 30
-    expBonus: 50
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
+  contractAccepted: []
   contractAvailable:
   - name: Princess Muffin S1 EP01-05
     description: "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de
@@ -751,7 +81,7 @@ MonoBehaviour:
     currentLine: 0
     totalLine: 10
     currentMixing: 0
-    totalMixing: 20
+    totalMixing: 22
     score: 0
     highScore: 0
     soundEngineer:
@@ -770,9 +100,9 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: Opera
+    - name: 
       roleSprite: {fileID: 0}
-      line: 242
+      line: 225
       fan: 0
       attack: 14
       defense: 0
@@ -796,14 +126,15 @@ MonoBehaviour:
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
-      characterLock: {fileID: 0}
+      characterLock: 
+      previousVoiceActor: 
       roleAI: []
       buffs: []
-    - name: Nougat
+    - name: 
       roleSprite: {fileID: 0}
-      line: 139
+      line: 143
       fan: 0
-      attack: 15
+      attack: 13
       defense: 0
       roleType: 0
       rolePersonality: 0
@@ -825,12 +156,13 @@ MonoBehaviour:
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
-      characterLock: {fileID: 0}
+      characterLock: 
+      previousVoiceActor: 
       roleAI: []
       buffs: []
-    - name: Praline
+    - name: 
       roleSprite: {fileID: 0}
-      line: 193
+      line: 163
       fan: 0
       attack: 9
       defense: 0
@@ -854,7 +186,8 @@ MonoBehaviour:
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
-      characterLock: {fileID: 0}
+      characterLock: 
+      previousVoiceActor: 
       roleAI: []
       buffs: []
     voiceActors:
@@ -1233,6 +566,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c6a95885890b96e4d9a7608f958549ad, type: 2}
     expGain: 0
     expBonus: 0
+    researchBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -1256,7 +590,7 @@ MonoBehaviour:
     currentLine: 0
     totalLine: 4
     currentMixing: 0
-    totalMixing: 5
+    totalMixing: 8
     score: 0
     highScore: 0
     soundEngineer:
@@ -1275,12 +609,12 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: Femme
+    - name: 
       roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
       line: 20
       fan: 0
       attack: 20
-      defense: 21
+      defense: 23
       roleType: 0
       rolePersonality: 0
       timbre: {x: -10, y: -2}
@@ -1301,7 +635,8 @@ MonoBehaviour:
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
-      characterLock: {fileID: 0}
+      characterLock: 
+      previousVoiceActor: 
       roleAI:
       - memo: 
         startPhrase: 0
@@ -1315,7 +650,7 @@ MonoBehaviour:
         skills:
         - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
       buffs: []
-    - name: Homme
+    - name: 
       roleSprite: {fileID: 0}
       line: 6
       fan: 0
@@ -1341,7 +676,8 @@ MonoBehaviour:
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
-      characterLock: {fileID: 0}
+      characterLock: 
+      previousVoiceActor: 
       roleAI: []
       buffs: []
     voiceActors:
@@ -1557,6 +893,7 @@ MonoBehaviour:
     eventData: []
     expGain: 1250
     expBonus: 0
+    researchBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -1567,20 +904,21 @@ MonoBehaviour:
     battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
     victoryTheme: {fileID: 0}
     isNull: 0
-  contractHistoric:
-  - name: Message d'annonce Ligne D
-    description: "Pour l'ouverture de la nouvelle ligne de m\xE9tro nous avons besoin
-      d'une nouvelle voix pour assister les passagers."
-    contractType: 4
-    level: 3
-    money: 2980
+  - name: "Projet de fin d'\xE9tude"
+    description: "Nous sommes des \xE9tudiants en derni\xE8re ann\xE9e d'animation
+      et nous aimerions un(e) com\xE9dienne de doublage \"professionnels\" pour notre
+      court-m\xE9trage. Nous sommes pr\xEAts \xE0 payer.\nNotre film traite de la
+      d\xE9pression."
+    contractType: 0
+    level: 2
+    money: 3640
     moneyBonus: 0
     sessionNumber: 0
     weekRemaining: 6
     currentLine: 0
-    totalLine: 10
+    totalLine: 12
     currentMixing: 0
-    totalMixing: 7
+    totalMixing: 0
     score: 0
     highScore: 0
     soundEngineer:
@@ -1599,54 +937,55 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: Annonceur
+    - name: 
       roleSprite: {fileID: 0}
-      line: 0
-      fan: 0
-      attack: 0
+      line: 15
+      fan: 38
+      attack: 6
       defense: 0
       roleType: 0
       rolePersonality: 0
       timbre: {x: 0, y: 0}
       characterStat:
-        neutral: 2
+        neutral: 6
+        joy: 8
+        sadness: 9
+        disgust: 10
+        anger: 3
+        surprise: 2
+        sweetness: 8
+        fear: 4
+        trust: 9
+      bestStat: 10
+      secondBestStat: 9
+      bestStatEmotion: 3
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: 
+      previousVoiceActor: 
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
         joy: 0
         sadness: 0
         disgust: 0
         anger: 0
         surprise: 0
-        sweetness: 22
+        sweetness: 0
         fear: 0
         trust: 0
-      bestStat: 22
-      secondBestStat: -1
-      bestStatEmotion: 6
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
-      buffs: []
-    voiceActors:
-    - voiceActorName: Bocca
-      fan: 5000
-      fanGain: 0
-      price: 15
-      level: 21
-      hp: 434
-      hpMax: 513
-      timbre: {x: 5, y: 10}
-      statistique:
-        neutral: 23
-        joy: 14
-        sadness: 29
-        disgust: 26
-        anger: 42
-        surprise: 15
-        sweetness: 19
-        fear: 10
-        trust: 31
       statModifier:
         neutral: 0
         joy: 0
@@ -1668,567 +1007,212 @@ MonoBehaviour:
         fear: 0
         trust: 0
       growth:
-        neutral: 108
-        joy: 60
-        sadness: 150
-        disgust: 150
-        anger: 200
-        surprise: 60
-        sweetness: 100
-        fear: 40
-        trust: 110
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
       currentGrowth:
         neutral: 0
-        joy: 60
-        sadness: 50
-        disgust: 50
+        joy: 0
+        sadness: 0
+        disgust: 0
         anger: 0
-        surprise: 60
+        surprise: 0
         sweetness: 0
-        fear: 40
-        trust: 10
+        fear: 0
+        trust: 0
       experience: 0
-      nextEXP: 3982
+      nextEXP: 120
       relation: 0
       skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: Character-AllezNagais
-      damageVariance: 2
+      spriteSheets: 
+      damageVariance: 0
       roleDefense: 0
       potentials: []
       buffs: []
-      voxography:
-      - contractName: 'Ragab VI : Tears from the battlefield'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 02000000
-      - contractName: 'Ragab V : New Threat'
-        roles:
-        - name: 
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 00000000
-      - contractName: Blitzkrieg
-        roles:
-        - name: Sanders
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 06000000
-      - contractName: 'Ragab IV : Twin Brothers'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Bhaguar
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: "P\xE8re de Ragab"
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 040000000400000006000000
-      - contractName: 'Ragab III : Crap0''s Catharsis'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 02000000
-      - contractName: 'Ragab II : The fight continue'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 08000000
-      - contractName: Bobar le cafard
-        roles:
-        - name: Kankrela
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Kankrela Junior
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Kankrela Senior
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 030000000300000003000000
-      - contractName: RaGaB
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 08000000
+      voxography: []
       actorMentalState: 0
-      availability: 1
-      isNull: 0
+      availability: 0
+      isNull: 1
     textData:
     - interlocuteur: 0
-      hpMax: 32
-      text: Direction
+      hpMax: 17
+      text: "Il \xE9tait une fois dans le royaume de S\xE9nak"
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 30
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 33
-      text: "Maurice Lach\xE2tre"
+      hpMax: 19
+      text: Un noble jeune homme courageux.
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
+        neutral: 10
+        joy: 30
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: -30
+        sweetness: 30
+        fear: -30
+        trust: 40
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 33
-      text: Prochain train dans...
+      hpMax: 18
+      text: "Il r\xEAvait de monter sur la plus haute des montagnes"
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
+        neutral: 10
+        joy: 20
+        sadness: -30
+        disgust: -30
         anger: 0
         surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
+        sweetness: 10
+        fear: 30
+        trust: 30
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 33
-      text: 3 minutes.
+      hpMax: 19
+      text: "Un matin, d\xE9fiant les avertissements de ses parents il partit."
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
+        neutral: 10
+        joy: 20
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 20
+        sweetness: 10
+        fear: 10
+        trust: 30
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 32
-      text: Terminus.
+      hpMax: 11
+      text: Il affronta de nombreux adversaires.
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
+        joy: 10
+        sadness: -30
+        disgust: -30
+        anger: 30
         surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
+        sweetness: -20
+        fear: 20
+        trust: 50
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 31
-      text: Attention, cette station est en forte pente
+      hpMax: 20
+      text: "Arriv\xE9 au sommet, il poussa un immense cri de joie."
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 5
+        joy: 50
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 10
+        sweetness: 10
+        fear: -30
+        trust: 30
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 31
-      text: "Attention \xE0 la marche en descendant du train."
+      hpMax: 20
+      text: Il avait accompli son but ultime
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 3
+        joy: 50
+        sadness: -30
+        disgust: -30
+        anger: -30
+        surprise: 10
+        sweetness: 10
+        fear: -30
+        trust: 30
+      enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 32
-      text: "Attention, des pickpocket peuvent \xEAtre pr\xE9sent \xE0 bord."
+      hpMax: 6
+      text: Mais...
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
+        joy: -30
+        sadness: 40
         disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 32
-      text: "Nous vous rappellons que provoquer les contr\xF4leurs en duel sur la
-        voie est interdit."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
+        anger: -30
+        surprise: 10
+        sweetness: 0
+        fear: 20
         trust: 0
       enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 34
-      text: "Pour votre s\xE9curit\xE9, ne fixez pas le chien du personnel de s\xE9curit\xE9
-        dans les yeux."
+      hpMax: 12
+      text: Une fois que l'on a atteint sa raison de vivre.
       enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
+        neutral: 40
+        joy: -30
+        sadness: 40
+        disgust: 40
         anger: 0
         surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
+        sweetness: 0
+        fear: 10
+        trust: -30
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 13
+      text: "Notre vie elle m\xEAme a-t-elle encore un sens ?"
+      enemyResistance:
+        neutral: 40
+        joy: -30
+        sadness: 50
+        disgust: 50
+        anger: 20
+        surprise: 0
+        sweetness: 0
+        fear: -20
+        trust: -30
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 13
+      text: "Embrouill\xE9 par cette question, notre h\xE9ros n'avait qu'un choix"
+      enemyResistance:
+        neutral: 0
+        joy: -30
+        sadness: 50
+        disgust: 50
+        anger: 10
+        surprise: -30
+        sweetness: 0
+        fear: 20
+        trust: -30
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 14
+      text: Et se laissa tomber de la montagne.
+      enemyResistance:
+        neutral: 70
+        joy: -50
+        sadness: 60
+        disgust: 50
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 50
+        trust: -50
       enemyWeakPoints: []
     emotionsUsed: []
     eventData: []
     expGain: 30
-    expBonus: 50
+    expBonus: 0
+    researchBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -2239,19 +1223,20 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: Message d'annonce Ligne D
-    description: "Pour l'ouverture de la nouvelle ligne de m\xE9tro nous avons besoin
-      d'une nouvelle voix pour assister les passagers."
-    contractType: 4
-    level: 3
-    money: 2980
+  - name: Parfum
+    description: 'La nouvelle gamme de Parfum est sorti.
+
+      Nous recherchons une voix sensuelle pour sa promotion.'
+    contractType: 3
+    level: 5
+    money: 4760
     moneyBonus: 0
     sessionNumber: 0
-    weekRemaining: 6
+    weekRemaining: 5
     currentLine: 0
-    totalLine: 10
+    totalLine: 3
     currentMixing: 0
-    totalMixing: 7
+    totalMixing: 11
     score: 0
     highScore: 0
     soundEngineer:
@@ -2270,54 +1255,77 @@ MonoBehaviour:
       formationSkillTotalTime: 0
       isNull: 1
     characters:
-    - name: Annonceur
-      roleSprite: {fileID: 0}
-      line: 0
+    - name: 
+      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      line: 48
       fan: 0
-      attack: 0
-      defense: 0
+      attack: 10
+      defense: 5
       roleType: 0
       rolePersonality: 0
-      timbre: {x: 0, y: 0}
+      timbre: {x: 0, y: 10}
       characterStat:
         neutral: 2
         joy: 0
         sadness: 0
-        disgust: 0
+        disgust: 5
         anger: 0
         surprise: 0
-        sweetness: 22
+        sweetness: 13
         fear: 0
         trust: 0
-      bestStat: 22
-      secondBestStat: -1
+      bestStat: 13
+      secondBestStat: 5
       bestStatEmotion: 6
       secondBestStatEmotion: 0
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
-      characterLock: {fileID: 0}
-      roleAI: []
+      characterLock: 
+      previousVoiceActor: 
+      roleAI:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
       buffs: []
     voiceActors:
-    - voiceActorName: Bocca
-      fan: 5000
+    - voiceActorName: 
+      fan: 0
       fanGain: 0
-      price: 15
-      level: 21
-      hp: 434
-      hpMax: 513
-      timbre: {x: 5, y: 10}
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
       statistique:
-        neutral: 23
-        joy: 14
-        sadness: 29
-        disgust: 26
-        anger: 42
-        surprise: 15
-        sweetness: 19
-        fear: 10
-        trust: 31
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
       statModifier:
         neutral: 0
         joy: 0
@@ -2339,542 +1347,47 @@ MonoBehaviour:
         fear: 0
         trust: 0
       growth:
-        neutral: 108
-        joy: 60
-        sadness: 150
-        disgust: 150
-        anger: 200
-        surprise: 60
-        sweetness: 100
-        fear: 40
-        trust: 110
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
       currentGrowth:
         neutral: 0
-        joy: 60
-        sadness: 50
-        disgust: 50
+        joy: 0
+        sadness: 0
+        disgust: 0
         anger: 0
-        surprise: 60
+        surprise: 0
         sweetness: 0
-        fear: 40
-        trust: 10
+        fear: 0
+        trust: 0
       experience: 0
-      nextEXP: 3982
+      nextEXP: 120
       relation: 0
       skillOffset: {x: 0, y: 0, z: 0}
-      spriteSheets: Character-AllezNagais
-      damageVariance: 2
+      spriteSheets: 
+      damageVariance: 0
       roleDefense: 0
       potentials: []
       buffs: []
-      voxography:
-      - contractName: 'Ragab VI : Tears from the battlefield'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 02000000
-      - contractName: 'Ragab V : New Threat'
-        roles:
-        - name: 
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 00000000
-      - contractName: Blitzkrieg
-        roles:
-        - name: Sanders
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 06000000
-      - contractName: 'Ragab IV : Twin Brothers'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Bhaguar
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: "P\xE8re de Ragab"
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 040000000400000006000000
-      - contractName: 'Ragab III : Crap0''s Catharsis'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 02000000
-      - contractName: 'Ragab II : The fight continue'
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 08000000
-      - contractName: Bobar le cafard
-        roles:
-        - name: Kankrela
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Kankrela Junior
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        - name: Kankrela Senior
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 030000000300000003000000
-      - contractName: RaGaB
-        roles:
-        - name: Ragab
-          roleSprite: {fileID: 0}
-          line: 0
-          fan: 0
-          attack: 0
-          defense: 0
-          roleType: 0
-          rolePersonality: 0
-          timbre: {x: 0, y: 0}
-          characterStat:
-            neutral: 0
-            joy: 0
-            sadness: 0
-            disgust: 0
-            anger: 0
-            surprise: 0
-            sweetness: 0
-            fear: 0
-            trust: 0
-          bestStat: 0
-          secondBestStat: 0
-          bestStatEmotion: 0
-          secondBestStatEmotion: 0
-          roleScore: 0
-          rolePerformance: 0
-          roleBestScore: 0
-          characterLock: {fileID: 0}
-          roleAI: []
-          buffs: []
-        emotionGained: 08000000
+      voxography: []
       actorMentalState: 0
-      availability: 1
-      isNull: 0
+      availability: 0
+      isNull: 1
     textData:
     - interlocuteur: 0
-      hpMax: 32
-      text: Direction
+      hpMax: 72
+      text: Ce parfum...
       enemyResistance:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 33
-      text: "Maurice Lach\xE2tre"
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 33
-      text: Prochain train dans...
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 33
-      text: 3 minutes.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 32
-      text: Terminus.
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-    - interlocuteur: 0
-      hpMax: 31
-      text: Attention, cette station est en forte pente
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 5
-    - interlocuteur: 0
-      hpMax: 31
-      text: "Attention \xE0 la marche en descendant du train."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 3
-    - interlocuteur: 0
-      hpMax: 32
-      text: "Attention, des pickpocket peuvent \xEAtre pr\xE9sent \xE0 bord."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 100
-        fear: 0
-        trust: 0
-      enemyWeakPoints:
-      - wordIndex: 0
-      - wordIndex: 2
-    - interlocuteur: 0
-      hpMax: 32
-      text: "Nous vous rappellons que provoquer les contr\xF4leurs en duel sur la
-        voie est interdit."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
+        disgust: -50
         anger: 0
         surprise: 0
         sweetness: 100
@@ -2882,24 +1395,40 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints: []
     - interlocuteur: 0
-      hpMax: 34
-      text: "Pour votre s\xE9curit\xE9, ne fixez pas le chien du personnel de s\xE9curit\xE9
-        dans les yeux."
+      hpMax: 78
+      text: Splendide...
       enemyResistance:
         neutral: 0
         joy: 0
         sadness: 0
-        disgust: 0
+        disgust: 20
         anger: 0
         surprise: 0
         sweetness: 100
         fear: 0
         trust: 0
       enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 102
+      text: Parfum [Nom], une fragrance euphorique.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
     emotionsUsed: []
     eventData: []
-    expGain: 30
-    expBonus: 50
+    expGain: 82
+    expBonus: 60
+    researchBonus: 0
     producerMP: 0
     artificialIntelligence: []
     canGameOver: 0
@@ -2910,37 +1439,731 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
-  contractFranchise: []
-  contractGacha:
-  - ChipsoLv1
-  - ChipsalaLv1
-  - FilmEtudiantLv1
-  - LessiveArioleLv1
-  - ParfumLv1
-  - SanteJeunesseLv1
-  - TurboGazonLv1
-  - JambonLv1
-  - LigneTelephoniqueLv1
-  - EntrepriseEkavoxLv1
-  - KidGIGNLv1
-  - BolognaiseLv1
-  - VoitureLv1
-  - FightingBattleLv1
-  - ClimClimaxLv2
-  - PhilosophieLv1
-  - SoundDesignLv1
-  - CastlemaniaLv1
-  - ParfumLv2
+  - name: "Sant\xE9 pr\xE9vention jeunesse"
+    description: "Dans le cadre du programme de pr\xE9vention de sant\xE9 chez les
+      jeunes, nous recherchons un studio pour r\xE9aliser le voice-over de notre nouvelle
+      publicit\xE9."
+    contractType: 3
+    level: 5
+    money: 2300
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 2
+    currentLine: 0
+    totalLine: 5
+    currentMixing: 0
+    totalMixing: 0
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: 
+      roleSprite: {fileID: 0}
+      line: 11
+      fan: 0
+      attack: 5
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: 0, y: 0}
+      characterStat:
+        neutral: 2
+        joy: 13
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 10
+        fear: 0
+        trust: 0
+      bestStat: 13
+      secondBestStat: 10
+      bestStatEmotion: 1
+      secondBestStatEmotion: 6
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: 
+      previousVoiceActor: 
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 67
+      text: Pour bien grandir ...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 2
+    - interlocuteur: 0
+      hpMax: 71
+      text: "Mange au moins 5 fruits et l\xE9gumes par jour."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 4
+      - wordIndex: 6
+    - interlocuteur: 0
+      hpMax: 70
+      text: "Pour \xEAtre en forme ..."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+    - interlocuteur: 0
+      hpMax: 69
+      text: "D\xE9pense-toi bien !"
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - interlocuteur: 0
+      hpMax: 72
+      text: "Evite de grignoter dans la journ\xE9e."
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 20
+        disgust: 20
+        anger: 20
+        surprise: -50
+        sweetness: 20
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 2
+      - wordIndex: 5
+    emotionsUsed: []
+    eventData: []
+    expGain: 77
+    expBonus: 50
+    researchBonus: 0
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Parfum
+    description: 'La nouvelle gamme de Parfum est sorti.
+
+      Nous recherchons une voix sensuelle pour sa promotion.'
+    contractType: 3
+    level: 5
+    money: 4250
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 11
+    currentLine: 0
+    totalLine: 5
+    currentMixing: 0
+    totalMixing: 7
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: 
+      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      line: 34
+      fan: 0
+      attack: 8
+      defense: 5
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: 0, y: 10}
+      characterStat:
+        neutral: 2
+        joy: 0
+        sadness: 0
+        disgust: 5
+        anger: 0
+        surprise: 0
+        sweetness: 12
+        fear: 0
+        trust: 0
+      bestStat: 12
+      secondBestStat: 5
+      bestStatEmotion: 6
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: 
+      previousVoiceActor: 
+      roleAI:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 66
+      text: Cette douce odeur...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 70
+      text: Hmmm...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 89
+      text: Splendide...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 77
+      text: Enivrant...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 101
+      text: Parfum [Nom], une fragrance euphorique.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+    emotionsUsed: []
+    eventData: []
+    expGain: 80
+    expBonus: 60
+    researchBonus: 0
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  - name: Parfum
+    description: 'La nouvelle gamme de Parfum est sorti.
+
+      Nous recherchons une voix sensuelle pour sa promotion.'
+    contractType: 3
+    level: 2
+    money: 4440
+    moneyBonus: 0
+    sessionNumber: 0
+    weekRemaining: 8
+    currentLine: 0
+    totalLine: 5
+    currentMixing: 0
+    totalMixing: 0
+    score: 0
+    highScore: 0
+    soundEngineer:
+      engineerName: 
+      level: 0
+      experience: 0
+      salary: 0
+      experienceCurve: {fileID: 0}
+      artificeGauge: 0
+      mixingPower: 0
+      skills: []
+      spritesSheets: {fileID: 0}
+      formationSkillID: 0
+      formationSkill: {fileID: 0}
+      formationSkillTime: 0
+      formationSkillTotalTime: 0
+      isNull: 1
+    characters:
+    - name: 
+      roleSprite: {fileID: 0}
+      line: 57
+      fan: 0
+      attack: 9
+      defense: 0
+      roleType: 0
+      rolePersonality: 0
+      timbre: {x: 0, y: 10}
+      characterStat:
+        neutral: 2
+        joy: 0
+        sadness: 0
+        disgust: 6
+        anger: 0
+        surprise: 0
+        sweetness: 14
+        fear: 0
+        trust: 0
+      bestStat: 14
+      secondBestStat: 6
+      bestStatEmotion: 6
+      secondBestStatEmotion: 0
+      roleScore: 0
+      rolePerformance: 0
+      roleBestScore: 0
+      characterLock: 
+      previousVoiceActor: 
+      roleAI: []
+      buffs: []
+    voiceActors:
+    - voiceActorName: 
+      fan: 0
+      fanGain: 0
+      price: 0
+      level: 0
+      hp: 0
+      hpMax: 0
+      timbre: {x: 0, y: 0}
+      statistique:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statModifier:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVoxography:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      growth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      currentGrowth:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      experience: 0
+      nextEXP: 120
+      relation: 0
+      skillOffset: {x: 0, y: 0, z: 0}
+      spriteSheets: 
+      damageVariance: 0
+      roleDefense: 0
+      potentials: []
+      buffs: []
+      voxography: []
+      actorMentalState: 0
+      availability: 0
+      isNull: 1
+    textData:
+    - interlocuteur: 0
+      hpMax: 25
+      text: Cette douce odeur...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 28
+      text: Hmmm...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 26
+      text: Ha...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 28
+      text: Splendide...
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - interlocuteur: 0
+      hpMax: 40
+      text: Parfum [Nom], une fragrance euphorique.
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+    emotionsUsed: []
+    eventData: []
+    expGain: 50
+    expBonus: 20
+    researchBonus: 0
+    producerMP: 0
+    artificialIntelligence: []
+    canGameOver: 0
+    storyEventWhenAccepted: {fileID: 0}
+    storyEventWhenEnd: {fileID: 0}
+    storyEventWhenGameOver: {fileID: 0}
+    sessionLock: 0
+    battleTheme: {fileID: 0}
+    victoryTheme: {fileID: 0}
+    isNull: 0
+  contractHistoric: []
+  contractFranchise:
+  - franchiseName: LV1-FilmEtudiant
+    currentFranchiseNumber: 0
+    contractPreviousInstallements: []
+  - franchiseName: LV1-Parfum
+    currentFranchiseNumber: 2
+    contractPreviousInstallements: []
+  - franchiseName: LV1-SanteJeunesse
+    currentFranchiseNumber: 0
+    contractPreviousInstallements: []
+  contractGacha: []
   contractGachaCooldown:
-  - contract: MetroLv1
-    cooldown: 8
+  - contract: LV1-FilmEtudiant
+    cooldown: 11
+  - contract: LV1-Parfum
+    cooldown: 21
+  - contract: LV1-SanteJeunesse
+    cooldown: 15
+  - contract: LV1-Parfum
+    cooldown: 22
+  - contract: LV1-Parfum
+    cooldown: 22
   voiceActors:
   - voiceActorName: Moine-Maeda
     fan: 1
     fanGain: 0
     price: 6
     level: 1
-    hp: 228
+    hp: 260
     hpMax: 260
     timbre: {x: -2, y: 4}
     statistique:
@@ -2975,14 +2198,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 76
-      sadness: 102
-      disgust: 102
-      anger: 66
-      surprise: 68
-      sweetness: 116
-      fear: 182
-      trust: 178
+      joy: 69
+      sadness: 104
+      disgust: 114
+      anger: 69
+      surprise: 89
+      sweetness: 95
+      fear: 180
+      trust: 170
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2994,7 +2217,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 85
+    nextEXP: 120
     relation: 0
     skillOffset: {x: 0.07, y: 0.12, z: 0}
     spriteSheets: Character-Moine-Maeda
@@ -3008,23 +2231,23 @@ MonoBehaviour:
     availability: 1
     isNull: 0
   - voiceActorName: Bocca
-    fan: 5000
+    fan: 4999
     fanGain: 0
     price: 15
-    level: 21
-    hp: 434
-    hpMax: 513
+    level: 20
+    hp: 500
+    hpMax: 500
     timbre: {x: 5, y: 10}
     statistique:
-      neutral: 23
+      neutral: 22
       joy: 14
-      sadness: 29
-      disgust: 26
-      anger: 42
+      sadness: 28
+      disgust: 25
+      anger: 40
       surprise: 15
-      sweetness: 19
+      sweetness: 18
       fear: 10
-      trust: 31
+      trust: 30
     statModifier:
       neutral: 0
       joy: 0
@@ -3057,16 +2280,16 @@ MonoBehaviour:
       trust: 110
     currentGrowth:
       neutral: 0
-      joy: 60
-      sadness: 50
-      disgust: 50
+      joy: 0
+      sadness: 0
+      disgust: 0
       anger: 0
-      surprise: 60
+      surprise: 0
       sweetness: 0
-      fear: 40
-      trust: 10
+      fear: 0
+      trust: 0
     experience: 0
-    nextEXP: 3982
+    nextEXP: 120
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
     spriteSheets: Character-AllezNagais
@@ -3103,7 +2326,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 02000000
@@ -3135,7 +2359,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 00000000
@@ -3167,7 +2392,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 06000000
@@ -3199,7 +2425,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       - name: Bhaguar
@@ -3228,7 +2455,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       - name: "P\xE8re de Ragab"
@@ -3257,7 +2485,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 040000000400000006000000
@@ -3289,7 +2518,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 02000000
@@ -3321,7 +2551,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 08000000
@@ -3353,7 +2584,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       - name: Kankrela Junior
@@ -3382,7 +2614,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       - name: Kankrela Senior
@@ -3411,7 +2644,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 030000000300000003000000
@@ -3443,7 +2677,8 @@ MonoBehaviour:
         roleScore: 0
         rolePerformance: 0
         roleBestScore: 0
-        characterLock: {fileID: 0}
+        characterLock: 
+        previousVoiceActor: 
         roleAI: []
         buffs: []
       emotionGained: 08000000
@@ -3490,14 +2725,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 114
-      sadness: 125
-      disgust: 86
-      anger: 54
-      surprise: 77
-      sweetness: 212
-      fear: 132
-      trust: 110
+      joy: 128
+      sadness: 102
+      disgust: 95
+      anger: 67
+      surprise: 70
+      sweetness: 214
+      fear: 130
+      trust: 104
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3563,13 +2798,13 @@ MonoBehaviour:
     growth:
       neutral: 113
       joy: 163
-      sadness: 152
-      disgust: 102
-      anger: 61
-      surprise: 68
-      sweetness: 148
-      fear: 71
-      trust: 145
+      sadness: 154
+      disgust: 100
+      anger: 62
+      surprise: 67
+      sweetness: 151
+      fear: 65
+      trust: 148
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3599,7 +2834,7 @@ MonoBehaviour:
     fanGain: 0
     price: 6
     level: 1
-    hp: 210
+    hp: 182
     hpMax: 210
     timbre: {x: -2, y: 4}
     statistique:
@@ -3634,14 +2869,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 50
-      sadness: 111
-      disgust: 170
+      joy: 45
+      sadness: 123
+      disgust: 174
       anger: 79
-      surprise: 91
-      sweetness: 60
-      fear: 144
-      trust: 105
+      surprise: 81
+      sweetness: 49
+      fear: 152
+      trust: 107
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3653,7 +2888,7 @@ MonoBehaviour:
       fear: 0
       trust: 0
     experience: 0
-    nextEXP: 120
+    nextEXP: 87
     relation: 0
     skillOffset: {x: 0.07, y: 0.08, z: 0}
     spriteSheets: Character-Jean-Christophe
@@ -3707,14 +2942,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 226
-      sadness: 100
-      disgust: 90
-      anger: 90
-      surprise: 102
-      sweetness: 103
-      fear: 95
-      trust: 94
+      joy: 225
+      sadness: 95
+      disgust: 101
+      anger: 101
+      surprise: 97
+      sweetness: 91
+      fear: 90
+      trust: 100
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3779,14 +3014,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 106
-      joy: 64
-      sadness: 21
-      disgust: 189
-      anger: 158
-      surprise: 128
-      sweetness: 41
-      fear: 143
-      trust: 106
+      joy: 85
+      sadness: 40
+      disgust: 191
+      anger: 149
+      surprise: 126
+      sweetness: 44
+      fear: 114
+      trust: 101
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3851,14 +3086,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 116
-      sadness: 90
-      disgust: 91
-      anger: 61
-      surprise: 82
-      sweetness: 229
-      fear: 132
-      trust: 109
+      joy: 119
+      sadness: 110
+      disgust: 85
+      anger: 55
+      surprise: 81
+      sweetness: 224
+      fear: 125
+      trust: 111
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3923,14 +3158,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 130
-      joy: 125
-      sadness: 137
-      disgust: 138
-      anger: 124
-      surprise: 112
-      sweetness: 136
-      fear: 137
-      trust: 131
+      joy: 136
+      sadness: 132
+      disgust: 146
+      anger: 119
+      surprise: 135
+      sweetness: 110
+      fear: 126
+      trust: 136
     currentGrowth:
       neutral: 0
       joy: 0
@@ -3994,14 +3229,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 75
-      joy: 41
-      sadness: 101
-      disgust: 32
-      anger: 125
-      surprise: 141
-      sweetness: 43
-      fear: 54
-      trust: 68
+      joy: 54
+      sadness: 90
+      disgust: 33
+      anger: 117
+      surprise: 147
+      sweetness: 54
+      fear: 47
+      trust: 63
     currentGrowth:
       neutral: 0
       joy: 0
@@ -4066,14 +3301,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 37
-      sadness: 124
-      disgust: 165
-      anger: 94
-      surprise: 92
-      sweetness: 45
-      fear: 148
-      trust: 105
+      joy: 55
+      sadness: 121
+      disgust: 169
+      anger: 71
+      surprise: 89
+      sweetness: 46
+      fear: 146
+      trust: 113
     currentGrowth:
       neutral: 0
       joy: 0
@@ -4138,14 +3373,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 77
-      sadness: 97
-      disgust: 110
-      anger: 79
+      joy: 60
+      sadness: 93
+      disgust: 129
+      anger: 61
       surprise: 83
-      sweetness: 95
-      fear: 188
-      trust: 161
+      sweetness: 109
+      fear: 190
+      trust: 165
     currentGrowth:
       neutral: 0
       joy: 0
@@ -4210,14 +3445,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 50
-      sadness: 113
-      disgust: 167
-      anger: 91
+      joy: 52
+      sadness: 119
+      disgust: 168
+      anger: 89
       surprise: 86
-      sweetness: 53
-      fear: 140
-      trust: 110
+      sweetness: 40
+      fear: 147
+      trust: 109
     currentGrowth:
       neutral: 0
       joy: 0
@@ -4281,14 +3516,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 102
-      joy: 122
-      sadness: 76
-      disgust: 125
+      joy: 118
+      sadness: 65
+      disgust: 134
       anger: 125
-      surprise: 71
+      surprise: 66
       sweetness: 125
-      fear: 67
-      trust: 109
+      fear: 70
+      trust: 117
     currentGrowth:
       neutral: 0
       joy: 0
@@ -4340,7 +3575,7 @@ MonoBehaviour:
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
   tutoEvent: 
-  nextRandomEvent: 09000000
+  nextRandomEvent: 
   inventoryEquipement: []
   currentEquipement:
   - {fileID: 0}
@@ -4378,6 +3613,7 @@ MonoBehaviour:
   storyResumeUnlocked: 00
   currentChapter: 1
   currentObjective: "Pr\xE9parez-vous pour la semaine 18."
+  playerStudioLevel: 2
   maintenance: 6000
   money: 36000
   researchPoint: 10

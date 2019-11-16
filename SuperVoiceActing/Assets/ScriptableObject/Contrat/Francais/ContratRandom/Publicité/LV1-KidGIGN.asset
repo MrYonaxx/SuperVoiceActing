@@ -1,0 +1,343 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV1-KidGIGN
+  m_EditorClassIdentifier: 
+  contractName: '[Nom]'
+  level: 1
+  contractType: 3
+  salaryMin: 1600
+  salaryMax: 2500
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 3
+  weekMax: 7
+  expGain: 25
+  expBonus: 50
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Kid GIGN
+    - Action Kids
+    - Action Kids+
+    - Super Kids
+  description:
+  - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
+    un nouveau produit de la licence."
+  - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
+    un nouvelle accessoire pour la licence."
+  franchise:
+    Enabled: 1
+    canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 10
+      lineMax: 20
+      fanMin: 0
+      fanMax: 20
+      atkMin: 5
+      atkMax: 6
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 3
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 5
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 8
+        sadness: 0
+        disgust: 0
+        anger: 5
+        surprise: 10
+        sweetness: 0
+        fear: 0
+        trust: 3
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Paris est menac\xE9 !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 15
+      enemyResistance:
+        neutral: -10
+        joy: -50
+        sadness: 0
+        disgust: 0
+        anger: 100
+        surprise: 100
+        sweetness: -50
+        fear: 10
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 2
+    - text: La ville est en flamme !
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 11
+        hpMax: 13
+      enemyResistance:
+        neutral: -10
+        joy: -50
+        sadness: 0
+        disgust: 0
+        anger: 100
+        surprise: 100
+        sweetness: -50
+        fear: 30
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 4
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Mais qui voil\xE0 !? Les [Nom] !!!"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 16
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 0
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "\xC0 bord de leur vaisseau toupie !?"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 19
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 5
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Et avec une nouvelle arme !?
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 14
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 4
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Un canon proto-alpha-IV !!!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 18
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 2
+    - text: Le Super-Micro-Blaster !!!
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 18
+      enemyResistance:
+        neutral: 0
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 100
+        sweetness: -50
+        fear: 0
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 1
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Ils repoussent les menaces anti-gouvernementales.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 12
+        hpMax: 17
+      enemyResistance:
+        neutral: 30
+        joy: 30
+        sadness: -10
+        disgust: -50
+        anger: 30
+        surprise: 0
+        sweetness: -30
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Les jouets [Nom] ne conviennent pas aux enfants de moins de 14 ans.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 15
+        hpMax: 20
+      enemyResistance:
+        neutral: 50
+        joy: 50
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 30
+        fear: -30
+        trust: 30
+      enemyWeakPoints:
+      - wordIndex: 12
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

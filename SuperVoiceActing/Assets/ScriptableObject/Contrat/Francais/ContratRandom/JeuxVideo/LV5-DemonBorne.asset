@@ -1,0 +1,398 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV5-DemonBorne
+  m_EditorClassIdentifier: 
+  contractName: Demonborne
+  level: 5
+  contractType: 2
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 0
+  weekMax: 0
+  expGain: 0
+  expBonus: 0
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Demonborne
+    - Bloodsouls
+  description:
+  - Je suis demonborne 1.
+  franchise:
+    Enabled: 1
+    canScale: 1
+    isSeries: 1
+    canReboot: 1
+    rebootSuffix: Remaster
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 1
+    priorityRandom: 0
+    contractDatas:
+    - {fileID: 11400000, guid: c1da6ee7d8e8e6247a66d2c2daa01000, type: 2}
+    - {fileID: 11400000, guid: 7cda58b27fb0de4468ccd71276454ccc, type: 2}
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: "Poup\xE9e"
+      roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: "P\xE8re Gascoigne"
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Bonjour, brave chasseur.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Je suis une poup\xE9e, je suis dans ce r\xEAve pour veiller sur vous."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Honorable chasseur, partez en qu\xEAte des \xE9chos du sang."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Je les canaliserai pour vous donner plus de force.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Vous allez chasser des monstres...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "... Et je serai avec vous pour soutenir votre moral d\xE9faillant."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Des monstres partout autour de moi...
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "... Vous serez comme eux, t\xF4t ou tard..."
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: '... Quelle est cette odeur ?'
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Le sang parfum\xE9, oh, il chante pour moi."
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Il peut rendre malade un homme...
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Haahahahahahaha !
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Trop de fiert\xE9 pour montrer votre v\xE9ritable visage, hein ?"
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Mais c'\xE9tait de la chasse sportive !"
+      textStats:
+        interlocuteurID: 1
+        linked: 0
+        hpMin: 50
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 50
+  debugHPMax: 50

@@ -174,11 +174,19 @@ namespace VoiceActing
 
 
         [SerializeField]
-        private VoiceActorData characterLock;
-        public VoiceActorData CharacterLock
+        private string characterLock;
+        public string CharacterLock
         {
             get { return characterLock; }
             set { characterLock = value; }
+        }
+
+        [SerializeField]
+        private string previousVoiceActor;
+        public string PreviousVoiceActor
+        {
+            get { return previousVoiceActor; }
+            set { previousVoiceActor = value; }
         }
 
         [SerializeField]
@@ -216,10 +224,7 @@ namespace VoiceActing
 
         public Role(RoleContractData data)
         {
-            if (data.Names.Length != 0)
-                this.name = data.Names[Random.Range(0, data.Names.Length)];
-            else
-                this.name = "";
+            this.name = data.RoleName;
 
             this.rolePersonality = data.RolePersonality;
             this.roleType = data.RoleType;
@@ -253,7 +258,7 @@ namespace VoiceActing
             this.buffs = new List<Buff>();
 
             if(data.ActorLocked != null)
-                this.characterLock = data.ActorLocked;
+                this.characterLock = data.ActorLocked.SpriteSheets.name;
             this.roleAI = data.ArtificialIntelligence;
 
             int[] bestValues = new int[8];

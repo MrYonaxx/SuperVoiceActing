@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV1-SanteJeunesse
+  m_EditorClassIdentifier: 
+  contractName: "Sant\xE9 pr\xE9vention jeunesse"
+  level: 1
+  contractType: 3
+  salaryMin: 2000
+  salaryMax: 2500
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 3
+  weekMax: 8
+  expGain: 20
+  expBonus: 50
+  contractDictionnary: []
+  description:
+  - "Dans le cadre du programme de pr\xE9vention de sant\xE9 chez les jeunes, nous
+    recherchons un studio pour r\xE9aliser le voice-over de notre nouvelle publicit\xE9."
+  franchise:
+    Enabled: 1
+    canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 10
+      lineMax: 20
+      fanMin: 0
+      fanMax: 0
+      atkMin: 5
+      atkMax: 8
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 8
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 8
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 15
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 15
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Pour bien grandir ...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 5
+        hpMax: 15
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 2
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Mange au moins 5 fruits et l\xE9gumes par jour."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 18
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+      - wordIndex: 4
+      - wordIndex: 6
+    - text: "Ne mange pas trop gras, trop sucr\xE9, trop sal\xE9."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 10
+        hpMax: 18
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 20
+        disgust: 20
+        anger: 20
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Pour \xEAtre en forme ..."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 5
+        hpMax: 15
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: -50
+        disgust: -50
+        anger: -50
+        surprise: 0
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 3
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "D\xE9pense-toi bien !"
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 16
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 0
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+    - text: "Evite de grignoter dans la journ\xE9e."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 8
+        hpMax: 16
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 20
+        disgust: 20
+        anger: 20
+        surprise: -50
+        sweetness: 20
+        fear: -50
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 2
+      - wordIndex: 5
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

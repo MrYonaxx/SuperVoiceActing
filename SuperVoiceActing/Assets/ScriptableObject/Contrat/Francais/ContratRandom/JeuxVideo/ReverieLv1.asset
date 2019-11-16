@@ -25,8 +25,17 @@ MonoBehaviour:
   expBonus: 500
   contractDictionnary: []
   description: []
-  isFranchise: 0
-  franchiseNames: []
+  franchise:
+    Enabled: 0
+    canScale: 1
+    priorityScaling: 1
+    priorityOrder: 1
+    priorityRandom: 1
+    contractDatas: []
+    isSeries: 0
+    canReboot: 0
+    rebootSuffix: 
+    prefix: 0
   characters:
   - mainCharacter: 1
     optional: 0
@@ -205,6 +214,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: 
       textStats:
@@ -232,3 +243,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

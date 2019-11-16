@@ -227,6 +227,11 @@ namespace VoiceActing
             contractPreviousInstallements = new List<Contract>(contractLenght);
         }
 
+        public void RebootFranchise()
+        {
+            contractPreviousInstallements.Clear();
+        }
+
     }
 
     /// <summary>
@@ -721,6 +726,7 @@ namespace VoiceActing
             nextStoryEventsStartWeek.Clear();
             phoneStoryEvents.Clear();
             globalVariables.Clear();
+            contractFranchise.Clear();
 
             currentContract = new Contract();
             contractAccepted = new List<Contract>(3);
@@ -789,8 +795,9 @@ namespace VoiceActing
             nextRandomEvent = new List<int>();
 
             date = new Date(initialPlayerData.Week, initialPlayerData.Month, initialPlayerData.Year);
-
             season = initialPlayerData.StartSeason;
+
+            playerStudioLevel = initialPlayerData.PlayerLevel;
             money = initialPlayerData.StartMoney;
             maintenance = initialPlayerData.StartMaintenance;
 
@@ -865,17 +872,19 @@ namespace VoiceActing
                 CreatePlayerData(initialPlayerData);
             }
         }
-        public void CreateList(InitialPlayerData initialPlayerData, CalendarData calendarData)
+        public bool CreateList(InitialPlayerData initialPlayerData, CalendarData calendarData)
         {
             if (bla == null)
             {
                 bla = new DebugSave(true);
                 CreatePlayerData(initialPlayerData);
+                return true;
             }
             else
             {
                 NextWeek(calendarData);
             }
+            return false;
 
         }
 

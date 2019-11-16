@@ -147,7 +147,12 @@ namespace VoiceActing
         private void NextWeek()
         {
             // PlayerData.NextWeek
-            playerData.CreateList(playerDataDebug, calendarData);
+            if (playerData.CreateList(playerDataDebug, calendarData) == true)
+            {
+                // Si création de la liste
+                managementContract.AddGachaContractsUnderLevel(playerData);
+            }
+            // Sinon nextWeek
 
             AddRandomEvents();
             //gameTimelineData.CheckContractTimeline(playerData);
@@ -258,7 +263,13 @@ namespace VoiceActing
 
 
 
+        [ContextMenu("Draw Contract")]
+        public void GachaContract()
+        {
+            managementContract.GachaContract(playerData);
+            contractAvailable.SetContractAvailable(playerData.ContractAvailable);
 
+        }
 
 
 

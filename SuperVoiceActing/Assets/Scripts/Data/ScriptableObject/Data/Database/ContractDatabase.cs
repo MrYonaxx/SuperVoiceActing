@@ -17,20 +17,18 @@ namespace VoiceActing
     public class Franchise
     {
         [SerializeField]
-        public List<ContractData> contractDatas;
+        public bool Enabled;
 
         [SerializeField]
-        public bool priorityOrder = true;
-        [SerializeField]
-        public bool priorityScaling = true;
-        [SerializeField]
-        public bool priorityRandom = true;
+        public bool canScale = true;
 
         [Space]
-        // Partie series
+        [HorizontalGroup("FranchiseSeries")]
         [SerializeField]
         public bool isSeries = false;
 
+        [Space]
+        [HorizontalGroup("FranchiseSeries")]
         [ShowIf("isSeries", true)]
         [SerializeField]
         public bool canReboot = false;
@@ -41,6 +39,25 @@ namespace VoiceActing
         [ShowIf("canReboot", true)]
         [SerializeField]
         public bool prefix = false;
+
+
+        [Space]
+        [HorizontalGroup("Franchise")]
+        [VerticalGroup("Franchise/Left")]
+        [SerializeField]
+        public bool priorityScaling = false;
+        [VerticalGroup("Franchise/Left")]
+        [SerializeField]
+        public bool priorityOrder = false;
+        [VerticalGroup("Franchise/Left")]
+        [SerializeField]
+        public bool priorityRandom = false;
+
+        [Space]
+        [VerticalGroup("Franchise/Right")]
+        [SerializeField]
+        public List<ContractData> contractDatas;
+
     }
 
 
@@ -58,21 +75,39 @@ namespace VoiceActing
 
 
 
-        [AssetList(AutoPopulate = true, Path = "/ScriptableObject/Contrat/Francais")]
+        [AssetList(AutoPopulate = true, Path = "/ScriptableObject/Contrat/Francais", CustomFilterMethod = "GetFranchiseOnly")]
         [SerializeField]
-        List<ContractData> contractDatabase;
+        private List<ContractData> contracts;
+        public List<ContractData> Contracts
+        {
+            get { return contracts; }
+        }
 
-        [SerializeField]
-        List<Franchise> franchises;
+        /*[SerializeField]
+        <Franchise> franchises;*/
+
+        [Title("Debug Data")]
+        public int numberOfPub = 0;
+        public int numberOfSeries = 0;
+        public int numberOfFilm = 0;
+        public int numberOfVideoGame = 0;
+
+
+
+        private bool GetFranchiseOnly(ContractData obj)
+        {
+            return obj.Franchise.Enabled;
+        }
+
 
 
         public ContractData GetContractData(string contractName)
         {
-            return contractDatabase.Find(x => x.name == contractName);
+            return contracts.Find(x => x.name == contractName);
         }
 
 
-        public Franchise GetFranchise(string contractName)
+        /*public Franchise GetFranchise(string contractName)
         {
             for(int i = 0; i < franchises.Count; i++)
             {
@@ -82,7 +117,7 @@ namespace VoiceActing
                 }
             }
             return null;
-        }
+        }*/
 
 
     } 

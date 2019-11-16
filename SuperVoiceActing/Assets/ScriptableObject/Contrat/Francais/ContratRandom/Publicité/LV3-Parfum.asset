@@ -1,0 +1,320 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV3-Parfum
+  m_EditorClassIdentifier: 
+  contractName: Parfum
+  level: 3
+  contractType: 3
+  salaryMin: 2500
+  salaryMax: 5000
+  mixingMin: 7
+  mixingMax: 11
+  weekMin: 5
+  weekMax: 11
+  expGain: 40
+  expBonus: 60
+  contractDictionnary: []
+  description:
+  - 'La nouvelle gamme de Parfum est sorti.
+
+    Nous recherchons une voix sensuelle pour sa promotion.'
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - names:
+      - Femme
+      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 30
+      lineMax: 70
+      fanMin: 0
+      fanMax: 0
+      atkMin: 8
+      atkMax: 12
+      defMin: 5
+      defMax: 6
+      timbre: {x: -10, y: 0}
+      timbreRand: {x: -10, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 5
+        anger: 0
+        surprise: 0
+        sweetness: 11
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 10
+        anger: 0
+        surprise: 0
+        sweetness: 15
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
+    - names:
+      - Homme
+      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 30
+      lineMax: 70
+      fanMin: 0
+      fanMax: 0
+      atkMin: 8
+      atkMax: 12
+      defMin: 5
+      defMax: 6
+      timbre: {x: 0, y: 10}
+      timbreRand: {x: 0, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 5
+        anger: 0
+        surprise: 0
+        sweetness: 11
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 10
+        anger: 0
+        surprise: 0
+        sweetness: 15
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence:
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 0
+          conditionValue: 1
+        skills:
+        - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
+        conditions:
+        - condition: 2
+          mathOperator: 4
+          conditionValue: 2
+        skills:
+        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 2
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Cette douce odeur...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Ce parfum...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 50
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 4
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Hmmm...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 40
+        hpMax: 60
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Ha...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 40
+        hpMax: 60
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Enivrant...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 40
+        hpMax: 60
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Splendide...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 40
+        hpMax: 60
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 20
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 1
+      nbPhraseMax: 1
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Parfum [Nom], une fragrance euphorique.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 70
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: -50
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 1
+      - wordIndex: 4
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

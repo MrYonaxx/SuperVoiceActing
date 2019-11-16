@@ -101,7 +101,7 @@ namespace VoiceActing
         public void EquilibrateContract(Contract c, int targetLevel)
         {
             int oldLevel = c.Level;
-
+            c.Level = targetLevel;
             // Equilibrate Exp ==========================================
             c.ExpGain = expBonus[targetLevel] + Random.Range(-expRandomValue[targetLevel], expRandomValue[targetLevel]);
 

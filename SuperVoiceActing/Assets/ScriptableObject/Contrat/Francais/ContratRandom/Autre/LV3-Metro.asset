@@ -1,0 +1,375 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV3-Metro
+  m_EditorClassIdentifier: 
+  contractName: Message d'annonce Ligne [Ligne]
+  level: 3
+  contractType: 4
+  salaryMin: 2000
+  salaryMax: 3000
+  mixingMin: 5
+  mixingMax: 10
+  weekMin: 3
+  weekMax: 9
+  expGain: 30
+  expBonus: 50
+  contractDictionnary:
+  - nameID: '[Ligne]'
+    namesDictionnary:
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F
+  - nameID: '[Station]'
+    namesDictionnary:
+    - Montrouge
+    - Olympiades
+    - "Maurice Lach\xE2tre"
+    - "Glaci\xE8re"
+    - Bourses
+    - Le village
+    - "Ch\xE2tillon"
+    - Mairie D'issy
+    - Gallieni
+  - nameID: '[X]'
+    namesDictionnary:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  description:
+  - "Pour l'ouverture de la nouvelle ligne de m\xE9tro nous avons besoin d'une nouvelle
+    voix pour assister les passagers."
+  franchise:
+    Enabled: 1
+    canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 20
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 25
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Direction
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+    - text: '[Station]'
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Prochain train dans...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 2
+    - text: '[X] minutes.'
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Le suivant dans...
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 2
+  - textDataCondition:
+      all: 1
+      nbPhraseMin: 0
+      nbPhraseMax: 0
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Terminus.
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+  - textDataCondition:
+      all: 0
+      nbPhraseMin: 2
+      nbPhraseMax: 5
+      condition: 0
+      characterCondition: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Attention \xE0 la marche en descendant du train."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 3
+    - text: "Attention, des pickpocket peuvent \xEAtre pr\xE9sent \xE0 bord."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 2
+    - text: "Pour votre s\xE9curit\xE9, ne fixez pas le chien du personnel de s\xE9curit\xE9
+        dans les yeux."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: "Nous vous rappellons que provoquer les contr\xF4leurs en duel sur la
+        voie est interdit."
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+    - text: Attention, cette station est en forte pente
+      textStats:
+        interlocuteurID: 0
+        linked: 0
+        hpMin: 30
+        hpMax: 35
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

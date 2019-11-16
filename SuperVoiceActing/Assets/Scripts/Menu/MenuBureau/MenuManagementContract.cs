@@ -43,6 +43,36 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void AddGachaContractsSameLevel(PlayerData playerData)
+        {
+            for (int i = 0; i < contractDatabase.Contracts.Count; i++)
+            {
+                if (contractDatabase.Contracts[i].Level == playerData.PlayerStudioLevel)
+                    playerData.ContractGacha.Add(contractDatabase.Contracts[i].name);
+            }
+        }
+
+        public void AddGachaContractsUnderLevel(PlayerData playerData)
+        {
+            playerData.ContractGacha.Clear();
+            for (int i = 0; i < contractDatabase.Contracts.Count; i++)
+            {
+                if (contractDatabase.Contracts[i].Level <= playerData.PlayerStudioLevel)
+                {
+                    playerData.ContractGacha.Add(contractDatabase.Contracts[i].name);
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
         public void GachaContract(PlayerData playerData)
         {
             int nbContract = 0;
@@ -63,12 +93,7 @@ namespace VoiceActing
                 nbContract = Random.Range(0, 2);
             }
 
-            // Select level
-            int playerLevel = playerData.PlayerStudioLevel;
-            if(playerLevel < 3)
-            {
-                // Impossible de sélectionner des contrats d'un level différent du player level
-            }
+
 
 
             if (playerData.ContractGacha.Count != 0)
@@ -76,23 +101,23 @@ namespace VoiceActing
                 nbContract = Mathf.Clamp(nbContract, 0, playerData.ContractGacha.Count);
                 for (int i = 0; i < nbContract; i++)
                 {
+                    // Select level
+                    int playerLevel = playerData.PlayerStudioLevel;
+
                     int rand = Random.Range(0, playerData.ContractGacha.Count);
 
                     // Select franchise
-                    Franchise franchise = contractDatabase.GetFranchise(playerData.ContractGacha[rand]);
-                    FranchiseSave franchiseSave = GetFranchiseSave(playerData.ContractFranchise, franchise);
+                    ContractData cd = contractDatabase.GetContractData(playerData.ContractGacha[rand]);
+                    FranchiseSave franchiseSave = GetFranchiseSave(playerData.ContractFranchise, cd.name, cd.Franchise.contractDatas.Count+1);
 
-                    // Select contract from franchise
-                    Contract contractSelected = SelectContract(franchiseSave, franchise);
-
-                    // Check if suite and assign actor stat from the previous installment
-                    AssignOldActors(contractSelected, franchiseSave, franchise);
+                    // Select contract from franchise and Check if suite and assign actor stat from the previous installment
+                    Contract contractSelected = SelectContract(cd, franchiseSave, playerData.PlayerStudioLevel);
 
                     // Equilibrate 
-                    Equilibrate(contractSelected, franchiseSave, franchise, playerLevel);
+                    Equilibrate(contractSelected, cd.Franchise, playerLevel);
 
                     playerData.ContractAvailable.Add(contractSelected);
-                    playerData.ContractGachaCooldown.Add(new ContractCooldown(franchiseSave.FranchiseName, contractSelected.WeekRemaining+1));
+                    playerData.ContractGachaCooldown.Add(new ContractCooldown(cd.name, cd.WeekMax*2));
                     playerData.ContractGacha.RemoveAt(rand);
                 }
             }
@@ -100,70 +125,83 @@ namespace VoiceActing
 
 
 
-        private FranchiseSave GetFranchiseSave(List<FranchiseSave> franchiseSaves, Franchise franchise)
+        private FranchiseSave GetFranchiseSave(List<FranchiseSave> franchiseSaves, string contractID, int size)
         {
             for(int i = 0; i < franchiseSaves.Count; i++)
             {
-                if(franchiseSaves[i].FranchiseName == franchise.contractDatas[0].name)
+                if(franchiseSaves[i].FranchiseName == contractID)
                 {
                     franchiseSaves[i].CurrentFranchiseNumber += 1;
                     return franchiseSaves[i];
                 }
             }
-            franchiseSaves.Add(new FranchiseSave(franchise.contractDatas[0].name, franchise.contractDatas.Count));
+            franchiseSaves.Add(new FranchiseSave(contractID, size));
             return franchiseSaves[franchiseSaves.Count - 1];
         }
 
 
 
-        private Contract SelectContract(FranchiseSave franchiseSave, Franchise fra)
+        private Contract SelectContract(ContractData cd, FranchiseSave franchiseSave, int playerLevel)
         {
             int franchiseCount = franchiseSave.CurrentFranchiseNumber;
-            int playerLevel = 1;
             int selectIndex = 0;
+            Franchise fra = cd.Franchise;
+            Contract contractFinal;
 
-            Contract contractSelected;
-
-            if (fra.priorityOrder == true) // Select the next contract of the list
+            if (fra.priorityScaling == true) // Select the hardest contract for the current playerLevel
             {
-                selectIndex = franchiseCount % fra.contractDatas.Count;
-            }
-            else if (fra.priorityScaling == true) // Select the hardest contract for the current playerLevel
-            {
-                int bestLevel = 0;
+                int bestLevel = cd.Level;
                 for (int i = 0; i < fra.contractDatas.Count; i++)
                 {
                     if (fra.contractDatas[i].Level > bestLevel && fra.contractDatas[i].Level < playerLevel)
                     {
                         bestLevel = fra.contractDatas[i].Level;
-                        selectIndex = i;
+                        selectIndex = i+1;
                     }
                 }
             }
+            else if (fra.priorityOrder == true) // Select the next contract of the list
+            {
+                selectIndex = franchiseCount % (fra.contractDatas.Count + 1);
+            }
             else if (fra.priorityRandom == true) // Select un contrat au pif
             {
-                selectIndex = Random.Range(0, fra.contractDatas.Count);
+                selectIndex = Random.Range(0, fra.contractDatas.Count+1);
             }
 
-            contractSelected = new Contract(fra.contractDatas[selectIndex]);
-            return contractSelected;
+
+
+            if (fra.isSeries == true)
+            {
+                if(selectIndex == 0 && fra.canReboot == true)
+                {
+                    // Reboot
+                    franchiseSave.RebootFranchise();
+                }
+                contractFinal = new Contract(cd, franchiseSave, selectIndex);
+                return contractFinal;
+            }
+
+            if (selectIndex == 0)
+                contractFinal = new Contract(cd);
+            else
+                contractFinal = new Contract(fra.contractDatas[selectIndex-1]);
+            return contractFinal;
         }
 
 
 
-
-        private void AssignOldActors(Contract contract, FranchiseSave franchiseSave, Franchise fra)
-        {
-            if (fra.isSeries == false)
-                return;
-        }
-
-        private void Equilibrate(Contract contract, FranchiseSave franchiseSave, Franchise fra, int playerLevel)
+        private void Equilibrate(Contract contract, Franchise fra, int playerLevel)
         {
             if (playerLevel <= contract.Level)
                 return;
+            if (fra.canScale == false)
+                return;
             menuContractDifficultyCurve.EquilibrateContract(contract, playerLevel);
         }
+
+
+
 
 
 

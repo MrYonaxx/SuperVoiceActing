@@ -409,26 +409,6 @@ namespace VoiceActing
                 eventData.Add(data.EventData[i]);
             }
 
-
-            // Dictionary ------------------------------------------------------------------------
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            if (data.ContractDictionnary.Length != 0)
-            {
-                for (int i = 0; i < data.ContractDictionnary.Length; i++)
-                {
-                    dictionary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
-                }
-                this.name = StringReplace(this.name, dictionary);
-                this.description = StringReplace(this.description, dictionary);
-                //StringBuilderReplace(new StringBuilder(this.name, this.name.Length * 2), dictionary);
-                //StringBuilderReplace(new StringBuilder(this.description, this.description.Length * 2), dictionary);
-            }
-            // Dictionary ------------------------------------------------------------------------
-
-
-
-
-
             // Select Characters --------------------------------------------------------------------------------------------------------------
             for (int i = 0; i < data.Characters.Length; i++)
             {
@@ -454,8 +434,199 @@ namespace VoiceActing
                 voiceActors.Add(new VoiceActor());
             }
 
-            // Select TextData --------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+            // Dictionary ------------------------------------------------------------------------
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            if (data.ContractDictionnary.Length != 0)
+            {
+                for (int i = 0; i < data.ContractDictionnary.Length; i++)
+                {
+                    dictionary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
+                }
+                this.name = StringReplace(this.name, dictionary);
+                this.description = StringReplace(this.description, dictionary);
+                for(int i = 0; i < characters.Count; i++)
+                {
+                    characters[i].Name = StringReplace(characters[i].Name, dictionary);
+                }
+                //StringBuilderReplace(new StringBuilder(this.name, this.name.Length * 2), dictionary);
+                //StringBuilderReplace(new StringBuilder(this.description, this.description.Length * 2), dictionary);
+            }
+            // Dictionary ------------------------------------------------------------------------
+
+
+            // Select TextData --------------------------------------------------------------------------------------------------------------
+            CreateTextData(data, dictionary);
+
+
+            emotionsUsed = new List<EmotionUsed>(textData.Count);
+
+        }
+
+
+
+
+
+
+        // Créer un contrat d'une franchise
+        public Contract(ContractData cd, FranchiseSave franchiseSave, int contractIndex)
+        {
+
+            int number = 0;
+            Franchise fra = cd.Franchise;
+            ContractData data;
+            string prefix = "";
+            string suffix = "";
+            if (contractIndex == 0)
+                data = cd;
+            else
+                data = fra.contractDatas[contractIndex-1];
+
+
+            // Set name ==================================================================
+            if(fra.canReboot)
+            {
+                number = franchiseSave.CurrentFranchiseNumber % (fra.contractDatas.Count+1);
+                if (franchiseSave.CurrentFranchiseNumber > fra.contractDatas.Count)
+                {
+                    if (fra.prefix == true)
+                        prefix = fra.rebootSuffix + " ";
+                    else
+                        suffix = " " + fra.rebootSuffix;
+                }
+            }
+            else
+            {
+                number = franchiseSave.CurrentFranchiseNumber;
+            }
+
+            if(number == 0)
+                this.name = prefix + data.Name + suffix;
+            else
+                this.name = prefix + data.Name + " " + (number+1) + suffix;
+
+
+
+
+
+
+
+
+
+
+
+
+            if (data.Description.Length == 0)
+                this.description = " ";
+            else
+                this.description = data.Description[Random.Range(0, data.Description.Length)];
+
+            this.contractType = data.ContractType;
+
+            this.level = data.Level;
+            this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
+            this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax + 1);
+            this.totalMixing = Random.Range(data.MixingMin, data.MixingMax + 1);
+
+            this.score = 0;
+            this.highScore = 0;
+
+            this.expGain = data.ExpGain;
+            this.expBonus = data.ExpBonus;
+
+            this.producerMP = data.ProducerMP;
+            this.artificialIntelligence = data.ArtificialIntelligence;
+
+            this.canGameOver = data.CanGameOver;
+            this.storyEventWhenGameOver = data.EventGameOver;
+            this.storyEventWhenAccepted = data.EventAcceptedContract;
+            this.storyEventWhenEnd = data.EventEndContract;
+
+            this.sessionLock = data.SessionLock;
+
+            this.victoryTheme = data.VictoryTheme;
+            this.battleTheme = data.BattleTheme;
+
+            this.soundEngineer = new SoundEngineer();
+
+            this.eventData = new List<DoublageEventData>(data.EventData.Length);
+            for (int i = 0; i < data.EventData.Length; i++)
+            {
+                eventData.Add(data.EventData[i]);
+            }
+
+            // Select Characters --------------------------------------------------------------------------------------------------------------
+            for (int i = 0; i < data.Characters.Length; i++)
+            {
+                if (data.Characters[i].Optional == true)
+                {
+                    if (Random.Range(0f, 1f) >= 0.5f)
+                    {
+                        int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
+                        characters.Add(new Role(data.Characters[i].CharactersProfil[selectProfil]));
+                    }
+                }
+                else
+                {
+                    int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
+                    characters.Add(new Role(data.Characters[i].CharactersProfil[selectProfil]));
+                }
+            }
+
+
+            voiceActors = new List<VoiceActor>(characters.Count);
+            for (int i = 0; i < characters.Count; i++)
+            {
+                voiceActors.Add(new VoiceActor());
+            }
+
+
+
+
+
+
+            // Dictionary ------------------------------------------------------------------------
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            if (data.ContractDictionnary.Length != 0)
+            {
+                for (int i = 0; i < data.ContractDictionnary.Length; i++)
+                {
+                    dictionary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
+                }
+                this.name = StringReplace(this.name, dictionary);
+                this.description = StringReplace(this.description, dictionary);
+                for (int i = 0; i < characters.Count; i++)
+                {
+                    characters[i].Name = StringReplace(characters[i].Name, dictionary);
+                }
+                //StringBuilderReplace(new StringBuilder(this.name, this.name.Length * 2), dictionary);
+                //StringBuilderReplace(new StringBuilder(this.description, this.description.Length * 2), dictionary);
+            }
+            // Dictionary ------------------------------------------------------------------------
+
+
+            // Select TextData --------------------------------------------------------------------------------------------------------------
+            CreateTextData(data, dictionary);
+
+
+            emotionsUsed = new List<EmotionUsed>(textData.Count);
+
+
+
+
+        }
+
+
+
+
+        // =================================================================================================================================================================
+
+        private void CreateTextData(ContractData data, Dictionary<string, string> dictionary)
+        {
             for (int i = 0; i < data.TextDataContract.Length; i++)
             {
                 if (data.TextDataContract[i].TextDataCondition.Condition == true)
@@ -473,8 +644,7 @@ namespace VoiceActing
                     {
                         textData.Add(new TextData(data.TextDataContract[i].TextDataPossible[j]));
                         textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
-                        /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);
-                        Debug.Log(textData[textData.Count - 1].Text);*/
+                        /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);*/
                     }
                 }
                 else
@@ -495,17 +665,13 @@ namespace VoiceActing
                             int indexRandom = Random.Range(0, listTextDataPossibilities.Count);
                             textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
                             textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
-                            /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);
-                            Debug.Log(listTextDataPossibilities[indexRandom].Text);*/
+                            /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);*/
                             listTextDataPossibilities.RemoveAt(indexRandom);
                         }
                     }
                 }
             }
             totalLine = textData.Count;
-
-            emotionsUsed = new List<EmotionUsed>(textData.Count);
-
         }
 
 
@@ -519,7 +685,7 @@ namespace VoiceActing
                     // On cherche l'acteur dans le monde
                     for (int j = 0; j < voicesActorsPlayer.Count; j++)
                     {
-                        if (Characters[i].CharacterLock.Name == voicesActorsPlayer[j].VoiceActorName)
+                        if (Characters[i].CharacterLock == voicesActorsPlayer[j].VoiceActorName)
                         {
                             VoiceActors[i] = voicesActorsPlayer[j];
                             continue;
@@ -528,7 +694,7 @@ namespace VoiceActing
                     // Si l'acteur n'est pas dans la liste, on l'invoque
                     if (VoiceActors[i].IsNull == true)
                     {
-                        voicesActorsPlayer.Add(new VoiceActor(Characters[i].CharacterLock));
+                        //voicesActorsPlayer.Add(new VoiceActor(Characters[i].CharacterLock));
                         VoiceActors[i] = voicesActorsPlayer[voicesActorsPlayer.Count - 1];
                         b = true;
 
@@ -536,11 +702,6 @@ namespace VoiceActing
                 }
             }
             return b;
-        }
-
-        public Contract(Contract previousContract, int i)
-        {
-
         }
 
 

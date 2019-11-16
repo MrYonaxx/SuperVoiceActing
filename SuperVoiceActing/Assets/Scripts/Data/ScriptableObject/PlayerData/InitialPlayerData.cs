@@ -27,6 +27,13 @@ namespace VoiceActing
         [Space]
         [Title("Initial Ressources")]
         [SerializeField]
+        private int playerLevel;
+        public int PlayerLevel
+        {
+            get { return playerLevel; }
+        }
+
+        [SerializeField]
         private int startMoney;
         public int StartMoney
         {

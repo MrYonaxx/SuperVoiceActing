@@ -28,6 +28,17 @@ MonoBehaviour:
   - "L'\xE9t\xE9 risque d'\xEAtre rude. Mais c'est sans compter sur Clim-Climax !\n\nSi
     vos acteurs sont pr\xEAts \xE0 braver les d\xE9serts les plus chauds n'h\xE9sitez
     pas \xE0 accepter d'enregistrer les voix de notre publicit\xE9 !"
+  franchise:
+    Enabled: 1
+    canScale: 1
+    priorityScaling: 1
+    priorityOrder: 1
+    priorityRandom: 1
+    contractDatas: []
+    isSeries: 0
+    canReboot: 0
+    rebootSuffix: 
+    prefix: 0
   characters:
   - mainCharacter: 1
     optional: 0
@@ -36,6 +47,8 @@ MonoBehaviour:
       - Aventurier
       - "R\xF4deur du D\xE9sert"
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 0
       lineMax: 0
       fanMin: 0
@@ -87,6 +100,8 @@ MonoBehaviour:
     - names:
       - Marchand
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 0
       lineMax: 0
       fanMin: 0
@@ -127,8 +142,11 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: De l'eau... de l'eau...
       textStats:
@@ -305,8 +323,11 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "C'est ma foi fort simple, c'est gr\xE2ce \xE0 notre Climatisation !"
       textStats:
@@ -425,3 +446,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

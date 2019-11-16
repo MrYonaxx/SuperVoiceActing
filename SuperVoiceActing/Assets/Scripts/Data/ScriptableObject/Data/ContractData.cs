@@ -415,6 +415,18 @@ namespace VoiceActing
         [Space]
         [Space]
 
+        [SerializeField]
+        [Toggle("Enabled")]
+        private Franchise franchise;
+        public Franchise Franchise
+        {
+            get { return franchise; }
+        }
+
+        [Space]
+        [Space]
+        [Space]
+
         [Title("Characters")]
         [GUIColor(1f, 0.9f, 0.9f, 1f)]
         [SerializeField]
