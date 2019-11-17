@@ -213,6 +213,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private bool isRemaster;
+        public bool IsRemaster
+        {
+            get { return isRemaster; }
+            set { isRemaster = value; }
+        }
+
+        [SerializeField]
         private List<Contract> contractPreviousInstallements;
         public List<Contract> ContractPreviousInstallements
         {
@@ -223,7 +231,7 @@ namespace VoiceActing
         public FranchiseSave(string frName, int contractLenght)
         {
             franchiseName = frName;
-            currentFranchiseNumber = 0;
+            currentFranchiseNumber = -1;
             contractPreviousInstallements = new List<Contract>(contractLenght);
         }
 

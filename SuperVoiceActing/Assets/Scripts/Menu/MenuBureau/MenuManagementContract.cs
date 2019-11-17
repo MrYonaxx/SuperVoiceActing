@@ -131,7 +131,6 @@ namespace VoiceActing
             {
                 if(franchiseSaves[i].FranchiseName == contractID)
                 {
-                    franchiseSaves[i].CurrentFranchiseNumber += 1;
                     return franchiseSaves[i];
                 }
             }
@@ -143,49 +142,27 @@ namespace VoiceActing
 
         private Contract SelectContract(ContractData cd, FranchiseSave franchiseSave, int playerLevel)
         {
-            int franchiseCount = franchiseSave.CurrentFranchiseNumber;
-            int selectIndex = 0;
             Franchise fra = cd.Franchise;
-            Contract contractFinal;
+            Contract contractFinal = null;
 
-            if (fra.priorityScaling == true) // Select the hardest contract for the current playerLevel
-            {
-                int bestLevel = cd.Level;
-                for (int i = 0; i < fra.contractDatas.Count; i++)
-                {
-                    if (fra.contractDatas[i].Level > bestLevel && fra.contractDatas[i].Level < playerLevel)
-                    {
-                        bestLevel = fra.contractDatas[i].Level;
-                        selectIndex = i+1;
-                    }
-                }
-            }
-            else if (fra.priorityOrder == true) // Select the next contract of the list
-            {
-                selectIndex = franchiseCount % (fra.contractDatas.Count + 1);
-            }
-            else if (fra.priorityRandom == true) // Select un contrat au pif
-            {
-                selectIndex = Random.Range(0, fra.contractDatas.Count+1);
-            }
+            franchiseSave.CurrentFranchiseNumber += Random.Range(fra.franchiseCountIncreaseMin, fra.franchiseCountIncreaseMax);
 
+            int selectIndex = cd.Franchise.GetSeriesIndex(franchiseSave.CurrentFranchiseNumber, playerLevel);
 
 
             if (fra.isSeries == true)
             {
-                if(selectIndex == 0 && fra.canReboot == true)
+                if(fra.FranchiseDirection(franchiseSave) == true)
                 {
-                    // Reboot
-                    franchiseSave.RebootFranchise();
+                    // Sequel ou remaster
+                    contractFinal = new Contract(cd, franchiseSave, selectIndex);
+                    return contractFinal;
                 }
-                contractFinal = new Contract(cd, franchiseSave, selectIndex);
-                return contractFinal;
             }
-
             if (selectIndex == 0)
                 contractFinal = new Contract(cd);
             else
-                contractFinal = new Contract(fra.contractDatas[selectIndex-1]);
+                contractFinal = new Contract(fra.contractDatas[selectIndex - 1]);
             return contractFinal;
         }
 

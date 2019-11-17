@@ -488,7 +488,7 @@ namespace VoiceActing
 
 
             // Set name ==================================================================
-            if(fra.canReboot)
+            if(franchiseSave.IsRemaster)
             {
                 number = franchiseSave.CurrentFranchiseNumber % (fra.contractDatas.Count+1);
                 if (franchiseSave.CurrentFranchiseNumber > fra.contractDatas.Count)
