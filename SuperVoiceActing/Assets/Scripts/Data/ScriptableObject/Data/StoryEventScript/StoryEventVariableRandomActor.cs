@@ -19,32 +19,32 @@ namespace VoiceActing
 
         public override StoryVariable CreateStoryVariable(string variableName, PlayerData playerData)
         {
-            List<VoiceActor> actorsAvailable = new List<VoiceActor>();
+            List<string> actorsIDAvailable = new List<string>();
             for(int i = 0; i < playerData.VoiceActors.Count; i++)
             {
                 if(playerData.VoiceActors[i].Availability == true)
                 {
-                    actorsAvailable.Add(playerData.VoiceActors[i]);
+                    actorsIDAvailable.Add(playerData.VoiceActors[i].VoiceActorID);
                 }
             }
             if (playerData.CurrentContract != null)
             {
-                for (int i = 0; i < playerData.CurrentContract.VoiceActors.Count; i++)
+                for (int i = 0; i < playerData.CurrentContract.VoiceActorsID.Count; i++)
                 {
-                    actorsAvailable.Remove(playerData.CurrentContract.VoiceActors[i]);
+                    actorsIDAvailable.Remove(playerData.CurrentContract.VoiceActorsID[i]);
                 }
             }
 
 
 
-            int rand = Random.Range(0, actorsAvailable.Count);
-            if(rand < actorsAvailable.Count)
+            int rand = Random.Range(0, actorsIDAvailable.Count);
+            if(rand < actorsIDAvailable.Count)
             {
-                return new StoryVariableActor(variableName, actorsAvailable[rand]);
+                return new StoryVariable(variableName, actorsIDAvailable[rand]);
             }
             else
             {
-                return new StoryVariableActor(variableName, null);
+                return new StoryVariable(variableName, null);
             }
 
         }

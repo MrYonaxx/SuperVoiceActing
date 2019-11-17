@@ -26,14 +26,25 @@ MonoBehaviour:
   contractDictionnary: []
   description:
   - 
-  isFranchise: 0
-  franchiseNames: []
+  franchise:
+    Enabled: 0
+    canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootAsRemaster: 0
+    alwaysRebootAtEnd: 0
+    chanceOfRebootAsRemaster: 100
+    rebootSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Valkyrie
+    - roleName: Valkyrie
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -80,6 +91,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "\xC0 mes c\xF4t\xE9s, mes nobles Einherjar !"
       textStats:
@@ -123,6 +136,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Ce sera grav\xE9 sur ton \xE2me"
       textStats:
@@ -183,6 +198,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Est-ce termin\xE9 ?"
       textStats:
@@ -311,6 +328,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Cet adversaire ne tr\xE9pasera pas aussi facilement."
       textStats:
@@ -337,6 +356,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Leurs \xE2mes ont \xE9t\xE9 lib\xE9r\xE9, nous n'avons aucune raison
         de rester ici."
@@ -381,6 +402,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: 
       textStats:
@@ -407,6 +430,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Tu commence \xE0 me fatiguer."
       textStats:
@@ -467,6 +492,8 @@ MonoBehaviour:
       characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "\xC0 pr\xE9sent meurs en silence."
       textStats:
@@ -528,3 +555,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

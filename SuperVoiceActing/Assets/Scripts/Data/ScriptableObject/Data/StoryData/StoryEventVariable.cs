@@ -42,6 +42,13 @@ namespace VoiceActing
             valueText = value.ToString();
         }
 
+        public StoryVariable(string vName, string vValue)
+        {
+            variableName = vName;
+            value = 0;
+            valueText = vValue;
+        }
+
         public void ApplyMathOperation(MathOperation mathOperation, int newValue)
         {
             switch (mathOperation)
@@ -57,33 +64,6 @@ namespace VoiceActing
                     break;
             }
             valueText = value.ToString();
-        }
-
-    }
-
-
-
-    public class StoryVariableActor : StoryVariable
-    {
-
-        public VoiceActor voiceActor;
-
-        public StoryVariableActor(string vName, VoiceActor VA)
-        {
-            variableName = vName;
-            voiceActor = VA;
-            value = 0;
-            if(VA == null)
-                valueText = "";
-            else
-                valueText = VA.VoiceActorName;
-        }
-
-        public string GetActorName()
-        {
-            if (voiceActor != null)
-                return voiceActor.VoiceActorName;
-            return "";
         }
 
     }

@@ -143,10 +143,7 @@ namespace VoiceActing
         protected int indexPhrase = 0;
 
 
-
         protected bool reprint = false;
-
-
         protected bool intro = true;
 
 
@@ -166,7 +163,7 @@ namespace VoiceActing
 
         protected bool defencePhase = false;
 
-
+        protected List<VoiceActor> battleVoiceActors = new List<VoiceActor>();
 
 
         public ToneManager ToneManager
@@ -263,22 +260,23 @@ namespace VoiceActing
 
         private void InitializeManagers()
         {
+            battleVoiceActors = playerData.GetVoiceActorsFromContractID(contrat);
+
+            SoundEngineer soundEngi = playerData.GetSoundEngiFromName(contrat.SoundEngineerID);
+
             enemyManager.SetTextData(contrat.TextData[indexPhrase]);
             actorsManager.SetCards(emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
-            actorsManager.SetActors(contrat.VoiceActors);
+            actorsManager.SetActors(battleVoiceActors);
             //actorsManager.ActorTakeDamage(0);
             eventManager.SetManagers(skillManager);
-            skillManager.SetManagers(this, cameraController, contrat.VoiceActors);
+            skillManager.SetManagers(this, cameraController, battleVoiceActors);
             skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
             roleManager.SetRoles(contrat.Characters);
-            /*if(contrat.SoundEngineer.IsNull)
-                soundEngineerManager.SetManagers(skillManager, playerData.SoundEngineers[0]);
-            else */
-            soundEngineerManager.SetManagers(skillManager, contrat.SoundEngineer);
+            soundEngineerManager.SetManagers(skillManager, soundEngi);
             toneManager.DrawTone();
-            characterDoublageManager.SetCharactersSprites(contrat.VoiceActors);
+            characterDoublageManager.SetCharactersSprites(battleVoiceActors);
             characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
             SetPlayerSettings();
         }
@@ -567,7 +565,7 @@ namespace VoiceActing
             if (enemyManager.GetHpPercentage() == 0)
                 activeTimings.Add(SkillActiveTiming.AfterKill);
 
-            skillManager.CheckSkillCondition(contrat.VoiceActors, activeTimings, lastAttackEmotion, false);
+            skillManager.CheckSkillCondition(battleVoiceActors, activeTimings, lastAttackEmotion, false);
 
             yield return skillManager.ActivateBigSkill();
 
@@ -817,7 +815,7 @@ namespace VoiceActing
             if (intro == true)
             {
                 //lastAttack[0] = Emotion.Neutre;
-                skillManager.CheckSkillCondition(contrat.VoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttackEmotion, false);
+                skillManager.CheckSkillCondition(battleVoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttackEmotion, false);
                 yield return skillManager.ActivateBigSkill();
                 intro = false;
                 yield return new WaitForSeconds(0.5f);
@@ -1074,7 +1072,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(false);
             recIcon.SetActive(false);
             actorsManager.ShowHealthBar();
-            sessionRecapManager.DrawContract(contrat, indexPhrase);
+            sessionRecapManager.DrawContract(contrat, battleVoiceActors, indexPhrase);
         }
 
         public void RecapToSession()
@@ -1147,7 +1145,7 @@ namespace VoiceActing
             if (playerData.NextStoryEvents.Count != 0 || playerData.NextRandomEvent.Count != 0)
                 resultScreenManager.ChangeEndScene("EventScene");
             resultScreen.SetActive(true);
-            resultScreenManager.SetContract(contrat);
+            resultScreenManager.SetContract(contrat, battleVoiceActors);
             resultScreenManager.DrawResult(turnCount, killCount);
         }
 

@@ -160,10 +160,13 @@ namespace VoiceActing
         {
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
-                contractAcceptedList[i].ProgressMixing();
-                if(contractAcceptedList[i].SoundEngineer != null)
+                SoundEngineer soundEngi = playerData.GetSoundEngiFromName(contractAcceptedList[i].SoundEngineerID);
+                if (soundEngi != null)
+                {
+                    contractAcceptedList[i].ProgressMixing(soundEngi);
                     yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
-                yield return new WaitForSeconds(0.2f);
+                }
+                yield return null;
             }
         }
 

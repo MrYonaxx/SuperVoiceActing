@@ -21,6 +21,8 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+        [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
 
         [Title("Animator")]
         [SerializeField]
@@ -146,7 +148,7 @@ namespace VoiceActing
 
         public void DrawSoundEngi(SoundEngineer soundEngineer)
         {
-            imageSoundEngiFace.sprite = soundEngineer.SpritesSheets.SpriteNormal[0];
+            imageSoundEngiFace.sprite = characterSpriteDatabase.GetCharacterData(soundEngineer.SoundEngineerID).SpriteNormal[0];
             textSoundEngiName.text = soundEngineer.EngineerName;
             textSoundEngiLevel.text = soundEngineer.Level.ToString();
             textSoundEngiSalary.text = soundEngineer.Salary.ToString();

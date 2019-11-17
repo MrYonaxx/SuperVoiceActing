@@ -157,6 +157,8 @@ namespace VoiceActing
 
 
         private Contract currentContract;
+        private List<VoiceActor> currentVoiceActors;
+        private SoundEngineer currentSoundEngi;
         private int indexSelected = 0;
         private bool inSessionPossible = false;
 
@@ -201,6 +203,9 @@ namespace VoiceActing
         public void SetContract(Contract contract)
         {
             currentContract = contract;
+            currentVoiceActors = playerData.GetVoiceActorsFromContractID(contract);
+            currentSoundEngi = playerData.GetSoundEngiFromName(contract.SoundEngineerID);
+
             menuActorsManager.DrawAuditionTitle(contract.Name);
             menuActorsManager.DrawAuditionIcon(typeContractData.GetSprite((int)contract.ContractType));
             DrawContractInfo();
@@ -240,8 +245,8 @@ namespace VoiceActing
                 {
                     listButtonRoles[i].gameObject.SetActive(true);
                     listButtonRoles[i].SetButtonIndex(i);
-                    listButtonRoles[i].DrawButton(currentContract.Characters[i], currentContract.VoiceActors[i], 
-                                                  characterSpriteDatabase.GetCharacterData(currentContract.VoiceActors[i].SpriteSheets));
+                    listButtonRoles[i].DrawButton(currentContract.Characters[i], currentVoiceActors[i], 
+                                                  characterSpriteDatabase.GetCharacterData(currentContract.VoiceActorsID[i]));
                     listButtonRoles[i].UnselectButton();
                 }
                 else
@@ -276,10 +281,10 @@ namespace VoiceActing
         private int GetTotalCost()
         {
             int sum = 0;
-            for(int i = 0; i < currentContract.VoiceActors.Count; i++)
+            for(int i = 0; i < currentVoiceActors.Count; i++)
             {
-                if(currentContract.VoiceActors[i].IsNull != true) 
-                    sum += (currentContract.VoiceActors[i].Price * currentContract.Characters[i].Line);
+                if(currentContract.VoiceActorsID[i] != "") 
+                    sum += (currentVoiceActors[i].Price * currentContract.Characters[i].Line);
             }
             return sum;
         }
@@ -311,7 +316,7 @@ namespace VoiceActing
             transformRoleTimbre.anchorMax = new Vector2((currentContract.Characters[indexSelected].Timbre.y + 10) / 20f, 1);
             transformRoleTimbre.anchoredPosition = Vector3.zero;
 
-            if (currentContract.VoiceActors[indexSelected].IsNull == true)
+            if (currentVoiceActors[indexSelected] == null)
             {
                 DrawActorInfo(false);
                 DrawGaugeInfo(false);
@@ -329,19 +334,19 @@ namespace VoiceActing
             //panelActor.SetActive(hasActor);
             if (hasActor == true)
             {
-                textActorName.text = currentContract.VoiceActors[indexSelected].VoiceActorName;
-                textActorFan.text = currentContract.VoiceActors[indexSelected].Fan.ToString();
-                textActorCost.text = currentContract.VoiceActors[indexSelected].Price.ToString();
-                textActorCadence.text = "-" + (currentContract.VoiceActors[indexSelected].RoleDefense * 5) + " %";
-                transformActorTimbre.anchorMin = new Vector2((currentContract.VoiceActors[indexSelected].Timbre.x + 10) / 20f, 0);
-                transformActorTimbre.anchorMax = new Vector2((currentContract.VoiceActors[indexSelected].Timbre.y + 10) / 20f, 1);
+                textActorName.text = currentVoiceActors[indexSelected].VoiceActorName;
+                textActorFan.text = currentVoiceActors[indexSelected].Fan.ToString();
+                textActorCost.text = currentVoiceActors[indexSelected].Price.ToString();
+                textActorCadence.text = "-" + (currentVoiceActors[indexSelected].RoleDefense * 5) + " %";
+                transformActorTimbre.anchorMin = new Vector2((currentVoiceActors[indexSelected].Timbre.x + 10) / 20f, 0);
+                transformActorTimbre.anchorMax = new Vector2((currentVoiceActors[indexSelected].Timbre.y + 10) / 20f, 1);
                 transformActorTimbre.anchoredPosition = Vector3.zero;
-                textActorLevel.text = currentContract.VoiceActors[indexSelected].Level.ToString();
-                textActorPV.text = currentContract.VoiceActors[indexSelected].Hp.ToString();
-                textActorPVMax.text = currentContract.VoiceActors[indexSelected].HpMax.ToString();
-                transformGaugeHP.localScale = new Vector3((float)currentContract.VoiceActors[indexSelected].Hp / currentContract.VoiceActors[indexSelected].HpMax, 1, 1);
+                textActorLevel.text = currentVoiceActors[indexSelected].Level.ToString();
+                textActorPV.text = currentVoiceActors[indexSelected].Hp.ToString();
+                textActorPVMax.text = currentVoiceActors[indexSelected].HpMax.ToString();
+                transformGaugeHP.localScale = new Vector3((float)currentVoiceActors[indexSelected].Hp / currentVoiceActors[indexSelected].HpMax, 1, 1);
                 imageActorSprite.enabled = true;
-                imageActorSprite.sprite = characterSpriteDatabase.GetCharacterData(currentContract.VoiceActors[indexSelected].SpriteSheets).SpriteNormal[0];
+                imageActorSprite.sprite = characterSpriteDatabase.GetCharacterData(currentVoiceActors[indexSelected].VoiceActorID).SpriteNormal[0];
                 imageActorSprite.SetNativeSize();
             }
             else
@@ -365,6 +370,8 @@ namespace VoiceActing
         private void DrawGaugeInfo(bool hasActor)
         {
             StopAllCoroutines();
+            if (this.gameObject.activeInHierarchy == false)
+                return;
 
             Color colorStatActorNormal = new Color(textStatsActor[0].color.r, textStatsActor[0].color.g, textStatsActor[0].color.b, 1);
             Color colorStatActorTransparent = new Color(textStatsActor[0].color.r, textStatsActor[0].color.g, textStatsActor[0].color.b, 0.5f);
@@ -380,7 +387,7 @@ namespace VoiceActing
 
                 if (hasActor == true)
                 {
-                    int currentStatActor = currentContract.VoiceActors[indexSelected].Statistique.GetEmotion(i+1);
+                    int currentStatActor = currentVoiceActors[indexSelected].Statistique.GetEmotion(i+1);
                     textStatsActor[i].text = currentStatActor.ToString();
                     StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
                 }
@@ -467,36 +474,44 @@ namespace VoiceActing
 
         public void SetActor(VoiceActor actor)
         {
-            currentContract.VoiceActors[indexSelected] = actor;
+            currentContract.VoiceActorsID[indexSelected] = actor.VoiceActorID;
+            currentVoiceActors[indexSelected] = actor;
             DrawRoleInfo();
             animatorFeedbackSpriteAudition.SetTrigger("Feedback");
-            listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor, characterSpriteDatabase.GetCharacterData(actor.SpriteSheets).SpriteIcon);
+            listButtonRoles[indexSelected].DrawActor(currentContract.Characters[indexSelected], actor, characterSpriteDatabase.GetCharacterData(actor.VoiceActorID).SpriteIcon);
             textContractTotalCost.text = "-" + GetTotalCost().ToString();
             CheckButtonInSession();
         }
 
         public void SetSoundEngi(SoundEngineer soundEngineer)
         {
-            currentContract.SoundEngineer = soundEngineer;
+            currentContract.SoundEngineerID = soundEngineer.SoundEngineerID;
+            currentSoundEngi = soundEngineer;
             contractInfoAnnex[indexSelectedTeamTech].DrawContract(currentContract);
         }
+
+
+
+
+
 
         private void CheckButtonInSession()
         {
             if (currentContract.SessionLock == true)
             {
-                menuRessourceResearch.ShowMenu();
-                inSessionPossible = false;
-                inSessionObject.gameObject.SetActive(false);
+                HideButtonInSession();
                 return;
             }
-            for (int i = 0; i < currentContract.VoiceActors.Count; i++)
+            for (int i = 0; i < currentVoiceActors.Count; i++)
             {
-                if (currentContract.VoiceActors[i].IsNull == true)
+                if (currentContract.VoiceActorsID[i] == "")
                 {
-                    menuRessourceResearch.ShowMenu();
-                    inSessionPossible = false;
-                    inSessionObject.gameObject.SetActive(false);
+                    HideButtonInSession();
+                    return;
+                }
+                else if (currentVoiceActors[i].Availability == false)
+                {
+                    HideButtonInSession();
                     return;
                 }
             }
@@ -504,6 +519,13 @@ namespace VoiceActing
             inSessionPossible = true;
             inSessionObject.gameObject.SetActive(true);
             inSessionObject.SetTrigger("Appear");
+        }
+
+        private void HideButtonInSession()
+        {
+            menuRessourceResearch.ShowMenu();
+            inSessionPossible = false;
+            inSessionObject.gameObject.SetActive(false);
         }
 
         public void InSession()

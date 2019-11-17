@@ -79,7 +79,7 @@ namespace VoiceActing
             {
                 bonus += hpBonus[i];
                 hpDebug[i] = bonus;
-                level[i] = i + 1;
+                level[i] = i;
             }
         }
 
@@ -90,7 +90,7 @@ namespace VoiceActing
             for (int i = 0; i < expBonus.Length; i++)
             {
                 expRandomValue[i] = (int)(expBonus[i] * expRandomValueRatio);
-                expLevel[i] = i + 1;
+                expLevel[i] = i;
             }
         }
 

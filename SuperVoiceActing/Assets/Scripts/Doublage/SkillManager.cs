@@ -337,11 +337,11 @@ namespace VoiceActing
                 {
                     listSkillWindow.Add(Instantiate(minorSkillPrefab, minorSkillPanel));
                     listSkillWindow[listSkillWindow.Count - 1].SetTransform(listSkillWindow.Count - 1);                   
-                    listSkillWindow[listSkillWindow.Count - 1].DrawSkill(characterSpriteDatabase.GetCharacterData(actor.SpriteSheets).SpriteIcon, skill.SkillName, skill.DescriptionBattle);
+                    listSkillWindow[listSkillWindow.Count - 1].DrawSkill(characterSpriteDatabase.GetCharacterData(actor.VoiceActorID).SpriteIcon, skill.SkillName, skill.DescriptionBattle);
                 }
                 else
                 {
-                    listSkillWindow[skillWindowIndex].DrawSkill(characterSpriteDatabase.GetCharacterData(actor.SpriteSheets).SpriteIcon, skill.SkillName, skill.DescriptionBattle);
+                    listSkillWindow[skillWindowIndex].DrawSkill(characterSpriteDatabase.GetCharacterData(actor.VoiceActorID).SpriteIcon, skill.SkillName, skill.DescriptionBattle);
                 }
                 skillWindowIndex += 1;
             }

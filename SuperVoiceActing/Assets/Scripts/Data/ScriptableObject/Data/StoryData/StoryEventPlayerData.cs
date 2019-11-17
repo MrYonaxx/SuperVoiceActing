@@ -91,7 +91,7 @@ namespace VoiceActing
                 {
                     for (int i = 0; i < playerData.VoiceActors.Count; i++)
                     {
-                        if (playerData.VoiceActors[i].VoiceActorName == voiceActorToAdd.Name)
+                        if (playerData.VoiceActors[i].VoiceActorID == voiceActorToAdd.NameID)
                             playerData.VoiceActors.RemoveAt(i);
                     }
                 }
@@ -104,7 +104,7 @@ namespace VoiceActing
                 {
                     for (int i = 0; i < playerData.VoiceActors.Count; i++)
                     {
-                        if (playerData.VoiceActors[i].VoiceActorName == voiceActorToAdd.Name)
+                        if (playerData.VoiceActors[i].VoiceActorID == voiceActorToAdd.NameID)
                         {
                             playerData.VoiceActors[i].Availability = false;
                             playerData.VoiceActors[i].ActorMentalState = VoiceActorState.Absent;
@@ -115,7 +115,7 @@ namespace VoiceActing
                 {
                     for (int i = 0; i < playerData.VoiceActors.Count; i++)
                     {
-                        if (playerData.VoiceActors[i].VoiceActorName == voiceActorToAdd.Name)
+                        if (playerData.VoiceActors[i].VoiceActorID == voiceActorToAdd.NameID)
                         {
                             playerData.VoiceActors[i].Availability = true;
                             playerData.VoiceActors[i].ActorMentalState = VoiceActorState.Fine;

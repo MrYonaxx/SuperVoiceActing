@@ -136,13 +136,14 @@ namespace VoiceActing
             {
                 gameObjectMixing.SetActive(true);
                 gaugeMixing.transform.localScale = new Vector2((contract.CurrentMixing / (float)contract.TotalMixing), gaugeMixing.transform.localScale.y);
-                if(contract.SoundEngineer.IsNull != true)
+                // Draw preview
+                /*if(contract.SoundEngineerID != null)
                 {
                     float size = (contract.CurrentMixing + contract.SoundEngineer.GetMixingPower(contract) / (float)contract.TotalMixing);
                     if (size >= 1)
                         size = 1;
                     gaugeMixingPreview.transform.localScale = new Vector2(size, gaugeMixingPreview.transform.localScale.y);
-                }
+                }*/
             }
             gameObjectClear.SetActive(false);
         }

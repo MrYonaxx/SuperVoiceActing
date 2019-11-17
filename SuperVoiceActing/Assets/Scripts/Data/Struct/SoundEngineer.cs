@@ -25,6 +25,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        string soundEngineerID;
+        public string SoundEngineerID
+        {
+            get { return soundEngineerID; }
+        }
+
+        [SerializeField]
         private int level;
         public int Level
         {
@@ -73,12 +80,7 @@ namespace VoiceActing
             get { return skills; }
         }
 
-        [SerializeField]
-        StoryCharacterData spritesSheets;
-        public StoryCharacterData SpritesSheets
-        {
-            get { return spritesSheets; }
-        }
+
 
         [SerializeField]
         private int formationSkillID;
@@ -104,29 +106,19 @@ namespace VoiceActing
         {
             get { return formationSkillTotalTime; }
         }
-        [SerializeField]
-        private bool isNull;
-        public bool IsNull
-        {
-            get { return isNull; }
-        }
 
-        public SoundEngineer()
-        {
-            isNull = true;
-        }
 
         public SoundEngineer(SoundEngineerData soundEngineer)
         {
-            isNull = false;
-            engineerName = soundEngineer.EngineerName;
+            engineerName = soundEngineer.SpritesSheets.GetName();
+            soundEngineerID = soundEngineer.SpritesSheets.name;
             level = soundEngineer.Level;
             experience = 0;
             salary = soundEngineer.InitialSalary;
             experienceCurve = soundEngineer.ExperienceCurve;
             artificeGauge = soundEngineer.ArtificeGauge;
             mixingPower = soundEngineer.MixingPower;
-            spritesSheets = soundEngineer.SpritesSheets;
+
 
             skills = new SkillDataSoundEngi[soundEngineer.InitialSkills.Length];
             for (int i = 0; i < soundEngineer.InitialSkills.Length; i++)

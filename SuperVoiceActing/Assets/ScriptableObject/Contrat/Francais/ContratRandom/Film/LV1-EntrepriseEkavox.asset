@@ -29,21 +29,27 @@ MonoBehaviour:
     Ekavox."
   franchise:
     Enabled: 1
+    isSeries: 1
     canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 0
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
     priorityScaling: 0
     priorityOrder: 0
     priorityRandom: 0
     contractDatas: []
-    isSeries: 0
-    canReboot: 0
-    rebootSuffix: 
-    prefix: 0
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Narrateur
+    - roleName: Narrateur
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0

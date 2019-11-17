@@ -78,6 +78,7 @@ namespace VoiceActing
 
 
         List<Contract> contractsEnd = new List<Contract>();
+        List<SoundEngineer> soundEngiEnd = new List<SoundEngineer>();
 
         #endregion
 
@@ -87,7 +88,7 @@ namespace VoiceActing
 
 
         // ========================================================================
-        public void CalculTotalScore(Contract contract)
+        public void CalculTotalScore(Contract contract, List<VoiceActor> voiceActors)
         {
             int finalScore = 0;
             int finalHighScore = 0;
@@ -97,11 +98,11 @@ namespace VoiceActing
                 // Score Stat
                 contract.Characters[i].RolePerformance /= contract.TotalLine;
                 contract.Characters[i].RoleBestScore /= contract.TotalLine; // Vu que je divise ici, si j'ajoute du score d'une autre source que le combat les calculs sont faussés
-                CalculateRoleScore(contract.Characters[i], contract.VoiceActors[i]);
+                CalculateRoleScore(contract.Characters[i], voiceActors[i]);
 
                 // Fan
-                fanCalculator.AddScoreToRole(contract.VoiceActors[i], contract.Characters[i], totalFan);
-                fanCalculator.CalculateFanGain(contract.VoiceActors[i], contract.Characters[i]);
+                fanCalculator.AddScoreToRole(voiceActors[i], contract.Characters[i], totalFan);
+                fanCalculator.CalculateFanGain(voiceActors[i], contract.Characters[i]);
 
                 finalScore += contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance;
                 finalHighScore += contract.Characters[i].RoleBestScore;
@@ -231,6 +232,8 @@ namespace VoiceActing
         public bool CheckContractDone(PlayerData playerData)
         {
             bool b = false;
+            List<VoiceActor> voiceActors;
+            SoundEngineer soundEngi;
             for (int i = 0; i < playerData.ContractAccepted.Count; i++)
             {
                 if (playerData.ContractAccepted[i] != null)
@@ -240,13 +243,18 @@ namespace VoiceActing
                         if (playerData.ContractAccepted[i].CurrentMixing == playerData.ContractAccepted[i].TotalMixing)
                         {
                             b = true;
+                            voiceActors = playerData.GetVoiceActorsFromContractID(playerData.ContractAccepted[i]);
+                            soundEngi = playerData.GetSoundEngiFromName(playerData.ContractAccepted[i].SoundEngineerID);
+
                             contractsEnd.Add(playerData.ContractAccepted[i]);
-                            CalculTotalScore(playerData.ContractAccepted[i]);
+                            soundEngiEnd.Add(soundEngi);
+
+                            CalculTotalScore(playerData.ContractAccepted[i], voiceActors);
 
                             playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
                             playerData.ResearchPoint += playerData.ContractAccepted[i].Level + 10;
 
-                            SoundEngiLevelUp(playerData.ContractAccepted[i].SoundEngineer, playerData.ContractAccepted[i].TotalMixing);
+                            SoundEngiLevelUp(soundEngi, playerData.ContractAccepted[i].TotalMixing);
                             playerData.ContractHistoric.Add(playerData.ContractAccepted[i]);
                             playerData.ContractAccepted.RemoveAt(i);
                             i -= 1;
@@ -283,11 +291,11 @@ namespace VoiceActing
                 }
             }
             inputController.SetActive(true);
-            DrawContractReward(contractsEnd[0]);
+            DrawContractReward(contractsEnd[0], soundEngiEnd[0]);
         }
 
 
-        public void DrawContractReward(Contract contract)
+        public void DrawContractReward(Contract contract, SoundEngineer soundEngi)
         {
             textContractTitle.text = contract.Name;
             textContractBaseMoney.text = contract.Money.ToString();
@@ -296,17 +304,17 @@ namespace VoiceActing
             textScoreTotal.text = contract.Score.ToString() + " / " + contract.HighScore;
             textContractResearch.text = contract.Level.ToString();
 
-            if (contract.SoundEngineer.IsNull != true)
+            if (soundEngi != null)
             {
                 imageSoundEngi.gameObject.SetActive(true);
-                imageSoundEngi.sprite = contract.SoundEngineer.SpritesSheets.SpriteNormal[0];
+                imageSoundEngi.sprite = characterSpriteDatabase.GetCharacterData(soundEngi.SoundEngineerID).SpriteNormal[0];
                 textSoundEngiOldLevel.text = soundEngiOldLevel.ToString();
                 textSoundEngiExpGained.text = "+" + soundEngiExpGained.ToString();
-                transformSoundEngiExpGauge.localScale = new Vector2((float)contract.SoundEngineer.Experience / contract.SoundEngineer.ExperienceCurve.ExperienceCurve[contract.SoundEngineer.Level], 1);
-                if (soundEngiOldLevel != contract.SoundEngineer.Level)
+                transformSoundEngiExpGauge.localScale = new Vector2((float)soundEngi.Experience / soundEngi.ExperienceCurve.ExperienceCurve[soundEngi.Level], 1);
+                if (soundEngiOldLevel != soundEngi.Level)
                 {
                     textSoundEngiNewLevel.gameObject.SetActive(true);
-                    textSoundEngiNewLevel.text = contract.SoundEngineer.Level.ToString();
+                    textSoundEngiNewLevel.text = soundEngi.Level.ToString();
                     animatorLevelUp.gameObject.SetActive(true);
                     animatorLevelUp.SetTrigger("Feedback");
                 }
@@ -323,10 +331,10 @@ namespace VoiceActing
 
             for (int i = 0; i < imageActors.Length; i++)
             {
-                if(i < contract.VoiceActors.Count)
+                if(i < contract.VoiceActorsID.Count)
                 {
                     imageActors[i].gameObject.SetActive(true);                 
-                    imageActors[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[i].SpriteSheets).SpriteIcon;
+                    imageActors[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActorsID[i]).SpriteIcon;
                     textActors[i].text = (contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance) + " / " + contract.Characters[i].RoleBestScore;
                 }
                 else
@@ -340,6 +348,7 @@ namespace VoiceActing
         {
             inputController.SetActive(false);
             contractsEnd.RemoveAt(0);
+            soundEngiEnd.RemoveAt(0);
             if(contractsEnd.Count == 0)
             {
                 animatorEnd.SetTrigger("Disappear");

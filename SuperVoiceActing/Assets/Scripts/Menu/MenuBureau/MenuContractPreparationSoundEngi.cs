@@ -22,6 +22,11 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [SerializeField]
+        PlayerData playerData;
+        [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
+
         [Space]
         [SerializeField]
         Image imageSoundEngiIcon;
@@ -105,7 +110,8 @@ namespace VoiceActing
             textContractTotalMixing.text = contract.TotalMixing.ToString();
             rectTransformMixingProgress.localScale = new Vector2((float)contract.CurrentMixing / contract.TotalMixing, rectTransformMixingProgress.localScale.y);
 
-            if (contract.SoundEngineer.IsNull == true)
+            SoundEngineer soundEngi = playerData.GetSoundEngiFromName(contract.SoundEngineerID);
+            if (soundEngi == null)
             {
                 panelSoundEngi.gameObject.SetActive(false);
                 panelNoSoundEngi.gameObject.SetActive(true);
@@ -117,11 +123,11 @@ namespace VoiceActing
             {
                 panelSoundEngi.gameObject.SetActive(true);
                 panelNoSoundEngi.gameObject.SetActive(false);
-                float size = (float)contract.SoundEngineer.MixingPower / contract.TotalMixing;
+                float size = (float)soundEngi.MixingPower / contract.TotalMixing;
                 if (size >= 1)
                     size = 1;
                 rectTransformMixingPreview.localScale = new Vector2(size, rectTransformMixingPreview.localScale.y);
-                DrawSoundEngi(contract.SoundEngineer);
+                DrawSoundEngi(soundEngi);
             }
         }
 
@@ -129,9 +135,9 @@ namespace VoiceActing
         private void DrawSoundEngi(SoundEngineer soundEngi)
         {
             imageSoundEngiIcon.gameObject.SetActive(true);
-            imageSoundEngiIcon.sprite = soundEngi.SpritesSheets.SpriteIcon;
+            imageSoundEngiIcon.sprite = characterSpriteDatabase.GetCharacterData(soundEngi.SoundEngineerID).SpriteIcon;
             imageSoundEngiFace.gameObject.SetActive(true);
-            imageSoundEngiFace.sprite = soundEngi.SpritesSheets.SpriteNormal[0];
+            imageSoundEngiFace.sprite = characterSpriteDatabase.GetCharacterData(soundEngi.SoundEngineerID).SpriteNormal[0];
             animatorSoundEngiFace.SetTrigger("FeedbackSoundEngi");
 
             textSoundEngiName.text = soundEngi.EngineerName;
@@ -163,7 +169,7 @@ namespace VoiceActing
 
         public override void ValidateButton(Contract contract)
         {
-            menuStudioMain.SwitchToMenu(0);
+            menuStudioMain.SwitchToMenu(1);
             cameraBureau.MoveToCamera(3);
         }
 

@@ -25,9 +25,9 @@ namespace VoiceActing
 
         /*[SerializeField]
         private string name;*/
-        public string Name
+        public string NameID
         {
-            get { return spriteSheets.GetName(); }
+            get { return spriteSheets.name; }
         }
 
         [Header("Informations générales")]

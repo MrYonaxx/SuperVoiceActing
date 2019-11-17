@@ -936,7 +936,7 @@ namespace VoiceActing
         public void SetBestActor()
         {
             if(currentContract.IsNull == false)
-                currentBestActor = currentContract.VoiceActors[Random.Range(0, CurrentContract.VoiceActors.Count)].SpriteSheets;
+                currentBestActor = currentContract.VoiceActorsID[Random.Range(0, CurrentContract.VoiceActorsID.Count)];
         }
 
         public void SetNewChapter(int newChapter, string newObjective)
@@ -980,6 +980,38 @@ namespace VoiceActing
                 minuteDecade = "";
             }
             return hourDecade + hour + ":" + minuteDecade + minute;
+        }
+
+        public List<VoiceActor> GetVoiceActorsFromContractID(Contract contract)
+        {
+            List<VoiceActor> res = new List<VoiceActor>(contract.VoiceActorsID.Count);
+            for (int i = 0; i < contract.VoiceActorsID.Count; i++)
+            {
+                res.Add(null);
+                for (int j = 0; j < VoiceActors.Count; j++)
+                {
+                    if (contract.VoiceActorsID[i] == VoiceActors[j].VoiceActorID)
+                    {
+                        res[i] = VoiceActors[j];
+                        break;
+                    }
+                }
+            }
+            return res;
+        }
+
+        public SoundEngineer GetSoundEngiFromName(string soundEngiID)
+        {
+            SoundEngineer soundEngi = null;
+            for (int j = 0; j < SoundEngineers.Count; j++)
+            {
+                if (soundEngiID == SoundEngineers[j].SoundEngineerID)
+                {
+                    soundEngi = SoundEngineers[j];
+                    break;
+                }
+            }
+            return soundEngi;
         }
 
 

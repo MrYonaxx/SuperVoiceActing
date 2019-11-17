@@ -83,7 +83,7 @@ namespace VoiceActing
         {
             buttonRole.color = roleUnlocked;
             textRoleName.text = role.Name;
-            if(voiceActor.IsNull != true)
+            if(voiceActor != null)
             {
                 DrawActor(role, voiceActor, spriteIcon.SpriteIcon);
             }
@@ -107,6 +107,10 @@ namespace VoiceActing
             textActorHP.text = voiceActor.Hp.ToString();
             textActorCost.text = (role.Line * voiceActor.Price).ToString();
             imageActorFace.sprite = spriteIcon;
+            if (voiceActor.Availability == false)
+                imageActorFace.color = Color.black;
+            else
+                imageActorFace.color = Color.white;
         }
 
         public void SelectButton()

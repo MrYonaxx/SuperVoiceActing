@@ -32,26 +32,22 @@ namespace VoiceActing
 
         public StoryEventData SetNode(List<StoryVariable> localVariable, PlayerData playerData)
         {
-            StoryVariableActor storyVariable;
             for(int i = 0; i < localVariable.Count; i++)
             {
-                if(localVariable[i] is StoryVariableActor)
+                if (localVariable[i].variableName == variableName)
                 {
-                    storyVariable = (StoryVariableActor) localVariable[i];
-                    if (storyVariable.variableName == variableName)
-                    {
-                        return CheckActor(storyVariable.GetActorName());
-                    }
+                    return CheckActor(localVariable[i].valueText);
                 }
             }
             return defaultEvent;
         }
 
+
         private StoryEventData CheckActor(string actorName)
         {
             for (int i = 0; i < voiceActorDatas.Length; i++)
             {
-                if (voiceActorDatas[i].Name == actorName)
+                if (voiceActorDatas[i].NameID == actorName)
                     return storyEvents[i];
             }
             return defaultEvent;

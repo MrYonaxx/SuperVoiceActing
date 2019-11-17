@@ -29,19 +29,36 @@ MonoBehaviour:
     pars \xE0 nouveau affronter les forces mal\xE9fiques de Bhaguar, cependant il
     n'est pas seul cette fois-ci. \nAccompagn\xE9 de Miss. Ragab, embarqu\xE9 dans
     un jeu d'action survatimin\xE9 en coop\xE9ration !"
+  franchise:
+    Enabled: 0
+    canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootAsRemaster: 0
+    alwaysRebootAtEnd: 0
+    chanceOfRebootAsRemaster: 100
+    rebootSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Ragab
+    - roleName: Ragab
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 221
       lineMax: 221
       fanMin: 12540
       fanMax: 12540
       atkMin: 10
       atkMax: 10
+      defMin: 0
+      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -69,15 +86,18 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Miss Ragab
+    - roleName: Miss Ragab
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 167
       lineMax: 167
       fanMin: 1473
       fanMax: 1473
       atkMin: 10
       atkMax: 10
+      defMin: 0
+      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -110,8 +130,11 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Miss Ragab, cette fois c'est la derni\xE8re ligne droite..."
       textStats:
@@ -480,3 +503,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 1
+  debugHPMin: 0
+  debugHPMax: 0

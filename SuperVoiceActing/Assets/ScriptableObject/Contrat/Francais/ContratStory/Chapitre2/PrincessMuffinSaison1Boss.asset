@@ -30,13 +30,28 @@ MonoBehaviour:
     avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer la ville, pendant
     que Charlotte est en rendez-vous amoureux avec Mathieu.\nC'est donc au tour des
     nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
+  franchise:
+    Enabled: 0
+    canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootAsRemaster: 0
+    alwaysRebootAtEnd: 0
+    chanceOfRebootAsRemaster: 100
+    rebootSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Opera
+    - roleName: Opera
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 200
       lineMax: 250
       fanMin: 0
@@ -72,9 +87,10 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Nougat
+    - roleName: Nougat
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 100
       lineMax: 150
       fanMin: 0
@@ -110,9 +126,10 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Praline
+    - roleName: Praline
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 100
       lineMax: 200
       fanMin: 0
@@ -153,8 +170,11 @@ MonoBehaviour:
       nbPhraseMin: 0
       nbPhraseMax: 0
       condition: 0
+      characterCondition: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Bravo les filles ! On a gagn\xE9 !"
       textStats:
@@ -352,3 +372,5 @@ MonoBehaviour:
   battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

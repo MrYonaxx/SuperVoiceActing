@@ -301,7 +301,7 @@ namespace VoiceActing
                 buttonsActors.Add(Instantiate(prefabButtonVoiceActor, buttonListTransform));
                 buttonsActors[i].gameObject.SetActive(true);
                 buttonsActors[i].DrawActor(actorsList[i].VoiceActorName, actorsList[i].Level, (float) actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability,
-                                            characterSpriteDatabase.GetCharacterData(actorsList[i].SpriteSheets).SpriteIcon);
+                                            characterSpriteDatabase.GetCharacterData(actorsList[i].VoiceActorID).SpriteIcon);
                 buttonsActors[i].SetButtonIndex(i);
                 if (actorsList[i].Availability == false)
                 {
@@ -345,7 +345,7 @@ namespace VoiceActing
             for (int i = 0; i < actorsList.Count; i++)
             {
                 buttonsActors[i].DrawActor(actorsList[i].VoiceActorName, actorsList[i].Level, (float)actorsList[i].Hp / actorsList[i].HpMax, actorsList[i].Availability,
-                                           characterSpriteDatabase.GetCharacterData(actorsList[i].SpriteSheets).SpriteIcon);
+                                           characterSpriteDatabase.GetCharacterData(actorsList[i].VoiceActorID).SpriteIcon);
             }
         }
 
@@ -380,7 +380,7 @@ namespace VoiceActing
                 menuActorsAudition.DrawAuditionPanel(false);
             }
 
-            StoryCharacterData actorSprite = characterSpriteDatabase.GetCharacterData(actor.SpriteSheets);
+            StoryCharacterData actorSprite = characterSpriteDatabase.GetCharacterData(actor.VoiceActorID);
 
             textMeshSelection.text = actor.VoiceActorName;
             actorFaceSelection.enabled = true;

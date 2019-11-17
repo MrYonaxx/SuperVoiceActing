@@ -103,7 +103,7 @@ namespace VoiceActing
         public void Audition(Role role)
         {
             va = GachaVoiceActors(role, playerData.VoiceActorsGacha, playerData.VoiceActors);
-            actorsSprite.sprite = characterSpriteDatabase.GetCharacterData(va.SpriteSheets).SpriteNormal[0];
+            actorsSprite.sprite = characterSpriteDatabase.GetCharacterData(va.VoiceActorID).SpriteNormal[0];
             actorsSprite.SetNativeSize();
         }
 

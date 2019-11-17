@@ -84,7 +84,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(false);
         }
 
-        public void DrawContract(Contract contract, int indexPhrase)
+        public void DrawContract(Contract contract, List<VoiceActor> voiceActors, int indexPhrase)
         {
             inputController.gameObject.SetActive(true);
             animatorRecap.gameObject.SetActive(true);
@@ -99,7 +99,7 @@ namespace VoiceActing
                 panelContractCharacters[i].gameObject.SetActive(true);
                 panelContractCharacters[i].DrawPanel(contract.Characters[i]);
                 voiceActorsFace[i].gameObject.SetActive(true);               
-                voiceActorsFace[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[i].SpriteSheets).SpriteIcon;
+                voiceActorsFace[i].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[i].VoiceActorID).SpriteIcon;
             }
             DrawSessionLines(contract, indexPhrase);
             MoveScrollList(9999);

@@ -28,27 +28,29 @@ MonoBehaviour:
   franchise:
     Enabled: 0
     canScale: 1
+    isSeries: 0
+    canReboot: 0
+    rebootAsRemaster: 0
+    alwaysRebootAtEnd: 0
+    chanceOfRebootAsRemaster: 100
+    rebootSuffix: 
+    prefix: 0
     priorityScaling: 1
     priorityOrder: 1
     priorityRandom: 1
     contractDatas: []
-    isSeries: 0
-    canReboot: 0
-    rebootSuffix: 
-    prefix: 0
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Lia
+    - roleName: 
       roleSprite: {fileID: 21300000, guid: b2f67d0bce549f0418c9dbe13cbcae95, type: 3}
       roleType: 0
       rolePersonality: 0
       lineMin: 800
       lineMax: 1200
-      fanMin: 500
-      fanMax: 10000
+      fanMin: 200
+      fanMax: 200
       atkMin: 11
       atkMax: 11
       defMin: 0
@@ -104,15 +106,14 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Yonax
+    - roleName: 
       roleSprite: {fileID: 21300000, guid: af4b0cc7b2e184542a69981b4b93abb9, type: 3}
       roleType: 0
       rolePersonality: 0
       lineMin: 400
       lineMax: 700
-      fanMin: 6000
-      fanMax: 15000
+      fanMin: 600
+      fanMax: 600
       atkMin: 15
       atkMax: 15
       defMin: 0
@@ -155,8 +156,7 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - "L\xE9mina"
+    - roleName: 
       roleSprite: {fileID: 21300000, guid: 5f137aa969ba982408143fd8791389eb, type: 3}
       roleType: 0
       rolePersonality: 0

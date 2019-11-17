@@ -29,9 +29,10 @@ namespace VoiceActing
         InputController inputMixingTable;
 
         [SerializeField]
+        CharacterSpriteDatabase characterSpriteDatabase;
+
+        [SerializeField]
         Image vignettageNormal;
-        /*[SerializeField]
-        GameObject vignettageIngeSon;*/
 
         [SerializeField]
         TextPerformanceAppear textSkillDescriptionAnimation;
@@ -115,9 +116,9 @@ namespace VoiceActing
         public void SetManagers(SkillManager sM, SoundEngineer soundEngi)
         {
             skillManager = sM;
-            if (soundEngi.IsNull == false)
+            if (soundEngi != null)
             {
-                characterSoundEngineer.SetStoryCharacterData(soundEngi.SpritesSheets);
+                characterSoundEngineer.SetStoryCharacterData(characterSpriteDatabase.GetCharacterData(soundEngi.SoundEngineerID));
                 skills = soundEngi.Skills;
                 InitializeSoundEngineer();
                 buttonSoudEngi.gameObject.SetActive(true);

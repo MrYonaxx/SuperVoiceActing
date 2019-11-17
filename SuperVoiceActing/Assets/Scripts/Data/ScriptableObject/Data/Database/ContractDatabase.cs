@@ -19,24 +19,60 @@ namespace VoiceActing
         [SerializeField]
         public bool Enabled;
 
-        [SerializeField]
-        public bool canScale = true;
-
         [Space]
         [HorizontalGroup("FranchiseSeries")]
         [SerializeField]
         public bool isSeries = false;
-
         [Space]
         [HorizontalGroup("FranchiseSeries")]
+        [SerializeField]
+        public bool canScale = true;
+
+
+
+        [SerializeField]
+        [HorizontalGroup("FranchiseRandomStart")]
+        public int canStartFranchiseAtMin = 0;
+        [SerializeField][HideLabel][HorizontalGroup("FranchiseRandomStart")]
+        public int canStartAtFranchiseAtMax = 0;
+
+
+        [Space]
+        [HorizontalGroup("FranchiseReboot")]
         [ShowIf("isSeries", true)]
+        [VerticalGroup("FranchiseReboot/Left")]
         [SerializeField]
         public bool canReboot = false;
-
+        [ShowIf("canReboot", true)]
+        [VerticalGroup("FranchiseReboot/Left")]
+        [SerializeField]
+        public int chanceOfRebootAtEachIteration = 0;
         [ShowIf("canReboot", true)]
         [SerializeField]
-        public string rebootSuffix = "";
-        [ShowIf("canReboot", true)]
+        [VerticalGroup("FranchiseReboot/Left")]
+        public bool alwaysRebootAtEnd = true;
+
+        [Space]
+        [ShowIf("isSeries", true)]
+        [SerializeField]
+        [VerticalGroup("FranchiseReboot/Right")]
+        public bool canRemaster = false;
+        [ShowIf("canRemaster", true)]
+        [SerializeField]
+        [VerticalGroup("FranchiseReboot/Right")]
+        public int chanceOfRemasterAtEachIteration = 100;
+        [ShowIf("canRemaster", true)]
+        [SerializeField]
+        [VerticalGroup("FranchiseReboot/Right")]
+        public bool alwaysRemasterAtEnd = true;
+
+
+        [ShowIf("canRemaster", true)]
+        [VerticalGroup("FranchiseReboot/Right")]
+        [SerializeField]
+        public string remasterSuffix = "";
+        [ShowIf("canRemaster", true)]
+        [VerticalGroup("FranchiseReboot/Right")]
         [SerializeField]
         public bool prefix = false;
 
@@ -57,6 +93,30 @@ namespace VoiceActing
         [VerticalGroup("Franchise/Right")]
         [SerializeField]
         public List<ContractData> contractDatas;
+
+
+
+
+
+        public bool FranchiseDirection(FranchiseSave franchiseSave)
+        {
+            int chanceReboot = Random.Range(0,100);
+            int chanceRemaster = Random.Range(0, 100);
+            /*if (canReboot == true && rebootAsRemaster == false) // Reboot
+            {
+            }
+            else if (canReboot == true && rebootAsRemaster == true) // Remaster
+            {
+            }
+
+            if(alwaysRebootAtEnd == true && (franchiseSave.CurrentFranchiseNumber % (contractDatas.Count+1)) == 0)
+            {
+
+            }*/
+
+            return false;
+        }
+
 
     }
 
@@ -91,7 +151,9 @@ namespace VoiceActing
         public int numberOfSeries = 0;
         public int numberOfFilm = 0;
         public int numberOfVideoGame = 0;
+        public int numberOfOther = 0;
 
+        public int[] curveContractLevel = new int[10];
 
 
         private bool GetFranchiseOnly(ContractData obj)
@@ -99,6 +161,37 @@ namespace VoiceActing
             return obj.Franchise.Enabled;
         }
 
+        [Button]
+        private void CalculateDebugData()
+        {
+            numberOfPub = 0;
+            numberOfSeries = 0;
+            numberOfFilm = 0;
+            numberOfVideoGame = 0;
+            numberOfOther = 0;
+            for(int i = 0; i < contracts.Count; i++)
+            {
+                curveContractLevel[contracts[i].Level] += 1;
+                switch (contracts[i].ContractType)
+                {
+                    case ContractType.Film:
+                        numberOfFilm+=1;
+                        break;
+                    case ContractType.JeuVideo:
+                        numberOfVideoGame += 1;
+                        break;
+                    case ContractType.Publicite:
+                        numberOfPub += 1;
+                        break;
+                    case ContractType.Serie:
+                        numberOfSeries += 1;
+                        break;
+                    case ContractType.Autre:
+                        numberOfOther += 1;
+                        break;
+                }
+            }
+        }
 
 
         public ContractData GetContractData(string contractName)

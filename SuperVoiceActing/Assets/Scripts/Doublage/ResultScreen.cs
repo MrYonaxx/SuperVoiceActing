@@ -61,7 +61,7 @@ namespace VoiceActing
         [SerializeField]
         private Contract contract;
 
-
+        private List<VoiceActor> voiceActors;
 
 
         [Header("Actors")]
@@ -142,18 +142,19 @@ namespace VoiceActing
             nextScene = newEndScene;
         }
 
-        public void SetContract(Contract con)
+        public void SetContract(Contract con, List<VoiceActor> va)
         {
             contract = con;
+            voiceActors = va;
             spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
             spectrum.enabled = true;
-            actorsLevelUp = new bool[contract.VoiceActors.Count];
+            actorsLevelUp = new bool[contract.VoiceActorsID.Count];
             for (int i = 0; i < actorsLevelUp.Length; i++)
             {
                 actorsLevelUp[i] = false;
             }
-            actorsOldLevel = new int[contract.VoiceActors.Count];
-            actorsOldStats = new EmotionStat[contract.VoiceActors.Count];
+            actorsOldLevel = new int[contract.VoiceActorsID.Count];
+            actorsOldStats = new EmotionStat[contract.VoiceActorsID.Count];
             DrawEmotionUsed(con.EmotionsUsed);
         }
 
@@ -250,23 +251,23 @@ namespace VoiceActing
 
         private void DrawActors(int expGain)
         {
-            for(int i = 0; i < contract.VoiceActors.Count; i++)
+            for(int i = 0; i < voiceActors.Count; i++)
             {
                 actorsImage[i].gameObject.SetActive(true);
                 actorsExpOutline[i].gameObject.SetActive(true);
 
-                actorsImage[i].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[i].SpriteSheets).SpriteNormal[0];
+                actorsImage[i].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[i].VoiceActorID).SpriteNormal[0];
                 actorsImage[i].SetNativeSize();
-                textsLevel[i].text = contract.VoiceActors[i].Level.ToString();
-                textsNext[i].text = (contract.VoiceActors[i].NextEXP).ToString();// - contract.VoiceActors[i].Experience).ToString();
-                expGauge[i].transform.localScale = new Vector3((1-(contract.VoiceActors[i].NextEXP / (float)experience.ExperienceCurve[contract.VoiceActors[i].Level])),
+                textsLevel[i].text = voiceActors[i].Level.ToString();
+                textsNext[i].text = (voiceActors[i].NextEXP).ToString();// - contract.VoiceActors[i].Experience).ToString();
+                expGauge[i].transform.localScale = new Vector3((1-(voiceActors[i].NextEXP / (float)experience.ExperienceCurve[voiceActors[i].Level])),
                                                                 expGauge[i].transform.localScale.y,
                                                                 expGauge[i].transform.localScale.z);
 
-                int actorGainDeduction = contract.VoiceActors[i].NextEXP;
-                contract.VoiceActors[i].NextEXP -= expGain;
+                int actorGainDeduction = voiceActors[i].NextEXP;
+                voiceActors[i].NextEXP -= expGain;
 
-                StartCoroutine(CalculateExp(contract.VoiceActors[i], expGauge[i], i, expGain, actorGainDeduction));
+                StartCoroutine(CalculateExp(voiceActors[i], expGauge[i], i, expGain, actorGainDeduction));
             }
         }
 
@@ -353,9 +354,9 @@ namespace VoiceActing
         {
             StopAllCoroutines();
             VoiceActor va;
-            for (int i = 0; i < contract.VoiceActors.Count; i++)
+            for (int i = 0; i < voiceActors.Count; i++)
             {
-                va = contract.VoiceActors[i];
+                va = voiceActors[i];
                 while (va.NextEXP <= 0)
                 {
                     // Level Up
@@ -374,7 +375,7 @@ namespace VoiceActing
                 }
                 textsLevel[i].text = va.Level.ToString();
                 textsNext[i].text = va.NextEXP.ToString();//(va.NextEXP- va.Experience).ToString();
-                expGauge[i].transform.localScale = new Vector3((1 - (contract.VoiceActors[i].NextEXP / (float)experience.ExperienceCurve[contract.VoiceActors[i].Level])),
+                expGauge[i].transform.localScale = new Vector3((1 - (va.NextEXP / (float)experience.ExperienceCurve[va.Level])),
                                                 expGauge[i].transform.localScale.y,
                                                 expGauge[i].transform.localScale.z);
             }
@@ -398,8 +399,8 @@ namespace VoiceActing
             {
                 resultScreen.SetInteger("LevelUp", -1);
                 resultScreen.SetTrigger("NextLevelUp");            
-                actorsImage[0].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[previousActorLevelUp].SpriteSheets).SpriteNormal[0];
-                actorsImage[1].sprite = characterSpriteDatabase.GetCharacterData(contract.VoiceActors[id].SpriteSheets).SpriteNormal[0];
+                actorsImage[0].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[previousActorLevelUp].VoiceActorID).SpriteNormal[0];
+                actorsImage[1].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[id].VoiceActorID).SpriteNormal[0];
                 StartCoroutine(OldstatCoroutine(id));
             }
             actorsLevelUp[id] = false;
@@ -440,7 +441,7 @@ namespace VoiceActing
 
         private void DrawNewLevelStat(int id)
         {
-            VoiceActor va = contract.VoiceActors[id];
+            VoiceActor va = voiceActors[id];
             textNewLevel.text = va.Level.ToString();
 
             int stat = 0;
@@ -506,13 +507,13 @@ namespace VoiceActing
 
         public void AddVoxography()
         {
-            for (int i = 0; i < contract.VoiceActors.Count; i++)
+            for (int i = 0; i < voiceActors.Count; i++)
             {
-                contract.VoiceActors[i].CreateVoxography(contract.Name);
+                voiceActors[i].CreateVoxography(contract.Name);
             }
             for (int i = 0; i < contract.Characters.Count; i++)
             {
-                contract.VoiceActors[i].AddVoxography(contract.Characters[i], (Emotion)contract.Characters[i].BestStatEmotion);
+                voiceActors[i].AddVoxography(contract.Characters[i], (Emotion)contract.Characters[i].BestStatEmotion);
             }
         }
 

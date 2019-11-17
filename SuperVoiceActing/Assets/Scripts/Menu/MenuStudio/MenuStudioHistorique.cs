@@ -80,10 +80,10 @@ namespace VoiceActing
             {
                 ButtonHistoric b = Instantiate(buttonHistoric, buttonScrollListTransform);
                 b.gameObject.SetActive(true);
-                List<Sprite> sprites = new List<Sprite>(playerData.ContractHistoric[i].VoiceActors.Count);
-                for(int j = 0; j < playerData.ContractHistoric[i].VoiceActors.Count; j++)
+                List<Sprite> sprites = new List<Sprite>(playerData.ContractHistoric[i].VoiceActorsID.Count);
+                for(int j = 0; j < playerData.ContractHistoric[i].VoiceActorsID.Count; j++)
                 {
-                    sprites.Add(characterSpriteDatabase.GetCharacterData(playerData.ContractHistoric[i].VoiceActors[j].SpriteSheets).SpriteIcon);
+                    sprites.Add(characterSpriteDatabase.GetCharacterData(playerData.ContractHistoric[i].VoiceActorsID[j]).SpriteIcon);
                 }
                 b.DrawContractHistoric(playerData.ContractHistoric[i], contractSpriteDictionnary.GetSprite((int)playerData.ContractHistoric[i].ContractType), sprites);
             }

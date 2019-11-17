@@ -93,6 +93,13 @@ namespace VoiceActing
             get { return voiceActorName; }
         }
 
+        [SerializeField]
+        private string voiceActorID;
+        public string VoiceActorID
+        {
+            get { return voiceActorID; }
+            set { voiceActorID = value; }
+        }
 
         [Header(" Informations générales")]
         [SerializeField]
@@ -232,14 +239,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private string spriteSheets;
-        public string SpriteSheets
-        {
-            get { return spriteSheets; }
-            set { spriteSheets = value; }
-        }
-
-        [SerializeField]
         private int damageVariance;
         public int DamageVariance
         {
@@ -297,13 +296,6 @@ namespace VoiceActing
             set { availability = value; }
         }
 
-        [SerializeField]
-        private bool isNull;
-        public bool IsNull
-        {
-            get { return isNull; }
-        }
-
         #endregion
 
 
@@ -331,16 +323,11 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public VoiceActor()
-        {
-            isNull = true;
-        }
-
         // Rappel : les classes ne sont pas dupliqué par défaut, à la place les deux variable auront la meme reference donc bug potentiel
         public VoiceActor(VoiceActorData actorData)
         {
             voiceActorName = actorData.SpriteSheets.GetName();
-            isNull = false;
+            voiceActorID = actorData.SpriteSheets.name;
             level = actorData.Level;
             fanGain = 0;
             fan = actorData.Fan;
@@ -359,7 +346,6 @@ namespace VoiceActing
 
 
             skillOffset = actorData.SkillOffset;
-            spriteSheets = actorData.SpriteSheets.name;
 
             statistique = new EmotionStat(actorData.Statistique);
             statModifier = new EmotionStat();

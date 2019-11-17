@@ -65,7 +65,7 @@ namespace VoiceActing
             {
                 if (actorsContract[i] != null)
                 {
-                    characters[i].SetStoryCharacterData(characterSpriteDatabase.GetCharacterData(actorsContract[i].SpriteSheets));
+                    characters[i].SetStoryCharacterData(characterSpriteDatabase.GetCharacterData(actorsContract[i].VoiceActorID));
                     characters[i].gameObject.SetActive(true);
                 }
             }
