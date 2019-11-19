@@ -109,7 +109,7 @@ namespace VoiceActing
                     // Select franchise
                     ContractData cd = contractDatabase.GetContractData(playerData.ContractGacha[rand]);
                     FranchiseSave franchiseSave = GetFranchiseSave(playerData.ContractFranchise, cd.name, cd.Franchise.contractDatas.Count+1);
-
+                    Debug.Log(cd.name);
                     // Select contract from franchise and Check if suite and assign actor stat from the previous installment
                     Contract contractSelected = SelectContract(cd, franchiseSave, playerData.PlayerStudioLevel);
 
@@ -152,13 +152,11 @@ namespace VoiceActing
 
             if (fra.isSeries == true)
             {
-                if(fra.FranchiseDirection(franchiseSave) == true)
-                {
-                    // Sequel ou remaster
-                    contractFinal = new Contract(cd, franchiseSave, selectIndex);
-                    return contractFinal;
-                }
+                fra.FranchiseDirection(franchiseSave);
+                contractFinal = new Contract(cd, franchiseSave, selectIndex);
+                return contractFinal;
             }
+
             if (selectIndex == 0)
                 contractFinal = new Contract(cd);
             else

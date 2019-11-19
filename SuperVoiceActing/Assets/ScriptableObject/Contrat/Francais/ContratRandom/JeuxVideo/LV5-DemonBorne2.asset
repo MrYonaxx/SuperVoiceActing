@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LV5-DemonBorne2
   m_EditorClassIdentifier: 
-  contractName: Demonborne
+  contractName: '[Nom]'
   level: 1
   contractType: 2
   salaryMin: 0
@@ -25,16 +25,26 @@ MonoBehaviour:
   expBonus: 0
   contractDictionnary: []
   description:
-  - Je suis demonborne 2.
+  - Je suis [Nom] 2.
   franchise:
     Enabled: 0
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 1
     priorityOrder: 1
+    priorityOrderNoLoop: 0
     priorityRandom: 1
     contractDatas: []
   characters:
@@ -42,6 +52,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: "Poup\xE9e"
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -81,6 +92,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: Nicolash
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0

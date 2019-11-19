@@ -365,11 +365,118 @@ namespace VoiceActing
 
 
 
-
+        //StringBuilderReplace(new StringBuilder(this.name, this.name.Length * 2), dictionary);
+        //StringBuilderReplace(new StringBuilder(this.description, this.description.Length * 2), dictionary);
 
         public Contract(ContractData data)
         {
             this.name = data.Name;
+
+            //  -----------------------------------------------------------------
+            CreateBaseInformation(data);
+
+            // Select Characters ------------------------------------------------
+            CreateRoles(data);
+
+            // Dictionary -------------------------------------------------------
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            if (data.ContractDictionnary.Length != 0)
+            {
+                for (int i = 0; i < data.ContractDictionnary.Length; i++)
+                {                    
+                    dictionary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
+                }
+                for(int i = 0; i < characters.Count; i++) // Pas opti ça rajoute des entrés dans le dictionnaire très souvent inutile
+                {
+                    dictionary.Add("[" + characters[i].NameID + "]", characters[i].Name);
+                }
+            }
+
+            this.name = StringReplace(this.name, dictionary);
+            this.description = StringReplace(this.description, dictionary);
+
+            // Select TextData ---------------------------------------------------
+            CreateTextData(data, dictionary);
+
+
+            emotionsUsed = new List<EmotionUsed>(textData.Count);
+
+        }
+
+
+
+
+
+        // Créer un contrat d'une franchise
+        public Contract(ContractData cd, FranchiseSave franchiseSave, int contractIndex)
+        {
+            ContractData data;
+            if (contractIndex == 0)
+                data = cd;
+            else
+                data = cd.Franchise.contractDatas[contractIndex-1];
+
+            //  -----------------------------------------------------------------
+            SetNameForRemaster(data, cd.Franchise, franchiseSave);
+
+            //  -----------------------------------------------------------------
+            CreateBaseInformation(data);
+
+
+            // Select Characters ------------------------------------------------
+            CreateRoles(data);
+
+            for (int i = 0; i < characters.Count; i++)
+            {
+                bool alreadyIn = false;
+                for (int j = 0; j < franchiseSave.FranchiseRoles.Count; j++)
+                {
+                    if (characters[i].NameID == franchiseSave.FranchiseRoles[j].NameID)
+                    {
+                        characters[i].Name = franchiseSave.FranchiseRoles[j].Name;
+                        characters[i].Fan = franchiseSave.FranchiseRoles[j].Fan;
+                        //characters[i].PreviousVoiceActor = franchiseSave.FranchiseRoles[j].voi
+                        alreadyIn = true;
+                    }
+                }
+                if (alreadyIn == false)
+                    franchiseSave.FranchiseRoles.Add(new RoleFranchise(characters[i]));
+            }
+
+            // Dictionary ------------------------------------------------------------------------
+            if (data.ContractDictionnary.Length != 0)
+            {
+                for (int i = 0; i < data.ContractDictionnary.Length; i++)
+                {
+                    if (!franchiseSave.FranchiseDictionnary.ContainsKey(data.ContractDictionnary[i].nameID)) // Pas opti + empêche de recréer de l'aléatoire sur certains points   mais ça safe-ise 
+                        franchiseSave.FranchiseDictionnary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
+                }
+                for (int i = 0; i < characters.Count; i++) // Pas opti ça rajoute des entrés dans le dictionnaire très souvent inutile
+                {
+                    if (!franchiseSave.FranchiseDictionnary.ContainsKey("[" + characters[i].NameID + "]"))  // Pas opti mais ça safe-ise
+                        franchiseSave.FranchiseDictionnary.Add("[" + characters[i].NameID + "]", characters[i].Name);
+                }
+            }
+            this.name = StringReplace(this.name, franchiseSave.FranchiseDictionnary);
+            this.description = StringReplace(this.description, franchiseSave.FranchiseDictionnary);
+
+
+            // Select TextData --------------------------------------------------------------------------------------------------------------
+            CreateTextData(data, franchiseSave.FranchiseDictionnary);
+
+
+            emotionsUsed = new List<EmotionUsed>(textData.Count);
+
+        }
+
+
+
+
+
+        // =================================================================================================================================================================
+
+        private void CreateBaseInformation(ContractData data)
+        {
             if (data.Description.Length == 0)
                 this.description = " ";
             else
@@ -379,8 +486,8 @@ namespace VoiceActing
 
             this.level = data.Level;
             this.money = data.SalaryMin + (Random.Range(0, (data.SalaryMax - data.SalaryMin) / 10) * 10); // Renvoie toujours une valeur arrondit a la dizaine
-            this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax+1);
-            this.totalMixing = Random.Range(data.MixingMin, data.MixingMax+1);
+            this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax + 1);
+            this.totalMixing = Random.Range(data.MixingMin, data.MixingMax + 1);
 
             this.score = 0;
             this.highScore = 0;
@@ -408,13 +515,16 @@ namespace VoiceActing
             {
                 eventData.Add(data.EventData[i]);
             }
+        }
 
-            // Select Characters --------------------------------------------------------------------------------------------------------------
+
+        private void CreateRoles(ContractData data)
+        {
             for (int i = 0; i < data.Characters.Length; i++)
             {
                 if (data.Characters[i].Optional == true)
                 {
-                    if(Random.Range(0f,1f) >= 0.5f)
+                    if (Random.Range(0f, 1f) >= 0.5f)
                     {
                         int selectProfil = Random.Range(0, data.Characters[i].CharactersProfil.Length);
                         characters.Add(new Role(data.Characters[i].CharactersProfil[selectProfil]));
@@ -427,97 +537,13 @@ namespace VoiceActing
                 }
             }
 
-
             voiceActorsID = new List<string>(characters.Count);
             for (int i = 0; i < characters.Count; i++)
             {
                 voiceActorsID.Add(string.Empty);
             }
-
-
-
-
-
-
-            // Dictionary ------------------------------------------------------------------------
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            if (data.ContractDictionnary.Length != 0)
-            {
-                for (int i = 0; i < data.ContractDictionnary.Length; i++)
-                {
-                    dictionary.Add(data.ContractDictionnary[i].nameID, data.ContractDictionnary[i].namesDictionnary[Random.Range(0, data.ContractDictionnary[i].namesDictionnary.Length)]);
-                }
-                this.name = StringReplace(this.name, dictionary);
-                this.description = StringReplace(this.description, dictionary);
-                for(int i = 0; i < characters.Count; i++)
-                {
-                    characters[i].Name = StringReplace(characters[i].Name, dictionary);
-                }
-                //StringBuilderReplace(new StringBuilder(this.name, this.name.Length * 2), dictionary);
-                //StringBuilderReplace(new StringBuilder(this.description, this.description.Length * 2), dictionary);
-            }
-            // Dictionary ------------------------------------------------------------------------
-
-
-            // Select TextData --------------------------------------------------------------------------------------------------------------
-            CreateTextData(data, dictionary);
-
-
-            emotionsUsed = new List<EmotionUsed>(textData.Count);
-
         }
 
-
-
-
-
-
-        // Créer un contrat d'une franchise
-        public Contract(ContractData cd, FranchiseSave franchiseSave, int contractIndex)
-        {
-
-            int number = 0;
-            Franchise fra = cd.Franchise;
-            ContractData data;
-            string prefix = "";
-            string suffix = "";
-            if (contractIndex == 0)
-                data = cd;
-            else
-                data = fra.contractDatas[contractIndex-1];
-
-
-            // Set name ==================================================================
-            if(franchiseSave.IsRemaster)
-            {
-                number = franchiseSave.CurrentFranchiseNumber % (fra.contractDatas.Count+1);
-                if (franchiseSave.CurrentFranchiseNumber > fra.contractDatas.Count)
-                {
-                    if (fra.prefix == true)
-                        prefix = fra.remasterSuffix + " ";
-                    else
-                        suffix = " " + fra.remasterSuffix;
-                }
-            }
-            else
-            {
-                number = franchiseSave.CurrentFranchiseNumber;
-            }
-
-            if(number == 0)
-                this.name = prefix + data.Name + suffix;
-            else
-                this.name = prefix + data.Name + " " + (number+1) + suffix;
-
-
-
-
-        }
-
-
-
-
-        // =================================================================================================================================================================
 
         private void CreateTextData(ContractData data, Dictionary<string, string> dictionary)
         {
@@ -567,6 +593,71 @@ namespace VoiceActing
             }
             totalLine = textData.Count;
         }
+
+
+
+
+
+
+
+
+
+
+
+        private void SetNameForRemaster(ContractData data, Franchise fra, FranchiseSave franchiseSave)
+        {
+            int number = 0;
+            string prefix = "";
+            string suffix = "";
+
+            // Set name --------------------------------------------------------------------------------------------------------------
+            if (franchiseSave.IsRemaster)
+            {
+                number = franchiseSave.CurrentFranchiseNumber % (fra.contractDatas.Count + 1);
+                if (franchiseSave.CurrentFranchiseNumber > fra.contractDatas.Count)
+                {
+                    if (fra.prefix == true)
+                        prefix = fra.remasterSuffix + " ";
+                    else
+                        suffix = " " + fra.remasterSuffix;
+                }
+            }
+            else
+            {
+                number = franchiseSave.CurrentFranchiseNumber;
+            }
+
+            if (number == 0)
+                this.name = prefix + data.Name + suffix;
+            else
+                this.name = prefix + data.Name + " " + (number + 1) + suffix;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public bool CheckCharacterLock(List<VoiceActor> voicesActorsPlayer)

@@ -192,7 +192,40 @@ namespace VoiceActing
 
     }
 
+    [System.Serializable]
+    public class RoleFranchise
+    {
+        [SerializeField]
+        private string nameID;
+        public string NameID
+        {
+            get { return nameID; }
+            set { nameID = value; }
+        }
 
+        [SerializeField]
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        [SerializeField]
+        private int fan;
+        public int Fan
+        {
+            get { return fan; }
+            set { fan = value; }
+        }
+
+        public RoleFranchise(Role role)
+        {
+            nameID = role.NameID;
+            name = role.Name;
+            fan = role.Fan;
+        }
+    }
 
     [System.Serializable]
     public class FranchiseSave
@@ -221,10 +254,17 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<Contract> contractPreviousInstallements;
-        public List<Contract> ContractPreviousInstallements
+        private Dictionary<string,string> franchiseDictionnary;
+        public Dictionary<string, string> FranchiseDictionnary
         {
-            get { return contractPreviousInstallements; }
+            get { return franchiseDictionnary; }
+        }
+
+        [SerializeField]
+        private List<RoleFranchise> franchiseRoles;
+        public List<RoleFranchise> FranchiseRoles
+        {
+            get { return franchiseRoles; }
         }
 
 
@@ -232,12 +272,19 @@ namespace VoiceActing
         {
             franchiseName = frName;
             currentFranchiseNumber = -1;
-            contractPreviousInstallements = new List<Contract>(contractLenght);
+            franchiseRoles = new List<RoleFranchise>();
+            franchiseDictionnary = new Dictionary<string, string>();
         }
 
         public void RebootFranchise()
         {
-            contractPreviousInstallements.Clear();
+            franchiseDictionnary.Clear();
+            franchiseRoles.Clear();
+        }
+
+        public void RemovePreviousActors()
+        {
+            
         }
 
     }

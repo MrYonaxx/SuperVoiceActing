@@ -29,22 +29,26 @@ MonoBehaviour:
     - Ragab VII :Wing of Destruction
     - Demonborne
     - Higamania
-  - nameID: '[Dev]'
-    namesDictionnary:
-    - Sacourail
-    - Ninjamoto
-    - "Id\xE9ho"
-    - Saqagouchi
   description: []
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -52,6 +56,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -90,7 +95,11 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Sacourail
+      roleNames:
+      - Ninjamoto
+      - "Id\xE9ho"
+      - Saqagouchi
       roleSprite: {fileID: 0}
       roleType: 1
       rolePersonality: 6
@@ -236,7 +245,7 @@ MonoBehaviour:
       copy: 0
       textCopy: -1
     textDataPossible:
-    - text: 'Ici, [Dev], producer pour '
+    - text: 'Ici, [Sacourail], producer pour '
       textStats:
         interlocuteurID: 1
         linked: 0

@@ -45,6 +45,14 @@ namespace VoiceActing
         [Header("CharacterData")]
 
         [SerializeField]
+        private string nameID;
+        public string NameID
+        {
+            get { return nameID; }
+            set { nameID = value; }
+        }
+
+        [SerializeField]
         private string name;
         public string Name
         {
@@ -72,6 +80,7 @@ namespace VoiceActing
         public int Fan
         {
             get { return fan; }
+            set { fan = value; }
         }
 
         [SerializeField]
@@ -224,7 +233,12 @@ namespace VoiceActing
 
         public Role(RoleContractData data)
         {
-            this.name = data.RoleName;
+            this.nameID = data.RoleName;
+            int r = Random.Range(0, data.RoleNames.Length+1)-1;
+            if(r == -1)
+                this.name = data.RoleName;
+            else
+                this.name = data.RoleNames[r];
 
             this.rolePersonality = data.RolePersonality;
             this.roleType = data.RoleType;

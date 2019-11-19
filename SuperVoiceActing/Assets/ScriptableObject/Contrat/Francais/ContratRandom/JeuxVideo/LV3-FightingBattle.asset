@@ -54,16 +54,23 @@ MonoBehaviour:
     un annonceur charismatique pour accompagner les affrontements !"
   franchise:
     Enabled: 1
+    isSeries: 1
     canScale: 1
-    isSeries: 0
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootAsRemaster: 0
+    chanceOfRebootAtEachIteration: 0
     alwaysRebootAtEnd: 0
-    chanceOfRebootAsRemaster: 100
-    rebootSuffix: 
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -71,6 +78,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: Annonceur
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 3
       rolePersonality: 0

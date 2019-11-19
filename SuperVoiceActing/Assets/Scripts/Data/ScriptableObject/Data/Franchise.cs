@@ -144,7 +144,7 @@ namespace VoiceActing
 
 
 
-        public bool FranchiseDirection(FranchiseSave franchiseSave)
+        public void FranchiseDirection(FranchiseSave franchiseSave)
         {
             int chanceReboot = 0;
             int chanceRemaster = 0;
@@ -179,16 +179,11 @@ namespace VoiceActing
                 franchiseSave.IsRemaster = false;
                 franchiseSave.CurrentFranchiseNumber = 0;
                 franchiseSave.RebootFranchise();
-                return false;
             }
             else if (r < chanceRemaster) // Remaster
             {            
                 franchiseSave.IsRemaster = true;
-                return true;
-            }
-            else // Sequel
-            {
-                return true;
+                franchiseSave.RemovePreviousActors();
             }
         }
 

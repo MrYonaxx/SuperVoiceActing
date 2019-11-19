@@ -272,7 +272,15 @@ namespace VoiceActing
         }
 
 
+        [ContextMenu("Draw Contract")]
+        public void GachaContractDebug(string contractName)
+        {
+            playerData.ContractGacha.Clear();
+            playerData.ContractGacha.Add(contractName);
+            managementContract.GachaContract(playerData);
+            contractAvailable.SetContractAvailable(playerData.ContractAvailable);
 
+        }
 
 
 

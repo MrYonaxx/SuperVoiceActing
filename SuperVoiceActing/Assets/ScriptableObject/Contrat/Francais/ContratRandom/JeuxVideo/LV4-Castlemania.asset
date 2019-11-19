@@ -29,35 +29,39 @@ MonoBehaviour:
     - Castlemania
     - Dungeonmania
     - Higamania
-  - nameID: '[Richter]'
-    namesDictionnary:
-    - Richard
-    - Trevor
-    - Simon
-  - nameID: '[Dracula]'
-    namesDictionnary:
-    - Seigneur vampire
-    - Vampire
   description:
   - "[Nom] est un jeu d'action et d'exploration d'un grand ch\xE2teau habit\xE9 par
     un vampire.\n\nLa sc\xE8ne cl\xE9 est l'\xE9change entre le h\xE9ros et le ma\xEEtre
     des lieux avant leur combat fatidique."
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 1
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: '[Richter]'
+    - roleName: Richard
+      roleNames:
+      - Trevor
+      - Simon
       roleSprite: {fileID: 21300000, guid: 1eba9f3f71db5964880d475872f98dd7, type: 3}
       roleType: 0
       rolePersonality: 0
@@ -96,7 +100,9 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: '[Dracula]'
+    - roleName: Seigneur vampire
+      roleNames:
+      - Vampire
       roleSprite: {fileID: 21300000, guid: 4d7cbfabcb4a34a45bf4e679a01421de, type: 3}
       roleType: 0
       rolePersonality: 0

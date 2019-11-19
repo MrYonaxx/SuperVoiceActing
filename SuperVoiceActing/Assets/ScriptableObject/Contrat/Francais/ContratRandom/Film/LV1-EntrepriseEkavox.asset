@@ -29,10 +29,12 @@ MonoBehaviour:
     Ekavox."
   franchise:
     Enabled: 1
-    isSeries: 1
+    isSeries: 0
     canScale: 1
     canStartFranchiseAtMin: 0
     canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
     chanceOfRebootAtEachIteration: 0
     alwaysRebootAtEnd: 0
@@ -43,6 +45,7 @@ MonoBehaviour:
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -50,6 +53,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: Narrateur
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0

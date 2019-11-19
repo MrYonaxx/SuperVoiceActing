@@ -61,6 +61,15 @@ namespace VoiceActing
         }
 
         [VerticalGroup("RoleStat/Data/Left")]
+        [SerializeField]
+        private string[] roleNames;
+        public string[] RoleNames
+        {
+            get { return roleNames; }
+            set { roleNames = value; }
+        }
+
+        [VerticalGroup("RoleStat/Data/Left")]
         [LabelWidth(80)]
         [HideLabel]
         [SerializeField]

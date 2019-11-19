@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LV5-DemonBorne
   m_EditorClassIdentifier: 
-  contractName: Demonborne
+  contractName: '[Nom]'
   level: 5
   contractType: 2
   salaryMin: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     - Demonborne
     - Bloodsouls
   description:
-  - Je suis demonborne 1.
+  - Je suis [Nom] 1.
   franchise:
     Enabled: 1
     isSeries: 1
@@ -58,13 +58,15 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: "Poup\xE9e"
+      roleNames:
+      - 
       roleSprite: {fileID: 0}
       roleType: 1
       rolePersonality: 0
       lineMin: 0
       lineMax: 0
-      fanMin: 0
-      fanMax: 0
+      fanMin: 5000
+      fanMax: 5000
       atkMin: 0
       atkMax: 0
       defMin: 0
@@ -97,6 +99,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: "P\xE8re Gascoigne"
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
