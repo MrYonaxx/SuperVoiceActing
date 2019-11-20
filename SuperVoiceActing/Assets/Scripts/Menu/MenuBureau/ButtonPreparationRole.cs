@@ -110,7 +110,7 @@ namespace VoiceActing
             if (voiceActor.Availability == false)
                 imageActorFace.color = Color.black;
             else
-                imageActorFace.color = Color.white;
+                imageActorFace.color = new Color(1,1,1,0.4f);
         }
 
         public void SelectButton()

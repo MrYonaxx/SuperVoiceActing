@@ -39,13 +39,23 @@ MonoBehaviour:
   description: []
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -53,6 +63,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -93,10 +104,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -105,7 +117,6 @@ MonoBehaviour:
     - text: '[Onomatop], les cordons bleus de chez [Nom] ...'
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -120,12 +131,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 2
-      nbPhraseMax: 2
-      condition: 0
+      nbMin: 1
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -134,7 +147,6 @@ MonoBehaviour:
     - text: "Du jambon de cochons de pays, tu\xE9s \xE0 la main..."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -151,10 +163,10 @@ MonoBehaviour:
       - wordIndex: 1
       - wordIndex: 6
       - wordIndex: 9
+      customTextDatas: []
     - text: "Du fromage de qualit\xE9 sup\xE9rieure..."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -170,12 +182,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -184,7 +198,6 @@ MonoBehaviour:
     - text: Hmmm ...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -199,12 +212,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -213,7 +228,6 @@ MonoBehaviour:
     - text: Il n'y a rien de meilleur !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -228,6 +242,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

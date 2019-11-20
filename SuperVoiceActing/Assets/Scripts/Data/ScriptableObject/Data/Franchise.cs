@@ -115,7 +115,7 @@ namespace VoiceActing
             int selectIndex = 0;
             if (priorityScaling == true) // Select the hardest contract for the current playerLevel
             {
-                int bestLevel = playerLevel;
+                int bestLevel = 0;
                 for (int i = 0; i < contractDatas.Count; i++)
                 {
                     if (contractDatas[i].Level > bestLevel && contractDatas[i].Level < playerLevel)

@@ -119,10 +119,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -131,7 +132,6 @@ MonoBehaviour:
     - text: '[Nom] !'
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 60
       enemyResistance:
@@ -145,12 +145,14 @@ MonoBehaviour:
         fear: -100
         trust: 100
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 4
-      condition: 0
+      nbMin: 2
+      nbMax: 4
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -159,7 +161,6 @@ MonoBehaviour:
     - text: Combat !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -173,10 +174,10 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Histoire !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -190,10 +191,10 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Entrainement !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -207,10 +208,10 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Options !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -224,10 +225,10 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Arcade !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -241,10 +242,10 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Jeu en ligne !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -258,12 +259,14 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -272,7 +275,6 @@ MonoBehaviour:
     - text: Et le vainqueur est... !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -288,10 +290,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 3
+      customTextDatas: []
     - text: '... est le gagnant !'
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -306,10 +308,10 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
     - text: "Vous avez gagn\xE9 !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -324,12 +326,14 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -338,7 +342,6 @@ MonoBehaviour:
     - text: Perdu.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -353,10 +356,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: Vous avez perdu.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -371,10 +374,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
     - text: "Partie termin\xE9e."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -389,10 +392,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: Game Over.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -407,12 +410,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -421,7 +426,6 @@ MonoBehaviour:
     - text: "Pr\xEAts... ?"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -436,10 +440,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: "\xCAtes-vous pr\xEAts... ?"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -454,10 +458,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: Il ne peut en rester qu'un...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 60
       enemyResistance:
@@ -472,10 +476,10 @@ MonoBehaviour:
         trust: 20
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
     - text: La roue du destin est sur le point de tourner...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 60
       enemyResistance:
@@ -490,10 +494,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: "Premi\xE8re manche..."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -508,12 +512,14 @@ MonoBehaviour:
         trust: 20
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -522,7 +528,6 @@ MonoBehaviour:
     - text: Partez !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 50
       enemyResistance:
@@ -537,10 +542,10 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: Combattez !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 50
       enemyResistance:
@@ -555,10 +560,10 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: Fight !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 70
       enemyResistance:
@@ -572,10 +577,10 @@ MonoBehaviour:
         fear: -90
         trust: 100
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Let's rock !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 70
       enemyResistance:
@@ -590,10 +595,10 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: Divide !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 70
       enemyResistance:
@@ -608,12 +613,14 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -622,7 +629,6 @@ MonoBehaviour:
     - text: Fini !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 40
       enemyResistance:
@@ -637,10 +643,10 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: "Temps \xE9coul\xE9 !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -655,10 +661,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: Perfect !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 45
       enemyResistance:
@@ -673,10 +679,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: K . O !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 50
       enemyResistance:
@@ -691,6 +697,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

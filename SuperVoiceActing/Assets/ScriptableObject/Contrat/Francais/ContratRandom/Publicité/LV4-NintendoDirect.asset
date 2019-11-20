@@ -12,24 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
   m_Name: LV4-NintendoDirect
   m_EditorClassIdentifier: 
-  contractName: 
+  contractName: '[Nom]'
   level: 4
   contractType: 3
-  salaryMin: 0
-  salaryMax: 0
+  salaryMin: 8000
+  salaryMax: 9000
   mixingMin: 0
   mixingMax: 0
-  weekMin: 0
-  weekMax: 0
-  expGain: 0
-  expBonus: 0
+  weekMin: 2
+  weekMax: 3
+  expGain: 70
+  expBonus: 1400
   contractDictionnary:
   - nameID: '[Game]'
     namesDictionnary:
     - Ragab VII :Wing of Destruction
     - Demonborne
     - Higamania
-  description: []
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Direct Hacktus
+    - "Pr\xE9sentation en ligne"
+  description:
+  - "Afin de communiquer aux joueurs les nouveaut\xE9s de notre console de jeux, nous
+    avons r\xE9alis\xE9 une vid\xE9o d'information.\n\nPour que le public m\xE9ridional
+    puisse comprendre, nous avons besoin d'un studio de voix-off."
   franchise:
     Enabled: 1
     isSeries: 0
@@ -55,21 +62,21 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: "Pr\xE9sentateur"
       roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
-      lineMin: 0
-      lineMax: 0
+      lineMin: 20
+      lineMax: 50
       fanMin: 0
       fanMax: 0
       atkMin: 0
       atkMax: 0
       defMin: 0
       defMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      timbre: {x: 0, y: 10}
+      timbreRand: {x: 0, y: 10}
       characterStatMin:
         neutral: 0
         joy: 0
@@ -103,16 +110,16 @@ MonoBehaviour:
       roleSprite: {fileID: 0}
       roleType: 1
       rolePersonality: 6
-      lineMin: 0
-      lineMax: 0
+      lineMin: 20
+      lineMax: 50
       fanMin: 0
       fanMax: 0
       atkMin: 0
       atkMax: 0
       defMin: 0
       defMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      timbre: {x: 0, y: 10}
+      timbreRand: {x: 0, y: 10}
       characterStatMin:
         neutral: 0
         joy: 0
@@ -140,10 +147,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -152,26 +160,25 @@ MonoBehaviour:
     - text: Bonjour, tout le monde.
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 100
+        sadness: -90
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: -90
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Je serai votre guide pour le direct d'aujourd'hui.
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -183,12 +190,24 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
     - text: Et commencons avec un premier jeu, [Game].
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -200,29 +219,39 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: Le trailer vous a plus ?
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+      customTextDatas:
+      - text: Le trailer vous a plus ?
+        textStats:
+          interlocuteurID: 0
+          hpMin: 50
+          hpMax: 60
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+  - textDataCondition:
+      all: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
     - text: "\xC0 pr\xE9sent, pour le prochain jeu, Mr [Dev] souhaite vous parler."
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -234,12 +263,31 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
+    - text: "Et Mr[Dev] \xE0 un message pour vous."
+      textStats:
+        interlocuteurID: 0
+        hpMin: 50
+        hpMax: 60
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -248,9 +296,8 @@ MonoBehaviour:
     - text: 'Ici, [Sacourail], producer pour '
       textStats:
         interlocuteurID: 1
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -262,12 +309,12 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Nous souhaitons remercier nos joueurs d'avoir \xE9t\xE9 aussi fid\xE8le."
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -279,12 +326,12 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Vous \xEAtes la meilleure communaut\xE9 possible !"
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -296,12 +343,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -310,9 +359,8 @@ MonoBehaviour:
     - text: Cela conclus le direct d'aujourd'hui.
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -324,13 +372,13 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Merci d'avoir \xE9t\xE9 pr\xE9sent et nous vous donnons rendez-vous une
         prochaine fois."
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 50
+        hpMax: 60
       enemyResistance:
         neutral: 0
         joy: 0
@@ -342,6 +390,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
@@ -351,5 +400,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
-  debugHPMin: 0
-  debugHPMax: 0
+  debugHPMin: 50
+  debugHPMax: 60

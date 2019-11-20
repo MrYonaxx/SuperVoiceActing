@@ -43,38 +43,38 @@ namespace VoiceActing
             get { return all; }
         }
 
-        [Space]
-        [HorizontalGroup("PhraseMin", LabelWidth = 100, Width = 100)]
+        //[Space]
+        [HorizontalGroup("PhraseMin", LabelWidth = 70, Width = 100)]
         [HideIf("all")]
         [SerializeField]
-        private int nbPhraseMin;
-        public int NbPhraseMin
+        private int nbMin;
+        public int NbMin
         {
-            get { return nbPhraseMin; }
+            get { return nbMin; }
         }
 
-        [HorizontalGroup("PhraseMax", LabelWidth = 100, Width = 100)]
+        [HorizontalGroup("PhraseMax", LabelWidth = 70, Width = 100)]
         [HideIf("all")]
         [SerializeField]
-        private int nbPhraseMax;
-        public int NbPhraseMax
+        private int nbMax;
+        public int NbMax
         {
-            get { return nbPhraseMax; }
+            get { return nbMax; }
         }
 
-        [Space]
-
-        [HorizontalGroup("Condition", LabelWidth = 100, Width = 100)]
+        //[Space]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("Condition", LabelWidth = 100, Width = 100)]
         [SerializeField]
-        private bool condition;
-        public bool Condition
+        private bool conditionChara;
+        public bool ConditionChara
         {
-            get { return condition; }
+            get { return conditionChara; }
         }
 
-        [Header("PersoCondition")]
-        [HorizontalGroup("ConditionPerso", LabelWidth = 100, Width = 100)]
-        [ShowIf("condition")]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("ConditionPerso", LabelWidth = 100, Width = 100)]
+        [ShowIf("conditionChara")]
         [SerializeField]
         [HideLabel]
         private int characterCondition;
@@ -83,9 +83,19 @@ namespace VoiceActing
             get { return characterCondition; }
         }
 
-        [Header("DictCondition")]
-        [HorizontalGroup("Dictionnary", LabelWidth = 100, Width = 100)]
-        [ShowIf("condition")]
+        //[Space]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("ConditionDico", LabelWidth = 100, Width = 100)]
+        [SerializeField]
+        private bool conditionDico;
+        public bool ConditionDico
+        {
+            get { return conditionDico; }
+        }
+
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("Dictionnary", LabelWidth = 100, Width = 100)]
+        [ShowIf("conditionDico")]
         [SerializeField]
         [HideLabel]
         private string dictID;
@@ -94,8 +104,9 @@ namespace VoiceActing
             get { return dictID; }
         }
 
-        [HorizontalGroup("Dictionnary2", LabelWidth = 100, Width = 100)]
-        [ShowIf("condition")]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("Dictionnary2", LabelWidth = 100, Width = 100)]
+        [ShowIf("conditionDico")]
         [SerializeField]
         [HideLabel]
         private string dictCondition;
@@ -104,11 +115,11 @@ namespace VoiceActing
             get { return dictCondition; }
         }
 
-        [Space]
+        //[Space]
 
 
-
-        [HorizontalGroup("Copy", LabelWidth = 100, Width = 100)]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("Copy", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private bool copy;
         public bool Copy
@@ -116,7 +127,8 @@ namespace VoiceActing
             get { return copy; }
         }
 
-        [HorizontalGroup("Copy2", LabelWidth = 100, Width = 100)]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("Copy2", LabelWidth = 100, Width = 100)]
         [ShowIf("copy")]
         [SerializeField]
         [HideLabel]
@@ -167,13 +179,13 @@ namespace VoiceActing
         {
             get { return interlocuteurID; }
         }
-        [HorizontalGroup("Interlocuteur", LabelWidth = 100, Width = 100)]
+        /*[HorizontalGroup("Interlocuteur", LabelWidth = 100, Width = 100)]
         [SerializeField]
         private int linked;
         public int Linked
         {
             get { return linked; }
-        }
+        }*/
 
         [HorizontalGroup("HP", LabelWidth = 100, Width = 100)]
         [SerializeField]
@@ -241,8 +253,6 @@ namespace VoiceActing
     public class TextDataContract
     {
 
-
-        [Space]
         [SerializeField]
         [HorizontalGroup("Test3", Width = 200, MarginLeft = 20)]
         [TextArea(1, 1)]
@@ -276,8 +286,8 @@ namespace VoiceActing
             set { enemyResistance = value; }
         }
 
-        //[TabGroup("ParentGroup", "Points faibles")]
-        [Space]
+
+        [HideInInspector]
         [SerializeField]
         private WeakPoint[] enemyWeakPoints;
         public WeakPoint[] EnemyWeakPoints
@@ -286,6 +296,50 @@ namespace VoiceActing
             set { enemyWeakPoints = value; }
         }
 
+        [Space]
+        [HorizontalGroup("CustomTextData")]
+        [SerializeField]
+        private CustomTextData[] customTextDatas;
+        public CustomTextData[] CustomTextDatas
+        {
+            get { return customTextDatas; }
+        }
+
+
+
+    }
+
+    [System.Serializable]
+    public class CustomTextData
+    {
+        [SerializeField]
+        [HorizontalGroup("Test3", Width = 200, MarginLeft = 20)]
+        [TextArea(1, 1)]
+        [HideLabel]
+        private string text;
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+
+        [HorizontalGroup("Test3")]
+        [SerializeField]
+        [HideLabel]
+        private TextStats textStats;
+        public TextStats TextStats
+        {
+            get { return textStats; }
+        }
+
+        [SerializeField]
+        [HideLabel]
+        private EmotionStat enemyResistance;
+        public EmotionStat EnemyResistance
+        {
+            get { return enemyResistance; }
+            set { enemyResistance = value; }
+        }
     }
 
 
@@ -571,6 +625,10 @@ namespace VoiceActing
                 for (int j = 0; j < textDataContract[i].TextDataPossible.Length; j++)
                 {
                     textDataContract[i].TextDataPossible[j].TextStats.SetDebugHP(debugHPMin, debugHPMax);
+                    for (int k = 0; k < textDataContract[i].TextDataPossible[j].CustomTextDatas.Length; k++)
+                    {
+                        textDataContract[i].TextDataPossible[j].CustomTextDatas[k].TextStats.SetDebugHP(debugHPMin, debugHPMax);
+                    }
                 }
             }
         }

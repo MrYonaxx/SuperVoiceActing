@@ -33,13 +33,23 @@ MonoBehaviour:
   - La lessive [Nom] est notre nouveau produit.
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -47,6 +57,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -87,10 +98,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -99,7 +111,6 @@ MonoBehaviour:
     - text: "Bwah je suis une t\xE2che ind\xE9l\xE9bile !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 14
       enemyResistance:
@@ -115,12 +126,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 5
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -129,7 +142,6 @@ MonoBehaviour:
     - text: "Personne ne r\xE9ussira \xE0 m'extirper de ce tee-shirt blanc !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 13
         hpMax: 17
       enemyResistance:
@@ -143,10 +155,10 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Personne ne r\xE9ussira \xE0 m'extirper de cette chemise blanche !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 13
         hpMax: 17
       enemyResistance:
@@ -160,10 +172,10 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Personne ne r\xE9ussira \xE0 m'extirper de ce magnifique jean blanc !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 13
         hpMax: 17
       enemyResistance:
@@ -177,12 +189,14 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -191,7 +205,6 @@ MonoBehaviour:
     - text: "Je d\xE9teste la lessive !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -206,10 +219,10 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: Surtout la lessive de la marque [Nom] !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -224,12 +237,14 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 6
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -238,7 +253,6 @@ MonoBehaviour:
     - text: "Qui apporte de l'\xE9clat \xE0 vos v\xEAtements."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -253,10 +267,10 @@ MonoBehaviour:
         trust: -50
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: "Qui illumine vos v\xEAtements et votre vie."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -270,12 +284,14 @@ MonoBehaviour:
         fear: -30
         trust: -50
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      nbMin: 1
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -284,7 +300,6 @@ MonoBehaviour:
     - text: "Je la d\xE9teste !!"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -298,11 +313,11 @@ MonoBehaviour:
         fear: -20
         trust: -50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Noooon ! Cette personne au grand sourire utilise la lessive [Nom] sur
         moi !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -317,12 +332,14 @@ MonoBehaviour:
         trust: -80
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -331,7 +348,6 @@ MonoBehaviour:
     - text: "Je ne peux pas y r\xE9sister..."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -346,10 +362,10 @@ MonoBehaviour:
         trust: -50
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: "La lessive [Nom], pour des v\xEAtements d'un blanc... Eclatant."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 10
         hpMax: 10
       enemyResistance:
@@ -365,6 +381,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 8
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

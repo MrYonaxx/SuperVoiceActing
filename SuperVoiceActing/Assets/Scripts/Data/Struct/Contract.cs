@@ -549,7 +549,7 @@ namespace VoiceActing
         {
             for (int i = 0; i < data.TextDataContract.Length; i++)
             {
-                if (data.TextDataContract[i].TextDataCondition.Condition == true)
+                if (data.TextDataContract[i].TextDataCondition.ConditionDico == true)
                 {
                     if (data.TextDataContract[i].TextDataCondition.DictCondition != dictionary[data.TextDataContract[i].TextDataCondition.DictID])
                     {
@@ -565,12 +565,13 @@ namespace VoiceActing
                         textData.Add(new TextData(data.TextDataContract[i].TextDataPossible[j]));
                         textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
                         /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);*/
+                        CreateLinkedTextData(data.TextDataContract[i].TextDataPossible[j], dictionary);
                     }
                 }
                 else
                 {
                     // Selection aléatoire
-                    int nbSelection = Random.Range(data.TextDataContract[i].TextDataCondition.NbPhraseMin, data.TextDataContract[i].TextDataCondition.NbPhraseMax + 1);
+                    int nbSelection = Random.Range(data.TextDataContract[i].TextDataCondition.NbMin, data.TextDataContract[i].TextDataCondition.NbMax + 1);
                     if (nbSelection > 0)
                     {
                         // Copie des possibilité de text Data
@@ -586,6 +587,7 @@ namespace VoiceActing
                             textData.Add(new TextData(listTextDataPossibilities[indexRandom]));
                             textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
                             /*StringReplace(new StringBuilder(textData[textData.Count - 1].Text, textData[textData.Count - 1].Text.Length * 2), dictionary);*/
+                            CreateLinkedTextData(listTextDataPossibilities[indexRandom], dictionary);
                             listTextDataPossibilities.RemoveAt(indexRandom);
                         }
                     }
@@ -598,7 +600,16 @@ namespace VoiceActing
 
 
 
-
+        private void CreateLinkedTextData(TextDataContract textDataContract, Dictionary<string, string> dictionary)
+        {
+            if (textDataContract.CustomTextDatas == null)
+                return;
+            for(int k = 0; k < textDataContract.CustomTextDatas.Length; k++)
+            {
+                textData.Add(new TextData(textDataContract.CustomTextDatas[k]));
+                textData[textData.Count - 1].Text = StringReplace(textData[textData.Count - 1].Text, dictionary);
+            }
+        }
 
 
 

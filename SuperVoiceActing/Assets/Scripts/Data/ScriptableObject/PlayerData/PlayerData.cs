@@ -790,6 +790,10 @@ namespace VoiceActing
             for (int i = 0; i < initialPlayerData.VoiceActorsDebug.Count; i++)
             {
                 voiceActors.Add(new VoiceActor(initialPlayerData.VoiceActorsDebug[i]));
+                while(voiceActors[i].Level < 20)
+                {
+                    voiceActors[i].LevelUp();
+                }
             }
 
             voiceActorsGacha = new List<VoiceActor>(initialPlayerData.VoiceActorsGachaDebug.Count);

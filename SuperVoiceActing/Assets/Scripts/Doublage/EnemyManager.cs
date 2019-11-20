@@ -72,6 +72,14 @@ namespace VoiceActing
             enemyWeakPoints = data.EnemyWeakPoints;
         }
 
+        public TextData(CustomTextData data)
+        {
+            interlocuteur = data.TextStats.InterlocuteurID;
+            hpMax = Random.Range(data.TextStats.HPMin, data.TextStats.HPMax);
+            text = data.Text;
+            enemyResistance = data.EnemyResistance;
+        }
+
     }
 
     [System.Serializable]
