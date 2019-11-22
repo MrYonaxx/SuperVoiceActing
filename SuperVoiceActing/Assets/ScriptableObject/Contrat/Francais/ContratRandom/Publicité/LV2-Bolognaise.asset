@@ -29,13 +29,23 @@ MonoBehaviour:
     forme de nouilles instantan\xE9es !"
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -43,6 +53,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -83,10 +94,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -96,7 +108,6 @@ MonoBehaviour:
         de ma Mama !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 35
       enemyResistance:
@@ -112,12 +123,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 12
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -126,7 +139,6 @@ MonoBehaviour:
     - text: "L'ardente saveur du coulis de tomates fra\xEEches !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 35
       enemyResistance:
@@ -142,12 +154,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 4
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -156,7 +170,6 @@ MonoBehaviour:
     - text: "La viande de pays d'une qualit\xE9 unique !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 30
       enemyResistance:
@@ -171,10 +184,10 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 7
+      customTextDatas: []
     - text: "Le subtil go\xFBt du basilique !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 30
       enemyResistance:
@@ -189,12 +202,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -203,7 +218,6 @@ MonoBehaviour:
     - text: "En temps que grand cuisinier, j'aime relever des d\xE9fis."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 30
       enemyResistance:
@@ -218,12 +232,14 @@ MonoBehaviour:
         trust: 70
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -232,7 +248,6 @@ MonoBehaviour:
     - text: "Et si... Je pouvais retranscrire ce go\xFBt unique !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 30
       enemyResistance:
@@ -247,12 +262,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 4
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -261,7 +278,6 @@ MonoBehaviour:
     - text: "Avec des nouilles instantan\xE9es !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 35
         hpMax: 45
       enemyResistance:
@@ -276,12 +292,14 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -290,7 +308,6 @@ MonoBehaviour:
     - text: "L'id\xE9e est folle mais je l'ai fait !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -305,11 +322,11 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
     - text: "Avec les nouilles instantan\xE9es Bolognaise, les saveurs de la m\xE9dit\xE9ran\xE9e
         sont retrouv\xE9es !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 50
       enemyResistance:
@@ -323,12 +340,14 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -338,7 +357,6 @@ MonoBehaviour:
         sauce !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 25
       enemyResistance:
@@ -353,12 +371,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 9
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -368,7 +388,6 @@ MonoBehaviour:
         front !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 25
       enemyResistance:
@@ -383,6 +402,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

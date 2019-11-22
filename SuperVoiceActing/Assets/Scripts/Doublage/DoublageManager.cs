@@ -375,6 +375,9 @@ namespace VoiceActing
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
                 actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+
+                lastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                skillManager.UpdateMovelist(lastAttackEmotion);
                 //toneManager.HighlightTone(card.GetEmotion(), true);
             }
         }
@@ -386,6 +389,9 @@ namespace VoiceActing
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
                 actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+
+                lastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                skillManager.UpdateMovelist(lastAttackEmotion);
                 //toneManager.HighlightTone(card.GetEmotion(), true);
             }
         }
@@ -396,6 +402,9 @@ namespace VoiceActing
             if (card != null)
             {
                 actorsManager.RemoveAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+
+                lastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                skillManager.UpdateMovelist(lastAttackEmotion);
                 //toneManager.HighlightTone(card.GetEmotion(), false);
             }
         }

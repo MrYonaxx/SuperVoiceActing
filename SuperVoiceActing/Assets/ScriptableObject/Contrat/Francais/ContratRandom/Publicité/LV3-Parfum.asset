@@ -28,12 +28,33 @@ MonoBehaviour:
   - 'La nouvelle gamme de Parfum est sorti.
 
     Nous recherchons une voix sensuelle pour sa promotion.'
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Femme
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
       roleType: 0
       rolePersonality: 0
@@ -91,8 +112,8 @@ MonoBehaviour:
           conditionValue: 2
         skills:
         - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
-    - names:
-      - Homme
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
       roleType: 0
       rolePersonality: 0
@@ -155,10 +176,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      nbMin: 1
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -167,7 +189,6 @@ MonoBehaviour:
     - text: Cette douce odeur...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 50
       enemyResistance:
@@ -181,10 +202,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Ce parfum...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 50
       enemyResistance:
@@ -198,12 +219,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 4
-      condition: 0
+      nbMin: 2
+      nbMax: 4
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -212,7 +235,6 @@ MonoBehaviour:
     - text: Hmmm...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 60
       enemyResistance:
@@ -226,10 +248,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Ha...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 60
       enemyResistance:
@@ -243,10 +265,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Enivrant...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 60
       enemyResistance:
@@ -260,10 +282,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Splendide...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 40
         hpMax: 60
       enemyResistance:
@@ -277,12 +299,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -291,7 +315,6 @@ MonoBehaviour:
     - text: Parfum [Nom], une fragrance euphorique.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 70
         hpMax: 80
       enemyResistance:
@@ -307,6 +330,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

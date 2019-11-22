@@ -26,14 +26,33 @@ MonoBehaviour:
   contractDictionnary: []
   description:
   - Je suis un contrat test dans l'unique but de montrer rapidement du gameplay.
-  isFranchise: 0
-  franchiseNames: []
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Lia
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
       roleType: 0
       rolePersonality: 0
@@ -74,6 +93,14 @@ MonoBehaviour:
         startAttack: 0
         endAttack: 0
         endPhrase: 0
+        conditions: []
+        skills:
+        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
+      - memo: 
+        startPhrase: 1
+        startAttack: 0
+        endAttack: 0
+        endPhrase: 0
         conditions:
         - condition: 2
           mathOperator: 0
@@ -83,8 +110,8 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Yonax
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -125,17 +152,19 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: De l'eau... je meurs de soif...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -150,19 +179,22 @@ MonoBehaviour:
         trust: -80
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Arr\xEAte de jacasser tu fais trop de bruit !"
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 30
         hpMax: 30
       enemyResistance:
@@ -177,19 +209,22 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "C'est la faute de ce maudit d\xE9sert !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -205,19 +240,22 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 5
       - wordIndex: 6
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Oh ! Regarde ! Une oasis !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 15
       enemyResistance:
@@ -234,19 +272,22 @@ MonoBehaviour:
       - wordIndex: 0
       - wordIndex: 1
       - wordIndex: 3
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "On est sauv\xE9s !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -261,6 +302,7 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
@@ -270,3 +312,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

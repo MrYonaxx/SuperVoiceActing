@@ -30,13 +30,23 @@ MonoBehaviour:
     Nous recherchons une voix sensuelle pour sa promotion.'
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 1
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas:
     - {fileID: 11400000, guid: 9cfcc9e654405b7448d7778b8ba9c00d, type: 2}
@@ -45,6 +55,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -81,6 +92,7 @@ MonoBehaviour:
       actorLocked: {fileID: 0}
       artificialIntelligence: []
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -121,10 +133,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      nbMin: 1
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -133,7 +146,6 @@ MonoBehaviour:
     - text: Cette douce odeur...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 25
       enemyResistance:
@@ -147,10 +159,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Ce parfum...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 25
       enemyResistance:
@@ -164,12 +176,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 4
-      condition: 0
+      nbMin: 2
+      nbMax: 4
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -178,7 +192,6 @@ MonoBehaviour:
     - text: Hmmm...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -192,10 +205,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Ha...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -209,10 +222,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Enivrant...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -226,10 +239,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: Splendide...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 30
       enemyResistance:
@@ -243,12 +256,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -257,7 +272,6 @@ MonoBehaviour:
     - text: Parfum [Nom], une fragrance euphorique.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 35
         hpMax: 40
       enemyResistance:
@@ -273,6 +287,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

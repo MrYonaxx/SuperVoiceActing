@@ -97,10 +97,21 @@ namespace VoiceActing
         [SerializeField]
         RectTransform minorSkillPanel;
 
+
+        [Header("Movelist")]
+        [SerializeField]
+        SkillMovelistWindow skillMovelistWindow;
+        [SerializeField]
+        RectTransform skillMovelistPanel;
+
+
+
+
         List<SkillActorData> skillsActors = new List<SkillActorData>();
         List<SkillActorData> skillsToActivate = new List<SkillActorData>();
 
         List<MinorSkillWindow> listSkillWindow = new List<MinorSkillWindow>();
+        List<SkillMovelistWindow> listSkillMovelistWindows = new List<SkillMovelistWindow>();
 
         CameraController cameraController;
         DoublageManager doublageManager;
@@ -164,7 +175,18 @@ namespace VoiceActing
         {
             currentVoiceActor = voiceActor;
             doubleur = character;
+
+            for(int i = 0; i < voiceActor.Potentials.Length; i++)
+            {
+                if (listSkillMovelistWindows.Count <= i)
+                    listSkillMovelistWindows.Add(Instantiate(skillMovelistWindow, skillMovelistPanel));
+                listSkillMovelistWindows[i].DrawSkillMove((SkillActorData)skillDatabase.GetSkillData(voiceActor.Potentials[i]));
+                listSkillMovelistWindows[i].gameObject.SetActive(true);
+            }
+            for (int i = voiceActor.Potentials.Length; i < listSkillMovelistWindows.Count; i++)
+                listSkillMovelistWindows[i].gameObject.SetActive(false);
         }
+
 
         private void SetSkills(List<VoiceActor> voiceActors)
         {
@@ -177,7 +199,13 @@ namespace VoiceActing
             }
         }
 
-
+        public void UpdateMovelist(Emotion[] emotions)
+        {
+            for (int i = 0; i < listSkillMovelistWindows.Count; i++)
+            {
+                listSkillMovelistWindows[i].CheckMove(emotions);
+            }
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///   C O N D I T I O N

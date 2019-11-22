@@ -415,7 +415,7 @@ namespace VoiceActing
         //int enemyHPMax = 100;
 
 
-        [Header("Feedbacks")]
+        [Title("Feedbacks")]
         [SerializeField]
         protected ParticleSystem[] particleFeedbacks;
         [SerializeField]
@@ -455,6 +455,10 @@ namespace VoiceActing
         protected GameObject criticalFeedback;
         [SerializeField]
         protected GameObject criticalFeedback2;
+
+        [Title("Feedbacks Guard")]
+        [SerializeField]
+        protected ParticleSystem guardFeedback;
 
         protected Animator damageTextAnimator;
 
@@ -862,7 +866,8 @@ namespace VoiceActing
 
         public void NullifyFeedback()
         {
-
+            guardFeedback.gameObject.SetActive(true);
+            guardFeedback.Play();
         }
 
 

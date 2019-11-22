@@ -38,13 +38,23 @@ MonoBehaviour:
     donner vie \xE0 notre publicit\xE9 et arracher un sourire aux enfants."
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -52,6 +62,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -92,10 +103,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: '[Nom]'
       dictCondition: Fromage
       copy: 0
@@ -104,7 +116,6 @@ MonoBehaviour:
     - text: "Des chips au d\xE9ssert !?"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -119,10 +130,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: "Et oui ! Chipso D\xE9ssert !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -137,12 +148,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -151,7 +164,6 @@ MonoBehaviour:
     - text: "De d\xE9liceuses chips enrob\xE9es de [Nom]."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -166,10 +178,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
     - text: "Ces fines chips fourr\xE9s au [Nom]."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -184,10 +196,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
     - text: "Une once de [Nom] et voil\xE0 !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -202,12 +214,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -216,7 +230,6 @@ MonoBehaviour:
     - text: Chipso [Nom] !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 30
       enemyResistance:
@@ -231,12 +244,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 2
-      condition: 0
+      nbMin: 0
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -245,7 +260,6 @@ MonoBehaviour:
     - text: CRACK
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 1
         hpMax: 1
       enemyResistance:
@@ -260,10 +274,10 @@ MonoBehaviour:
         trust: -100
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: "Avec Chipso, vos enfants ne rateront plus aucun d\xE9ssert !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -279,12 +293,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 5
       - wordIndex: 3
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -293,7 +309,6 @@ MonoBehaviour:
     - text: Et n'oubliez pas avec Chipso, on en a jamais trop !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 15
         hpMax: 20
       enemyResistance:
@@ -308,12 +323,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 8
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -322,7 +339,6 @@ MonoBehaviour:
     - text: "Chipso D\xE9ssert !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 25
         hpMax: 30
       enemyResistance:
@@ -337,6 +353,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

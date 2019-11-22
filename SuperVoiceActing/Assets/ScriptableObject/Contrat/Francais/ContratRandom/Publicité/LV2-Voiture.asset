@@ -35,13 +35,23 @@ MonoBehaviour:
     le propos avec un th\xE8me plus touchant."
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -49,6 +59,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -89,10 +100,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -101,7 +113,6 @@ MonoBehaviour:
     - text: Rapide...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 12
         hpMax: 15
       enemyResistance:
@@ -116,10 +127,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: Audacieuse...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 12
         hpMax: 15
       enemyResistance:
@@ -134,10 +145,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: Et dangereuse...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 12
         hpMax: 15
       enemyResistance:
@@ -152,12 +163,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -166,7 +179,6 @@ MonoBehaviour:
     - text: "C'est comme \xE7a... comme \xE7a que je l'ai perdu."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 18
         hpMax: 25
       enemyResistance:
@@ -182,10 +194,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 8
+      customTextDatas: []
     - text: "C'est comme \xE7a... comme \xE7a qu'elle m'a quitt\xE9."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 25
       enemyResistance:
@@ -201,12 +213,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 8
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -215,7 +229,6 @@ MonoBehaviour:
     - text: Est-ce que je regrette ?
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 25
       enemyResistance:
@@ -230,10 +243,10 @@ MonoBehaviour:
         trust: 20
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: "Bien s\xFBr."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 17
         hpMax: 21
       enemyResistance:
@@ -248,10 +261,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: "Est-ce que je souhaite retourner en arri\xE8re ?"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 25
       enemyResistance:
@@ -267,10 +280,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 4
       - wordIndex: 6
+      customTextDatas: []
     - text: Evidemment.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 17
         hpMax: 21
       enemyResistance:
@@ -285,10 +298,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: "Mais c'est pour \xE7a que je continuerai de conduire."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 26
       enemyResistance:
@@ -303,10 +316,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 6
+      customTextDatas: []
     - text: Pour elle, et son sourire.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 18
         hpMax: 22
       enemyResistance:
@@ -321,6 +334,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   eventData:
   - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
   eventAcceptedContract: {fileID: 0}
