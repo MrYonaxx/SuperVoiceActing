@@ -414,6 +414,9 @@ namespace VoiceActing
         protected int enemyHP = 100;
         //int enemyHPMax = 100;
 
+        [Title("Info")]
+        [SerializeField]
+        protected TextMeshProUGUI textEnemyHP;
 
         [Title("Feedbacks")]
         [SerializeField]
@@ -552,6 +555,7 @@ namespace VoiceActing
         {
             currentTextData = newTextData;
             enemyHP = currentTextData.HPMax;
+            textEnemyHP.text = enemyHP.ToString();
         }
 
         public float DamagePhrase()

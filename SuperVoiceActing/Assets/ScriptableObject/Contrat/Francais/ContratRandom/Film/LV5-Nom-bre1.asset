@@ -1,0 +1,414 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV5-Nom-bre1
+  m_EditorClassIdentifier: 
+  contractName: "Pr\xE9nom-bre"
+  level: 5
+  contractType: 0
+  salaryMin: 5000
+  salaryMax: 7000
+  mixingMin: 30
+  mixingMax: 40
+  weekMin: 3
+  weekMax: 7
+  expGain: 20
+  expBonus: 100
+  contractDictionnary: []
+  description:
+  - "Et si les nombres avaient une conscience ?\nC'est le propos de Pr\xE9nom-bre
+    le nouveau film des cr\xE9ateurs de R\xEAverie.\n\nLa sc\xE8ne cl\xE9 se passe
+    dans le bistrot de 57 985, o\xF9 3 un des Chiffres\nva bouleverser le quotidien
+    du h\xE9ros."
+  franchise:
+    Enabled: 1
+    isSeries: 1
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 1
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 1
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas:
+    - {fileID: 11400000, guid: 006d35f4fb757514bb082faa95f229e5, type: 2}
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 345 689
+      roleNames: []
+      roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 524 288
+      roleNames: []
+      roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 30
+        anger: 0
+        surprise: 30
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 40
+        anger: 0
+        surprise: 40
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 3
+      roleNames: []
+      roleSprite: {fileID: 0}
+      roleType: 1
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      artificialIntelligence: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "La poisse ! Dire que j'allais \xEAtre choisi comme r\xE9sultat au prochain
+        contr\xF4le..."
+      textStats:
+        interlocuteurID: 1
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 100
+        disgust: 100
+        anger: 50
+        surprise: 0
+        sweetness: -50
+        fear: -50
+        trust: -50
+      enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Relax, t'es une puissance de 2, quelqu'un finira bien par te calculer.
+      textStats:
+        interlocuteurID: 0
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+    - text: "Alors que moi... je ne suis pas un num\xE9ro exceptionnel."
+      textStats:
+        interlocuteurID: 0
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Hrm... Hrm... excusez-moi messieurs, je cherche Num\xE9ro 345 689."
+      textStats:
+        interlocuteurID: 2
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Hein ? Qu'est-ce que tu lui v...
+      textStats:
+        interlocuteurID: 1
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 100
+        anger: 100
+        surprise: 100
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+    - text: Bon sang ! C-C-C'est le Chiffre... le Chiffre 3 ! En chair et en os !
+      textStats:
+        interlocuteurID: 1
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 100
+        sweetness: 0
+        fear: 50
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Euh... c'est moi... Monsieur.
+      textStats:
+        interlocuteurID: 0
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Parfait ! H\xE9h\xE9 ! C'\xE9tait plus simple que pr\xE9vu."
+      textStats:
+        interlocuteurID: 2
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+    - text: Je te souhaite bienvenue dans la famille des nombres premiers !
+      textStats:
+        interlocuteurID: 2
+        hpMin: 60
+        hpMax: 80
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 60
+  debugHPMax: 80

@@ -53,6 +53,22 @@ namespace VoiceActing
         [SerializeField]
         int[] expRandomValue;
 
+        [Title("Atk")]
+        [SerializeField]
+        [OnValueChanged("CalculateDebugAtk")]
+        int baseAtk;
+
+        [HorizontalGroup("Atk")]
+        [SerializeField]
+        [ReadOnly]
+        int[] atkLevel;
+        [HorizontalGroup("Atk")]
+        [SerializeField]
+        int[] atkBonus;
+        [HorizontalGroup("Atk")]
+        [SerializeField]
+        int[] atkBonusDebug;
+
         #endregion
 
         #region GettersSetters 
@@ -94,6 +110,19 @@ namespace VoiceActing
             }
         }
 
+        private void CalculateDebugAtk()
+        {
+            atkBonusDebug = new int[atkBonus.Length];
+            atkLevel = new int[atkBonus.Length];
+            int bonus = baseAtk;
+            for (int i = 0; i < atkBonus.Length; i++)
+            {
+                bonus += atkBonus[i];
+                atkBonusDebug[i] = bonus;
+                atkLevel[i] = i;
+            }
+        }
+
 
 
 
@@ -102,13 +131,19 @@ namespace VoiceActing
         {
             int oldLevel = c.Level;
             c.Level = targetLevel;
+
+
             // Equilibrate Exp ==========================================
             c.ExpGain = expBonus[targetLevel] + Random.Range(-expRandomValue[targetLevel], expRandomValue[targetLevel]);
 
 
 
             // Equilibrate Role ==========================================
-
+            for (int i = 0; i < c.Characters.Count; i++)
+            {
+                for (int j = oldLevel; j < targetLevel; j++)
+                    c.Characters[i].Attack += atkBonus[j];
+            }
 
 
             // Equilibrate Text HP ==========================================

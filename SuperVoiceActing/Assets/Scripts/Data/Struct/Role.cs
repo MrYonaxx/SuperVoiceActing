@@ -88,6 +88,7 @@ namespace VoiceActing
         public int Attack
         {
             get { return attack; }
+            set { fan = value; }
         }
         [SerializeField]
         private int defense;
