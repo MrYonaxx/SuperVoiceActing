@@ -32,6 +32,9 @@ namespace VoiceActing
         [SerializeField]
         GameObject[] gameObjectContracts;
 
+        [Sirenix.OdinInspector.Title("Contract Win")]
+        [SerializeField]
+        GameObject contractWin;
         [SerializeField]
         TextMeshProUGUI textContractTitle;
         [SerializeField]
@@ -66,6 +69,21 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI[] textActors;
 
+
+
+
+        [Sirenix.OdinInspector.Title("Contract Failed")]
+        [SerializeField]
+        GameObject contractFailed;
+        [SerializeField]
+        TextMeshProUGUI textContractFailMoney;
+        [SerializeField]
+        TextMeshProUGUI textContractFailResearch;
+
+
+
+
+        [Sirenix.OdinInspector.Title("Scripts")]
         [SerializeField]
         private MenuContractMoney moneyManager;
 
@@ -79,6 +97,7 @@ namespace VoiceActing
 
         List<Contract> contractsEnd = new List<Contract>();
         List<SoundEngineer> soundEngiEnd = new List<SoundEngineer>();
+        List<bool> contractType = new List<bool>();
 
         #endregion
 
@@ -227,6 +246,11 @@ namespace VoiceActing
 
 
 
+
+
+
+
+
         // ========================================================================
 
         public bool CheckContractDone(PlayerData playerData)
@@ -238,27 +262,41 @@ namespace VoiceActing
             {
                 if (playerData.ContractAccepted[i] != null)
                 {
-                    if (playerData.ContractAccepted[i].CurrentLine == playerData.ContractAccepted[i].TotalLine)
+                    if (playerData.ContractAccepted[i].CurrentLine == playerData.ContractAccepted[i].TotalLine && playerData.ContractAccepted[i].CurrentMixing == playerData.ContractAccepted[i].TotalMixing)
                     {
-                        if (playerData.ContractAccepted[i].CurrentMixing == playerData.ContractAccepted[i].TotalMixing)
-                        {
-                            b = true;
-                            voiceActors = playerData.GetVoiceActorsFromContractID(playerData.ContractAccepted[i]);
-                            soundEngi = playerData.GetSoundEngiFromName(playerData.ContractAccepted[i].SoundEngineerID);
+                        b = true;
+                        contractType.Add(true);
+                        voiceActors = playerData.GetVoiceActorsFromContractID(playerData.ContractAccepted[i]);
+                        soundEngi = playerData.GetSoundEngiFromName(playerData.ContractAccepted[i].SoundEngineerID);
 
-                            contractsEnd.Add(playerData.ContractAccepted[i]);
-                            soundEngiEnd.Add(soundEngi);
+                        contractsEnd.Add(playerData.ContractAccepted[i]);
+                        soundEngiEnd.Add(soundEngi);
 
-                            CalculTotalScore(playerData.ContractAccepted[i], voiceActors);
+                        CalculTotalScore(playerData.ContractAccepted[i], voiceActors);
 
-                            playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
-                            playerData.ResearchPoint += playerData.ContractAccepted[i].Level + 10;
+                        playerData.Money += (playerData.ContractAccepted[i].Money + playerData.ContractAccepted[i].MoneyBonus);
+                        playerData.ResearchPoint += playerData.ContractAccepted[i].Level + 10;
+                        SoundEngiLevelUp(soundEngi, playerData.ContractAccepted[i].TotalMixing);
 
-                            SoundEngiLevelUp(soundEngi, playerData.ContractAccepted[i].TotalMixing);
-                            playerData.ContractHistoric.Add(playerData.ContractAccepted[i]);
-                            playerData.ContractAccepted.RemoveAt(i);
-                            i -= 1;
-                        }
+                        playerData.ContractHistoric.Add(playerData.ContractAccepted[i]);
+                        playerData.ContractAccepted.RemoveAt(i);
+                        i -= 1;                 
+                    }
+                    else if (playerData.ContractAccepted[i].WeekRemaining <= 0)
+                    {
+                        b = true;
+                        contractType.Add(false);
+                        contractsEnd.Add(playerData.ContractAccepted[i]);
+                        soundEngiEnd.Add(null);
+
+                        playerData.ContractAccepted[i].MoneyBonus = -(int)(playerData.ContractAccepted[i].Money * Random.Range(0.25f, 0.75f));
+                        totalRevenu += playerData.ContractAccepted[i].MoneyBonus;
+                        playerData.Money += playerData.ContractAccepted[i].MoneyBonus;
+                        playerData.ResearchPoint += ((playerData.ContractAccepted[i].Level + 10) * 2);
+
+                        playerData.ContractHistoric.Add(playerData.ContractAccepted[i]);
+                        playerData.ContractAccepted.RemoveAt(i);
+                        i -= 1;
                     }
                 }
             }
@@ -291,12 +329,28 @@ namespace VoiceActing
                 }
             }
             inputController.SetActive(true);
-            DrawContractReward(contractsEnd[0], soundEngiEnd[0]);
+            contractWin.gameObject.SetActive(false);
+            contractFailed.gameObject.SetActive(false);
+
+            if (contractType[0] == true)
+                DrawContractReward(contractsEnd[0], soundEngiEnd[0]);
+            else
+                DrawContractFailed(contractsEnd[0]);
         }
+
+
+
+
+
+
+
+
 
 
         public void DrawContractReward(Contract contract, SoundEngineer soundEngi)
         {
+            contractWin.gameObject.SetActive(true);
+
             textContractTitle.text = contract.Name;
             textContractBaseMoney.text = contract.Money.ToString();
             textContractBonusMoney.text = contract.MoneyBonus.ToString();
@@ -344,11 +398,25 @@ namespace VoiceActing
             }
         }
 
+
+
+        public void DrawContractFailed(Contract contract)
+        {
+            contractFailed.gameObject.SetActive(true);
+
+            textContractTitle.text = contract.Name;
+            textContractFailMoney.text = contract.MoneyBonus.ToString();
+            textContractResearch.text = contract.Level.ToString();
+        }
+
+
+
         public void NextContract()
         {
             inputController.SetActive(false);
             contractsEnd.RemoveAt(0);
             soundEngiEnd.RemoveAt(0);
+            contractType.RemoveAt(0);
             if(contractsEnd.Count == 0)
             {
                 animatorEnd.SetTrigger("Disappear");

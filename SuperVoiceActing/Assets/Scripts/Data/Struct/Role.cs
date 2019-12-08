@@ -235,7 +235,9 @@ namespace VoiceActing
         public Role(RoleContractData data)
         {
             this.nameID = data.RoleName;
-            int r = Random.Range(0, data.RoleNames.Length+1)-1;
+            int r = -1;
+            if (data.RoleNames != null)
+                r = Random.Range(0, data.RoleNames.Length+1)-1;
             if(r == -1)
                 this.name = data.RoleName;
             else

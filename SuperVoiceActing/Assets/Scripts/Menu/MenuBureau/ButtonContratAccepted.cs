@@ -68,7 +68,7 @@ namespace VoiceActing
         GameObject gameObjectMixing;
 
         [SerializeField]
-        GameObject gameObjectClear;
+        Animator animatorClear;
 
         bool isButtonAddContract = false;
 
@@ -112,10 +112,7 @@ namespace VoiceActing
             contractTitle.text = contract.Name;
             contractLine.text = contract.CurrentLine + " / " + contract.TotalLine;
             contractMixage.text = contract.CurrentMixing + " / " + contract.TotalMixing;
-            contractWeekRemaining.text = contract.WeekRemaining.ToString();
-            if (contract.WeekRemaining <= 2)
-                contractWeekRemaining.color = Color.yellow;
-            contractWeekRemainingShadow.text = contract.WeekRemaining.ToString();
+            DrawContractDate(contract.WeekRemaining);
             contractIcon.sprite = iconContract;
 
             if (contract.TotalLine <= 0)
@@ -145,9 +142,16 @@ namespace VoiceActing
                     gaugeMixingPreview.transform.localScale = new Vector2(size, gaugeMixingPreview.transform.localScale.y);
                 }*/
             }
-            gameObjectClear.SetActive(false);
+            animatorClear.gameObject.SetActive(false);
         }
 
+        public void DrawContractDate(int weekRemaining)
+        {
+            contractWeekRemaining.text = weekRemaining.ToString();
+            if (weekRemaining <= 2)
+                contractWeekRemaining.color = Color.yellow;
+            contractWeekRemainingShadow.text = weekRemaining.ToString();
+        }
 
 
 
@@ -180,7 +184,7 @@ namespace VoiceActing
             isButtonAddContract = true;
             panelContract.SetActive(false);
             panelAddContract.SetActive(true);
-            gameObjectClear.SetActive(false);
+            animatorClear.gameObject.SetActive(false);
         }
 
 
@@ -192,7 +196,7 @@ namespace VoiceActing
             {
                 if (gaugeLine.transform.localScale.x == 1)
                 {
-                    gameObjectClear.SetActive(true);
+                    ContractClear(true);
                 }
                 yield break;
             }
@@ -207,13 +211,20 @@ namespace VoiceActing
 
             if(gaugeLine.transform.localScale.x >= 1 && gaugeMixing.transform.localScale.x >= 1)
             {
-                gameObjectClear.SetActive(true);
+                ContractClear(true);
             }
         }
 
 
 
+        public void ContractClear(bool win)
+        {
+            if (animatorClear.gameObject.activeInHierarchy == true) // On peut pas alterner entre deux anims
+                return;
 
+            animatorClear.gameObject.SetActive(true);
+            animatorClear.SetBool("Win", win);
+        }
 
 
 

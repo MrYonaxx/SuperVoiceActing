@@ -160,15 +160,25 @@ namespace VoiceActing
         {
             for (int i = 0; i < contractAcceptedList.Count; i++)
             {
+                // Mixage
                 SoundEngineer soundEngi = playerData.GetSoundEngiFromName(contractAcceptedList[i].SoundEngineerID);
                 if (soundEngi != null)
                 {
                     contractAcceptedList[i].ProgressMixing(soundEngi);
                     yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
                 }
+
+                // Week remaining
+                contractAcceptedList[i].WeekRemaining -= 1;
+                buttonContractAccepted[i].DrawContractDate(contractAcceptedList[i].WeekRemaining);
+                if (contractAcceptedList[i].WeekRemaining == 0)
+                    buttonContractAccepted[i].ContractClear(false);
+
+
                 yield return null;
             }
         }
+
 
 
 

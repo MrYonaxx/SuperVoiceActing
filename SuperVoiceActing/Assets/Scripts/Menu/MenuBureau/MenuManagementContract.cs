@@ -196,7 +196,7 @@ namespace VoiceActing
 
         public void ContractNextWeek(PlayerData playerData)
         {
-            for (int i = 0; i < playerData.ContractAccepted.Count; i++)
+            /*for (int i = 0; i < playerData.ContractAccepted.Count; i++)
             {
                 if (playerData.ContractAccepted[i] != null)
                 {
@@ -210,7 +210,7 @@ namespace VoiceActing
                         playerData.ContractAccepted.RemoveAt(i);
                     }
                 }
-            }
+            }*/
             for (int i = 0; i < playerData.ContractAvailable.Count; i++)
             {
                 playerData.ContractAvailable[i].WeekRemaining -= 1;

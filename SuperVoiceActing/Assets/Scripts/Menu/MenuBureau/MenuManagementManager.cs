@@ -152,16 +152,16 @@ namespace VoiceActing
                 // Si création de la liste
                 managementContract.AddGachaContractsUnderLevel(playerData);
             }
-            // Sinon nextWeek
 
+            // Sinon nextWeek
             AddRandomEvents();
-            //gameTimelineData.CheckContractTimeline(playerData);
             gameTimelineData.CheckEventsTimeline(playerData);
             menuActorsLifeManager.VoiceActorWork(playerData.VoiceActors);
 
             managementContract.GachaContract(playerData);
             managementContract.ContractNextWeek(playerData);
             managementContract.CheckContractCooldown(playerData);
+
 
             playerData.SetBestActor();
         }
@@ -218,11 +218,13 @@ namespace VoiceActing
             yield return new WaitForSeconds(1);
             yield return contractManager.ProgressMixingContract();
             yield return null;
-            if (menuContractEnd.CheckContractDone(playerData) == false)
+            if (menuContractEnd.CheckContractDone(playerData) == false) // S'il y a des contrat terminés on check contract done sinon go phone
             {
                 CheckPhoneEvents();
             }
         }
+
+
 
         // Appelé après l'anim des contrats
         public void EndContractDone()
