@@ -55,6 +55,8 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI contractMixage;
         [SerializeField]
+        TextMeshProUGUI contractMoney;
+        [SerializeField]
         Image contractIcon;
         [SerializeField]
         RectTransform gaugeLine;
@@ -112,6 +114,7 @@ namespace VoiceActing
             contractTitle.text = contract.Name;
             contractLine.text = contract.CurrentLine + " / " + contract.TotalLine;
             contractMixage.text = contract.CurrentMixing + " / " + contract.TotalMixing;
+            contractMoney.text = contract.Money + " <sprite=9>";
             DrawContractDate(contract.WeekRemaining);
             contractIcon.sprite = iconContract;
 
