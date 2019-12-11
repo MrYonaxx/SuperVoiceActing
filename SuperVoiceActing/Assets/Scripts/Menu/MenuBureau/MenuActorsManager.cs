@@ -27,8 +27,6 @@ namespace VoiceActing
         [Header("Data")]
         [SerializeField]
         private CharacterSpriteDatabase characterSpriteDatabase;
-        [SerializeField]
-        private SkillDatabase skillDatabase;
 
         [Header("Prefab")]
         [SerializeField]
@@ -81,10 +79,7 @@ namespace VoiceActing
         private RectTransform statHpGauge;
         [SerializeField]
         private RectTransform statTimbre;
-        [SerializeField]
-        private TextMeshProUGUI[] statSkillsActor;
-        [SerializeField]
-        private TextMeshProUGUI statSkillActorDescription;
+
 
         [Header("Stats Panel")]
         [SerializeField]
@@ -198,6 +193,8 @@ namespace VoiceActing
         SortManager sortManager;
         [SerializeField]
         MenuVoxography menuVoxography;
+        [SerializeField]
+        MenuActorsSkill menuActorsSkill;
 
         private List<ButtonVoiceActor> buttonsActors = new List<ButtonVoiceActor>();
 
@@ -439,6 +436,7 @@ namespace VoiceActing
             statHpGauge.transform.localScale = new Vector3((actor.Hp / (float)actor.HpMax), statHpGauge.transform.localScale.y, statHpGauge.transform.localScale.z);
 
 
+            // Draw Available ======================================================
             if (actor.Availability == false)
             {
                 statNameActor.color = colorNameUnavailable;
@@ -455,19 +453,8 @@ namespace VoiceActing
                 textMeshSelection.color = colorNameNormal;
             }
 
-            for (int i = 0; i < statSkillsActor.Length; i++)
-            {
-                if (i < actor.Potentials.Length)
-                {
-                    SkillData skill = skillDatabase.GetSkillData(actor.Potentials[i]);
-                    statSkillsActor[i].text = skill.SkillName;
-                }
-                else
-                    statSkillsActor[i].text = " ";
-            }
-
-            /*if (actor.Potentials.Length != 0)
-                statSkillActorDescription.text = actor.Potentials[0].Description;*/
+            // Draw Skills ======================================================
+            menuActorsSkill.DrawActorSkills(actor);
 
             if (firstDraw == true)
                 firstDraw = false;

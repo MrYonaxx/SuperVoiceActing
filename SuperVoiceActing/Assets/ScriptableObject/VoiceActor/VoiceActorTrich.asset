@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1a867a9c4004546835da9bba53d2e4, type: 3}
   m_Name: VoiceActorTrich
   m_EditorClassIdentifier: 
-  name: Trich
   fan: 100
   price: 8
   level: 1
@@ -48,14 +47,20 @@ MonoBehaviour:
     sweetness: 0
     fear: 10
     trust: 10
-  fourchetteMin: -1
+  voxography: []
   fourchetteMax: 1
-  relation: 0
   potentials:
   - {fileID: 11400000, guid: 9a3b1a80640cb074b8372c066579f3bc, type: 2}
-  voice: {fileID: 0}
+  friendshipCost: 00000000
+  humorAffinity:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
   skillOffset: {x: 0, y: 0.1, z: 0}
-  actorSprite: {fileID: 21300000, guid: 4832848fa0e2aac4e9f212db9a4d6ba2, type: 3}
-  actorIcon: {fileID: 21300000, guid: 1b302534833996a4b884509f6b93f37a, type: 3}
-  actorContractIcon: {fileID: 0}
   spriteSheets: {fileID: 11400000, guid: 14a2a6f1799ca7a4ebcaa33a92ced8f9, type: 2}

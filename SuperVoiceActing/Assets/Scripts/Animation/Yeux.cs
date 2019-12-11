@@ -42,6 +42,7 @@ public class Yeux : MonoBehaviour
 
     public void SetSprite(Sprite eyes)
     {
+        this.gameObject.SetActive(true);
         if (isRect == true)
         {
             if (imageRenderer == null)
@@ -83,7 +84,9 @@ public class Yeux : MonoBehaviour
 
     private IEnumerator BlinkEye()
     {
-        while(true)
+        // On attend une frame pour que le Start se fasse
+        yield return null;
+        while (true)
         {
             if (isRect == true)
                 imageRenderer.enabled = false;

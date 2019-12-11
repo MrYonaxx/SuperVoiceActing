@@ -47,6 +47,8 @@ namespace VoiceActing
         {
             for (int i = 0; i < voiceActorDatas.Length; i++)
             {
+                Debug.Log(voiceActorDatas[i].NameID);
+                Debug.Log(actorName);
                 if (voiceActorDatas[i].NameID == actorName)
                     return storyEvents[i];
             }

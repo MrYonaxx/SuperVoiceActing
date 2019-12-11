@@ -264,6 +264,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private int[] friendshipLevel;
+        public int[] FriendshipLevel
+        {
+            get { return friendshipLevel; }
+            set { friendshipLevel = value; }
+        }
+
+        [SerializeField]
         private List<Buff> buffs;
         public List<Buff> Buffs
         {
@@ -338,10 +346,13 @@ namespace VoiceActing
             roleDefense = 0;
             timbre = actorData.Timbre;
 
+            relation = 0;
             potentials = new string[actorData.Potentials.Length];
+            friendshipLevel = new int[actorData.FriendshipCost.Length];
             for(int i = 0; i < actorData.Potentials.Length; i++)
             {
                 potentials[i] = actorData.Potentials[i].name;
+                friendshipLevel[i] = actorData.FriendshipCost[i];
             }
 
 
@@ -414,6 +425,11 @@ namespace VoiceActing
             growth = new EmotionStat(currentGrowth);
             currentGrowth = new EmotionStat(0, 0, 0, 0, 0, 0, 0, 0);
         }
+
+
+
+
+
 
 
 

@@ -26,9 +26,8 @@ namespace VoiceActing
 	public class StoryEventVariableScript : ScriptableObject
 	{
 
-        public virtual StoryVariable CreateStoryVariable(string variableName, PlayerData playerData)
+        public virtual void CreateStoryVariable(StoryVariable storyVariable, string variableName, PlayerData playerData)
         {
-            return new StoryVariable();
         }
 
     } // StoryEventVariableScript class

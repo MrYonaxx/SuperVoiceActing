@@ -17,7 +17,7 @@ namespace VoiceActing
 
 
 
-        public override StoryVariable CreateStoryVariable(string variableName, PlayerData playerData)
+        public override void CreateStoryVariable(StoryVariable storyVariable, string variableName, PlayerData playerData)
         {
             List<string> actorsIDAvailable = new List<string>();
             for(int i = 0; i < playerData.VoiceActors.Count; i++)
@@ -40,12 +40,13 @@ namespace VoiceActing
             int rand = Random.Range(0, actorsIDAvailable.Count);
             if(rand < actorsIDAvailable.Count)
             {
-                return new StoryVariable(variableName, actorsIDAvailable[rand]);
+                storyVariable.valueText = actorsIDAvailable[rand];
+                //return new StoryVariable(variableName, actorsIDAvailable[rand]);
             }
-            else
+            /*else
             {
                 return new StoryVariable(variableName, null);
-            }
+            }*/
 
         }
 

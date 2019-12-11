@@ -21,16 +21,17 @@ namespace VoiceActing
         private int lotoWinRate = 1;
 
 
-        public override StoryVariable CreateStoryVariable(string variableName, PlayerData playerData)
+        public override void CreateStoryVariable(StoryVariable storyVariable, string variableName, PlayerData playerData)
         {
             playerData.NextRandomEvent.Add(10);
             playerData.Money -= 10 * lotoWinRate;
             int r = Random.Range(0, lotoRate);
             if(r <= lotoWinRate)
             {
-                return new StoryVariable(variableName, 1);
+                storyVariable.value = 1;
+                return;
             }
-            return new StoryVariable(variableName, 0);
+            storyVariable.value = 0;
         }
 
     }

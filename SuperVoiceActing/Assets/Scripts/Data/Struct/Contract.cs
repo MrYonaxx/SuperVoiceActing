@@ -489,6 +489,8 @@ namespace VoiceActing
             this.weekRemaining = Random.Range(data.WeekMin, data.WeekMax + 1);
             this.totalMixing = Random.Range(data.MixingMin, data.MixingMax + 1);
 
+
+            this.sessionNumber = 0;
             this.score = 0;
             this.highScore = 0;
 

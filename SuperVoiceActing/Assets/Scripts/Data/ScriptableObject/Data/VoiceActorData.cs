@@ -99,6 +99,8 @@ namespace VoiceActing
             get { return growthRandom; }
         }
 
+        [Space]
+        [Space]
         [SerializeField]
         private Voxography[] voxography;
         public Voxography[] Voxography
@@ -109,17 +111,6 @@ namespace VoiceActing
 
         [Space]
         [Space]
-        [HorizontalGroup("Fourchette")]
-        [SerializeField]
-        private int fourchetteMin = -2;
-        public int FourchetteMin
-        {
-            get { return fourchetteMin; }
-        }
-
-        [Space]
-        [Space]
-        [HorizontalGroup("Fourchette")]
         [SerializeField]
         private int fourchetteMax = 2;
         public int FourchetteMax
@@ -128,21 +119,20 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private int relation;
-        public int Relation
-        {
-            get { return relation; }
-        }
-
-        [SerializeField]
+        [HorizontalGroup("Skills")]
         private SkillActorData[] potentials;
         public SkillActorData[] Potentials
         {
             get { return potentials; }
         }
 
-
-
+        [SerializeField]
+        [HorizontalGroup("Skills")]
+        private int[] friendshipCost;
+        public int[] FriendshipCost
+        {
+            get { return friendshipCost; }
+        }
 
 
 

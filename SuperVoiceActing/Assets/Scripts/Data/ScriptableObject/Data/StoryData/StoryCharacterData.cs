@@ -38,6 +38,9 @@ namespace VoiceActing
         string characterName;
 
         [SerializeField]
+        string[] voiceReel;
+
+        [SerializeField]
         private AudioClip characterVoice;
         public AudioClip CharacterVoice
         {

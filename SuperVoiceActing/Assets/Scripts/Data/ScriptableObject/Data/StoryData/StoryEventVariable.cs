@@ -21,7 +21,7 @@ namespace VoiceActing
     }
 
 
-
+    [System.Serializable]
     public class StoryVariable
     {
         public string variableName;
@@ -119,43 +119,58 @@ namespace VoiceActing
         public void SetNode(List<StoryVariable> localVariable, PlayerData playerData, Dictionary<string, string> dictionary)
         {
             StoryVariable variable = new StoryVariable(variableName, 0);
-            if (custom == false)
+
+            bool b = false;
+            if (globalVariable == true) // Check si la valeur existe 
             {
-                int finalValue = newValue;
-                if (globalVariable == true)
+                for (int i = 0; i < playerData.GlobalVariables.Count; i++)
                 {
-                    for (int i = 0; i < playerData.GlobalVariables.Count; i++)
+                    if (playerData.GlobalVariables[i].variableName == variableName)
                     {
-                        if (playerData.GlobalVariables[i].variableName == variableName)
-                        {
-                            variable = playerData.GlobalVariables[i];
-                        }
+                        variable = playerData.GlobalVariables[i];
+                        b = true;
                     }
-                    if (newValueRandom >= newValue)
-                        finalValue = Random.Range(newValue, newValueRandom + 1);
-                    variable.ApplyMathOperation(mathOperation, finalValue);
                 }
-                else
+                if (b == false)
                 {
-                    for (int i = 0; i < localVariable.Count; i++)
-                    {
-                        if (localVariable[i].variableName == variableName)
-                        {
-                            variable = localVariable[i];
-                        }
-                    }
-                    if (newValueRandom >= newValue)
-                        finalValue = Random.Range(newValue, newValueRandom + 1);
-                    variable.ApplyMathOperation(mathOperation, finalValue);
-                    localVariable.Add(variable);
-                }  
+                    playerData.GlobalVariables.Add(variable);
+                    variable = playerData.GlobalVariables[playerData.GlobalVariables.Count - 1];
+                }
             }
             else
             {
-                variable = customScript.CreateStoryVariable(variableName, playerData);
+                for (int i = 0; i < localVariable.Count; i++)
+                {
+                    if (localVariable[i].variableName == variableName)
+                    {
+                        variable = localVariable[i];
+                        b = true;
+                    }
+                }
+                if (b == false)
+                {
+                    localVariable.Add(variable);
+                    variable = localVariable[localVariable.Count - 1];
+                }
+            }
+
+            if (custom == false) // Creation de la valeur de la variable
+            {
+                int finalValue = newValue;
+                if (newValueRandom >= newValue)
+                    finalValue = Random.Range(newValue, newValueRandom + 1);
+                variable.ApplyMathOperation(mathOperation, finalValue);
+            }
+            else
+            {
+                customScript.CreateStoryVariable(variable, variableName, playerData);
             }
             AddToDictionnary(dictionary, variable.variableName, variable.valueText);
         }
+
+
+
+
 
         private void AddToDictionnary(Dictionary<string, string> dictionary, string variableName, string value)
         {
