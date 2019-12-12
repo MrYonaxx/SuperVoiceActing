@@ -40,6 +40,10 @@ namespace VoiceActing
         [Header("Autres")]
         [SerializeField]
         protected Animator animatorBalloon;
+        [SerializeField]
+        protected Animator animatorAura;
+        [SerializeField]
+        protected SpriteRenderer auraRenderer;
 
 
         protected bool speak = false;
@@ -328,8 +332,18 @@ namespace VoiceActing
                 animatorBalloon.SetInteger("Emotion", emotion);
         }
 
+
+        public void ActivateAura(bool b)
+        {
+            if (auraRenderer != null)
+            {
+                auraRenderer.sprite = spriteRenderer.sprite;
+                animatorAura.SetBool("Aura", b);
+            }
+        }
+
         #endregion
 
-        } // CharacterDialogueController class
+    } // CharacterDialogueController class
 
 } // #PROJECTNAME# namespace

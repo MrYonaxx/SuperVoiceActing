@@ -46,6 +46,8 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
+     
+
         #endregion
 
         #region Functions 
@@ -53,6 +55,11 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+        public string GetSkillName()
+        {
+            return textSkill.text;
+        }
+
         public void DrawSkillMove(SkillActorData skill)
         {
             textSkill.text = skill.SkillName;
@@ -82,7 +89,7 @@ namespace VoiceActing
             }
         }
 
-        public void CheckMove(Emotion[] emotions)
+        public bool CheckMove(Emotion[] emotions)
         {
             for(int i = 0; i < emotionActive.Count; i++)
             {
@@ -126,6 +133,7 @@ namespace VoiceActing
             {
                 textSkill.color = colorUnactive;
             }
+            return active;
         }
 
         #endregion

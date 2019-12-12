@@ -127,11 +127,13 @@ namespace VoiceActing
 
             Vector3 initialPosition = character.GetPosition();
             Vector3 initialRotation = character.transform.eulerAngles;
+            Vector3 initialScale = character.transform.localScale;
             while (t < 1f)
             {
                 t += Time.deltaTime * rate;
                 character.SetPosition(Vector3.Lerp(initialPosition, newPosition, t));
                 character.transform.eulerAngles = Vector3.Lerp(initialRotation, newRotation, t);
+                character.transform.localScale = Vector3.Lerp(initialScale, newScale, t);
                 yield return null;
             }
         }

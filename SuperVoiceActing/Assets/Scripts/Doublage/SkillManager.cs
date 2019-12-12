@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -58,13 +59,13 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
-        [Header("Managers")]
+        [Title("Managers")]
         [SerializeField]
         CharacterSpriteDatabase characterSpriteDatabase;
         [SerializeField]
         SkillDatabase skillDatabase;
 
-        [Header("Text")]
+        [Title("Text")]
         [SerializeField]
         TextMeshProUGUI textMeshActorName;
         [SerializeField]
@@ -72,7 +73,10 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI textMeshSkillDesc;
 
-        [Header("Feedback")]
+        [SerializeField]
+        TextMeshProUGUI textCurrentCombos;
+
+        [Title("Feedback")]
         [SerializeField]
         TextAppearManager textToStop;
         [SerializeField]
@@ -201,10 +205,26 @@ namespace VoiceActing
 
         public void UpdateMovelist(Emotion[] emotions)
         {
+            bool b = false;
+            string combos = "";
             for (int i = 0; i < listSkillMovelistWindows.Count; i++)
             {
-                listSkillMovelistWindows[i].CheckMove(emotions);
+                if (listSkillMovelistWindows[i].CheckMove(emotions) == true)
+                {
+                    if (b == false)
+                    {
+                        b = true;
+                        combos = listSkillMovelistWindows[i].GetSkillName();
+                    }
+                    else
+                    {
+                        combos += " - " + listSkillMovelistWindows[i].GetSkillName();
+                    }
+
+                }
             }
+            doubleur.ActivateAura(b);
+            textCurrentCombos.text = combos;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

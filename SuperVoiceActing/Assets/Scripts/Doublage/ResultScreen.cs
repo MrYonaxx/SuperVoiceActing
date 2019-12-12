@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -21,16 +22,16 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Database")]
+        [Title("Database")]
         [SerializeField]
         private CharacterSpriteDatabase characterSpriteDatabase;
 
-        [Header("NextScene")]
+        [Title("NextScene")]
         [SerializeField]
         private string nextScene = "Bureau";
 
 
-        [Header("Text")]
+        [Title("Text")]
         [SerializeField]
         private TextMeshProUGUI textName;
         [SerializeField]
@@ -52,7 +53,7 @@ namespace VoiceActing
         [SerializeField]
         private TextMeshProUGUI[] textEmotionUsed;
 
-        [Header("UI")]
+        [Title("UI")]
         [SerializeField]
         private RectTransform lineGauge;
         [SerializeField]
@@ -64,7 +65,7 @@ namespace VoiceActing
         private List<VoiceActor> voiceActors;
 
 
-        [Header("Actors")]
+        [Title("Actors")]
         [SerializeField]
         private ExperienceCurveData experience;
 
@@ -81,7 +82,7 @@ namespace VoiceActing
 
 
 
-        [Header("LevelUp")]
+        [Title("LevelUp")]
         [SerializeField]
         private TextMeshProUGUI textOldLevel;
         [SerializeField]
@@ -100,7 +101,7 @@ namespace VoiceActing
         private int[] actorsOldLevel;
         private EmotionStat[] actorsOldStats;
 
-        [Header("Feedback")]
+        [Title("Feedback")]
         [SerializeField]
         private Animator resultScreen;
         [SerializeField]
@@ -507,10 +508,12 @@ namespace VoiceActing
 
         public void AddVoxography()
         {
+            // Créer une voxography pour chaque perso
             for (int i = 0; i < voiceActors.Count; i++)
             {
                 voiceActors[i].CreateVoxography(contract.Name);
             }
+            // Assigne les roles à la voxography créait
             for (int i = 0; i < contract.Characters.Count; i++)
             {
                 voiceActors[i].AddVoxography(contract.Characters[i], (Emotion)contract.Characters[i].BestStatEmotion);
