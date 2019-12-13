@@ -25,6 +25,8 @@ namespace VoiceActing
         [Title("Database")]
         [SerializeField]
         private CharacterSpriteDatabase characterSpriteDatabase;
+        [SerializeField]
+        private SkillDatabase skillDatabase;
 
         [Title("NextScene")]
         [SerializeField]
@@ -59,9 +61,8 @@ namespace VoiceActing
         [SerializeField]
         private RectTransform lineNewGauge;
 
-        [SerializeField]
-        private Contract contract;
 
+        private Contract contract;
         private List<VoiceActor> voiceActors;
 
 
@@ -80,9 +81,17 @@ namespace VoiceActing
         [SerializeField]
         private RectTransform[] expGauge;
 
+        [Space]
+        [SerializeField]
+        private TextMeshProUGUI[] textSkillRemaining;
+        [SerializeField]
+        private RectTransform[] skillGauge;
+
 
 
         [Title("LevelUp")]
+        [SerializeField]
+        private GameObject windowLevelUp;
         [SerializeField]
         private TextMeshProUGUI textOldLevel;
         [SerializeField]
@@ -96,9 +105,21 @@ namespace VoiceActing
         [SerializeField]
         private TextMeshProUGUI[] textsGain;
 
+        [Title("Skill")]
+        [SerializeField]
+        private GameObject windowSkillGet;
+        [SerializeField]
+        private TextMeshProUGUI textSkillGet;
+        [SerializeField]
+        private TextMeshProUGUI textSkillGetDescription;
+
 
         private bool[] actorsLevelUp;
         private int[] actorsOldLevel;
+
+        private int[] actorsOldSkillLevel;
+        private int[] actorsNewSkillLevel;
+
         private EmotionStat[] actorsOldStats;
 
         [Title("Feedback")]
@@ -111,7 +132,11 @@ namespace VoiceActing
         [SerializeField]
         private Animator animatorTextLevelUp;
         [SerializeField]
+        private Animator[] animatorSkillGet;
+        [SerializeField]
         private Animator animatorEndStatScreen;
+
+        [Space]
         [SerializeField]
         private SimpleSpectrum spectrum;
         [SerializeField]
@@ -138,6 +163,7 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
         public void ChangeEndScene(string newEndScene)
         {
             nextScene = newEndScene;
@@ -156,9 +182,28 @@ namespace VoiceActing
             }
             actorsOldLevel = new int[contract.VoiceActorsID.Count];
             actorsOldStats = new EmotionStat[contract.VoiceActorsID.Count];
+
+            actorsOldSkillLevel = new int[contract.VoiceActorsID.Count];
+            actorsNewSkillLevel = new int[contract.VoiceActorsID.Count];
+
             DrawEmotionUsed(con.EmotionsUsed);
         }
 
+        private void DrawEmotionUsed(List<EmotionUsed> emotionUseds)
+        {
+            int[] res = new int[9];
+            for (int i = 0; i < emotionUseds.Count; i++)
+            {
+                for (int j = 0; j < emotionUseds[i].emotions.Length; j++)
+                {
+                    res[(int)emotionUseds[i].emotions[j]] += 1;
+                }
+            }
+            for (int i = 1; i < res.Length; i++)
+            {
+                textEmotionUsed[i - 1].text = res[i].ToString();
+            }
+        }
 
         public void DrawResult(int numberTurn, int lineDefeated)
         {
@@ -188,6 +233,7 @@ namespace VoiceActing
                 StartCoroutine(ExpGainCoroutine(textExpBonus, expBonus, 1));
                 AddVoxography();
             }
+
             // Coroutine
             StartCoroutine(LineGainCoroutine());
             StartCoroutine(ExpGainCoroutine(textEXP, contract.ExpGain, lineDefeated));
@@ -230,25 +276,12 @@ namespace VoiceActing
 
 
 
-        private void DrawEmotionUsed(List<EmotionUsed> emotionUseds)
-        {
-            int[] res = new int[9];
-            for(int i = 0; i < emotionUseds.Count; i++)
-            {
-                for(int j = 0; j < emotionUseds[i].emotions.Length; j++)
-                {
-                    res[(int)emotionUseds[i].emotions[j]] += 1;
-                }
-            }
-            for(int i = 1; i < res.Length; i++)
-            {
-                textEmotionUsed[i - 1].text = res[i].ToString();
-            }
-        }
 
 
 
-
+        // ====================================================================================================================
+        // D R A W    A C T O R S
+        // ====================================================================================================================
 
         private void DrawActors(int expGain)
         {
@@ -260,26 +293,21 @@ namespace VoiceActing
                 actorsImage[i].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[i].VoiceActorID).SpriteNormal[0];
                 actorsImage[i].SetNativeSize();
                 textsLevel[i].text = voiceActors[i].Level.ToString();
-                textsNext[i].text = (voiceActors[i].NextEXP).ToString();// - contract.VoiceActors[i].Experience).ToString();
+                textsNext[i].text = (voiceActors[i].NextEXP).ToString();
                 expGauge[i].transform.localScale = new Vector3((1-(voiceActors[i].NextEXP / (float)experience.ExperienceCurve[voiceActors[i].Level])),
                                                                 expGauge[i].transform.localScale.y,
                                                                 expGauge[i].transform.localScale.z);
 
                 int actorGainDeduction = voiceActors[i].NextEXP;
                 voiceActors[i].NextEXP -= expGain;
-
                 StartCoroutine(CalculateExp(voiceActors[i], expGauge[i], i, expGain, actorGainDeduction));
+                StartCoroutine(DrawRelationGauge(skillGauge[i], textSkillRemaining[i], i));
             }
         }
 
         private IEnumerator CalculateExp(VoiceActor va, RectTransform expGauge, int i, int expGain, int actorGainDeduction)
         {
-            int time = 180;
-            while (time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
+            yield return new WaitForSeconds(3);
             yield return DrawExpGauge(expGauge, textsNext[i], experience.ExperienceCurve[va.Level], expGain);
             while (va.NextEXP <= 0)
             {
@@ -328,6 +356,66 @@ namespace VoiceActing
             }
         }
 
+        private IEnumerator DrawRelationGauge(RectTransform skillGauge, TextMeshProUGUI textNext, int i)
+        {
+            int currentRelation = voiceActors[i].Relation;
+            int currentRelationMax = voiceActors[i].FriendshipLevel[0];
+            actorsOldSkillLevel[i] = -1;
+            for (int j = 0; j < voiceActors[i].FriendshipLevel.Length; j++)
+            {
+                currentRelationMax = voiceActors[i].FriendshipLevel[j] + 1; // Pour pas avoir de 0 NaN
+                if (currentRelation >= voiceActors[i].FriendshipLevel[j])
+                {
+                    currentRelation -= voiceActors[i].FriendshipLevel[j];
+                    actorsOldSkillLevel[i] = j;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            int relationGain = voiceActors[i].AddRelation(contract);
+
+            Vector3 startPosition = new Vector3(((float)currentRelation+1 / currentRelationMax),1,1);
+            Vector3 finalPosition = new Vector3(((float)((currentRelation + relationGain)+1) / currentRelationMax), 1, 1);
+            if(finalPosition.x > 1)
+                finalPosition = new Vector3(1, 1, 1);
+
+            int startRelation = (currentRelationMax-1) - currentRelation;
+            int finalRelation = (currentRelationMax-1) - (currentRelation + relationGain);
+            if (finalRelation < 0)
+                finalRelation = 0;
+
+            textNext.text = startRelation.ToString();
+            skillGauge.transform.localScale = startPosition;
+            yield return new WaitForSeconds(3);
+            float t = 0f;
+            float rate = (60f / 120);
+            while (t < 1f)
+            {
+                t += Time.deltaTime * rate;
+                textNext.text = ((int)Mathf.Lerp(startRelation, finalRelation, t)).ToString();
+                skillGauge.transform.localScale = Vector3.Lerp(startPosition, finalPosition, t);
+                yield return null;
+            }
+            if (finalPosition.x == 1)
+            {
+                animatorSkillGet[i].gameObject.SetActive(true);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public void ValidateNext()
@@ -341,7 +429,8 @@ namespace VoiceActing
             {
                 for(int i = 0; i < actorsLevelUp.Length; i++)
                 {
-                    if (actorsLevelUp[i] == true)
+                    SkipAnimRelation(i);
+                    if (actorsLevelUp[i] == true || actorsOldSkillLevel[i] != actorsNewSkillLevel[i])
                     {
                         ActivateLevelUp(i);
                         return;
@@ -368,17 +457,15 @@ namespace VoiceActing
                     }
                     actorsLevelUp[i] = true;
                     animatorTextLevelUp.gameObject.SetActive(true);
-                    //va.Experience -= va.NextEXP;
                     va.LevelUp();
                     va.NextEXP += experience.ExperienceCurve[va.Level];
 
                     animatorLevelUpFeedback[i].SetTrigger("LevelUp");
                 }
                 textsLevel[i].text = va.Level.ToString();
-                textsNext[i].text = va.NextEXP.ToString();//(va.NextEXP- va.Experience).ToString();
-                expGauge[i].transform.localScale = new Vector3((1 - (va.NextEXP / (float)experience.ExperienceCurve[va.Level])),
-                                                expGauge[i].transform.localScale.y,
-                                                expGauge[i].transform.localScale.z);
+                textsNext[i].text = va.NextEXP.ToString();
+                expGauge[i].transform.localScale = new Vector3((1 - (va.NextEXP / (float)experience.ExperienceCurve[va.Level])), 1, 1);
+                SkipAnimRelation(i);
             }
             textCurrentLine.text = contract.CurrentLine.ToString();
             textEXP.text = (contract.ExpGain * lineDefeated).ToString();
@@ -389,24 +476,51 @@ namespace VoiceActing
 
 
 
+        private void SkipAnimRelation(int i)
+        {
+            int currentRelation = voiceActors[i].Relation;
+            int currentRelationMax = voiceActors[i].FriendshipLevel[0];
+            actorsNewSkillLevel[i] = -1;
+            for (int j = 0; j < voiceActors[i].FriendshipLevel.Length; j++)
+            {
+                currentRelationMax = voiceActors[i].FriendshipLevel[j]+1;
+                if (currentRelation > voiceActors[i].FriendshipLevel[j])
+                {
+                    currentRelation -= voiceActors[i].FriendshipLevel[j];
+                    actorsNewSkillLevel[i] = j;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            textSkillRemaining[i].text = (currentRelationMax - currentRelation).ToString();
+            skillGauge[i].transform.localScale = new Vector3(((currentRelation+1) / (float)currentRelationMax), 1, 1);
+
+            if(actorsNewSkillLevel[i] != actorsOldSkillLevel[i])
+                animatorSkillGet[i].gameObject.SetActive(true);
+        }
+
+
         private void ActivateLevelUp(int id)
         {
-            if(previousActorLevelUp == -1) 
+            if (previousActorLevelUp == -1)
             {
                 resultScreen.SetInteger("LevelUp", id);
-                DrawOldLevelStat(id);
+                DrawLevelUpPanel(id, actorsLevelUp[id], actorsOldSkillLevel[id] != actorsNewSkillLevel[id]);
             }
             else
             {
                 resultScreen.SetInteger("LevelUp", -1);
-                resultScreen.SetTrigger("NextLevelUp");            
+                resultScreen.SetTrigger("NextLevelUp");
                 actorsImage[0].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[previousActorLevelUp].VoiceActorID).SpriteNormal[0];
                 actorsImage[1].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[id].VoiceActorID).SpriteNormal[0];
-                StartCoroutine(OldstatCoroutine(id));
+                StartCoroutine(OldstatCoroutine(id, actorsLevelUp[id], actorsOldSkillLevel[id] != actorsNewSkillLevel[id]));
             }
             actorsLevelUp[id] = false;
-            previousActorLevelUp = id;
-            StartCoroutine(NewstatCoroutine(id));
+            actorsOldSkillLevel[id] = actorsNewSkillLevel[id];
+            previousActorLevelUp = id;         
         }
 
 
@@ -416,26 +530,47 @@ namespace VoiceActing
             DrawNewLevelStat(id);
         }
 
-        private IEnumerator OldstatCoroutine(int id)
+        private IEnumerator OldstatCoroutine(int id, bool levelUp, bool skillGet)
         {
             yield return new WaitForSeconds(0.2f);
-            DrawOldLevelStat(id);
+            DrawLevelUpPanel(id, levelUp, skillGet);
         }
 
-        private void DrawOldLevelStat(int id)
+        private void DrawLevelUpPanel(int id, bool levelUp, bool skillGet)
         {
-            textOldLevel.text = actorsOldLevel[id].ToString();
-            textNewLevel.text = "";
-            int stat = 0;
-            for(int i = 0; i < gaugeStats.Length; i++)
+            if (levelUp == true)
             {
-                stat = actorsOldStats[id].GetEmotion(i+1);
-                gaugeStats[i].transform.localScale = new Vector3(stat / 100f, gaugeStats[i].transform.localScale.y, gaugeStats[i].transform.localScale.z);
-                newGaugeStats[i].sizeDelta = new Vector2((stat / 100f) * 500, newGaugeStats[i].sizeDelta.y);
-                textsStats[i].text = stat.ToString();
-                animatorStats[i].enabled = false;
-                textsStats[i].color = Color.white;
-                textsGain[i].transform.localScale = new Vector3(1, 0, 1);
+                windowLevelUp.gameObject.SetActive(true);
+                textOldLevel.text = actorsOldLevel[id].ToString();
+                textNewLevel.text = "";
+                int stat = 0;
+                for (int i = 0; i < gaugeStats.Length; i++)
+                {
+                    stat = actorsOldStats[id].GetEmotion(i + 1);
+                    gaugeStats[i].transform.localScale = new Vector3(stat / 100f, gaugeStats[i].transform.localScale.y, gaugeStats[i].transform.localScale.z);
+                    newGaugeStats[i].sizeDelta = new Vector2((stat / 100f) * 500, newGaugeStats[i].sizeDelta.y);
+                    textsStats[i].text = stat.ToString();
+                    animatorStats[i].enabled = false;
+                    textsStats[i].color = Color.white;
+                    textsGain[i].transform.localScale = new Vector3(1, 0, 1);
+                }
+                StartCoroutine(NewstatCoroutine(id));
+            }
+            else
+            {
+                windowLevelUp.gameObject.SetActive(false);
+            }
+
+
+
+            if (skillGet == true)
+            {
+                windowSkillGet.gameObject.SetActive(true);
+                DrawNewSkill(id);
+            }
+            else
+            {
+                windowSkillGet.gameObject.SetActive(false);
             }
         }
 
@@ -476,7 +611,12 @@ namespace VoiceActing
 
 
 
-
+        private void DrawNewSkill(int id)
+        {
+            SkillData skill = skillDatabase.GetSkillData(voiceActors[id].Potentials[actorsNewSkillLevel[id]]);
+            textSkillGet.text = skill.SkillName;
+            textSkillGetDescription.text = skill.Description;
+        }
 
 
 
@@ -487,8 +627,6 @@ namespace VoiceActing
             animatorEndStatScreen.SetTrigger("End");
             AudioManager.Instance.StopMusic(90);
             StartCoroutine(StopYokaiDisco());
-
-
         }
 
         private IEnumerator StopYokaiDisco()

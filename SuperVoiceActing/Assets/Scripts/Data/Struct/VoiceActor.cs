@@ -502,6 +502,15 @@ namespace VoiceActing
             statVoxography.Add((int)emotion, 1);
         }
 
+        public int AddRelation(Contract c)
+        {
+            int reward = 0;
+            if (c.CurrentLine == c.TotalLine)
+                reward = c.Level + Random.Range(0, 3);
+            relation += reward;
+            return reward;
+        }
+
         #endregion
 
     } // VoiceActor class
