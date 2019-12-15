@@ -141,10 +141,11 @@ MonoBehaviour:
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -153,7 +154,6 @@ MonoBehaviour:
     - text: Bonjour, brave chasseur.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 110
         hpMax: 140
       enemyResistance:
@@ -167,10 +167,10 @@ MonoBehaviour:
         fear: -90
         trust: -50
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Je suis une poup\xE9e, je suis dans ce r\xEAve pour veiller sur vous."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 110
         hpMax: 140
       enemyResistance:
@@ -184,44 +184,22 @@ MonoBehaviour:
         fear: -90
         trust: -50
       enemyWeakPoints: []
-    - text: "Honorable chasseur, partez en qu\xEAte des \xE9chos du sang."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 110
-        hpMax: 140
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: -90
-        anger: -90
-        surprise: -50
-        sweetness: 100
-        fear: -90
-        trust: 50
-      enemyWeakPoints: []
-    - text: Je les canaliserai pour vous donner plus de force.
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 110
-        hpMax: 140
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: -90
-        anger: -90
-        surprise: -50
-        sweetness: 100
-        fear: -90
-        trust: 50
-      enemyWeakPoints: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
     - text: Vous allez chasser des monstres...
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 110
         hpMax: 140
       enemyResistance:
@@ -235,29 +213,61 @@ MonoBehaviour:
         fear: 30
         trust: -90
       enemyWeakPoints: []
-    - text: "... Et je serai avec vous pour soutenir votre moral d\xE9faillant."
+      customTextDatas:
+      - text: "... Et je serai avec vous pour soutenir votre moral d\xE9faillant."
+        textStats:
+          interlocuteurID: 0
+          hpMin: 110
+          hpMax: 140
+        enemyResistance:
+          neutral: 0
+          joy: 100
+          sadness: 50
+          disgust: -90
+          anger: -90
+          surprise: -90
+          sweetness: 100
+          fear: 0
+          trust: 0
+    - text: "Honorable chasseur, partez en qu\xEAte des \xE9chos du sang."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 110
         hpMax: 140
       enemyResistance:
         neutral: 0
         joy: 100
-        sadness: 50
+        sadness: 0
         disgust: -90
         anger: -90
-        surprise: -90
+        surprise: -50
         sweetness: 100
-        fear: 0
-        trust: 0
+        fear: -90
+        trust: 50
       enemyWeakPoints: []
+      customTextDatas:
+      - text: Je les canaliserai pour vous donner plus de force.
+        textStats:
+          interlocuteurID: 0
+          hpMin: 0
+          hpMax: 0
+        enemyResistance:
+          neutral: 0
+          joy: 100
+          sadness: 0
+          disgust: -90
+          anger: -90
+          surprise: -50
+          sweetness: 100
+          fear: -90
+          trust: 50
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -266,7 +276,6 @@ MonoBehaviour:
     - text: Des monstres partout autour de moi...
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 110
         hpMax: 140
       enemyResistance:
@@ -280,10 +289,10 @@ MonoBehaviour:
         fear: 30
         trust: -90
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "... Vous serez comme eux, t\xF4t ou tard..."
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 110
         hpMax: 140
       enemyResistance:
@@ -297,61 +306,10 @@ MonoBehaviour:
         fear: 30
         trust: -90
       enemyWeakPoints: []
-    - text: '... Quelle est cette odeur ?'
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 110
-        hpMax: 140
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 0
-        disgust: 50
-        anger: 0
-        surprise: 100
-        sweetness: 50
-        fear: 0
-        trust: -90
-      enemyWeakPoints: []
-    - text: "Le sang parfum\xE9, oh, il chante pour moi."
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 110
-        hpMax: 140
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 100
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    - text: Il peut rendre malade un homme...
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 110
-        hpMax: 140
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: 50
-        disgust: 50
-        anger: 50
-        surprise: 50
-        sweetness: 50
-        fear: 50
-        trust: 50
-      enemyWeakPoints: []
+      customTextDatas: []
     - text: Haahahahahahaha !
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 175
         hpMax: 200
       enemyResistance:
@@ -365,6 +323,7 @@ MonoBehaviour:
         fear: 100
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}

@@ -65,6 +65,8 @@ namespace VoiceActing
         protected SoundEngineerManager soundEngineerManager;
         [SerializeField]
         protected SessionRecapManager sessionRecapManager;
+        [SerializeField]
+        protected DoublageResumeManager doublageResumeManager;
 
         [Title("Feedback & UI")]
         [SerializeField]
@@ -325,11 +327,48 @@ namespace VoiceActing
                 introBlackScreen.gameObject.SetActive(false);
                 introBlackScreen.enabled = false;
                 AudioManager.Instance.PlayMusic(audioClipBattleTheme);
+                AudioManager.Instance.PlaySound(audioClipSpotlight);
+
+                // Debug
+                /*contrat.SessionNumber = 1;
+                contrat.CurrentLine = 15;
+                indexPhrase = contrat.CurrentLine;
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Colère));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Tristesse));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
+                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));*/
+                // Debug
+                if (contrat.SessionNumber > 0)
+                {
+                    cameraController.MoveToInitialPosition(0);
+                    yield return doublageResumeManager.ResumeMainCoroutine(contrat);
+                }
+
+
                 for (int i = 0; i < animatorsIntro.Length; i++)
                 {
                     animatorsIntro[i].enabled = true;
                 }
-                AudioManager.Instance.PlaySound(audioClipSpotlight);
                 yield return new WaitForSeconds(1);
                 cameraController.MoveToInitialPosition(300);
                 yield return new WaitForSeconds(1);
@@ -772,15 +811,12 @@ namespace VoiceActing
 
         public void SwitchActors()
         {
-
             if (characterDoublageManager.SwitchActors(enemyManager.GetInterlocutor()) == true) // GoLeft
             {
-                cameraController.SetCameraSwitchActor(true);
                 FeedbackNewLineSwitch(true);
             }
             else
             {
-                cameraController.SetCameraSwitchActor(false);
                 FeedbackNewLineSwitch(false);
             }
             actorsManager.SetIndexActors(enemyManager.GetInterlocutor());

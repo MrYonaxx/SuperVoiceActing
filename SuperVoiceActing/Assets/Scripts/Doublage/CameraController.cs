@@ -387,44 +387,23 @@ namespace VoiceActing
         }
 
 
-
-
-
-
-
-
-
-        /*private IEnumerator MovementCoroutine(Transform transform, float x, float y, float z, float angleX, float angleY, float angleZ, float time)
+        public void SkipCameraMovement()
         {
-            time = Mathf.Max(1, time);
-            float speedX = (x - transform.position.x) / time;
-            float speedY = (y - transform.position.y) / time;
-            float speedZ = (z - transform.position.z) / time;
-            Vector3 speedPosition = new Vector3(speedX, speedY, speedZ);
-            Vector3 speedRotation = GetRotateSpeed(transform, angleX, angleY, angleZ, time);
-            moving = true;
-            while (time != 0)
-            {
-                if (pauseCoroutine == false)
-                {
-                    transform.position += speedPosition;
-                    transform.eulerAngles += speedRotation;
-                    time -= 1;
-                }
-                yield return null;
-            }
+            noCameraEffect = false;
             moving = false;
-            transform.position = new Vector3(x, y, z);
-            transform.eulerAngles = new Vector3(angleX, angleY, angleZ);
-        }*/
+            if (movCoroutine != null)
+                StopCoroutine(movCoroutine);
+            if (movTextCoroutine != null)
+                StopCoroutine(movTextCoroutine);
+            InitializeCameraEffect();
+        }
+
+
 
         private IEnumerator MovementCoroutine(Transform transform, float x, float y, float z, float angleX, float angleY, float angleZ, float time)
         {
             time = Mathf.Max(1, time);
             time /= 60;
-            /*float speedX = (x - transform.position.x) / time;
-            float speedY = (y - transform.position.y) / time;
-            float speedZ = (z - transform.position.z) / time;*/
             Vector3 finalPosition = new Vector3(x, y, z);
 
             Vector3 finalRotation = GetRotateSpeed(transform, angleX, angleY, angleZ, 1);
@@ -449,60 +428,15 @@ namespace VoiceActing
         }
 
 
-        /*private Vector3 GetRotateSpeed(Transform transform, float x, float y, float z, float time)
-        {
-            float angleX = transform.eulerAngles.x;
-            if (angleX > 180)
-            {
-                angleX = -(360 - angleX);
-            }
-            if (x > 180)
-                x = -(360 - x);
-            float speedX = (x - angleX) / time;
-
-            float angleY = transform.eulerAngles.y;
-            if (angleY > 180)
-                angleY = -(360 - angleY);
-            if (y > 180)
-                y = -(360 - y);
-            float speedY = (y - angleY) / time;
-
-            float angleZ = transform.eulerAngles.z;
-            if (angleZ > 180)
-                angleZ = -(360 - angleZ);
-            if (z > 180)
-                z = -(360 - z);
-
-            float speedZ = (z - angleZ) / time;
-
-            return new Vector3(speedX, speedY, speedZ);
-        }*/
-
         private Vector3 GetRotateSpeed(Transform transform, float x, float y, float z, float time)
         {
-            /*float angleX = transform.eulerAngles.x;
-            if (angleX > 180)
-            {
-                angleX = -(360 - angleX);
-            }*/
             if (x > 180)
                 x = -(360 - x);
-            //float speedX = (x - angleX) / time;
-
-           /* float angleY = transform.eulerAngles.y;
-            if (angleY > 180)
-                angleY = -(360 - angleY);*/
             if (y > 180)
                 y = -(360 - y);
-            //float speedY = (y - angleY) / time;
-
-            /*float angleZ = transform.eulerAngles.z;
-            if (angleZ > 180)
-                angleZ = -(360 - angleZ);*/
             if (z > 180)
                 z = -(360 - z);
 
-            //float speedZ = (z - angleZ) / time;
 
             return new Vector3(x, y, z);
         }

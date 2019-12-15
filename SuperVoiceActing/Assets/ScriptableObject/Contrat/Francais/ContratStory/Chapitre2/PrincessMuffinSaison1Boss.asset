@@ -32,16 +32,23 @@ MonoBehaviour:
     nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
   franchise:
     Enabled: 0
-    canScale: 1
     isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootAsRemaster: 0
+    chanceOfRebootAtEachIteration: 0
     alwaysRebootAtEnd: 0
-    chanceOfRebootAsRemaster: 100
-    rebootSuffix: 
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
@@ -49,6 +56,7 @@ MonoBehaviour:
     optional: 0
     charactersProfil:
     - roleName: Opera
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -82,12 +90,13 @@ MonoBehaviour:
         sweetness: 0
         fear: 15
         trust: 0
-      actorLocked: {fileID: 0}
+      actorLocked: {fileID: 11400000, guid: 9a0ca61c72ee77f43b506ae0ffb5e77e, type: 2}
       artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - roleName: Nougat
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -121,12 +130,13 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      actorLocked: {fileID: 0}
+      actorLocked: {fileID: 11400000, guid: 0282d05fdcd99e74a8a4e4c9375737e9, type: 2}
       artificialIntelligence: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - roleName: Praline
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -160,17 +170,18 @@ MonoBehaviour:
         sweetness: 5
         fear: 0
         trust: 15
-      actorLocked: {fileID: 0}
+      actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
       artificialIntelligence: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -179,7 +190,6 @@ MonoBehaviour:
     - text: "Bravo les filles ! On a gagn\xE9 !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -195,10 +205,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 5
+      customTextDatas: []
     - text: Qu'est-ce que... !?
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -213,10 +223,10 @@ MonoBehaviour:
         trust: -100
       enemyWeakPoints:
       - wordIndex: 0
+      customTextDatas: []
     - text: Qu'est-ce que c'est que ce monstre !?
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 35
         hpMax: 35
       enemyResistance:
@@ -231,10 +241,10 @@ MonoBehaviour:
         trust: -50
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
     - text: "Il poss\xE8de une quantit\xE9 d'\xE9nergie ph\xE9nom\xE9nale !"
       textStats:
         interlocuteurID: 2
-        linked: 0
         hpMin: 35
         hpMax: 35
       enemyResistance:
@@ -249,10 +259,10 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
     - text: "Prends \xE7a !"
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 40
         hpMax: 40
       enemyResistance:
@@ -268,10 +278,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 1
+      customTextDatas: []
     - text: "Quoi ? \xE7a n'a eu aucun effet !"
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 45
         hpMax: 45
       enemyResistance:
@@ -287,10 +297,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 4
+      customTextDatas: []
     - text: On ne peut pas le vaincre ! On va tous y passer !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 45
         hpMax: 45
       enemyResistance:
@@ -306,10 +316,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 3
       - wordIndex: 8
+      customTextDatas: []
     - text: "N'abandonne pas ! Si on ne l'arr\xEAte pas, il va attaquer la ville."
       textStats:
         interlocuteurID: 2
-        linked: 0
         hpMin: 50
         hpMax: 50
       enemyResistance:
@@ -325,10 +335,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 1
+      customTextDatas: []
     - text: "C'est notre devoir de la prot\xE9ger !"
       textStats:
         interlocuteurID: 2
-        linked: 0
         hpMin: 50
         hpMax: 50
       enemyResistance:
@@ -343,10 +353,10 @@ MonoBehaviour:
         trust: 120
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
     - text: Attention Nougat !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 50
         hpMax: 50
       enemyResistance:
@@ -361,6 +371,7 @@ MonoBehaviour:
         trust: -90
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
   eventData:
   - {fileID: 11400000, guid: 12fd5333e3029db4ab83c43c9d203b3d, type: 2}
   - {fileID: 11400000, guid: c6a95885890b96e4d9a7608f958549ad, type: 2}

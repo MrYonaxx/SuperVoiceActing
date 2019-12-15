@@ -538,6 +538,7 @@ namespace VoiceActing
             playerData.Money -= GetTotalCost();
 
             playerData.CurrentContract = currentContract;
+            playerData.CurrentContract.SessionNumber += 1;
             menuTransitionDoublage.StartTransition();
             inSessionObject.SetTrigger("Selection");
         }

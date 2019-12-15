@@ -194,11 +194,15 @@ namespace VoiceActing
 
         private void SetSkills(List<VoiceActor> voiceActors)
         {
+
             for (int k = 0; k < voiceActors.Count; k++)
             {
-                for (int i = 0; i < voiceActors[k].Potentials.Length; i++)
+                if (voiceActors[k].Potentials != null)
                 {
-                    skillsActors.Add((SkillActorData)skillDatabase.GetSkillData(voiceActors[k].Potentials[i]));
+                    for (int i = 0; i < voiceActors[k].Potentials.Length; i++)
+                    {
+                        skillsActors.Add((SkillActorData)skillDatabase.GetSkillData(voiceActors[k].Potentials[i]));
+                    }
                 }
             }
         }

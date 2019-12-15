@@ -34,6 +34,21 @@ namespace VoiceActing
                 }
             }
         }
+
+        public EmotionUsed(Emotion[] combo)
+        {
+            if (combo == null)
+                return;
+            for (int i = 0; i < emotions.Length; i++)
+            {
+                emotions[i] = combo[i];
+            }
+        }
+
+        public EmotionUsed(Emotion combo)
+        {
+            emotions[0] = combo;
+        }
     }
 
     /// <summary>
@@ -490,7 +505,7 @@ namespace VoiceActing
             this.totalMixing = Random.Range(data.MixingMin, data.MixingMax + 1);
 
 
-            this.sessionNumber = 0;
+            this.sessionNumber = -1;
             this.score = 0;
             this.highScore = 0;
 

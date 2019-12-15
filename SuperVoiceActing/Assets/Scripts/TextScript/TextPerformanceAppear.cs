@@ -152,6 +152,7 @@ namespace VoiceActing
 
         public void Stop()
         {
+            particlesLineDead.Stop();
             if (coroutine != null)
                 StopCoroutine(coroutine);
         }

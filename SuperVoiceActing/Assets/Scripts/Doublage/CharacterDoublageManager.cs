@@ -19,6 +19,8 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
+        private CameraController cameraController;
+        [SerializeField]
         private CharacterSpriteDatabase characterSpriteDatabase;
         [SerializeField]
         private CharacterDialogueController[] characters;
@@ -149,6 +151,43 @@ namespace VoiceActing
             spriteNextActor.sprite = characters[characterIndexCenter].GetSprite();
             SetCharacterForeground(characterIndexCenter);
             ShowCharacters(false);
+            cameraController.SetCameraSwitchActor(result);
+            return result;
+        }
+
+
+        public bool SwitchActorsSpeed(int nextActor)
+        {
+            bool result = false;
+            if (nextActor == characterIndexLeft) // switchLeft
+            {
+                characters[characterIndexLeft].transform.SetParent(charactersPosition[0]);
+                characters[characterIndexRight].transform.SetParent(charactersPosition[1]);
+                characters[characterIndexCenter].transform.SetParent(charactersPosition[2]);
+                characterIndexLeft = characterIndexRight;
+                characterIndexRight = characterIndexCenter;
+                characterIndexCenter = nextActor;
+                animatorSwitchActors.SetTrigger("LeftSpeed");
+                result = true; // switchLeft
+
+            }
+            else if (nextActor == characterIndexRight) // switchRight
+            {
+                characters[characterIndexRight].transform.SetParent(charactersPosition[0]);
+                characters[characterIndexCenter].transform.SetParent(charactersPosition[1]);
+                characters[characterIndexLeft].transform.SetParent(charactersPosition[2]);
+                characterIndexRight = characterIndexLeft;
+                characterIndexLeft = characterIndexCenter;
+                characterIndexCenter = nextActor;
+                animatorSwitchActors.SetTrigger("RightSpeed");
+                result = false; // switchRight
+            }
+            for (int i = 0; i < characters.Length; i++)
+            {
+                characters[i].transform.localPosition = Vector3.zero;
+            }
+            SetCharacterForeground(characterIndexCenter);
+            //cameraController.MoveToInitialPosition(1);
             return result;
         }
 
