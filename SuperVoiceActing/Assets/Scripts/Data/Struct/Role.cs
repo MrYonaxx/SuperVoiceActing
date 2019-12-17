@@ -287,9 +287,9 @@ namespace VoiceActing
             this.roleAI = data.ArtificialIntelligence;
 
             // ==================================
-            if(data.SkillRoleSelection.Length != 0)
+            skillRoles = new string[4];
+            if (data.SkillRoleSelection.Length != 0)
             {
-                skillRoles = new string[4];
                 int selection = Random.Range(0, data.SkillRoleSelection.Length);
 
                 SkillRoleData[] skillList = null;
