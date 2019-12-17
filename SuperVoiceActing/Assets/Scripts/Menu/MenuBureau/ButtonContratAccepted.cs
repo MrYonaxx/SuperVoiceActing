@@ -195,14 +195,6 @@ namespace VoiceActing
 
         public IEnumerator CoroutineProgress(int newCurrentMixing, int totalMixing, int time = 90)
         {
-            if (totalMixing == 0)
-            {
-                if (gaugeLine.transform.localScale.x == 1)
-                {
-                    ContractClear(true);
-                }
-                yield break;
-            }
             Vector3 speed = new Vector3((((float)newCurrentMixing / totalMixing) - gaugeMixing.transform.localScale.x) / time, 0, 0);
             while (time != 0)
             {

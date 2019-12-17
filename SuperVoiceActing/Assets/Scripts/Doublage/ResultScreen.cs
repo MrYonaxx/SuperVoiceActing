@@ -104,6 +104,8 @@ namespace VoiceActing
         private RectTransform[] newGaugeStats;
         [SerializeField]
         private TextMeshProUGUI[] textsGain;
+        [SerializeField]
+        private TextMeshProUGUI textHPLevelUp;
 
         [Title("Skill")]
         [SerializeField]
@@ -120,6 +122,8 @@ namespace VoiceActing
         private int[] actorsOldSkillLevel;
         private int[] actorsNewSkillLevel;
 
+        private int[] actorsOldHP;
+
         private EmotionStat[] actorsOldStats;
 
         [Title("Feedback")]
@@ -133,6 +137,8 @@ namespace VoiceActing
         private Animator animatorTextLevelUp;
         [SerializeField]
         private Animator[] animatorSkillGet;
+        [SerializeField]
+        private Animator animatorLevelUpHP;
         [SerializeField]
         private Animator animatorEndStatScreen;
 
@@ -183,6 +189,7 @@ namespace VoiceActing
             actorsOldLevel = new int[contract.VoiceActorsID.Count];
             actorsOldStats = new EmotionStat[contract.VoiceActorsID.Count];
 
+            actorsOldHP = new int[contract.VoiceActorsID.Count];
             actorsOldSkillLevel = new int[contract.VoiceActorsID.Count];
             actorsNewSkillLevel = new int[contract.VoiceActorsID.Count];
 
@@ -316,6 +323,7 @@ namespace VoiceActing
                 {
                     actorsOldLevel[i] = va.Level;
                     actorsOldStats[i] = new EmotionStat(va.Statistique);
+                    actorsOldHP[i] = va.HpMax;
                 }
                 actorsLevelUp[i] = true;
                 animatorTextLevelUp.gameObject.SetActive(true);
@@ -554,6 +562,8 @@ namespace VoiceActing
                     textsStats[i].color = Color.white;
                     textsGain[i].transform.localScale = new Vector3(1, 0, 1);
                 }
+                textHPLevelUp.color = Color.white;
+                textHPLevelUp.text = actorsOldHP[id].ToString();
                 StartCoroutine(NewstatCoroutine(id));
             }
             else
@@ -589,6 +599,8 @@ namespace VoiceActing
                 if(oldStat != stat)
                     StartCoroutine(NewStatDrawCoroutine(stat, oldStat, i));
             }
+            textHPLevelUp.text = va.HpMax.ToString();
+            animatorLevelUpHP.SetTrigger("Feedback");
         }
 
         private IEnumerator NewStatDrawCoroutine(int stat, int oldStat, int i)

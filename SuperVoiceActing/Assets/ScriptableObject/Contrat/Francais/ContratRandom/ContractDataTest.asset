@@ -28,14 +28,33 @@ MonoBehaviour:
   - "Ce contrat a uniquement pour but de tester le syst\xE8me de jeu de Super Voice
     Acting.\n\nLa conversation est plut\xF4t banale. Le premier personnage est tr\xE8s
     enthousiaste, l\xE0 o\xF9 le second est un peu plus en col\xE8re."
-  isFranchise: 0
-  franchiseNames: []
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Femme
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 21300000, guid: d013cb8530a1c0349b3f24cb34854943, type: 3}
       roleType: 0
       rolePersonality: 0
@@ -70,23 +89,13 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 0
-        startAttack: 0
-        endAttack: 1
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
+      artificialIntelligence: []
+      skillRoleSelection: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Homme
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -122,22 +131,25 @@ MonoBehaviour:
         trust: 0
       actorLocked: {fileID: 0}
       artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Ah ! Encore une belle journ\xE9e qui commence !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 80
         hpMax: 80
       enemyResistance:
@@ -152,19 +164,22 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "J'ai h\xE2te de donner le meilleur de moi-m\xEAme !"
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 100
         hpMax: 100
       enemyResistance:
@@ -181,19 +196,22 @@ MonoBehaviour:
       - wordIndex: 5
       - wordIndex: 1
       - wordIndex: 7
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Arr\xEAte de jacasser tu fais trop de bruit !"
       textStats:
         interlocuteurID: 1
-        linked: 0
         hpMin: 100
         hpMax: 100
       enemyResistance:
@@ -210,19 +228,22 @@ MonoBehaviour:
       - wordIndex: 2
       - wordIndex: 5
       - wordIndex: 7
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Ah pardon, je me suis un peu emport\xE9e."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 60
         hpMax: 60
       enemyResistance:
@@ -238,6 +259,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 7
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
   eventEndContract: {fileID: 0}
@@ -247,3 +269,5 @@ MonoBehaviour:
   battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

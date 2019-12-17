@@ -21,7 +21,7 @@ MonoBehaviour:
   mixingMax: 8
   weekMin: 5
   weekMax: 5
-  expGain: 0
+  expGain: 1250
   expBonus: 0
   contractDictionnary: []
   description:
@@ -87,26 +87,15 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions: []
-        skills:
-        - {fileID: 11400000, guid: 6fbb12d0cc820dd4b813fd38c8e5b802, type: 2}
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 2
-        skills:
+      artificialIntelligence: []
+      skillRoleSelection:
+      - skillsA:
         - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
+        skillsB: []
+        skillsC:
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        skillsD:
+        - {fileID: 11400000, guid: 19fd61fe3024f7c42a4302146f63a7e3, type: 2}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
@@ -147,6 +136,7 @@ MonoBehaviour:
         trust: 0
       actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
       artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:

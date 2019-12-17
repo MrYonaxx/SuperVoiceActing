@@ -8,6 +8,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
+
+
+using UnityEngine.UI;
+using TMPro;
 
 namespace VoiceActing
 {
@@ -49,6 +54,17 @@ namespace VoiceActing
         SpriteRenderer spriteCurrentActor;
         [SerializeField]
         SpriteRenderer spriteNextActor;
+
+
+        [Title("HudActors")]
+        [SerializeField]
+        Image actorLeft;
+        [SerializeField]
+        Image actorRight;
+        [SerializeField]
+        TextMeshProUGUI textActorLeft;
+        [SerializeField]
+        TextMeshProUGUI textActorRight;
 
 
         private int characterIndexCenter = 0;
@@ -189,6 +205,88 @@ namespace VoiceActing
             SetCharacterForeground(characterIndexCenter);
             //cameraController.MoveToInitialPosition(1);
             return result;
+        }
+
+
+        /*public void DrawActorsOrder(List<TextData> textDatas, List<string> actorsContract, int currentLine)
+        {
+            if (actorsContract.Count >= 2)
+                actorLeft.sprite = characterSpriteDatabase.GetCharacterData(actorsContract[characterIndexLeft]).SpriteIcon;
+
+            if (actorsContract.Count >= 3)
+                actorRight.sprite = characterSpriteDatabase.GetCharacterData(actorsContract[characterIndexRight]).SpriteIcon;
+
+            actorLeft.gameObject.SetActive(false);
+            actorRight.gameObject.SetActive(false);
+            int leftTurn = 0;
+            int rightTurn = 0;
+            bool leftDraw = false;
+            bool rightDraw = false;
+            for (int i = currentLine; i < textDatas.Count; i++)
+            {
+                if (leftDraw == false)
+                {
+                    if (textDatas[i].Interlocuteur == characterIndexLeft)
+                    {
+                        DrawActorTurnOrder(actorLeft, textActorLeft, leftTurn);
+                        leftDraw = true;
+                    }
+                    leftTurn += 1;
+                }
+                if (rightDraw == false)
+                {
+                    if (textDatas[i].Interlocuteur == characterIndexRight)
+                    {
+                        DrawActorTurnOrder(actorRight, textActorRight, rightTurn);
+                        rightDraw = true;
+                    }
+                    rightTurn += 1;
+                }
+            }
+        }*/
+
+        public void DrawActorsOrder(List<TextData> textDatas, List<string> actorsContract, int currentLine)
+        {
+            if (characterIndexLeft < actorsContract.Count)
+            {
+                actorLeft.sprite = characterSpriteDatabase.GetCharacterData(actorsContract[characterIndexLeft]).SpriteIcon;
+                actorLeft.enabled = (actorLeft.sprite != null);
+            }
+
+            if (characterIndexRight < actorsContract.Count)
+            {
+                actorRight.sprite = characterSpriteDatabase.GetCharacterData(actorsContract[characterIndexRight]).SpriteIcon;
+                actorRight.enabled = (actorRight.sprite != null);
+            }
+
+            actorLeft.gameObject.SetActive(false);
+            actorRight.gameObject.SetActive(false);
+            int leftTurn = 0;
+            int rightTurn = 0;
+            for (int i = currentLine; i < textDatas.Count; i++)
+            {
+                if (textDatas[i].Interlocuteur == characterIndexLeft)
+                {
+                    DrawActorTurnOrder(actorLeft, textActorLeft, leftTurn);
+                    return;
+                }
+                if (textDatas[i].Interlocuteur == characterIndexRight)
+                {
+                    DrawActorTurnOrder(actorRight, textActorRight, rightTurn);
+                    return;
+                }
+                leftTurn += 1;
+                rightTurn += 1;
+            }
+        }
+
+        private void DrawActorTurnOrder(Image actorImage, TextMeshProUGUI textPro, int turn)
+        {
+            actorImage.gameObject.SetActive(true);
+            if (turn == 1)
+                textPro.text = "NEXT";
+            else
+                textPro.text = turn.ToString();
         }
 
     } // CharacterDoublageManager class

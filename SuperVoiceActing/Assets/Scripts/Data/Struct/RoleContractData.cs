@@ -215,6 +215,51 @@ namespace VoiceActing
             get { return artificialIntelligence; }
         }
 
+        [TabGroup("Skills")]
+        [GUIColor(0.9f, 0.9f, 1f, 1f)]
+        [SerializeField]
+        private SkillRoleSelection[] skillRoleSelection;
+        public SkillRoleSelection[] SkillRoleSelection
+        {
+            get { return skillRoleSelection; }
+        }
+
     }
+
+
+    [System.Serializable]
+    public class SkillRoleSelection
+    {
+        [HorizontalGroup("SkillRole")]
+        [SerializeField]
+        private SkillRoleData[] skillsA;
+        public SkillRoleData[] SkillsA
+        {
+            get { return skillsA; }
+        }
+        [HorizontalGroup("SkillRole")]
+        [SerializeField]
+        private SkillRoleData[] skillsB;
+        public SkillRoleData[] SkillsB
+        {
+            get { return skillsB; }
+        }
+        [HorizontalGroup("SkillRole")]
+        [SerializeField]
+        private SkillRoleData[] skillsC;
+        public SkillRoleData[] SkillsC
+        {
+            get { return skillsC; }
+        }
+        [HorizontalGroup("SkillRole")]
+        [SerializeField]
+        private SkillRoleData[] skillsD;
+        public SkillRoleData[] SkillsD
+        {
+            get { return skillsD; }
+        }
+
+    }
+
 
 }// #PROJECTNAME# namespace

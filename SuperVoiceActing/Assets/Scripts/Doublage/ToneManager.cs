@@ -21,13 +21,18 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
+
+        [Header("Parameter")]
+        [SerializeField]
+        int startToneMin = 1;
+        [SerializeField]
+        int startToneMax = 3;
+
         [SerializeField]
         EmotionStat toneMultiplier;
         /*[SerializeField]
         float toneMaxValue = 800.0f;*/
 
-        [SerializeField]
-        EmotionStat toneValue;
 
         /*[SerializeField]
         [InfoBox("Toujours un int multiple de 8")]
@@ -44,6 +49,7 @@ namespace VoiceActing
         TextMeshProUGUI textMoodBonus;
 
         private int moodBonus = 0;
+        private EmotionStat[] toneValues;
 
         #endregion
 
@@ -61,10 +67,25 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public void InitializeDefaultTone(List<Role> roles)
+        {
+            toneValues = new EmotionStat[roles.Count];
+            for(int i = 0; i < roles.Count; i++)
+            {
+                toneValues[i] = new EmotionStat();
+                toneValues[i].Add(roles[i].BestStat, Random.Range(startToneMin, startToneMax)+1);
+                toneValues[i].Add(roles[i].SecondBestStatEmotion, Random.Range(startToneMin, startToneMax));
+            }
+        }
+
+
+
         [ContextMenu("DrawTone")]
 
-        public void DrawTone()
+        public void DrawTone(int voiceActorID)
         {
+            EmotionStat toneValue = toneValues[voiceActorID];
             float startX = 0f;
             float width = 0f;
             float multiplier = 0f;
@@ -137,7 +158,7 @@ namespace VoiceActing
         }
 
 
-        public void ModifyTone(EmotionCard[] emotions)
+        public void ModifyTone(EmotionCard[] emotions, int actorID)
         {
             if (emotions == null)
                 return;
@@ -153,10 +174,10 @@ namespace VoiceActing
                     toneAddValue.Add((int)emotions[i].GetEmotion(), 1);
                 toneSubstractValue.SetValue((int)emotions[i].GetEmotion(), 0);
             }
-            toneValue.Add(toneAddValue);
+            toneValues[actorID].Add(toneAddValue);
             //toneValue.Add(toneSubstractValue);
-            toneValue.Clamp(0, 100);
-            DrawTone();
+            toneValues[actorID].Clamp(0, 100);
+            DrawTone(actorID);
             StopHighlight();
         }
 
@@ -175,7 +196,7 @@ namespace VoiceActing
         }
 
 
-        public void HighlightTone(Emotion emotion, bool isHighlight)
+        /*public void HighlightTone(Emotion emotion, bool isHighlight)
         {
             Image toneSelected;// = toneTransform[(int) emotion];
             switch (emotion)
@@ -220,7 +241,7 @@ namespace VoiceActing
                 moodBonus -= toneValue.GetEmotion((int)emotion);
             }
             DrawMoodBonus();
-        }
+        }*/
 
         private void StopHighlight()
         {

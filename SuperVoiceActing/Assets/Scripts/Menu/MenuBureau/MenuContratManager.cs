@@ -167,7 +167,8 @@ namespace VoiceActing
                     contractAcceptedList[i].ProgressMixing(soundEngi);
                     yield return buttonContractAccepted[i].CoroutineProgress(contractAcceptedList[i].CurrentMixing, contractAcceptedList[i].TotalMixing);
                 }
-
+                if(contractAcceptedList[i].CurrentLine == contractAcceptedList[i].TotalLine && contractAcceptedList[i].CurrentMixing == contractAcceptedList[i].TotalMixing)
+                    buttonContractAccepted[i].ContractClear(true);
                 // Week remaining
                 contractAcceptedList[i].WeekRemaining -= 1;
                 buttonContractAccepted[i].DrawContractDate(contractAcceptedList[i].WeekRemaining);

@@ -140,7 +140,7 @@ namespace VoiceActing
 
 
 
-        [Header("Debug")]
+        [Title("Debug")]
         [SerializeField]
         protected int indexPhrase = 0;
 
@@ -152,6 +152,7 @@ namespace VoiceActing
         protected bool startLine = true;
         protected bool endAttack = false;
 
+        [SerializeField]
         protected Contract contrat;
 
         protected int turnCount = 15;
@@ -275,9 +276,10 @@ namespace VoiceActing
             skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
-            roleManager.SetRoles(contrat.Characters);
+            roleManager.SetRoles(contrat.Characters, actorsManager.GetCurrentActorIndex());
             soundEngineerManager.SetManagers(skillManager, soundEngi);
-            toneManager.DrawTone();
+            toneManager.InitializeDefaultTone(contrat.Characters);
+            toneManager.DrawTone(actorsManager.GetCurrentActorIndex());
             characterDoublageManager.SetCharactersSprites(battleVoiceActors);
             characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
             SetPlayerSettings();
@@ -329,35 +331,6 @@ namespace VoiceActing
                 AudioManager.Instance.PlayMusic(audioClipBattleTheme);
                 AudioManager.Instance.PlaySound(audioClipSpotlight);
 
-                // Debug
-                /*contrat.SessionNumber = 1;
-                contrat.CurrentLine = 15;
-                indexPhrase = contrat.CurrentLine;
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Colère));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Tristesse));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));
-                contrat.EmotionsUsed.Add(new EmotionUsed(Emotion.Joie));*/
-                // Debug
                 if (contrat.SessionNumber > 0)
                 {
                     cameraController.MoveToInitialPosition(0);
@@ -503,6 +476,8 @@ namespace VoiceActing
 
             skillManager.HideSkillWindow();
 
+            roleManager.ShowHUDNextAttack(false, true);
+
         }
 
 
@@ -535,7 +510,9 @@ namespace VoiceActing
             }
 
             // Check Role Attack =================================================================
-            roleManager.RoleDecision("ENDATTACK", indexPhrase, turnCount, enemyManager.GetHpPercentage());
+            //roleManager.RoleDecision("ENDATTACK", indexPhrase, turnCount, enemyManager.GetHpPercentage());
+            //roleManager.
+            roleManager.ActivateRoleSpot(); // Active le spot si le role va attaquer.
 
             // Wait End Line =====================================================================
             while (textAppearManager.GetEndLine() == false)
@@ -585,14 +562,15 @@ namespace VoiceActing
             {
                 yield return new WaitForSeconds(0.1f);
                 cameraController.EnemySkill();
-                roleManager.EnemyAttackActivation();
+                /*roleManager.EnemyAttackActivation();
                 endAttack = false;
                 defencePhase = true;
                 while (endAttack == false)
                 {
                     yield return null;
                 }
-                defencePhase = false;
+                defencePhase = false;*/
+                yield return roleManager.RoleAttackCoroutine();
             }
 
             // Check Producer Attack ==============================================================
@@ -697,10 +675,13 @@ namespace VoiceActing
                 actorsManager.CheckBuffsActors();
                 actorsManager.CheckBuffsCards();
                 RolesManager.CheckBuffsRoles();
+                roleManager.ShowHUDNextAttack(true);
                 ShowUIButton(buttonUIA);
                 ShowUIButton(buttonUIB);
                 if (enemyManager.GetHpPercentage() == 0)
                     ShowUIButton(buttonUIY);
+                else
+                    roleManager.DetermineCurrentAttack();
             }
 
             // Reprint éventuel
@@ -742,7 +723,7 @@ namespace VoiceActing
                         currentLineNumber.text = (indexPhrase).ToString();
                     emotionAttackManager.ResetCard();
                     emotionAttackManager.StartTurnCardFeedback();
-                    toneManager.ModifyTone(lastAttack);
+                    toneManager.ModifyTone(lastAttack, actorsManager.GetCurrentActorIndex());
 
                     roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
                     soundEngineerManager.ShowCharacterShadows();
@@ -801,11 +782,6 @@ namespace VoiceActing
         private IEnumerator WaitCoroutineNextPhrase(float time)
         {
             yield return new WaitForSeconds(time / 60f);
-            /*while (time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }*/
             SetPhrase();
         }
 
@@ -877,7 +853,7 @@ namespace VoiceActing
             }
 
             // Role Decision ======================================================================
-            roleManager.RoleDecision("STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage());
+            /*roleManager.RoleDecision("STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage());
             if (roleManager.IsAttacking() == true)
             {
                 yield return new WaitForSeconds(0.1f);
@@ -891,13 +867,17 @@ namespace VoiceActing
                     yield return null;
                 }
                 emotionAttackManager.ShowComboSlot(true);
-            }
+            }*/
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
             ShowUIButton(buttonUIA);
             ShowUIButton(buttonUIB);
+            roleManager.ShowHUDNextAttack(true);
+            roleManager.DetermineCurrentAttack();
+            characterDoublageManager.DrawActorsOrder(contrat.TextData, contrat.VoiceActorsID, indexPhrase);
+            toneManager.DrawTone(actorsManager.GetCurrentActorIndex());
         }
 
 
@@ -978,11 +958,7 @@ namespace VoiceActing
             yield return new WaitForSeconds(1);
             introBlackScreen.gameObject.SetActive(true);
             textIntro.SetActive(true);
-            //introText.SetPhraseTextacting("We did it everyone !");
             yield return new WaitForSeconds(2);
-            //introText.SetPhraseTextacting("Enregistrement terminé !");
-            //yield return new WaitForSeconds(99);
-
         }
 
 

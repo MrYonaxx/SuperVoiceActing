@@ -208,6 +208,14 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private string[] skillRoles;
+        public string[] SkillRoles
+        {
+            get { return skillRoles; }
+            set { skillRoles = value; }
+        }
+
+        [SerializeField]
         private List<Buff> buffs;
         public List<Buff> Buffs
         {
@@ -278,6 +286,46 @@ namespace VoiceActing
                 this.characterLock = data.ActorLocked.SpriteSheets.name;
             this.roleAI = data.ArtificialIntelligence;
 
+            // ==================================
+            if(data.SkillRoleSelection.Length != 0)
+            {
+                skillRoles = new string[4];
+                int selection = Random.Range(0, data.SkillRoleSelection.Length);
+
+                SkillRoleData[] skillList = null;
+                for (int i = 0; i < 4; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            skillList = data.SkillRoleSelection[selection].SkillsA;
+                            break;
+                        case 1:
+                            skillList = data.SkillRoleSelection[selection].SkillsB;
+                            break;
+                        case 2:
+                            skillList = data.SkillRoleSelection[selection].SkillsC;
+                            break;
+                        case 3:
+                            skillList = data.SkillRoleSelection[selection].SkillsD;
+                            break;
+                    }
+                    if (skillList.Length != 0)
+                        skillRoles[i] = skillList[Random.Range(0, skillList.Length)].name;
+                    else
+                        skillRoles[i] = "";
+                }
+            }
+
+            // ==================================
+
+            SelectBestStat();
+
+        }
+
+
+        private void SelectBestStat()
+        {
             int[] bestValues = new int[8];
 
             bestValues[0] = characterStat.Joy;
@@ -315,8 +363,8 @@ namespace VoiceActing
                 secondBestStat = -1;
             }
 
-
         }
+
 
         #endregion
 

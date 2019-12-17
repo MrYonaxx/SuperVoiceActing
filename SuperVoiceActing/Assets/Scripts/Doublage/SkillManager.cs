@@ -143,6 +143,14 @@ namespace VoiceActing
         /* ======================================== *\
          *           GETTERS AND SETTERS            *
         \* ======================================== */
+
+        public SkillData GetSkill(string skillID)
+        {
+            if (skillID == "")
+                return null;
+            return skillDatabase.GetSkillData(skillID);
+        }
+
         public bool InSkillAnimation()
         {
             return inSkillAnimation;

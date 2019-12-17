@@ -58,13 +58,6 @@ namespace VoiceActing
         [SerializeField]
         CameraController cameraController;
 
-        [Title("Best Stat Marker")]
-        [SerializeField]
-        RectTransform[] positionEmotionBestStat;
-        [SerializeField]
-        RectTransform bestStatIcon;
-        [SerializeField]
-        RectTransform secondBestStatIcon;
 
 
         [Space]
@@ -73,13 +66,24 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI[] currentRoleBuffTimer;
 
+
+
+        [Title("RoleAttackTimeline")]
+        [SerializeField]
+        Animator[] animatorSkillTimeline;
+        [SerializeField]
+        TextMeshProUGUI[] textSkillTimelineName;
+
+
         bool firstTime = false;
         bool readyToAttack = false;
         bool selectingCounter = false;
 
         List<Role> roles;
+        List<SkillRoleData> skillRoles = new List<SkillRoleData>();
 
         int indexCurrentRole = 0;
+        int indexCurrentSkill = 0;
         int currentAttackInfluence;
         private SkillRoleData currentAttack = null;
         private SkillManager skillManager = null;
@@ -98,7 +102,17 @@ namespace VoiceActing
         {
             indexCurrentRole = newIndex;
             textRoleName.text = roles[indexCurrentRole].Name;
-            SetBestStatIcon();
+
+            skillRoles.Clear();
+            for(int i = 0; i < roles[indexCurrentRole].SkillRoles.Length; i++)
+            {
+                skillRoles.Add((SkillRoleData) skillManager.GetSkill(roles[indexCurrentRole].SkillRoles[i]));
+                if(skillRoles[i] == null)
+                    textSkillTimelineName[i].text = "";
+                else
+                    textSkillTimelineName[i].text = skillRoles[i].SkillName;
+            }
+
         }
 
         public int GetRoleAttack()
@@ -124,18 +138,42 @@ namespace VoiceActing
             skillManager = manager;
         }
 
-        public void SetRoles(List<Role> contractRoles)
+        public void SetRoles(List<Role> contractRoles, int currentRole)
         {
             roles = contractRoles;
-            textRoleName.text = roles[indexCurrentRole].Name;
-            if (bestStatIcon != null)
-                SetBestStatIcon();
+            SetIndexRole(currentRole);
         }
 
         public void AddScorePerformance(int lastAttackScore, int lastBestScore)
         {
             roles[indexCurrentRole].RolePerformance += lastAttackScore;
             roles[indexCurrentRole].RoleBestScore += lastBestScore;
+        }
+
+
+
+
+        public void ShowHUDNextAttack(bool show, bool nextAttackStay = false)
+        {
+            if (nextAttackStay == true && currentAttack == null)
+                ShowHUDNextAttack(show);
+            else 
+            {
+                for (int i = 0; i < animatorSkillTimeline.Length; i++)
+                {
+                    if (nextAttackStay == true && i == indexCurrentSkill)
+                        continue;
+                    else
+                        animatorSkillTimeline[i].SetBool("Appear", show);
+                }
+            }
+        }
+
+        public void DetermineCurrentAttack()
+        {
+            indexCurrentSkill = Random.Range(0, skillRoles.Count);
+            currentAttack = skillRoles[indexCurrentSkill];
+            animatorSkillTimeline[indexCurrentSkill].SetTrigger("isNextAttack");
         }
 
 
@@ -148,6 +186,9 @@ namespace VoiceActing
         {
             roleInfluenceBonus[indexCurrentRole] += value;
         }
+
+
+
 
 
 
@@ -245,9 +286,13 @@ namespace VoiceActing
 
 
 
-        public bool IsAttacking()
+        /*public bool IsAttacking()
         {
             return readyToAttack;
+        }*/
+        public bool IsAttacking()
+        {
+            return (currentAttack != null);
         }
 
 
@@ -261,7 +306,7 @@ namespace VoiceActing
                     if (currentAttack != null)
                     {
                         readyToAttack = true;
-                        ActivateSpot();
+                        ActivateRoleSpot();
                     }
                     else
                     {
@@ -279,17 +324,36 @@ namespace VoiceActing
 
 
 
+        public void ActivateRoleSpot()
+        {
+            if (currentAttack == null)
+                return;
+            spotEnemy.gameObject.SetActive(true);
+            spotEnemy.SetBool("Appear", true);
+        }
 
-
-
-
-        private void ActivateSpot()
+        /*public void ActivateRoleSpot()
         {
             if (firstTime == false)
             {
                 spotEnemy.gameObject.SetActive(true);
             }
             spotEnemy.SetBool("Appear", true);
+        }*/
+
+        public IEnumerator RoleAttackCoroutine()
+        {
+            enemyAttackFace.gameObject.SetActive(true);
+            enemyAttackFace.SetTrigger("Appear");
+            animatorSkillTimeline[indexCurrentSkill].SetTrigger("Feedback");
+            skillManager.PreviewSkill(currentAttack);
+            yield return new WaitForSeconds(2.5f);
+            cameraController.EnemySkillCancel();
+            skillManager.StopPreview(currentAttack);
+            skillManager.ApplySkill(currentAttack);
+            enemyAttack.SetBool("Appear", false);
+            enemyAttackFace.SetTrigger("Disappear");
+            //shakeFeedback.ShakeRectEffect();
         }
 
         public void EnemyAttackActivation()
@@ -335,11 +399,11 @@ namespace VoiceActing
 
 
         // Appelé via l'animator enemyAttackFace
-        public void ActivateInput()
+        /*public void ActivateInput()
         {
             input.gameObject.SetActive(true);
             skillManager.PreviewSkill(currentAttack);
-        }
+        }*/
 
 
         public void StopEnemyActivation()
@@ -462,22 +526,6 @@ namespace VoiceActing
 
 
 
-
-
-
-
-
-
-
-
-
-        public void SetBestStatIcon()
-        {
-            bestStatIcon.SetParent(positionEmotionBestStat[roles[indexCurrentRole].BestStatEmotion]);
-            bestStatIcon.anchoredPosition = new Vector2(0, 0);
-            secondBestStatIcon.SetParent(positionEmotionBestStat[roles[indexCurrentRole].SecondBestStatEmotion]);
-            secondBestStatIcon.anchoredPosition = new Vector2(0,0);
-        }
 
 
 
