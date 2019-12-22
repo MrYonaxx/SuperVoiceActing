@@ -179,13 +179,6 @@ namespace VoiceActing
         {
             get { return interlocuteurID; }
         }
-        /*[HorizontalGroup("Interlocuteur", LabelWidth = 100, Width = 100)]
-        [SerializeField]
-        private int linked;
-        public int Linked
-        {
-            get { return linked; }
-        }*/
 
         [HorizontalGroup("HP", LabelWidth = 100, Width = 100)]
         [SerializeField]
@@ -201,38 +194,6 @@ namespace VoiceActing
         {
             get { return hpMax; }
         }
-
-
-        /*[HorizontalGroup("Atk", LabelWidth = 100, Width = 100)]
-        [SerializeField]
-        private int atkMin;
-        public int AtkMin
-        {
-            get { return atkMin; }
-        }
-        [HorizontalGroup("Atk", LabelWidth = 100, Width = 100)]
-        [SerializeField]
-        private int atkMax;
-        public int AtkMax
-        {
-            get { return atkMax; }
-        }
-
-
-        [HorizontalGroup("Evade", LabelWidth = 100, Width = 100)]
-        [SerializeField]
-        private int evadeMin;
-        public int EvadeMin
-        {
-            get { return evadeMin; }
-        }
-        [HorizontalGroup("Evade", LabelWidth = 100, Width = 100)]
-        [SerializeField]
-        private int evadeMax;
-        public int EvadeMax
-        {
-            get { return evadeMax; }
-        }*/
 
         public void SetDebugHP(int hp, int hpM)
         {
@@ -296,8 +257,8 @@ namespace VoiceActing
             set { enemyWeakPoints = value; }
         }
 
-        [Space]
-        [HorizontalGroup("CustomTextData")]
+        [FoldoutGroup("Advanced")]
+        //[HorizontalGroup("CustomTextData")]
         [SerializeField]
         private CustomTextData[] customTextDatas;
         public CustomTextData[] CustomTextDatas

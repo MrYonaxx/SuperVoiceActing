@@ -36,31 +36,32 @@ namespace VoiceActing
 
         [ShowIf("changeViewport")]
         [SerializeField]
-        private int time;
+        [MinValue(1)]
+        private int time = 600;
         public int Time
         {
             get { return time; }
         }
         [ShowIf("changeViewport")]
         [SerializeField]
-        private Vector2 position;
-        public Vector2 Position
+        private Vector2 anchorMin = new Vector2(0,0);
+        public Vector2 AnchorMin
         {
-            get { return position; }
+            get { return anchorMin; }
         }
         [ShowIf("changeViewport")]
         [SerializeField]
-        private Vector3 rotation;
-        public Vector3 Rotation
+        private Vector2 anchorMax = new Vector2(1, 1);
+        public Vector2 AnchorMax
         {
-            get { return rotation; }
+            get { return anchorMax; }
         }
         [ShowIf("changeViewport")]
         [SerializeField]
-        private Vector2 viewportSize;
-        public Vector2 ViewportSize
+        private float rotationZ;
+        public float RotationZ
         {
-            get { return viewportSize; }
+            get { return rotationZ; }
         }
 
         [Header("Camera Viewport")]
@@ -71,7 +72,14 @@ namespace VoiceActing
             get { return camViewport; }
         }
 
-
+        [ShowIf("camViewport")]
+        [SerializeField]
+        [MinValue(1)]
+        private int timeCamera = 1;
+        public int TimeCamera
+        {
+            get { return timeCamera; }
+        }
         [ShowIf("camViewport")]
         [SerializeField]
         private Vector3 camPosition;
@@ -86,14 +94,8 @@ namespace VoiceActing
         {
             get { return camRotation; }
         }
-        [ShowIf("camViewport")]
-        [SerializeField]
-        private int timeCamera;
-        public int TimeCamera
-        {
-            get { return timeCamera; }
-        }
 
+        [HideInInspector]
         [Header("TextPosition")]
         [SerializeField]
         private bool changeTextPosition;

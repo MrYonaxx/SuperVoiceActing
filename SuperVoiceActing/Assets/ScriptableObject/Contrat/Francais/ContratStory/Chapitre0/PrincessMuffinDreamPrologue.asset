@@ -1,0 +1,278 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: PrincessMuffinDreamPrologue
+  m_EditorClassIdentifier: 
+  contractName: Princess Muffin
+  level: 3
+  contractType: 1
+  salaryMin: 10000
+  salaryMax: 10000
+  mixingMin: 20
+  mixingMax: 25
+  weekMin: 10
+  weekMax: 10
+  expGain: 0
+  expBonus: 0
+  contractDictionnary: []
+  description:
+  - "La premi\xE8re saison de Princess Muffin. Charlotte rencontre de nouveaux alli\xE9s
+    pour affronter les forces de la religieuse. Cependant cette derni\xE8re semble
+    avoir un plan derri\xE8re la t\xEAte, et d\xE9cide d'attaquer la ville, pendant
+    que Charlotte est en rendez-vous amoureux avec Mathieu.\nC'est donc au tour des
+    nouvelles princess muffin de faire face aux forces des t\xE9n\xE8bres."
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 0
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Charlotte
+      roleNames: []
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: -10, y: 2}
+      timbreRand: {x: -10, y: 2}
+      characterStatMin:
+        neutral: 0
+        joy: 1
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 1
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+      artificialIntelligence: []
+      skillRoleSelection: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Nougat
+      roleNames: []
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: -7, y: 2}
+      timbreRand: {x: -6, y: 2}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 1
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 1
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: 0282d05fdcd99e74a8a4e4c9375737e9, type: 2}
+      artificialIntelligence: []
+      skillRoleSelection: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Praline
+      roleNames: []
+      roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      defMin: 0
+      defMax: 0
+      timbre: {x: -8, y: 0}
+      timbreRand: {x: -8, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 1
+        disgust: 0
+        anger: 1
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 1
+        disgust: 0
+        anger: 1
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 11400000, guid: 262c982d28658d24c97f70d1109e432c, type: 2}
+      artificialIntelligence: []
+      skillRoleSelection: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Bravo les filles ! On a gagn\xE9 !"
+      textStats:
+        interlocuteurID: 0
+        hpMin: 20
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -100
+        disgust: -100
+        anger: -100
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints:
+      - wordIndex: 0
+      - wordIndex: 5
+      customTextDatas: []
+    - text: "Ces montres \xE9taient vraiment d\xE9goutant."
+      textStats:
+        interlocuteurID: 1
+        hpMin: 20
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: -100
+        disgust: 100
+        anger: -100
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 0
+      customTextDatas: []
+    - text: "Charlotte ! Derri\xE8re toi attention !"
+      textStats:
+        interlocuteurID: 2
+        hpMin: 20
+        hpMax: 20
+      enemyResistance:
+        neutral: 0
+        joy: -100
+        sadness: 100
+        disgust: -100
+        anger: 100
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      customTextDatas: []
+    - text: Qu'est-ce que c'est que ce monstre !?
+      textStats:
+        interlocuteurID: 0
+        hpMin: 200
+        hpMax: 200
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 5
+      customTextDatas: []
+  eventData:
+  - {fileID: 11400000, guid: 62440451d04293941b400e941e0c0786, type: 2}
+  - {fileID: 11400000, guid: 63097fb4dea0dd04f8f8580c3a25d2e6, type: 2}
+  - {fileID: 11400000, guid: f9656051815d7a945819e921e28acea6, type: 2}
+  eventAcceptedContract: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: b9b8c681c38d3c044a8f859ee54fda3e, type: 3}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

@@ -164,34 +164,15 @@ namespace VoiceActing
         ///
         public void MoveToInitialPosition(int time = 180)
         {
-            CameraMovement(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z,
-                           initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, time);
+            CameraMovement(initialPosition.localPosition.x, initialPosition.localPosition.y, initialPosition.localPosition.z,
+                           initialPosition.localEulerAngles.x, initialPosition.localEulerAngles.y, initialPosition.localEulerAngles.z, time);
         }
 
         public void SetInitialPosition(Vector3 newPos, Vector3 newRot, int time)
         {
-            StartCoroutine(MoveInitialPositionCoroutine(newPos.x, newPos.y, newPos.z, newRot.x, newRot.y, newRot.z, time));
-        }
-
-        private IEnumerator MoveInitialPositionCoroutine(float x, float y, float z, float angleX, float angleY, float angleZ, float time)
-        {
-            float speedX = (x - initialPosition.localPosition.x) / time;
-            float speedY = (y - initialPosition.localPosition.y) / time;
-            float speedZ = (z - initialPosition.localPosition.z) / time;
-            Vector3 speedPosition = new Vector3(speedX, speedY, speedZ);
-            Vector3 speedRotation = GetRotateSpeed(initialPosition, angleX, angleY, angleZ, time);
-            while (time != 0)
-            {
-                if (pauseCoroutine == false)
-                {
-                    initialPosition.localPosition += speedPosition;
-                    initialPosition.eulerAngles += speedRotation;
-                    time -= 1;
-                }
-                yield return null;
-            }
-            initialPosition.localPosition = new Vector3(x, y, z);
-            initialPosition.eulerAngles = new Vector3(angleX, angleY, angleZ);
+            initialPosition.localPosition = newPos;
+            initialPosition.localEulerAngles = newRot;
+            MoveToInitialPosition(time);
         }
 
 
@@ -229,11 +210,11 @@ namespace VoiceActing
         private void InitializeCameraEffect()
         {
             // Set Initial position (just to be sure its in place)
-            SetText(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z);
-            SetTextRotation(textInitialPosition.eulerAngles.x, textInitialPosition.eulerAngles.y, textInitialPosition.eulerAngles.z);
+            SetText(textInitialPosition.localPosition.x, textInitialPosition.localPosition.y, textInitialPosition.localPosition.z);
+            SetTextRotation(textInitialPosition.localEulerAngles.x, textInitialPosition.localEulerAngles.y, textInitialPosition.localEulerAngles.z);
 
-            SetCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z);
-            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z);
+            SetCamera(initialPosition.localPosition.x, initialPosition.localPosition.y, initialPosition.localPosition.z);
+            SetCameraRotation(initialPosition.localEulerAngles.x, initialPosition.localEulerAngles.y, initialPosition.localEulerAngles.z);
 
             if (cameraPlacement == -1)
             {
@@ -333,12 +314,12 @@ namespace VoiceActing
             for (int i = 0; i < camDatas.Length; i++)
             {
                 yield return MovementCoroutine(this.transform,
-                                                 initialPosition.position.x + camDatas[i].DataPosition.x,
-                                                 initialPosition.position.y + camDatas[i].DataPosition.y,
-                                                 initialPosition.position.z + camDatas[i].DataPosition.z,
-                                                 initialPosition.eulerAngles.x + camDatas[i].DataRotation.x,
-                                                 initialPosition.eulerAngles.y + camDatas[i].DataRotation.y,
-                                                 initialPosition.eulerAngles.z + camDatas[i].DataRotation.z,
+                                                 initialPosition.localPosition.x + camDatas[i].DataPosition.x,
+                                                 initialPosition.localPosition.y + camDatas[i].DataPosition.y,
+                                                 initialPosition.localPosition.z + camDatas[i].DataPosition.z,
+                                                 initialPosition.localEulerAngles.x + camDatas[i].DataRotation.x,
+                                                 initialPosition.localEulerAngles.y + camDatas[i].DataRotation.y,
+                                                 initialPosition.localEulerAngles.z + camDatas[i].DataRotation.z,
                                                  (int)(camDatas[i].DataTime * speedMovement));
             }
             movCoroutine = null;
@@ -352,12 +333,12 @@ namespace VoiceActing
             for (int i = 0; i < textDatas.Length; i++)
             {
                 yield return MovementCoroutine(text, 
-                                               textInitialPosition.position.x + textDatas[i].DataPosition.x,
-                                               textInitialPosition.position.y + textDatas[i].DataPosition.y,
-                                               textInitialPosition.position.z + textDatas[i].DataPosition.z,
-                                               textInitialPosition.eulerAngles.x + textDatas[i].DataRotation.x,
-                                               textInitialPosition.eulerAngles.y + textDatas[i].DataRotation.y,
-                                               textInitialPosition.eulerAngles.z + textDatas[i].DataRotation.z,
+                                               textInitialPosition.localPosition.x + textDatas[i].DataPosition.x,
+                                               textInitialPosition.localPosition.y + textDatas[i].DataPosition.y,
+                                               textInitialPosition.localPosition.z + textDatas[i].DataPosition.z,
+                                               textInitialPosition.localEulerAngles.x + textDatas[i].DataRotation.x,
+                                               textInitialPosition.localEulerAngles.y + textDatas[i].DataRotation.y,
+                                               textInitialPosition.localEulerAngles.z + textDatas[i].DataRotation.z,
                                                (int)(textDatas[i].DataTime * speedMovement));
             }
             movTextCoroutine = null;
@@ -369,21 +350,21 @@ namespace VoiceActing
 
         public void SetCamera(float x, float y, float z)
         {
-            transform.position = new Vector3(x, y, z);
+            transform.localPosition = new Vector3(x, y, z);
         }
 
         public void SetCameraRotation(float x, float y, float z)
         {
-            transform.eulerAngles = new Vector3(x, y, z);
+            transform.localEulerAngles = new Vector3(x, y, z);
         }
 
         private void SetText(float x, float y, float z)
         {
-            text.position = new Vector3(x, y, z);
+            text.localPosition = new Vector3(x, y, z);
         }
         private void SetTextRotation(float x, float y, float z)
         {
-            text.eulerAngles = new Vector3(x, y, z);
+            text.localEulerAngles = new Vector3(x, y, z);
         }
 
 
@@ -407,8 +388,8 @@ namespace VoiceActing
             Vector3 finalPosition = new Vector3(x, y, z);
 
             Vector3 finalRotation = GetRotateSpeed(transform, angleX, angleY, angleZ, 1);
-            Vector3 currentPosition = transform.position;
-            Vector3 currentRotation = GetRotateSpeed(transform, transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z, 1);//this.transform.eulerAngles;
+            Vector3 currentPosition = transform.localPosition;
+            Vector3 currentRotation = GetRotateSpeed(transform, transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z, 1);//this.transform.eulerAngles;
             moving = true;
             float t = 0f;
             while (t < 1)
@@ -416,15 +397,14 @@ namespace VoiceActing
                 if (pauseCoroutine == false)
                 {
                     t += Time.deltaTime / time;
-                    transform.position = Vector3.Lerp(currentPosition, finalPosition, t);
-                    transform.eulerAngles = Vector3.Lerp(currentRotation, finalRotation, t);
-                    //time -= 1;
+                    transform.localPosition = Vector3.Lerp(currentPosition, finalPosition, t);
+                    transform.localEulerAngles = Vector3.Lerp(currentRotation, finalRotation, t);
                 }
                 yield return null;
             }
             moving = false;
-            transform.position = finalPosition;
-            transform.eulerAngles = finalRotation;
+            transform.localPosition = finalPosition;
+            transform.localEulerAngles = finalRotation;
         }
 
 
@@ -482,17 +462,17 @@ namespace VoiceActing
             moving = true;
             if (goLeft == true)
             {
-                SetCamera(actorSwitchPosition.position.x + 0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z + 0.05f);
-                SetCameraRotation(actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y, actorSwitchPosition.eulerAngles.z);
-                CameraMovement(actorSwitchPosition.position.x - 0.05f, actorSwitchPosition.position.y, actorSwitchPosition.position.z - 0.05f,
-                               actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y, actorSwitchPosition.eulerAngles.z, 90);
+                SetCamera(actorSwitchPosition.localPosition.x + 0.05f, actorSwitchPosition.localPosition.y, actorSwitchPosition.localPosition.z + 0.05f);
+                SetCameraRotation(actorSwitchPosition.localEulerAngles.x, actorSwitchPosition.localEulerAngles.y, actorSwitchPosition.localEulerAngles.z);
+                CameraMovement(actorSwitchPosition.localPosition.x - 0.05f, actorSwitchPosition.localPosition.y, actorSwitchPosition.localPosition.z - 0.05f,
+                               actorSwitchPosition.localEulerAngles.x, actorSwitchPosition.localEulerAngles.y, actorSwitchPosition.localEulerAngles.z, 90);
             }
             else
             {
-                SetCamera(actorSwitchPosition.position.x + 0.05f, actorSwitchPosition.position.y, -actorSwitchPosition.position.z + 0.05f);
-                SetCameraRotation(actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y-90, -actorSwitchPosition.eulerAngles.z);
-                CameraMovement(actorSwitchPosition.position.x - 0.05f, actorSwitchPosition.position.y, -actorSwitchPosition.position.z - 0.05f,
-                               actorSwitchPosition.eulerAngles.x, actorSwitchPosition.eulerAngles.y-90, -actorSwitchPosition.eulerAngles.z+360, 90);
+                SetCamera(-actorSwitchPosition.localPosition.x + 0.05f, actorSwitchPosition.localPosition.y, actorSwitchPosition.localPosition.z + 0.05f);
+                SetCameraRotation(-actorSwitchPosition.localEulerAngles.x, actorSwitchPosition.localEulerAngles.y-90, -actorSwitchPosition.localEulerAngles.z);
+                CameraMovement(-actorSwitchPosition.localPosition.x - 0.05f, actorSwitchPosition.localPosition.y, actorSwitchPosition.localPosition.z - 0.05f,
+                               -actorSwitchPosition.localEulerAngles.x, actorSwitchPosition.localEulerAngles.y-90, -actorSwitchPosition.localEulerAngles.z+360, 90);
             }
         }
 
@@ -566,7 +546,6 @@ namespace VoiceActing
         [ContextMenu("enemySkill")]
         public void EnemySkill()
         {
-            //StartCoroutine(MoveTextCoroutine(textAttackPosition.position.x, textAttackPosition.position.y, textAttackPosition.position.z, 40));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
             if (movTextCoroutine != null)
@@ -574,16 +553,11 @@ namespace VoiceActing
 
             noCameraEffect = true;
             CameraDataMovement(cameraMovementRoleAttack);
-            //CameraMovement(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
-            /*RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
-            MoveCamera(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, 40);
-            RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 600);*/
         }
 
         [ContextMenu("enemySkill")]
         public void EnemySkillCounter()
         {
-            //StartCoroutine(MoveTextCoroutine(textAttackPosition.position.x, textAttackPosition.position.y, textAttackPosition.position.z, 40));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
             if (movTextCoroutine != null)
@@ -592,16 +566,11 @@ namespace VoiceActing
             cameraPlacement = 0;
             noCameraEffect = false;
             CameraDataMovement(cameraMovementRoleCounter);
-            //CameraMovement(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
-            /*RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 40);
-            MoveCamera(enemyPosition.position.x, enemyPosition.position.y, enemyPosition.position.z, 40);
-            RotateCamera(enemyPosition.eulerAngles.x, enemyPosition.eulerAngles.y, enemyPosition.eulerAngles.z, 600);*/
         }
 
         [ContextMenu("enemySkill")]
         public void EnemySkillCancel()
         {
-            //StartCoroutine(MoveTextCoroutine(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 40));
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
             if (movTextCoroutine != null)
@@ -612,8 +581,6 @@ namespace VoiceActing
             moving = false;
             MoveToInitialPosition(60);
             TextMovement(textInitialPosition.position.x, textInitialPosition.position.y, textInitialPosition.position.z, 0, 90, 0, 60);
-            /*MoveCamera(initialPosition.position.x, initialPosition.position.y, initialPosition.position.z, 40);
-            RotateCamera(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z, 40);*/
         }
 
 

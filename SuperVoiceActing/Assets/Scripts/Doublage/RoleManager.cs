@@ -345,6 +345,7 @@ namespace VoiceActing
         {
             enemyAttackFace.gameObject.SetActive(true);
             enemyAttackFace.SetTrigger("Appear");
+            animatorSkillTimeline[indexCurrentSkill].SetBool("Appear", false);
             animatorSkillTimeline[indexCurrentSkill].SetTrigger("Feedback");
             skillManager.PreviewSkill(currentAttack);
             yield return new WaitForSeconds(2.5f);
