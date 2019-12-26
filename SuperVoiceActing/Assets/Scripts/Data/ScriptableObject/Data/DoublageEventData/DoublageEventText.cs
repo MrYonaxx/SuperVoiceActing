@@ -14,11 +14,6 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the DoublageEventText class
     /// </summary>
-
-    
-    // à fusionner avec stoy Event ? On va dire non pour le moment mais je continue de douter
-    
-
     [System.Serializable]
     public class DoublageEventText : DoublageEvent
     {
@@ -72,29 +67,6 @@ namespace VoiceActing
         {
             get { return clearAllText; }
         }
-        /*[HorizontalGroup("Hey8", LabelWidth = 100)]
-        [SerializeField]
-        private bool changeViewportText;
-        public bool ChangeViewportText
-        {
-            get { return changeViewportText; }
-        }*/
-
-
-        /*[HorizontalGroup("TextCamera", LabelWidth = 100)]
-        [SerializeField]
-        private int mainCamera;
-        public int MainCamera
-        {
-            get { return mainCamera; }
-        }
-        [HorizontalGroup("TextCamera", LabelWidth = 100)]
-        [SerializeField]
-        private int optionRandom;
-        public int OptionRandom
-        {
-            get { return optionRandom; }
-        }*/
 
 
         [HideIf("cameraID", -1)]
@@ -205,6 +177,45 @@ namespace VoiceActing
         }
 
 
+        private CharacterDialogueController FindInterlocutor(DoublageEventManager doublageEventManager)
+        {
+            for (int i = 0; i < doublageEventManager.Characters.Count; i++)
+            {
+                if (doublageEventManager.Characters[i].gameObject.activeInHierarchy == false)
+                    continue;
+                if (doublageEventManager.Characters[i].GetStoryCharacterData() == interlocuteur)
+                {
+                    /*if (i < charactersActorLenght) // 3 car il y a 3 voice actors
+                    {
+                        mainText.SetPauseText(true);
+                        mainText.HideText();
+                    }*/
+                    return doublageEventManager.Characters[i];
+                }
+            }
+            return null;
+        }
+
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            eventManager.InputEvent.gameObject.SetActive(true);
+            CharacterDialogueController interloc = FindInterlocutor(eventManager);
+            if (cameraID >= 0)
+            {
+                eventManager.Viewports[cameraID].TextCameraEffect(this);
+            }
+            if (interloc != null)
+            {
+                interloc.ChangeEmotion(emotionNPC);
+                eventManager.TextEvent[cameraID].NewMouthAnim(interloc);
+                eventManager.TextEvent[cameraID].NewPhrase(text);
+            }
+            else
+            {
+                eventManager.PrintAllText(true);
+            }
+            yield return new WaitForSeconds(2);
+        }
 
     } // DoublageEventText class
 

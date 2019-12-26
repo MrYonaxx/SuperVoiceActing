@@ -60,11 +60,60 @@ namespace VoiceActing
             get { return flipX; }
         }
 
-        [SerializeField]
+        /*[SerializeField]
         private int viewportID;
         public int ViewportID
         {
             get { return viewportID; }
+        }*/
+
+
+        [SerializeField]
+        private int orderLayer;
+        public int OrderLayer
+        {
+            get { return orderLayer; }
+        }
+
+        [SerializeField]
+        private Color color;
+        public Color Color
+        {
+            get { return color; }
+        }
+
+
+
+
+
+        private CharacterDialogueController FindInterlocutor(DoublageEventManager doublageEventManager)
+        {
+            for (int i = 0; i < doublageEventManager.Characters.Count; i++)
+            {
+                if (doublageEventManager.Characters[i].gameObject.activeInHierarchy == false)
+                    continue;
+                if (doublageEventManager.Characters[i].GetStoryCharacterData() == character)
+                {
+                    return doublageEventManager.Characters[i];
+                }
+            }
+            return null;
+        }
+
+
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            CharacterDialogueController interloc = FindInterlocutor(eventManager);
+            if (interloc == null)
+            {
+                eventManager.CreateCharacters(this); // Pas le choix on peut pas instancier
+            }
+            else
+            {
+                interloc.ChangeOrderInLayer(orderLayer);
+                interloc.ChangeTint(color);
+            }
+            yield break;
         }
 
 

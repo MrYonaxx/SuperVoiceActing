@@ -200,14 +200,6 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private EnemyAI[] roleAI;
-        public EnemyAI[] RoleAI
-        {
-            get { return roleAI; }
-            set { roleAI = value; }
-        }
-
-        [SerializeField]
         private string[] skillRoles;
         public string[] SkillRoles
         {
@@ -258,7 +250,7 @@ namespace VoiceActing
             this.fan = Random.Range(data.FanMin, data.FanMax);
 
             this.attack = Random.Range(data.AtkMin, data.AtkMax);
-            this.defense = Random.Range(data.DefMin, data.DefMax);
+            //this.defense = Random.Range(data.DefMin, data.DefMax);
             //!\ à tester 
             this.timbre = new Vector2Int(Random.Range(data.Timbre.x, data.TimbreRand.x), Random.Range(data.Timbre.y, data.TimbreRand.y));
             //!\ à tester 
@@ -284,36 +276,38 @@ namespace VoiceActing
 
             if(data.ActorLocked != null)
                 this.characterLock = data.ActorLocked.SpriteSheets.name;
-            this.roleAI = data.ArtificialIntelligence;
 
-            // ==================================
-            skillRoles = new string[4];
-            if (data.SkillRoleSelection.Length != 0)
+            // ================================== 
+            if (data.SkillRoleSelection != null)
             {
-                int selection = Random.Range(0, data.SkillRoleSelection.Length);
-
-                SkillRoleData[] skillList = null;
-                for (int i = 0; i < 4; i++)
+                if (data.SkillRoleSelection.Length != 0)
                 {
-                    switch (i)
+                    skillRoles = new string[4];
+                    int selection = Random.Range(0, data.SkillRoleSelection.Length);
+
+                    SkillRoleData[] skillList = null;
+                    for (int i = 0; i < 4; i++)
                     {
-                        case 0:
-                            skillList = data.SkillRoleSelection[selection].SkillsA;
-                            break;
-                        case 1:
-                            skillList = data.SkillRoleSelection[selection].SkillsB;
-                            break;
-                        case 2:
-                            skillList = data.SkillRoleSelection[selection].SkillsC;
-                            break;
-                        case 3:
-                            skillList = data.SkillRoleSelection[selection].SkillsD;
-                            break;
+                        switch (i)
+                        {
+                            case 0:
+                                skillList = data.SkillRoleSelection[selection].SkillsA;
+                                break;
+                            case 1:
+                                skillList = data.SkillRoleSelection[selection].SkillsB;
+                                break;
+                            case 2:
+                                skillList = data.SkillRoleSelection[selection].SkillsC;
+                                break;
+                            case 3:
+                                skillList = data.SkillRoleSelection[selection].SkillsD;
+                                break;
+                        }
+                        if (skillList.Length != 0)
+                            skillRoles[i] = skillList[Random.Range(0, skillList.Length)].name;
+                        else
+                            skillRoles[i] = "";
                     }
-                    if (skillList.Length != 0)
-                        skillRoles[i] = skillList[Random.Range(0, skillList.Length)].name;
-                    else
-                        skillRoles[i] = "";
                 }
             }
 

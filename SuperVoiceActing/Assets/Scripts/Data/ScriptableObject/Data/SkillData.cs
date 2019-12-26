@@ -149,8 +149,6 @@ namespace VoiceActing
 
 
 
-
-
         public void ApplySkill(DoublageManager doublageManager)
         {
             if(skillType == SkillType.Buff)

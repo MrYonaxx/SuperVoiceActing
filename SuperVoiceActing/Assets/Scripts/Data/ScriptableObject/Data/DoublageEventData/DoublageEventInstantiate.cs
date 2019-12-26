@@ -110,6 +110,14 @@ namespace VoiceActing
             get { return activeBaseSpectrum; }
         }
 
+
+
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            eventManager.EventBackgroundManager.InstantiateNewObject(this);
+            yield break;
+        }
+
     } // DoublageEventInstantiate class
 	
 }// #PROJECTNAME# namespace

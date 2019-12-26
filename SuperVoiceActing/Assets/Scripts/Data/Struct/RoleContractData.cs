@@ -144,7 +144,7 @@ namespace VoiceActing
             get { return atkMax; }
         }
 
-        [VerticalGroup("RoleStat/Data/Middle")]
+        /*[VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]
         private int defMin;
         public int DefMin
@@ -158,7 +158,7 @@ namespace VoiceActing
         public int DefMax
         {
             get { return defMax; }
-        }
+        }*/
 
         [MinMaxSlider(-10, 10)]
         [SerializeField]
@@ -204,15 +204,6 @@ namespace VoiceActing
         public VoiceActorData ActorLocked
         {
             get { return actorLocked; }
-        }
-
-        [TabGroup("IA")]
-        [GUIColor(0.9f, 0.9f, 1f, 1f)]
-        [SerializeField]
-        private EnemyAI[] artificialIntelligence;
-        public EnemyAI[] ArtificialIntelligence
-        {
-            get { return artificialIntelligence; }
         }
 
         [TabGroup("Skills")]

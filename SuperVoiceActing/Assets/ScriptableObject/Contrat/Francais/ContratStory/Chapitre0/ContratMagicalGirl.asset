@@ -25,13 +25,36 @@ MonoBehaviour:
   expBonus: 0
   contractDictionnary: []
   description: []
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Princess Muffin
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
+      roleType: 0
+      rolePersonality: 0
       lineMin: 0
       lineMax: 0
       fanMin: 0
@@ -63,24 +86,27 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "C'\xE9tait le printemps, le jour de la rentr\xE9e des classes !"
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 1
+        hpMax: 1
       enemyResistance:
         neutral: 100
         joy: 50
@@ -92,12 +118,12 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "J'\xE9tais si heureuse de commencer cette nouvelle ann\xE9e !"
       textStats:
         interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+        hpMin: 1
+        hpMax: 1
       enemyResistance:
         neutral: 100
         joy: 0
@@ -109,10 +135,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Mais en r\xE9alit\xE9, tout a bascul\xE9 ce jour l\xE0..."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -126,10 +152,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "\xC0 pr\xE9sent, mon quotidien me place face \xE0 tous les dangers."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 0
         hpMax: 0
       enemyResistance:
@@ -143,10 +169,10 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      customTextDatas: []
     - text: "Je dois affronter d'horribles cr\xE9atures..."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -161,10 +187,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: "Et pourtant, je ne regrette pas ce qu'il m'est arriv\xE9."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -180,10 +206,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 4
       - wordIndex: 5
+      customTextDatas: []
     - text: J'ai pu rencontrer des gens extraordinaires !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -199,10 +225,10 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 5
+      customTextDatas: []
     - text: "Et ils m'ont appris \xE0 sourire."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -217,10 +243,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      customTextDatas: []
     - text: "\xC0 pleurer."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -235,10 +261,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: "\xC0 m'\xE9nerver."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -253,10 +279,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 1
+      customTextDatas: []
     - text: "\xC0 \xEAtre d\xE9go\xFBt\xE9e."
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -271,10 +297,10 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
+      customTextDatas: []
     - text: Ce sont ces sentiments qui me permettent de me relever.
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 30
         hpMax: 30
       enemyResistance:
@@ -289,10 +315,10 @@ MonoBehaviour:
         trust: 200
       enemyWeakPoints:
       - wordIndex: 3
+      customTextDatas: []
     - text: Et qui guident mon bras pour vaincre le mal !
       textStats:
         interlocuteurID: 0
-        linked: 0
         hpMin: 20
         hpMax: 20
       enemyResistance:
@@ -306,6 +332,7 @@ MonoBehaviour:
         fear: 0
         trust: 200
       enemyWeakPoints: []
+      customTextDatas: []
   eventData:
   - {fileID: 11400000, guid: 6b8caf436e1ddb840b3a8598206574f7, type: 2}
   - {fileID: 11400000, guid: 851f1015c85d1734295558efe3f5f049, type: 2}
@@ -322,3 +349,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

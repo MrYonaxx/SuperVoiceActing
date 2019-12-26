@@ -52,25 +52,13 @@ MonoBehaviour:
         anchorMax: {x: 1, y: 1}
         rotationZ: 0
         camViewport: 1
-        timeCamera: 60
-        camPosition: {x: -49, y: 2.7, z: -6.4}
+        timeCamera: 1
+        camPosition: {x: -49, y: 2.7, z: -5.6}
         camRotation: {x: 0, y: 180, z: 0}
         changeTextPosition: 0
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -98,9 +86,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -124,7 +109,7 @@ MonoBehaviour:
         cameraSet2: []
         animatorCustomCameraID: 0
   - dataBox:
-      eventNode: 10
+      eventNode: 9
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -163,18 +148,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -202,11 +175,8 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
-        color: {r: 0, g: 0, b: 0, a: 0}
+        color: {r: 1, g: 1, b: 1, a: 1}
       doublageEventResultScreen:
         loadScene: 
       doublageEventInstantiate:
@@ -228,7 +198,7 @@ MonoBehaviour:
         cameraSet2: []
         animatorCustomCameraID: 0
   - dataBox:
-      eventNode: 3
+      eventNode: 9
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -266,19 +236,7 @@ MonoBehaviour:
         changeTextPosition: 0
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
-        wait: 60
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
+        wait: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -300,17 +258,14 @@ MonoBehaviour:
         skill: {fileID: 0}
         showAnim: 0
       doublageEventSetCharacter:
-        character: {fileID: 0}
-        customPos: 1
+        character: {fileID: 11400000, guid: e69d070f5262adf458001f17864e2a11, type: 2}
+        customPos: 0
         position: {x: 0, y: 0, z: 0}
         rotation: {x: 0, y: 0, z: 0}
-        defaultPosID: 0
+        defaultPosID: 1
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
-        color: {r: 0, g: 0, b: 0, a: 0}
+        color: {r: 1, g: 1, b: 1, a: 1}
       doublageEventResultScreen:
         loadScene: 
       doublageEventInstantiate:
@@ -379,18 +334,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -418,9 +361,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -494,18 +434,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -533,9 +461,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -603,18 +528,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -642,9 +555,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -708,18 +618,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -747,9 +645,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -813,18 +708,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -852,9 +735,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -917,18 +797,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -956,9 +824,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -982,7 +847,7 @@ MonoBehaviour:
         cameraSet2: []
         animatorCustomCameraID: 0
   - dataBox:
-      eventNode: 9
+      eventNode: 8
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1021,18 +886,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1060,9 +913,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1125,18 +975,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 20
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1164,9 +1002,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1229,18 +1064,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1268,9 +1091,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1294,7 +1114,7 @@ MonoBehaviour:
         cameraSet2: []
         animatorCustomCameraID: 0
   - dataBox:
-      eventNode: 9
+      eventNode: 8
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1333,18 +1153,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1372,9 +1180,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1437,18 +1242,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 20
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1476,9 +1269,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1541,18 +1331,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1580,9 +1358,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1606,7 +1381,7 @@ MonoBehaviour:
         cameraSet2: []
         animatorCustomCameraID: 0
   - dataBox:
-      eventNode: 9
+      eventNode: 8
       doublageEventText:
         interlocuteur: {fileID: 0}
         emotionNPC: 0
@@ -1645,18 +1420,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1684,9 +1447,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1750,18 +1510,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1789,9 +1537,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1845,7 +1590,7 @@ MonoBehaviour:
         time: 600
         anchorMin: {x: -1.1, y: 0}
         anchorMax: {x: -0.7, y: 1}
-        rotationZ: 0
+        rotationZ: -20
         camViewport: 0
         timeCamera: 1
         camPosition: {x: 0, y: 0, z: 0}
@@ -1854,18 +1599,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1893,9 +1626,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:
@@ -1958,18 +1688,6 @@ MonoBehaviour:
         textPosition: {x: 0, y: 0, z: 0}
       doublageEventWait:
         wait: 0
-      doublageEventDeck:
-        newDeck:
-          neutral: 0
-          joy: 0
-          sadness: 0
-          disgust: 0
-          anger: 0
-          surprise: 0
-          sweetness: 0
-          fear: 0
-          trust: 0
-        addComboMax: 0
       doublageTutoPopup:
         titlePopup: 
         textPopup: 
@@ -1997,9 +1715,6 @@ MonoBehaviour:
         rotation: {x: 0, y: 0, z: 0}
         defaultPosID: 0
         flipX: 0
-        viewportID: 0
-      doublageEventMoveCharacter:
-        character: {fileID: 0}
         orderLayer: 0
         color: {r: 0, g: 0, b: 0, a: 0}
       doublageEventResultScreen:

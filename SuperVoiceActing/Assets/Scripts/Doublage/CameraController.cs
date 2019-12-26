@@ -466,6 +466,9 @@ namespace VoiceActing
                 SetCameraRotation(actorSwitchPosition.localEulerAngles.x, actorSwitchPosition.localEulerAngles.y, actorSwitchPosition.localEulerAngles.z);
                 CameraMovement(actorSwitchPosition.localPosition.x - 0.05f, actorSwitchPosition.localPosition.y, actorSwitchPosition.localPosition.z - 0.05f,
                                actorSwitchPosition.localEulerAngles.x, actorSwitchPosition.localEulerAngles.y, actorSwitchPosition.localEulerAngles.z, 90);
+
+                /*SetText(textInitialPosition.localPosition.x + 2, textInitialPosition.localPosition.y, textInitialPosition.localPosition.z);
+                SetTextRotation(textInitialPosition.localEulerAngles.x, textInitialPosition.localEulerAngles.y+45, textInitialPosition.localEulerAngles.z);*/
             }
             else
             {

@@ -272,19 +272,13 @@ namespace VoiceActing
         }
 
 
-        public void ModifyCharacter(DoublageEventMoveCharacter data)
-        {
-            ChangeOrderInLayer(data.OrderLayer);
-            ChangeTint(data.Color);
-        }
+
 
         public void ChangeTint(Color newColor)
         {
             spriteRenderer.color = newColor;
             eyesScript.ChangeTint(newColor);
         }
-
-
 
         public void ChangeOrderInLayer(int newOrder)
         {

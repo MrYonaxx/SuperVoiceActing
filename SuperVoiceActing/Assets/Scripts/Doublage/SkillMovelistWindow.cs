@@ -32,6 +32,8 @@ namespace VoiceActing
         Image[] imageEmotion;
 
         [SerializeField]
+        Image outlineSkill;
+        [SerializeField]
         TextMeshProUGUI textSkill;
 
 
@@ -84,6 +86,7 @@ namespace VoiceActing
                         imageEmotion[emotionSkill.Count - 1].gameObject.SetActive(true);
                         imageEmotion[emotionSkill.Count - 1].color = colorUnactive;
                         textSkill.color = colorUnactive;
+                        outlineSkill.color = colorUnactive;
                     }
                 }
             }
@@ -128,10 +131,12 @@ namespace VoiceActing
             if(active == true)
             {
                 textSkill.color = colorActive;
+                outlineSkill.color = colorActive;
             }
             else
             {
                 textSkill.color = colorUnactive;
+                outlineSkill.color = colorUnactive;
             }
             return active;
         }

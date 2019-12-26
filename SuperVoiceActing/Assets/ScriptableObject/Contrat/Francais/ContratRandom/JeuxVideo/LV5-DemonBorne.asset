@@ -70,8 +70,6 @@ MonoBehaviour:
       fanMax: 1200
       atkMin: 15
       atkMax: 20
-      defMin: 0
-      defMax: 0
       timbre: {x: -6, y: -2}
       timbreRand: {x: -7, y: -1}
       characterStatMin:
@@ -95,7 +93,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
@@ -110,8 +108,6 @@ MonoBehaviour:
       fanMax: 400
       atkMin: 20
       atkMax: 25
-      defMin: 0
-      defMax: 0
       timbre: {x: 2, y: 7}
       timbreRand: {x: 2, y: 7}
       characterStatMin:
@@ -135,7 +131,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -152,10 +148,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Bonjour, brave chasseur.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 110
-        hpMax: 140
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 50
+      hpMax: 80
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -167,12 +164,14 @@ MonoBehaviour:
         fear: -90
         trust: -50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Je suis une poup\xE9e, je suis dans ce r\xEAve pour veiller sur vous."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 110
-        hpMax: 140
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 50
+      hpMax: 80
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -184,6 +183,7 @@ MonoBehaviour:
         fear: -90
         trust: -50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -198,10 +198,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Vous allez chasser des monstres...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 110
-        hpMax: 140
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 110
+      hpMax: 140
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -213,12 +214,14 @@ MonoBehaviour:
         fear: 30
         trust: -90
       enemyWeakPoints: []
+      eventData: []
       customTextDatas:
       - text: "... Et je serai avec vous pour soutenir votre moral d\xE9faillant."
-        textStats:
-          interlocuteurID: 0
-          hpMin: 110
-          hpMax: 140
+        interlocuteurID: 0
+        advanced: 0
+        hpMin: 0
+        hpMax: 0
+        context: 
         enemyResistance:
           neutral: 0
           joy: 100
@@ -229,11 +232,14 @@ MonoBehaviour:
           sweetness: 100
           fear: 0
           trust: 0
+        enemyWeakPoints: []
+        eventData: []
     - text: "Honorable chasseur, partez en qu\xEAte des \xE9chos du sang."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 110
-        hpMax: 140
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 110
+      hpMax: 140
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -245,12 +251,14 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas:
       - text: Je les canaliserai pour vous donner plus de force.
-        textStats:
-          interlocuteurID: 0
-          hpMin: 0
-          hpMax: 0
+        interlocuteurID: 0
+        advanced: 0
+        hpMin: 0
+        hpMax: 0
+        context: 
         enemyResistance:
           neutral: 0
           joy: 100
@@ -261,6 +269,8 @@ MonoBehaviour:
           sweetness: 100
           fear: -90
           trust: 50
+        enemyWeakPoints: []
+        eventData: []
   - textDataCondition:
       all: 1
       nbMin: 0
@@ -274,10 +284,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Des monstres partout autour de moi...
-      textStats:
-        interlocuteurID: 1
-        hpMin: 110
-        hpMax: 140
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 50
+      hpMax: 80
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -289,12 +300,14 @@ MonoBehaviour:
         fear: 30
         trust: -90
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "... Vous serez comme eux, t\xF4t ou tard..."
-      textStats:
-        interlocuteurID: 1
-        hpMin: 110
-        hpMax: 140
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 110
+      hpMax: 140
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -306,12 +319,14 @@ MonoBehaviour:
         fear: 30
         trust: -90
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Haahahahahahaha !
-      textStats:
-        interlocuteurID: 1
-        hpMin: 175
-        hpMax: 200
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 175
+      hpMax: 200
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -323,9 +338,11 @@ MonoBehaviour:
         fear: 100
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

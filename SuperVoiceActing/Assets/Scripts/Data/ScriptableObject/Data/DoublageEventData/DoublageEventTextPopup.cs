@@ -47,6 +47,16 @@ namespace VoiceActing
             get { return time; }
         }
 
+
+
+
+
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            eventManager.PanelPlayer.StartPopup(interlocuteur.GetName(), text);
+            yield break;
+        }
+
     } // DoublageEventTextPopup class
 
 } // #PROJECTNAME# namespace

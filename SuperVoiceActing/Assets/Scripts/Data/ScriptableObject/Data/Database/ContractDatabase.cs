@@ -105,6 +105,24 @@ namespace VoiceActing
         }*/
 
 
+        [Button]
+        private void DebugFunction()
+        {
+            /*for (int i = 0; i < contracts.Count; i++)
+            {
+                for(int j = 0; j < contracts[i].TextDataContract.Length; j++)
+                {
+                    for(int k = 0; k < contracts[i].TextDataContract[j].TextDataPossible.Length; k++)
+                    {
+                        contracts[i].TextDataContract[j].TextDataPossible[k].HPMin = contracts[i].TextDataContract[j].TextDataPossible[k].TextStats.HPMin;
+                        contracts[i].TextDataContract[j].TextDataPossible[k].HPMax = contracts[i].TextDataContract[j].TextDataPossible[k].TextStats.HPMax;
+                        contracts[i].TextDataContract[j].TextDataPossible[k].InterlocuteurID = contracts[i].TextDataContract[j].TextDataPossible[k].TextStats.InterlocuteurID;
+                    }
+                }
+            }*/
+        }
+
+
     } 
 
 } // #PROJECTNAME# namespace

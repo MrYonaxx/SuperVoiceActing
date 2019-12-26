@@ -76,10 +76,13 @@ namespace VoiceActing
             }
             else
             {
-                if(data.InstantiateUI == false)
-                    listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, newEnvironnementParent));
-                else
-                    listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, UIParent));
+                if (data.ObjectToInstantiate != null)
+                {
+                    if (data.InstantiateUI == false)
+                        listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, newEnvironnementParent));
+                    else
+                        listObjectInstantiate.Add(Instantiate(data.ObjectToInstantiate, UIParent));
+                }
 
                 if (data.NewPostProcess != null)
                     ChangePostProcess(data.NewPostProcess);

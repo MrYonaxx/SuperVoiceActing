@@ -267,10 +267,6 @@ namespace VoiceActing
 
 
                 yield return StartCoroutine(currentNode.GetStoryEvent());
-                if (currentNode is StoryEventText)
-                {
-                    //audioSourceText.Play();
-                }
                 i += 1;
                 StartCoroutine(NextNodeCoroutine());
             }

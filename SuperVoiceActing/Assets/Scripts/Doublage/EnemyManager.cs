@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
 namespace VoiceActing
@@ -56,28 +57,70 @@ namespace VoiceActing
 
         [TabGroup("ParentGroup", "Points faibles")]
         [SerializeField]
-        private WeakPoint[] enemyWeakPoints;
-        public WeakPoint[] EnemyWeakPoints
+        private List<int> enemyWeakPoints;
+        public List<int> EnemyWeakPoints
         {
             get { return enemyWeakPoints; }
             set { enemyWeakPoints = value; }
         }
 
+        [TabGroup("ParentGroup", "Event")]
+        [SerializeField]
+        private List<DoublageEventData> eventDatas;
+        public List<DoublageEventData> EventDatas
+        {
+            get { return eventDatas; }
+            set { eventDatas = value; }
+        }
+
         public TextData(TextDataContract data)
         {
-            interlocuteur = data.TextStats.InterlocuteurID;
-            hpMax = Random.Range(data.TextStats.HPMin, data.TextStats.HPMax);
+            interlocuteur = data.InterlocuteurID;
+            hpMax = Random.Range(data.HPMin, data.HPMax);
             text = data.Text;
             enemyResistance = data.EnemyResistance;
-            enemyWeakPoints = data.EnemyWeakPoints;
+            enemyWeakPoints = new List<int>(data.EnemyWeakPoints.Length);
+            for (int i = 0; i < data.EnemyWeakPoints.Length; i++)
+            {
+                enemyWeakPoints.Add(data.EnemyWeakPoints[i].WordIndex);
+            }
+            eventDatas = new List<DoublageEventData>(data.EventData.Length);
+            for (int i = 0; i < data.EventData.Length; i++)
+            {
+                eventDatas.Add(data.EventData[i]);
+            }
+            /*int word = 0;
+            enemyWeakPoints = new List<int>();
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == ' ')
+                    word += 1;
+                else if (text[i] == '#')
+                {
+                    enemyWeakPoints.Add(word);
+                    text[i] = ' ';
+                }
+
+            }*/
+            //enemyWeakPoints = data.EnemyWeakPoints;
         }
 
         public TextData(CustomTextData data)
         {
-            interlocuteur = data.TextStats.InterlocuteurID;
-            hpMax = Random.Range(data.TextStats.HPMin, data.TextStats.HPMax);
+            interlocuteur = data.InterlocuteurID;
+            hpMax = Random.Range(data.HPMin, data.HPMax);
             text = data.Text;
             enemyResistance = data.EnemyResistance;
+            enemyWeakPoints = new List<int>(data.EnemyWeakPoints.Length);
+            for (int i = 0; i < data.EnemyWeakPoints.Length; i++)
+            {
+                enemyWeakPoints.Add(data.EnemyWeakPoints[i].WordIndex);
+            }
+            eventDatas = new List<DoublageEventData>(data.EventData.Length);
+            for (int i = 0; i < data.EventData.Length; i++)
+            {
+                eventDatas.Add(data.EventData[i]);
+            }
         }
 
     }
@@ -416,7 +459,13 @@ namespace VoiceActing
 
         [Title("Info")]
         [SerializeField]
+        protected Animator animatorEnemyHP;
+        [SerializeField]
         protected TextMeshProUGUI textEnemyHP;
+        [SerializeField]
+        protected RectTransform transformEnemyHP;
+        [SerializeField]
+        protected Animator[] animatorEnemyCritical;
 
         [Title("Feedbacks")]
         [SerializeField]
@@ -455,17 +504,13 @@ namespace VoiceActing
 
 
         [SerializeField]
-        protected GameObject criticalFeedback;
-        [SerializeField]
-        protected GameObject criticalFeedback2;
+        protected Animator criticalFeedback;
 
         [Title("Feedbacks Guard")]
         [SerializeField]
         protected ParticleSystem guardFeedback;
 
         protected Animator damageTextAnimator;
-
-
 
 
         protected int lastAttackScore = 0;
@@ -555,7 +600,26 @@ namespace VoiceActing
         {
             currentTextData = newTextData;
             enemyHP = currentTextData.HPMax;
+            DrawTextHP();
+        }
+
+        public void ShowHPEnemy(bool b)
+        {
+            animatorEnemyHP.SetBool("Appear", b);
+        }
+
+        public void DrawTextHP()
+        {
             textEnemyHP.text = enemyHP.ToString();
+            transformEnemyHP.localScale = new Vector3(enemyHP / currentTextData.HPMax, transformEnemyHP.localScale.y, transformEnemyHP.localScale.z);
+            for(int i = 0; i < currentTextData.EnemyWeakPoints.Count; i++)
+            {
+                animatorEnemyCritical[i].gameObject.SetActive(true);
+            }
+            for(int i = currentTextData.EnemyWeakPoints.Count; i < animatorEnemyCritical.Length; i++)
+            {
+                animatorEnemyCritical[i].gameObject.SetActive(false);
+            }
         }
 
         public float DamagePhrase()
@@ -649,26 +713,24 @@ namespace VoiceActing
         private float ApplyWordBonus(float totalDamage, int word)
         {
             float bonusDamage = 0;
-            WeakPoint[] enemyWeakPoints = currentTextData.EnemyWeakPoints;
             lastAttackCritical = false;
-            for (int i = 0; i < enemyWeakPoints.Length; i++)
+            for (int i = 0; i < currentTextData.EnemyWeakPoints.Count; i++)
             {
-                if (word == enemyWeakPoints[i].WordIndex)
+                if (word == currentTextData.EnemyWeakPoints[i])
                 {
                     bonusDamage = totalDamage * criticalMultiplier;
                     lastAttackCritical = true;
                     if (criticalFeedback != null)
                     {
-                        criticalFeedback.SetActive(true);
-                        criticalFeedback2.SetActive(true);
+                        criticalFeedback.gameObject.SetActive(true);
+                        criticalFeedback.SetTrigger("Feedback");
                     }
+                    currentTextData.EnemyWeakPoints[i] = -1;
+                    animatorEnemyCritical[i].SetTrigger("Feedback");
                 }
             }
             return bonusDamage;
         }
-
-
-        //
 
 
 
@@ -816,9 +878,7 @@ namespace VoiceActing
 
         private IEnumerator DamageTextCoroutine(float totalDamage, float speed, float timeFeedback, float time)
         {
-            float currentDamage = 0;
-            float t = 0f;
-            
+            float t = 0f;       
             while (t < 1f)
             {
                 t += (Time.deltaTime / time);
@@ -833,25 +893,10 @@ namespace VoiceActing
                 }
                 yield return null;
             }
-            /*while (time != 0)
-            {
-                time -= 1;
-                if(timeFeedback > 0)
-                {
-                    timeFeedback -= 1;
-                    currentDamage += speed;
-                    ChangeTextColor(totalDamage, currentDamage);
-                    damageText.text = ((int)currentDamage).ToString();
-                }
-                else if (timeFeedback == 0)
-                {
-                    damageTextAnimator.enabled = true;
-                }
-                yield return null;
-            }*/
             damageText.text = "";
             damageTextAnimator.enabled = false;
             damageText.gameObject.SetActive(false);
+            //DrawTextHP();
         }
 
 

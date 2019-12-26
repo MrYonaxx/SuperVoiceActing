@@ -113,6 +113,15 @@ namespace VoiceActing
         }
 
 
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            eventManager.AnimatorBlackBand.SetBool("Appear", true);
+            eventManager.Viewports[viewportID].SetViewportSetting(this);
+
+            yield break;
+        }
+
+
     } // DoublageEventCamera class
 
 } // #PROJECTNAME# namespace

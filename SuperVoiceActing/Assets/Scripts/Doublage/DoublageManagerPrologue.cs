@@ -76,7 +76,7 @@ namespace VoiceActing
             if (indexPhrase == 0)
             {
                 ShiftAmbiance();
-                ChangeEventPhase();
+                //ChangeEventPhase();
             }
             else if (indexPhrase == 1)
             {
@@ -92,8 +92,8 @@ namespace VoiceActing
                     textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Tristesse);
                     enemyManager.SetHp(10);
                     textAppearManager.ApplyDamage(50);
-                    eventManager.CheckEvent(contrat, indexPhrase, startLine, enemyManager.GetHpPercentage());
-                    ChangeEventPhase();
+                    eventManager.CheckEvent(indexPhrase, true, enemyManager.GetHpPercentage());
+                    //ChangeEventPhase();
                     eventCustom = true;
                 }
                 else

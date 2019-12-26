@@ -19,14 +19,12 @@ namespace VoiceActing
         TextPopup,
         Viewport,
         Wait,
-        Deck,
         Tuto,
         Sound,
         Load,
         Skill,
         Effect,
         SetCharacter,
-        MoveCharacter,
         ResultScreen,
         Instantiate,
         CameraData
@@ -68,12 +66,6 @@ namespace VoiceActing
         public DoublageEventWait doublageEventWait = null;
 
         [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", DoublageEventNode.Deck)]
-        [SerializeField]
-        [HideLabel]
-        public DoublageEventDeck doublageEventDeck = null;
-
-        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.Tuto)]
         [SerializeField]
         [HideLabel]
@@ -113,12 +105,6 @@ namespace VoiceActing
         public DoublageEventSetCharacter doublageEventSetCharacter = null;
 
         [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", DoublageEventNode.MoveCharacter)]
-        [SerializeField]
-        [HideLabel]
-        public DoublageEventMoveCharacter doublageEventMoveCharacter = null;
-
-        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", DoublageEventNode.ResultScreen)]
         [SerializeField]
         [HideLabel]
@@ -149,14 +135,10 @@ namespace VoiceActing
                     return eventNode + " : " + doublageEventViewport.ViewportID.ToString();
                 case DoublageEventNode.Wait:
                     return eventNode + " : " + doublageEventWait.Wait.ToString();
-                case DoublageEventNode.Deck:
-                    return eventNode.ToString();
                 case DoublageEventNode.Sound:
                     return eventNode.ToString(); //+ " : " + doublageEventSound..ToString();
                 case DoublageEventNode.SetCharacter:
                     return eventNode + " : " + doublageEventSetCharacter.Character.name;
-                case DoublageEventNode.MoveCharacter:
-                    return eventNode + " : " + doublageEventMoveCharacter.Character.name;
                 case DoublageEventNode.Effect:
                     return eventNode + " : " + doublageEventEffect.EventEffect.ToString();
                 case DoublageEventNode.Skill:
@@ -164,7 +146,7 @@ namespace VoiceActing
                 case DoublageEventNode.ResultScreen:
                     return eventNode.ToString();
                 case DoublageEventNode.Instantiate:
-                    return eventNode + " : " + doublageEventInstantiate.ObjectToInstantiate.name.ToString();
+                    return eventNode.ToString();// + " : " + doublageEventInstantiate.ObjectToInstantiate.name.ToString();
                 case DoublageEventNode.CameraData:
                     return eventNode.ToString();
             }
@@ -283,8 +265,6 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageEventViewport;
                 case DoublageEventNode.Wait:
                     return doublageEvent[index].dataBox.doublageEventWait;
-                case DoublageEventNode.Deck:
-                    return doublageEvent[index].dataBox.doublageEventDeck;
                 case DoublageEventNode.Tuto:
                     return doublageEvent[index].dataBox.doublageTutoPopup;
                 case DoublageEventNode.Sound:
@@ -297,8 +277,6 @@ namespace VoiceActing
                     return doublageEvent[index].dataBox.doublageEventSkill;
                 case DoublageEventNode.SetCharacter:
                     return doublageEvent[index].dataBox.doublageEventSetCharacter;
-                case DoublageEventNode.MoveCharacter:
-                    return doublageEvent[index].dataBox.doublageEventMoveCharacter;
                 case DoublageEventNode.ResultScreen:
                     return doublageEvent[index].dataBox.doublageEventResultScreen;
                 case DoublageEventNode.Instantiate:

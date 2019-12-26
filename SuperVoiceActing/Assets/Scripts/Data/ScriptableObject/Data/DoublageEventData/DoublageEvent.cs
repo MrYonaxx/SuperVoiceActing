@@ -15,7 +15,10 @@ namespace VoiceActing
     /// </summary>
     public class DoublageEvent
     {
-
+        public virtual IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            yield break;
+        }
 
     } // DoublageEvent class
 

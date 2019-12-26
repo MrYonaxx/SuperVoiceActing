@@ -64,6 +64,28 @@ namespace VoiceActing
         }
 
 
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            if (music == true)
+            {
+                if (stopMusic == true)
+                {
+                    AudioManager.Instance.StopMusic(timeTransition);
+                }
+                else
+                {
+                    AudioManager.Instance.PlayMusic(musicClip, timeTransition);
+                }
+            }
+            else
+            {
+                AudioManager.Instance.PlaySound(soundClip);
+            }
+
+            yield break;
+        }
+
+
         #endregion
 
 

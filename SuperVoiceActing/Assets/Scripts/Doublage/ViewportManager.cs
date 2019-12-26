@@ -160,12 +160,19 @@ namespace VoiceActing
             }
             Vector3 finalRotation = new Vector3(0, 0, z);
 
+            float z2 = viewport.eulerAngles.z;
+            if (z2 > 180)
+            {
+                z2 = -(360 - z2);
+            }
+            Vector3 startRotation = new Vector3(viewport.eulerAngles.x, viewport.eulerAngles.y, z2);
+
             float t = 0;
             time /= 60f;
             while (t < 1)
             {
                 t += (Time.deltaTime / time);
-                viewport.eulerAngles = Vector3.Lerp(viewport.eulerAngles, finalRotation, t);
+                viewport.eulerAngles = Vector3.Lerp(startRotation, finalRotation, t);
                 viewportTexture.localEulerAngles = -viewport.localEulerAngles;
                 yield return null;
             }

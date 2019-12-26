@@ -27,6 +27,13 @@ namespace VoiceActing
 	{
 
 
+        [Title("SkillType")]
+        [SerializeField]
+        private bool isPassive = false;
+        public bool IsPassive
+        {
+            get { return isPassive; }
+        }
 
         [Title("Conditions d'Activation")]
 
@@ -37,11 +44,19 @@ namespace VoiceActing
             get { return activationTiming; }
         }
 
+        [HorizontalGroup("Group1")]
         [SerializeField]
         private bool onlyWhenMain = true;
         public bool OnlyWhenMain
         {
             get { return onlyWhenMain; }
+        }
+        [HorizontalGroup("Group1")]
+        [SerializeField]
+        private bool onlyOnce;
+        public bool OnlyOnce
+        {
+            get { return onlyOnce; }
         }
 
         [HideLabel]
@@ -67,12 +82,7 @@ namespace VoiceActing
             get { return percentageActivation; }
         }
 
-        [SerializeField]
-        private bool onlyOnce;
-        public bool OnlyOnce
-        {
-            get { return onlyOnce; }
-        }
+
 
         [Space]
         [Space]

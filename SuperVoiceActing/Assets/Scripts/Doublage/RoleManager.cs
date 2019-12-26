@@ -103,14 +103,19 @@ namespace VoiceActing
             indexCurrentRole = newIndex;
             textRoleName.text = roles[indexCurrentRole].Name;
 
+            indexCurrentSkill = 0;
+            currentAttack = null;
             skillRoles.Clear();
-            for(int i = 0; i < roles[indexCurrentRole].SkillRoles.Length; i++)
+            if (roles[indexCurrentRole].SkillRoles != null)
             {
-                skillRoles.Add((SkillRoleData) skillManager.GetSkill(roles[indexCurrentRole].SkillRoles[i]));
-                if(skillRoles[i] == null)
-                    textSkillTimelineName[i].text = "";
-                else
-                    textSkillTimelineName[i].text = skillRoles[i].SkillName;
+                for (int i = 0; i < roles[indexCurrentRole].SkillRoles.Length; i++)
+                {
+                    skillRoles.Add((SkillRoleData)skillManager.GetSkill(roles[indexCurrentRole].SkillRoles[i]));
+                    if (skillRoles[i] == null)
+                        textSkillTimelineName[i].text = "";
+                    else
+                        textSkillTimelineName[i].text = skillRoles[i].SkillName;
+                }
             }
 
         }
@@ -155,6 +160,8 @@ namespace VoiceActing
 
         public void ShowHUDNextAttack(bool show, bool nextAttackStay = false)
         {
+            if (skillRoles.Count == 0)
+                return;
             if (nextAttackStay == true && currentAttack == null)
                 ShowHUDNextAttack(show);
             else 
@@ -171,6 +178,8 @@ namespace VoiceActing
 
         public void DetermineCurrentAttack()
         {
+            if (skillRoles.Count == 0)
+                return;
             indexCurrentSkill = Random.Range(0, skillRoles.Count);
             currentAttack = skillRoles[indexCurrentSkill];
             animatorSkillTimeline[indexCurrentSkill].SetTrigger("isNextAttack");
@@ -298,7 +307,7 @@ namespace VoiceActing
 
         public bool RoleDecision(string phase, int line, int turn, float enemyHP)
         {
-            for (int i = 0; i < roles[indexCurrentRole].RoleAI.Length; i++)
+            /*for (int i = 0; i < roles[indexCurrentRole].RoleAI.Length; i++)
             {
                 if (roles[indexCurrentRole].RoleAI[i].CheckEnemyAI(phase, line, turn, enemyHP))
                 {
@@ -315,6 +324,7 @@ namespace VoiceActing
                     return readyToAttack;
                 }
             }
+            return false;*/
             return false;
         }
 
@@ -354,12 +364,13 @@ namespace VoiceActing
             skillManager.ApplySkill(currentAttack);
             enemyAttack.SetBool("Appear", false);
             enemyAttackFace.SetTrigger("Disappear");
+            spotEnemy.SetBool("Appear", false);
             //shakeFeedback.ShakeRectEffect();
         }
 
         public void EnemyAttackActivation()
         {
-            readyToAttack = false;
+            /*readyToAttack = false;
             if (firstTime == false)
             {
                 enemyAttack.gameObject.SetActive(true);
@@ -395,7 +406,7 @@ namespace VoiceActing
             if (currentAttackInfluence <= 0)
                 currentAttackInfluence = 1;
             textSkillInfluenceValue.text = currentAttackInfluence.ToString();
-            emotionAttackManager.ComboAnimationRoleDescription(false);
+            emotionAttackManager.ComboAnimationRoleDescription(false);*/
         }
 
 
@@ -409,7 +420,7 @@ namespace VoiceActing
 
         public void StopEnemyActivation()
         {
-            selectingCounter = false;
+            /*selectingCounter = false;
             cameraController.EnemySkillCancel();
             skillManager.StopPreview(currentAttack);
             skillManager.ApplySkill(currentAttack);
@@ -420,13 +431,13 @@ namespace VoiceActing
             emotionAttackManager.ComboAnimationRoleDescription(true);
             enemyAttack.ResetTrigger("HideDescription");
             enemyAttack.ResetTrigger("ShowDescription");
-            shakeFeedback.ShakeRectEffect();
+            shakeFeedback.ShakeRectEffect();*/
         }
 
 
         public void EnemyAttackCounter()
         {
-            selectingCounter = false;
+            /*selectingCounter = false;
             skillManager.StopPreview(currentAttack);
             cameraController.EnemySkillCounter();
             emotionAttackManager.ResetCard();
@@ -438,7 +449,7 @@ namespace VoiceActing
             enemyAttack.SetBool("Appear", false);
             spotEnemy.SetBool("Appear", false);
             enemyAttack.ResetTrigger("HideDescription");
-            enemyAttack.ResetTrigger("ShowDescription");
+            enemyAttack.ResetTrigger("ShowDescription");*/
         }
 
 

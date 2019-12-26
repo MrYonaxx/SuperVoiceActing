@@ -28,6 +28,12 @@ namespace VoiceActing
         }
 
 
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            yield return new WaitForSeconds(wait / 60f);
+        }
+
+
     } // DoublageEventWait class
 
 } // #PROJECTNAME# namespace

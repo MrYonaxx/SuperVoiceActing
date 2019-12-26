@@ -43,6 +43,15 @@ namespace VoiceActing
             get { return animatorCustomCameraID; }
         }
 
+
+
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            eventManager.Viewports[0].SetCameraData(this);
+            yield break;
+        }
+
+
     } // DoublageEventCameraData class
 	
 }// #PROJECTNAME# namespace

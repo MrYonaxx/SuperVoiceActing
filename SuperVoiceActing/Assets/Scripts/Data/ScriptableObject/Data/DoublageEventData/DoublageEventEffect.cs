@@ -64,6 +64,13 @@ namespace VoiceActing
 
 
 
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            eventManager.Viewports[viewportID].StartEffect(this);
+            yield break;
+        }
+
+
     } // DoublageEventEffect class
 	
 }// #PROJECTNAME# namespace

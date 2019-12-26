@@ -108,7 +108,9 @@ namespace VoiceActing
         [SerializeField]
         RectTransform skillMovelistPanel;
 
-
+        /*[Title("SkillTarget")]
+        [SerializeField]
+        ISKillTarget skillMovelistWindow;*/
 
 
         List<SkillActorData> skillsActors = new List<SkillActorData>();
@@ -232,12 +234,18 @@ namespace VoiceActing
                     {
                         combos += " - " + listSkillMovelistWindows[i].GetSkillName();
                     }
-
                 }
             }
             doubleur.ActivateAura(b);
             textCurrentCombos.text = combos;
         }
+
+
+        public void ActivateMovelist()
+        {
+            
+        }
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///   C O N D I T I O N

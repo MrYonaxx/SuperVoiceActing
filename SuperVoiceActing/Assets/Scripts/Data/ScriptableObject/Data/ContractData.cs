@@ -114,7 +114,6 @@ namespace VoiceActing
         {
             get { return dictCondition; }
         }
-
         //[Space]
 
 
@@ -137,6 +136,24 @@ namespace VoiceActing
         {
             get { return textCopy; }
         }
+
+
+        /*[FoldoutGroup("Advanced")]
+        [SerializeField]
+        [HideLabel]
+        private string hintContext;
+        public string HintContext
+        {
+            get { return hintContext; }
+        }*/
+
+        /*[SerializeField]
+        [HideLabel]
+        private DoublageEventData eventData;
+        public DoublageEventData EventData
+        {
+            get { return eventData; }
+        }*/
 
 
     }
@@ -167,12 +184,27 @@ namespace VoiceActing
 
 
 
+
     // TextData Contract ===================================================================
 
     [System.Serializable]
-    public class TextStats
+    public class TextDataContract
     {
-        [HorizontalGroup("Interlocuteur", LabelWidth = 100, Width = 100)]
+        [Space]
+        [SerializeField]
+        [HorizontalGroup("Test3", Width = 200, MarginLeft = 15)]
+        [VerticalGroup("Test3/Left")]
+        [TextArea(1, 1)]
+        [HideLabel]
+        private string text;
+        public string Text
+        {
+            get { return text; }
+        }
+
+        [Space]
+        [HorizontalGroup("Test3", LabelWidth = 100, Width = 100)]
+        [VerticalGroup("Test3/Center")]
         [SerializeField]
         private int interlocuteurID;
         public int InterlocuteurID
@@ -180,14 +212,25 @@ namespace VoiceActing
             get { return interlocuteurID; }
         }
 
-        [HorizontalGroup("HP", LabelWidth = 100, Width = 100)]
+        [Space]
+        [HorizontalGroup("Test3", LabelWidth = 100, Width = 100)]
+        [VerticalGroup("Test3/Right")]
+        [SerializeField]
+        private bool advanced;
+        public bool Advanced
+        {
+            get { return advanced; }
+
+        }
+
+        [VerticalGroup("Test3/Center")]
         [SerializeField]
         private int hpMin;
         public int HPMin
         {
             get { return hpMin; }
         }
-        [HorizontalGroup("HP", LabelWidth = 100, Width = 100)]
+        [VerticalGroup("Test3/Right")]
         [SerializeField]
         private int hpMax;
         public int HPMax
@@ -195,60 +238,27 @@ namespace VoiceActing
             get { return hpMax; }
         }
 
-        public void SetDebugHP(int hp, int hpM)
-        {
-            hpMin = hp;
-            hpMax = hpM;
-        }
-
-    }
-
-
-
-
-
-
-    // TextData Contract ===================================================================
-
-    [System.Serializable]
-    public class TextDataContract
-    {
-
+        [ShowIf("advanced")]
+        [HorizontalGroup("Advanced", MarginLeft = 20, Width = 200, LabelWidth = 50)]
         [SerializeField]
-        [HorizontalGroup("Test3", Width = 200, MarginLeft = 20)]
-        [TextArea(1, 1)]
-        [HideLabel]
-        private string text;
-        public string Text
+        private string context;
+        public string Context
         {
-            get { return text; }
-            set { text = value; }
+            get { return context; }
         }
 
-
-
-        [HorizontalGroup("Test3")]
-        [SerializeField]
-        [HideLabel]
-        private TextStats textStats;
-        public TextStats TextStats
-        {
-            get { return textStats; }
-        }
-
-        //[TabGroup("ParentGroup", "Statistiques")]
-        //[BoxGroup("Statistique")]
         [SerializeField]
         [HideLabel]
         private EmotionStat enemyResistance;
         public EmotionStat EnemyResistance
         {
             get { return enemyResistance; }
-            set { enemyResistance = value; }
         }
 
 
-        [HideInInspector]
+
+        [Space]
+        [HorizontalGroup("WeakPoint", MarginLeft = 15, MarginRight = 5)]
         [SerializeField]
         private WeakPoint[] enemyWeakPoints;
         public WeakPoint[] EnemyWeakPoints
@@ -256,9 +266,16 @@ namespace VoiceActing
             get { return enemyWeakPoints; }
             set { enemyWeakPoints = value; }
         }
+        [Space]
+        [HorizontalGroup("WeakPoint", MarginLeft = 5, MarginRight = 15)]
+        [SerializeField]
+        private DoublageEventData[] eventData;
+        public DoublageEventData[] EventData
+        {
+            get { return eventData; }
+        }
 
-        [FoldoutGroup("Advanced")]
-        //[HorizontalGroup("CustomTextData")]
+        [ShowIf("advanced")]
         [SerializeField]
         private CustomTextData[] customTextDatas;
         public CustomTextData[] CustomTextDatas
@@ -273,24 +290,61 @@ namespace VoiceActing
     [System.Serializable]
     public class CustomTextData
     {
+        [Space]
         [SerializeField]
-        [HorizontalGroup("Test3", Width = 200, MarginLeft = 20)]
+        [HorizontalGroup("Test3", Width = 200, MarginLeft = 15)]
+        [VerticalGroup("Test3/Left")]
         [TextArea(1, 1)]
         [HideLabel]
         private string text;
         public string Text
         {
             get { return text; }
-            set { text = value; }
         }
 
-        [HorizontalGroup("Test3")]
+        [Space]
+        [HorizontalGroup("Test3", LabelWidth = 100, Width = 100)]
+        [VerticalGroup("Test3/Center")]
         [SerializeField]
-        [HideLabel]
-        private TextStats textStats;
-        public TextStats TextStats
+        private int interlocuteurID;
+        public int InterlocuteurID
         {
-            get { return textStats; }
+            get { return interlocuteurID; }
+        }
+
+        [Space]
+        [HorizontalGroup("Test3", LabelWidth = 100, Width = 100)]
+        [VerticalGroup("Test3/Right")]
+        [SerializeField]
+        private bool advanced;
+        public bool Advanced
+        {
+            get { return advanced; }
+
+        }
+
+        [VerticalGroup("Test3/Center")]
+        [SerializeField]
+        private int hpMin;
+        public int HPMin
+        {
+            get { return hpMin; }
+        }
+        [VerticalGroup("Test3/Right")]
+        [SerializeField]
+        private int hpMax;
+        public int HPMax
+        {
+            get { return hpMax; }
+        }
+
+        [ShowIf("advanced")]
+        [HorizontalGroup("Advanced", MarginLeft = 20, Width = 200, LabelWidth = 50)]
+        [SerializeField]
+        private string context;
+        public string Context
+        {
+            get { return context; }
         }
 
         [SerializeField]
@@ -299,7 +353,26 @@ namespace VoiceActing
         public EmotionStat EnemyResistance
         {
             get { return enemyResistance; }
-            set { enemyResistance = value; }
+        }
+
+
+
+        [Space]
+        [HorizontalGroup("WeakPoint", MarginLeft = 15, MarginRight = 5)]
+        [SerializeField]
+        private WeakPoint[] enemyWeakPoints;
+        public WeakPoint[] EnemyWeakPoints
+        {
+            get { return enemyWeakPoints; }
+            set { enemyWeakPoints = value; }
+        }
+        [Space]
+        [HorizontalGroup("WeakPoint", MarginLeft = 5, MarginRight = 15)]
+        [SerializeField]
+        private DoublageEventData[] eventData;
+        public DoublageEventData[] EventData
+        {
+            get { return eventData; }
         }
     }
 
@@ -498,28 +571,34 @@ namespace VoiceActing
         [Space]
         [Space]
 
-        [Title("Events")]
+        [Title("GlobalEvents")]
         [SerializeField]
         private DoublageEventData[] eventData;
         public DoublageEventData[] EventData
         {
             get { return eventData; }
         }
-        [FoldoutGroup("Events")]
+
+        [HorizontalGroup("StoryEvent", LabelWidth = 150)]
         [SerializeField]
         private StoryEventData eventAcceptedContract;
         public StoryEventData EventAcceptedContract
         {
             get { return eventAcceptedContract; }
         }
-        [FoldoutGroup("Events")]
+        [HorizontalGroup("StoryEvent", LabelWidth = 150)]
+        [SerializeField]
+        private StoryEventData eventBeforeSession;
+        public StoryEventData EventBeforeSession
+        {
+            get { return eventBeforeSession; }
+        }
         [SerializeField]
         private StoryEventData eventEndContract;
         public StoryEventData EventEndContract
         {
             get { return eventEndContract; }
         }
-        [FoldoutGroup("Events")]
         [Space]
         [SerializeField]
         private bool canGameOver;
@@ -527,7 +606,6 @@ namespace VoiceActing
         {
             get { return canGameOver; }
         }
-        [FoldoutGroup("Events")]
         [SerializeField]
         private DoublageEventData eventGameOver;
         public DoublageEventData EventGameOver
@@ -545,7 +623,7 @@ namespace VoiceActing
         {
             get { return changeBGM; }
         }
-
+        [HorizontalGroup("Sound", LabelWidth = 100)]
         [ShowIf("changeBGM", true)]
         [SerializeField]
         private AudioClip battleTheme;
@@ -553,6 +631,7 @@ namespace VoiceActing
         {
             get { return battleTheme; }
         }
+        [HorizontalGroup("Sound", LabelWidth = 100)]
         [ShowIf("changeBGM", true)]
         [SerializeField]
         private AudioClip victoryTheme;
@@ -585,10 +664,10 @@ namespace VoiceActing
             {
                 for (int j = 0; j < textDataContract[i].TextDataPossible.Length; j++)
                 {
-                    textDataContract[i].TextDataPossible[j].TextStats.SetDebugHP(debugHPMin, debugHPMax);
+                    //textDataContract[i].TextDataPossible[j].TextStats.SetDebugHP(debugHPMin, debugHPMax);
                     for (int k = 0; k < textDataContract[i].TextDataPossible[j].CustomTextDatas.Length; k++)
                     {
-                        textDataContract[i].TextDataPossible[j].CustomTextDatas[k].TextStats.SetDebugHP(debugHPMin, debugHPMax);
+                        //textDataContract[i].TextDataPossible[j].CustomTextDatas[k].TextStats.SetDebugHP(debugHPMin, debugHPMax);
                     }
                 }
             }
