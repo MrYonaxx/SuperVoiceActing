@@ -22,15 +22,13 @@ namespace VoiceActing
 
     public enum SkillTarget
     {
-        Cards,
         VoiceActor,
         VoiceActors,
-        Sentence,
         Role,
+        Roles,
+        Sentence,
         Producer,
-        ManualPackSelection,
-        ManualDoublePackSelection,
-        ManualTriplePackSelection,
+        Cards
     }
 
     [System.Serializable]
@@ -66,6 +64,41 @@ namespace VoiceActing
         public bool CanAddMultiple
         {
             get { return canAddMultiple; }
+        }
+
+        [SerializeField]
+        private bool infinite;
+        public bool Infinite
+        {
+            get { return infinite; }
+        }
+
+        [SerializeField]
+        private bool lineCount;
+        public bool LineCount
+        {
+            get { return lineCount; }
+        }
+
+        [SerializeField]
+        private bool tickEffect;
+        public bool TickEffect
+        {
+            get { return tickEffect; }
+        }
+
+        [SerializeField]
+        private bool endEffect;
+        public bool EndEffect
+        {
+            get { return endEffect; }
+        }
+
+        [SerializeField]
+        private string buffName;
+        public string BuffName
+        {
+            get { return buffName; }
         }
     }
 
@@ -133,6 +166,12 @@ namespace VoiceActing
         {
             get { return skillEffects; }
         }
+        [SerializeField]
+        private SkillData[] bonusSkillEffects;
+        public SkillData[] BonusSkillEffects
+        {
+            get { return bonusSkillEffects; }
+        }
 
 
 
@@ -149,29 +188,26 @@ namespace VoiceActing
 
 
 
-        public void ApplySkill(DoublageManager doublageManager)
+        public void ApplySkill(DoublageBattleParameter doublageBattleParameter)
         {
-            if(skillType == SkillType.Buff)
+            if (skillType == SkillType.Buff)
             {
-                ApplySkillEffects(doublageManager, this.buffData);
+                //AddBuff(ITarget);
             }
-            else
-            {
-                ApplySkillEffects(doublageManager);
-            }
+            ApplySkillEffects(doublageBattleParameter);
         }
 
 
-        private void ApplySkillEffects(DoublageManager doublageManager, BuffData data = null)
+        private void ApplySkillEffects(DoublageBattleParameter doublageBattleParameter)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(doublageManager, data);
+                skillEffects[i].GetSkillEffectNode().ApplySkillEffect(doublageBattleParameter);
             }
         }
 
 
-        public void RemoveSkill(DoublageManager doublageManager)
+        /*public void RemoveSkill(DoublageManager doublageManager)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
@@ -203,7 +239,7 @@ namespace VoiceActing
             {
                 skillEffects[i].GetSkillEffectNode().StopPreview(doublageManager);
             }
-        }
+        }*/
 
 
     } // SkillData class

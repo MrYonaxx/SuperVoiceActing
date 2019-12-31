@@ -17,12 +17,16 @@ MonoBehaviour:
     \xE0  <color=yellow>20%</color> de chance de <color=yellow>soigner de 5%</color>
     toute l'\xE9quipe."
   descriptionBattle: HP + 5%
-  skillType: 0
+  skillType: 1
   buffData:
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
     canAddMultiple: 0
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    buffName: 
   skillEffects:
   - eventNode: 3
     skillEffectCardGain:
@@ -81,6 +85,7 @@ MonoBehaviour:
       influenceBonus: 0
     skillEffectState:
       state: 0
+  bonusSkillEffects: []
   producerCost: 0
   isPassive: 0
   activationTiming: 1

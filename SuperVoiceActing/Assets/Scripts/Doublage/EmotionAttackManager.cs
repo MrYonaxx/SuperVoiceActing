@@ -193,10 +193,6 @@ namespace VoiceActing
         [SerializeField]
         Animator animatorCombo;
         [SerializeField]
-        Animator animatorCardLeft;
-        [SerializeField]
-        Animator animatorCardRight;
-        [SerializeField]
         TextMeshProUGUI textComboName;
         [SerializeField]
         TextMeshProUGUI textComboDamage;
@@ -263,6 +259,11 @@ namespace VoiceActing
         public EmotionCardTotal[] GetCards()
         {
             return emotionCards;
+        }
+
+        public EmotionCard[] GetComboCards()
+        {
+            return comboCardEmotion;
         }
 
         #endregion
@@ -353,7 +354,6 @@ namespace VoiceActing
                         if (emotionCards[i].Cards[j] != null)
                         {
                             emotionCards[i].Cards[j].DestroyCard();
-                            // Destroy(emotionCards[i].Cards[j].gameObject);
                             emotionCards[i].Cards[j] = null;
                             cardNumber += 1;
                         }
@@ -736,10 +736,8 @@ namespace VoiceActing
         // ================================================= //
         public void StartTurnCardFeedback()
         {
-            if (animatorCardLeft != null)
-                animatorCardLeft.SetTrigger("Feedback");
-            if(animatorCardRight != null)
-                animatorCardRight.SetTrigger("Feedback");
+            if (animatorCombo != null)
+                animatorCombo.SetTrigger("Feedback");
         }
 
         private void ParticleSelectEmotion(Emotion emotion)
@@ -754,37 +752,8 @@ namespace VoiceActing
             particleColor.startColor = colorEmotion;
             haloEmotion.color = new Color(colorEmotion.r, colorEmotion.g, colorEmotion.b, 0);
             haloEmotionAnimator.SetTrigger("Feedback");
-            //StartCoroutine(HaloEmotionCoroutine(colorEmotion, 0.1f, 10, 10));
             particle.Play();
         }
-
-        /*private IEnumerator HaloEmotionCoroutine(Color initialColor, float alpha, int time1, int time2)
-        {
-
-            haloEmotion.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
-            //float speedAlpha = alpha / time1;
-            //float speedAlpha2 = alpha / time2;
-            Color haloStartColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
-            Color haloEndColor = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
-            float t = 0f;
-            while (t < 1f)
-            {
-                t += Time.deltaTime / time1;
-                haloEmotion.color += Color.Lerp(haloStartColor, haloEndColor, t);
-                //haloEmotion.color += new Color(0, 0, 0, speedAlpha);
-                //time1 -= 1;
-                yield return null;
-            }
-            t = 0f;
-            while (time2 != 0)
-            {
-                t += Time.deltaTime / time1;
-                haloEmotion.color += Color.Lerp(haloEndColor, haloStartColor, t);
-                //haloEmotion.color -= new Color(0, 0, 0, speedAlpha2);
-                //time2 -= 1;
-                yield return null;
-            }
-        }*/
 
         #endregion
 

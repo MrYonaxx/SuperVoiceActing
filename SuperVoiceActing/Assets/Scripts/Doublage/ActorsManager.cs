@@ -21,14 +21,11 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-        [Header("Debug")]
-        [SerializeField]
-        VoiceActorData debug;
+        [Title("Debug")]
+        /*[SerializeField]
+        private List<VoiceActor> actors = new List<VoiceActor>();*/
 
-        [SerializeField]
-        private List<VoiceActor> actors = new List<VoiceActor>();
-
-        [Header("Parameter")]
+        [Title("Parameter")]
         [SerializeField]
         int defenseStack = 5;
         [SerializeField]
@@ -37,7 +34,7 @@ namespace VoiceActing
         Color healthCriticalColor;
 
 
-        [Header("Feedbacks Damage")]
+        [Title("Feedbacks Damage")]
         [SerializeField]
         Animator animatorHealthBar;
         [SerializeField]
@@ -71,7 +68,7 @@ namespace VoiceActing
 
 
 
-
+        [Title("Buff")]
         [Space]
         [SerializeField]
         Image[] currentActorBuff;
@@ -85,13 +82,11 @@ namespace VoiceActing
 
 
 
-        EmotionCardTotal[] emotionCards = new EmotionCardTotal[9];
+        //EmotionCardTotal[] emotionCards = new EmotionCardTotal[9];
 
 
 
-        private int indexCurrentActor = 0;
-        private int[] actorsResistance = { 100, 100, 100 };
-        private int[] actorsHealthRegain = { 0, 0, 0 };
+        //private int indexCurrentActor = 0;
         int attackDamage = 0;
 
 
@@ -105,46 +100,6 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        public int GetCurrentActorHP()
-        {
-            return actors[indexCurrentActor].Hp;
-        }
-
-
-        public int GetCurrentActorHPMax()
-        {
-            return actors[indexCurrentActor].HpMax;
-        }
-
-        public void SetIndexActors(int newIndex)
-        {
-            indexCurrentActor = newIndex;
-        }
-
-        public int GetCurrentActorIndex()
-        {
-            return indexCurrentActor;
-        }
-
-        public int GetCurrentActorDamageVariance()
-        {
-            return actors[indexCurrentActor].DamageVariance;
-        }
-
-        public List<Buff> GetBuffList()
-        {
-            return actors[indexCurrentActor].Buffs;
-        }
-
-        public Vector3 GetSkillPositionOffset()
-        {
-            return actors[indexCurrentActor].SkillOffset;
-        }
-
-        public int GetCurrentActorHPRegain()
-        {
-            return actorsHealthRegain[indexCurrentActor];
-        }
 
         #endregion
 
@@ -153,40 +108,37 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-        public VoiceActor GetCurrentActor()
+        /*public VoiceActor GetCurrentActor()
         {
             return actors[indexCurrentActor];
-        }
+        }*/
 
-        public void SetCards(EmotionCardTotal[] cards)
+        /*public void SetCards(EmotionCardTotal[] cards)
         {
             for (int i = 0; i < cards.Length; i++)
             {
                 emotionCards[i] = new EmotionCardTotal(cards[i].Cards);
             }
-        }
+        }*/
 
-        public void SetActors(List<VoiceActor> actorsContract)
+        /*public void SetActors(List<VoiceActor> actorsContract)
         {
-            if (actorsContract[0] == null)
-                actors.Add(new VoiceActor(debug));
-            else
-                actors = actorsContract;
+            actors = actorsContract;
             DrawActorStat();
-        }
+        }*/
 
         public void ResetStat()
         {
-            for (int i = 0; i < actors.Count; i++)
+            /*for (int i = 0; i < actors.Count; i++)
             {
                 actors[indexCurrentActor].StatModifier = new EmotionStat();
                 actors[indexCurrentActor].Buffs.Clear();
-            }
+            }*/
         }
 
         public bool AddBuff(Buff buff)
         {
-            for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
+            /*for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
             {
                 if (actors[indexCurrentActor].Buffs[i].SkillEffectbuff == buff.SkillEffectbuff)
                 {
@@ -205,13 +157,13 @@ namespace VoiceActing
                 }
             }
             actors[indexCurrentActor].Buffs.Add(buff);
-            DrawBuffIcon();
+            DrawBuffIcon();*/
             return true;
         }
 
         public void DrawBuffIcon()
         {
-            for(int i = 0; i < currentActorBuff.Length; i++)
+            /*for(int i = 0; i < currentActorBuff.Length; i++)
             {
                 if(i < actors[indexCurrentActor].Buffs.Count)
                 {
@@ -229,32 +181,32 @@ namespace VoiceActing
                 {
                     currentActorBuff[i].gameObject.SetActive(false);
                 }
-            }
+            }*/
         }
 
 
 
         public void CheckBuffsActors()
         {
-            for (int i = 0; i < actors.Count; i++)
+            /*for (int i = 0; i < actors.Count; i++)
             {
                 for (int j = 0; j < actors[i].Buffs.Count; j++)
                 {
                     actors[i].Buffs[j].Turn -= 1;
                     if (actors[i].Buffs[j].Turn == 0)
                     {
-                        actors[i].Buffs[j].SkillEffectbuff.RemoveSkillEffectActor(actors[i]);
+                        //actors[i].Buffs[j].SkillEffectbuff.RemoveSkillEffectActor(actors[i]);
                         actors[i].Buffs.RemoveAt(j);
                         j -= 1;
                         DrawActorStat();
                     }
                 }
-            }
+            }*/
         }
 
         public void CheckBuffsCards()
         {
-            for (int i = 0; i < 9; i++)
+            /*for (int i = 0; i < 9; i++)
             {
                 EmotionCard[] pack = null;
                 pack = emotionCards[i].Cards;
@@ -264,7 +216,7 @@ namespace VoiceActing
                     if(pack[j] != null)
                         pack[j].CheckBuff();
                 }
-            }
+            }*/
         }
 
 
@@ -274,44 +226,52 @@ namespace VoiceActing
 
 
 
-        public void DrawActorStat()
+        public void DrawActorStat(VoiceActor voiceActor, EmotionCardTotal[] emotionCards)
         {
-            // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
-
-            for(int i = 0; i < 9; i++)
-            {
-                if (emotionCards[i] == null)
-                    continue;
-                EmotionCard[] pack = emotionCards[i].Cards;//.GetCardPack(i);
-                int newStatValue = actors[indexCurrentActor].Statistique.GetEmotion(i);
-                int statBonus = actors[indexCurrentActor].StatModifier.GetEmotion(i);
-
-                for (int j = 0; j < pack.Length; j++)
-                {
-                    if(pack[j] != null)
-                        pack[j].DrawStat((int)(newStatValue * (1f - (0.25f * j))), statBonus);
-                }
-            }
-
-            if(actors[indexCurrentActor].Hp < actors[indexCurrentActor].HpMax * healthCriticalThreshold)
+            if(voiceActor.Hp < voiceActor.HpMax * healthCriticalThreshold)
             {
                 textCurrentHp.color = healthCriticalColor;
                 textMaxHp.color = healthCriticalColor;
             }
 
-            textActorName.text = actors[indexCurrentActor].VoiceActorName;
-            textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
-            textMaxHp.text = actors[indexCurrentActor].HpMax.ToString();
+            textActorName.text = voiceActor.VoiceActorName;
+            textCurrentHp.text = voiceActor.Hp.ToString();
+            textMaxHp.text = voiceActor.HpMax.ToString();
 
-            float ratioHP = (float)actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
+            float ratioHP = (float)voiceActor.Hp / voiceActor.HpMax;
             healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
+            if (voiceActor.Hp < voiceActor.HpMax * healthCriticalThreshold)
+            {
+                textCurrentHp.color = healthCriticalColor;
+                textMaxHp.color = healthCriticalColor;
+            }
 
-            float ratioHPRegain = actors[indexCurrentActor].Hp + actorsHealthRegain[indexCurrentActor];
-            ratioHPRegain = ratioHPRegain / actors[indexCurrentActor].HpMax;
+            float ratioHPRegain = voiceActor.Hp + voiceActor.ChipDamage;
+            ratioHPRegain = ratioHPRegain / voiceActor.HpMax;
             healthContentProgression.transform.localScale = new Vector3(ratioHPRegain, healthContentProgression.transform.localScale.y, healthContentProgression.transform.localScale.z);
+
+            DrawCardStat(voiceActor, emotionCards);
         }
 
 
+        private void DrawCardStat(VoiceActor voiceActor, EmotionCardTotal[] emotionCards)
+        {
+            // Joie > Tristesse > Dégout > Colère > Surprise > Douceur > Peur > Confiance
+            for (int i = 0; i < 9; i++)
+            {
+                if (emotionCards[i] == null)
+                    continue;
+                EmotionCard[] pack = emotionCards[i].Cards;
+                int newStatValue = voiceActor.Statistique.GetEmotion(i);
+                int statBonus = voiceActor.StatModifier.GetEmotion(i);
+
+                for (int j = 0; j < pack.Length; j++)
+                {
+                    if (pack[j] != null)
+                        pack[j].DrawStat((int)(newStatValue * (1f - (0.25f * j))), statBonus);
+                }
+            }
+        }
 
 
 
@@ -322,7 +282,7 @@ namespace VoiceActing
 
         // Tout ce qui est en rapport avec les HPs
         // =================================================================================================================
-        public void ResetActorRegain()
+        /*public void ResetActorRegain()
         {
             actorsHealthRegain[indexCurrentActor] = 0;
         }
@@ -330,57 +290,45 @@ namespace VoiceActing
         public void AddActorResistance(int addValue)
         {
             actorsResistance[indexCurrentActor] += addValue;
-        }
+        }*/
 
 
-        public void ActorAttackDamage()
+        public void ActorTakeDamage(VoiceActor voiceActor)
         {
             animatorDamage.SetTrigger("Attack");
-            ActorTakeDamage(attackDamage);
+            ActorTakeDamage(voiceActor, attackDamage);
             attackDamage = 0;
             textDamage.text = attackDamage.ToString();
-            DrawDamagePrevisualization();
+            DrawDamagePrevisualization(voiceActor);
         }
 
 
 
-        public void ActorTakeDamage(int damage)
+        public void ActorTakeDamage(VoiceActor voiceActor, int damage)
         {
             float ratioHP;
             float ratioHPRegain;
             float damagePercentage;
 
             // Animation Damage Lost
-            damagePercentage = (float)damage / actors[indexCurrentActor].Hp;
+            damagePercentage = (float)damage / voiceActor.Hp;
             transformDamageLost.anchorMax = new Vector2(1 + damagePercentage, 0.5f);
             animatorDamageLost.SetTrigger("Feedback");
 
             // Modification jauge de vie
-            actors[indexCurrentActor].Hp -= damage;
-            if (actors[indexCurrentActor].Hp < 0)
-                actors[indexCurrentActor].Hp = 0;
-            else if (actors[indexCurrentActor].Hp > actors[indexCurrentActor].HpMax)
-                actors[indexCurrentActor].Hp = actors[indexCurrentActor].HpMax;
-            textCurrentHp.text = actors[indexCurrentActor].Hp.ToString();
-
-            ratioHP = (float) actors[indexCurrentActor].Hp / actors[indexCurrentActor].HpMax;
-            healthContent.transform.localScale = new Vector3(ratioHP, 1, 1);
-            if (actors[indexCurrentActor].Hp < actors[indexCurrentActor].HpMax * healthCriticalThreshold)
-            {
-                textCurrentHp.color = healthCriticalColor;
-                textMaxHp.color = healthCriticalColor;
-            }
+            voiceActor.Hp -= damage;
+            voiceActor.Hp = Mathf.Clamp(voiceActor.Hp, 0, voiceActor.HpMax);
 
             // HP Regain
             if(damage > 0)
-                actorsHealthRegain[indexCurrentActor] += damage / 2;
+                voiceActor.ChipDamage += damage / 2;
             else
-                actorsHealthRegain[indexCurrentActor] += damage;
-            if (actorsHealthRegain[indexCurrentActor] <= 0)
-                actorsHealthRegain[indexCurrentActor] = 0;
-            ratioHPRegain = actors[indexCurrentActor].Hp + actorsHealthRegain[indexCurrentActor];
-            if(ratioHPRegain > actors[indexCurrentActor].HpMax) { ratioHPRegain = 1; }
-            ratioHPRegain = ratioHPRegain / actors[indexCurrentActor].HpMax;
+                voiceActor.ChipDamage += damage;
+            voiceActor.ChipDamage = Mathf.Max(0, voiceActor.ChipDamage);
+            ratioHPRegain = voiceActor.Hp + voiceActor.ChipDamage;
+            if(ratioHPRegain > voiceActor.HpMax)
+                ratioHPRegain = 1;
+            ratioHPRegain = ratioHPRegain / voiceActor.HpMax;
             healthContentProgression.transform.localScale = new Vector3(ratioHPRegain, healthContentProgression.transform.localScale.y, healthContentProgression.transform.localScale.z);
 
             if (damage > 0)
@@ -389,11 +337,11 @@ namespace VoiceActing
 
         private IEnumerator FeedbackHealthBar(int timeShake = 30, int timeGauge = 180)
         {
-            if (actors[indexCurrentActor].Hp == 0)
+            /*if (actors[indexCurrentActor].Hp == 0)
             {
                 effectManagerDeath.NegativeScreen(true);
                 effectManagerDeath.Flash();
-            }
+            }*/
             float intensity = 30;
             Vector2 origin = healthBar.anchoredPosition;
             while (timeShake != 0)
@@ -412,69 +360,60 @@ namespace VoiceActing
                 //healthContentProgression.transform.localScale += speed;
                 yield return null;
             }
-            if (actors[indexCurrentActor].Hp == 0)
+            /*if (actors[indexCurrentActor].Hp == 0)
             {
                 effectManagerDeath.NegativeScreen(false);
                 effectManagerDeath.Flash();
-            }
+            }*/
             //animatorHealthBar.SetBool("Appear", false);
         }
 
-        public void HideHealthBar()
+        public void ShowHealthBar(bool b)
         {
-            animatorHealthBar.SetBool("Appear", false);
-        }
-        public void ShowHealthBar()
-        {
-            animatorHealthBar.SetBool("Appear", true);
+            animatorHealthBar.SetBool("Appear", b);
         }
 
 
 
 
-        public void AddAttackDamage(int roleAttack, float emotionMultiplier)
+        public void AddAttackDamage(VoiceActor voiceActor, int roleAttack, float emotionMultiplier)
         {
-            int damageTmp = (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            damageTmp = (int)(damageTmp * (actorsResistance[indexCurrentActor] / 100f));
+            //int damageTmp = (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            //damageTmp = (int)(damageTmp * (actors[indexCurrentActor].BonusResistance / 100f));
+            int damageTmp = (int)(roleAttack * emotionMultiplier);
+            damageTmp = (int)(damageTmp * (voiceActor.BonusResistance / 100f));
             attackDamage += damageTmp;
             textDamage.text = attackDamage.ToString();
-            DrawDamagePrevisualization();
+            DrawDamagePrevisualization(voiceActor);
             animatorDamage.SetBool("Appear", true);
         }
 
-        public void RemoveAttackDamage(int roleAttack, float emotionMultiplier)
+        public void RemoveAttackDamage(VoiceActor voiceActor, int roleAttack, float emotionMultiplier)
         {
-            int damageTmp = (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            damageTmp = (int)(damageTmp * (actorsResistance[indexCurrentActor] / 100f));
+            //int damageTmp = (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
+            //damageTmp = (int)(damageTmp * (actors[indexCurrentActor].BonusResistance / 100f));
+            int damageTmp = (int)(roleAttack * emotionMultiplier);
+            damageTmp = (int)(damageTmp * (voiceActor.BonusResistance / 100f));
             attackDamage -= damageTmp;
             textDamage.text = attackDamage.ToString();
-            DrawDamagePrevisualization();
+            DrawDamagePrevisualization(voiceActor);
         }
 
-        public void DrawDamagePrevisualization()
+        public void DrawDamagePrevisualization(VoiceActor voiceActor)
         {
-            if (actors[indexCurrentActor].Hp <= 0)
+            if (voiceActor.Hp <= 0)
                 return;
-            float damagePercentage = (float) attackDamage / actors[indexCurrentActor].Hp;
+            float damagePercentage = (float) attackDamage / voiceActor.Hp;
             damagePreviz.anchorMin = new Vector2(1 - damagePercentage, 0);
             damagePreviz.offsetMin = new Vector2(0, 0);
-            textCurrentHp.text = (actors[indexCurrentActor].Hp - attackDamage).ToString();
-
-            if (damagePercentage >= 1)
-            {
-                effectManagerDeath.BlurScreen(true);
-            }
-            /*else
-            {
-                effectManagerDeath.BlurScreen(false);
-            }*/
+            textCurrentHp.text = (voiceActor.Hp - attackDamage).ToString();
         }
 
 
 
         public IEnumerator DeathCoroutine(Transform character)
         {
-            int time = 100;
+            /*int time = 100;
             while (time != 0)
             {
                 character.eulerAngles += new Vector3(0, 0, 0.1f);
@@ -489,7 +428,8 @@ namespace VoiceActing
                 time -= 1;
                 yield return null;
             }
-            effectManagerDeath.TotalFade(false, 120);
+            effectManagerDeath.TotalFade(false, 120);*/
+            yield return null;
         }
 
 

@@ -29,21 +29,6 @@ namespace VoiceActing
     }
 
 
-    [System.Serializable]
-    public class RandomEventEffectDatabase
-    {
-        [HorizontalGroup]
-        [HideLabel]
-        [SerializeField]
-        public RandomEvent randomEvent;
-
-        [HorizontalGroup]
-        [HideLabel]
-        [SerializeField]
-        public RandomEventCondition randomEventCondition;
-
-    }
-
 
     [CreateAssetMenu(fileName = "RandomEventDatabase", menuName = "RandomEvent/RandomEventDatabase", order = 1)]
     public class RandomEventDatabase : ScriptableObject
@@ -51,10 +36,6 @@ namespace VoiceActing
         [TabGroup("RandomStoryEvents")]
         [SerializeField]
         RandomEventStoryDatabase[] randomStoryEvents;
-
-        /*[TabGroup("RandomEffectEvents")]
-        [SerializeField]
-        RandomEventEffectDatabase[] randomEffectEvents;*/
 
 
 

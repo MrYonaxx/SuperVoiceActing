@@ -624,7 +624,6 @@ namespace VoiceActing
 
         public float DamagePhrase()
         {
-
             for (int i = 0; i < particleFeedbacks.Length; i++)
             {
                 particleFeedbacks[i].gameObject.SetActive(true);

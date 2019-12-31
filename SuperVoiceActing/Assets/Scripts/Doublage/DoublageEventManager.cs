@@ -166,7 +166,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void SetManagers(SkillManager sM, List<DoublageEventData> contractEvents)
+        public void SetManagers(List<DoublageEventData> contractEvents)
         {
             //skillManager = sM;
             globalEvents = contractEvents;

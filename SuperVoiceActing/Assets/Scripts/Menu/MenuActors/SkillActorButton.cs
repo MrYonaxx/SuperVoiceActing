@@ -68,9 +68,9 @@ namespace VoiceActing
             textSkill.text = skill.SkillName;
 
             int size = 0;
-            for (int i = 0; i < skill.PhraseType.GetLength(); i++)
+            for (int i = 0; i < skill.Movelist.GetLength(); i++)
             {
-                int emotionNumber = skill.PhraseType.GetEmotion(i);
+                int emotionNumber = skill.Movelist.GetEmotion(i);
                 for (int j = 0; j < emotionNumber; j++)
                 {
                     imageMovelist[size].sprite = emotionDictionary.GetSprite(i);

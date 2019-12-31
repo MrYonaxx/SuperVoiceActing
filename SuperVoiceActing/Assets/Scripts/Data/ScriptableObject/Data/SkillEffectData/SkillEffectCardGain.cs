@@ -19,12 +19,12 @@ namespace VoiceActing
         [HideLabel]
         EmotionStat cardGain;
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            doublageManager.ModifyDeck(cardGain);
+            //doublageManager.ModifyDeck(cardGain);
         }
 
-        public override void PreviewTarget(DoublageManager doublageManager)
+        /*public override void PreviewTarget(DoublageManager doublageManager)
         {
             base.PreviewTarget(doublageManager);
             int gain = 0;
@@ -42,7 +42,7 @@ namespace VoiceActing
                     }
                 }
             }
-        }
+        }*/
 
     } // SkillEffectCardGain class
 	

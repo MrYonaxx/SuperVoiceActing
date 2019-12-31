@@ -24,9 +24,9 @@ namespace VoiceActing
         int damageVariance;
 
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            Buff buff = null;
+            /*Buff buff = null;
             if (buffData != null)
             {
                 buff = new Buff(this, buffData);
@@ -35,7 +35,7 @@ namespace VoiceActing
                 CalculateTarget();
             else
                 targetAcquired = false;
-            AddActorEmotionDamage(doublageManager.EmotionAttackManager.GetCards(), buff);
+            AddActorEmotionDamage(doublageManager.EmotionAttackManager.GetCards(), buff);*/
 
         }
 
@@ -67,7 +67,7 @@ namespace VoiceActing
 
 
 
-        public override void RemoveSkillEffectCard(EmotionCard card)
+        /*public override void RemoveSkillEffectCard(EmotionCard card)
         {
             card.AddDamagePercentage(-emotionDamage.GetEmotion((int)card.GetEmotion()));
         }
@@ -142,7 +142,7 @@ namespace VoiceActing
                     }
                 }
             }
-        }
+        }*/
 
 
 

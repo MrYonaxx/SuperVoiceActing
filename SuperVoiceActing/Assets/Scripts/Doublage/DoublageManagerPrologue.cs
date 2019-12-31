@@ -73,7 +73,7 @@ namespace VoiceActing
             //base.SetPhrase();
 
 
-            if (indexPhrase == 0)
+           /* if (indexPhrase == 0)
             {
                 ShiftAmbiance();
                 //ChangeEventPhase();
@@ -112,9 +112,9 @@ namespace VoiceActing
             }
             else if (indexPhrase == 11)
             {
-                /*textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
+                textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text);
                 inputController.gameObject.SetActive(true);
-                skillManager.ActorSkillFeedback();*/
+                skillManager.ActorSkillFeedback();
                 //emotionAttackManager.SelectCard(Emotion.Confiance);
                 base.SetPhrase();
 
@@ -122,7 +122,7 @@ namespace VoiceActing
             else
             {
                 base.SetPhrase();
-            }
+            }*/
 
         }
 
@@ -173,8 +173,8 @@ namespace VoiceActing
             yield return new WaitForSeconds(3);
             newAmbiance2.Invoke();
             emotionAttackManager.SwitchCardTransformIntro();
-            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Joie);
+            /*enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Joie);*/
             textAppearManager.ApplyDamage(100);
             inputController.gameObject.SetActive(true);
             cameraController.enabled = true;

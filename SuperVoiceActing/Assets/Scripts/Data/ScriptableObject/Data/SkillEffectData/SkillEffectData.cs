@@ -17,47 +17,35 @@ namespace VoiceActing
         protected List<Vector3Int> cardTargetsData = new List<Vector3Int>();
         protected bool targetAcquired = false;
 
-        public virtual void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public virtual void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
 
         }
 
 
         // Remove les effets généraux lié aux acteurs/phrases
-        public virtual void RemoveSkillEffect(DoublageManager doublageManager)
+        public virtual void RemoveSkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
 
         }
 
-        // Remove les effets lié aux actors
-        public virtual void RemoveSkillEffectActor(VoiceActor card)
-        {
-
-        }
-
-        // Remove les effets lié aux cartes
-        public virtual void RemoveSkillEffectCard(EmotionCard card)
-        {
-
-        }
 
 
         // Manual target pour les effets de cartes
-        public virtual void ManualTarget(Emotion[] emotion, bool selectionByPack)
+        /*public virtual void ManualTarget(Emotion[] emotion, bool selectionByPack)
+        {
+
+        }*/
+
+
+        public virtual void PreviewTarget()
         {
 
         }
 
-        // Manual target pour les effets de cartes
-        public virtual void PreviewTarget(DoublageManager doublageManager)
+        public virtual void StopPreview()
         {
-
-        }
-
-        // Manual target pour les effets de cartes
-        public virtual void StopPreview(DoublageManager doublageManager)
-        {
-            EmotionCardTotal[] cards = doublageManager.EmotionAttackManager.GetCards();
+            /*EmotionCardTotal[] cards = doublageManager.EmotionAttackManager.GetCards();
             for (int i = 0; i < cards.Length; i++)
             {
                 for (int j = 0; j < cards[i].Cards.Length; j++)
@@ -65,7 +53,7 @@ namespace VoiceActing
                     if(cards[i].Cards[j] != null)
                         cards[i].Cards[j].StopPreview();
                 }
-            }
+            }*/
         }
 
     } // SkillEffectData class

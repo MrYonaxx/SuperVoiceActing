@@ -21,6 +21,10 @@ MonoBehaviour:
     refresh: 0
     addBuffTurn: 1
     canAddMultiple: 1
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    buffName: 
   skillEffects:
   - eventNode: 1
     skillEffectCardGain:
@@ -79,9 +83,12 @@ MonoBehaviour:
       influenceBonus: 0
     skillEffectState:
       state: 0
+  bonusSkillEffects: []
   producerCost: 0
+  isPassive: 0
   activationTiming: 1
   onlyWhenMain: 1
+  onlyOnce: 0
   phraseType:
     neutral: 1
     joy: 0
@@ -94,6 +101,5 @@ MonoBehaviour:
     trust: 0
   hpInterval: {x: 0, y: 100}
   percentageActivation: 100
-  onlyOnce: 0
   bigAnimation: 0
   isMalus: 0

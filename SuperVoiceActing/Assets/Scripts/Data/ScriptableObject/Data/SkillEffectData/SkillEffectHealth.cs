@@ -17,17 +17,20 @@ namespace VoiceActing
     {
         [SerializeField]
         SkillTarget skillTarget;
+
+        [HorizontalGroup]
         [SerializeField]
         bool inPercentage = false;
+        [HorizontalGroup]
         [SerializeField]
-        bool restoreChipDamage = false;
+        bool ignoreHPLimit = false;
 
-        [HideIf("restoreChipDamage")]
+        [HorizontalGroup("HPInfo")]
         [SerializeField]
-        int hpDamage;
-        [HideIf("restoreChipDamage")]
+        int hpGain;
+        [HorizontalGroup("HPInfo")]
         [SerializeField]
-        int hpDamageVariance;
+        int hpGainVariance;
 
         /*public override void PreviewSkill(DoublageManager doublageManager)
         {
@@ -35,57 +38,47 @@ namespace VoiceActing
         }*/
 
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
             int currentHP = 0;
             float damage = 0;
-            if(restoreChipDamage == true)
-            {
-                damage = -doublageManager.ActorsManager.GetCurrentActorHPRegain();
-                doublageManager.ActorsManager.ResetActorRegain();
-                doublageManager.ActorsManager.ActorTakeDamage((int)damage);
-                return;
-            }
+
             switch (skillTarget)
             {
                 case SkillTarget.VoiceActor:
-                    if (inPercentage == true)
-                    {
-                        currentHP = doublageManager.ActorsManager.GetCurrentActorHPMax();
-                        damage = currentHP * (hpDamage / 100f);
-                    }
-                    else
-                    {
-                        damage = hpDamage;
-                    }
-                    damage += Random.Range(-hpDamageVariance, hpDamageVariance);
-                    doublageManager.ActorsManager.ActorTakeDamage((int)damage);
+                    ModifyActorHP(doublageBattleParameter.VoiceActors[0]);
                     break;
-
-
                 case SkillTarget.Sentence:
-                    if (inPercentage == true)
-                    {
-                        currentHP = doublageManager.EnemyManager.GetHpMax();
-                        damage = currentHP * (hpDamage / 100f);
-                    }
-                    else
-                    {
-                        damage = hpDamage;
-                    }
-                    damage += Random.Range(-hpDamageVariance, hpDamageVariance);
-                    doublageManager.EnemyManager.SetHp(doublageManager.EnemyManager.GetHp() - (int)damage);
-                    doublageManager.SetReprintText(true);
                     break;
             }
         }
 
 
 
+        private void ModifyActorHP(VoiceActor voiceActor)
+        {
+            int currentHP = 0;
+            int damage = 0;
+            if (inPercentage == true)
+            {
+                currentHP = voiceActor.Hp;
+                damage = (int) (currentHP * (hpGain / 100f));
+            }
+            else
+            {
+                damage = hpGain;
+            }
+            damage += Random.Range(-hpGainVariance, hpGainVariance);
+            if(ignoreHPLimit == false)
+                damage = Mathf.Clamp(damage, damage, voiceActor.ChipDamage);
+            voiceActor.Hp += damage;
+        }
 
 
 
-        public override void PreviewTarget(DoublageManager doublageManager)
+
+
+        /*public override void PreviewTarget(DoublageManager doublageManager)
         {
             base.PreviewTarget(doublageManager);
 
@@ -125,7 +118,7 @@ namespace VoiceActing
 
             doublageManager.ActorsManager.AddAttackDamage((int)-damage, 1);
             doublageManager.ActorsManager.DrawDamagePrevisualization();
-        }
+        }*/
 
 
 

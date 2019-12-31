@@ -158,7 +158,7 @@ namespace VoiceActing
         }
 
 
-        public void ModifyTone(EmotionCard[] emotions, int actorID)
+        public void ModifyTone(Emotion[] emotions, int actorID)
         {
             if (emotions == null)
                 return;
@@ -166,13 +166,11 @@ namespace VoiceActing
             EmotionStat toneSubstractValue = new EmotionStat(-1, -1, -1, -1, -1, -1, -1, -1);
             for (int i = 0; i < emotions.Length; i++)
             {
-                if (emotions[i] == null)
-                    continue;
                 if(i == 0)
-                    toneAddValue.Add((int)emotions[i].GetEmotion(), 1);//2);
+                    toneAddValue.Add((int)emotions[i], 1);//2);
                 else
-                    toneAddValue.Add((int)emotions[i].GetEmotion(), 1);
-                toneSubstractValue.SetValue((int)emotions[i].GetEmotion(), 0);
+                    toneAddValue.Add((int)emotions[i], 1);
+                toneSubstractValue.SetValue((int)emotions[i], 0);
             }
             toneValues[actorID].Add(toneAddValue);
             //toneValue.Add(toneSubstractValue);

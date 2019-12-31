@@ -19,7 +19,8 @@ namespace VoiceActing
         AfterAttack,
         AfterCritical,
         AfterKill,
-        AfterCardSelection
+        AfterCardSelection,
+        AfterSwitch
     }
 
     [CreateAssetMenu(fileName = "SkillActorData", menuName = "Skills/SkillActorData", order = 1)]
@@ -35,8 +36,16 @@ namespace VoiceActing
             get { return isPassive; }
         }
 
-        [Title("Conditions d'Activation")]
+        [HideIf("isPassive")]
+        [HideLabel]
+        [SerializeField]
+        private EmotionStat movelist;
+        public EmotionStat Movelist
+        {
+            get { return movelist; }
+        }
 
+        [ShowIf("isPassive")]
         [SerializeField]
         private SkillActiveTiming activationTiming;
         public SkillActiveTiming ActivationTiming
@@ -44,6 +53,7 @@ namespace VoiceActing
             get { return activationTiming; }
         }
 
+        [ShowIf("isPassive")]
         [HorizontalGroup("Group1")]
         [SerializeField]
         private bool onlyWhenMain = true;
@@ -51,6 +61,7 @@ namespace VoiceActing
         {
             get { return onlyWhenMain; }
         }
+        [ShowIf("isPassive")]
         [HorizontalGroup("Group1")]
         [SerializeField]
         private bool onlyOnce;
@@ -59,27 +70,12 @@ namespace VoiceActing
             get { return onlyOnce; }
         }
 
-        [HideLabel]
+        [ShowIf("isPassive")]
         [SerializeField]
-        private EmotionStat phraseType;
-        public EmotionStat PhraseType
+        private SkillConditionNode[] skillConditions;
+        public SkillConditionNode[] SkillConditions
         {
-            get { return phraseType; }
-        }
-
-        [MinMaxSlider(0, 100)]
-        [SerializeField]
-        private Vector2Int hpInterval = new Vector2Int(0, 100);
-        public Vector2Int HpInterval
-        {
-            get { return hpInterval; }
-        }
-
-        [SerializeField]
-        private float percentageActivation;
-        public float PercentageActivation
-        {
-            get { return percentageActivation; }
+            get { return skillConditions; }
         }
 
 
@@ -102,7 +98,15 @@ namespace VoiceActing
         }
 
 
-
+        public bool CheckConditions(DoublageBattleParameter battleParameter)
+        {
+            for(int i = 0; i < skillConditions.Length; i++)
+            {
+                if (skillConditions[i].GetSkillConditionNode().CheckCondition(battleParameter) == false)
+                    return false;
+            }
+            return true;
+        }
 
 
 

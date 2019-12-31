@@ -175,10 +175,10 @@ namespace VoiceActing
             nextScene = newEndScene;
         }
 
-        public void SetContract(Contract con, List<VoiceActor> va)
+        public void SetContract(DoublageBattleParameter battleParameter)
         {
-            contract = con;
-            voiceActors = va;
+            contract = battleParameter.Contract;
+            voiceActors = battleParameter.VoiceActors;
             spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
             spectrum.enabled = true;
             actorsLevelUp = new bool[contract.VoiceActorsID.Count];
@@ -193,7 +193,8 @@ namespace VoiceActing
             actorsOldSkillLevel = new int[contract.VoiceActorsID.Count];
             actorsNewSkillLevel = new int[contract.VoiceActorsID.Count];
 
-            DrawEmotionUsed(con.EmotionsUsed);
+            DrawEmotionUsed(battleParameter.Contract.EmotionsUsed);
+            DrawResult(battleParameter.Turn, battleParameter.KillCount);
         }
 
         private void DrawEmotionUsed(List<EmotionUsed> emotionUseds)
@@ -212,7 +213,7 @@ namespace VoiceActing
             }
         }
 
-        public void DrawResult(int numberTurn, int lineDefeated)
+        private void DrawResult(float numberTurn, int lineDefeated)
         {
             this.lineDefeated = lineDefeated;
             // Draw

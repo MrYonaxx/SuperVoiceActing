@@ -172,6 +172,12 @@ namespace VoiceActing
             set { statistique = value; }
         }
 
+
+
+
+
+        // Battle Stat ====================================
+
         [SerializeField]
         private EmotionStat statModifier;
         public EmotionStat StatModifier
@@ -179,6 +185,50 @@ namespace VoiceActing
             get { return statModifier; }
             set { statModifier = value; }
         }
+
+        [SerializeField]
+        private int bonusDamage;
+        public int BonusDamage
+        {
+            get { return bonusDamage; }
+            set { bonusDamage = value; }
+        }
+
+        [SerializeField]
+        private int bonusResistance;
+        public int BonusResistance
+        {
+            get { return bonusResistance; }
+            set { bonusResistance = value; }
+        }
+
+        [SerializeField]
+        private int chipDamage;
+        public int ChipDamage
+        {
+            get { return chipDamage; }
+            set { chipDamage = value; }
+        }
+
+        [SerializeField]
+        private int damageVariance;
+        public int DamageVariance
+        {
+            get { return damageVariance; }
+            set { damageVariance = value; }
+        }
+
+        [SerializeField]
+        private int roleDefense;
+        public int RoleDefense
+        {
+            get { return roleDefense; }
+            set { roleDefense = value; }
+        }
+
+
+
+
 
         [SerializeField]
         private EmotionStat statVoxography;
@@ -236,22 +286,6 @@ namespace VoiceActing
         public Vector3 SkillOffset
         {
             get { return skillOffset; }
-        }
-
-        [SerializeField]
-        private int damageVariance;
-        public int DamageVariance
-        {
-            get { return damageVariance; }
-            set { damageVariance = value; }
-        }
-
-        [SerializeField]
-        private int roleDefense;
-        public int RoleDefense
-        {
-            get { return roleDefense; }
-            set { roleDefense = value; }
         }
 
 
@@ -343,7 +377,9 @@ namespace VoiceActing
             hp = actorData.Hp;
             hpMax = actorData.Hp;
             damageVariance = actorData.FourchetteMax;
+            bonusDamage = 0;
             roleDefense = 0;
+            bonusResistance = 100;
             timbre = actorData.Timbre;
 
             relation = 0;

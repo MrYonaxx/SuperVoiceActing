@@ -125,10 +125,6 @@ namespace VoiceActing
             return roles[indexCurrentRole].Attack;
         }
 
-        public List<Buff> GetBuffList()
-        {
-            return roles[indexCurrentRole].Buffs;
-        }
 
         #endregion
 
@@ -200,105 +196,6 @@ namespace VoiceActing
 
 
 
-
-
-
-        public bool AddBuff(Buff buff)
-        {
-            for (int i = 0; i < roles[indexCurrentRole].Buffs.Count; i++)
-            {
-                if (roles[indexCurrentRole].Buffs[i].SkillEffectbuff == buff.SkillEffectbuff)
-                {
-                    if (buff.BuffData.CanAddMultiple == false)
-                    {
-                        if (buff.BuffData.Refresh == true)
-                        {
-                            roles[indexCurrentRole].Buffs[i].Turn = buff.BuffData.TurnActive;
-                        }
-                        else if (buff.BuffData.AddBuffTurn == true)
-                        {
-                            roles[indexCurrentRole].Buffs[i].Turn += buff.BuffData.TurnActive;
-                        }
-                        return false;
-                    }
-                }
-            }
-            roles[indexCurrentRole].Buffs.Add(buff);
-            DrawBuffIcon();
-            return true;
-        }
-
-        public void DrawBuffIcon()
-        {
-            for (int i = 0; i < currentRoleBuff.Length; i++)
-            {
-                if (i < roles[indexCurrentRole].Buffs.Count)
-                {
-                    currentRoleBuff[i].gameObject.SetActive(true);
-                    if (roles[indexCurrentRole].Buffs[i].Turn < 0)
-                    {
-                        currentRoleBuffTimer[i].text = "";
-                    }
-                    else
-                    {
-                        currentRoleBuffTimer[i].text = roles[indexCurrentRole].Buffs[i].Turn.ToString();
-                    }
-                }
-                else
-                {
-                    currentRoleBuff[i].gameObject.SetActive(false);
-                }
-            }
-        }
-
-
-
-        public void CheckBuffsRoles()
-        {
-            for (int i = 0; i < roles.Count; i++)
-            {
-                for (int j = 0; j < roles[i].Buffs.Count; j++)
-                {
-                    roles[i].Buffs[j].Turn -= 1;
-                    if (roles[i].Buffs[j].Turn == 0)
-                    {
-                        skillManager.RemoveSkillEffect(roles[i].Buffs[j].SkillEffectbuff);
-                        roles[i].Buffs.RemoveAt(j);
-                        j -= 1;
-                    }
-                }
-            }
-            DrawBuffIcon();
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*public bool IsAttacking()
-        {
-            return readyToAttack;
-        }*/
         public bool IsAttacking()
         {
             return (currentAttack != null);
@@ -367,6 +264,8 @@ namespace VoiceActing
             spotEnemy.SetBool("Appear", false);
             //shakeFeedback.ShakeRectEffect();
         }
+
+        // ==================================================================================================================================
 
         public void EnemyAttackActivation()
         {
@@ -456,7 +355,7 @@ namespace VoiceActing
 
 
 
-        public void SelectEmotion(int emotion)
+        /*public void SelectEmotion(int emotion)
         {
             EmotionCard card = emotionAttackManager.SelectCard((Emotion)emotion, false);
             SelectEmotion(card);
@@ -534,7 +433,7 @@ namespace VoiceActing
                 emotionAttackManager.DestroyCombo();
                 EnemyAttackCounter();
             }
-        }
+        }*/
 
 
 

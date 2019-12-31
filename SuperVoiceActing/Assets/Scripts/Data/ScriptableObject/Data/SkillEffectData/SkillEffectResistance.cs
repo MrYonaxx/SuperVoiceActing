@@ -19,9 +19,9 @@ namespace VoiceActing
         int resistancePercentage = 0;
 
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            Buff buff = null;
+            /*Buff buff = null;
             if (buffData != null)
             {
                 buff = new Buff(this, buffData);
@@ -29,7 +29,7 @@ namespace VoiceActing
 
             if (buffData != null)
                 doublageManager.ActorsManager.AddBuff(buff);
-            doublageManager.ActorsManager.AddActorResistance(resistancePercentage);
+            doublageManager.ActorsManager.AddActorResistance(resistancePercentage);*/
         }
 
         /*public override void RemoveSkillEffectActor(VoiceActor actor)

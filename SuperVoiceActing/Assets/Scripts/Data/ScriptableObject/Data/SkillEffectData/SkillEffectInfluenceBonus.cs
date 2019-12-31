@@ -19,9 +19,9 @@ namespace VoiceActing
         [SerializeField]
         int influenceBonus;
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            Buff buff = null;
+            /*Buff buff = null;
             if (buffData != null)
             {
                 buff = new Buff(this, buffData);
@@ -36,10 +36,10 @@ namespace VoiceActing
             else
             {
                 SkillEffect(doublageManager.RolesManager, 1);
-            }
+            }*/
         }
 
-        public override void RemoveSkillEffect(DoublageManager doublageManager)
+        /*public override void RemoveSkillEffect(DoublageManager doublageManager)
         {
             SkillEffect(doublageManager.RolesManager, -1);
         }
@@ -56,7 +56,7 @@ namespace VoiceActing
             {
                 roleManager.AddRoleBonus((multiplier * influenceBonus));
             }
-        }
+        }*/
 
 
 

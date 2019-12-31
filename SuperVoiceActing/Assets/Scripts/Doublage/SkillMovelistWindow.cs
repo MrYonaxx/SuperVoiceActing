@@ -73,9 +73,9 @@ namespace VoiceActing
                 imageEmotion[i].gameObject.SetActive(false);
             }
 
-            for (int i = 0; i < skill.PhraseType.GetLength(); i++)
+            for (int i = 0; i < skill.Movelist.GetLength(); i++)
             {
-                int emotionNumber = skill.PhraseType.GetEmotion(i);
+                int emotionNumber = skill.Movelist.GetEmotion(i);
                 if(emotionNumber != 0)
                 {
                     for(int j = 0; j < emotionNumber; j++)

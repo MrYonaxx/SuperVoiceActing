@@ -32,9 +32,9 @@ namespace VoiceActing
 
 
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            Buff buff = null;
+            /*Buff buff = null;
             if (buffData != null)
             {
                 buff = new Buff(this, buffData);
@@ -66,7 +66,7 @@ namespace VoiceActing
                         AddCardStat(doublageManager.EmotionAttackManager.GetCards(), buff);
                     }
                     break;
-            }
+            }*/
 
         }
 
@@ -75,7 +75,7 @@ namespace VoiceActing
 
         //    A C T O R
 
-        public void AddActorStat(ActorsManager actorsManager, Buff buff)
+        /*public void AddActorStat(ActorsManager actorsManager, Buff buff)
         {
             if (buff != null)
             {
@@ -261,7 +261,7 @@ namespace VoiceActing
                     }
                 }
             }
-        }
+        }*/
 
     } // SkillEffectEmotionStat class
 	

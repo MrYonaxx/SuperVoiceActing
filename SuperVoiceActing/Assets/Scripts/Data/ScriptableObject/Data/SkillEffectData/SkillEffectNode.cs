@@ -15,15 +15,14 @@ namespace VoiceActing
 
     public enum SkillEffect
     {
+        Health,
         CardGain,
         EmotionStat,
         EmotionStatDamage,
-        Health,
         Turn,
         TradeStat,
         Resistance,
         Influence,
-        State
     }
 
     [System.Serializable]
@@ -33,6 +32,11 @@ namespace VoiceActing
         [HideLabel]
         public SkillEffect eventNode;
 
+        [VerticalGroup("SkillEffectGroup/Right")]
+        [ShowIf("eventNode", SkillEffect.Health)]
+        [SerializeField]
+        [HideLabel]
+        public SkillEffectHealth skillEffectHealth = null;
 
         [VerticalGroup("SkillEffectGroup/Right")]
         [ShowIf("eventNode", SkillEffect.CardGain)]
@@ -52,11 +56,7 @@ namespace VoiceActing
         [HideLabel]
         public SkillEffectEmotionDamage skillEffectEmotionDamage = null;
 
-        [VerticalGroup("SkillEffectGroup/Right")]
-        [ShowIf("eventNode", SkillEffect.Health)]
-        [SerializeField]
-        [HideLabel]
-        public SkillEffectHealth skillEffectHealth = null;
+
 
         [VerticalGroup("SkillEffectGroup/Right")]
         [ShowIf("eventNode", SkillEffect.Turn)]
@@ -82,12 +82,6 @@ namespace VoiceActing
         [HideLabel]
         public SkillEffectInfluenceBonus skillEffectInfluenceBonus = null;
 
-        [VerticalGroup("SkillEffectGroup/Right")]
-        [ShowIf("eventNode", SkillEffect.State)]
-        [SerializeField]
-        [HideLabel]
-        public SkillEffectState skillEffectState = null;
-
 
         public SkillEffectData GetSkillEffectNode()
         {
@@ -109,8 +103,6 @@ namespace VoiceActing
                     return skillEffectResistance;
                 case SkillEffect.Influence:
                     return skillEffectInfluenceBonus;
-                case SkillEffect.State:
-                    return skillEffectState;
             }
             return null;
         }

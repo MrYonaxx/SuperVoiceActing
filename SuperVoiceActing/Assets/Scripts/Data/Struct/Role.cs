@@ -207,14 +207,6 @@ namespace VoiceActing
             set { skillRoles = value; }
         }
 
-        [SerializeField]
-        private List<Buff> buffs;
-        public List<Buff> Buffs
-        {
-            get { return buffs; }
-            set { buffs = value; }
-        }
-
         #endregion
 
         #region GettersSetters 
@@ -271,8 +263,6 @@ namespace VoiceActing
             this.roleScore = 0;
             this.rolePerformance = 0;
             this.roleSprite = data.RoleSprite;
-
-            this.buffs = new List<Buff>();
 
             if(data.ActorLocked != null)
                 this.characterLock = data.ActorLocked.SpriteSheets.name;

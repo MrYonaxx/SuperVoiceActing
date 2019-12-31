@@ -143,17 +143,6 @@ namespace VoiceActing
             StartCoroutine(coroutine);
         }
 
-        /*private IEnumerator MoveToOrigin(float speed)
-        {
-            while (rectTransform.anchoredPosition != Vector2.zero)
-            {
-                rectTransform.anchoredPosition /= speed;
-                yield return null;
-            }
-            rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
-            coroutine = null;
-        }*/
-
         private IEnumerator MoveToOrigin(float speed)
         {
             speed = 0.1f;
@@ -318,7 +307,7 @@ namespace VoiceActing
                 buffs[i].Turn -= 1;
                 if (buffs[i].Turn == 0)
                 {
-                    buffs[i].SkillEffectbuff.RemoveSkillEffectCard(this);
+                    //buffs[i].SkillEffectbuff.RemoveSkillEffectCard(this);
                     buffs.RemoveAt(i);                   
                 }
             }

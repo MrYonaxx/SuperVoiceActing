@@ -62,8 +62,6 @@ MonoBehaviour:
       fanMax: 50
       atkMin: 10
       atkMax: 10
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -87,7 +85,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: 23c95fd2762698540be4a33e932cf694, type: 2}
-      artificialIntelligence: []
       skillRoleSelection:
       - skillsA:
         - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
@@ -110,8 +107,6 @@ MonoBehaviour:
       fanMax: 50
       atkMin: 10
       atkMax: 10
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -135,7 +130,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
-      artificialIntelligence: []
       skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
@@ -153,10 +147,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: De l'eau... je meurs de soif...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 10
+      hpMax: 20
+      context: 
       enemyResistance:
         neutral: 0
         joy: -80
@@ -169,6 +164,7 @@ MonoBehaviour:
         trust: -80
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -183,10 +179,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Arr\xEAte de jacasser tu fais trop de bruit !"
-      textStats:
-        interlocuteurID: 1
-        hpMin: 30
-        hpMax: 30
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 10
+      hpMax: 20
+      context: 
       enemyResistance:
         neutral: 0
         joy: -80
@@ -199,6 +196,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -213,10 +211,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "C'est la faute de ce maudit d\xE9sert !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 10
+      hpMax: 20
+      context: 
       enemyResistance:
         neutral: 0
         joy: -80
@@ -230,6 +229,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 5
       - wordIndex: 6
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -244,10 +244,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Oh ! Regarde ! Une oasis !
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 10
+      hpMax: 20
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -262,6 +263,7 @@ MonoBehaviour:
       - wordIndex: 0
       - wordIndex: 1
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -276,10 +278,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "On est sauv\xE9s !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 10
+      hpMax: 20
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -292,9 +295,11 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

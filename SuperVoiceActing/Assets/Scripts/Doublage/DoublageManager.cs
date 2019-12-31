@@ -67,22 +67,12 @@ namespace VoiceActing
         protected SessionRecapManager sessionRecapManager;
         [SerializeField]
         protected DoublageResumeManager doublageResumeManager;
+        [SerializeField]
+        protected TurnManager turnManager;
+        [SerializeField]
+        protected LineManager lineManager;
 
         [Title("Feedback & UI")]
-        [SerializeField]
-        protected TimerDoublage timer;
-        [SerializeField]
-        protected RectTransform feedbackLine;
-        [SerializeField]
-        protected RectTransform feedbackLineTransform;
-        [SerializeField]
-        protected TextMeshProUGUI textMeshLine;
-        [SerializeField]
-        protected TextMeshProUGUI textMeshTurn;
-        [SerializeField]
-        protected TextMeshProUGUI currentLineNumber;
-        [SerializeField]
-        protected TextMeshProUGUI maxLineNumber;
         [SerializeField]
         protected GameObject recIcon;
         [SerializeField]
@@ -142,52 +132,17 @@ namespace VoiceActing
 
         [Title("Debug")]
         [SerializeField]
-        protected int indexPhrase = 0;
-
+        protected Contract contrat;
 
         protected bool reprint = false;
-        protected bool intro = true;
 
 
         protected bool endAttack = false;
 
-        [SerializeField]
-        protected Contract contrat;
-
-        protected int turnCount = 15;
-        protected int killCount = 0;
 
 
-        // Y'a un truc qui va pas là, y'a doublon
-        protected EmotionCard[] lastAttack = null;
-        protected Emotion[] lastAttackEmotion = null;
-
-
-        protected bool defencePhase = false;
-
-        protected List<VoiceActor> battleVoiceActors = new List<VoiceActor>();
-
-
-        public ToneManager ToneManager
-        {
-            get { return toneManager; }
-        }
-        public EmotionAttackManager EmotionAttackManager
-        {
-            get { return emotionAttackManager; }
-        }
-        public EnemyManager EnemyManager
-        {
-            get { return enemyManager; }
-        }
-        public ActorsManager ActorsManager
-        {
-            get { return actorsManager; }
-        }
-        public RoleManager RolesManager
-        {
-            get { return roleManager; }
-        }
+        // Tout les paramètres du combat en cours
+        DoublageBattleParameter battleParameter;
 
         #endregion
 
@@ -207,7 +162,7 @@ namespace VoiceActing
             endAttack = true;
         }
 
-        public void AddTurn(int addValue)
+        /*public void AddTurn(int addValue)
         {
             turnCount += addValue;
             if (turnCount <= 0)
@@ -222,7 +177,7 @@ namespace VoiceActing
                 }
             }
             actorsManager.DrawBuffIcon();
-        }
+        }*/
 
         #endregion
 
@@ -249,38 +204,34 @@ namespace VoiceActing
                     playerData.CurrentContract = contrat;
                 }
             }
-            indexPhrase = contrat.CurrentLine;
-            turnCount = playerData.TurnLimit;
-            if (timer != null)
-                timer.SetTurn(turnCount);
-            if (maxLineNumber != null)
-                maxLineNumber.text = (contrat.TextData.Count).ToString();
-            if (currentLineNumber != null)
-                currentLineNumber.text = (indexPhrase).ToString();
             StartCoroutine(IntroductionSequence());
         }
 
         private void InitializeManagers()
         {
-            battleVoiceActors = playerData.GetVoiceActorsFromContractID(contrat);
+            battleParameter = new DoublageBattleParameter(playerData, emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
 
-            SoundEngineer soundEngi = playerData.GetSoundEngiFromName(contrat.SoundEngineerID);
+            enemyManager.SetTextData(contrat.TextData[contrat.CurrentLine]);
 
-            enemyManager.SetTextData(contrat.TextData[indexPhrase]);
-            actorsManager.SetCards(emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
-            actorsManager.SetActors(battleVoiceActors);
-            //actorsManager.ActorTakeDamage(0);
-            eventManager.SetManagers(skillManager, contrat.EventData);
-            skillManager.SetManagers(this, cameraController, battleVoiceActors);
-            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
+            //actorsManager.SetActors(battleVoiceActors);
+            eventManager.SetManagers(contrat.EventData);
+            skillManager.SetManagers(battleParameter, cameraController);
             producerManager.SetManagers(skillManager, contrat.ProducerMP);
             roleManager.SetManagers(skillManager);
-            roleManager.SetRoles(contrat.Characters, actorsManager.GetCurrentActorIndex());
-            soundEngineerManager.SetManagers(skillManager, soundEngi);
+            roleManager.SetRoles(contrat.Characters, battleParameter.IndexCurrentCharacter);
+            //soundEngineerManager.SetManagers(skillManager, soundEngi);
             toneManager.InitializeDefaultTone(contrat.Characters);
-            toneManager.DrawTone(actorsManager.GetCurrentActorIndex());
-            characterDoublageManager.SetCharactersSprites(battleVoiceActors);
-            characterDoublageManager.SetCharacterForeground(actorsManager.GetCurrentActorIndex());
+            toneManager.DrawTone(battleParameter.IndexCurrentCharacter);
+            characterDoublageManager.SetCharactersSprites(battleParameter.VoiceActors);
+            characterDoublageManager.SetCharacterForeground(battleParameter.IndexCurrentCharacter);
+
+            skillManager.SetMovelist(battleParameter.CurrentActor(), characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
+
+            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
+            turnManager.DrawTurn(battleParameter.Turn);
+            lineManager.DrawLineNumber(battleParameter.Contract.CurrentLine);
+            lineManager.DrawMaxLineNumber(battleParameter.Contract.TotalLine);
+
             SetPlayerSettings();
         }
 
@@ -315,7 +266,7 @@ namespace VoiceActing
                 audioClipBattleTheme = contrat.BattleTheme;
             }
 
-            if (eventManager.CheckEvent(indexPhrase, true, enemyManager.GetHpPercentage()) == false)
+            if (eventManager.CheckEvent(contrat.CurrentLine, true, enemyManager.GetHpPercentage()) == false)
             {
                 yield return new WaitForSeconds(1);
                 introText.NewPhrase("Semaine " + playerData.Date.week.ToString());
@@ -364,8 +315,7 @@ namespace VoiceActing
 
                 yield return eventManager.StartEvent();
 
-                cameraController.MoveToInitialPosition(0);
-                emotionAttackManager.SwitchCardTransformToBattle();
+                SwitchToDoublage();
                 SetPhrase();
 
             }
@@ -377,20 +327,14 @@ namespace VoiceActing
         // Appelé par les boutons
         public void SelectCard(int emotion)
         {
-            if(defencePhase == true)
-            {
-                roleManager.SelectEmotion(emotion);
-                return;
-            }
             EmotionCard card = emotionAttackManager.SelectCard((Emotion) emotion, true);
             if (card != null)
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
-                actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                actorsManager.AddAttackDamage(battleParameter.CurrentActor(), roleManager.GetRoleAttack(), card.GetDamagePercentage());
 
-                lastAttackEmotion = emotionAttackManager.GetComboEmotion();
-                skillManager.UpdateMovelist(lastAttackEmotion);
-                //toneManager.HighlightTone(card.GetEmotion(), true);
+                battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                skillManager.UpdateMovelist();
             }
         }
 
@@ -400,11 +344,10 @@ namespace VoiceActing
             if (card != null)
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
-                actorsManager.AddAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                actorsManager.AddAttackDamage(battleParameter.CurrentActor(), roleManager.GetRoleAttack(), card.GetDamagePercentage());
 
-                lastAttackEmotion = emotionAttackManager.GetComboEmotion();
-                skillManager.UpdateMovelist(lastAttackEmotion);
-                //toneManager.HighlightTone(card.GetEmotion(), true);
+                battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                skillManager.UpdateMovelist();
             }
         }
 
@@ -413,11 +356,10 @@ namespace VoiceActing
             EmotionCard card = emotionAttackManager.RemoveCard();
             if (card != null)
             {
-                actorsManager.RemoveAttackDamage(roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                actorsManager.AddAttackDamage(battleParameter.CurrentActor(), -roleManager.GetRoleAttack(), card.GetDamagePercentage());
 
-                lastAttackEmotion = emotionAttackManager.GetComboEmotion();
-                skillManager.UpdateMovelist(lastAttackEmotion);
-                //toneManager.HighlightTone(card.GetEmotion(), false);
+                battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                skillManager.UpdateMovelist();
             }
         }
 
@@ -434,9 +376,7 @@ namespace VoiceActing
                 {
                     //SelectCard("Neutre");
                     return;
-                }
-                HideUIButton();
-                AttackFeedbackPhase();
+                }             
                 StartCoroutine(AttackCoroutine());
             }
         }
@@ -444,29 +384,24 @@ namespace VoiceActing
         // Phase où l'attaque part
         private void AttackFeedbackPhase()
         {
-            actorsManager.ActorAttackDamage();
             ShakeCurrentCharacter();
             AudioManager.Instance.PlaySound(audioClipAttack, 0.5f);
             AudioManager.Instance.PlaySound(audioClipAttack2, 0.8f);
-            turnCount -= 1;
             soundEngineerManager.AddTrickery(1);
-            if (timer != null)
-                timer.SetTurn(turnCount);
-
-            if (feedbackLine != null)
-                feedbackLine.gameObject.SetActive(false);
 
             HideUIButton();
 
-            lastAttack = emotionAttackManager.GetComboEmotionCard();
-            lastAttackEmotion = emotionAttackManager.GetComboEmotion();
-            textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(lastAttack, 
-                                                                      textAppearManager.GetWordSelected(), 
-                                                                      actorsManager.GetCurrentActorDamageVariance()),
-                                            lastAttack);
+            //lastAttack = emotionAttackManager.GetComboEmotionCard();
+            //lastAttackEmotion = emotionAttackManager.GetComboEmotion();
+            battleParameter.Turn = turnManager.AdvanceTimer(battleParameter.Turn);
+            actorsManager.ActorTakeDamage(battleParameter.CurrentActor());
+            textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboCards(), 
+                                                                      textAppearManager.GetWordSelected(),
+                                                                      battleParameter.CurrentActor().DamageVariance),
+                                            emotionAttackManager.GetComboCards());
             //toneManager.ModifyTone(lastAttack);
-            characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()).ChangeEmotion(lastAttack[0].GetEmotion());
-            if (actorsManager.GetCurrentActorHP() == 0)
+            characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter).ChangeEmotion(battleParameter.LastAttackEmotion[0]);
+            if(battleParameter.CurrentActor().Hp == 0)
             {
                 AudioManager.Instance.StopMusic(300);
                 textAppearManager.SetLetterSpeed(8);
@@ -476,9 +411,8 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToRessource();
 
             skillManager.HideSkillWindow();
-
+            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             roleManager.ShowHUDNextAttack(false, true);
-
         }
 
 
@@ -489,12 +423,13 @@ namespace VoiceActing
         {
             inputController.gameObject.SetActive(false);
             // Check Skill =======================================================================
-
+            skillManager.ActivateMovelist();
 
             // Attack Feedback ===================================================================
-            if (turnCount == 0)
+            AttackFeedbackPhase();
+            if (battleParameter.Turn <= 0)
             {
-                StartCoroutine(WaitTextLastLine());
+                StartCoroutine(WaitGameOverLine());
                 yield break;
             }
             // Wait ==============================================================================
@@ -514,15 +449,15 @@ namespace VoiceActing
                 yield return null;
 
             // Check Dead ========================================================================
-            if (actorsManager.GetCurrentActorHP() == 0 && contrat.StoryEventWhenGameOver != null)
+            if (battleParameter.CurrentActor().Hp == 0 && contrat.StoryEventWhenGameOver != null)
             {
-                //yield return eventManager.ExecuteEvent(contrat.StoryEventWhenGameOver);
+                yield return eventManager.ExecuteEvent(contrat.StoryEventWhenGameOver);
                 //ChangeEventPhase();
                 contrat.StoryEventWhenGameOver = null;
                 textAppearManager.SetLetterSpeed(2);
                 yield break;
             }
-            else if (actorsManager.GetCurrentActorHP() == 0)
+            else if (battleParameter.CurrentActor().Hp == 0)
             {
                 yield return new WaitForSeconds(1f);
                 //yield return actorsManager.DeathCoroutine(eventManager.GetCharacterSprites(actorsManager.GetCurrentActorIndex()));
@@ -533,11 +468,11 @@ namespace VoiceActing
                 textIntro.SetActive(true);
                 introText.NewPhrase(" ");
                 yield return new WaitForSeconds(1f);
-                introText.NewPhrase(actorsManager.GetCurrentActor().VoiceActorName + " ?");
+                introText.NewPhrase(battleParameter.CurrentActor().VoiceActorName + " ?");
                 yield return new WaitForSeconds(2f);
-                introText.NewPhrase(actorsManager.GetCurrentActor().VoiceActorName + " !");
+                introText.NewPhrase(battleParameter.CurrentActor().VoiceActorName + " !");
                 yield return new WaitForSeconds(2f);
-                introText.NewPhrase(actorsManager.GetCurrentActor().VoiceActorName.ToUpper() + " !");
+                introText.NewPhrase(battleParameter.CurrentActor().VoiceActorName.ToUpper() + " !");
                 yield return new WaitForSeconds(2f);
                 introText.NewPhrase(" ");
                 yield return new WaitForSeconds(1f);
@@ -557,7 +492,7 @@ namespace VoiceActing
             }
 
             // Check Producer Attack ==============================================================
-            if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "ENDATTACK", indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
+            /*if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "ENDATTACK", contrat.CurrentLine, turnCount, enemyManager.GetHpPercentage()) == true)
             {
                 producerManager.ProducerAttackActivation();
                 endAttack = false;
@@ -565,26 +500,19 @@ namespace VoiceActing
                 {
                     yield return null;
                 }
-            }
+            }*/
 
 
             // Check Event ========================================================================
-            if (eventManager.CheckEvent(indexPhrase, false, enemyManager.GetHpPercentage()) == true)
+            if (eventManager.CheckEvent(contrat.CurrentLine, false, enemyManager.GetHpPercentage()) == true)
             {
                 //ChangeEventPhase();
                 yield return eventManager.StartEvent();
             }
 
             // Check Skill ========================================================================
-            List<SkillActiveTiming> activeTimings = new List<SkillActiveTiming> {SkillActiveTiming.AfterAttack };
-            if (enemyManager.GetLastAttackCritical() == true)
-                activeTimings.Add(SkillActiveTiming.AfterCritical);
-            if (enemyManager.GetHpPercentage() == 0)
-                activeTimings.Add(SkillActiveTiming.AfterKill);
-
-            skillManager.CheckSkillCondition(battleVoiceActors, activeTimings, lastAttackEmotion, false);
-
-            yield return skillManager.ActivateBigSkill();
+            skillManager.CheckPassiveSkillCondition();
+            yield return skillManager.ActivatePassiveSkills();
 
             // Les skills se font tous check en même temps, du coup ça peut empêcher certains combos.
             // New turn ===========================================================================
@@ -615,7 +543,7 @@ namespace VoiceActing
         }
 
 
-        private IEnumerator WaitTextLastLine()
+        private IEnumerator WaitGameOverLine()
         {
             AudioManager.Instance.StopMusicWithScratch(120);
             yield return CoroutineAttack(10);
@@ -627,7 +555,7 @@ namespace VoiceActing
             }
             if (enemyManager.GetHpPercentage() == 0)
             {
-                killCount += 1;
+                battleParameter.KillCount += 1;
                 if (CheckGameOver() == false)
                     yield return EndSessionCoroutine(50);
                 yield break;
@@ -640,14 +568,13 @@ namespace VoiceActing
 
         public void NewTurn(bool reprintText = false)
         {
-            skillManager.ActivateMinorSkills();
             emotionAttackManager.ResetCard();
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
             actorsManager.CheckBuffsActors();
             actorsManager.CheckBuffsCards();
-            RolesManager.CheckBuffsRoles();
             roleManager.ShowHUDNextAttack(true);
+            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             ShowUIButton(buttonUIA);
             ShowUIButton(buttonUIB);
             if (enemyManager.GetHpPercentage() == 0)
@@ -685,16 +612,13 @@ namespace VoiceActing
                 if (textAppearManager.GetEndLine() == true)
                 {
                     inputController.gameObject.SetActive(false);
-
-                    //Emotion[] emotionsUsed = { lastAttack[0].GetEmotion(), lastAttack[1].GetEmotion(), lastAttack[2].GetEmotion() };
-                    contrat.EmotionsUsed.Add(new EmotionUsed(lastAttack));
-                    indexPhrase += 1;
-                    killCount += 1;
-                    if (currentLineNumber != null)
-                        currentLineNumber.text = (indexPhrase).ToString();
+                    contrat.EmotionsUsed.Add(new EmotionUsed(battleParameter.LastAttackEmotion));
+                    contrat.CurrentLine += 1;
+                    battleParameter.KillCount += 1;
+                    lineManager.DrawLineNumber(contrat.CurrentLine);
                     emotionAttackManager.ResetCard();
                     emotionAttackManager.StartTurnCardFeedback();
-                    toneManager.ModifyTone(lastAttack, actorsManager.GetCurrentActorIndex());
+                    toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
 
                     roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
                     soundEngineerManager.ShowCharacterShadows();
@@ -703,8 +627,8 @@ namespace VoiceActing
                     enemyManager.ShowHPEnemy(false);
 
                     // Nouvelle Phrase
-                    if (indexPhrase < contrat.TextData.Count)
-                        enemyManager.SetTextData(contrat.TextData[indexPhrase]);
+                    if (contrat.CurrentLine < contrat.TextData.Count)
+                        enemyManager.SetTextData(contrat.TextData[contrat.CurrentLine]);
 
                     // Check Event
 
@@ -715,22 +639,25 @@ namespace VoiceActing
                     AudioManager.Instance.PlaySound(audioClipKillPhrase);
                     AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
 
-                    if (indexPhrase == contrat.TextData.Count)
+                    if (contrat.CurrentLine == contrat.TextData.Count)
                     {
-                        FeedbackNewLine();
+                        enemyManager.ResetHalo();
+                        lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                         //EndSession();
                         return;
                     }
 
                     // Check si changement d'acteur
-                    if (enemyManager.CheckInterlocutor(actorsManager.GetCurrentActorIndex()) == false)
+                    if (enemyManager.CheckInterlocutor(battleParameter.IndexCurrentCharacter) == false)
                     {
-                        FeedbackNewLine();
+                        enemyManager.ResetHalo();
+                        lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                         SwitchActors();
                     }
                     else
                     {
-                        FeedbackNewLine();
+                        enemyManager.ResetHalo();
+                        lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                         if (cameraController != null)
                             cameraController.NotQuite();
                         StartCoroutine(WaitCoroutineNextPhrase(60));
@@ -749,21 +676,21 @@ namespace VoiceActing
         {
             if (characterDoublageManager.SwitchActors(enemyManager.GetInterlocutor()) == true) // GoLeft
             {
-                FeedbackNewLineSwitch(true);
+                lineManager.FeedbackNewLineSwitch(true);
             }
             else
             {
-                FeedbackNewLineSwitch(false);
+                lineManager.FeedbackNewLineSwitch(false);
             }
-            actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
-            roleManager.SetIndexRole(enemyManager.GetInterlocutor());
+            battleParameter.IndexCurrentCharacter = enemyManager.GetInterlocutor();
+            //actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
+            //roleManager.SetIndexRole(enemyManager.GetInterlocutor());
 
             emotionAttackManager.SwitchCardTransformToRessource();
-            actorsManager.SetCards(emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
-            actorsManager.DrawActorStat();
+            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             actorsManager.DrawBuffIcon();
-            textAppearManager.SetMouth(characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
-            skillManager.SetCurrentVoiceActor(actorsManager.GetCurrentActor(), characterDoublageManager.GetCharacter(actorsManager.GetCurrentActorIndex()));
+            textAppearManager.SetMouth(characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
+            skillManager.SetMovelist(battleParameter.CurrentActor(), characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
         }
 
         // Appelé par l'event Switch Actors
@@ -775,27 +702,27 @@ namespace VoiceActing
 
         private IEnumerator SetPhraseCoroutine()
         {
-            if (eventManager.CheckEvent(indexPhrase, true, enemyManager.GetHpPercentage()) == true)
+            if (eventManager.CheckEvent(contrat.CurrentLine, true, enemyManager.GetHpPercentage()) == true)
             {
                 yield return eventManager.StartEvent();
             }
 
-            if (indexPhrase == contrat.TextData.Count)
+            if (contrat.CurrentLine == contrat.TextData.Count)
             {
                 yield return EndSessionCoroutine(50);
                 yield break;
             }
             // Check Skill ========================================================================
-            if (intro == true)
+            /*if (intro == true)
             {
                 //lastAttack[0] = Emotion.Neutre;
-                skillManager.CheckSkillCondition(battleVoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttackEmotion, false);
+                //skillManager.CheckSkillCondition(battleVoiceActors, new List<SkillActiveTiming> {SkillActiveTiming.AfterStart }, lastAttackEmotion, false);
                 yield return skillManager.ActivateBigSkill();
                 intro = false;
                 yield return new WaitForSeconds(0.5f);
-            }
+            }*/
             // Producteur Decision ======================================================================
-            if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "STARTPHRASE", indexPhrase, turnCount, enemyManager.GetHpPercentage()) == true)
+            /*if (producerManager.ProducerDecision(contrat.ArtificialIntelligence, "STARTPHRASE", contrat.CurrentLine, turnCount, enemyManager.GetHpPercentage()) == true)
             {
                 producerManager.ProducerAttackActivation();
                 endAttack = false;
@@ -803,19 +730,23 @@ namespace VoiceActing
                 {
                     yield return null;
                 }
-            }
+            }*/
+
+            skillManager.CheckPassiveSkillCondition();
+            yield return skillManager.ActivatePassiveSkills();
 
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
-            textAppearManager.NewPhrase(contrat.TextData[indexPhrase].Text, Emotion.Neutre, true);
+            textAppearManager.NewPhrase(contrat.TextData[contrat.CurrentLine].Text, Emotion.Neutre, true);
             ShowUIButton(buttonUIA);
             ShowUIButton(buttonUIB);
             roleManager.ShowHUDNextAttack(true);
             roleManager.DetermineCurrentAttack();
-            characterDoublageManager.DrawActorsOrder(contrat.TextData, contrat.VoiceActorsID, indexPhrase);
-            toneManager.DrawTone(actorsManager.GetCurrentActorIndex());
+            characterDoublageManager.DrawActorsOrder(contrat.TextData, contrat.VoiceActorsID, contrat.CurrentLine);
+            toneManager.DrawTone(battleParameter.IndexCurrentCharacter);
             enemyManager.ShowHPEnemy(true);
+            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
         }
 
 
@@ -844,8 +775,7 @@ namespace VoiceActing
             cameraController.EndSequence1(0.3f, 10f);
             enemyManager.DamagePhrase();
             textAppearManager.TextPop();
-            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, -10);
-            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackFinalLine");
+            lineManager.FeedbackFinalLine(-10);
             AudioManager.Instance.PlaySound(audioClipKillPhrase);
             AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
 
@@ -855,8 +785,7 @@ namespace VoiceActing
             cameraController.EndSequence1(0.6f, -10f);
             enemyManager.DamagePhrase();
             textAppearManager.TextPop();
-            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 10);
-            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackFinalLine");
+            lineManager.FeedbackFinalLine(10);
             AudioManager.Instance.PlaySound(audioClipKillPhrase);
             AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
 
@@ -865,8 +794,7 @@ namespace VoiceActing
             mcPanel.SetTrigger("Feedback");
             enemyManager.DamagePhrase();
             textAppearManager.TextPop(210);
-            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackUltimeLine");
+            lineManager.FeedbackFinalLine(0);
             AudioManager.Instance.PlaySound(audioClipKillPhrase);
             AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
 
@@ -900,36 +828,7 @@ namespace VoiceActing
 
 
 
-        private void FeedbackNewLine()
-        {
-            if (feedbackLine == null)
-                return;
-            enemyManager.ResetHalo();
-            textMeshLine.text = (contrat.TextData.Count - indexPhrase).ToString();
-            textMeshTurn.text = turnCount.ToString();
-            feedbackLine.anchoredPosition = new Vector2(feedbackLine.anchoredPosition.x, -50);
-            feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
-            feedbackLine.gameObject.SetActive(true);
-        }
 
-        private void FeedbackNewLineSwitch(bool goLeft)
-        {
-            if (feedbackLine == null)
-                return;
-            enemyManager.ResetHalo();
-            textMeshLine.text = (contrat.TextData.Count - indexPhrase).ToString();
-            textMeshTurn.text = turnCount.ToString();
-            feedbackLine.anchoredPosition = new Vector2(feedbackLine.anchoredPosition.x, -125);
-            if (goLeft == true)
-            {
-                feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, -20);
-            }
-            else
-            {
-                feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 20);
-            }
-            feedbackLine.gameObject.SetActive(true);
-        }
 
 
         public void ShowUIButton(Animator animButton)
@@ -964,19 +863,11 @@ namespace VoiceActing
             }
         }
 
-        public IEnumerator WaitSkillManager()
-        {
-            while (skillManager.InSkillAnimation() == true)
-            {
-                yield return null;
-            }
-        }
-
 
 
         public void ShakeCurrentCharacter()
         {
-            characterDoublageManager.ShakeCharacter(actorsManager.GetCurrentActorIndex());
+            characterDoublageManager.ShakeCharacter(battleParameter.IndexCurrentCharacter);
         }
 
 
@@ -1000,8 +891,8 @@ namespace VoiceActing
             if(cameraController.enabled == true)
                 cameraController.IngeSon2Cancel();
             inputController.gameObject.SetActive(true);
-            recIcon.SetActive(true);
-            actorsManager.ShowHealthBar();
+            //recIcon.SetActive(true);
+            actorsManager.ShowHealthBar(true);
             emotionAttackManager.ShowComboSlot(true);
         }
 
@@ -1010,9 +901,9 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToRessource();
             emotionAttackManager.ShowComboSlot(false);
             inputController.gameObject.SetActive(false);
-            recIcon.SetActive(false);
-            actorsManager.ShowHealthBar();
-            sessionRecapManager.DrawContract(contrat, battleVoiceActors, indexPhrase);
+            //recIcon.SetActive(false);
+            actorsManager.ShowHealthBar(true);
+            //sessionRecapManager.DrawContract(contrat, battleVoiceActors);
         }
 
         public void RecapToSession()
@@ -1020,13 +911,13 @@ namespace VoiceActing
             emotionAttackManager.SwitchCardTransformToBattle();
             emotionAttackManager.ShowComboSlot(true);
             inputController.gameObject.SetActive(true);
-            recIcon.SetActive(true);
-            actorsManager.ShowHealthBar();
-            sessionRecapManager.MenuDisappear();
+            //recIcon.SetActive(true);
+            actorsManager.ShowHealthBar(true);
+            //sessionRecapManager.MenuDisappear();
         }
 
 
-        public void ModifyPlayerDeck(EmotionStat addDeck, int addComboMax)
+        /*public void ModifyPlayerDeck(EmotionStat addDeck, int addComboMax)
         {
             playerData.Deck.Add(addDeck);
             playerData.ComboMax += addComboMax;
@@ -1036,25 +927,19 @@ namespace VoiceActing
                 playerData.ComboMax = 1;
             ModifyDeck(addDeck);
             ModifyComboMax(addComboMax);
-        }
+        }*/
 
-        public void ModifyDeck(EmotionStat addDeck)
+        /*public void ModifyDeck(EmotionStat addDeck)
         {
             emotionAttackManager.ResetCard();
             actorsManager.SetCards(emotionAttackManager.AddDeck(addDeck));
             actorsManager.DrawActorStat();
-        }
+        }*/
 
-        public void ModifyComboMax(int addComboMax)
+        /*public void ModifyComboMax(int addComboMax)
         {
             emotionAttackManager.AddComboMax(addComboMax);
-        }
-
-
-        public void ChangeResultScreenEndScene()
-        {
-
-        }
+        }*/
 
 
         public bool CheckGameOver()
@@ -1077,7 +962,7 @@ namespace VoiceActing
         public void ShowResultScreen()
         {
             actorsManager.ResetStat();
-            if (indexPhrase == playerData.CurrentContract.TotalLine)
+            if (contrat.CurrentLine == playerData.CurrentContract.TotalLine)
             {
                 if (playerData.CurrentContract.StoryEventWhenEnd != null)
                     playerData.NextStoryEvents.Add(playerData.CurrentContract.StoryEventWhenEnd);
@@ -1085,8 +970,7 @@ namespace VoiceActing
             if (playerData.NextStoryEvents.Count != 0 || playerData.NextRandomEvent.Count != 0)
                 resultScreenManager.ChangeEndScene("EventScene");
             resultScreen.SetActive(true);
-            resultScreenManager.SetContract(contrat, battleVoiceActors);
-            resultScreenManager.DrawResult(turnCount, killCount);
+            resultScreenManager.SetContract(battleParameter);
         }
 
 

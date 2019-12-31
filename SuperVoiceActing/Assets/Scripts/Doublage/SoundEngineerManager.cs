@@ -374,7 +374,7 @@ namespace VoiceActing
 
                 AddTrickery(-skills[indexList].ProducerCost);
                 // On target puis on retire les cartes avant d'appliquer le buff
-                skills[indexList].ManualTarget(emotionAttackManager.GetComboEmotion(), skills[indexList].PackSelection);
+                //skills[indexList].ManualTarget(emotionAttackManager.GetComboEmotion(), skills[indexList].PackSelection);
                 SwitchToSelectEmotion(false);
                 skillManager.ApplySkill(skills[indexList]);
 

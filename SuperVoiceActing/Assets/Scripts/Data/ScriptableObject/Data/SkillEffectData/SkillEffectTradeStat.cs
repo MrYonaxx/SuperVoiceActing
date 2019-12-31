@@ -26,9 +26,9 @@ namespace VoiceActing
         EmotionCard[] packB;
 
 
-        public override void ApplySkillEffect(DoublageManager doublageManager, BuffData buffData = null)
+        public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            Buff buff = null;
+            /*Buff buff = null;
             if (buffData != null)
             {
                 buff = new Buff(this, buffData);
@@ -38,12 +38,12 @@ namespace VoiceActing
             else
             {
                 InvertActorStat(doublageManager.EmotionAttackManager.GetCards());
-            }
+            }*/
 
         }
 
 
-        private void InvertActorStat(EmotionCardTotal[] emotionCards)
+        /*private void InvertActorStat(EmotionCardTotal[] emotionCards)
         {
             if(targetAcquired == true)
             {
@@ -124,7 +124,7 @@ namespace VoiceActing
                 if (cards[(int)secondEmotion].Cards[j] != null)
                     cards[(int)secondEmotion].Cards[j].DrawPreviewText("Inversion");
             }
-        }
+        }*/
 
 
     } // SkillEffectTradeStat class
