@@ -688,7 +688,7 @@ namespace VoiceActing
 
             emotionAttackManager.SwitchCardTransformToRessource();
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
-            actorsManager.DrawBuffIcon();
+            actorsManager.DrawBuffIcon(battleParameter.CurrentActor());
             textAppearManager.SetMouth(characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
             skillManager.SetMovelist(battleParameter.CurrentActor(), characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
         }

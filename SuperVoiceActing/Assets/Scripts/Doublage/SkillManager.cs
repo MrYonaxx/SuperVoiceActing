@@ -14,7 +14,7 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [System.Serializable] // à réactiver si un jour j'ai besoin de sauvegardé la liste des buffs
+    [System.Serializable]
     public class Buff
     {
         private int turn;
@@ -24,18 +24,11 @@ namespace VoiceActing
             set { turn = value; }
         }
 
-        private BuffData buffData;
-        public BuffData BuffData
+        private SkillData skillData;
+        public SkillData SkillData
         {
-            get { return buffData; }
-            set { buffData = value; }
-        }
-
-        private SkillEffectData[] skillEffectbuff;
-        public SkillEffectData[] SkillEffectbuff
-        {
-            get { return skillEffectbuff; }
-            set { skillEffectbuff = value; }
+            get { return skillData; }
+            set { skillData = value; }
         }
 
         private EmotionStat buffTarget;
@@ -45,11 +38,12 @@ namespace VoiceActing
             set { buffTarget = value; }
         }
 
-        public Buff(SkillEffectData[] skillEffect, BuffData buff)
+        public Buff(SkillData skillEffect)
         {
-            skillEffectbuff = skillEffect;
-            turn = buff.TurnActive;
-            buffData = buff;
+            skillData = skillEffect;
+            //skillEffectbuff = skillEffect;
+            turn = skillData.BuffData.TurnActive;
+            //buffData = buff;
         }
     }
 

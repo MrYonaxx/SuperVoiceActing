@@ -13,7 +13,7 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    public class BuffWindow
+    public class BuffWindow : MonoBehaviour
     {
         [SerializeField]
         TextMeshProUGUI textBuffName;
@@ -29,7 +29,7 @@ namespace VoiceActing
 
         public void DrawBuff(Buff buff)
         {
-            textBuffName.text = buff.BuffData.BuffName;
+            //textBuffName.text = buff.BuffData.BuffName;
             textBuffTimer.text = buff.Turn.ToString();
         }
 

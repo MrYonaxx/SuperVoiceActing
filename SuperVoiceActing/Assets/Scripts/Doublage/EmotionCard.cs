@@ -277,7 +277,7 @@ namespace VoiceActing
 
         public bool AddBuff(Buff buff)
         {
-            for (int i = 0; i < buffs.Count; i++)
+            /*for (int i = 0; i < buffs.Count; i++)
             {
                 if (buffs[i].SkillEffectbuff == buff.SkillEffectbuff)
                 {
@@ -296,13 +296,13 @@ namespace VoiceActing
                 }
             }
             buffs.Add(new Buff(buff.SkillEffectbuff, buff.BuffData));
-            DrawBuffs();
+            DrawBuffs();*/
             return true;
         }
 
         public void CheckBuff()
         {
-            for (int i = 0; i < buffs.Count; i++)
+            /*for (int i = 0; i < buffs.Count; i++)
             {
                 buffs[i].Turn -= 1;
                 if (buffs[i].Turn == 0)
@@ -311,12 +311,12 @@ namespace VoiceActing
                     buffs.RemoveAt(i);                   
                 }
             }
-            DrawBuffs();
+            DrawBuffs();*/
         }
 
         public void DrawBuffs()
         {
-            for(int i = 0; i < statBonus.Length; i++)
+            /*for(int i = 0; i < statBonus.Length; i++)
             {
                 if (i < buffs.Count)
                 {
@@ -327,7 +327,7 @@ namespace VoiceActing
                 {
                     statBonus[i].gameObject.SetActive(false);
                 }
-            }
+            }*/
         }
 
 

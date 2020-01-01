@@ -69,11 +69,10 @@ namespace VoiceActing
 
 
         [Title("Buff")]
-        [Space]
         [SerializeField]
-        Image[] currentActorBuff;
+        RectTransform buffWindowsTransform;
         [SerializeField]
-        TextMeshProUGUI[] currentActorBuffTimer;
+        BuffWindow buffWindow;
 
 
 
@@ -81,12 +80,8 @@ namespace VoiceActing
 
 
 
+        List<BuffWindow> listBuffWindows = new List<BuffWindow>();
 
-        //EmotionCardTotal[] emotionCards = new EmotionCardTotal[9];
-
-
-
-        //private int indexCurrentActor = 0;
         int attackDamage = 0;
 
 
@@ -161,27 +156,21 @@ namespace VoiceActing
             return true;
         }
 
-        public void DrawBuffIcon()
+        public void DrawBuffIcon(VoiceActor voiceActor)
         {
-            /*for(int i = 0; i < currentActorBuff.Length; i++)
+            for (int i = 0; i < voiceActor.Buffs.Count; i++)
             {
-                if(i < actors[indexCurrentActor].Buffs.Count)
+                if(i >= listBuffWindows.Count)
                 {
-                    currentActorBuff[i].gameObject.SetActive(true);
-                    if (actors[indexCurrentActor].Buffs[i].Turn < 0)
-                    {
-                        currentActorBuffTimer[i].text = "";
-                    }
-                    else
-                    {
-                        currentActorBuffTimer[i].text = actors[indexCurrentActor].Buffs[i].Turn.ToString();
-                    }
+                    listBuffWindows.Add(Instantiate(buffWindow, buffWindowsTransform));
                 }
-                else
-                {
-                    currentActorBuff[i].gameObject.SetActive(false);
-                }
-            }*/
+                listBuffWindows[i].gameObject.SetActive(true);
+                listBuffWindows[i].DrawBuff(voiceActor.Buffs[i]);
+            }
+            for(int i = voiceActor.Buffs.Count; i < listBuffWindows.Count; i++)
+            {
+                listBuffWindows[i].gameObject.SetActive(false);
+            }
         }
 
 

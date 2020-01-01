@@ -34,6 +34,40 @@ namespace VoiceActing
     [System.Serializable]
     public class BuffData
     {
+
+        [HorizontalGroup("Name", LabelWidth = 100)]
+        [SerializeField]
+        private string buffName;
+        public string BuffName
+        {
+            get { return buffName; }
+        }
+
+        [HorizontalGroup("Name")]
+        [SerializeField]
+        private bool infinite;
+        public bool Infinite
+        {
+            get { return infinite; }
+        }
+
+        [HorizontalGroup("Name")]
+        [SerializeField]
+        private bool tickEffect;
+        public bool TickEffect
+        {
+            get { return tickEffect; }
+        }
+
+        [HorizontalGroup("Name")]
+        [SerializeField]
+        private bool endEffect;
+        public bool EndEffect
+        {
+            get { return endEffect; }
+        }
+
+        [HideIf("infinite")]
         [HorizontalGroup("buffType", LabelWidth = 100)]
         [SerializeField]
         private int turnActive;
@@ -42,6 +76,7 @@ namespace VoiceActing
             get { return turnActive; }
         }
 
+        [HideIf("infinite")]
         [HorizontalGroup("buffType")]
         [SerializeField]
         private bool refresh;
@@ -50,6 +85,7 @@ namespace VoiceActing
             get { return refresh; }
         }
 
+        [HideIf("infinite")]
         [HorizontalGroup("buffType")]
         [SerializeField]
         private bool addBuffTurn;
@@ -58,7 +94,17 @@ namespace VoiceActing
             get { return addBuffTurn; }
         }
 
+
+        [HideIf("infinite")]
         [HorizontalGroup("buffType")]
+        [SerializeField]
+        private bool lineCount;
+        public bool LineCount
+        {
+            get { return lineCount; }
+        }
+
+
         [SerializeField]
         private bool canAddMultiple;
         public bool CanAddMultiple
@@ -67,39 +113,12 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private bool infinite;
-        public bool Infinite
+        private bool conditionRemove;
+        public bool ConditionRemove
         {
-            get { return infinite; }
+            get { return conditionRemove; }
         }
 
-        [SerializeField]
-        private bool lineCount;
-        public bool LineCount
-        {
-            get { return lineCount; }
-        }
-
-        [SerializeField]
-        private bool tickEffect;
-        public bool TickEffect
-        {
-            get { return tickEffect; }
-        }
-
-        [SerializeField]
-        private bool endEffect;
-        public bool EndEffect
-        {
-            get { return endEffect; }
-        }
-
-        [SerializeField]
-        private string buffName;
-        public string BuffName
-        {
-            get { return buffName; }
-        }
     }
 
 
@@ -194,7 +213,14 @@ namespace VoiceActing
             {
                 //AddBuff(ITarget);
             }
-            ApplySkillEffects(doublageBattleParameter);
+            if(buffData.TickEffect == false && buffData.EndEffect == false)
+            {
+                ApplySkillEffects(doublageBattleParameter);
+            }
+            for(int i = 0; i < bonusSkillEffects.Length; i++)
+            {
+                bonusSkillEffects[i].ApplySkill(doublageBattleParameter);
+            }
         }
 
 
