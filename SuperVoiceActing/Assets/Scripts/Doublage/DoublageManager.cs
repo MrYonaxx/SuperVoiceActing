@@ -481,8 +481,8 @@ namespace VoiceActing
                 yield break;
             }
 
-            emotionAttackManager.ResetCard();
-            emotionAttackManager.SwitchCardTransformToBattle(true);
+            /*emotionAttackManager.ResetCard();
+            emotionAttackManager.SwitchCardTransformToBattle(true);*/
             // Check Role Attack =================================================================
             if (roleManager.IsAttacking() == true)
             {
@@ -508,14 +508,17 @@ namespace VoiceActing
             {
                 //ChangeEventPhase();
                 yield return eventManager.StartEvent();
+                Debug.Log("Hello");
             }
 
             // Check Skill ========================================================================
-            skillManager.CheckPassiveSkillCondition();
-            yield return skillManager.ActivatePassiveSkills();
+            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
+            skillManager.CheckPassiveSkillCondition(battleParameter.IndexCurrentCharacter);
+            yield return skillManager.ActivatePassiveSkills(battleParameter.VoiceActors);
 
             // Les skills se font tous check en même temps, du coup ça peut empêcher certains combos.
             // New turn ===========================================================================
+            yield return null;
             NewTurn();
         }
 
@@ -691,6 +694,7 @@ namespace VoiceActing
             actorsManager.DrawBuffIcon(battleParameter.CurrentActor());
             textAppearManager.SetMouth(characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
             skillManager.SetMovelist(battleParameter.CurrentActor(), characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
+            skillManager.UnbanSkills(false);
         }
 
         // Appelé par l'event Switch Actors
@@ -731,9 +735,10 @@ namespace VoiceActing
                     yield return null;
                 }
             }*/
-
-            skillManager.CheckPassiveSkillCondition();
-            yield return skillManager.ActivatePassiveSkills();
+            skillManager.UnbanSkills(true);
+            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
+            skillManager.CheckPassiveSkillCondition(battleParameter.IndexCurrentCharacter);
+            yield return skillManager.ActivatePassiveSkills(battleParameter.VoiceActors);
 
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
@@ -747,6 +752,7 @@ namespace VoiceActing
             toneManager.DrawTone(battleParameter.IndexCurrentCharacter);
             enemyManager.ShowHPEnemy(true);
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
+            //actorsManager.DrawBuffIcon(battleParameter.CurrentActor());
         }
 
 

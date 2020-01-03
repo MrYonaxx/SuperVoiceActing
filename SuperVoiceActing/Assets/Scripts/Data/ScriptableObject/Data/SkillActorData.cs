@@ -45,13 +45,13 @@ namespace VoiceActing
             get { return movelist; }
         }
 
-        [ShowIf("isPassive")]
+        /*[ShowIf("isPassive")]
         [SerializeField]
         private SkillActiveTiming activationTiming;
         public SkillActiveTiming ActivationTiming
         {
             get { return activationTiming; }
-        }
+        }*/
 
         [ShowIf("isPassive")]
         [HorizontalGroup("Group1")]
@@ -64,10 +64,34 @@ namespace VoiceActing
         [ShowIf("isPassive")]
         [HorizontalGroup("Group1")]
         [SerializeField]
+        private bool onlyWhenSupport = true;
+        public bool OnlyWhenSupport
+        {
+            get { return onlyWhenSupport; }
+        }
+
+        [ShowIf("isPassive")]
+        [SerializeField]
         private bool onlyOnce;
         public bool OnlyOnce
         {
             get { return onlyOnce; }
+        }
+        [ShowIf("onlyOnce")]
+        [HorizontalGroup("Group2")]
+        [SerializeField]
+        private bool onlyOncePerLine;
+        public bool OnlyOncePerLine
+        {
+            get { return onlyOncePerLine; }
+        }
+        [ShowIf("onlyOnce")]
+        [HorizontalGroup("Group2")]
+        [SerializeField]
+        private bool onlyOncePerSwitch;
+        public bool OnlyOncePerSwitch
+        {
+            get { return onlyOncePerSwitch; }
         }
 
         [ShowIf("isPassive")]
@@ -98,15 +122,7 @@ namespace VoiceActing
         }
 
 
-        public bool CheckConditions(DoublageBattleParameter battleParameter)
-        {
-            for(int i = 0; i < skillConditions.Length; i++)
-            {
-                if (skillConditions[i].GetSkillConditionNode().CheckCondition(battleParameter) == false)
-                    return false;
-            }
-            return true;
-        }
+
 
 
 

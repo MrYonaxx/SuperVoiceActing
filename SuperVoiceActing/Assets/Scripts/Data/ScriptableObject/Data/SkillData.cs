@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
 namespace VoiceActing
@@ -113,6 +114,13 @@ namespace VoiceActing
         }
 
         [SerializeField]
+        private bool buffAll;
+        public bool BuffAll
+        {
+            get { return buffAll; }
+        }
+
+        [SerializeField]
         private bool conditionRemove;
         public bool ConditionRemove
         {
@@ -211,38 +219,77 @@ namespace VoiceActing
         {
             if (skillType == SkillType.Buff)
             {
-                //AddBuff(ITarget);
+                if (buffData.BuffAll)
+                {
+                    for (int i = 0; i < doublageBattleParameter.VoiceActors.Count; i++)
+                    {
+                        AddBuff(doublageBattleParameter.VoiceActors[i].Buffs, this);
+                        //doublageBattleParameter.VoiceActors[i].Buffs.Add(new Buff(this));
+                    }
+                }
+                else
+                {
+                    AddBuff(doublageBattleParameter.VoiceActors[doublageBattleParameter.IndexCurrentCharacter].Buffs, this);
+                    //doublageBattleParameter.VoiceActors[doublageBattleParameter.IndexCurrentCharacter].Buffs.Add(new Buff(this));
+                }
+                if (buffData.TickEffect == false && buffData.EndEffect == false)
+                    ApplySkillEffects(doublageBattleParameter);
             }
-            if(buffData.TickEffect == false && buffData.EndEffect == false)
+            else
             {
                 ApplySkillEffects(doublageBattleParameter);
-            }
-            for(int i = 0; i < bonusSkillEffects.Length; i++)
-            {
-                bonusSkillEffects[i].ApplySkill(doublageBattleParameter);
             }
         }
 
 
-        private void ApplySkillEffects(DoublageBattleParameter doublageBattleParameter)
+        public void ApplySkillEffects(DoublageBattleParameter doublageBattleParameter)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {
                 skillEffects[i].GetSkillEffectNode().ApplySkillEffect(doublageBattleParameter);
             }
-        }
-
-
-        /*public void RemoveSkill(DoublageManager doublageManager)
-        {
-            for (int i = 0; i < skillEffects.Length; i++)
+            for (int i = 0; i < bonusSkillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(doublageManager);
+                bonusSkillEffects[i].ApplySkill(doublageBattleParameter);
             }
         }
 
+        private void AddBuff(List<Buff> listBuffs, SkillData skill)
+        {
+            if(skill.BuffData.CanAddMultiple == true)
+            {
+                listBuffs.Add(new Buff(skill));
+                return;
+            }
+            for(int i = 0; i < listBuffs.Count; i++)
+            {
+                if (listBuffs[i].SkillData == skill)
+                {
+                    if (skill.BuffData.Refresh == true)
+                    {
+                        listBuffs[i].Turn = skill.BuffData.TurnActive;
+                    }
+                    else if (skill.BuffData.AddBuffTurn == true)
+                    {
+                        listBuffs[i].Turn += skill.BuffData.TurnActive;
+                    }
+                    return;
+                }
+            }
+            listBuffs.Add(new Buff(skill));
+        }
 
-        public void ManualTarget(Emotion[] emotion, bool selectionByPack)
+
+        public void RemoveSkill(DoublageBattleParameter doublageBattleParameter)
+        {
+            /*for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(doublageManager);
+            }*/
+        }
+
+
+        /*public void ManualTarget(Emotion[] emotion, bool selectionByPack)
         {
             for (int i = 0; i < skillEffects.Length; i++)
             {

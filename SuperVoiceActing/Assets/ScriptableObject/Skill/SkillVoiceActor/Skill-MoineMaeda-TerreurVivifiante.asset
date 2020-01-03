@@ -16,22 +16,24 @@ MonoBehaviour:
   description: "Apr\xE8s une prise critique contenant <color=yellow>1</color> de Peur,
     Moine-Maeda r\xE9cup\xE8re <color=yellow>5%</color> d'endurance."
   descriptionBattle: Restaure 5% d'HP
-  skillType: 0
+  skillType: 1
   buffData:
-    turnActive: 0
-    refresh: 0
-    addBuffTurn: 0
-    canAddMultiple: 0
+    buffName: Terreur
     infinite: 0
-    lineCount: 0
     tickEffect: 0
     endEffect: 0
-    buffName: 
+    turnActive: 5
+    refresh: 0
+    addBuffTurn: 0
+    lineCount: 0
+    canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
-  - eventNode: 3
+  - eventNode: 0
     skillEffectHealth:
       skillTarget: 0
-      inPercentage: 1
+      inPercentage: 0
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
@@ -83,7 +85,8 @@ MonoBehaviour:
     skillEffectInfluenceBonus:
       inPercentage: 0
       influenceBonus: 0
-  bonusSkillEffects: []
+  bonusSkillEffects:
+  - {fileID: 11400000, guid: 48aefceef6c3aae409ee0b683bbd3f8b, type: 2}
   producerCost: 0
   isPassive: 1
   movelist:
@@ -96,15 +99,17 @@ MonoBehaviour:
     sweetness: 0
     fear: 1
     trust: 0
-  activationTiming: 2
   onlyWhenMain: 1
+  onlyWhenSupport: 0
   onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
   skillConditions:
   - eventNode: 0
     skillConditionHP:
       targetVoiceActor: 1
       targetSentence: 0
-      hpInterval: {x: 88, y: 98}
+      hpInterval: {x: 88, y: 100}
     skillConditionPercentage:
       percentage: 0
     skillConditionCombo:
@@ -118,5 +123,5 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-  bigAnimation: 1
+  bigAnimation: 0
   isMalus: 0

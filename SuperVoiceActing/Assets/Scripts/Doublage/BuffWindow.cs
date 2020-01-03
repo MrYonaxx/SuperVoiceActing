@@ -29,7 +29,7 @@ namespace VoiceActing
 
         public void DrawBuff(Buff buff)
         {
-            //textBuffName.text = buff.BuffData.BuffName;
+            textBuffName.text = buff.SkillData.BuffData.BuffName;
             textBuffTimer.text = buff.Turn.ToString();
         }
 

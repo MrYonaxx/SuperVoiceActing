@@ -18,15 +18,17 @@ MonoBehaviour:
   descriptionBattle: 
   skillType: 0
   buffData:
+    buffName: b
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
-    canAddMultiple: 0
-    infinite: 0
     lineCount: 0
-    tickEffect: 0
-    endEffect: 0
-    buffName: 
+    canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
   - eventNode: 1
     skillEffectHealth:
@@ -151,15 +153,17 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  activationTiming: 1
   onlyWhenMain: 1
+  onlyWhenSupport: 0
   onlyOnce: 1
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
   skillConditions:
   - eventNode: 0
     skillConditionHP:
       targetVoiceActor: 1
       targetSentence: 0
-      hpInterval: {x: 0, y: 100}
+      hpInterval: {x: 0, y: 25}
     skillConditionPercentage:
       percentage: 0
     skillConditionCombo:

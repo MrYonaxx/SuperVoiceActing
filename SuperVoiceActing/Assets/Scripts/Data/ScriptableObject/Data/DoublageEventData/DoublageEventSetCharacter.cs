@@ -22,8 +22,13 @@ namespace VoiceActing
             get { return character; }
         }
 
+
         [SerializeField]
-        private bool customPos = true;
+        private bool changePosition;
+
+        [ShowIf("changePosition", true)]
+        [SerializeField]
+        private bool customPos = false;
         public bool CustomPos
         {
             get { return customPos; }
@@ -45,6 +50,7 @@ namespace VoiceActing
             get { return rotation; }
         }
 
+        [ShowIf("changePosition", true)]
         [HideIf("customPos", true)]
         [SerializeField]
         private int defaultPosID = 0;
@@ -53,6 +59,7 @@ namespace VoiceActing
             get { return defaultPosID; }
         }
 
+        [ShowIf("changePosition", true)]
         [SerializeField]
         private bool flipX;
         public bool FlipX
@@ -67,7 +74,10 @@ namespace VoiceActing
             get { return viewportID; }
         }*/
 
+        [SerializeField]
+        private bool changeOrderLayer;
 
+        [ShowIf("changeOrderLayer")]
         [SerializeField]
         private int orderLayer;
         public int OrderLayer
@@ -75,6 +85,10 @@ namespace VoiceActing
             get { return orderLayer; }
         }
 
+        [SerializeField]
+        private bool changeColor;
+
+        [ShowIf("changeColor")]
         [SerializeField]
         private Color color;
         public Color Color
@@ -110,8 +124,10 @@ namespace VoiceActing
             }
             else
             {
-                interloc.ChangeOrderInLayer(orderLayer);
-                interloc.ChangeTint(color);
+                if(changeOrderLayer)
+                    interloc.ChangeOrderInLayer(orderLayer);
+                if(changeColor)
+                    interloc.ChangeTint(color);
             }
             yield break;
         }

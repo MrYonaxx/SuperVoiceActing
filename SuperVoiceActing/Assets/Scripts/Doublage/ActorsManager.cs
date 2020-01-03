@@ -240,6 +240,7 @@ namespace VoiceActing
             healthContentProgression.transform.localScale = new Vector3(ratioHPRegain, healthContentProgression.transform.localScale.y, healthContentProgression.transform.localScale.z);
 
             DrawCardStat(voiceActor, emotionCards);
+            DrawBuffIcon(voiceActor);
         }
 
 

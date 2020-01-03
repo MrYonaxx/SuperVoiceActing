@@ -17,12 +17,25 @@ MonoBehaviour:
   descriptionBattle: <sprite=3>DMGx3
   skillType: 1
   buffData:
+    buffName: c
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 5
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
   - eventNode: 2
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -60,12 +73,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
       damageVariance: 0
-    skillEffectHealth:
-      skillTarget: 0
-      inPercentage: 0
-      restoreChipDamage: 0
-      hpDamage: 0
-      hpDamageVariance: 0
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
@@ -77,8 +84,7 @@ MonoBehaviour:
     skillEffectInfluenceBonus:
       inPercentage: 0
       influenceBonus: 0
-    skillEffectState:
-      state: 0
+  bonusSkillEffects: []
   producerCost: 0
   canCounter: 1
   influenceMultiplier: 1

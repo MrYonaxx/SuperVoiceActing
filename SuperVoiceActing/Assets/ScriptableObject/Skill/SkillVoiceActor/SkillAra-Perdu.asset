@@ -18,12 +18,25 @@ MonoBehaviour:
   descriptionBattle: Tour -1
   skillType: 0
   buffData:
+    buffName: 
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
   - eventNode: 4
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -61,12 +74,6 @@ MonoBehaviour:
         fear: 0
         trust: 0
       damageVariance: 0
-    skillEffectHealth:
-      skillTarget: 0
-      inPercentage: 0
-      restoreChipDamage: 0
-      hpDamage: 0
-      hpDamageVariance: 0
     skillEffectTurn:
       turnGain: -1
       turnVariance: 0
@@ -78,12 +85,10 @@ MonoBehaviour:
     skillEffectInfluenceBonus:
       inPercentage: 0
       influenceBonus: 0
-    skillEffectState:
-      state: 0
+  bonusSkillEffects: []
   producerCost: 0
-  activationTiming: 1
-  onlyWhenMain: 0
-  phraseType:
+  isPassive: 1
+  movelist:
     neutral: 0
     joy: 0
     sadness: 0
@@ -93,8 +98,29 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 10
+  onlyWhenMain: 1
+  onlyWhenSupport: 0
   onlyOnce: 0
-  bigAnimation: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions:
+  - eventNode: 1
+    skillConditionHP:
+      targetVoiceActor: 0
+      targetSentence: 0
+      hpInterval: {x: 0, y: 0}
+    skillConditionPercentage:
+      percentage: 10
+    skillConditionCombo:
+      emotionCheck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+  bigAnimation: 1
   isMalus: 1

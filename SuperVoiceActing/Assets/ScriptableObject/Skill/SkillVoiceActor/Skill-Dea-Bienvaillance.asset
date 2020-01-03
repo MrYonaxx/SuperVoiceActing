@@ -16,8 +16,8 @@ MonoBehaviour:
   description: "Apr\xE8s une prise contenant <color=yellow>1 de Douceur</color>, D\xE9a
     \xE0  <color=yellow>20%</color> de chance de <color=yellow>soigner de 5%</color>
     toute l'\xE9quipe."
-  descriptionBattle: HP + 5%
-  skillType: 1
+  descriptionBattle: HP + 1%
+  skillType: 0
   buffData:
     buffName: 
     infinite: 0
@@ -28,14 +28,15 @@ MonoBehaviour:
     addBuffTurn: 0
     lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
     conditionRemove: 0
   skillEffects:
-  - eventNode: 3
+  - eventNode: 0
     skillEffectHealth:
       skillTarget: 1
       inPercentage: 1
       ignoreHPLimit: 0
-      hpGain: 0
+      hpGain: 1
       hpGainVariance: 0
     skillEffectCardGain:
       cardGain:
@@ -98,9 +99,11 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  activationTiming: 1
   onlyWhenMain: 0
+  onlyWhenSupport: 0
   onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
   skillConditions:
   - eventNode: 1
     skillConditionHP:

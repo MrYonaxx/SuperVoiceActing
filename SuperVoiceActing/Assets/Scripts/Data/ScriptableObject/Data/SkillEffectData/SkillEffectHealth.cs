@@ -16,19 +16,21 @@ namespace VoiceActing
     public class SkillEffectHealth : SkillEffectData
     {
         [SerializeField]
+        [HideLabel]
         SkillTarget skillTarget;
 
-        [HorizontalGroup]
+        [HorizontalGroup("effectHP", LabelWidth = 150)]
         [SerializeField]
         bool inPercentage = false;
-        [HorizontalGroup]
+        [HorizontalGroup("effectHP", LabelWidth = 150)]
         [SerializeField]
         bool ignoreHPLimit = false;
 
-        [HorizontalGroup("HPInfo")]
+        [HorizontalGroup("effectHPDigit", LabelWidth = 150)]
         [SerializeField]
         int hpGain;
-        [HorizontalGroup("HPInfo")]
+
+        [HorizontalGroup("effectHPDigit", LabelWidth = 150)]
         [SerializeField]
         int hpGainVariance;
 

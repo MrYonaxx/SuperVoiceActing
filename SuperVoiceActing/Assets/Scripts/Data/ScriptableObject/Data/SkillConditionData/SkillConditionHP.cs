@@ -40,7 +40,6 @@ namespace VoiceActing
         {
             VoiceActor va = battleParameter.VoiceActors[battleParameter.IndexCurrentCharacter];
             float percentage = ((float)va.Hp / va.HpMax) * 100;
-            Debug.Log(percentage);
             return (hpInterval.x <= percentage && percentage <= hpInterval.y);
         }
 
