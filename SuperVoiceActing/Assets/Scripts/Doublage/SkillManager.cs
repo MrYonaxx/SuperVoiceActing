@@ -213,15 +213,20 @@ namespace VoiceActing
         {
             for (int k = 0; k < voiceActors.Count; k++)
             {
+                int relation = voiceActors[k].Relation;
                 if (voiceActors[k].Potentials != null)
                 {
                     for (int i = 0; i < voiceActors[k].Potentials.Length; i++)
                     {
-                        SkillActorData skill = (SkillActorData)skillDatabase.GetSkillData(voiceActors[k].Potentials[i]);
-                        if (skill.IsPassive == true)
+                        relation -= voiceActors[k].FriendshipLevel[i];
+                        if (relation >= 0)
                         {
-                            skillsPassiveActor.Add(new PassiveSkill(k, skill));
-                            Debug.Log("Passive : " + skill.SkillName);
+                            SkillActorData skill = (SkillActorData)skillDatabase.GetSkillData(voiceActors[k].Potentials[i]);
+                            if (skill.IsPassive == true)
+                            {
+                                skillsPassiveActor.Add(new PassiveSkill(k, skill));
+                                Debug.Log("Passive : " + skill.SkillName);
+                            }
                         }
                     }
                 }
@@ -233,15 +238,21 @@ namespace VoiceActing
             currentVoiceActor = voiceActor;
             doubleur = character;
             movelistActor.Clear();
+
+            int relation = voiceActor.Relation;
             if (voiceActor.Potentials != null)
             {
                 for (int i = 0; i < voiceActor.Potentials.Length; i++)
                 {
-                    SkillActorData skill = (SkillActorData)skillDatabase.GetSkillData(voiceActor.Potentials[i]);
-                    if (skill.IsPassive == false)
+                    relation -= voiceActor.FriendshipLevel[i];
+                    if (relation >= 0)
                     {
-                        movelistActor.Add(new MovelistSkill(skill));
-                        Debug.Log("Movelist : " + skill.SkillName);
+                        SkillActorData skill = (SkillActorData)skillDatabase.GetSkillData(voiceActor.Potentials[i]);
+                        if (skill.IsPassive == false)
+                        {
+                            movelistActor.Add(new MovelistSkill(skill));
+                            Debug.Log("Movelist : " + skill.SkillName);
+                        }
                     }
 
                 }

@@ -210,6 +210,7 @@ namespace VoiceActing
         private void InitializeManagers()
         {
             battleParameter = new DoublageBattleParameter(playerData, emotionAttackManager.SetDeck(playerData.ComboMax, playerData.Deck));
+            battleParameter.SetManagers(actorsManager, enemyManager, turnManager);
 
             enemyManager.SetTextData(contrat.TextData[contrat.CurrentLine]);
 
@@ -332,6 +333,7 @@ namespace VoiceActing
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
                 actorsManager.AddAttackDamage(battleParameter.CurrentActor(), roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                actorsManager.AddAttackPower(battleParameter.CurrentActor(), card.GetStat());
 
                 battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
@@ -345,6 +347,7 @@ namespace VoiceActing
             {
                 AudioManager.Instance.PlaySound(audioClipAttack2);
                 actorsManager.AddAttackDamage(battleParameter.CurrentActor(), roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                actorsManager.AddAttackPower(battleParameter.CurrentActor(), card.GetStat());
 
                 battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
@@ -357,6 +360,7 @@ namespace VoiceActing
             if (card != null)
             {
                 actorsManager.AddAttackDamage(battleParameter.CurrentActor(), -roleManager.GetRoleAttack(), card.GetDamagePercentage());
+                actorsManager.AddAttackPower(battleParameter.CurrentActor(), -card.GetStat());
 
                 battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
@@ -391,15 +395,13 @@ namespace VoiceActing
 
             HideUIButton();
 
-            //lastAttack = emotionAttackManager.GetComboEmotionCard();
-            //lastAttackEmotion = emotionAttackManager.GetComboEmotion();
             battleParameter.Turn = turnManager.AdvanceTimer(battleParameter.Turn);
             actorsManager.ActorTakeDamage(battleParameter.CurrentActor());
-            textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(emotionAttackManager.GetComboCards(), 
-                                                                      textAppearManager.GetWordSelected(),
-                                                                      battleParameter.CurrentActor().DamageVariance),
+            textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(actorsManager.GetCurrentAttackPower(battleParameter.CurrentActor()),
+                                                                      battleParameter.LastAttackEmotion, 
+                                                                      textAppearManager.GetWordSelected()),
                                             emotionAttackManager.GetComboCards());
-            //toneManager.ModifyTone(lastAttack);
+            toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
             characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter).ChangeEmotion(battleParameter.LastAttackEmotion[0]);
             if(battleParameter.CurrentActor().Hp == 0)
             {
@@ -512,9 +514,9 @@ namespace VoiceActing
             }
 
             // Check Skill ========================================================================
-            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
             skillManager.CheckPassiveSkillCondition(battleParameter.IndexCurrentCharacter);
             yield return skillManager.ActivatePassiveSkills(battleParameter.VoiceActors);
+            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
 
             // Les skills se font tous check en même temps, du coup ça peut empêcher certains combos.
             // New turn ===========================================================================
@@ -571,6 +573,7 @@ namespace VoiceActing
 
         public void NewTurn(bool reprintText = false)
         {
+            actorsManager.ResetAttackPower();
             emotionAttackManager.ResetCard();
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
@@ -736,9 +739,9 @@ namespace VoiceActing
                 }
             }*/
             skillManager.UnbanSkills(true);
-            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
             skillManager.CheckPassiveSkillCondition(battleParameter.IndexCurrentCharacter);
             yield return skillManager.ActivatePassiveSkills(battleParameter.VoiceActors);
+            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
 
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);

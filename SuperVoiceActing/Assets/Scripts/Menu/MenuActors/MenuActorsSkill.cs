@@ -24,7 +24,9 @@ namespace VoiceActing
         [SerializeField]
         private SkillDatabase skillDatabase;
         [SerializeField]
-        private SkillActorButton[] skillActorsButtons;
+        private SkillActorButton[] skillMovelistButtons;
+        [SerializeField]
+        private SkillActorButton[] skillPassiveButtons;
 
 
         [SerializeField]
@@ -54,24 +56,37 @@ namespace VoiceActing
         {
             currentActor = actor;
             int relation = actor.Relation;
-            for (int i = 0; i < skillActorsButtons.Length; i++)
+            SkillActorData skill;
+            int indexPassive = 0;
+            int indexMovelist = 0;
+            int i = 0;
+            while(relation >= 0 && i <= actor.Potentials.Length)
             {
-                if (actor.Potentials.Length <= i)
+                skill = (SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]);
+                if (skill.IsPassive == true)
                 {
-                    skillActorsButtons[i].gameObject.SetActive(false);
-                    continue;
-                }
-
-                if (relation < 0)
-                {
-                    skillActorsButtons[i].gameObject.SetActive(false);
+                    skillPassiveButtons[indexPassive].gameObject.SetActive(true);
+                    skillPassiveButtons[indexPassive].DrawSkillActor((SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]), relation, actor.FriendshipLevel[i]);
+                    skillPassiveButtons[indexPassive].SetSkillNumber(i);
+                    indexPassive += 1;
                 }
                 else
                 {
-                    skillActorsButtons[i].gameObject.SetActive(true);
-                    skillActorsButtons[i].DrawSkillActor((SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]), relation, actor.FriendshipLevel[i]);
-                    relation -= actor.FriendshipLevel[i];
+                    skillMovelistButtons[indexMovelist].gameObject.SetActive(true);
+                    skillMovelistButtons[indexMovelist].DrawSkillActor((SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]), relation, actor.FriendshipLevel[i]);
+                    skillMovelistButtons[indexMovelist].SetSkillNumber(i);
+                    indexMovelist += 1;
                 }
+                relation -= actor.FriendshipLevel[i];
+                i += 1;
+            }
+            for(int j = indexPassive; j < skillPassiveButtons.Length; j++)
+            {
+                skillPassiveButtons[j].gameObject.SetActive(false);
+            }
+            for (int j = indexMovelist; j < skillMovelistButtons.Length; j++)
+            {
+                skillMovelistButtons[j].gameObject.SetActive(false);
             }
         }
 

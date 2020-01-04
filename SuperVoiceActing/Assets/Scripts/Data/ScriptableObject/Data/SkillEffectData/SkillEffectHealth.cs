@@ -42,13 +42,13 @@ namespace VoiceActing
 
         public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            int currentHP = 0;
-            float damage = 0;
+            /*int currentHP = 0;
+            float damage = 0;*/
 
             switch (skillTarget)
             {
                 case SkillTarget.VoiceActor:
-                    ModifyActorHP(doublageBattleParameter.VoiceActors[0]);
+                    ModifyActorHP(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.ActorsManager);
                     break;
                 case SkillTarget.Sentence:
                     break;
@@ -57,7 +57,7 @@ namespace VoiceActing
 
 
 
-        private void ModifyActorHP(VoiceActor voiceActor)
+        private void ModifyActorHP(VoiceActor voiceActor, ActorsManager actorManager)
         {
             int currentHP = 0;
             int damage = 0;
@@ -72,8 +72,8 @@ namespace VoiceActing
             }
             damage += Random.Range(-hpGainVariance, hpGainVariance);
             if(ignoreHPLimit == false)
-                damage = Mathf.Clamp(damage, damage, voiceActor.ChipDamage);
-            voiceActor.Hp += damage;
+                damage = Mathf.Min(damage, damage, voiceActor.ChipDamage);
+            actorManager.ActorTakeDamage(voiceActor, -damage);
         }
 
 

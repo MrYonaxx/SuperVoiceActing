@@ -187,16 +187,16 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private int bonusDamage;
-        public int BonusDamage
+        private float bonusDamage;
+        public float BonusDamage
         {
             get { return bonusDamage; }
             set { bonusDamage = value; }
         }
 
         [SerializeField]
-        private int bonusResistance;
-        public int BonusResistance
+        private float bonusResistance;
+        public float BonusResistance
         {
             get { return bonusResistance; }
             set { bonusResistance = value; }
@@ -377,9 +377,10 @@ namespace VoiceActing
             hp = actorData.Hp;
             hpMax = actorData.Hp;
             damageVariance = actorData.FourchetteMax;
-            bonusDamage = 0;
+
+            bonusDamage = 1;
             roleDefense = 0;
-            bonusResistance = 100;
+            bonusResistance = 1;
             timbre = actorData.Timbre;
 
             relation = 0;

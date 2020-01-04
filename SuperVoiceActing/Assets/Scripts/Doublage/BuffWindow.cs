@@ -30,6 +30,10 @@ namespace VoiceActing
         public void DrawBuff(Buff buff)
         {
             textBuffName.text = buff.SkillData.BuffData.BuffName;
+            if (buff.SkillData.BuffData.Infinite)
+                textBuffTimer.gameObject.SetActive(false);
+            else
+                textBuffTimer.gameObject.SetActive(true);
             textBuffTimer.text = buff.Turn.ToString();
         }
 

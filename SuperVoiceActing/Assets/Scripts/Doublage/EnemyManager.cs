@@ -632,12 +632,11 @@ namespace VoiceActing
             return 0;
         }
 
-        public float DamagePhrase(EmotionCard[] emotions, int word, int damageVariance)
+        public float DamagePhrase(int damage, Emotion[] emotions, int word)
         {
             int multiplier = 0;
             int comboSize = emotions.Length;
             float totalDamage = 0;
-            float normalDamage = 0;
 
             int enemyHPMax = currentTextData.HPMax;
             EmotionStat enemyResistance = currentTextData.EnemyResistance;
@@ -645,19 +644,16 @@ namespace VoiceActing
 
             for (int i = 0; i < emotions.Length; i++)
             {
-                if(emotions[i] == null)
+                if(emotions[i] == Emotion.Neutre)
                 {
                     comboSize -= 1;
                     particleFeedbacks[i].gameObject.SetActive(false);
                     textMeshResult[i].gameObject.SetActive(false);
                     continue;
                 }
-                DrawTextResult(enemyResistance.GetEmotion((int)emotions[i].GetEmotion()), textMeshResult[i], (int)emotions[i].GetEmotion());
-                multiplier += enemyResistance.GetEmotion((int)emotions[i].GetEmotion());
-                colorEmotion = colorsEmotions[(int)emotions[i].GetEmotion()];
-
-                normalDamage += emotions[i].GetStat();
-
+                DrawTextResult(enemyResistance.GetEmotion((int)emotions[i]), textMeshResult[i], (int)emotions[i]);
+                multiplier += enemyResistance.GetEmotion((int)emotions[i]);
+                colorEmotion = colorsEmotions[(int)emotions[i]];
                 if (particleFeedbacks.Length != 0)
                 {
                     particleFeedbacks[i].gameObject.SetActive(true);
@@ -676,9 +672,8 @@ namespace VoiceActing
 
             multiplier = multiplier / comboSize;
 
-            totalDamage = normalDamage * ((100 + multiplier) / 100f);
+            totalDamage = damage * ((100 + multiplier) / 100f);
             totalDamage += ApplyWordBonus(totalDamage, word);
-            totalDamage += Random.Range(-damageVariance, damageVariance+1);
 
             if (damageOnlyCritical == true && lastAttackCritical == false)
             {

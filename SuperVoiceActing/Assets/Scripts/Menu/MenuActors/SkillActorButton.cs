@@ -110,6 +110,10 @@ namespace VoiceActing
 
         }
 
+        public void SetSkillNumber(int i)
+        {
+            skillNumber = i;
+        }
 
         public void OnPointerEnter(PointerEventData data)
         {

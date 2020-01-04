@@ -194,8 +194,8 @@ namespace VoiceActing
         Animator animatorCombo;
         [SerializeField]
         TextMeshProUGUI textComboName;
-        [SerializeField]
-        TextMeshProUGUI textComboDamage;
+        /*[SerializeField]
+        TextMeshProUGUI textComboDamage;*/
 
         [Title("Feedback")]
         [SerializeField]
@@ -453,7 +453,7 @@ namespace VoiceActing
             }
             animatorCombo.SetBool("Appear", false);
             textComboName.gameObject.SetActive(false);
-            textComboDamage.gameObject.SetActive(false);
+            //textComboDamage.gameObject.SetActive(false);
         }
 
 
@@ -522,8 +522,8 @@ namespace VoiceActing
                             emotionCards[i].Cards[j] = null;
                         }
                     }
-                    if(drawInfo == true)
-                        DrawComboName();
+                    /*if(drawInfo == true)
+                        DrawComboName();*/
                     return comboCardEmotion[comboCount];
                 }
             }
@@ -560,7 +560,7 @@ namespace VoiceActing
                     comboCardEmotion[comboCount] = null;               
                     comboEmotion[comboCount] = Emotion.Neutre;
                     comboCount -= 1;
-                    DrawComboName();
+                    //DrawComboName();
                     break;
                 }
             }
@@ -704,7 +704,7 @@ namespace VoiceActing
             animatorCombo.SetTrigger("Attack");
         }
 
-        public void DrawComboName()
+        /*public void DrawComboName()
         {
             if (comboEmotion.Length == 0 || comboEmotion[0] == Emotion.Neutre)
             {
@@ -728,7 +728,7 @@ namespace VoiceActing
                 textComboDamage.text = totalValue.ToString();
             }
             
-        }
+        }*/
 
 
         // ================================================= //

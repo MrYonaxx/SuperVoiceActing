@@ -66,7 +66,9 @@ namespace VoiceActing
         [SerializeField]
         EffectManager effectManagerDeath;
 
-
+        [Title("Attack")]
+        [SerializeField]
+        TextMeshProUGUI textActorAttackPower;
 
         [Title("Buff")]
         [SerializeField]
@@ -82,6 +84,7 @@ namespace VoiceActing
 
         List<BuffWindow> listBuffWindows = new List<BuffWindow>();
 
+        int attackPower = 0;
         int attackDamage = 0;
 
 
@@ -103,24 +106,6 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-        /*public VoiceActor GetCurrentActor()
-        {
-            return actors[indexCurrentActor];
-        }*/
-
-        /*public void SetCards(EmotionCardTotal[] cards)
-        {
-            for (int i = 0; i < cards.Length; i++)
-            {
-                emotionCards[i] = new EmotionCardTotal(cards[i].Cards);
-            }
-        }*/
-
-        /*public void SetActors(List<VoiceActor> actorsContract)
-        {
-            actors = actorsContract;
-            DrawActorStat();
-        }*/
 
         public void ResetStat()
         {
@@ -269,6 +254,28 @@ namespace VoiceActing
 
 
 
+        public int GetCurrentAttackPower(VoiceActor voiceActor)
+        {
+            return (int)(attackPower * voiceActor.BonusDamage) + Random.Range(-voiceActor.DamageVariance, voiceActor.DamageVariance+1);
+        }
+
+        public void AddAttackPower(VoiceActor voiceActor, int attackValue)
+        {
+            attackPower += attackValue;
+            textActorAttackPower.text = (attackPower * voiceActor.BonusDamage).ToString();
+        }
+
+        public void ResetAttackPower()
+        {
+            attackPower = 0;
+            textActorAttackPower.text = attackPower.ToString();
+        }
+
+
+
+
+
+
 
         // Tout ce qui est en rapport avec les HPs
         // =================================================================================================================
@@ -313,8 +320,9 @@ namespace VoiceActing
             if(damage > 0)
                 voiceActor.ChipDamage += damage / 2;
             else
-                voiceActor.ChipDamage += damage;
+                voiceActor.ChipDamage -= damage;
             voiceActor.ChipDamage = Mathf.Max(0, voiceActor.ChipDamage);
+
             ratioHPRegain = voiceActor.Hp + voiceActor.ChipDamage;
             if(ratioHPRegain > voiceActor.HpMax)
                 ratioHPRegain = 1;
@@ -368,26 +376,22 @@ namespace VoiceActing
 
         public void AddAttackDamage(VoiceActor voiceActor, int roleAttack, float emotionMultiplier)
         {
-            //int damageTmp = (int) ((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            //damageTmp = (int)(damageTmp * (actors[indexCurrentActor].BonusResistance / 100f));
             int damageTmp = (int)(roleAttack * emotionMultiplier);
-            damageTmp = (int)(damageTmp * (voiceActor.BonusResistance / 100f));
+            damageTmp = (int)(damageTmp * voiceActor.BonusResistance);
             attackDamage += damageTmp;
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization(voiceActor);
             animatorDamage.SetBool("Appear", true);
         }
 
-        public void RemoveAttackDamage(VoiceActor voiceActor, int roleAttack, float emotionMultiplier)
+        /*public void RemoveAttackDamage(VoiceActor voiceActor, int roleAttack, float emotionMultiplier)
         {
-            //int damageTmp = (int)((roleAttack - (roleAttack * ((actors[indexCurrentActor].RoleDefense * defenseStack) / 100f))) * emotionMultiplier);
-            //damageTmp = (int)(damageTmp * (actors[indexCurrentActor].BonusResistance / 100f));
             int damageTmp = (int)(roleAttack * emotionMultiplier);
-            damageTmp = (int)(damageTmp * (voiceActor.BonusResistance / 100f));
+            damageTmp = (int)(damageTmp * voiceActor.BonusResistance);
             attackDamage -= damageTmp;
             textDamage.text = attackDamage.ToString();
             DrawDamagePrevisualization(voiceActor);
-        }
+        }*/
 
         public void DrawDamagePrevisualization(VoiceActor voiceActor)
         {

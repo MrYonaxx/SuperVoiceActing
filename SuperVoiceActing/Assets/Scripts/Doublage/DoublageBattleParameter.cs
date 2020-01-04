@@ -56,6 +56,13 @@ namespace VoiceActing
             //CurrentCombo = combo;
         }
 
+        public void SetManagers(ActorsManager aM, EnemyManager eM, TurnManager tM)
+        {
+            ActorsManager = aM;
+            EnemyManager = eM;
+            TurnManager = tM;
+        }
+
 
         public VoiceActor CurrentActor()
         {
