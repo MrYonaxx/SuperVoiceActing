@@ -106,6 +106,10 @@ namespace VoiceActing
             textActorLevel.text = voiceActor.Level.ToString();
             textActorHP.text = voiceActor.Hp.ToString();
             textActorCost.text = (role.Line * voiceActor.Price).ToString();
+            if (spriteIcon == null)
+                imageActorFace.enabled = false;
+            else
+                imageActorFace.enabled = true;
             imageActorFace.sprite = spriteIcon;
             if (voiceActor.Availability == false)
                 imageActorFace.color = Color.black;

@@ -52,7 +52,7 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Narrateur
       roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
@@ -63,8 +63,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 5
       atkMax: 8
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -88,7 +86,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -105,10 +103,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Pour bien grandir ...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 5
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -121,6 +120,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -135,10 +135,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Mange au moins 5 fruits et l\xE9gumes par jour."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 10
-        hpMax: 18
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -153,12 +154,14 @@ MonoBehaviour:
       - wordIndex: 3
       - wordIndex: 4
       - wordIndex: 6
+      eventData: []
       customTextDatas: []
     - text: "Ne mange pas trop gras, trop sucr\xE9, trop sal\xE9."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 10
-        hpMax: 18
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -170,6 +173,7 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -184,10 +188,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Pour \xEAtre en forme ..."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 5
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -200,6 +205,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -214,10 +220,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "D\xE9pense-toi bien !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 8
-        hpMax: 16
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -230,12 +237,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
       customTextDatas: []
     - text: "Evite de grignoter dans la journ\xE9e."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 8
-        hpMax: 16
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -250,9 +259,11 @@ MonoBehaviour:
       - wordIndex: 0
       - wordIndex: 2
       - wordIndex: 5
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

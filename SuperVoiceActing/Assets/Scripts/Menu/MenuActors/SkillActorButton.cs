@@ -26,6 +26,8 @@ namespace VoiceActing
         ImageDictionnary emotionDictionary;
 
         [SerializeField]
+        RectTransform rectTransform;
+        [SerializeField]
         TextMeshProUGUI textSkill;
         [SerializeField]
         TextMeshProUGUI textSkillRelationCost;
@@ -62,6 +64,12 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
+        public RectTransform GetRectTransform()
+        {
+            return rectTransform;
+        }
+
 
         public void DrawSkillActor(SkillActorData skill, int relation, int skillCost)
         {

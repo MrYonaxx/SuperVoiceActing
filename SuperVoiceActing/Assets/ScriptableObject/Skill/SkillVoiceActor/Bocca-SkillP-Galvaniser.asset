@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
+  m_Name: Bocca-SkillP-Galvaniser
+  m_EditorClassIdentifier: 
+  skillName: Galvaniser
+  description: "Si Bocca n'est pas \xE0 la barre, il a 10% de chance d'encourager
+    l'acteur si son endurance est inf\xE9rieur \xE0 50%.\nL'acteur subit 10% d'\xE9prouvance
+    en moins."
+  descriptionBattle: N'abandonne pas !
+  skillType: 1
+  buffData:
+    buffName: Galvaniser
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    turnActive: 3
+    refresh: 0
+    addBuffTurn: 1
+    lineCount: 0
+    canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
+  skillEffects:
+  - eventNode: 4
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
+    skillEffectEmotionStat:
+      skillTarget: 0
+      emotionStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionDamage:
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      damageVariance: 0
+    skillEffectTurn:
+      turnGain: 0
+      turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: -0.1
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+  bonusSkillEffects: []
+  producerCost: 0
+  isPassive: 1
+  movelist:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  onlyWhenMain: 0
+  onlyWhenSupport: 1
+  onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions:
+  - eventNode: 0
+    skillConditionHP:
+      targetVoiceActor: 1
+      targetSentence: 0
+      hpInterval: {x: 0, y: 50}
+    skillConditionPercentage:
+      percentage: 0
+    skillConditionCombo:
+      emotionCheck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillConditionCharacter:
+      characterData: {fileID: 0}
+  - eventNode: 1
+    skillConditionHP:
+      targetVoiceActor: 0
+      targetSentence: 0
+      hpInterval: {x: 0, y: 0}
+    skillConditionPercentage:
+      percentage: 100
+    skillConditionCombo:
+      emotionCheck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillConditionCharacter:
+      characterData: {fileID: 0}
+  bigAnimation: 0
+  isMalus: 0

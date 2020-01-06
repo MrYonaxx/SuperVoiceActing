@@ -77,6 +77,8 @@ namespace VoiceActing
         {
             interlocuteur = data.InterlocuteurID;
             hpMax = Random.Range(data.HPMin, data.HPMax);
+            if (hpMax <= 0)
+                hpMax = 1;
             text = data.Text;
             enemyResistance = data.EnemyResistance;
             enemyWeakPoints = new List<int>(data.EnemyWeakPoints.Length);
@@ -84,10 +86,13 @@ namespace VoiceActing
             {
                 enemyWeakPoints.Add(data.EnemyWeakPoints[i].WordIndex);
             }
-            eventDatas = new List<DoublageEventData>(data.EventData.Length);
-            for (int i = 0; i < data.EventData.Length; i++)
+            if (data.EventData != null)
             {
-                eventDatas.Add(data.EventData[i]);
+                eventDatas = new List<DoublageEventData>(data.EventData.Length);
+                for (int i = 0; i < data.EventData.Length; i++)
+                {
+                    eventDatas.Add(data.EventData[i]);
+                }
             }
             /*int word = 0;
             enemyWeakPoints = new List<int>();
@@ -109,6 +114,8 @@ namespace VoiceActing
         {
             interlocuteur = data.InterlocuteurID;
             hpMax = Random.Range(data.HPMin, data.HPMax);
+            if (hpMax <= 0)
+                hpMax = 1;
             text = data.Text;
             enemyResistance = data.EnemyResistance;
             enemyWeakPoints = new List<int>(data.EnemyWeakPoints.Length);
@@ -116,10 +123,13 @@ namespace VoiceActing
             {
                 enemyWeakPoints.Add(data.EnemyWeakPoints[i].WordIndex);
             }
-            eventDatas = new List<DoublageEventData>(data.EventData.Length);
-            for (int i = 0; i < data.EventData.Length; i++)
+            if (data.EventData != null)
             {
-                eventDatas.Add(data.EventData[i]);
+                eventDatas = new List<DoublageEventData>(data.EventData.Length);
+                for (int i = 0; i < data.EventData.Length; i++)
+                {
+                    eventDatas.Add(data.EventData[i]);
+                }
             }
         }
 

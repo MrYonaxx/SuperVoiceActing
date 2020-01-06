@@ -14,8 +14,10 @@ namespace VoiceActing
 	public class SkillEffectData
 	{
 
-        protected List<Vector3Int> cardTargetsData = new List<Vector3Int>();
-        protected bool targetAcquired = false;
+        /*protected List<Vector3Int> cardTargetsData = new List<Vector3Int>();
+        protected bool targetAcquired = false;*/
+
+
 
         public virtual void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
@@ -23,7 +25,6 @@ namespace VoiceActing
         }
 
 
-        // Remove les effets généraux lié aux acteurs/phrases
         public virtual void RemoveSkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
 
@@ -38,12 +39,12 @@ namespace VoiceActing
         }*/
 
 
-        public virtual void PreviewTarget()
+        public virtual void PreviewSkill(DoublageBattleParameter doublageBattleParameter)
         {
 
         }
 
-        public virtual void StopPreview()
+        public virtual void StopPreview(DoublageBattleParameter doublageBattleParameter)
         {
             /*EmotionCardTotal[] cards = doublageManager.EmotionAttackManager.GetCards();
             for (int i = 0; i < cards.Length; i++)

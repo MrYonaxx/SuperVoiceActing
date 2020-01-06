@@ -54,7 +54,7 @@ MonoBehaviour:
   - mainCharacter: 0
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Femme
       roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
@@ -65,8 +65,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 8
       atkMax: 12
-      defMin: 0
-      defMax: 0
       timbre: {x: -10, y: 0}
       timbreRand: {x: -10, y: 0}
       characterStatMin:
@@ -90,8 +88,8 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
-    - roleName: 
+      skillRoleSelection: []
+    - roleName: Homme
       roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
@@ -102,8 +100,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 8
       atkMax: 12
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 10}
       timbreRand: {x: 0, y: 10}
       characterStatMin:
@@ -127,7 +123,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -144,10 +140,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Cette douce odeur...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 25
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -159,12 +156,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Ce parfum...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 25
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -176,6 +175,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -190,10 +190,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Hmmm...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -205,12 +206,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Ha...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -222,12 +225,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Enivrant...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -239,12 +244,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Splendide...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -256,6 +263,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -270,10 +278,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Parfum [Nom], une fragrance euphorique.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 35
-        hpMax: 40
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -287,9 +296,11 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

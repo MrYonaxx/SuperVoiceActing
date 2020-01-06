@@ -282,10 +282,10 @@ namespace VoiceActing
 
         public void RemoveSkill(DoublageBattleParameter doublageBattleParameter)
         {
-            /*for (int i = 0; i < skillEffects.Length; i++)
+            for (int i = 0; i < skillEffects.Length; i++)
             {
-                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(doublageManager);
-            }*/
+                skillEffects[i].GetSkillEffectNode().RemoveSkillEffect(doublageBattleParameter);
+            }
         }
 
 
@@ -295,24 +295,24 @@ namespace VoiceActing
             {
                 skillEffects[i].GetSkillEffectNode().ManualTarget(emotion, selectionByPack);
             }
-        }
-
-
-        public void PreviewTarget(DoublageManager doublageManager)
-        {
-            for (int i = 0; i < skillEffects.Length; i++)
-            {
-                skillEffects[i].GetSkillEffectNode().PreviewTarget(doublageManager);
-            }
-        }
-
-        public void StopPreview(DoublageManager doublageManager)
-        {
-            for (int i = 0; i < skillEffects.Length; i++)
-            {
-                skillEffects[i].GetSkillEffectNode().StopPreview(doublageManager);
-            }
         }*/
+
+
+        public void PreviewSkill(DoublageBattleParameter doublageBattleParameter)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().PreviewSkill(doublageBattleParameter);
+            }
+        }
+
+        public void StopPreview(DoublageBattleParameter doublageBattleParameter)
+        {
+            for (int i = 0; i < skillEffects.Length; i++)
+            {
+                skillEffects[i].GetSkillEffectNode().StopPreview(doublageBattleParameter);
+            }
+        }
 
 
     } // SkillData class

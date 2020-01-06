@@ -10,44 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: Skill-MoineMaeda-Dragueur
+  m_Name: Stan-SkillP-Gamer
   m_EditorClassIdentifier: 
-  skillName: Dragueur
-  description: 
-  descriptionBattle: Confiance +1
-  skillType: 0
+  skillName: G@mer
+  description: "Stan est un g@mer et peut mieux s'imaginer le contexte des jeux vid\xE9os."
+  descriptionBattle: 
+  skillType: 1
   buffData:
+    buffName: Gamer
+    infinite: 1
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
-    canAddMultiple: 0
-    infinite: 0
     lineCount: 0
-    tickEffect: 0
-    endEffect: 0
-    buffName: 
+    canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
-  - eventNode: 1
+  - eventNode: 4
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
     skillEffectEmotionStat:
       skillTarget: 0
-      inPercentage: 0
       emotionStat:
         neutral: 0
         joy: 0
@@ -57,8 +47,7 @@ MonoBehaviour:
         surprise: 0
         sweetness: 0
         fear: 0
-        trust: 1
-      statVariance: 0
+        trust: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -74,17 +63,26 @@ MonoBehaviour:
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0.1
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: 0
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
   bonusSkillEffects: []
   producerCost: 0
-  isPassive: 0
+  isPassive: 1
   movelist:
     neutral: 0
     joy: 0
@@ -92,12 +90,36 @@ MonoBehaviour:
     disgust: 0
     anger: 0
     surprise: 0
-    sweetness: 1
+    sweetness: 0
     fear: 0
-    trust: 1
-  activationTiming: 1
+    trust: 0
   onlyWhenMain: 1
+  onlyWhenSupport: 1
   onlyOnce: 0
-  skillConditions: []
-  bigAnimation: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions:
+  - eventNode: 5
+    skillConditionHP:
+      targetVoiceActor: 0
+      targetSentence: 0
+      hpInterval: {x: 0, y: 0}
+    skillConditionPercentage:
+      percentage: 0
+    skillConditionCombo:
+      emotionCheck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillConditionContractType:
+      contractType: 2
+    skillConditionCharacter:
+      characterData: {fileID: 0}
+  bigAnimation: 1
   isMalus: 0

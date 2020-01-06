@@ -10,27 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: SkillAra-Etourdi
+  m_Name: Ara-SkillM-Felicite
   m_EditorClassIdentifier: 
-  skillName: Etourdi
-  description: "Lorsque Ara joue 3 \xE9motion de joie, elle poss\xE8de 50% de chance
-    d'ignorer les ordres du producteur."
+  skillName: "F\xE9licit\xE9"
+  description: "Bonus x1.2\nAra est tr\xE8s joyeuse et \xE0 50% chance d'ignorer les
+    ordres du Producteur."
   descriptionBattle: 
-  skillType: 0
+  skillType: 1
   buffData:
-    turnActive: 0
+    buffName: "F\xE9licit\xE9"
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    turnActive: 1
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects: []
+  bonusSkillEffects: []
   producerCost: 0
   isPassive: 0
-  activationTiming: 0
-  onlyWhenMain: 1
-  onlyOnce: 0
-  phraseType:
+  movelist:
     neutral: 0
-    joy: 0
+    joy: 3
     sadness: 0
     disgust: 0
     anger: 0
@@ -38,7 +43,11 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 0
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
+  onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
   bigAnimation: 1
   isMalus: 0

@@ -41,7 +41,14 @@ namespace VoiceActing
                 return;
             for (int i = 0; i < emotions.Length; i++)
             {
-                emotions[i] = combo[i];
+                if (i >= combo.Length)
+                {
+                    emotions[i] = Emotion.Neutre;
+                }
+                else
+                {
+                    emotions[i] = combo[i];
+                }
             }
         }
 

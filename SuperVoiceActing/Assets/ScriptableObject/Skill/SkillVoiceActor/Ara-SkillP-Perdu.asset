@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: SkillAra-Perdu
+  m_Name: Ara-SkillP-Perdu
   m_EditorClassIdentifier: 
   skillName: Perdu
   description: "Ara est t\xEAte en l'air et a 10% de chance de perdre un tour d'une
@@ -30,27 +30,15 @@ MonoBehaviour:
     buffAll: 0
     conditionRemove: 0
   skillEffects:
-  - eventNode: 4
+  - eventNode: 1
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
     skillEffectEmotionStat:
       skillTarget: 0
-      inPercentage: 0
       emotionStat:
         neutral: 0
         joy: 0
@@ -61,7 +49,6 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      statVariance: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -77,14 +64,23 @@ MonoBehaviour:
     skillEffectTurn:
       turnGain: -1
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: 0
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
   bonusSkillEffects: []
   producerCost: 0
   isPassive: 1

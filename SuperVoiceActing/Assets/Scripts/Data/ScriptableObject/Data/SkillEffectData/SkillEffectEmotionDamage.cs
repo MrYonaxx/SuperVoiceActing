@@ -42,7 +42,7 @@ namespace VoiceActing
 
         public void AddActorEmotionDamage(EmotionCardTotal[] cards, Buff buff = null)
         {
-            if (buff != null)
+            /*if (buff != null)
             {
                 for (int i = 0; i < cardTargetsData.Count; i++)
                 {
@@ -62,7 +62,7 @@ namespace VoiceActing
                     if (cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y] != null)
                         cards[cardTargetsData[i].x].Cards[cardTargetsData[i].y].AddDamagePercentage(cardTargetsData[i].z);
                 }
-            }
+            }*/
         }
 
 

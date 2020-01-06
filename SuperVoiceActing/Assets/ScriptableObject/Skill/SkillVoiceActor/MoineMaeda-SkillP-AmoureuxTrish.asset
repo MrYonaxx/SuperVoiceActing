@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: Skill-MoineMaeda-TerreurVivifiante
+  m_Name: MoineMaeda-SkillP-AmoureuxTrish
   m_EditorClassIdentifier: 
-  skillName: Terreur Vivifiante
-  description: "Apr\xE8s une prise critique contenant <color=yellow>1</color> de Peur,
-    Moine-Maeda r\xE9cup\xE8re <color=yellow>5%</color> d'endurance."
-  descriptionBattle: Restaure 5% d'HP
+  skillName: "G\xEAn\xE9 : Trish"
+  description: "Si Trish est pr\xE9sente, augmente les chances de rater une prise."
+  descriptionBattle: 
   skillType: 1
   buffData:
-    buffName: Terreur
-    infinite: 0
+    buffName: "G\xEAn\xE9"
+    infinite: 1
     tickEffect: 0
     endEffect: 0
-    turnActive: 5
+    turnActive: 0
     refresh: 0
     addBuffTurn: 0
     lineCount: 0
@@ -30,38 +29,25 @@ MonoBehaviour:
     buffAll: 0
     conditionRemove: 0
   skillEffects:
-  - eventNode: 0
+  - eventNode: 1
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
     skillEffectEmotionStat:
       skillTarget: 0
-      inPercentage: 0
       emotionStat:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      statVariance: 0
+        joy: -1
+        sadness: -1
+        disgust: -1
+        anger: -1
+        surprise: -1
+        sweetness: -1
+        fear: -1
+        trust: -1
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -77,14 +63,23 @@ MonoBehaviour:
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: 0
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
   bonusSkillEffects: []
   producerCost: 0
   isPassive: 1
@@ -96,19 +91,19 @@ MonoBehaviour:
     anger: 0
     surprise: 0
     sweetness: 0
-    fear: 1
+    fear: 0
     trust: 0
   onlyWhenMain: 1
   onlyWhenSupport: 0
-  onlyOnce: 0
+  onlyOnce: 1
   onlyOncePerLine: 0
   onlyOncePerSwitch: 0
   skillConditions:
-  - eventNode: 0
+  - eventNode: 9
     skillConditionHP:
-      targetVoiceActor: 1
+      targetVoiceActor: 0
       targetSentence: 0
-      hpInterval: {x: 88, y: 100}
+      hpInterval: {x: 0, y: 0}
     skillConditionPercentage:
       percentage: 0
     skillConditionCombo:
@@ -122,5 +117,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-  bigAnimation: 0
+    skillConditionCharacter:
+      characterData: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
+  bigAnimation: 1
   isMalus: 0

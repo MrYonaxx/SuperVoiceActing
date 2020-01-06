@@ -10,25 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: SkillAra-PositiveAttitude
+  m_Name: JeanChristophe-SkillM-Trac
   m_EditorClassIdentifier: 
-  skillName: Positive Attitude
-  description: "Chaque tour, Ara a 10% de chance d'encourager le com\xE9dien et d'augmenter
-    la joie de 1."
+  skillName: 
+  description: 
   descriptionBattle: 
   skillType: 0
   buffData:
+    buffName: 
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects: []
+  bonusSkillEffects: []
   producerCost: 0
   isPassive: 0
-  activationTiming: 0
-  onlyWhenMain: 1
-  onlyOnce: 0
-  phraseType:
+  movelist:
     neutral: 0
     joy: 0
     sadness: 0
@@ -36,9 +40,13 @@ MonoBehaviour:
     anger: 0
     surprise: 0
     sweetness: 0
-    fear: 0
-    trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 0
+    fear: 1
+    trust: 1
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
+  onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
   bigAnimation: 1
   isMalus: 0

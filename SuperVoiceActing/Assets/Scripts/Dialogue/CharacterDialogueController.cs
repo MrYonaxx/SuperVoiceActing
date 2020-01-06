@@ -336,6 +336,16 @@ namespace VoiceActing
             }
         }
 
+        public void FeedbackAura()
+        {
+            if (auraRenderer != null)
+            {
+                auraRenderer.sprite = spriteRenderer.sprite;
+                animatorAura.SetTrigger("Feedback");
+                animatorAura.SetBool("Aura", false);
+            }
+        }
+
         #endregion
 
     } // CharacterDialogueController class

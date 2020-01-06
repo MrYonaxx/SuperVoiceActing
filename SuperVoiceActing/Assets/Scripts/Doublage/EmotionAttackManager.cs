@@ -210,6 +210,10 @@ namespace VoiceActing
         Animator haloEmotionAnimator;
         [SerializeField]
         Color[] colorParticle;
+        
+
+
+
 
         EmotionStat deckEmotion;
         EmotionCard[] comboCardEmotion;

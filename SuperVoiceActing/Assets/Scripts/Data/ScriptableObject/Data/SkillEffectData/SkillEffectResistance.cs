@@ -16,26 +16,43 @@ namespace VoiceActing
 	public class SkillEffectResistance : SkillEffectData
 	{
         [SerializeField]
-        int resistancePercentage = 0;
+        float addAttackPercentage = 0;
+        [SerializeField]
+        float addResistancePercentage = 0;
 
 
         public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            /*Buff buff = null;
-            if (buffData != null)
-            {
-                buff = new Buff(this, buffData);
-            }
-
-            if (buffData != null)
-                doublageManager.ActorsManager.AddBuff(buff);
-            doublageManager.ActorsManager.AddActorResistance(resistancePercentage);*/
+            VoiceActor va = doublageBattleParameter.VoiceActors[0];
+            va.BonusDamage += addAttackPercentage;
+            va.BonusResistance += addResistancePercentage;
         }
 
-        /*public override void RemoveSkillEffectActor(VoiceActor actor)
+        public override void RemoveSkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            actor.AddActorResistance(-resistancePercentage);
-        }*/
+            doublageBattleParameter.VoiceActors[0].BonusDamage -= addAttackPercentage;
+            doublageBattleParameter.VoiceActors[0].BonusResistance -= addResistancePercentage;
+        }
+
+
+
+        public override void PreviewSkill(DoublageBattleParameter doublageBattleParameter)
+        {
+            VoiceActor va = doublageBattleParameter.VoiceActors[0];
+            va.BonusDamage += addAttackPercentage;
+            va.BonusResistance += addResistancePercentage;
+            doublageBattleParameter.ActorsManager.AddAttackPower(va, 0);
+            doublageBattleParameter.ActorsManager.AddAttackDamage(va, 0, 0);
+        }
+
+        public override void StopPreview(DoublageBattleParameter doublageBattleParameter)
+        {
+            VoiceActor va = doublageBattleParameter.VoiceActors[0];
+            va.BonusDamage -= addAttackPercentage;
+            va.BonusResistance -= addResistancePercentage;
+            doublageBattleParameter.ActorsManager.AddAttackPower(va, 0);
+            doublageBattleParameter.ActorsManager.AddAttackDamage(va, 0, 0);
+        }
 
 
     } // SkillEffectResistance class

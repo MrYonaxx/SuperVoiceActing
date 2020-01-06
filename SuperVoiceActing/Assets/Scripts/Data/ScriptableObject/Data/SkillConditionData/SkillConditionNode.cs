@@ -24,6 +24,7 @@ namespace VoiceActing
         Date,
         Turn,
         Line,
+        Character
 
     }
 
@@ -54,6 +55,21 @@ namespace VoiceActing
 
 
 
+        [VerticalGroup("SkillCondition/Right")]
+        [ShowIf("eventNode", SkillConditionType.ContractType)]
+        [SerializeField]
+        [HideLabel]
+        public SkillConditionContractType skillConditionContractType = null;
+
+
+        [VerticalGroup("SkillCondition/Right")]
+        [ShowIf("eventNode", SkillConditionType.Character)]
+        [SerializeField]
+        [HideLabel]
+        public SkillConditionCharacter skillConditionCharacter = null;
+
+
+
         public SkillCondition GetSkillConditionNode()
         {
             switch (eventNode)
@@ -64,6 +80,10 @@ namespace VoiceActing
                     return skillConditionPercentage;
                 case SkillConditionType.Combo:
                     return skillConditionCombo;
+                case SkillConditionType.ContractType:
+                    return skillConditionContractType;
+                case SkillConditionType.Character:
+                    return skillConditionCharacter;
             }
             return null;
         }

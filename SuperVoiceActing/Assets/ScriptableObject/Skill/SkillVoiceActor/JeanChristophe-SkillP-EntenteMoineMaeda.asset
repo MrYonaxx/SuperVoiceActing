@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: Skill-Doremi-ConfianceAveugle
+  m_Name: JeanChristophe-SkillP-EntenteMoineMaeda
   m_EditorClassIdentifier: 
-  skillName: Confiance Aveugle
-  description: "Lorsque Dor\xE9mi tombe sous les <color=yellow>50%</color> de HP,
-    toutes ses statistiques augmentent de <color=yellow>5</color>."
-  descriptionBattle: Augmente toute les stats
+  skillName: 'Entente : Moine-Maeda'
+  description: "Si Moine-Maeda est pr\xE9sent durant le doublage, r\xE9duit l'\xE9prouvance
+    des prises de tout les com\xE9diens de 10%."
+  descriptionBattle: 
   skillType: 1
   buffData:
-    buffName: Conf. A
+    buffName: Entente
     infinite: 1
     tickEffect: 0
     endEffect: 0
@@ -27,41 +27,28 @@ MonoBehaviour:
     addBuffTurn: 0
     lineCount: 0
     canAddMultiple: 0
-    buffAll: 0
-    conditionRemove: 1
+    buffAll: 1
+    conditionRemove: 0
   skillEffects:
-  - eventNode: 2
+  - eventNode: 4
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 5
-        sadness: 5
-        disgust: 5
-        anger: 5
-        surprise: 5
-        sweetness: 5
-        fear: 5
-        trust: 5
     skillEffectEmotionStat:
-      skillTarget: 1
-      inPercentage: 0
+      skillTarget: 0
       emotionStat:
         neutral: 0
-        joy: 5
-        sadness: 5
-        disgust: 5
-        anger: 5
-        surprise: 5
-        sweetness: 5
-        fear: 5
-        trust: 5
-      statVariance: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -77,14 +64,23 @@ MonoBehaviour:
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: -0.1
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: 0
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
   bonusSkillEffects: []
   producerCost: 0
   isPassive: 1
@@ -98,17 +94,17 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  onlyWhenMain: 1
+  onlyWhenMain: 0
   onlyWhenSupport: 0
   onlyOnce: 1
   onlyOncePerLine: 0
   onlyOncePerSwitch: 0
   skillConditions:
-  - eventNode: 0
+  - eventNode: 9
     skillConditionHP:
-      targetVoiceActor: 1
+      targetVoiceActor: 0
       targetSentence: 0
-      hpInterval: {x: 0, y: 50}
+      hpInterval: {x: 0, y: 0}
     skillConditionPercentage:
       percentage: 0
     skillConditionCombo:
@@ -122,5 +118,7 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+    skillConditionCharacter:
+      characterData: {fileID: 11400000, guid: 7919096dd34fc5243b9c76237f92419b, type: 2}
   bigAnimation: 1
   isMalus: 0

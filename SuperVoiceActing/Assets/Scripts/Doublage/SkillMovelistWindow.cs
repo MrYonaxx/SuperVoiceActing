@@ -92,6 +92,17 @@ namespace VoiceActing
             }
         }
 
+        public void ResetSkill()
+        {
+            textSkill.color = colorUnactive;
+            outlineSkill.color = colorUnactive;
+            for(int i = 0; i < emotionActive.Count; i++)
+            {
+                imageEmotion[i].color = colorUnactive;
+                emotionActive[i] = false;
+            }
+        }
+
         public bool CheckMove(Emotion[] emotions)
         {
             for(int i = 0; i < emotionActive.Count; i++)

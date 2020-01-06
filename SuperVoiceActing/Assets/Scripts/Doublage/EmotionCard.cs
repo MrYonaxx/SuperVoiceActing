@@ -37,12 +37,14 @@ namespace VoiceActing
         TextMeshProUGUI textStat;
         [SerializeField]
         TextMeshProUGUI textEmotionDamage;
-        [SerializeField]
-        Image[] statBonus;
-        [SerializeField]
-        TextMeshProUGUI[] textBuffTurn;
 
+        [Title("StatBonus")]
+        [SerializeField]
+        Image imageStatBonus;
+        [SerializeField]
+        TextMeshProUGUI textStatBonus;
 
+        [Title("Color")]
         [SerializeField]
         Color colorBonusStat;
         [SerializeField]
@@ -62,11 +64,15 @@ namespace VoiceActing
 
         private int value = 0;
         private int valueBonus = 0;
-        private int valueActorBonus = 0;
+        private int stackNumber = 0;
+
 
         private float damagePercentage = 1;
 
+
+
         private bool inPreview = false;
+
 
         private List<Buff> buffs = new List<Buff>();
 
@@ -76,14 +82,18 @@ namespace VoiceActing
 
         #endregion
 
-        #region GettersSetters 
+
+        #region Functions 
 
         /* ======================================== *\
-         *           GETTERS AND SETTERS            *
+         *                FUNCTIONS                 *
         \* ======================================== */
+
 
         public int GetBaseValue()
         {
+            if (value < 0)
+                return 0;
             return value;
         }
 
@@ -94,7 +104,9 @@ namespace VoiceActing
 
         public int GetStat()
         {
-            return value + valueBonus + valueActorBonus;
+            if (value + valueBonus < 0)
+                return 0;
+            return value + valueBonus;
         }
 
         public float GetDamagePercentage()
@@ -107,13 +119,7 @@ namespace VoiceActing
             return emotion;
         }
 
-        #endregion
 
-        #region Functions 
-
-        /* ======================================== *\
-         *                FUNCTIONS                 *
-        \* ======================================== */
 
         public void SetEmotion(Emotion emo)
         {
@@ -123,11 +129,6 @@ namespace VoiceActing
         {
             imageCard.sprite = sprite;
         }
-
-
-
-
-
 
 
 
@@ -170,20 +171,8 @@ namespace VoiceActing
                 feedback.rectTransform.localScale = this.rectTransform.localScale;
                 feedback.sprite = imageCard.sprite;
                 feedback.color = imageCard.color;
-                //StartCoroutine(FeedbackCoroutine(feedback, 20));
             }
         }
-
-        /*private IEnumerator FeedbackCoroutine(Image feedback, int time)
-        {
-            while (time != 0)
-            {
-                feedback.color -= new Color(0, 0, 0, 0.05f);
-                feedback.rectTransform.localScale += new Vector3(0.075f, 0.075f, 0);
-                time -= 1;
-                yield return null;
-            }
-        }*/
 
 
 
@@ -193,7 +182,7 @@ namespace VoiceActing
 
         //    S E C T I O N    S T A T
 
-        public void AddStat(int statToAdd)
+        /*public void AddStat(int statToAdd)
         {
             valueBonus += statToAdd;
             DrawStat();
@@ -215,7 +204,7 @@ namespace VoiceActing
                 textEmotionDamage.text = "x" + damagePercentage;
                 textEmotionDamage.gameObject.SetActive((damagePercentage != 1));
             }
-        }
+        }*/
 
 
 
@@ -229,32 +218,47 @@ namespace VoiceActing
             if (textStat == null)
                 return;
 
-            if ((valueBonus + valueActorBonus) > 0)
+            if (valueBonus > 0)
                 textStat.color = colorBonusStat;
-            else if ((valueBonus + valueActorBonus) < 0)
+            else if (valueBonus < 0)
                 textStat.color = colorMalusStat;
             else
                 textStat.color = Color.white;
 
-            int finalValue = (value + valueBonus + valueActorBonus);
+            int finalValue = (value + valueBonus);
             if (finalValue < 0)
                 textStat.text = "0";
             else
                 textStat.text = finalValue.ToString();
+
+            if(stackNumber != 0)
+            {
+                imageStatBonus.gameObject.SetActive(true);
+                textStatBonus.gameObject.SetActive(true);
+                textStatBonus.text = stackNumber.ToString();
+                if(stackNumber > 0)
+                    textStatBonus.color = colorBonusStat;
+                else
+                    textStatBonus.color = colorMalusStat;
+            }
+            else
+            {
+                imageStatBonus.gameObject.SetActive(false);
+                textStatBonus.gameObject.SetActive(false);
+            }
         }
 
         public void DrawStat(int baseStat)
         {
             value = baseStat;
-
             DrawStat();
-
         }
 
-        public void DrawStat(int baseStat, int actorBonusStat)
+        public void DrawStat(int baseStat, int actorBonusStack, int actorBonusStat)
         {
             value = baseStat;
-            valueActorBonus = actorBonusStat;
+            stackNumber = actorBonusStack;
+            valueBonus = actorBonusStat;
 
             DrawStat();
         }

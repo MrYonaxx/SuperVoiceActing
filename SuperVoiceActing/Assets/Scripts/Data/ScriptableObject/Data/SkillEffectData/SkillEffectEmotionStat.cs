@@ -20,13 +20,9 @@ namespace VoiceActing
         [SerializeField]
         SkillTarget skillTarget;
 
-        [SerializeField]
-        bool inPercentage;
         [HideLabel]
         [SerializeField]
         EmotionStat emotionStat;
-        [SerializeField]
-        int statVariance;
 
 
 
@@ -34,43 +30,45 @@ namespace VoiceActing
 
         public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            /*Buff buff = null;
-            if (buffData != null)
-            {
-                buff = new Buff(this, buffData);
-            }
-
-            switch(skillTarget)
+            switch (skillTarget)
             {
                 case SkillTarget.VoiceActor:
-                    if (inPercentage == true)
-                    {
-                        AddActorStatPercentage(doublageManager.ActorsManager, buff);
-                    }
-                    else
-                    {
-                        AddActorStat(doublageManager.ActorsManager, buff);
-                    }
+                    doublageBattleParameter.VoiceActors[0].StatModifier.Add(emotionStat);
                     break;
-                case SkillTarget.Cards:
-                    if (targetAcquired == false)
-                        CalculateTarget();
-                    else
-                        targetAcquired = false;
-                    if (inPercentage == true)
-                    {
-                        AddCardStatPercentage(doublageManager.EmotionAttackManager.GetCards(), buff);
-                    }
-                    else
-                    {
-                        AddCardStat(doublageManager.EmotionAttackManager.GetCards(), buff);
-                    }
+            }
+        }
+        public override void RemoveSkillEffect(DoublageBattleParameter doublageBattleParameter)
+        {
+            switch (skillTarget)
+            {
+                case SkillTarget.VoiceActor:
+                    doublageBattleParameter.VoiceActors[0].StatModifier.Substract(emotionStat);
                     break;
-            }*/
-
+            }
         }
 
 
+
+        public override void PreviewSkill(DoublageBattleParameter doublageBattleParameter)
+        {
+            switch (skillTarget)
+            {
+                case SkillTarget.VoiceActor:
+                    doublageBattleParameter.VoiceActors[0].StatModifier.Add(emotionStat);
+                    doublageBattleParameter.ActorsManager.DrawActorStat(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.Cards);
+                    break;
+            }
+        }
+        public override void StopPreview(DoublageBattleParameter doublageBattleParameter)
+        {
+            switch (skillTarget)
+            {
+                case SkillTarget.VoiceActor:
+                    doublageBattleParameter.VoiceActors[0].StatModifier.Substract(emotionStat);
+                    doublageBattleParameter.ActorsManager.DrawActorStat(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.Cards);
+                    break;
+            }
+        }
 
 
         //    A C T O R

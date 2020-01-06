@@ -401,7 +401,6 @@ namespace VoiceActing
                                                                       battleParameter.LastAttackEmotion, 
                                                                       textAppearManager.GetWordSelected()),
                                             emotionAttackManager.GetComboCards());
-            toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
             characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter).ChangeEmotion(battleParameter.LastAttackEmotion[0]);
             if(battleParameter.CurrentActor().Hp == 0)
             {
@@ -426,7 +425,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(false);
             // Check Skill =======================================================================
             skillManager.ActivateMovelist();
-
+            //actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards); // Update Card attack value
             // Attack Feedback ===================================================================
             AttackFeedbackPhase();
             if (battleParameter.Turn <= 0)
@@ -579,8 +578,8 @@ namespace VoiceActing
             inputController.gameObject.SetActive(true);
             actorsManager.CheckBuffsActors();
             actorsManager.CheckBuffsCards();
-            roleManager.ShowHUDNextAttack(true);
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
+            roleManager.ShowHUDNextAttack(true);           
             ShowUIButton(buttonUIA);
             ShowUIButton(buttonUIB);
             if (enemyManager.GetHpPercentage() == 0)
@@ -623,6 +622,8 @@ namespace VoiceActing
                     battleParameter.KillCount += 1;
                     lineManager.DrawLineNumber(contrat.CurrentLine);
                     emotionAttackManager.ResetCard();
+                    battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                    skillManager.UpdateMovelist();
                     emotionAttackManager.StartTurnCardFeedback();
                     toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
 
@@ -649,7 +650,7 @@ namespace VoiceActing
                     {
                         enemyManager.ResetHalo();
                         lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
-                        //EndSession();
+                        StartCoroutine(EndSessionCoroutine(50));
                         return;
                     }
 
@@ -773,7 +774,6 @@ namespace VoiceActing
 
         private IEnumerator EndSessionCoroutine(int time)
         {
-            actorsManager.ResetStat();
             if (contrat.VictoryTheme == null)
             {
                 AudioManager.Instance.StopMusic(180);
@@ -886,6 +886,8 @@ namespace VoiceActing
                 return;
             soundEngineerManager.SwitchToMixingTable();
             emotionAttackManager.ResetCard();
+            battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+            skillManager.UpdateMovelist();
             //emotionAttackManager.SwitchCardTransformToRessource();
             cameraController.IngeSon();
             inputController.gameObject.SetActive(false);
@@ -970,7 +972,7 @@ namespace VoiceActing
 
         public void ShowResultScreen()
         {
-            actorsManager.ResetStat();
+            actorsManager.ResetStat(battleParameter.VoiceActors);
             if (contrat.CurrentLine == playerData.CurrentContract.TotalLine)
             {
                 if (playerData.CurrentContract.StoryEventWhenEnd != null)

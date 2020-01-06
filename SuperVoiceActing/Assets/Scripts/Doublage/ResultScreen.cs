@@ -179,6 +179,7 @@ namespace VoiceActing
         {
             contract = battleParameter.Contract;
             voiceActors = battleParameter.VoiceActors;
+
             spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
             spectrum.enabled = true;
             actorsLevelUp = new bool[contract.VoiceActorsID.Count];

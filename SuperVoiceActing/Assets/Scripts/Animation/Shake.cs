@@ -21,6 +21,8 @@ namespace VoiceActing
         \* ======================================== */
         [SerializeField]
         bool isRectTransform = false;
+
+
         RectTransform rectTransform;
 
         #endregion

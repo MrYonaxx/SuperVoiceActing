@@ -42,13 +42,27 @@ namespace VoiceActing
 
         public override void ApplySkillEffect(DoublageBattleParameter doublageBattleParameter)
         {
-            /*int currentHP = 0;
-            float damage = 0;*/
-
+            int damage = 0;
             switch (skillTarget)
             {
                 case SkillTarget.VoiceActor:
-                    ModifyActorHP(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.ActorsManager);
+                    damage = CalculateDamage(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.ActorsManager);
+                    doublageBattleParameter.ActorsManager.ActorTakeDamage(doublageBattleParameter.VoiceActors[0], -damage);
+                    break;
+                case SkillTarget.Sentence:
+                    break;
+            }
+        }
+
+        public override void RemoveSkillEffect(DoublageBattleParameter doublageBattleParameter)
+        {
+            //return;
+            int damage = 0;
+            switch (skillTarget)
+            {
+                case SkillTarget.VoiceActor:
+                    damage = CalculateDamage(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.ActorsManager);
+                    doublageBattleParameter.ActorsManager.ActorTakeDamage(doublageBattleParameter.VoiceActors[0], damage);
                     break;
                 case SkillTarget.Sentence:
                     break;
@@ -57,70 +71,50 @@ namespace VoiceActing
 
 
 
-        private void ModifyActorHP(VoiceActor voiceActor, ActorsManager actorManager)
+        private int CalculateDamage(VoiceActor voiceActor, ActorsManager actorManager)
         {
             int currentHP = 0;
             int damage = 0;
             if (inPercentage == true)
             {
                 currentHP = voiceActor.Hp;
-                damage = (int) (currentHP * (hpGain / 100f));
+                damage = (int)(currentHP * (hpGain / 100f));
             }
             else
             {
                 damage = hpGain;
             }
             damage += Random.Range(-hpGainVariance, hpGainVariance);
-            if(ignoreHPLimit == false)
+            if (ignoreHPLimit == false)
                 damage = Mathf.Min(damage, damage, voiceActor.ChipDamage);
-            actorManager.ActorTakeDamage(voiceActor, -damage);
+            return damage;
         }
 
 
 
-
-
-        /*public override void PreviewTarget(DoublageManager doublageManager)
+        public override void PreviewSkill(DoublageBattleParameter doublageBattleParameter)
         {
-            base.PreviewTarget(doublageManager);
-
-            // Fonction ?
-            int currentHP = 0;
-            float damage = 0;
-            if (inPercentage == true)
+            int damage = 0;
+            switch (skillTarget)
             {
-                currentHP = doublageManager.ActorsManager.GetCurrentActorHPMax();
-                damage = currentHP * (hpDamage / 100f);
+                case SkillTarget.VoiceActor:
+                    damage = CalculateDamage(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.ActorsManager);
+                    doublageBattleParameter.ActorsManager.AddAttackDamageBonus(doublageBattleParameter.VoiceActors[0], -damage);
+                    break;
             }
-            else
-            {
-                damage = hpDamage;
-            }
-            //
-
-            doublageManager.ActorsManager.AddAttackDamage((int)damage, 1);
-            doublageManager.ActorsManager.DrawDamagePrevisualization();
         }
 
-        public override void StopPreview(DoublageManager doublageManager)
+        public override void StopPreview(DoublageBattleParameter doublageBattleParameter)
         {
-            // Fonction ?
-            int currentHP = 0;
-            float damage = 0;
-            if (inPercentage == true)
+            int damage = 0;
+            switch (skillTarget)
             {
-                currentHP = doublageManager.ActorsManager.GetCurrentActorHPMax();
-                damage = currentHP * (hpDamage / 100f);
+                case SkillTarget.VoiceActor:
+                    damage = CalculateDamage(doublageBattleParameter.VoiceActors[0], doublageBattleParameter.ActorsManager);
+                    doublageBattleParameter.ActorsManager.AddAttackDamageBonus(doublageBattleParameter.VoiceActors[0], damage);
+                    break;
             }
-            else
-            {
-                damage = hpDamage;
-            }
-            //
-
-            doublageManager.ActorsManager.AddAttackDamage((int)-damage, 1);
-            doublageManager.ActorsManager.DrawDamagePrevisualization();
-        }*/
+        }
 
 
 

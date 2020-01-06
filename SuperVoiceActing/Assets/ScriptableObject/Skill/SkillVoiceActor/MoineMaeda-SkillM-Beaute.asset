@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
+  m_Name: MoineMaeda-SkillM-Beaute
+  m_EditorClassIdentifier: 
+  skillName: "Beaut\xE9"
+  description: "Bonus x1.2\nImpressionne les autres com\xE9diens et chacun gagne 1
+    bonus de confiance."
+  descriptionBattle: Confiance -100% Damage
+  skillType: 1
+  buffData:
+    buffName: Beaute
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    turnActive: 3
+    refresh: 1
+    addBuffTurn: 0
+    lineCount: 0
+    canAddMultiple: 0
+    buffAll: 1
+    conditionRemove: 0
+  skillEffects:
+  - eventNode: 1
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
+    skillEffectEmotionStat:
+      skillTarget: 0
+      emotionStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 1
+    skillEffectEmotionDamage:
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: -100
+      damageVariance: 0
+    skillEffectTurn:
+      turnGain: 0
+      turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+  bonusSkillEffects: []
+  producerCost: 0
+  isPassive: 0
+  movelist:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 3
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
+  onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
+  bigAnimation: 0
+  isMalus: 0

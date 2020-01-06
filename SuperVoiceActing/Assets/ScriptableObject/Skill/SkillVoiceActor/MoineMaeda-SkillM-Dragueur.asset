@@ -10,33 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: SkillStan 1
+  m_Name: MoineMaeda-SkillM-Dragueur
   m_EditorClassIdentifier: 
-  skillName: Odorac
+  skillName: Dragueur
   description: 
-  descriptionBattle: Tour +1
+  descriptionBattle: Confiance +1
   skillType: 0
   buffData:
+    buffName: 
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
-  - eventNode: 4
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-    skillEffectEmotionStat:
+  - eventNode: 1
+    skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
+    skillEffectEmotionStat:
+      skillTarget: 0
       emotionStat:
         neutral: 0
         joy: 0
@@ -44,10 +45,9 @@ MonoBehaviour:
         disgust: 0
         anger: 0
         surprise: 0
-        sweetness: 0
+        sweetness: -1
         fear: 0
-        trust: 0
-      statVariance: 0
+        trust: 1
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -60,35 +60,44 @@ MonoBehaviour:
         fear: 0
         trust: 0
       damageVariance: 0
-    skillEffectHealth:
-      skillTarget: 0
-      inPercentage: 0
-      restoreChipDamage: 0
-      hpDamage: 0
-      hpDamageVariance: 0
     skillEffectTurn:
-      turnGain: 1
+      turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: 0
+  bonusSkillEffects: []
   producerCost: 0
-  activationTiming: 1
-  onlyWhenMain: 1
-  phraseType:
+  isPassive: 0
+  movelist:
     neutral: 0
     joy: 0
     sadness: 0
     disgust: 0
     anger: 0
-    surprise: 1
-    sweetness: 0
+    surprise: 0
+    sweetness: 1
     fear: 0
-    trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 5
+    trust: 1
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
   onlyOnce: 0
-  bigAnimation: 1
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
+  bigAnimation: 0
   isMalus: 0

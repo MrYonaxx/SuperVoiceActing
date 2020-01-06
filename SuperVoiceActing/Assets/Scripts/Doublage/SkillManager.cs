@@ -24,6 +24,13 @@ namespace VoiceActing
             set { turn = value; }
         }
 
+        private int stack;
+        public int Stack
+        {
+            get { return stack; }
+            set { stack = value; }
+        }
+
         private SkillData skillData;
         public SkillData SkillData
         {
@@ -45,7 +52,7 @@ namespace VoiceActing
         }
     }
 
-    public struct MovelistSkill
+    public class MovelistSkill
     {
         public bool active;
         public SkillActorData skillActor;
@@ -283,7 +290,7 @@ namespace VoiceActing
                 listSkillMovelistWindows[i].DrawSkillMove(movelistActor[i].skillActor);
                 listSkillMovelistWindows[i].gameObject.SetActive(true);
             }
-            for (int i = voiceActor.Potentials.Length; i < listSkillMovelistWindows.Count; i++)
+            for (int i = movelistActor.Count; i < listSkillMovelistWindows.Count; i++)
                 listSkillMovelistWindows[i].gameObject.SetActive(false);
         }
 
@@ -293,7 +300,7 @@ namespace VoiceActing
             Emotion[] emotions = battleParameter.LastAttackEmotion;
             bool b = false;
             string combos = "";
-            for (int i = 0; i < listSkillMovelistWindows.Count; i++)
+            for (int i = 0; i < movelistActor.Count; i++)
             {
                 if (listSkillMovelistWindows[i].CheckMove(emotions) == true)
                 {
@@ -306,11 +313,19 @@ namespace VoiceActing
                     {
                         combos += " - " + listSkillMovelistWindows[i].GetSkillName();
                     }
-                    movelistActor[i].SetActive(true);
+                    if(movelistActor[i].active == false)
+                    {
+                        movelistActor[i].active = true;
+                        movelistActor[i].skillActor.PreviewSkill(battleParameter);
+                    }
                 }
                 else
                 {
-                    movelistActor[i].SetActive(false);
+                    if (movelistActor[i].active == true)
+                    {
+                        movelistActor[i].active = false;
+                        movelistActor[i].skillActor.StopPreview(battleParameter);
+                    }
                 }
             }
             doubleur.ActivateAura(b);
@@ -320,11 +335,21 @@ namespace VoiceActing
 
         public void ActivateMovelist()
         {
+            textCurrentCombos.text = "";
+            bool moveActivated = false;
             for (int i = 0; i < movelistActor.Count; i++)
             {
-                if(movelistActor[i].active)
+                listSkillMovelistWindows[i].ResetSkill();
+                if (movelistActor[i].active)
+                {
+                    movelistActor[i].active = false;
+                    movelistActor[i].skillActor.StopPreview(battleParameter);
                     ApplySkill(movelistActor[i].skillActor);
+                    moveActivated = true;
+                }
             }
+            if(moveActivated == true)
+                doubleur.FeedbackAura();
         }
 
         ///   M O V E L I S T

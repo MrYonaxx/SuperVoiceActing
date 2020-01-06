@@ -10,34 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: SkillAra-Absence
+  m_Name: Bocca-SkillM-Rage
   m_EditorClassIdentifier: 
-  skillName: Absence
-  description: "Lorsque Ara joue 2 \xE9motion de joie, elle poss\xE8de 50% de chance
-    d'ignorer l'emprise du r\xF4le."
-  descriptionBattle: 
+  skillName: Rage
+  description: 
+  descriptionBattle: "-5% HP / +10 Col\xE8re"
   skillType: 0
   buffData:
+    buffName: 
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects: []
+  bonusSkillEffects: []
   producerCost: 0
-  activationTiming: 1
-  onlyWhenMain: 1
-  phraseType:
+  isPassive: 0
+  movelist:
     neutral: 0
-    joy: 2
+    joy: 0
     sadness: 0
     disgust: 0
-    anger: 0
+    anger: 2
     surprise: 0
     sweetness: 0
     fear: 0
     trust: 0
-  hpInterval: {x: 0, y: 100}
-  percentageActivation: 0
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
   onlyOnce: 0
-  bigAnimation: 1
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
+  bigAnimation: 0
   isMalus: 0

@@ -10,20 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
-  m_Name: SkillJeanChristophePleineForme
+  m_Name: Stan-SkillM-Odorac
   m_EditorClassIdentifier: 
-  skillName: Pleine Forme
-  description: Si Jean-Christophe commence le combat avec plus de 80% de HP, toutes
-    ses statistiques augmente de 5 points pendant 5 tours/
-  descriptionBattle: Stat +5
-  skillType: 1
+  skillName: Odorac
+  description: 
+  descriptionBattle: Tour +1
+  skillType: 0
   buffData:
-    turnActive: 5
+    buffName: 
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    turnActive: 0
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
-  - eventNode: 1
+  - eventNode: 4
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -36,21 +48,20 @@ MonoBehaviour:
         fear: 0
         trust: 0
     skillEffectEmotionStat:
-      skillTarget: 1
+      skillTarget: 0
       inPercentage: 0
-      statVariance: 0
       emotionStat:
         neutral: 0
-        joy: 5
+        joy: 0
         sadness: 0
-        disgust: 5
-        anger: 5
-        surprise: 5
-        sweetness: 5
-        fear: 5
-        trust: 5
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      statVariance: 0
     skillEffectEmotionDamage:
-      damageVariance: 0
       emotionDamage:
         neutral: 0
         joy: 0
@@ -61,25 +72,22 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-    skillEffectHealth:
-      skillTarget: 0
-      inPercentage: 0
-      hpDamage: 0
-      hpDamageVariance: 0
+      damageVariance: 0
     skillEffectTurn:
-      turnGain: 0
+      turnGain: 1
       turnVariance: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
     skillEffectResistance:
       resistancePercentage: 0
+    skillEffectInfluenceBonus:
+      inPercentage: 0
+      influenceBonus: 0
+  bonusSkillEffects: []
   producerCost: 0
-  afterStart: 1
-  afterAttack: 0
-  afterCritical: 0
-  afterKill: 0
-  phraseType:
+  isPassive: 0
+  movelist:
     neutral: 0
     joy: 0
     sadness: 0
@@ -89,7 +97,11 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  hpInterval: {x: 80, y: 100}
-  percentageActivation: 100
-  onlyOnce: 1
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
+  onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
+  bigAnimation: 1
   isMalus: 0

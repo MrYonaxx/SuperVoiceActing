@@ -60,7 +60,7 @@ namespace VoiceActing
             int indexPassive = 0;
             int indexMovelist = 0;
             int i = 0;
-            while(relation >= 0 && i <= actor.Potentials.Length)
+            while(relation >= 0 && i < actor.Potentials.Length)
             {
                 skill = (SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]);
                 if (skill.IsPassive == true)
@@ -68,6 +68,7 @@ namespace VoiceActing
                     skillPassiveButtons[indexPassive].gameObject.SetActive(true);
                     skillPassiveButtons[indexPassive].DrawSkillActor((SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]), relation, actor.FriendshipLevel[i]);
                     skillPassiveButtons[indexPassive].SetSkillNumber(i);
+                    buttonsList[i] = skillPassiveButtons[indexPassive].GetRectTransform();
                     indexPassive += 1;
                 }
                 else
@@ -75,6 +76,7 @@ namespace VoiceActing
                     skillMovelistButtons[indexMovelist].gameObject.SetActive(true);
                     skillMovelistButtons[indexMovelist].DrawSkillActor((SkillActorData)skillDatabase.GetSkillData(actor.Potentials[i]), relation, actor.FriendshipLevel[i]);
                     skillMovelistButtons[indexMovelist].SetSkillNumber(i);
+                    buttonsList[i] = skillMovelistButtons[indexMovelist].GetRectTransform();
                     indexMovelist += 1;
                 }
                 relation -= actor.FriendshipLevel[i];
