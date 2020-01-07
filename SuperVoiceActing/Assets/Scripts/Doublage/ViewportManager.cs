@@ -33,12 +33,6 @@ namespace VoiceActing
 
         [SerializeField]
         RectTransform viewport;
-        /*[SerializeField]
-        RectTransform viewportOutline;
-        [SerializeField]
-        RectTransform viewportRotationOutline;
-        [SerializeField]
-        RectTransform viewportMask;*/
         [SerializeField]
         RectTransform viewportTexture;
 

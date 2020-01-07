@@ -315,6 +315,7 @@ namespace VoiceActing
 
         private void DrawAttackParameter(VoiceActor voiceActor)
         {
+            textActorAttackPower.gameObject.SetActive(true);
             textActorAttackPower.text = ((int)(attackPower * voiceActor.BonusDamage)).ToString();
             textDamage.text = ((int)(attackDamage * voiceActor.BonusResistance) + attackDamageBonus).ToString();
 
@@ -347,6 +348,7 @@ namespace VoiceActing
             ActorTakeDamage(voiceActor, (int) (attackDamage * voiceActor.BonusResistance));
             attackDamage = 0;
             textDamage.text = attackDamage.ToString();
+            textActorAttackPower.gameObject.SetActive(false);
             DrawDamagePrevisualization(voiceActor);
         }
 
@@ -399,6 +401,8 @@ namespace VoiceActing
         public void ShowHealthBar(bool b)
         {
             animatorHealthBar.SetBool("Appear", b);
+            if (b == false)
+                textActorAttackPower.gameObject.SetActive(false);
         }
 
 

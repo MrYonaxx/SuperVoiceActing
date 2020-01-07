@@ -120,6 +120,13 @@ namespace VoiceActing
             get { return eventBackgroundManager; }
         }
 
+        [SerializeField]
+        protected ResultScreen resultScreen;
+        public ResultScreen ResultScreen
+        {
+            get { return resultScreen; }
+        }
+
         [Title("Feedbacks")]
         [SerializeField]
         protected Animator animatorBlackBand;
@@ -214,7 +221,10 @@ namespace VoiceActing
             inputEvent.gameObject.SetActive(false);
             //ExecuteEvent();*/
         }
-
+        public void ShowBlackBand(bool b)
+        {
+            animatorBlackBand.SetBool("Appear", b);
+        }
 
         // =========================================================================================
 
@@ -233,6 +243,10 @@ namespace VoiceActing
             }
             currentEvents.Clear();
             animatorBlackBand.SetBool("Appear", false);
+            for (int i = 0; i < textEvent.Length; i++)
+            {
+                textEvent[i].NewPhrase(" ");
+            }
         }
 
 

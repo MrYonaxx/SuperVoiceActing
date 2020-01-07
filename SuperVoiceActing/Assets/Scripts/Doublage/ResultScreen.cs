@@ -32,7 +32,6 @@ namespace VoiceActing
         [SerializeField]
         private string nextScene = "Bureau";
 
-
         [Title("Text")]
         [SerializeField]
         private TextMeshProUGUI textName;
@@ -61,9 +60,6 @@ namespace VoiceActing
         [SerializeField]
         private RectTransform lineNewGauge;
 
-
-        private Contract contract;
-        private List<VoiceActor> voiceActors;
 
 
         [Title("Actors")]
@@ -116,17 +112,10 @@ namespace VoiceActing
         private TextMeshProUGUI textSkillGetDescription;
 
 
-        private bool[] actorsLevelUp;
-        private int[] actorsOldLevel;
-
-        private int[] actorsOldSkillLevel;
-        private int[] actorsNewSkillLevel;
-
-        private int[] actorsOldHP;
-
-        private EmotionStat[] actorsOldStats;
 
         [Title("Feedback")]
+        [SerializeField]
+        private GameObject transitionResultScreen;
         [SerializeField]
         private Animator resultScreen;
         [SerializeField]
@@ -147,6 +136,24 @@ namespace VoiceActing
         private SimpleSpectrum spectrum;
         [SerializeField]
         private InputController inputController;
+
+
+
+
+
+        private Contract contract;
+        private List<VoiceActor> voiceActors;
+        private ActorsManager actorsManager;
+
+        private bool[] actorsLevelUp;
+        private int[] actorsOldLevel;
+
+        private int[] actorsOldSkillLevel;
+        private int[] actorsNewSkillLevel;
+
+        private int[] actorsOldHP;
+
+        private EmotionStat[] actorsOldStats;
 
         private bool inAnimation = true;
         private int lineDefeated = 0;
@@ -170,16 +177,45 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void SetManagers(Contract c, List<VoiceActor> va, ActorsManager aM)
+        {
+            actorsManager = aM;
+            contract = c;
+            voiceActors = va;
+        }
+
         public void ChangeEndScene(string newEndScene)
         {
             nextScene = newEndScene;
         }
 
-        public void SetContract(DoublageBattleParameter battleParameter)
+        public void LoadNewScene(string sceneName)
         {
-            contract = battleParameter.Contract;
-            voiceActors = battleParameter.VoiceActors;
+            actorsManager.ResetStat(voiceActors);
+            SceneManager.LoadScene(sceneName);
+        }
 
+        public void ShowResultScreen(PlayerData playerData, DoublageBattleParameter battleParameter)
+        {
+            this.gameObject.SetActive(true);
+            transitionResultScreen.SetActive(true);
+
+
+            actorsManager.ResetStat(voiceActors);
+            if (contract.CurrentLine == contract.TotalLine)
+            {
+                if (playerData.CurrentContract.StoryEventWhenEnd != null)
+                    playerData.NextStoryEvents.Add(playerData.CurrentContract.StoryEventWhenEnd);
+            }
+            if (playerData.NextStoryEvents.Count != 0 || playerData.NextRandomEvent.Count != 0)
+                ChangeEndScene("EventScene");
+
+            DrawResultScreen(battleParameter);
+
+        }
+
+        private void DrawResultScreen(DoublageBattleParameter battleParameter)
+        {
             spectrum.audioSource = AudioManager.Instance.GetAudioSourceMusic();
             spectrum.enabled = true;
             actorsLevelUp = new bool[contract.VoiceActorsID.Count];
@@ -194,7 +230,7 @@ namespace VoiceActing
             actorsOldSkillLevel = new int[contract.VoiceActorsID.Count];
             actorsNewSkillLevel = new int[contract.VoiceActorsID.Count];
 
-            DrawEmotionUsed(battleParameter.Contract.EmotionsUsed);
+            DrawEmotionUsed(contract.EmotionsUsed);
             DrawResult(battleParameter.Turn, battleParameter.KillCount);
         }
 
@@ -220,7 +256,7 @@ namespace VoiceActing
             // Draw
             textName.text = contract.Name;
             textSessionNumber.text = contract.SessionNumber.ToString();
-            textCurrentLine.text = contract.CurrentLine.ToString();
+            textCurrentLine.text = (contract.CurrentLine-lineDefeated).ToString();
             textLineDefeated.text = lineDefeated.ToString();
             textMaxLine.text = contract.TotalLine.ToString();
 
@@ -229,11 +265,11 @@ namespace VoiceActing
             textEXP.text = "0";
             textExpBonus.text = "0";
 
-            lineGauge.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), lineGauge.localScale.y, lineGauge.localScale.z);
-            lineNewGauge.localScale = new Vector3((contract.CurrentLine / (float)contract.TotalLine), lineNewGauge.localScale.y, lineNewGauge.localScale.z);
+            lineGauge.localScale = new Vector3(((contract.CurrentLine - lineDefeated) / (float)contract.TotalLine), lineGauge.localScale.y, lineGauge.localScale.z);
+            lineNewGauge.localScale = new Vector3(((contract.CurrentLine - lineDefeated) / (float)contract.TotalLine), lineNewGauge.localScale.y, lineNewGauge.localScale.z);
 
             // Update Contract
-            contract.CurrentLine += lineDefeated;
+            //contract.CurrentLine += lineDefeated;
 
             int expBonus = 0;
             if (contract.CurrentLine == contract.TotalLine)
@@ -494,7 +530,7 @@ namespace VoiceActing
             for (int j = 0; j < voiceActors[i].FriendshipLevel.Length; j++)
             {
                 currentRelationMax = voiceActors[i].FriendshipLevel[j]+1;
-                if (currentRelation > voiceActors[i].FriendshipLevel[j])
+                if (currentRelation >= voiceActors[i].FriendshipLevel[j])
                 {
                     currentRelation -= voiceActors[i].FriendshipLevel[j];
                     actorsNewSkillLevel[i] = j;
@@ -504,13 +540,25 @@ namespace VoiceActing
                     break;
                 }
             }
-
+            if(actorsNewSkillLevel[i] == voiceActors[i].FriendshipLevel.Length) // Plus de skill a apprendre
+            {
+                return;
+            }
             textSkillRemaining[i].text = (currentRelationMax - currentRelation).ToString();
             skillGauge[i].transform.localScale = new Vector3(((currentRelation+1) / (float)currentRelationMax), 1, 1);
 
             if(actorsNewSkillLevel[i] != actorsOldSkillLevel[i])
                 animatorSkillGet[i].gameObject.SetActive(true);
         }
+
+
+
+
+
+
+
+
+
 
 
         private void ActivateLevelUp(int id)
@@ -627,7 +675,7 @@ namespace VoiceActing
 
         private void DrawNewSkill(int id)
         {
-            SkillData skill = skillDatabase.GetSkillData(voiceActors[id].Potentials[actorsNewSkillLevel[id]]);
+            SkillData skill = skillDatabase.GetSkillData(voiceActors[id].Potentials[actorsNewSkillLevel[id]]); // bug
             textSkillGet.text = skill.SkillName;
             textSkillGetDescription.text = skill.Description;
         }

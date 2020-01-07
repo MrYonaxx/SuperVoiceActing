@@ -20,6 +20,21 @@ namespace VoiceActing
         {
             get { return loadScene; }
         }
+
+        public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
+        {
+            if (loadScene != null)
+                eventManager.ResultScreen.LoadNewScene(loadScene);
+            /*else
+            {
+                eventManager.ResultScreen.ShowResultScreen(eventManager.)
+                while(true)
+                {
+                    yield return null;
+                }
+            }*/
+            yield break;
+        }
 		
 	} // DoublageEventResultScreen class
 	

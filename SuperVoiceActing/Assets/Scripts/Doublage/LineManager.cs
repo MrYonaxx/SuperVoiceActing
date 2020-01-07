@@ -21,6 +21,8 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
+        protected Animator animatorFeedback;
+        [SerializeField]
         protected RectTransform feedbackLine;
         [SerializeField]
         protected RectTransform feedbackLineTransform;
@@ -64,10 +66,10 @@ namespace VoiceActing
             if (feedbackLine == null)
                 return;
             textMeshLine.text = lineRemaining.ToString();
-            //textMeshTurn.text = turnCount.ToString();
             feedbackLine.anchoredPosition = new Vector2(feedbackLine.anchoredPosition.x, -50);
             feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
             feedbackLine.gameObject.SetActive(true);
+            animatorFeedback.SetTrigger("Feedback");
         }
 
         public void FeedbackNewLineSwitch(bool goLeft)
@@ -84,12 +86,13 @@ namespace VoiceActing
                 feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, 20);
             }
             feedbackLine.gameObject.SetActive(true);
+            animatorFeedback.SetTrigger("Feedback");
         }
 
         public void FeedbackFinalLine(float angle)
         {
             feedbackLine.transform.localRotation = Quaternion.Euler(0, 0, angle);
-            feedbackLine.GetComponent<Animator>().SetTrigger("FeedbackUltimeLine");
+            animatorFeedback.SetTrigger("FeedbackUltimeLine");
         }
 
         #endregion

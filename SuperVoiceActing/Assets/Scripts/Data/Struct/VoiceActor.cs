@@ -369,6 +369,7 @@ namespace VoiceActing
         public VoiceActor(VoiceActorData actorData)
         {
             voiceActorName = actorData.SpriteSheets.GetName();
+            Debug.Log(voiceActorName);
             voiceActorID = actorData.SpriteSheets.name;
             level = actorData.Level;
             fanGain = 0;
