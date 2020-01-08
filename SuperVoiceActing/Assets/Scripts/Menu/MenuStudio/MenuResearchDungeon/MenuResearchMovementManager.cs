@@ -39,7 +39,8 @@ namespace VoiceActing
             get { return researchEventList; }
         }
 
-
+        [SerializeField]
+        Tilemap groundTilemap;
         [SerializeField]
         Tilemap explorationTilemap;
         [SerializeField]
@@ -58,6 +59,12 @@ namespace VoiceActing
         [Title("Research")]
         [SerializeField]
         MenuRessourceResearch menuRessourceResearch;
+
+        [Title("UI")]
+        [SerializeField]
+        TextMeshProUGUI textDungeonName;
+        [SerializeField]
+        TextMeshProUGUI explorationCount;
 
         [Title("Movement")]
         [SerializeField]
@@ -111,35 +118,6 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        /*[Button("Test")]
-        private void CreateExplorationLayout()
-        {
-            explorationLayout.dungeonLayout = new int[debugLayout.dungeonLayout.GetLength(0), debugLayout.dungeonLayout.GetLength(1)];
-            for (int x = 0; x < debugLayout.dungeonLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < debugLayout.dungeonLayout.GetLength(1); y++)
-                {
-                    if (debugLayout.dungeonLayout[x, y] != 0)
-                        explorationLayout.dungeonLayout[x, y] = 1;
-                    else
-                        explorationLayout.dungeonLayout[x, y] = 0;
-                }
-            }
-        }*/
-
-        private void RenderExplorationLayout()
-        {
-            explorationTilemap.ClearAllTiles();
-            for (int x = 0; x < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(1); y++)
-                {
-                    if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[x, y] > 0)
-                        explorationTilemap.SetTile(new Vector3Int(x, y, 0), tileUnexplored);
-                }
-            }
-        }
-
         private ResearchEvent GetFromResearchEventList(int eventID)
         {
             for(int i = 0; i < researchEventList.Count; i++)
@@ -152,31 +130,33 @@ namespace VoiceActing
             return null;
         }
 
-
-        protected bool CheckResearchEventInPlayerData(int eventID)
+        public string GetDungeonName(int i)
         {
-            for (int i = 0; i < playerData.ResearchEventSaves.Count; i++)
-            {
-                if (playerData.ResearchEventSaves[i].EventID == eventID)
-                {
-                    return playerData.ResearchEventSaves[i].EventActive;
-                }
-            }
-            return false;
+            return dungeonLayouts[i].DungeonName;
         }
 
-        private void DestroyResearchEventList()
+
+
+        // ================================================================================
+        // R E N D E R    S E C T I O N
+
+        public void SetDungeon(int i)
         {
-            for(int i = 0; i < researchEventList.Count; i++)
-            {
-                Destroy(researchEventList[i].researchEvent.gameObject);
-            }
-            researchEventList.Clear();
+            dungeonID = i;
+            SetCharacter(playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition);
+            if (moveCoroutine != null)
+                StopCoroutine(moveCoroutine);
+            CreateEvents();
+            RenderExplorationLayout();
+            RenderDungeonTilemap();
+            textDungeonName.text = "   https://" + dungeonLayouts[dungeonID].DungeonName + ".com";
         }
 
         private void CreateEvents()
         {
             DestroyResearchEventList();
+            if (dungeonLayouts[dungeonID].ResearchEventLayout == null)
+                return;
             ResearchEvent currentEvent;
             int[,] eventLayout = dungeonLayouts[dungeonID].ResearchEventLayout;
             currentEventLayout = new int[eventLayout.GetLength(0), eventLayout.GetLength(1)];
@@ -200,6 +180,66 @@ namespace VoiceActing
             }
         }
 
+        protected bool CheckResearchEventInPlayerData(int eventID)
+        {
+            for (int i = 0; i < playerData.ResearchEventSaves.Count; i++)
+            {
+                if (playerData.ResearchEventSaves[i].EventID == eventID)
+                {
+                    return playerData.ResearchEventSaves[i].EventActive;
+                }
+            }
+            return false;
+        }
+
+        private void DestroyResearchEventList()
+        {
+            for (int i = 0; i < researchEventList.Count; i++)
+            {
+                Destroy(researchEventList[i].researchEvent.gameObject);
+            }
+            researchEventList.Clear();
+        }
+
+        private void RenderExplorationLayout()
+        {
+            explorationTilemap.ClearAllTiles();
+            playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount = playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationTotal;
+            for (int x = 0; x < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(1); y++)
+                {
+                    if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[x, y] > 0)
+                    {
+                        explorationTilemap.SetTile(new Vector3Int(x, y, 0), tileUnexplored);
+                        playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount -= 1;
+                    }
+                }
+            }
+            int percentage = (int)(((float)playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount / playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationTotal) * 100);
+            explorationCount.text = percentage + "%";
+        }
+
+        private void RenderDungeonTilemap()
+        {
+            groundTilemap.ClearAllTiles();
+            for (int x = 0; x < dungeonLayouts[dungeonID].ResearchDungeonLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < dungeonLayouts[dungeonID].ResearchDungeonLayout.GetLength(1); y++)
+                {
+                    if (dungeonLayouts[dungeonID].ResearchDungeonLayout[x, y] != 0)
+                        groundTilemap.SetTile(new Vector3Int(x, y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(x, y));
+                    else
+                        groundTilemap.SetTile(new Vector3Int(x, y, 0), null);
+                }
+            }
+        }
+
+        // R E N D E R    S E C T I O N
+        // ================================================================================
+
+
+
 
 
 
@@ -209,12 +249,8 @@ namespace VoiceActing
             cameraStudio.SetActive(false);
             cameraTilemap.SetActive(true);
 
-            SetCharacter(playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition);
-            if (moveCoroutine != null)
-                StopCoroutine(moveCoroutine);
-            CreateEvents();
-            RenderExplorationLayout();
             menuRessourceResearch.DrawResearchPoint(playerData.ResearchPoint);
+            SetDungeon(dungeonID);
         }
 
         public void QuitMenu()
@@ -225,8 +261,17 @@ namespace VoiceActing
             this.gameObject.SetActive(false);
         }
 
+        public void ActivateInput(bool b)
+        {
+            inputController.gameObject.SetActive(b);
+        }
 
 
+
+
+
+        // ===============================================================================
+        // M O V E M E N T    S E C T I O N
 
         public void SetCharacter(Vector2Int position)
         {
@@ -316,6 +361,9 @@ namespace VoiceActing
                 {
                     playerData.ResearchPoint -= 1;
                     menuRessourceResearch.DrawResearchPoint(playerData.ResearchPoint);
+                    playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount += 1;
+                    int percentage = (int)(((float)playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount / playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationTotal) * 100);
+                    explorationCount.text = percentage + "%";
                 }
             }
         }

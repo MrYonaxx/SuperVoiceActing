@@ -138,14 +138,24 @@ namespace VoiceActing
             set { researchExplorationLayout = value; }
         }
 
-        public ResearchExplorationData(Vector2Int startPos, int[,] explorationLayout)
+        [SerializeField]
+        [TableMatrix]
+        private bool dungeonUnlocked;
+        public bool DungeonUnlocked
+        {
+            get { return dungeonUnlocked; }
+            set { dungeonUnlocked = value; }
+        }
+
+        public ResearchExplorationData(Vector2Int startPos, int[,] explorationLayout, int explorationTotal, bool unlocked)
         {
             researchPlayerPosition = startPos;
             researchExplorationChest = 0;
             //researchExplorationTotalChest
             researchExplorationCount = 0;
-            //researchExplorationTotal
+            researchExplorationTotal = explorationTotal;
             researchExplorationLayout = explorationLayout;
+            dungeonUnlocked = unlocked;
         }
     }
 
@@ -885,8 +895,9 @@ namespace VoiceActing
             for(int i = 0; i < initialPlayerData.ResearchDungeonData.Length; i++)
             {
                 researchExplorationDatas[i] = new ResearchExplorationData(initialPlayerData.ResearchDungeonData[i].StartPosition, 
-                                                                          initialPlayerData.ResearchDungeonData[i].CreateExplorationLayout());
-                //researchExplorationDatas[i].ResearchExplorationLayout = initialPlayerData.ResearchDungeonData[i].CreateExplorationLayout();
+                                                                          initialPlayerData.ResearchDungeonData[i].CreateExplorationLayout(),
+                                                                          initialPlayerData.ResearchDungeonData[i].CalculateExplorationCount(),
+                                                                          initialPlayerData.ResearchDungeonData[i].DungeonUnlocked);
             }
 
             researchEventSaves.Clear();

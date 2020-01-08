@@ -20,6 +20,7 @@ namespace VoiceActing
         [HorizontalGroup]
         public int tileID;
         [HorizontalGroup]
+        [HideLabel]
         public Tile tile;
 
     }
@@ -40,6 +41,20 @@ namespace VoiceActing
     [CreateAssetMenu(fileName = "ResearchDungeon", menuName = "Research/ResearchDungeon", order = 1)]
     public class ResearchDungeonData: SerializedScriptableObject
     {
+
+        [SerializeField]
+        private string dungeonName;
+        public string DungeonName
+        {
+            get { return dungeonName; }
+        }
+
+        [SerializeField]
+        private bool dungeonUnlocked = true;
+        public bool DungeonUnlocked
+        {
+            get { return dungeonUnlocked; }
+        }
 
         [SerializeField]
         private Vector2Int startPosition;
@@ -76,21 +91,12 @@ namespace VoiceActing
             get { return researchEventLayout; }
         }
 
-        /*[Space]
         [SerializeField]
-        private ResearchEventDictionnary researchEventDictionnary;
-        public ResearchEventDictionnary ResearchEventDictionnary
+        private int researchExplorationTotal;
+        public int ResearchExplorationTotal
         {
-            get { return researchEventDictionnary; }
-        }*/
-
-        /*[Space]
-        [SerializeField]
-        private ResearchDatabase researchDatabase;
-        public ResearchDatabase ResearchDatabase
-        {
-            get { return researchDatabase; }
-        }*/
+            get { return researchExplorationTotal; }
+        }
 
 
 
@@ -170,6 +176,23 @@ namespace VoiceActing
                 }
             }
             return res;
+        }
+
+        [Button]
+        public int CalculateExplorationCount()
+        {
+            researchExplorationTotal = 0;
+            for (int y = 0; y < researchDungeonLayout.GetLength(1); y++)
+            {
+                for (int x = 0; x < researchDungeonLayout.GetLength(0); x++)
+                {
+                    if(researchDungeonLayout[x, y] > 0)
+                    {
+                        researchExplorationTotal += 1;
+                    }
+                }
+            }
+            return researchExplorationTotal;
         }
 
 

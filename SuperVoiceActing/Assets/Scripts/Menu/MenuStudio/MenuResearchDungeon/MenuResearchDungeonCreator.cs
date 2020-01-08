@@ -113,6 +113,7 @@ namespace VoiceActing
         [Button("Render the dungeon on the grid")]
         private void RenderDungeonTilemap()
         {
+            tilemap.ClearAllTiles();
             for (int x = 0; x < researchDungeon.ResearchDungeonLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < researchDungeon.ResearchDungeonLayout.GetLength(1); y++)
