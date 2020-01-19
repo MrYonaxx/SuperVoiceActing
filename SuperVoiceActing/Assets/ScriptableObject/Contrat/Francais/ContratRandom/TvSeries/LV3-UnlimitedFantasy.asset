@@ -31,23 +31,34 @@ MonoBehaviour:
   description:
   - "Unlimited [Nom] est une s\xE9rie de science et surtout de fiction.\n\nLe personnage
     principal utilise une arme \xE0 feu tirant des balles d'\xE9motions. Sa voix doit
-    refleter la munition utilis\xE9."
+    refleter la munition qu'il utilise."
   franchise:
     Enabled: 1
-    canScale: 1
     isSeries: 1
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
     canReboot: 0
-    rebootSuffix: 
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
     prefix: 0
     priorityScaling: 0
     priorityOrder: 0
+    priorityOrderNoLoop: 0
     priorityRandom: 0
     contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Kaze
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 1
       rolePersonality: 6
@@ -57,41 +68,40 @@ MonoBehaviour:
       fanMax: 200
       atkMin: 5
       atkMax: 10
-      defMin: 0
-      defMax: 0
       timbre: {x: 4, y: 8}
       timbreRand: {x: 5, y: 9}
       characterStatMin:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 15
+        sadness: 15
+        disgust: 15
+        anger: 20
+        surprise: 15
+        sweetness: 15
+        fear: 15
+        trust: 15
       characterStatMax:
         neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
+        joy: 15
+        sadness: 15
+        disgust: 20
+        anger: 20
+        surprise: 15
+        sweetness: 15
+        fear: 15
+        trust: 20
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
@@ -99,11 +109,11 @@ MonoBehaviour:
     textDataPossible:
     - text: "J'ai d\xE9cid\xE9 d'utiliser contre toi ces trois fragments d'\xE9motions
         !"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 30
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -115,23 +125,26 @@ MonoBehaviour:
         fear: -90
         trust: 50
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      all: 0
+      nbMin: 2
+      nbMax: 2
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
       textCopy: -1
     textDataPossible:
     - text: Un rayon de soleil et d'espoir...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -143,40 +156,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: '... Joie d''ambre.'
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: '... Joie d''ambre.'
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
     - text: "Les larmes d\xE9chirant le ciel..."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -188,40 +193,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: "... Tristesse azur\xE9e"
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: "... Tristesse azur\xE9e"
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
     - text: "La puanteur naus\xE9abonde de l'hypocrisie..."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -233,40 +230,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: "... D\xE9go\xFBt de jade."
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: "... D\xE9go\xFBt de jade."
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
     - text: Le grondement du coeur...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -278,12 +267,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: "... Col\xE8re \xE9carlate"
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: "... Col\xE8re \xE9carlate"
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
+    - text: Un instant de doute ou de bonheur...
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -295,68 +304,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
-    - text: Un instant de doute ou de bonheur ...
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: "... Surprise dor\xE9e."
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    - text: "... Surprise dor\xE9e."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
     - text: La passion de la fantaisie...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -368,40 +341,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: '... Douceur de diamant.'
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: '... Douceur de diamant.'
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
     - text: Le conflit du courage...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -413,12 +378,32 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-    - text: "... Peur d'\xE9b\xE8ne."
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: "... Peur d'\xE9b\xE8ne."
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
+    - text: Un poing enserrant la lune...
+      interlocuteurID: 0
+      advanced: 1
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -430,68 +415,44 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
-  - textDataCondition:
-      all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
-      characterCondition: 0
-      dictID: 
-      dictCondition: 
-      copy: 0
-      textCopy: -1
-    textDataPossible:
-    - text: Un poing enserrant la lune ...
-      textStats:
+      eventData: []
+      customTextDatas:
+      - text: '... Confiance d''Ivoire'
         interlocuteurID: 0
-        linked: 0
+        advanced: 0
         hpMin: 0
         hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
-    - text: '... Confiance d''Ivoire'
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: []
+        context: 
+        enemyResistance:
+          neutral: 0
+          joy: 0
+          sadness: 0
+          disgust: 0
+          anger: 0
+          surprise: 0
+          sweetness: 0
+          fear: 0
+          trust: 0
+        enemyWeakPoints: []
+        eventData: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
       copy: 0
       textCopy: -1
     textDataPossible:
     - text: Et pour finir...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -503,12 +464,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
     - text: Et pour terminer...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -520,8 +483,11 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

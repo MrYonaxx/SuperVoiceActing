@@ -53,7 +53,7 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Femme
       roleNames: []
       roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
       roleType: 0
@@ -64,8 +64,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 8
       atkMax: 12
-      defMin: 5
-      defMax: 6
       timbre: {x: -10, y: 0}
       timbreRand: {x: -10, y: 0}
       characterStatMin:
@@ -89,32 +87,15 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 1
-        skills:
+      skillRoleSelection:
+      - skillsA:
         - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 2
-        skills:
-        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
-    - roleName: 
+        skillsB: []
+        skillsC: []
+        skillsD: []
+    - roleName: Homme
       roleNames: []
-      roleSprite: {fileID: 21300000, guid: cb5684553cc7c234cac88d2d6ebf4d9c, type: 3}
+      roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
       lineMin: 30
@@ -123,8 +104,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 8
       atkMax: 12
-      defMin: 5
-      defMax: 6
       timbre: {x: 0, y: 10}
       timbreRand: {x: 0, y: 10}
       characterStatMin:
@@ -148,29 +127,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence:
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 0
-          conditionValue: 1
-        skills:
-        - {fileID: 11400000, guid: 0efc8d900b69da14eb1267e67130e2b0, type: 2}
-      - memo: 
-        startPhrase: 1
-        startAttack: 0
-        endAttack: 0
-        endPhrase: 0
-        conditions:
-        - condition: 2
-          mathOperator: 4
-          conditionValue: 2
-        skills:
-        - {fileID: 11400000, guid: b623c061930e2134480a72368b64fb41, type: 2}
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -187,10 +144,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Cette douce odeur...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 30
-        hpMax: 50
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -202,12 +160,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Ce parfum...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 30
-        hpMax: 50
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -219,11 +179,12 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
       nbMin: 2
-      nbMax: 4
+      nbMax: 3
       conditionChara: 0
       characterCondition: 0
       conditionDico: 0
@@ -233,10 +194,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Hmmm...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 40
-        hpMax: 60
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -248,12 +210,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Ha...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 40
-        hpMax: 60
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -265,12 +229,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Enivrant...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 40
-        hpMax: 60
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -282,12 +248,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Splendide...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 40
-        hpMax: 60
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -299,6 +267,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -313,10 +282,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Parfum [Nom], une fragrance euphorique.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 70
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -330,9 +300,11 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

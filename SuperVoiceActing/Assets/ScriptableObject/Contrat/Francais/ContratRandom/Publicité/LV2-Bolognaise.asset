@@ -52,7 +52,7 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Cuisinier
       roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
@@ -63,10 +63,8 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 5
       atkMax: 7
-      defMin: 0
-      defMax: 0
       timbre: {x: -1, y: 4}
-      timbreRand: {x: -1, y: 4}
+      timbreRand: {x: -1, y: 10}
       characterStatMin:
         neutral: 0
         joy: 15
@@ -88,7 +86,7 @@ MonoBehaviour:
         fear: 1
         trust: 13
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -106,10 +104,11 @@ MonoBehaviour:
     textDataPossible:
     - text: "Une des meilleures choses que j'ai go\xFBt\xE9 dans ma vie sont les spaghettis
         de ma Mama !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 30
-        hpMax: 35
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 40
@@ -123,6 +122,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 2
       - wordIndex: 12
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -137,10 +137,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "L'ardente saveur du coulis de tomates fra\xEEches !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 30
-        hpMax: 35
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 40
@@ -154,6 +155,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 4
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -168,10 +170,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "La viande de pays d'une qualit\xE9 unique !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 25
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 60
@@ -184,12 +187,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 7
+      eventData: []
       customTextDatas: []
     - text: "Le subtil go\xFBt du basilique !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 25
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 70
@@ -202,6 +207,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -216,10 +222,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "En temps que grand cuisinier, j'aime relever des d\xE9fis."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 25
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 40
@@ -232,6 +239,7 @@ MonoBehaviour:
         trust: 70
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -246,10 +254,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Et si... Je pouvais retranscrire ce go\xFBt unique !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 25
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -262,6 +271,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 4
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -276,10 +286,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Avec des nouilles instantan\xE9es !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 35
-        hpMax: 45
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 40
@@ -292,6 +303,7 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -306,10 +318,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "L'id\xE9e est folle mais je l'ai fait !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 40
@@ -322,13 +335,15 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
       customTextDatas: []
     - text: "Avec les nouilles instantan\xE9es Bolognaise, les saveurs de la m\xE9dit\xE9ran\xE9e
         sont retrouv\xE9es !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 40
-        hpMax: 50
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 40
@@ -340,6 +355,7 @@ MonoBehaviour:
         fear: -50
         trust: 50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -355,10 +371,11 @@ MonoBehaviour:
     textDataPossible:
     - text: "En plus, plus besoin d'acheter du parmesan, il est d\xE9j\xE0 dans la
         sauce !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 25
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -371,6 +388,7 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 9
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -386,10 +404,11 @@ MonoBehaviour:
     textDataPossible:
     - text: "Aussi bon, que celui pr\xE9par\xE9 par la mama, \xE0 la sueur de son
         front !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 25
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 60
@@ -402,9 +421,11 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

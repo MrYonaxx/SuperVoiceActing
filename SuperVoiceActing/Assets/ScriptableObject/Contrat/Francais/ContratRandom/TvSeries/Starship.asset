@@ -26,15 +26,33 @@ MonoBehaviour:
   contractDictionnary: []
   description:
   - "S\xE9rie de SF dans un vaisseau."
-  isFranchise: 0
-  franchiseNames: []
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Capitaine
-      - Amiral
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
       rolePersonality: 0
@@ -44,8 +62,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 0
       atkMax: 0
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -69,12 +85,12 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Operateur
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 1
       rolePersonality: 5
@@ -84,8 +100,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 0
       atkMax: 0
-      defMin: 0
-      defMax: 0
       timbre: {x: 1, y: 6}
       timbreRand: {x: 1, y: 6}
       characterStatMin:
@@ -109,12 +123,12 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Operatrice
+    - roleName: 
+      roleNames: []
       roleSprite: {fileID: 0}
       roleType: 1
       rolePersonality: 5
@@ -124,8 +138,6 @@ MonoBehaviour:
       fanMax: 0
       atkMin: 0
       atkMax: 0
-      defMin: 0
-      defMax: 0
       timbre: {x: -6, y: -1}
       timbreRand: {x: -6, y: -1}
       characterStatMin:
@@ -149,25 +161,28 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Capitaine, vaisseau non identifi\xE9 en approche."
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -179,21 +194,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Tentez d'\xE9tablir une communication."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -205,21 +225,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
-    - text: "Monsieur, leur syst\xE8me de vis\xE9e nous a pris pour cible."
-      textStats:
-        interlocuteurID: 2
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+    - text: "M-Monsieur, leur syst\xE8me de vis\xE9e nous a pris pour cible."
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -231,21 +256,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Faites de m\xEAme mais ne tirez pas, tentons une approche diplomatique."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -257,21 +287,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Monsieur ! c'est trop ta... !
-      textStats:
-        interlocuteurID: 2
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -283,21 +318,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Dommage critique sur le pont N\xB04."
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -309,21 +349,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Evacuez le secteur et levez les boucliers !
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -335,21 +380,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Impossible, le syst\xE8me de protection ne r\xE9pond plus."
-      textStats:
-        interlocuteurID: 2
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -361,21 +411,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Le secteur 3 et 5 ont \xE9galement \xE9t\xE9 touch\xE9."
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -387,22 +442,27 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Notre syst\xE8me de vis\xE9e \xE0 \xE9galement \xE9t\xE9 endommag\xE9
         !"
-      textStats:
-        interlocuteurID: 2
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -414,21 +474,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Monsieur, vos ordres ?
-      textStats:
-        interlocuteurID: 1
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -440,21 +505,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Moniseur !
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -466,21 +536,26 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
       characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: '...'
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -492,12 +567,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
     - text: "Evacuez le vaisseau, sauvez vos vie, c'est termin\xE9."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 0
-        hpMax: 0
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -509,8 +586,11 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
@@ -518,3 +598,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

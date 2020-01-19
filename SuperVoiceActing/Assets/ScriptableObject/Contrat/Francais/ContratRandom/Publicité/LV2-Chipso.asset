@@ -61,7 +61,7 @@ MonoBehaviour:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - roleName: 
+    - roleName: Narrateur
       roleNames: []
       roleSprite: {fileID: 0}
       roleType: 0
@@ -72,10 +72,8 @@ MonoBehaviour:
       fanMax: 58
       atkMin: 10
       atkMax: 12
-      defMin: 0
-      defMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      timbre: {x: -10, y: 10}
+      timbreRand: {x: -10, y: 10}
       characterStatMin:
         neutral: 0
         joy: 11
@@ -97,7 +95,7 @@ MonoBehaviour:
         fear: 0
         trust: 2
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -114,10 +112,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Des chips au d\xE9ssert !?"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -30
         joy: 30
@@ -130,12 +129,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
     - text: "Et oui ! Chipso D\xE9ssert !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -50
         joy: 50
@@ -148,6 +149,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -162,10 +164,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "De d\xE9liceuses chips enrob\xE9es de [Nom]."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -178,12 +181,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      eventData: []
       customTextDatas: []
     - text: "Ces fines chips fourr\xE9s au [Nom]."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -196,12 +201,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      eventData: []
       customTextDatas: []
     - text: "Une once de [Nom] et voil\xE0 !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -214,6 +221,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 5
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -228,10 +236,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Chipso [Nom] !
-      textStats:
-        interlocuteurID: 0
-        hpMin: 25
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -100
         joy: 80
@@ -244,6 +253,7 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -258,10 +268,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: CRACK
-      textStats:
-        interlocuteurID: 0
-        hpMin: 1
-        hpMax: 1
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 100
@@ -274,12 +285,14 @@ MonoBehaviour:
         trust: -100
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
       customTextDatas: []
     - text: "Avec Chipso, vos enfants ne rateront plus aucun d\xE9ssert !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 80
@@ -293,6 +306,7 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 5
       - wordIndex: 3
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -307,10 +321,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Et n'oubliez pas avec Chipso, on en a jamais trop !
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -50
         joy: 0
@@ -323,6 +338,7 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 8
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -337,10 +353,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Chipso D\xE9ssert !"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 25
-        hpMax: 30
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -90
         joy: 80
@@ -353,9 +370,11 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
