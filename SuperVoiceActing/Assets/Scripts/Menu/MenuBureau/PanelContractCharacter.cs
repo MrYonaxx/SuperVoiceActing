@@ -83,10 +83,14 @@ namespace VoiceActing
             textRoleLine.text = role.Line.ToString();
             textRoleCadence.text = role.Attack.ToString();
             textRoleInfluence.text = role.Defense.ToString();
-            if(textCharacterType != null)
+            if (textCharacterType != null)
+            {
+                textCharacterType.text = role.RoleType.ToString();
+            }
+            /*if (textCharacterType != null)
             {
                 textCharacterType.text = role.RoleType + " - " + role.RolePersonality;
-            }
+            }*/
             if (role.RoleSprite == null)
             {
                 roleFace.enabled = false;

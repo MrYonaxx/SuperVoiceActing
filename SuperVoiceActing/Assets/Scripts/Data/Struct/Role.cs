@@ -17,7 +17,10 @@ namespace VoiceActing
         None,
         Protagoniste,
         Antagoniste,
-        VoixOff
+        VoixOff,
+        NPC,
+        Boss,
+        PersonnageSecondaire
     }
     public enum RolePersonality
     {
@@ -103,12 +106,12 @@ namespace VoiceActing
         {
             get { return roleType; }
         }
-        [SerializeField]
+        /*[SerializeField]
         private RolePersonality rolePersonality;
         public RolePersonality RolePersonality
         {
             get { return rolePersonality; }
-        }
+        }*/
 
         [SerializeField]
         private Vector2Int timbre;
@@ -235,7 +238,7 @@ namespace VoiceActing
             else
                 this.name = data.RoleNames[r];
 
-            this.rolePersonality = data.RolePersonality;
+            //this.rolePersonality = data.RolePersonality;
             this.roleType = data.RoleType;
 
             this.line = Random.Range(data.LineMin, data.LineMax);

@@ -63,19 +63,16 @@ MonoBehaviour:
     charactersProfil:
     - roleName: Narrateur
       roleNames: []
-      roleSprite: {fileID: 0}
       roleType: 0
-      rolePersonality: 0
+      roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
       fanMin: 30
       fanMax: 50
       atkMin: 6
       atkMax: 8
-      defMin: 0
-      defMax: 0
-      timbre: {x: 0, y: 0}
-      timbreRand: {x: 0, y: 0}
+      timbre: {x: -10, y: 10}
+      timbreRand: {x: -10, y: 10}
       characterStatMin:
         neutral: 0
         joy: 6
@@ -97,7 +94,7 @@ MonoBehaviour:
         fear: 7
         trust: 15
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -114,10 +111,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Il \xE9tait une fois au pays des cerf volants."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 30
@@ -129,12 +127,14 @@ MonoBehaviour:
         fear: -30
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Il \xE9tait une fois dans le royaume de S\xE9nak"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 30
@@ -146,12 +146,14 @@ MonoBehaviour:
         fear: -30
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Il \xE9tait une fois dans une lointaine contr\xE9e."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 30
@@ -163,6 +165,7 @@ MonoBehaviour:
         fear: -30
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -177,10 +180,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Un jeune chevalier en qu\xEAte de d\xE9fis."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 30
@@ -192,12 +196,14 @@ MonoBehaviour:
         fear: -30
         trust: 40
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Un noble jeune homme courageux.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 30
@@ -209,6 +215,7 @@ MonoBehaviour:
         fear: -30
         trust: 40
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -223,10 +230,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Il r\xEAvait de monter sur la plus haute des montagnes"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 20
@@ -238,6 +246,7 @@ MonoBehaviour:
         fear: 30
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -252,10 +261,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Un matin, d\xE9fiant les avertissements de ses parents il partit."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 10
         joy: 20
@@ -267,6 +277,7 @@ MonoBehaviour:
         fear: 10
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -281,10 +292,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Arm\xE9 de son sabre enchant\xE9"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 20
@@ -296,6 +308,7 @@ MonoBehaviour:
         fear: -20
         trust: 40
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -310,10 +323,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Il brava de nombreux obstcales affrontant b\xEAte et d\xE9mons."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 15
-        hpMax: 17
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 10
@@ -325,12 +339,14 @@ MonoBehaviour:
         fear: 50
         trust: 50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Il affronta de nombreux adversaires.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 10
@@ -342,6 +358,7 @@ MonoBehaviour:
         fear: 20
         trust: 50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 0
@@ -356,10 +373,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Mais son p\xE9riple le mettait face \xE0 des dangers toujours plus importants."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 10
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -371,6 +389,7 @@ MonoBehaviour:
         fear: 20
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -385,10 +404,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Arriv\xE9 au sommet, il poussa un immense cri de joie."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -400,12 +420,14 @@ MonoBehaviour:
         fear: -30
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Il avait accompli son but ultime
-      textStats:
-        interlocuteurID: 0
-        hpMin: 20
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -417,12 +439,14 @@ MonoBehaviour:
         fear: -30
         trust: 30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Mais...
-      textStats:
-        interlocuteurID: 0
-        hpMin: 5
-        hpMax: 8
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -30
@@ -434,6 +458,7 @@ MonoBehaviour:
         fear: 20
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -448,10 +473,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Il a tant donn\xE9 pour son r\xEAve"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 12
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 40
         joy: 30
@@ -463,12 +489,14 @@ MonoBehaviour:
         fear: 0
         trust: 20
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Qu'ext\xE9nu\xE9, voir soulag\xE9"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 12
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 40
         joy: 30
@@ -480,12 +508,14 @@ MonoBehaviour:
         fear: 0
         trust: 20
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Il se laissa tomber de la montagne.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 12
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -497,12 +527,14 @@ MonoBehaviour:
         fear: 10
         trust: 20
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Sans rien regretter.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 12
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 70
         joy: 50
@@ -514,6 +546,7 @@ MonoBehaviour:
         fear: 0
         trust: 20
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -528,10 +561,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Une fois que l'on a atteint sa raison de vivre.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 12
-        hpMax: 14
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 40
         joy: -30
@@ -543,12 +577,14 @@ MonoBehaviour:
         fear: 10
         trust: -30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Notre vie elle m\xEAme a-t-elle encore un sens ?"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 12
-        hpMax: 14
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 40
         joy: -30
@@ -560,12 +596,14 @@ MonoBehaviour:
         fear: -20
         trust: -30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Embrouill\xE9 par cette question, notre h\xE9ros n'avait qu'un choix"
-      textStats:
-        interlocuteurID: 0
-        hpMin: 13
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -30
@@ -577,12 +615,14 @@ MonoBehaviour:
         fear: 20
         trust: -30
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Et se laissa tomber de la montagne.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 14
-        hpMax: 16
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 70
         joy: -50
@@ -594,9 +634,11 @@ MonoBehaviour:
         fear: 50
         trust: -50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

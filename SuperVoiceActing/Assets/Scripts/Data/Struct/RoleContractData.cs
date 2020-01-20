@@ -69,7 +69,7 @@ namespace VoiceActing
             set { roleNames = value; }
         }
 
-        [VerticalGroup("RoleStat/Data/Left")]
+        /*[VerticalGroup("RoleStat/Data/Left")]
         [LabelWidth(80)]
         [HideLabel]
         [SerializeField]
@@ -77,7 +77,7 @@ namespace VoiceActing
         public Sprite RoleSprite
         {
             get { return roleSprite; }
-        }
+        }*/
 
         [VerticalGroup("RoleStat/Data/Middle")]
         [HideLabel]
@@ -90,11 +90,19 @@ namespace VoiceActing
         [VerticalGroup("RoleStat/Data/Right")]
         [HideLabel]
         [SerializeField]
+        private Sprite roleSprite;
+        public Sprite RoleSprite
+        {
+            get { return roleSprite; }
+        }
+        /*[VerticalGroup("RoleStat/Data/Right")]
+        [HideLabel]
+        [SerializeField]
         private RolePersonality rolePersonality;
         public RolePersonality RolePersonality
         {
             get { return rolePersonality; }
-        }
+        }*/
 
         [VerticalGroup("RoleStat/Data/Middle")]
         [SerializeField]
