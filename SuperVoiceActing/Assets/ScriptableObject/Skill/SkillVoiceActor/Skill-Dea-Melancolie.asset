@@ -13,52 +13,41 @@ MonoBehaviour:
   m_Name: Skill-Dea-Melancolie
   m_EditorClassIdentifier: 
   skillName: "M\xE9lancolie"
-  description: 
-  descriptionBattle: "0 D\xE9gats"
-  skillType: 1
+  description: Augmente de 1 la Tristesse.
+  descriptionBattle: 
+  skillType: 0
   buffData:
-    turnActive: 2
-    refresh: 0
-    addBuffTurn: 1
-    canAddMultiple: 0
+    buffName: 
     infinite: 0
-    lineCount: 0
     tickEffect: 0
     endEffect: 0
-    buffName: 
+    turnActive: 1
+    refresh: 0
+    addBuffTurn: 1
+    lineCount: 0
+    canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
-  - eventNode: 6
+  - eventNode: 1
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
     skillEffectEmotionStat:
       skillTarget: 0
-      inPercentage: 0
       emotionStat:
         neutral: 0
         joy: 0
-        sadness: 0
+        sadness: 1
         disgust: 0
         anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-      statVariance: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -74,30 +63,41 @@ MonoBehaviour:
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: -1
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: -100
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
   bonusSkillEffects: []
   producerCost: 0
   isPassive: 0
   movelist:
     neutral: 0
     joy: 0
-    sadness: 0
+    sadness: 1
     disgust: 0
     anger: 0
     surprise: 0
-    sweetness: 0
+    sweetness: 1
     fear: 0
     trust: 0
-  activationTiming: 1
   onlyWhenMain: 0
+  onlyWhenSupport: 1
   onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
   skillConditions: []
   bigAnimation: 0
   isMalus: 0

@@ -294,7 +294,13 @@ namespace VoiceActing
                                 break;
                         }
                         if (skillList.Length != 0)
-                            skillRoles[i] = skillList[Random.Range(0, skillList.Length)].name;
+                        {
+                            int randSkill = Random.Range(0, skillList.Length);
+                            if(skillList[randSkill] != null)
+                                skillRoles[i] = skillList[randSkill].name;
+                            else
+                                skillRoles[i] = "";
+                        }
                         else
                             skillRoles[i] = "";
                     }

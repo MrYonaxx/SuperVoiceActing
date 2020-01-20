@@ -664,6 +664,7 @@ namespace VoiceActing
                 enemyManager.ResetHalo();
                 lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                 yield return EndSessionCoroutine(50);
+                yield break;
             }
 
             // Check si changement d'acteur
@@ -698,6 +699,7 @@ namespace VoiceActing
             //actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
             //roleManager.SetIndexRole(enemyManager.GetInterlocutor());
 
+            roleManager.SetIndexRole(battleParameter.IndexCurrentCharacter);
             emotionAttackManager.SwitchCardTransformToRessource();
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             actorsManager.DrawBuffIcon(battleParameter.CurrentActor());

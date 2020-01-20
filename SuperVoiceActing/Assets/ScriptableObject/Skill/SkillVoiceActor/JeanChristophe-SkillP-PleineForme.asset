@@ -18,7 +18,7 @@ MonoBehaviour:
   descriptionBattle: Stat +5
   skillType: 1
   buffData:
-    buffName: 
+    buffName: Pleine Forme
     infinite: 0
     tickEffect: 0
     endEffect: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
       secondEmotion: 0
   bonusSkillEffects: []
   producerCost: 0
-  isPassive: 0
+  isPassive: 1
   movelist:
     neutral: 0
     joy: 0
@@ -95,10 +95,32 @@ MonoBehaviour:
     fear: 0
     trust: 0
   onlyWhenMain: 1
-  onlyWhenSupport: 1
+  onlyWhenSupport: 0
   onlyOnce: 1
   onlyOncePerLine: 0
   onlyOncePerSwitch: 0
-  skillConditions: []
+  skillConditions:
+  - eventNode: 0
+    skillConditionHP:
+      targetVoiceActor: 1
+      targetSentence: 0
+      hpInterval: {x: 80, y: 100}
+    skillConditionPercentage:
+      percentage: 0
+    skillConditionCombo:
+      emotionCheck:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillConditionContractType:
+      contractType: 0
+    skillConditionCharacter:
+      characterData: {fileID: 0}
   bigAnimation: 1
   isMalus: 0
