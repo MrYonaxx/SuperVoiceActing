@@ -87,7 +87,7 @@ namespace VoiceActing
         [SerializeField]
         Image[] feedbackBestStat;
 
-        [Header("Stats Panel 1")]
+        [Title("Stats Panel 1")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
         GameObject representation1;
@@ -95,6 +95,8 @@ namespace VoiceActing
         TextMeshProUGUI[] textStatsActor;
         [SerializeField]
         RectTransform[] jaugeStatsActor;
+        [SerializeField]
+        Image[] imageStatsActor;
         [SerializeField]
         RectTransform[] jaugeStatsVoxographyActor;
         [SerializeField]
@@ -105,8 +107,10 @@ namespace VoiceActing
         Image[] jaugeEmptyActor;
         [SerializeField]
         Image[] jaugeEmptyRole;
+        [SerializeField]
+        Image[] imageStatsRole;
 
-        [Header("Stats Panel 2")]
+        [Title("Stats Panel 2")]
         [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
         GameObject representation2;
@@ -114,6 +118,8 @@ namespace VoiceActing
         TextMeshProUGUI[] textStatsActor2;
         [SerializeField]
         RectTransform[] jaugeStatsActor2;
+        [SerializeField]
+        Image[] imageStatsActor2;
         [SerializeField]
         TextMeshProUGUI[] textStatsRole2;
         [SerializeField]
@@ -587,6 +593,8 @@ namespace VoiceActing
                     textStatsActor[i].color = new Color(textStatsActor[i].color.r, textStatsActor[i].color.g, textStatsActor[i].color.b, 1f);
                     textStatsRole[i].color = new Color(textStatsRole[i].color.r, textStatsRole[i].color.g, textStatsRole[i].color.b, 1f);
                     imageStatIcon[i].color = new Color(imageStatIcon[i].color.r, imageStatIcon[i].color.g, imageStatIcon[i].color.b, 1f);
+                    imageStatsActor[i].color = new Color(imageStatsActor[i].color.r, imageStatsActor[i].color.g, imageStatsActor[i].color.b, 1f);
+                    imageStatsRole[i].color = new Color(imageStatsRole[i].color.r, imageStatsRole[i].color.g, imageStatsRole[i].color.b, 1f);
                     jaugeEmpty[i].color = new Color(0, 0, 0, 0.7f);
                     feedbackBestStat[i].gameObject.SetActive(true);
                 }
@@ -595,6 +603,8 @@ namespace VoiceActing
                     textStatsActor[i].color = new Color(textStatsActor[i].color.r, textStatsActor[i].color.g, textStatsActor[i].color.b, 0.5f);
                     textStatsRole[i].color = new Color(textStatsRole[i].color.r, textStatsRole[i].color.g, textStatsRole[i].color.b, 0.5f);
                     imageStatIcon[i].color = new Color(imageStatIcon[i].color.r, imageStatIcon[i].color.g, imageStatIcon[i].color.b, 0.5f);
+                    imageStatsActor[i].color = new Color(imageStatsActor[i].color.r, imageStatsActor[i].color.g, imageStatsActor[i].color.b, 0.5f);
+                    imageStatsRole[i].color = new Color(imageStatsRole[i].color.r, imageStatsRole[i].color.g, imageStatsRole[i].color.b, 0.5f);
                     jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
                     feedbackBestStat[i].gameObject.SetActive(false);
                 }
