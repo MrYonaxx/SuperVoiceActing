@@ -1,0 +1,337 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV4-ShonenSportif2
+  m_EditorClassIdentifier: 
+  contractName: '[Title] [Sport] S'
+  level: 5
+  contractType: 1
+  salaryMin: 3500
+  salaryMax: 4500
+  mixingMin: 10
+  mixingMax: 15
+  weekMin: 3
+  weekMax: 7
+  expGain: 20
+  expBonus: 100
+  contractDictionnary:
+  - nameID: '[Sport]'
+    namesDictionnary:
+    - Football
+    - Basketball
+    - Volleyball
+  - nameID: '[Title]'
+    namesDictionnary:
+    - L'as du
+    - Road to
+  - nameID: '[X]'
+    namesDictionnary:
+    - 5
+    - 2
+    - 3
+  description:
+  - "[Title] [Sport] est un dessin anim\xE9 de sport suivant les aventures de Ace
+    pour devenir un champion de [Sport].\n\nApr\xE8s la d\xE9faite de son \xE9quipe,
+    Ace va partir s'entra\xEEner pour maitriser une nouvelle technique."
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Ace
+      roleNames: []
+      roleType: 1
+      roleSprite: {fileID: 0}
+      lineMin: 100
+      lineMax: 150
+      fanMin: 800
+      fanMax: 1000
+      atkMin: 20
+      atkMax: 20
+      timbre: {x: -1, y: 4}
+      timbreRand: {x: -2, y: 4}
+      characterStatMin:
+        neutral: 0
+        joy: 10
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 14
+        trust: 15
+      characterStatMax:
+        neutral: 0
+        joy: 15
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 18
+        trust: 25
+      actorLocked: {fileID: 0}
+      skillRoleSelection:
+      - skillsA:
+        - {fileID: 11400000, guid: ede6c53357e0ed74e8e0ce71e71ea075, type: 2}
+        skillsB: []
+        skillsC:
+        - {fileID: 11400000, guid: dd9e15fe3a660124c933359a1438ce9e, type: 2}
+        skillsD: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Coach
+      roleNames: []
+      roleType: 7
+      roleSprite: {fileID: 0}
+      lineMin: 120
+      lineMax: 200
+      fanMin: 20
+      fanMax: 50
+      atkMin: 12
+      atkMax: 12
+      timbre: {x: 5, y: 10}
+      timbreRand: {x: 4, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 14
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 19
+        disgust: 0
+        anger: 0
+        surprise: 26
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection:
+      - skillsA:
+        - {fileID: 11400000, guid: aef5e99c77d3dff4c9c5baa0e056b138, type: 2}
+        skillsB: []
+        skillsC:
+        - {fileID: 11400000, guid: 26c318496d2301843a80513a86af1070, type: 2}
+        - {fileID: 0}
+        skillsD: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "(L'ann\xE9e prochaine ce sera notre derni\xE8re chance.)"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: -90
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "(La derni\xE8re chance de gagner le tournoi inter lyc\xE9e.)"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 50
+        disgust: 50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 50
+        trust: 50
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "Je dois \xE0 tout prix maitriser la technique du [...] !"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 50
+        disgust: -50
+        anger: 100
+        surprise: -50
+        sweetness: -50
+        fear: 100
+        trust: 50
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Ne me fais pas rire gamin.
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 100
+        anger: 100
+        surprise: 0
+        sweetness: 0
+        fear: -90
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "Je me suis entrain\xE9 [X] ans pour maitriser cette technique."
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 100
+        disgust: 50
+        anger: 50
+        surprise: 0
+        sweetness: 100
+        fear: -90
+        trust: 50
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: En 2 mois tu n'y arriveras pas.
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 50
+        disgust: 50
+        anger: 100
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: e ne baisserai pas les bras pour autant !
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 40
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 50
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 40
+  debugHPMax: 70

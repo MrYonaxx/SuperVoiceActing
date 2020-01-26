@@ -20,7 +20,8 @@ namespace VoiceActing
         VoixOff,
         NPC,
         Boss,
-        PersonnageSecondaire
+        PersonnageSecondaire,
+        Mentor
     }
     public enum RolePersonality
     {

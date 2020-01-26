@@ -284,7 +284,11 @@ namespace VoiceActing
         }
 
 
-
+        public void SetDebugHP(int hpmin, int hpmax)
+        {
+            hpMin = hpmin;
+            hpMax = hpmax;
+        }
     }
 
     [System.Serializable]
@@ -373,6 +377,11 @@ namespace VoiceActing
         public DoublageEventData[] EventData
         {
             get { return eventData; }
+        }
+        public void SetDebugHP(int hpmin, int hpmax)
+        {
+            hpMin = hpmin;
+            hpMax = hpmax;
         }
     }
 
@@ -664,10 +673,13 @@ namespace VoiceActing
             {
                 for (int j = 0; j < textDataContract[i].TextDataPossible.Length; j++)
                 {
-                    //textDataContract[i].TextDataPossible[j].TextStats.SetDebugHP(debugHPMin, debugHPMax);
-                    for (int k = 0; k < textDataContract[i].TextDataPossible[j].CustomTextDatas.Length; k++)
+                    textDataContract[i].TextDataPossible[j].SetDebugHP(debugHPMin, debugHPMax);
+                    if (textDataContract[i].TextDataPossible[j].CustomTextDatas != null)
                     {
-                        //textDataContract[i].TextDataPossible[j].CustomTextDatas[k].TextStats.SetDebugHP(debugHPMin, debugHPMax);
+                        for (int k = 0; k < textDataContract[i].TextDataPossible[j].CustomTextDatas.Length; k++)
+                        {
+                            textDataContract[i].TextDataPossible[j].CustomTextDatas[k].SetDebugHP(debugHPMin, debugHPMax);
+                        }
                     }
                 }
             }

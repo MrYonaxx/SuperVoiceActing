@@ -24,6 +24,8 @@ namespace VoiceActing
 
         [SerializeField]
         TextMeshProUGUI textRoleName;
+        [SerializeField]
+        TextMeshProUGUI textRoleType;
 
         [Title("FeedbacksAttack")]
         [SerializeField]
@@ -102,6 +104,7 @@ namespace VoiceActing
         {
             indexCurrentRole = newIndex;
             textRoleName.text = roles[indexCurrentRole].Name;
+            textRoleType.text = roles[indexCurrentRole].RoleType.ToString();
 
             indexCurrentSkill = 0;
             currentAttack = null;

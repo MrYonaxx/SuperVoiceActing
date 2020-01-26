@@ -1,0 +1,546 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV4-ShonenSportif3
+  m_EditorClassIdentifier: 
+  contractName: '[Title] [Sport] S'
+  level: 6
+  contractType: 1
+  salaryMin: 5000
+  salaryMax: 6000
+  mixingMin: 20
+  mixingMax: 25
+  weekMin: 3
+  weekMax: 7
+  expGain: 20
+  expBonus: 100
+  contractDictionnary:
+  - nameID: '[Sport]'
+    namesDictionnary:
+    - Football
+    - Basketball
+    - Volleyball
+  - nameID: '[Title]'
+    namesDictionnary:
+    - L'as du
+    - Road to
+  description:
+  - "[Title] [Sport] est un dessin anim\xE9 de sport suivant les aventures de Ace
+    pour devenir un champion de [Sport].\n\nC'est l'heure de la finale et l'\xE9quipe
+    d'Ace doit prendre sa revanche sur l'\xE9quipe de King.\n\nC'est le moment fatidique
+    !"
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Ace
+      roleNames: []
+      roleType: 1
+      roleSprite: {fileID: 0}
+      lineMin: 100
+      lineMax: 150
+      fanMin: 400
+      fanMax: 600
+      atkMin: 20
+      atkMax: 20
+      timbre: {x: -1, y: 4}
+      timbreRand: {x: -2, y: 4}
+      characterStatMin:
+        neutral: 0
+        joy: 10
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 14
+        trust: 15
+      characterStatMax:
+        neutral: 0
+        joy: 15
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 18
+        trust: 25
+      actorLocked: {fileID: 0}
+      skillRoleSelection:
+      - skillsA:
+        - {fileID: 11400000, guid: ede6c53357e0ed74e8e0ce71e71ea075, type: 2}
+        skillsB: []
+        skillsC: []
+        skillsD: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Coach
+      roleNames: []
+      roleType: 7
+      roleSprite: {fileID: 0}
+      lineMin: 120
+      lineMax: 200
+      fanMin: 20
+      fanMax: 50
+      atkMin: 12
+      atkMax: 12
+      timbre: {x: 5, y: 10}
+      timbreRand: {x: 4, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 14
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 19
+        disgust: 0
+        anger: 0
+        surprise: 26
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection:
+      - skillsA:
+        - {fileID: 11400000, guid: dd9e15fe3a660124c933359a1438ce9e, type: 2}
+        skillsB: []
+        skillsC: []
+        skillsD: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: King
+      roleNames: []
+      roleType: 2
+      roleSprite: {fileID: 0}
+      lineMin: 40
+      lineMax: 60
+      fanMin: 800
+      fanMax: 1200
+      atkMin: 20
+      atkMax: 20
+      timbre: {x: 2, y: 7}
+      timbreRand: {x: 1, y: 8}
+      characterStatMin:
+        neutral: 0
+        joy: 14
+        sadness: 0
+        disgust: 14
+        anger: 14
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 20
+        sadness: 0
+        disgust: 18
+        anger: 20
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection:
+      - skillsA:
+        - {fileID: 0}
+        skillsB: []
+        skillsC: []
+        skillsD: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "C'est le match d\xE9cisif !"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 50
+        disgust: -90
+        anger: -90
+        surprise: -90
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Plus que 10 secondes pour marquer.
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 50
+        disgust: -90
+        anger: 0
+        surprise: -90
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "Je tiens \xE0 peine debout."
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 100
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 100
+        trust: 50
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Je dois tenter le tout pour le tout !
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 0
+        disgust: -50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: Pas le choix, je dois l'utiliser.
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: 0
+        disgust: -50
+        anger: 50
+        surprise: -90
+        sweetness: -90
+        fear: 50
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Cette position... !
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 100
+        sweetness: -90
+        fear: 50
+        trust: -90
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Impossible !? Il ne va quand m\xEAme pas l'utiliser !"
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 20
+        sadness: 0
+        disgust: -50
+        anger: 20
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: Impossible !? A cette distance ?
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -50
+        sadness: -50
+        disgust: -50
+        anger: 20
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Ne me sous-estime pas !
+      interlocuteurID: 2
+      advanced: 0
+      hpMin: 150
+      hpMax: 150
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: -50
+        disgust: 100
+        anger: 100
+        surprise: 0
+        sweetness: -100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: Ace !!!
+      interlocuteurID: 2
+      advanced: 0
+      hpMin: 100
+      hpMax: 100
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: -50
+        disgust: 100
+        anger: 100
+        surprise: 0
+        sweetness: -100
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Non ! King va l'a vu venir ! Il va l'intercepter !
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 60
+      hpMax: 90
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: -90
+        sadness: 50
+        disgust: 0
+        anger: 0
+        surprise: 100
+        sweetness: -90
+        fear: 100
+        trust: -90
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 0
+      nbMin: 1
+      nbMax: 1
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Je vais nous qualifier ! Moi et mes amis !!!
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: -50
+        disgust: 0
+        anger: 0
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: Tu ne m'arreteras pas !!!
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 60
+      hpMax: 70
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: -50
+        disgust: 0
+        anger: 0
+        surprise: -90
+        sweetness: -90
+        fear: -90
+        trust: 100
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 1
+  battleTheme: {fileID: 8300000, guid: 65ed2a835d87cd240b0d439cde6ec427, type: 3}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 60
+  debugHPMax: 70
