@@ -26,9 +26,8 @@ MonoBehaviour:
   contractDictionnary: []
   description:
   - "Et si les nombres avaient une conscience ?\nC'est le propos de Pr\xE9nom-bre
-    le nouveau film des cr\xE9ateurs de R\xEAverie.\n\nLa sc\xE8ne cl\xE9 se passe
-    dans le bistrot de 57 985, o\xF9 3 un des Chiffres\nva bouleverser le quotidien
-    du h\xE9ros."
+    notre nouveau film.\n\nLa sc\xE8ne cl\xE9 se passe dans le bistrot de 57 985,
+    o\xF9 3, un des Chiffres,\nva bouleverser le quotidien du h\xE9ros."
   franchise:
     Enabled: 1
     isSeries: 1
@@ -57,17 +56,14 @@ MonoBehaviour:
     charactersProfil:
     - roleName: 345 689
       roleNames: []
-      roleSprite: {fileID: 0}
       roleType: 1
-      rolePersonality: 0
+      roleSprite: {fileID: 0}
       lineMin: 0
       lineMax: 0
       fanMin: 0
       fanMax: 0
       atkMin: 0
       atkMax: 0
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -91,23 +87,20 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - roleName: 524 288
       roleNames: []
-      roleSprite: {fileID: 0}
       roleType: 1
-      rolePersonality: 0
+      roleSprite: {fileID: 0}
       lineMin: 0
       lineMax: 0
       fanMin: 0
       fanMax: 0
       atkMin: 0
       atkMax: 0
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -131,23 +124,20 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   - mainCharacter: 1
     optional: 0
     charactersProfil:
     - roleName: 3
       roleNames: []
-      roleSprite: {fileID: 0}
       roleType: 1
-      rolePersonality: 0
+      roleSprite: {fileID: 0}
       lineMin: 0
       lineMax: 0
       fanMin: 0
       fanMax: 0
       atkMin: 0
       atkMax: 0
-      defMin: 0
-      defMax: 0
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -171,7 +161,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
@@ -189,10 +179,11 @@ MonoBehaviour:
     textDataPossible:
     - text: "La poisse ! Dire que j'allais \xEAtre choisi comme r\xE9sultat au prochain
         contr\xF4le..."
-      textStats:
-        interlocuteurID: 1
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -50
@@ -204,6 +195,7 @@ MonoBehaviour:
         fear: -50
         trust: -50
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -218,10 +210,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Relax, t'es une puissance de 2, quelqu'un finira bien par te calculer.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -233,12 +226,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: "Alors que moi... je ne suis pas un num\xE9ro exceptionnel."
-      textStats:
-        interlocuteurID: 0
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -250,6 +245,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -264,10 +260,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Hrm... Hrm... excusez-moi messieurs, je cherche Num\xE9ro 345 689."
-      textStats:
-        interlocuteurID: 2
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -279,6 +276,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -293,10 +291,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Hein ? Qu'est-ce que tu lui v...
-      textStats:
-        interlocuteurID: 1
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -308,12 +307,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Bon sang ! C-C-C'est le Chiffre... le Chiffre 3 ! En chair et en os !
-      textStats:
-        interlocuteurID: 1
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -325,6 +326,7 @@ MonoBehaviour:
         fear: 50
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -339,10 +341,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: Euh... c'est moi... Monsieur.
-      textStats:
-        interlocuteurID: 0
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -354,6 +357,7 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   - textDataCondition:
       all: 1
@@ -368,10 +372,11 @@ MonoBehaviour:
       textCopy: -1
     textDataPossible:
     - text: "Parfait ! H\xE9h\xE9 ! C'\xE9tait plus simple que pr\xE9vu."
-      textStats:
-        interlocuteurID: 2
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -383,12 +388,14 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
     - text: Je te souhaite bienvenue dans la famille des nombres premiers !
-      textStats:
-        interlocuteurID: 2
-        hpMin: 60
-        hpMax: 80
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -400,9 +407,11 @@ MonoBehaviour:
         fear: 0
         trust: 0
       enemyWeakPoints: []
+      eventData: []
       customTextDatas: []
   eventData: []
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}

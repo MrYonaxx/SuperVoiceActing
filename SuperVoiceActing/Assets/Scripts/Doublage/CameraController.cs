@@ -533,10 +533,10 @@ namespace VoiceActing
         {
             if (movCoroutine != null)
                 StopCoroutine(movCoroutine);
-            SetCamera(initialPosition.position.x + offset, initialPosition.position.y, initialPosition.position.z);
-            SetCameraRotation(initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + rotationOffset);
-            CameraMovement(initialPosition.position.x + offset + 0.02f, initialPosition.position.y, initialPosition.position.z, 
-                           initialPosition.eulerAngles.x, initialPosition.eulerAngles.y, initialPosition.eulerAngles.z + rotationOffset, 60);
+            SetCamera(initialPosition.localPosition.x, initialPosition.localPosition.y, initialPosition.localPosition.z + offset);
+            SetCameraRotation(initialPosition.localEulerAngles.x, initialPosition.localEulerAngles.y, initialPosition.localEulerAngles.z + rotationOffset);
+            CameraMovement(initialPosition.localPosition.x, initialPosition.localPosition.y, initialPosition.localPosition.z + offset + 0.02f, 
+                           initialPosition.localEulerAngles.x, initialPosition.localEulerAngles.y, initialPosition.localEulerAngles.z + rotationOffset, 60);
         }
 
         public void EndSequence()

@@ -233,6 +233,8 @@ namespace VoiceActing
 
             resultScreenManager.SetManagers(contrat, battleParameter.VoiceActors, actorsManager);
 
+            sessionRecapManager.DrawContract(contrat, battleParameter.VoiceActors, contrat.CurrentLine);
+
             SetPlayerSettings();
         }
 
@@ -635,6 +637,7 @@ namespace VoiceActing
             skillManager.UpdateMovelist();
             emotionAttackManager.StartTurnCardFeedback();
             toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
+            sessionRecapManager.DrawSessionLines(contrat, contrat.CurrentLine);
 
             roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
             soundEngineerManager.ShowCharacterShadows();

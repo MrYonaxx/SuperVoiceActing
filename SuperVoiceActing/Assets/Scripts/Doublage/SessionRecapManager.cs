@@ -86,9 +86,6 @@ namespace VoiceActing
 
         public void DrawContract(Contract contract, List<VoiceActor> voiceActors, int indexPhrase)
         {
-            inputController.gameObject.SetActive(true);
-            animatorRecap.gameObject.SetActive(true);
-            animatorRecap.SetTrigger("Appear");
             textContractName.text = contract.Name;
             textContractWeek.text = contract.WeekRemaining.ToString();
             textContractHype.text = "0";// contract.fan.ToString();
@@ -102,8 +99,14 @@ namespace VoiceActing
                 voiceActorsFace[i].sprite = characterSpriteDatabase.GetCharacterData(voiceActors[i].VoiceActorID).SpriteIcon;
             }
             DrawSessionLines(contract, indexPhrase);
-            MoveScrollList(9999);
+        }
 
+        public void MenuAppear()
+        {
+            inputController.gameObject.SetActive(true);
+            animatorRecap.gameObject.SetActive(true);
+            animatorRecap.SetTrigger("Appear");
+            MoveScrollList(9999);
         }
 
         public void ChangeCategory()
