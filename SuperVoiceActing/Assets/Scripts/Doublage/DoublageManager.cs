@@ -104,9 +104,7 @@ namespace VoiceActing
         [SerializeField]
         protected Animator buttonUIY;
         [SerializeField]
-        protected Animator buttonUIB;
-        [SerializeField]
-        protected Animator buttonUIA;
+        protected Animator buttonUI;
 
         [Title("AudioSource")]
         [SerializeField]
@@ -243,10 +241,8 @@ namespace VoiceActing
             int showCommand = PlayerPrefs.GetInt("ShowCommand");
             if (showCommand == 1)
             {
-                buttonUIA.enabled = false;
-                buttonUIB.enabled = false;
-                buttonUIA.gameObject.SetActive(false);
-                buttonUIB.gameObject.SetActive(false);
+                buttonUI.enabled = false;
+                buttonUI.gameObject.SetActive(false);
             }
         }
 
@@ -339,7 +335,7 @@ namespace VoiceActing
                 actorsManager.AddAttackDamage(battleParameter.CurrentActor(), roleManager.GetRoleAttack(), card.GetDamagePercentage());
                 actorsManager.AddAttackPower(battleParameter.CurrentActor(), card.GetStat());
 
-                battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
             }
         }
@@ -353,7 +349,7 @@ namespace VoiceActing
                 actorsManager.AddAttackDamage(battleParameter.CurrentActor(), roleManager.GetRoleAttack(), card.GetDamagePercentage());
                 actorsManager.AddAttackPower(battleParameter.CurrentActor(), card.GetStat());
 
-                battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
             }
         }
@@ -366,7 +362,7 @@ namespace VoiceActing
                 actorsManager.AddAttackDamage(battleParameter.CurrentActor(), -roleManager.GetRoleAttack(), card.GetDamagePercentage());
                 actorsManager.AddAttackPower(battleParameter.CurrentActor(), -card.GetStat());
 
-                battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+                battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
             }
         }
@@ -402,11 +398,12 @@ namespace VoiceActing
             battleParameter.Turn = turnManager.AdvanceTimer(battleParameter.Turn);
             actorsManager.ActorTakeDamage(battleParameter.CurrentActor());
             textAppearManager.ExplodeLetter(enemyManager.DamagePhrase(actorsManager.GetCurrentAttackPower(battleParameter.CurrentActor()),
-                                                                      battleParameter.LastAttackEmotion, 
+                                                                      battleParameter.CurrentAttackEmotion, 
                                                                       textAppearManager.GetWordSelected()),
                                             emotionAttackManager.GetComboCards());
-            characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter).ChangeEmotion(battleParameter.LastAttackEmotion[0]);
-            if(battleParameter.CurrentActor().Hp == 0)
+            characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter).ChangeEmotion(battleParameter.CurrentAttackEmotion[0]);
+            battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+            if (battleParameter.CurrentActor().Hp == 0)
             {
                 AudioManager.Instance.StopMusic(300);
                 textAppearManager.SetLetterSpeed(8);
@@ -584,8 +581,7 @@ namespace VoiceActing
             actorsManager.CheckBuffsCards();
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             roleManager.ShowHUDNextAttack(true);           
-            ShowUIButton(buttonUIA);
-            ShowUIButton(buttonUIB);
+            ShowUIButton(buttonUI);
             if (enemyManager.GetHpPercentage() == 0)
                 ShowUIButton(buttonUIY);
             else
@@ -627,13 +623,12 @@ namespace VoiceActing
 
         private IEnumerator CoroutineKillPhrase()
         {
-            inputController.gameObject.SetActive(false);
+            inputController.gameObject.SetActive(false);           
             contrat.EmotionsUsed.Add(new EmotionUsed(battleParameter.LastAttackEmotion));
             contrat.CurrentLine += 1;
             battleParameter.KillCount += 1;
             lineManager.DrawLineNumber(contrat.CurrentLine);
             emotionAttackManager.ResetCard();
-            battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
             skillManager.UpdateMovelist();
             emotionAttackManager.StartTurnCardFeedback();
             toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
@@ -644,6 +639,8 @@ namespace VoiceActing
             HideUIButton();
             roleManager.ShowHUDNextAttack(false);
             enemyManager.ShowHPEnemy(false);
+
+            battleParameter.LastAttackEmotion = null;
 
             // Nouvelle Phrase
             if (contrat.CurrentLine < contrat.TextData.Count)
@@ -753,8 +750,7 @@ namespace VoiceActing
             inputController.gameObject.SetActive(true);
             recIcon.SetActive(true);
             textAppearManager.NewPhrase(contrat.TextData[contrat.CurrentLine].Text, Emotion.Neutre, true);
-            ShowUIButton(buttonUIA);
-            ShowUIButton(buttonUIB);
+            ShowUIButton(buttonUI);
             roleManager.ShowHUDNextAttack(true);
             roleManager.DetermineCurrentAttack();
             characterDoublageManager.DrawActorsOrder(contrat.TextData, contrat.VoiceActorsID, contrat.CurrentLine);
@@ -857,7 +853,7 @@ namespace VoiceActing
 
         public void HideUIButton()
         {
-            if (buttonUIA == null)
+            if (buttonUI == null)
                 return;
 
             if (buttonUIY.gameObject.activeInHierarchy == true)
@@ -865,15 +861,10 @@ namespace VoiceActing
                 buttonUIY.SetTrigger("Disappear");
                 buttonUIY.ResetTrigger("Appear");
             }
-            if (buttonUIA.enabled == true)
+            if (buttonUI.enabled == true)
             {
-                buttonUIA.SetTrigger("Disappear");
-                buttonUIA.ResetTrigger("Appear");
-            }
-            if (buttonUIB.enabled == true)
-            {
-                buttonUIB.SetTrigger("Disappear");
-                buttonUIB.ResetTrigger("Appear");
+                buttonUI.SetTrigger("Disappear");
+                buttonUI.ResetTrigger("Appear");
             }
         }
 
@@ -903,7 +894,7 @@ namespace VoiceActing
                 return;
             soundEngineerManager.SwitchToMixingTable();
             emotionAttackManager.ResetCard();
-            battleParameter.LastAttackEmotion = emotionAttackManager.GetComboEmotion();
+            //battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
             skillManager.UpdateMovelist();
             //emotionAttackManager.SwitchCardTransformToRessource();
             cameraController.IngeSon();

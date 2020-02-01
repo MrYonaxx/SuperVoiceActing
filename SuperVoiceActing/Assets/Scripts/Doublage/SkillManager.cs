@@ -297,7 +297,7 @@ namespace VoiceActing
 
         public void UpdateMovelist()
         {
-            Emotion[] emotions = battleParameter.LastAttackEmotion;
+            Emotion[] emotions = battleParameter.CurrentAttackEmotion;
             bool b = false;
             string combos = "";
             for (int i = 0; i < movelistActor.Count; i++)

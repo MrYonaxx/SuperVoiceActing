@@ -191,6 +191,8 @@ namespace VoiceActing
 
         [Title("Animator & UI")]
         [SerializeField]
+        Animator animatorCards;
+        [SerializeField]
         Animator animatorCombo;
         [SerializeField]
         TextMeshProUGUI textComboName;
@@ -740,8 +742,8 @@ namespace VoiceActing
         // ================================================= //
         public void StartTurnCardFeedback()
         {
-            if (animatorCombo != null)
-                animatorCombo.SetTrigger("Feedback");
+            if (animatorCards != null)
+                animatorCards.SetTrigger("Feedback");
         }
 
         private void ParticleSelectEmotion(Emotion emotion)

@@ -32,6 +32,7 @@ namespace VoiceActing
         public EmotionCardTotal[] Cards { get; set; }
 
         public Emotion[] LastAttackEmotion { get; set; }
+        public Emotion[] CurrentAttackEmotion { get; set; }
 
 
         public BattleGimmick BattleGimmick { get; set; }
