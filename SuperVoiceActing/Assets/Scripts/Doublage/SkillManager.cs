@@ -141,7 +141,12 @@ namespace VoiceActing
         [SerializeField]
         RectTransform skillMovelistPanel;
 
+        [SerializeField]
+        RectTransform skillDescriptionPanel;
+        [SerializeField]
+        TextMeshProUGUI textSkillDescription;
 
+        private int movelistDescriptionIndex = -1;
 
 
         List<MovelistSkill> movelistActor = new List<MovelistSkill>();
@@ -287,7 +292,7 @@ namespace VoiceActing
             {
                 if (listSkillMovelistWindows.Count <= i)
                     listSkillMovelistWindows.Add(Instantiate(skillMovelistWindow, skillMovelistPanel));
-                listSkillMovelistWindows[i].DrawSkillMove(movelistActor[i].skillActor);
+                listSkillMovelistWindows[i].DrawSkillMove(movelistActor[i].skillActor, i);
                 listSkillMovelistWindows[i].gameObject.SetActive(true);
             }
             for (int i = movelistActor.Count; i < listSkillMovelistWindows.Count; i++)
@@ -350,6 +355,31 @@ namespace VoiceActing
             }
             if(moveActivated == true)
                 doubleur.FeedbackAura();
+        }
+
+
+        public void DrawMovelistDescription()
+        {
+            movelistDescriptionIndex += 1;
+            if(movelistDescriptionIndex == movelistActor.Count)
+            {
+                HideMovelistDescription();
+                return;
+            }
+            DrawMovelistDescription(movelistDescriptionIndex);
+        }
+
+        public void DrawMovelistDescription(int id)
+        {
+            skillDescriptionPanel.gameObject.SetActive(true);
+            //skillDescriptionPanel.anchoredPosition = new Vector2(skillDescriptionPanel.anchoredPosition.x, listSkillMovelistWindows[id].transform.position.y);
+            textSkillDescription.text = movelistActor[id].skillActor.Description;
+        }
+
+        public void HideMovelistDescription()
+        {
+            movelistDescriptionIndex = -1;
+            skillDescriptionPanel.gameObject.SetActive(false);
         }
 
         ///   M O V E L I S T

@@ -17,26 +17,27 @@ MonoBehaviour:
   descriptionBattle: <sprite=2> <---> <sprite=5>
   skillType: 0
   buffData:
+    buffName: 
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
     turnActive: 0
     refresh: 0
     addBuffTurn: 0
+    lineCount: 0
     canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
   skillEffects:
   - eventNode: 5
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-    skillEffectEmotionStat:
+    skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
+    skillEffectEmotionStat:
+      skillTarget: 0
       emotionStat:
         neutral: 0
         joy: 0
@@ -47,7 +48,6 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      statVariance: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -60,26 +60,38 @@ MonoBehaviour:
         fear: 0
         trust: 0
       damageVariance: 0
-    skillEffectHealth:
-      skillTarget: 0
-      inPercentage: 0
-      restoreChipDamage: 0
-      hpDamage: 0
-      hpDamageVariance: 0
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 3
       secondEmotion: 6
-    skillEffectResistance:
-      resistancePercentage: 0
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
-    skillEffectState:
-      state: 0
+  bonusSkillEffects: []
   producerCost: 0
+  counterSkill:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 1
+    anger: 0
+    surprise: 0
+    sweetness: 1
+    fear: 0
+    trust: 0
   canCounter: 1
   influenceMultiplier: 1
   influenceRandom: 0

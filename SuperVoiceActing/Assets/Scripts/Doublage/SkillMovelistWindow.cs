@@ -11,10 +11,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 namespace VoiceActing
 {
-    public class SkillMovelistWindow: MonoBehaviour
+    public class SkillMovelistWindow: MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         #region Attributes 
 
@@ -40,6 +42,13 @@ namespace VoiceActing
         List<Emotion> emotionSkill = new List<Emotion>();
         List<bool> emotionActive = new List<bool>();
 
+        int skillID = 0;
+
+        [SerializeField]
+        UnityEventInt eventClickEnter;
+        [SerializeField]
+        UnityEventInt eventClickExit;
+
         #endregion
 
         #region GettersSetters 
@@ -48,7 +57,7 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-     
+
 
         #endregion
 
@@ -62,7 +71,23 @@ namespace VoiceActing
             return textSkill.text;
         }
 
-        public void DrawSkillMove(SkillActorData skill)
+        public void DrawSkillName(string name, int id)
+        {
+            textSkill.text = name;
+
+            emotionSkill.Clear();
+            emotionActive.Clear();
+            for (int i = 0; i < imageEmotion.Length; i++)
+            {
+                imageEmotion[i].gameObject.SetActive(false);
+            }
+            textSkill.color = colorUnactive;
+            outlineSkill.color = colorUnactive;
+            skillID = id;
+        }
+
+
+        public void DrawSkillMove(SkillActorData skill, int id)
         {
             textSkill.text = skill.SkillName;
 
@@ -90,6 +115,38 @@ namespace VoiceActing
                     }
                 }
             }
+            skillID = id;
+        }
+
+        public void DrawSkillMove(SkillRoleData skill, int id)
+        {
+            textSkill.text = skill.SkillName;
+
+            emotionSkill.Clear();
+            emotionActive.Clear();
+            for (int i = 0; i < imageEmotion.Length; i++)
+            {
+                imageEmotion[i].gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < skill.CounterSkill.GetLength(); i++)
+            {
+                int emotionNumber = skill.CounterSkill.GetEmotion(i);
+                if (emotionNumber != 0)
+                {
+                    for (int j = 0; j < emotionNumber; j++)
+                    {
+                        emotionSkill.Add((Emotion)i);
+                        emotionActive.Add(false);
+                        imageEmotion[emotionSkill.Count - 1].sprite = emotionDictionary.GetSprite(i);
+                        imageEmotion[emotionSkill.Count - 1].gameObject.SetActive(true);
+                        imageEmotion[emotionSkill.Count - 1].color = colorUnactive;
+                        textSkill.color = colorUnactive;
+                        outlineSkill.color = colorUnactive;
+                    }
+                }
+            }
+            skillID = id;
         }
 
         public void ResetSkill()
@@ -151,6 +208,23 @@ namespace VoiceActing
             }
             return active;
         }
+
+
+        public void OnPointerEnter(PointerEventData pointerEventData)
+        {
+            eventClickEnter.Invoke(skillID);
+        }
+
+        public void OnPointerExit(PointerEventData pointerEventData)
+        {
+            eventClickExit.Invoke(skillID);
+        }
+
+        /*public void OnPointerClick(PointerEventData pointerEventData)
+        {
+            if (pointerEventData.button == PointerEventData.InputButton.Left)
+                eventOnClick.Invoke(buttonIndex);
+        }*/
 
         #endregion
 

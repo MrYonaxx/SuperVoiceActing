@@ -337,6 +337,7 @@ namespace VoiceActing
 
                 battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
+                roleManager.UpdateAttack(battleParameter.CurrentAttackEmotion);
             }
         }
 
@@ -351,6 +352,7 @@ namespace VoiceActing
 
                 battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
+                roleManager.UpdateAttack(battleParameter.CurrentAttackEmotion);
             }
         }
 
@@ -364,6 +366,7 @@ namespace VoiceActing
 
                 battleParameter.CurrentAttackEmotion = emotionAttackManager.GetComboEmotion();
                 skillManager.UpdateMovelist();
+                roleManager.UpdateAttack(battleParameter.CurrentAttackEmotion);
             }
         }
 

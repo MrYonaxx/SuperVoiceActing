@@ -16,6 +16,15 @@ namespace VoiceActing
     public class SkillRoleData : SkillData
 	{
         [Title("Influence Data")]
+        [HideLabel]
+        [SerializeField]
+        private EmotionStat counterSkill;
+        public EmotionStat CounterSkill
+        {
+            get { return counterSkill; }
+        }
+
+
         [SerializeField]
         private bool canCounter = true;
         public bool CanCounter

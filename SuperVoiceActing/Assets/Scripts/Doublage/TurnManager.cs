@@ -75,7 +75,7 @@ namespace VoiceActing
                 textTurnSecondDigit.color = colorDanger;
             }
 
-            if (turnCount / 10 < 1)
+            if (turnCount < 10)
             {
                 textTurnMainDigit.text = "0" + turnCount.ToString();
             }

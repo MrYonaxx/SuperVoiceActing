@@ -36,20 +36,8 @@ MonoBehaviour:
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
-    skillEffectCardGain:
-      cardGain:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
     skillEffectEmotionStat:
       skillTarget: 0
-      inPercentage: 1
       emotionStat:
         neutral: 0
         joy: 0
@@ -60,7 +48,6 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
-      statVariance: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -76,16 +63,35 @@ MonoBehaviour:
     skillEffectTurn:
       turnGain: 0
       turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
     skillEffectTradeStat:
       firstEmotion: 0
       secondEmotion: 0
-    skillEffectResistance:
-      resistancePercentage: 0
-    skillEffectInfluenceBonus:
-      inPercentage: 0
-      influenceBonus: 0
   bonusSkillEffects: []
   producerCost: 0
+  counterSkill:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 1
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
   canCounter: 1
   influenceMultiplier: 1
   influenceRandom: 0
