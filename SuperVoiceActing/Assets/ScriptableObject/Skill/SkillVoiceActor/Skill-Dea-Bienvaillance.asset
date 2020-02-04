@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill-Dea-Bienvaillance
   m_EditorClassIdentifier: 
   skillName: Bienvaillance
-  description: "20% de chance de redonner 1% d'endurance \xE0 toute l'\xE9quipe."
+  description: "D\xE9a restaure 1% d'endurance si elle n'est pas \xE0 la barre."
   descriptionBattle: HP + 1%
   skillType: 0
   buffData:
@@ -81,6 +81,7 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
   bonusSkillEffects: []
+  noPreview: 0
   producerCost: 0
   isPassive: 1
   movelist:
@@ -93,7 +94,7 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
-  onlyWhenMain: 1
+  onlyWhenMain: 0
   onlyWhenSupport: 1
   onlyOnce: 0
   onlyOncePerLine: 0
@@ -105,7 +106,7 @@ MonoBehaviour:
       targetSentence: 0
       hpInterval: {x: 0, y: 0}
     skillConditionPercentage:
-      percentage: 20
+      percentage: 100
     skillConditionCombo:
       emotionCheck:
         neutral: 0

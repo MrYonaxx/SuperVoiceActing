@@ -83,6 +83,7 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
   bonusSkillEffects: []
+  noPreview: 0
   producerCost: 0
   isPassive: 1
   movelist:
@@ -96,30 +97,10 @@ MonoBehaviour:
     fear: 0
     trust: 0
   onlyWhenMain: 0
-  onlyWhenSupport: 0
+  onlyWhenSupport: 1
   onlyOnce: 0
   onlyOncePerLine: 0
   onlyOncePerSwitch: 0
-  skillConditions:
-  - eventNode: 1
-    skillConditionHP:
-      targetVoiceActor: 0
-      targetSentence: 0
-      hpInterval: {x: 0, y: 0}
-    skillConditionPercentage:
-      percentage: 10
-    skillConditionCombo:
-      emotionCheck:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-    skillConditionCharacter:
-      characterData: {fileID: 0}
+  skillConditions: []
   bigAnimation: 0
   isMalus: 0

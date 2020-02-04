@@ -37,6 +37,12 @@ namespace VoiceActing
         Image outlineSkill;
         [SerializeField]
         TextMeshProUGUI textSkill;
+        [SerializeField]
+        Animator animatorSkill;
+        public Animator AnimatorSkill
+        {
+            get { return animatorSkill; }
+        }
 
 
         List<Emotion> emotionSkill = new List<Emotion>();
@@ -71,7 +77,7 @@ namespace VoiceActing
             return textSkill.text;
         }
 
-        public void DrawSkillName(string name, int id)
+        public void DrawSkillName(string name, int id = -1)
         {
             textSkill.text = name;
 
@@ -83,7 +89,10 @@ namespace VoiceActing
             }
             textSkill.color = colorUnactive;
             outlineSkill.color = colorUnactive;
-            skillID = id;
+            if (id != -1)
+            {
+                skillID = id;
+            }
         }
 
 

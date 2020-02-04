@@ -79,7 +79,10 @@ namespace VoiceActing
             {
                 textTurnMainDigit.text = "0" + turnCount.ToString();
             }
-            textTurnMainDigit.text = turnCount.ToString();
+            else
+            {
+                textTurnMainDigit.text = turnCount.ToString();
+            }
 
             float decimalPart = Mathf.FloorToInt(turnCount);
             decimalPart = turnCount - decimalPart;

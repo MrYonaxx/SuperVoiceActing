@@ -23,7 +23,11 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        protected float shake = 0.1f;
+        protected float sizeScaleX = 1.5f;
+        [SerializeField]
+        protected float sizeScaleY = 3f;
+        [SerializeField]
+        protected float timeSize = 30f;
 
         #endregion
 
@@ -41,6 +45,34 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+        protected override Vector3 ModifyPosition(int vertexIndex)
+        {
+            return Vector3.zero;
+        }
+
+        protected override Vector3 ModifyScale(int vertexIndex)
+        {
+            Vector3 scale = Vector3.one;
+            vertexAnim[vertexIndex].offset += 1;
+            if (vertexAnim[vertexIndex].offset < timeSize) 
+            {
+                scale = new Vector3(Mathf.SmoothStep(0, sizeScaleX, vertexAnim[vertexIndex].offset / timeSize), 
+                                    Mathf.SmoothStep(0, sizeScaleY, vertexAnim[vertexIndex].offset / timeSize), 
+                                    1);
+            }
+            else if (vertexAnim[vertexIndex].offset < timeSize * 3)
+            {
+                
+                scale = new Vector3(Mathf.SmoothStep(sizeScaleX, 1, (vertexAnim[vertexIndex].offset - timeSize) / (timeSize*2)), 
+                                    Mathf.SmoothStep(sizeScaleY, 1, (vertexAnim[vertexIndex].offset - timeSize) / (timeSize*2)), 
+                                    1);
+            }
+            else if(vertexAnim[vertexIndex].offset == timeSize * 20)
+            {
+                vertexAnim[vertexIndex].offset = 0;
+            }
+            return scale;
+        }
 
         /*protected override IEnumerator AnimateVertexColors()
         {

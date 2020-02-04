@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ara-SkillM-Joyeuse
   m_EditorClassIdentifier: 
   skillName: Joyeuse
-  description: "Bonus x1.1\nAra est tr\xE8s joyeuse et \xE0 50 chance d'ignorer l'influence
+  description: "Bonus +20%\nAra est tr\xE8s joyeuse et \xE0 50 chance d'ignorer l'influence
     du R\xF4le."
   descriptionBattle: 
   skillType: 1
@@ -29,7 +29,58 @@ MonoBehaviour:
     canAddMultiple: 0
     buffAll: 0
     conditionRemove: 0
-  skillEffects: []
+  skillEffects:
+  - eventNode: 4
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
+    skillEffectEmotionStat:
+      skillTarget: 0
+      emotionStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionDamage:
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      damageVariance: 0
+    skillEffectTurn:
+      turnGain: 0
+      turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 0.2
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
   bonusSkillEffects: []
   producerCost: 0
   isPassive: 0

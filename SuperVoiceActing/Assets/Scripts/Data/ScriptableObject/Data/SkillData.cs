@@ -200,7 +200,8 @@ namespace VoiceActing
             get { return bonusSkillEffects; }
         }
 
-
+        [SerializeField]
+        private bool noPreview = false;
 
         [Space]
         [Space]
@@ -217,22 +218,17 @@ namespace VoiceActing
 
         public void ApplySkill(DoublageBattleParameter doublageBattleParameter)
         {
+            bool canApply = true;
             if (skillType == SkillType.Buff)
             {
-                if (buffData.BuffAll)
+                for (int i = 0; i < doublageBattleParameter.VoiceActors.Count; i++)
                 {
-                    for (int i = 0; i < doublageBattleParameter.VoiceActors.Count; i++)
-                    {
+                    if (i == doublageBattleParameter.IndexCurrentCharacter)
+                        canApply = AddBuff(doublageBattleParameter.VoiceActors[doublageBattleParameter.IndexCurrentCharacter].Buffs, this);
+                    else if (buffData.BuffAll)
                         AddBuff(doublageBattleParameter.VoiceActors[i].Buffs, this);
-                        //doublageBattleParameter.VoiceActors[i].Buffs.Add(new Buff(this));
-                    }
                 }
-                else
-                {
-                    AddBuff(doublageBattleParameter.VoiceActors[doublageBattleParameter.IndexCurrentCharacter].Buffs, this);
-                    //doublageBattleParameter.VoiceActors[doublageBattleParameter.IndexCurrentCharacter].Buffs.Add(new Buff(this));
-                }
-                if (buffData.TickEffect == false && buffData.EndEffect == false)
+                if (buffData.TickEffect == false && buffData.EndEffect == false && canApply == true)
                     ApplySkillEffects(doublageBattleParameter);
             }
             else
@@ -254,12 +250,12 @@ namespace VoiceActing
             }
         }
 
-        private void AddBuff(List<Buff> listBuffs, SkillData skill)
+        private bool AddBuff(List<Buff> listBuffs, SkillData skill)
         {
             if(skill.BuffData.CanAddMultiple == true)
             {
                 listBuffs.Add(new Buff(skill));
-                return;
+                return true;
             }
             for(int i = 0; i < listBuffs.Count; i++)
             {
@@ -273,10 +269,11 @@ namespace VoiceActing
                     {
                         listBuffs[i].Turn += skill.BuffData.TurnActive;
                     }
-                    return;
+                    return false;
                 }
             }
             listBuffs.Add(new Buff(skill));
+            return true;
         }
 
 
@@ -300,6 +297,8 @@ namespace VoiceActing
 
         public void PreviewSkill(DoublageBattleParameter doublageBattleParameter)
         {
+            if (noPreview == true)
+                return;
             for (int i = 0; i < skillEffects.Length; i++)
             {
                 skillEffects[i].GetSkillEffectNode().PreviewSkill(doublageBattleParameter);
@@ -308,6 +307,8 @@ namespace VoiceActing
 
         public void StopPreview(DoublageBattleParameter doublageBattleParameter)
         {
+            if (noPreview == true)
+                return;
             for (int i = 0; i < skillEffects.Length; i++)
             {
                 skillEffects[i].GetSkillEffectNode().StopPreview(doublageBattleParameter);

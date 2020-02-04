@@ -337,6 +337,20 @@ namespace VoiceActing
             textCurrentCombos.text = combos;
         }
 
+        public void ResetMovelist()
+        {
+            textCurrentCombos.text = "";
+            doubleur.ActivateAura(false);
+            for (int i = 0; i < movelistActor.Count; i++)
+            {
+                listSkillMovelistWindows[i].ResetSkill();
+                if (movelistActor[i].active)
+                {
+                    movelistActor[i].active = false;
+                    movelistActor[i].skillActor.StopPreview(battleParameter);
+                }
+            }
+        }
 
         public void ActivateMovelist()
         {

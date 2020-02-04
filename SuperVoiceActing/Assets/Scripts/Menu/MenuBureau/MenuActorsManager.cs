@@ -127,7 +127,12 @@ namespace VoiceActing
         [SerializeField]
         Image[] jaugeEmpty;
 
+        [Header("Parameters")]
+        [SerializeField]
+        float maxStatValue = 100f;
+
         [Header("Colors")]
+        [SerializeField]
         float thresholdHealth = 0.5f;
         [SerializeField]
         Color colorNameNormal;
@@ -499,14 +504,14 @@ namespace VoiceActing
                 {
 
                     textStatsActor[i].text = currentStatActor.ToString();
-                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / 100f));
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / maxStatValue));
                     //DrawVoxographyBonusStat(jaugeStatsVoxographyActor[i], currentStatActor / 100f, actor.StatVoxography.GetEmotion(i + 1) / 100f);
                 }
                 else
                 {
 
                     textStatsActor2[i].text = currentStatActor.ToString();
-                    StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], currentStatActor / 100f));
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], currentStatActor / maxStatValue));
                 }
 
 
@@ -581,11 +586,11 @@ namespace VoiceActing
                 if (gaugeCursorMode == false)
                 {
                     textStatsRole[i].text = currentStatRole.ToString();
-                    jaugeStatsRole[i].transform.localScale = new Vector3(currentStatRole / 100f, 1, 1);
+                    jaugeStatsRole[i].transform.localScale = new Vector3(currentStatRole / maxStatValue, 1, 1);
                 }
                 else
                 {
-                    jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / 100f) * 500, 0);
+                    jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / maxStatValue) * 500, 0);
                 }
 
                 if(currentStatRole == auditionRole.BestStat || currentStatRole == auditionRole.SecondBestStat)
@@ -648,7 +653,7 @@ namespace VoiceActing
                     {
                         textStatsActor[i].text = Random.Range(1, 99).ToString();
                         if (time == 10)
-                            StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], Random.Range(1, 99) / 100f));
+                            StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], Random.Range(1, maxStatValue-1) / maxStatValue));
                     }
                 }
                 else
@@ -657,7 +662,7 @@ namespace VoiceActing
                     {
                         textStatsActor2[i].text = Random.Range(1, 99).ToString();
                         if (time == 10)
-                            StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], Random.Range(1, 99) / 100f));
+                            StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], Random.Range(1, maxStatValue-1) / maxStatValue));
                     }
                 }
                 time -= 1;
@@ -681,7 +686,7 @@ namespace VoiceActing
                 for (int i = 0; i < textStatsActor.Length; i++)
                 {
                     textStatsActor[i].text = "0";
-                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], 0 / 100f));
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], 0 / maxStatValue));
                     feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
                     imageStatIcon[i].color = new Color(1, 1, 1, imageStatIcon[i].color.a);
                     //jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);
@@ -693,7 +698,7 @@ namespace VoiceActing
                 for (int i = 0; i < textStatsActor.Length; i++)
                 {
                     textStatsActor2[i].text = "0";
-                    StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], 0 / 100f));
+                    StartCoroutine(GaugeCoroutine(jaugeStatsActor2[i], 0 / maxStatValue));
                     feedbackBestStat[i].color = new Color(1, 1, 1, 0.5f);
                     imageStatIcon[i].color = new Color(1, 1, 1, imageStatIcon[i].color.a);
                     //jaugeEmpty[i].color = new Color(0, 0, 0, 0.4f);

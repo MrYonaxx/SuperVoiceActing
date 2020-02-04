@@ -72,9 +72,9 @@ namespace VoiceActing
 
         [Title("RoleAttackTimeline")]
         [SerializeField]
-        Animator[] animatorSkillTimeline;
+        RectTransform roleSkillsTransform;
         [SerializeField]
-        SkillMovelistWindow[] roleSkillsMovelist;
+        SkillMovelistWindow roleSkillPrefab;
 
 
 
@@ -88,9 +88,10 @@ namespace VoiceActing
 
         List<Role> roles;
         List<SkillRoleData> skillRoles = new List<SkillRoleData>();
+        List<SkillMovelistWindow> listSkillRoles = new List<SkillMovelistWindow>();
 
         int indexCurrentRole = 0;
-        int indexCurrentSkill = 0;
+        int indexCurrentSkill = -1;
         int currentAttackInfluence;
         private SkillRoleData currentAttack = null;
         private SkillManager skillManager = null;
@@ -111,30 +112,30 @@ namespace VoiceActing
             textRoleName.text = roles[indexCurrentRole].Name;
             textRoleType.text = roles[indexCurrentRole].RoleType.ToString();
 
-            indexCurrentSkill = 0;
+            indexCurrentSkill = -1;
             currentAttack = null;
             skillRoles.Clear();
             if (roles[indexCurrentRole].SkillRoles != null)
             {
-                /*for (int i = 0; i < roles[indexCurrentRole].SkillRoles.Length; i++)
-                {
-                    skillRoles.Add((SkillRoleData)skillManager.GetSkill(roles[indexCurrentRole].SkillRoles[i]));
-                    if (skillRoles[i] == null)
-                        textSkillTimelineName[i].text = "";
-                    else
-                        roleSkillsMovelist[indexCurrentSkill].DrawSkillName(skillRoles[i], skillRoles.Count-1);
-                }*/
                 for (int i = 0; i < roles[indexCurrentRole].SkillRoles.Length; i++)
                 {
                     if (roles[indexCurrentRole].SkillRoles[i] != null)
                     {
                         skillRoles.Add((SkillRoleData)skillManager.GetSkill(roles[indexCurrentRole].SkillRoles[i]));
-                        roleSkillsMovelist[indexCurrentSkill].DrawSkillName(skillRoles[i].SkillName, skillRoles.Count - 1);
+                        if (skillRoles.Count > listSkillRoles.Count)
+                        {
+                            listSkillRoles.Add(Instantiate(roleSkillPrefab, roleSkillsTransform));
+                            listSkillRoles[skillRoles.Count - 1].gameObject.SetActive(true);
+                        }
+                        if (skillRoles[skillRoles.Count - 1] == null)
+                            listSkillRoles[skillRoles.Count - 1].gameObject.SetActive(false);
+                        else
+                            listSkillRoles[skillRoles.Count - 1].DrawSkillName(skillRoles[i].SkillName, skillRoles.Count - 1);
                     }
-                    else
-                    {
-                        roleSkillsMovelist[indexCurrentSkill].DrawSkillName("", -1);
-                    }
+                }
+                for(int i = skillRoles.Count; i < listSkillRoles.Count; i++)
+                {
+                    listSkillRoles[i].gameObject.SetActive(false);
                 }
             }
 
@@ -187,19 +188,30 @@ namespace VoiceActing
                     if (nextAttackStay == true && i == indexCurrentSkill)
                         continue;
                     else
-                        animatorSkillTimeline[i].SetBool("Appear", show);
+                        listSkillRoles[i].AnimatorSkill.SetBool("Appear", show);
                 }
             }
+        }
+
+
+        public void DontAttack()
+        {
+            if (indexCurrentSkill >= 0)
+                listSkillRoles[indexCurrentSkill].DrawSkillName(skillRoles[indexCurrentSkill].SkillName);
+            indexCurrentSkill = -1;
+            currentAttack = null;
         }
 
         public void DetermineCurrentAttack()
         {
             if (skillRoles.Count == 0)
                 return;
+            if(indexCurrentSkill >= 0)
+                listSkillRoles[indexCurrentSkill].DrawSkillName(skillRoles[indexCurrentSkill].SkillName);
             indexCurrentSkill = Random.Range(0, skillRoles.Count);
             currentAttack = skillRoles[indexCurrentSkill];
-            animatorSkillTimeline[indexCurrentSkill].SetTrigger("isNextAttack");
-            roleSkillsMovelist[indexCurrentSkill].DrawSkillMove(skillRoles[indexCurrentSkill], indexCurrentSkill);
+            listSkillRoles[indexCurrentSkill].AnimatorSkill.SetTrigger("isNextAttack");
+            listSkillRoles[indexCurrentSkill].DrawSkillMove(skillRoles[indexCurrentSkill], indexCurrentSkill);
         }
 
 
@@ -208,7 +220,9 @@ namespace VoiceActing
 
         public void UpdateAttack(Emotion[] emotions)
         {
-            if (roleSkillsMovelist[indexCurrentSkill].CheckMove(emotions) == true)
+            if (indexCurrentSkill == -1)
+                return;
+            if (listSkillRoles[indexCurrentSkill].CheckMove(emotions) == true)
             {
             }
             else
@@ -305,8 +319,8 @@ namespace VoiceActing
         {
             enemyAttackFace.gameObject.SetActive(true);
             enemyAttackFace.SetTrigger("Appear");
-            animatorSkillTimeline[indexCurrentSkill].SetBool("Appear", false);
-            animatorSkillTimeline[indexCurrentSkill].SetTrigger("Feedback");
+            listSkillRoles[indexCurrentSkill].AnimatorSkill.SetBool("Appear", false);
+            listSkillRoles[indexCurrentSkill].AnimatorSkill.SetTrigger("Feedback");
             skillManager.PreviewSkill(currentAttack);
             yield return new WaitForSeconds(2.5f);
             cameraController.EnemySkillCancel();

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
   m_Name: MoineMaeda-SkillM-Terreur
   m_EditorClassIdentifier: 
-  skillName: Terreur Vivifiante
-  description: "Apr\xE8s une prise critique contenant <color=yellow>1</color> de Peur,
-    Moine-Maeda r\xE9cup\xE8re <color=yellow>5%</color> d'endurance."
+  skillName: Terreur
+  description: 'Bonus de prise +20%
+
+    Malus d''endurance +20%'
   descriptionBattle: Restaure 5% d'HP
   skillType: 1
   buffData:
@@ -66,7 +67,7 @@ MonoBehaviour:
       turnVariance: 0
     skillEffectResistance:
       addAttackPercentage: 0.2
-      addResistancePercentage: 1
+      addResistancePercentage: 0.2
     skillEffectCardGain:
       cardGain:
         neutral: 0
@@ -82,6 +83,7 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
   bonusSkillEffects: []
+  noPreview: 0
   producerCost: 0
   isPassive: 0
   movelist:
@@ -118,6 +120,8 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+    skillConditionContractType:
+      contractType: 0
     skillConditionCharacter:
       characterData: {fileID: 0}
   bigAnimation: 0

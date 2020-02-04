@@ -513,7 +513,6 @@ namespace VoiceActing
             {
                 //ChangeEventPhase();
                 yield return eventManager.StartEvent();
-                Debug.Log("Hello");
             }
 
             // Check Skill ========================================================================
@@ -580,15 +579,15 @@ namespace VoiceActing
             emotionAttackManager.ResetCard();
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
-            actorsManager.CheckBuffsActors();
-            actorsManager.CheckBuffsCards();
-            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
-            roleManager.ShowHUDNextAttack(true);           
+            actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);         
             ShowUIButton(buttonUI);
             if (enemyManager.GetHpPercentage() == 0)
                 ShowUIButton(buttonUIY);
             else
+            {
                 roleManager.DetermineCurrentAttack();
+                roleManager.ShowHUDNextAttack(true);
+            }
 
             // Reprint éventuel
             if (reprint == true || reprintText == true)
@@ -632,11 +631,12 @@ namespace VoiceActing
             battleParameter.KillCount += 1;
             lineManager.DrawLineNumber(contrat.CurrentLine);
             emotionAttackManager.ResetCard();
-            skillManager.UpdateMovelist();
+            skillManager.ResetMovelist();
             emotionAttackManager.StartTurnCardFeedback();
             toneManager.ModifyTone(battleParameter.LastAttackEmotion, battleParameter.IndexCurrentCharacter);
             sessionRecapManager.DrawSessionLines(contrat, contrat.CurrentLine);
 
+            roleManager.DontAttack();
             roleManager.AddScorePerformance(enemyManager.GetLastAttackScore(), enemyManager.GetBestMultiplier());
             soundEngineerManager.ShowCharacterShadows();
             HideUIButton();
@@ -747,7 +747,7 @@ namespace VoiceActing
             skillManager.UnbanSkills(true);
             skillManager.CheckPassiveSkillCondition(battleParameter.IndexCurrentCharacter);
             yield return skillManager.ActivatePassiveSkills(battleParameter.VoiceActors);
-            skillManager.CheckBuffs(battleParameter.VoiceActors, false);
+            skillManager.CheckBuffs(battleParameter.VoiceActors, true);
 
             emotionAttackManager.SwitchCardTransformToBattle();
             inputController.gameObject.SetActive(true);
@@ -755,7 +755,7 @@ namespace VoiceActing
             textAppearManager.NewPhrase(contrat.TextData[contrat.CurrentLine].Text, Emotion.Neutre, true);
             ShowUIButton(buttonUI);
             roleManager.ShowHUDNextAttack(true);
-            roleManager.DetermineCurrentAttack();
+            //roleManager.DetermineCurrentAttack();
             characterDoublageManager.DrawActorsOrder(contrat.TextData, contrat.VoiceActorsID, contrat.CurrentLine);
             toneManager.DrawTone(battleParameter.IndexCurrentCharacter);
             enemyManager.ShowHPEnemy(true);
