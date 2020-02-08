@@ -134,7 +134,7 @@ namespace VoiceActing
 
 
         protected bool endAttack = false;
-
+        protected bool skipIntro = false;
 
 
         // Tout les paramètres du combat en cours
@@ -189,6 +189,8 @@ namespace VoiceActing
         /// </summary>
         protected virtual void Start()
         {
+            if (skipIntro == true)
+                return;
             contrat = playerData.CurrentContract;           
             if(playerData.GetPlayerDebugSave() == true)
             {
@@ -201,6 +203,26 @@ namespace VoiceActing
                 }
             }
             StartCoroutine(IntroductionSequence());
+        }
+
+        public void StartSession()
+        {
+            contrat = playerData.CurrentContract;
+            if (playerData.GetPlayerDebugSave() == true)
+            {
+                if (contratData != null)
+                {
+                    playerData.CreatePlayerData(initialPlayerData);
+                    contrat = new Contract(contratData); // Pour Debug
+                    contrat.CheckCharacterLock(playerData.VoiceActors);
+                    playerData.CurrentContract = contrat;
+                }
+            }
+            skipIntro = true;
+            this.gameObject.SetActive(true);
+            InitializeManagers();
+            ShowUI(true);
+            SetPhrase();
         }
 
         private void InitializeManagers()
