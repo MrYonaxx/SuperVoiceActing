@@ -21,8 +21,8 @@ MonoBehaviour:
   mixingMax: 0
   weekMin: 3
   weekMax: 7
-  expGain: 20
-  expBonus: 100
+  expGain: 10000
+  expBonus: 10000
   contractDictionnary: []
   description: []
   franchise:
@@ -58,8 +58,8 @@ MonoBehaviour:
       lineMax: 0
       fanMin: 0
       fanMax: 0
-      atkMin: 0
-      atkMax: 0
+      atkMin: 10
+      atkMax: 20
       timbre: {x: 0, y: 0}
       timbreRand: {x: 0, y: 0}
       characterStatMin:
@@ -102,8 +102,66 @@ MonoBehaviour:
     - text: Et enfin commencer la super session d'enregistrement !
       interlocuteurID: 0
       advanced: 0
-      hpMin: 100
-      hpMax: 100
+      hpMin: 10
+      hpMax: 10
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "Utilisez la bonne \xE9motion pour interpr\xE9ter les lignes de dialogue."
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 40
+      hpMax: 40
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: -90
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "Accentuer un mot pertinent pour r\xE9aliser une prise critique !"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 40
+      hpMax: 40
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints:
+      - wordIndex: 3
+      eventData: []
+      customTextDatas: []
+    - text: "Et r\xE9aliser des combos d'\xE9motions pour une performance d'exception."
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
       context: 
       enemyResistance:
         neutral: 0

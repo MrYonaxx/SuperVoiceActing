@@ -146,6 +146,7 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
+
         public void ActivateMouth(float speed = -1, bool noSpeak = false)
         {
             if (this.gameObject.activeInHierarchy == false)

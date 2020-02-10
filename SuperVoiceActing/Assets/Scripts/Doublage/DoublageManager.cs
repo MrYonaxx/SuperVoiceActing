@@ -411,7 +411,7 @@ namespace VoiceActing
         }
 
         // Phase où l'attaque part
-        private void AttackFeedbackPhase()
+        public void AttackFeedbackPhase()
         {
             ShakeCurrentCharacter();
             AudioManager.Instance.PlaySound(audioClipAttack, 0.5f);
@@ -441,8 +441,6 @@ namespace VoiceActing
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             roleManager.ShowHUDNextAttack(false, true);
         }
-
-
 
 
 
@@ -643,6 +641,12 @@ namespace VoiceActing
                     StartCoroutine(CoroutineKillPhrase());              
                 }
             }
+        }
+
+        public void ForceNextLine()
+        {
+            contrat.CurrentLine += 1;
+            enemyManager.SetTextData(contrat.TextData[contrat.CurrentLine]);
         }
 
         private IEnumerator CoroutineKillPhrase()
@@ -995,7 +999,11 @@ namespace VoiceActing
                 return false;
         }
 
-
+        public void ShowResultScreen()
+        {
+            battleParameter.KillCount += 4;
+            resultScreenManager.ShowResultScreen(playerData, battleParameter);
+        }
 
 
 

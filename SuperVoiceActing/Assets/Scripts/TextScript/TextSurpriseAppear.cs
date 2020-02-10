@@ -67,10 +67,6 @@ namespace VoiceActing
                                     Mathf.SmoothStep(sizeScaleY, 1, (vertexAnim[vertexIndex].offset - timeSize) / (timeSize*2)), 
                                     1);
             }
-            else if(vertexAnim[vertexIndex].offset == timeSize * 20)
-            {
-                vertexAnim[vertexIndex].offset = 0;
-            }
             return scale;
         }
 

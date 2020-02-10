@@ -181,7 +181,6 @@ namespace VoiceActing
                 return;
 
             textMeshPro.text = newText;
-
             if (newText == "")
                 return;
 
@@ -364,7 +363,6 @@ namespace VoiceActing
 
         protected virtual IEnumerator AnimateVertexColors(int count = 1)
         {
-
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
             // Alternatively, we could yield and wait until the end of the frame when the text object will be generated.
             textMeshPro.ForceMeshUpdate();
@@ -388,8 +386,11 @@ namespace VoiceActing
             Color32[] newVertexColors = InitializeVertexColor();
             float t = 0;
 
-            if(mouth != null)
+            if (mouth != null)
+            {
                 mouth.ActivateMouth();
+            }
+
 
             while (true)
             {
@@ -422,8 +423,10 @@ namespace VoiceActing
                     actualTime += 1;
                 }*/
 
-                if(characterCount == textInfo.characterCount && mouth != null)
+                if (characterCount == textInfo.characterCount && mouth != null)
+                {
                     mouth.DesactivateMouth();
+                }
 
                 // If No Characters then just yield and wait for some text to be added
                 if (characterCount == 0)

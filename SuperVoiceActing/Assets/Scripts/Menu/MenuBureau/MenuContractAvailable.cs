@@ -155,6 +155,7 @@ namespace VoiceActing
         {
             listContractAvailable = list;
             CreateListButton();
+            animatorSelection.gameObject.SetActive(true);
         }
 
         public void DestroyButtonList()
