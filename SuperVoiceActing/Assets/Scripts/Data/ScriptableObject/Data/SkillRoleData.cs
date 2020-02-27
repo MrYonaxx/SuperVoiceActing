@@ -16,6 +16,12 @@ namespace VoiceActing
     public class SkillRoleData : SkillData
 	{
         [Title("Influence Data")]
+        [SerializeField]
+        private bool canCounter = true;
+        public bool CanCounter
+        {
+            get { return canCounter; }
+        }
         [HideLabel]
         [SerializeField]
         private EmotionStat counterSkill;
@@ -23,38 +29,6 @@ namespace VoiceActing
         {
             get { return counterSkill; }
         }
-
-
-        [SerializeField]
-        private bool canCounter = true;
-        public bool CanCounter
-        {
-            get { return canCounter; }
-        }
-
-        [SerializeField]
-        private int influenceMultiplier = 1;
-        public int InfluenceMultiplier
-        {
-            get { return influenceMultiplier; }
-        }
-
-        [SerializeField]
-        private int influenceRandom = 0;
-        public int InfluenceRandom
-        {
-            get { return influenceRandom; }
-        }
-
-        [InfoBox("Overwrite role influence value if not -1")]
-        [SerializeField]
-        private int influenceValue = -1;
-        public int InfluenceValue
-        {
-            get { return influenceValue; }
-        }
-
-
 
 
     } // SkillRoleData class

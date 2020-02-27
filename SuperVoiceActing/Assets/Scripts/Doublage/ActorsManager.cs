@@ -14,8 +14,8 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-	public class ActorsManager : MonoBehaviour
-	{
+    public class ActorsManager : MonoBehaviour
+    {
         #region Attributes 
 
         /* ======================================== *\
@@ -136,29 +136,18 @@ namespace VoiceActing
             }
         }
 
-        public bool AddBuff(Buff buff)
+
+        public void AddBonusStat(List<VoiceActor> voiceActors, Emotion[] emotions)
         {
-            /*for(int i = 0; i < actors[indexCurrentActor].Buffs.Count; i++)
+            if (emotions == null)
+                return;
+            EmotionStat toneAddValue = new EmotionStat(0, 0, 0, 0, 0, 0, 0, 0);
+            for (int i = 0; i < emotions.Length; i++)
             {
-                if (actors[indexCurrentActor].Buffs[i].SkillEffectbuff == buff.SkillEffectbuff)
-                {
-                    if (buff.BuffData.CanAddMultiple == false)
-                    {
-                        if (buff.BuffData.Refresh == true)
-                        {
-                            actors[indexCurrentActor].Buffs[i].Turn = buff.BuffData.TurnActive;
-                        }
-                        else if (buff.BuffData.AddBuffTurn == true)
-                        {
-                            actors[indexCurrentActor].Buffs[i].Turn += buff.BuffData.TurnActive;
-                        }
-                        return false;
-                    }
-                }
+                toneAddValue.Add((int)emotions[i], 1);
             }
-            actors[indexCurrentActor].Buffs.Add(buff);
-            DrawBuffIcon();*/
-            return true;
+            for(int i = 0; i < voiceActors.Count; i++)
+                voiceActors[i].StatModifier.Add(toneAddValue);
         }
 
         public void DrawBuffIcon(VoiceActor voiceActor)
@@ -310,7 +299,7 @@ namespace VoiceActing
             attackDamage += damageTmp;
             DrawAttackParameter(voiceActor);
             DrawDamagePrevisualization(voiceActor);
-            animatorDamage.SetBool("Appear", true);
+            //animatorDamage.SetBool("Appear", true);
         }
 
         private void DrawAttackParameter(VoiceActor voiceActor)
@@ -344,7 +333,7 @@ namespace VoiceActing
 
         public void ActorTakeDamage(VoiceActor voiceActor)
         {
-            animatorDamage.SetTrigger("Attack");
+            //animatorDamage.SetTrigger("Attack");
             ActorTakeDamage(voiceActor, (int) (attackDamage * voiceActor.BonusResistance));
             attackDamage = 0;
             textDamage.text = attackDamage.ToString();
@@ -374,7 +363,6 @@ namespace VoiceActing
             else
                 voiceActor.ChipDamage += damage;
             voiceActor.ChipDamage = Mathf.Max(0, voiceActor.ChipDamage);
-            Debug.Log(voiceActor.ChipDamage);
 
             ratioHPRegain = voiceActor.Hp + voiceActor.ChipDamage;
             if(ratioHPRegain > voiceActor.HpMax)

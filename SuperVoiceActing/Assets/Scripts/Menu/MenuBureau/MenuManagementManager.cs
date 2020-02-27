@@ -31,6 +31,8 @@ namespace VoiceActing
         private RandomEventDatabase randomEventDatabase;
         [SerializeField]
         private GameTimelineData gameTimelineData;
+        [SerializeField]
+        private int debugActorLevel = 20;
 
         [Header("Managers")]
         [SerializeField]
@@ -151,6 +153,7 @@ namespace VoiceActing
             {
                 // Si création de la liste
                 managementContract.AddGachaContractsUnderLevel(playerData);
+                playerData.LevelUpCharacters(debugActorLevel);
             }
 
             // Sinon nextWeek

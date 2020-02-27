@@ -238,6 +238,7 @@ namespace VoiceActing
         }
 
 
+
         public void ApplySkillEffects(DoublageBattleParameter doublageBattleParameter)
         {
             for (int i = 0; i < skillEffects.Length; i++)
@@ -249,6 +250,8 @@ namespace VoiceActing
                 bonusSkillEffects[i].ApplySkill(doublageBattleParameter);
             }
         }
+
+
 
         private bool AddBuff(List<Buff> listBuffs, SkillData skill)
         {

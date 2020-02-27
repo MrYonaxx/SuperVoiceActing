@@ -50,7 +50,7 @@ namespace VoiceActing
         [SerializeField]
         private Animator statImageActorAnimator;
         [SerializeField]
-        private Image statImageActor;
+        private CharacterDialogueController statImageActor;
         [SerializeField]
         private Image statOutlineImageActor;
         [SerializeField]
@@ -204,6 +204,8 @@ namespace VoiceActing
         SortManager sortManager;
         [SerializeField]
         MenuVoxography menuVoxography;
+        [SerializeField]
+        MenuActorsCV menuActorsCV;
         [SerializeField]
         MenuActorsSkill menuActorsSkill;
 
@@ -421,10 +423,10 @@ namespace VoiceActing
 
 
 
-
-            statImageActor.sprite = actorSprite.SpriteNormal[0];
+            statImageActor.SetStoryCharacterData(actorSprite);
+            //statImageActor.sprite = actorSprite.SpriteNormal[0];
             statOutlineImageActor.sprite = actorSprite.SpriteNormal[0];
-            statImageActor.SetNativeSize();
+            //statImageActor.SetNativeSize();
             statOutlineImageActor.SetNativeSize();
 
             statTimbre.anchorMin = new Vector2((actor.Timbre.x + 10) / 20f, 0);
@@ -505,7 +507,6 @@ namespace VoiceActing
 
                     textStatsActor[i].text = currentStatActor.ToString();
                     StartCoroutine(GaugeCoroutine(jaugeStatsActor[i], currentStatActor / maxStatValue));
-                    //DrawVoxographyBonusStat(jaugeStatsVoxographyActor[i], currentStatActor / 100f, actor.StatVoxography.GetEmotion(i + 1) / 100f);
                 }
                 else
                 {
@@ -593,7 +594,7 @@ namespace VoiceActing
                     jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / maxStatValue) * 500, 0);
                 }
 
-                if(currentStatRole == auditionRole.BestStat || currentStatRole == auditionRole.SecondBestStat)
+                if(i == auditionRole.BestStatEmotion-1 || i == auditionRole.SecondBestStatEmotion-1)
                 {
                     textStatsActor[i].color = new Color(textStatsActor[i].color.r, textStatsActor[i].color.g, textStatsActor[i].color.b, 1f);
                     textStatsRole[i].color = new Color(textStatsRole[i].color.r, textStatsRole[i].color.g, textStatsRole[i].color.b, 1f);
@@ -921,7 +922,7 @@ namespace VoiceActing
             }
             else
             {
-                ShowVoxographyMenu(true);
+                ShowActorCVMenu(true);
             }
         }
 
@@ -931,6 +932,14 @@ namespace VoiceActing
             inputController.gameObject.SetActive(!b);
             if (b == true)
                 menuVoxography.DrawVoxography(actorsList[indexActorSelected].Voxography);
+        }
+
+        public void ShowActorCVMenu(bool b)
+        {
+            menuActorsCV.ShowCVPanel(b);
+            inputController.gameObject.SetActive(!b);
+            if (b == true)
+                menuActorsCV.DrawActorCV(actorsList[indexActorSelected]);
         }
 
         public void ShowSortMenu()

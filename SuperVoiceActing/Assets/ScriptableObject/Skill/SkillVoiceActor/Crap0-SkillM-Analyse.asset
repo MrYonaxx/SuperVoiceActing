@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35949395ad5d14992bc98d486f8cba, type: 3}
+  m_Name: Crap0-SkillM-Analyse
+  m_EditorClassIdentifier: 
+  skillName: Analyse
+  description: "Augmente les d\xE9g\xE2ts des prises de 50% jusqu'\xE0 la prochaine
+    r\xE9plique."
+  descriptionBattle: 
+  skillType: 1
+  buffData:
+    buffName: Analyse
+    infinite: 0
+    tickEffect: 0
+    endEffect: 0
+    turnActive: 1
+    refresh: 0
+    addBuffTurn: 0
+    lineCount: 1
+    canAddMultiple: 0
+    buffAll: 0
+    conditionRemove: 0
+  skillEffects:
+  - eventNode: 4
+    skillEffectHealth:
+      skillTarget: 0
+      inPercentage: 0
+      ignoreHPLimit: 0
+      hpGain: 0
+      hpGainVariance: 0
+    skillEffectEmotionStat:
+      skillTarget: 0
+      emotionStat:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectEmotionDamage:
+      emotionDamage:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      damageVariance: 0
+    skillEffectTurn:
+      turnGain: 0
+      turnVariance: 0
+    skillEffectResistance:
+      addAttackPercentage: 50
+      addResistancePercentage: 0
+    skillEffectCardGain:
+      cardGain:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+    skillEffectTradeStat:
+      firstEmotion: 0
+      secondEmotion: 0
+  bonusSkillEffects: []
+  noPreview: 0
+  producerCost: 0
+  isPassive: 0
+  movelist:
+    neutral: 1
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
+  onlyWhenMain: 1
+  onlyWhenSupport: 1
+  onlyOnce: 0
+  onlyOncePerLine: 0
+  onlyOncePerSwitch: 0
+  skillConditions: []
+  bigAnimation: 1
+  isMalus: 0

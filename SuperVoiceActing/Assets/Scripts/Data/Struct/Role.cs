@@ -129,21 +129,6 @@ namespace VoiceActing
             get { return characterStat; }
             set { characterStat = value; }
         }
-
-        [SerializeField]
-        private int bestStat;
-        public int BestStat
-        {
-            get { return bestStat; }
-        }
-
-        [SerializeField]
-        private int secondBestStat;
-        public int SecondBestStat
-        {
-            get { return secondBestStat; }
-        }
-
         /// <summary>
         /// Emotion ID of the best stat the role have
         /// </summary>
@@ -272,45 +257,13 @@ namespace VoiceActing
                 this.characterLock = data.ActorLocked.SpriteSheets.name;
 
             // ================================== 
-            if (data.SkillRoleSelection != null)
+            if(data.SkillRoleSelection != null)
             {
                 if (data.SkillRoleSelection.Length != 0)
                 {
-                    skillRoles = new string[4];
-                    int selection = Random.Range(0, data.SkillRoleSelection.Length);
-
-                    SkillRoleData[] skillList = null;
-                    for (int i = 0; i < 4; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                skillList = data.SkillRoleSelection[selection].SkillsA;
-                                break;
-                            case 1:
-                                skillList = data.SkillRoleSelection[selection].SkillsB;
-                                break;
-                            case 2:
-                                skillList = data.SkillRoleSelection[selection].SkillsC;
-                                break;
-                            case 3:
-                                skillList = data.SkillRoleSelection[selection].SkillsD;
-                                break;
-                        }
-                        if (skillList.Length != 0)
-                        {
-                            int randSkill = Random.Range(0, skillList.Length);
-                            if(skillList[randSkill] != null)
-                                skillRoles[i] = skillList[randSkill].name;
-                            else
-                                skillRoles[i] = "";
-                        }
-                        else
-                            skillRoles[i] = "";
-                    }
+                    skillRoles = data.SkillRoleSelection[Random.Range(0, data.SkillRoleSelection.Length)].CreateSkillList();
                 }
             }
-
             // ==================================
 
             SelectBestStat();
@@ -320,43 +273,24 @@ namespace VoiceActing
 
         private void SelectBestStat()
         {
-            int[] bestValues = new int[8];
+            int bestStat = 0;
+            int secondBestStat = 0;
 
-            bestValues[0] = characterStat.Joy;
-            bestValues[1] = characterStat.Sadness;
-            bestValues[2] = characterStat.Disgust;
-            bestValues[3] = characterStat.Anger;
-            bestValues[4] = characterStat.Surprise;
-            bestValues[5] = characterStat.Sweetness;
-            bestValues[6] = characterStat.Fear;
-            bestValues[7] = characterStat.Trust;
-
-            bestStat = 0;
-            secondBestStat = 0;
-
-            for (int i = 0; i < bestValues.Length; i++)
+            for (int i = 1; i < characterStat.GetLength(); i++)
             {
-                if (bestValues[i] > bestStat)
+                int currentStat = characterStat.GetEmotion(i);
+                if (currentStat > bestStat)
                 {
                     secondBestStat = bestStat;
-                    bestStat = bestValues[i];
-                    bestStatEmotion = i + 1;
+                    bestStat = currentStat;
+                    bestStatEmotion = i;
                 }
-                else if (bestValues[i] > secondBestStat)
+                else if (currentStat > secondBestStat)
                 {
-                    secondBestStat = bestValues[i];
-                    secondBestStatEmotion = i + 1;
+                    secondBestStat = currentStat;
+                    secondBestStatEmotion = i;
                 }
             }
-            if (bestStat == 0)
-            {
-                bestStat = -1;
-            }
-            if (secondBestStat == 0)
-            {
-                secondBestStat = -1;
-            }
-
         }
 
 

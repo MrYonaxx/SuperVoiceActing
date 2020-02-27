@@ -337,7 +337,7 @@ namespace VoiceActing
                 textActorName.text = currentVoiceActors[indexSelected].VoiceActorName;
                 textActorFan.text = currentVoiceActors[indexSelected].Fan.ToString();
                 textActorCost.text = currentVoiceActors[indexSelected].Price.ToString();
-                textActorCadence.text = "-" + (currentVoiceActors[indexSelected].RoleDefense * 5) + " %";
+                //textActorCadence.text = "-" + (currentVoiceActors[indexSelected].RoleDefense * 5) + " %";
                 transformActorTimbre.anchorMin = new Vector2((currentVoiceActors[indexSelected].Timbre.x + 10) / 20f, 0);
                 transformActorTimbre.anchorMax = new Vector2((currentVoiceActors[indexSelected].Timbre.y + 10) / 20f, 1);
                 transformActorTimbre.anchoredPosition = Vector3.zero;
@@ -497,6 +497,10 @@ namespace VoiceActing
 
         private void CheckButtonInSession()
         {
+            if (currentContract.TotalLine == 0)
+            {
+                return;
+            }
             if (currentContract.SessionLock == true)
             {
                 HideButtonInSession();

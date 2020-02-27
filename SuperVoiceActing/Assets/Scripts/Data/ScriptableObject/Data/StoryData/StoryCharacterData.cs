@@ -37,8 +37,22 @@ namespace VoiceActing
         [SerializeField]
         string characterName;
 
+        [HorizontalGroup("VoiceReel")]
         [SerializeField]
-        string[] voiceReel;
+        string voiceReel;
+        public string VoiceReel
+        {
+            get { return voiceReel; }
+        }
+
+        [HorizontalGroup("VoiceReel", Width = 100)]
+        [HideLabel]
+        [SerializeField]
+        Emotion emotionVoiceReel;
+        public Emotion EmotionVoiceReel
+        {
+            get { return emotionVoiceReel; }
+        }
 
         [SerializeField]
         private AudioClip characterVoice;

@@ -214,6 +214,10 @@ namespace VoiceActing
             get { return actorLocked; }
         }
 
+
+        [TabGroup("Skills")]
+
+
         [TabGroup("Skills")]
         [GUIColor(0.9f, 0.9f, 1f, 1f)]
         [SerializeField]
@@ -229,33 +233,112 @@ namespace VoiceActing
     [System.Serializable]
     public class SkillRoleSelection
     {
+        [HorizontalGroup("skillRandom")]
+        [SerializeField]
+        private int randomDrawMin = 0;
+
+        [HorizontalGroup("skillRandom")]
+        [HideLabel]
+        [SerializeField]
+        private int randomDrawMax = 0;
+
+
         [HorizontalGroup("SkillRole")]
         [SerializeField]
-        private SkillRoleData[] skillsA;
-        public SkillRoleData[] SkillsA
+        private SkillRoleData[] skills;
+
+
+        [HorizontalGroup("SkillRole")]
+        [SerializeField]
+        private SkillRoleData[] skillsRandom;
+
+        /*[HorizontalGroup("SkillPattern")]
+        [SerializeField]
+        private bool patternRandom = true;
+        public bool PatternRandom
         {
-            get { return skillsA; }
+            get { return patternRandom; }
         }
-        [HorizontalGroup("SkillRole")]
+        [HorizontalGroup("SkillPattern")]
         [SerializeField]
-        private SkillRoleData[] skillsB;
-        public SkillRoleData[] SkillsB
+        private bool patternList = false;
+        public bool PatternList
         {
-            get { return skillsB; }
+            get { return patternList; }
         }
-        [HorizontalGroup("SkillRole")]
+
         [SerializeField]
-        private SkillRoleData[] skillsC;
-        public SkillRoleData[] SkillsC
+        private EnemyAI roleAI;
+        public EnemyAI RoleAI
         {
-            get { return skillsC; }
+            get { return roleAI; }
+        }*/
+
+
+        public string[] CreateSkillList()
+        {
+            List<string> res = new List<string>();
+            List<SkillRoleData> randSkills = new List<SkillRoleData>(skillsRandom.Length);
+            int randomDraw = Random.Range(randomDrawMin, randomDrawMax+1);
+
+            // On créer une liste de skill sélectionnable
+            for(int i = 0; i < skillsRandom.Length; i++)
+            {
+                randSkills.Add(skillsRandom[i]);
+            }
+
+            // On sélectionne les skills obligatoires
+            for(int i = 0; i < skills.Length; i++)
+            {
+                if (skills[i] == null)
+                    res.Add(" ");
+                else
+                    res.Add(skills[i].name);
+            }
+
+            // on comble les trous
+            for (int i = 0; i < res.Count; i++)
+            {
+                if (res[i] == " " && randomDraw != 0)
+                {
+                    randomDraw -= 1;              
+                    res[i] = SelectRandSkill(randSkills);
+                }
+            }
+
+            // On rajoute des skills random s'il en reste
+            while(randomDraw > 0)
+            {
+                if (randSkills == null)
+                {
+                    randomDraw = 0;
+                }
+                else if (randSkills.Count == 0)
+                {
+                    randomDraw = 0;
+                }
+                else
+                {
+                    randomDraw -= 1;
+                    res.Add(SelectRandSkill(randSkills));
+                }
+            }
+
+            return res.ToArray();
         }
-        [HorizontalGroup("SkillRole")]
-        [SerializeField]
-        private SkillRoleData[] skillsD;
-        public SkillRoleData[] SkillsD
+
+
+        private string SelectRandSkill(List<SkillRoleData> randList)
         {
-            get { return skillsD; }
+            string res = " ";
+            if (randList == null)
+                return res;
+            if (randList.Count == 0)
+                return res;
+            int i = Random.Range(0, randList.Count);
+            res = randList[i].name;
+            randList.RemoveAt(i);
+            return res;
         }
 
     }

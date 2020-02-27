@@ -17,10 +17,10 @@ MonoBehaviour:
 
     A chaque nouvelle ligne, 10% de chance de recevoir un bonus de 1 en Joie.'
   descriptionBattle: +1 Joie
-  skillType: 0
+  skillType: 1
   buffData:
-    buffName: 
-    infinite: 0
+    buffName: Positive Attitude
+    infinite: 1
     tickEffect: 0
     endEffect: 0
     turnActive: 0
@@ -38,11 +38,12 @@ MonoBehaviour:
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
+      damageRoleMultiplier: 0
     skillEffectEmotionStat:
       skillTarget: 0
       emotionStat:
         neutral: 0
-        joy: 1
+        joy: 5
         sadness: 0
         disgust: 0
         anger: 0

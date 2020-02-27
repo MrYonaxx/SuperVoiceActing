@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edb045d2619dde246a90741727d33d37, type: 3}
-  m_Name: RoleSkillColere
+  m_Name: RoleSkill-Confiant
   m_EditorClassIdentifier: 
-  skillName: "Col\xE8re"
-  description: "La col\xE8re du personnage est difficile \xE0 interpr\xE9ter."
-  descriptionBattle: -50% <sprite=3>
-  skillType: 1
+  skillName: Confiant
+  description: "Le r\xF4le est confiant."
+  descriptionBattle: 
+  skillType: 0
   buffData:
-    buffName: b
+    buffName: 
     infinite: 0
     tickEffect: 0
     endEffect: 0
-    turnActive: 4
-    refresh: 1
+    turnActive: 0
+    refresh: 0
     addBuffTurn: 0
     lineCount: 0
     canAddMultiple: 0
     buffAll: 0
     conditionRemove: 0
   skillEffects:
-  - eventNode: 1
+  - eventNode: 0
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
-      hpGain: 0
+      hpGain: -50
       hpGainVariance: 0
+      damageRoleMultiplier: -1
     skillEffectEmotionStat:
       skillTarget: 0
       emotionStat:
@@ -43,7 +44,7 @@ MonoBehaviour:
         joy: 0
         sadness: 0
         disgust: 0
-        anger: -50
+        anger: 0
         surprise: 0
         sweetness: 0
         fear: 0
@@ -81,18 +82,16 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
   bonusSkillEffects: []
+  noPreview: 0
   producerCost: 0
+  canCounter: 1
   counterSkill:
     neutral: 0
     joy: 0
     sadness: 0
     disgust: 0
-    anger: 1
+    anger: 0
     surprise: 0
     sweetness: 0
     fear: 0
-    trust: 0
-  canCounter: 1
-  influenceMultiplier: 1
-  influenceRandom: 0
-  influenceValue: -1
+    trust: 1

@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edb045d2619dde246a90741727d33d37, type: 3}
-  m_Name: RoleSkillCharismatic
+  m_Name: RoleSkill-Peureux
   m_EditorClassIdentifier: 
-  skillName: Charismatique
-  description: "Le charisme du personnage est difficile \xE0 interpr\xE9ter."
-  descriptionBattle: -50% <sprite=7>
-  skillType: 1
+  skillName: Peureux
+  description: 
+  descriptionBattle: 
+  skillType: 0
   buffData:
-    buffName: Cha
+    buffName: 
     infinite: 0
     tickEffect: 0
     endEffect: 0
-    turnActive: 4
-    refresh: 1
+    turnActive: 0
+    refresh: 0
     addBuffTurn: 0
     lineCount: 0
     canAddMultiple: 0
     buffAll: 0
     conditionRemove: 0
   skillEffects:
-  - eventNode: 1
+  - eventNode: 0
     skillEffectHealth:
       skillTarget: 0
       inPercentage: 0
       ignoreHPLimit: 0
-      hpGain: 0
+      hpGain: -50
       hpGainVariance: 0
+      damageRoleMultiplier: -1
     skillEffectEmotionStat:
       skillTarget: 0
       emotionStat:
@@ -47,7 +48,7 @@ MonoBehaviour:
         surprise: 0
         sweetness: 0
         fear: 0
-        trust: -50
+        trust: 0
     skillEffectEmotionDamage:
       emotionDamage:
         neutral: 0
@@ -81,7 +82,9 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
   bonusSkillEffects: []
+  noPreview: 0
   producerCost: 0
+  canCounter: 1
   counterSkill:
     neutral: 0
     joy: 0
@@ -90,9 +93,5 @@ MonoBehaviour:
     anger: 0
     surprise: 0
     sweetness: 0
-    fear: 0
-    trust: 1
-  canCounter: 1
-  influenceMultiplier: 1
-  influenceRandom: 0
-  influenceValue: -1
+    fear: 1
+    trust: 0

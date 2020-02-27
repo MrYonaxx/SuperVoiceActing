@@ -74,7 +74,7 @@ namespace VoiceActing
             for(int i = 0; i < roles.Count; i++)
             {
                 toneValues[i] = new EmotionStat();
-                toneValues[i].Add(roles[i].BestStat, Random.Range(startToneMin, startToneMax)+1);
+                toneValues[i].Add(roles[i].BestStatEmotion, Random.Range(startToneMin, startToneMax)+1);
                 toneValues[i].Add(roles[i].SecondBestStatEmotion, Random.Range(startToneMin, startToneMax));
             }
         }

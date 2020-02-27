@@ -356,6 +356,31 @@ namespace VoiceActing
             return new EmotionStat(-this.joy, -this.sadness, -this.disgust, -this.anger, -this.surprise, -this.sweetness, -this.fear, -this.trust);
         }
 
+        public void Multiply(EmotionStat multiplication)
+        {
+            this.joy *= multiplication.joy;
+            this.sadness *= multiplication.sadness;
+            this.disgust *= multiplication.disgust;
+            this.anger *= multiplication.anger;
+            this.surprise *= multiplication.surprise;
+            this.sweetness *= multiplication.sweetness;
+            this.fear *= multiplication.fear;
+            this.trust *= multiplication.trust;
+            this.neutral *= multiplication.neutral;
+        }
+        public void Multiply(float multiplication)
+        {
+            this.joy = (int) (joy * multiplication);
+            this.sadness = (int)(sadness * multiplication);
+            this.disgust = (int)(disgust * multiplication);
+            this.anger = (int)(anger * multiplication);
+            this.surprise = (int)(surprise * multiplication);
+            this.sweetness = (int)(sweetness * multiplication);
+            this.fear = (int)(fear * multiplication);
+            this.trust = (int)(trust * multiplication);
+            this.neutral = (int)(neutral * multiplication);
+        }
+
         public int GetEmotion(int emotion)
         {
             switch (emotion)

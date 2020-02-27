@@ -96,6 +96,8 @@ namespace VoiceActing
         private SkillRoleData currentAttack = null;
         private SkillManager skillManager = null;
 
+        bool counter = false;
+
         int[] roleInfluenceBonus = { 0, 0, 0 };
 
         #endregion
@@ -193,6 +195,18 @@ namespace VoiceActing
             }
         }
 
+        public void ActivateNextAttack()
+        {
+            if(counter == true)
+            {
+                counter = false;
+                listSkillRoles[indexCurrentSkill].AnimatorSkill.SetBool("Counter", false);
+                listSkillRoles[indexCurrentSkill].AnimatorSkill.SetBool("Appear", false);
+                DontAttack();
+
+            }
+        }
+
 
         public void DontAttack()
         {
@@ -224,10 +238,13 @@ namespace VoiceActing
                 return;
             if (listSkillRoles[indexCurrentSkill].CheckMove(emotions) == true)
             {
+                counter = true;
             }
             else
             {
+                counter = false;
             }
+            listSkillRoles[indexCurrentSkill].AnimatorSkill.SetBool("Counter", counter);
         }
 
 

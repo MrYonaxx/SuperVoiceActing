@@ -33,38 +33,43 @@ namespace VoiceActing
         [SerializeField]
         Transform researchEventTransform;
         [SerializeField]
-        List<ResearchEventData> researchEventList = new List<ResearchEventData>();
-        public List<ResearchEventData> ResearchEventList
-        {
-            get { return researchEventList; }
-        }
-
-        [SerializeField]
         Tilemap groundTilemap;
         [SerializeField]
         Tilemap explorationTilemap;
-        [SerializeField]
-        Tile tileUnexplored;
-
         [SerializeField]
         PlayerData playerData;
         public PlayerData PlayerData
         {
             get { return playerData; }
         }
-
         [SerializeField]
         InputController inputController;
+
+        [SerializeField]
+        List<ResearchEventData> researchEventList = new List<ResearchEventData>();
+        public List<ResearchEventData> ResearchEventList
+        {
+            get { return researchEventList; }
+        }
+        
+
+
 
         [Title("Research")]
         [SerializeField]
         MenuRessourceResearch menuRessourceResearch;
+
+
+
 
         [Title("UI")]
         [SerializeField]
         TextMeshProUGUI textDungeonName;
         [SerializeField]
         TextMeshProUGUI explorationCount;
+
+
+
 
         [Title("Movement")]
         [SerializeField]
@@ -74,11 +79,17 @@ namespace VoiceActing
         [SerializeField]
         Transform character;
 
+
+
+
         [Title("Camera")]
         [SerializeField]
         GameObject cameraStudio;
         [SerializeField]
         GameObject cameraTilemap;
+
+
+
 
         [Title("Chest Open")]
         [SerializeField]
@@ -147,9 +158,10 @@ namespace VoiceActing
             if (moveCoroutine != null)
                 StopCoroutine(moveCoroutine);
             CreateEvents();
-            RenderExplorationLayout();
+            //RenderExplorationLayout();
             RenderDungeonTilemap();
             textDungeonName.text = "   https://" + dungeonLayouts[dungeonID].DungeonName + ".com";
+            ExploreTile(playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition, false);
         }
 
         private void CreateEvents()
@@ -201,38 +213,38 @@ namespace VoiceActing
             researchEventList.Clear();
         }
 
-        private void RenderExplorationLayout()
+        private void RenderDungeonTilemap()
         {
+            groundTilemap.ClearAllTiles();
             explorationTilemap.ClearAllTiles();
-            playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount = playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationTotal;
+            playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount = 0;
+
             for (int x = 0; x < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout.GetLength(1); y++)
                 {
-                    if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[x, y] > 0)
+                    if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[x, y] == 2)
                     {
-                        explorationTilemap.SetTile(new Vector3Int(x, y, 0), tileUnexplored);
-                        playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount -= 1;
+                        groundTilemap.SetTile(new Vector3Int(x, y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(x, y));
+                        playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount += 1;
+                    }
+                    else if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[x, y] == 1)
+                    {
+                        explorationTilemap.SetTile(new Vector3Int(x, y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(x, y));
+                    }
+                    /*else if (dungeonLayouts[dungeonID].ResearchDungeonLayout[x, y] != 0)
+                    {
+                        explorationTilemap.SetTile(new Vector3Int(x, y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(x, y));
+                    }*/
+                    else
+                    {
+                        groundTilemap.SetTile(new Vector3Int(x, y, 0), null);
+                        explorationTilemap.SetTile(new Vector3Int(x, y, 0), null);
                     }
                 }
             }
             int percentage = (int)(((float)playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationCount / playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationTotal) * 100);
             explorationCount.text = percentage + "%";
-        }
-
-        private void RenderDungeonTilemap()
-        {
-            groundTilemap.ClearAllTiles();
-            for (int x = 0; x < dungeonLayouts[dungeonID].ResearchDungeonLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < dungeonLayouts[dungeonID].ResearchDungeonLayout.GetLength(1); y++)
-                {
-                    if (dungeonLayouts[dungeonID].ResearchDungeonLayout[x, y] != 0)
-                        groundTilemap.SetTile(new Vector3Int(x, y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(x, y));
-                    else
-                        groundTilemap.SetTile(new Vector3Int(x, y, 0), null);
-                }
-            }
         }
 
         // R E N D E R    S E C T I O N
@@ -305,6 +317,7 @@ namespace VoiceActing
         public IEnumerator Move(Vector3 direction)
         {
             inputController.gameObject.SetActive(false);
+
             // Check si prochaine case est traversable
             Vector2Int directionNormalized = new Vector2Int((int)direction.normalized.x, (int)direction.normalized.y);
             Vector2Int playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
@@ -324,22 +337,23 @@ namespace VoiceActing
                 }
             }
 
-            if (playerData.ResearchPoint == 0 && playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] > 0)
-            {
-                inputController.gameObject.SetActive(true);
-                yield break;
-            }
-            else
-                ExploreTile(playerPosition + directionNormalized, true);
-
             // Check si la prochaine case n'est pas un mur
             if (dungeonLayouts[dungeonID].ResearchDungeonLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] != 0)
             {
-                moveCoroutine = MoveCoroutine(direction);
+                if (playerData.ResearchPoint == 0 &&
+                    playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[playerPosition.x + directionNormalized.x, playerPosition.y + directionNormalized.y] < 2)
+                {
+                    inputController.gameObject.SetActive(true);
+                    yield break;
+                }
+                else
+                {
+                    ExploreTile(playerPosition + directionNormalized, true);
+                }
 
-                // Deplace la position du perso dans le player data
+                // Deplace le perso
+                moveCoroutine = MoveCoroutine(direction);
                 playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition += directionNormalized;
-                playerPosition = playerData.ResearchExplorationDatas[dungeonID].ResearchPlayerPosition;
             }
 
             yield return moveCoroutine;
@@ -350,13 +364,21 @@ namespace VoiceActing
         }
 
 
+
+
         private void ExploreTile(Vector2Int position, bool researchLost = false)
         {
-            // Ajoute la case decouverte au pourcentage
-            if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] > 0)
+            // Check si la case n'est pas déjà exploré
+            if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] < 2)
             {
+                groundTilemap.SetTile(new Vector3Int(position.x, position.y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(position.x, position.y));
                 explorationTilemap.SetTile(new Vector3Int(position.x, position.y, 0), null);
-                playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] = -1;
+
+                playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] = 2;
+                ExploreAdjacentTile(position + new Vector2Int(-1, 0));
+                ExploreAdjacentTile(position + new Vector2Int(1, 0));
+                ExploreAdjacentTile(position + new Vector2Int(0, -1));
+                ExploreAdjacentTile(position + new Vector2Int(0, 1));
                 if (researchLost == true)
                 {
                     playerData.ResearchPoint -= 1;
@@ -368,7 +390,15 @@ namespace VoiceActing
             }
         }
 
-
+        private void ExploreAdjacentTile(Vector2Int position)
+        {
+            // Check si la case existe et n'a pas déjà été exploré
+            if (playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] == 0 && dungeonLayouts[dungeonID].ResearchDungeonLayout[position.x, position.y] != 0)
+            {
+                explorationTilemap.SetTile(new Vector3Int(position.x, position.y, 0), dungeonLayouts[dungeonID].GetCorrespondingTile(position.x, position.y));
+                playerData.ResearchExplorationDatas[dungeonID].ResearchExplorationLayout[position.x, position.y] = 1;
+            }
+        }
 
 
 

@@ -91,7 +91,6 @@ namespace VoiceActing
             get { return researchEventLayout; }
         }
 
-        [SerializeField]
         private int researchExplorationTotal;
         public int ResearchExplorationTotal
         {
@@ -172,7 +171,8 @@ namespace VoiceActing
             {
                 for (int x = 0; x < researchDungeonLayout.GetLength(0); x++)
                 {
-                    res[x, y] = Mathf.Clamp(researchDungeonLayout[x, y], 0, 1);
+                    res[x, y] = 0;
+                    //res[x, y] = Mathf.Clamp(researchDungeonLayout[x, y], 0, 1);
                 }
             }
             return res;

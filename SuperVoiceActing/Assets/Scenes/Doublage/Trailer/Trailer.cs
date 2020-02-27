@@ -166,7 +166,7 @@ namespace VoiceActing
             introBlackScreen.gameObject.SetActive(true);
             textAppearManager.SetMouth(characterDialogueController);
             characterDialogueController.SetStoryCharacterData(doremiSprite);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(5f);
             introText.NewPhrase("Super Voice Acting");
             yield return new WaitForSeconds(3f);
             introText.NewPhrase("In session !");
@@ -183,10 +183,11 @@ namespace VoiceActing
             StartCoroutine(timerCoroutine);
             eventStart.Invoke();
             yield return new WaitForSeconds(1f);
+            AudioManager.Instance.SetMusicVolume(70);
             AudioManager.Instance.PlayMusic(audioClipBattleTheme);
             cameraController.MoveToInitialPosition(300);
             yield return new WaitForSeconds(2f);
-            textAppearManager.NewPhrase("Bonjour, je m'appelle Dorémi et je suis là pour vous parler de Super voice acting !", Emotion.Confiance);
+            textAppearManager.NewPhrase("Bonjour, je m'appelle Dorémi et je suis là pour vous parler de SUPER VOICE ACTING !", Emotion.Confiance);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
@@ -194,12 +195,12 @@ namespace VoiceActing
 
             cameraController.SetNoCameraEffect(true);
             cameraController.CameraDataMovement(camMov1);
-            textAppearManager.NewPhrase("Super voice acting est un jeu de gestion / Rpg.", Emotion.Confiance);
+            textAppearManager.NewPhrase("SUPER VOICE ACTING est un jeu de gestion / RPG.", Emotion.Confiance);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
             yield return new WaitForSeconds(2f);
-            textAppearManager.NewPhrase("Ayant bien sur pour thème le doublage.", Emotion.Confiance);
+            textAppearManager.NewPhrase("Ayant bien sûr pour thème le doublage.", Emotion.Confiance);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
@@ -207,7 +208,7 @@ namespace VoiceActing
 
             eventStart2.Invoke();
             cameraController.CameraDataMovement(camMov2);
-            textAppearManager.NewPhrase("Inspiré par des jeux tels que Phoenix wright ou Trauma center.", Emotion.Confiance);
+            textAppearManager.NewPhrase("Inspiré par des jeux tels que Phoenix Wright ou Trauma Center.", Emotion.Confiance);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
@@ -398,7 +399,7 @@ namespace VoiceActing
             cameraController.CameraDataMovement(camMov11);
             eventStart15.Invoke();
             Emotion[] array = { Emotion.Joie };
-            enemyManager.DamagePhrase(200, array, 0);
+            enemyManager.DamagePhrase(100, array, 0);
             mainTextAppearManager.TextPop();
             mainTextAppearManager.SetPauseText(true);
             doublageManager.ShowUI(false);
@@ -410,7 +411,7 @@ namespace VoiceActing
             enemyManager.ResetHalo();
             mainTextAppearManager.HideText();
             textAppearManager.ShowText();
-            textAppearManager.NewPhrase("Une fois la session terminé, je gagne en expérience.", Emotion.Confiance);
+            textAppearManager.NewPhrase("Une fois la session terminée, je gagne en expérience.", Emotion.Confiance);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
@@ -464,21 +465,21 @@ namespace VoiceActing
                 yield return null;
             yield return new WaitForSeconds(2.5f);
 
-            textAppearManager.NewPhrase("Merci de m'avoir écouté et toute l'équipe de Super voice acting...", Emotion.Confiance);
+            textAppearManager.NewPhrase("Merci de m'avoir écouté.", Emotion.Confiance);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
 
             speedline.gameObject.SetActive(true);
             cameraController.CameraDataMovement(camMov17);
             eventStart17.Invoke();
-            textAppearManager.NewPhrase("Vous souhaite une bonne journée !", Emotion.Joie);
+            textAppearManager.NewPhrase("Et à bientôt j'espère !", Emotion.Joie);
             textAppearManager.ApplyDamage(100);
             while (textAppearManager.GetEndLine() == false)
                 yield return null;
             AudioManager.Instance.StopMusic(300);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
             finalTransition.gameObject.SetActive(true);
             finalTransition.SetTrigger("End");
         }

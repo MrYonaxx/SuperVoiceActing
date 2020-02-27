@@ -221,11 +221,11 @@ namespace VoiceActing
                 statRole = role.CharacterStat.GetEmotion(i + 1);
                 statActor = va.Statistique.GetEmotion(i + 1);
 
-                if (statRole == role.BestStat)
+                if (i+1 == role.BestStatEmotion)
                 {
                     multiplier = 100;
                 }
-                else if (statRole == role.SecondBestStat)
+                else if (i+1 == role.SecondBestStatEmotion)
                 {
                     multiplier = 80;
                 }

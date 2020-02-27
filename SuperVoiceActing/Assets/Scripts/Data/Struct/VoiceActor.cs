@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -86,6 +87,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private string voiceActorName;
         public string VoiceActorName
@@ -93,6 +95,7 @@ namespace VoiceActing
             get { return voiceActorName; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private string voiceActorID;
         public string VoiceActorID
@@ -101,6 +104,7 @@ namespace VoiceActing
             set { voiceActorID = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [Header(" Informations générales")]
         [SerializeField]
         private int fan;
@@ -110,6 +114,7 @@ namespace VoiceActing
             set { fan = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int fanGain;
         public int FanGain
@@ -118,7 +123,7 @@ namespace VoiceActing
             set { fanGain = value; }
         }
 
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int price;
         public int Price
@@ -127,6 +132,7 @@ namespace VoiceActing
             set { price = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [Header(" Statistiques")]
         [SerializeField]
         private int level;
@@ -137,7 +143,7 @@ namespace VoiceActing
         }
 
 
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int hp;
         public int Hp
@@ -146,6 +152,7 @@ namespace VoiceActing
             set { hp = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int hpMax;
         public int HpMax
@@ -155,7 +162,7 @@ namespace VoiceActing
         }
 
 
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private Vector2Int timbre;
         public Vector2Int Timbre
@@ -164,6 +171,7 @@ namespace VoiceActing
             set { timbre = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private EmotionStat statistique;
         public EmotionStat Statistique
@@ -178,6 +186,8 @@ namespace VoiceActing
 
         // Battle Stat ====================================
 
+        [FoldoutGroup("$voiceActorName")]
+        [Header(" Battle Stat")]
         [SerializeField]
         private EmotionStat statModifier;
         public EmotionStat StatModifier
@@ -186,6 +196,7 @@ namespace VoiceActing
             set { statModifier = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private float bonusDamage;
         public float BonusDamage
@@ -194,6 +205,7 @@ namespace VoiceActing
             set { bonusDamage = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private float bonusResistance;
         public float BonusResistance
@@ -202,6 +214,8 @@ namespace VoiceActing
             set { bonusResistance = value; }
         }
 
+
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int chipDamage;
         public int ChipDamage
@@ -210,6 +224,7 @@ namespace VoiceActing
             set { chipDamage = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int damageVariance;
         public int DamageVariance
@@ -218,18 +233,10 @@ namespace VoiceActing
             set { damageVariance = value; }
         }
 
-        [SerializeField]
-        private int roleDefense;
-        public int RoleDefense
-        {
-            get { return roleDefense; }
-            set { roleDefense = value; }
-        }
 
 
 
-
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private EmotionStat statVoxography;
         public EmotionStat StatVoxography
@@ -238,6 +245,7 @@ namespace VoiceActing
             set { statVoxography = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private EmotionStat growth;
         public EmotionStat Growth
@@ -246,6 +254,7 @@ namespace VoiceActing
             set { growth = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private EmotionStat currentGrowth;
         public EmotionStat CurrentGrowth
@@ -254,16 +263,7 @@ namespace VoiceActing
             set { currentGrowth = value; }
         }
 
-
-
-        [SerializeField]
-        private int experience = 0;
-        public int Experience
-        {
-            get { return experience; }
-            set { experience = value; }
-        }
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int nextEXP = 120;
         public int NextEXP
@@ -272,7 +272,7 @@ namespace VoiceActing
             set { nextEXP = value; }
         }
 
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int relation;
         public int Relation
@@ -281,6 +281,7 @@ namespace VoiceActing
             set { relation = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private Vector3 skillOffset;
         public Vector3 SkillOffset
@@ -288,7 +289,7 @@ namespace VoiceActing
             get { return skillOffset; }
         }
 
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private string[] potentials;
         public string[] Potentials
@@ -297,6 +298,7 @@ namespace VoiceActing
             set { potentials = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private int[] friendshipLevel;
         public int[] FriendshipLevel
@@ -305,6 +307,7 @@ namespace VoiceActing
             set { friendshipLevel = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private List<Buff> buffs;
         public List<Buff> Buffs
@@ -313,6 +316,7 @@ namespace VoiceActing
             set { buffs = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private List<Voxography> voxography;
         public List<Voxography> Voxography
@@ -321,7 +325,7 @@ namespace VoiceActing
             set { voxography = value; }
         }
 
-
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private VoiceActorState actorMentalState;
         public VoiceActorState ActorMentalState
@@ -330,12 +334,44 @@ namespace VoiceActing
             set { actorMentalState = value; }
         }
 
+        [FoldoutGroup("$voiceActorName")]
         [SerializeField]
         private bool availability;
         public bool Availability
         {
             get { return availability; }
             set { availability = value; }
+        }
+
+
+
+
+
+        [FoldoutGroup("$voiceActorName")]
+        [SerializeField]
+        private int bestGrowthFirst;
+        public int BestGrowthFirst
+        {
+            get { return bestGrowthFirst; }
+            set { bestGrowthFirst = value; }
+        }
+
+        [FoldoutGroup("$voiceActorName")]
+        [SerializeField]
+        private int bestGrowthSecond;
+        public int BestGrowthSecond
+        {
+            get { return bestGrowthSecond; }
+            set { bestGrowthSecond = value; }
+        }
+
+        [FoldoutGroup("$voiceActorName")]
+        [SerializeField]
+        private int bestGrowthThird;
+        public int BestGrowthThird
+        {
+            get { return bestGrowthThird; }
+            set { bestGrowthThird = value; }
         }
 
         #endregion
@@ -379,7 +415,6 @@ namespace VoiceActing
             damageVariance = actorData.FourchetteMax;
 
             bonusDamage = 1;
-            roleDefense = 0;
             bonusResistance = 1;
             timbre = actorData.Timbre;
 
@@ -461,10 +496,42 @@ namespace VoiceActing
 
             growth = new EmotionStat(currentGrowth);
             currentGrowth = new EmotionStat(0, 0, 0, 0, 0, 0, 0, 0);
+            SelectBestGrowth();
         }
 
 
+        private void SelectBestGrowth()
+        {
+            int bestStat = 0;
+            int secondBestStat = 0;
+            int thirdBestStat = 0;
 
+            for (int i = 1; i < growth.GetLength(); i++)
+            {
+                int currentStat = growth.GetEmotion(i);
+                if (currentStat > bestStat)
+                {
+                    thirdBestStat = secondBestStat;
+                    secondBestStat = bestStat;
+                    bestStat = currentStat;
+                    bestGrowthThird = bestGrowthSecond;
+                    bestGrowthSecond = bestGrowthFirst;
+                    bestGrowthFirst = i;
+                }
+                else if (currentStat > secondBestStat)
+                {
+                    thirdBestStat = secondBestStat;
+                    secondBestStat = currentStat;
+                    bestGrowthThird = bestGrowthSecond;
+                    bestGrowthSecond = i;
+                }
+                else if (currentStat > thirdBestStat)
+                {
+                    thirdBestStat = currentStat;
+                    bestGrowthThird = i;
+                }
+            }
+        }
 
 
 
@@ -522,7 +589,13 @@ namespace VoiceActing
 
         }
 
-
+        // Utiliser pour l'équilibrage
+        public void RecalculateActor(VoiceActorData va)
+        {
+            for (int i = 1; i < level; i++)
+            {
+            }
+        }
 
 
 

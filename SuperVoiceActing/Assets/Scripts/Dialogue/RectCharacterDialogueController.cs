@@ -65,7 +65,7 @@ namespace VoiceActing
             currentSprites = storyCharacterData.SpriteNormal;
             if (imageRenderer != null)
                 imageRenderer.sprite = currentSprites[0];
-            if (sprites.SpriteEye != null)
+            if (sprites.SpriteEye != null && eyesScript != null)
                 eyesScript.SetSprite(sprites.SpriteEye);
             imageRenderer.SetNativeSize();
         }

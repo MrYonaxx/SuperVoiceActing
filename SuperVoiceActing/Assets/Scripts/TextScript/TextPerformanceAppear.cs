@@ -152,7 +152,8 @@ namespace VoiceActing
 
         public void Stop()
         {
-            particlesLineDead.Stop();
+            if(particlesLineDead != null)
+                particlesLineDead.Stop();
             if (coroutine != null)
                 StopCoroutine(coroutine);
         }
@@ -727,7 +728,6 @@ namespace VoiceActing
                 //yield return new WaitForSeconds(1/60f);
                 //yield return null;
             }
-
             /*coroutine = AnimateVertexColors();
             StartCoroutine(coroutine);
             ApplyDamage(damage);*/

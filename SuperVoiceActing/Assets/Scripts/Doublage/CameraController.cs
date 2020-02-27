@@ -385,11 +385,15 @@ namespace VoiceActing
         {
             time = Mathf.Max(1, time);
             time /= 60;
-            Vector3 finalPosition = new Vector3(x, y, z);
 
-            Vector3 finalRotation = GetRotateSpeed(transform, angleX, angleY, angleZ, 1);
+            Vector3 finalPosition = new Vector3(x, y, z);
+            //Vector3 finalRotation = GetRotateSpeed(angleX, angleY, angleZ);
+            Quaternion finalRotation = Quaternion.Euler(angleX, angleY, angleZ);
+
             Vector3 currentPosition = transform.localPosition;
-            Vector3 currentRotation = GetRotateSpeed(transform, transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z, 1);//this.transform.eulerAngles;
+            //Vector3 currentRotation = GetRotateSpeed(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z);//this.transform.eulerAngles;
+            Quaternion currentRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z);
+
             moving = true;
             float t = 0f;
             while (t < 1)
@@ -398,18 +402,26 @@ namespace VoiceActing
                 {
                     t += Time.deltaTime / time;
                     transform.localPosition = Vector3.Lerp(currentPosition, finalPosition, t);
-                    transform.localEulerAngles = Vector3.Lerp(currentRotation, finalRotation, t);
+                    //transform.localEulerAngles = Vector3.Lerp(currentRotation, finalRotation, t);
+                    transform.localRotation = Quaternion.Lerp(currentRotation, finalRotation, t);
                 }
                 yield return null;
             }
             moving = false;
             transform.localPosition = finalPosition;
-            transform.localEulerAngles = finalRotation;
+            //transform.localEulerAngles = finalRotation;
         }
 
 
-        private Vector3 GetRotateSpeed(Transform transform, float x, float y, float z, float time)
+        private Vector3 GetRotateSpeed(float x, float y, float z)
         {
+            /*if (x > 180)
+                x = -(360 - x);
+            if (y > 180)
+                y = -(360 - y);
+            if (z > 180)
+                z = -(360 - z);*/
+
             if (x > 180)
                 x = -(360 - x);
             if (y > 180)

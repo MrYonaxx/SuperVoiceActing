@@ -217,7 +217,7 @@ namespace VoiceActing
                     jaugeStatsRole2[i].sizeDelta = new Vector2((currentStatRole / 100f) * 500, 0);
                 }
 
-                if (currentStatRole == auditionRole.BestStat || currentStatRole == auditionRole.SecondBestStat)
+                if (i+1 == auditionRole.BestStatEmotion || i+1 == auditionRole.SecondBestStatEmotion)
                 {
                     textStatsActor[i].color = new Color(textStatsActor[i].color.r, textStatsActor[i].color.g, textStatsActor[i].color.b, 1f);
                     textStatsRole[i].color = new Color(textStatsRole[i].color.r, textStatsRole[i].color.g, textStatsRole[i].color.b, 1f);

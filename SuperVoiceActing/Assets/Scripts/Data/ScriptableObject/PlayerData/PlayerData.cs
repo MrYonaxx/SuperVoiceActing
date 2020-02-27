@@ -48,8 +48,6 @@ namespace VoiceActing
             year = y;
         }
 
-
-
         public void NextWeek()
         {
             week += 1;
@@ -800,10 +798,6 @@ namespace VoiceActing
             for (int i = 0; i < initialPlayerData.VoiceActorsDebug.Count; i++)
             {
                 voiceActors.Add(new VoiceActor(initialPlayerData.VoiceActorsDebug[i]));
-                while(voiceActors[i].Level < 20)
-                {
-                    voiceActors[i].LevelUp();
-                }
             }
 
             voiceActorsGacha = new List<VoiceActor>(initialPlayerData.VoiceActorsGachaDebug.Count);
@@ -925,7 +919,16 @@ namespace VoiceActing
 
 
 
-
+        public void LevelUpCharacters(int targetLevel)
+        {
+            for (int i = 0; i < voiceActors.Count; i++)
+            {
+                while (voiceActors[i].Level < targetLevel)
+                {
+                    voiceActors[i].LevelUp();
+                }
+            }
+        }
 
 
 

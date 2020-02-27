@@ -27,6 +27,12 @@ namespace VoiceActing
         [Header("Debug")]
         [SerializeField]
         protected ContractData contratData;
+        [SerializeField]
+        protected int debugActorLevel;
+        [SerializeField]
+        protected int debugLevel;
+        [SerializeField]
+        protected MenuContractDifficultyCurve difficultyCurve;
 
         [Title("Contrat")]
         [SerializeField]
@@ -191,14 +197,16 @@ namespace VoiceActing
         {
             if (skipIntro == true)
                 return;
-            contrat = playerData.CurrentContract;           
-            if(playerData.GetPlayerDebugSave() == true)
+            contrat = playerData.CurrentContract;
+            if (playerData.GetPlayerDebugSave() == true)
             {
                 if (contratData != null)
                 {
                     playerData.CreatePlayerData(initialPlayerData);
+                    playerData.LevelUpCharacters(debugActorLevel);
                     contrat = new Contract(contratData); // Pour Debug
                     contrat.CheckCharacterLock(playerData.VoiceActors);
+                    difficultyCurve.EquilibrateContract(contrat, debugLevel);
                     playerData.CurrentContract = contrat;
                 }
             }
@@ -247,9 +255,9 @@ namespace VoiceActing
             skillManager.SetMovelist(battleParameter.CurrentActor(), characterDoublageManager.GetCharacter(battleParameter.IndexCurrentCharacter));
 
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
-            turnManager.DrawTurn(battleParameter.Turn);
+            /*turnManager.DrawTurn(battleParameter.Turn);
             lineManager.DrawLineNumber(battleParameter.Contract.CurrentLine);
-            lineManager.DrawMaxLineNumber(battleParameter.Contract.TotalLine);
+            lineManager.DrawMaxLineNumber(battleParameter.Contract.TotalLine);*/
 
             resultScreenManager.SetManagers(contrat, battleParameter.VoiceActors, actorsManager);
 
@@ -436,10 +444,12 @@ namespace VoiceActing
 
             emotionAttackManager.CardAttack();
             emotionAttackManager.SwitchCardTransformToRessource();
+            actorsManager.AddBonusStat(battleParameter.VoiceActors, battleParameter.CurrentAttackEmotion);
 
             skillManager.HideSkillWindow();
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
             roleManager.ShowHUDNextAttack(false, true);
+            roleManager.ActivateNextAttack();
         }
 
 
@@ -675,37 +685,33 @@ namespace VoiceActing
             if (contrat.CurrentLine < contrat.TextData.Count)
                 enemyManager.SetTextData(contrat.TextData[contrat.CurrentLine]);
 
-            // Check Event
-            if (eventManager.CheckEvent(contrat.CurrentLine, true, enemyManager.GetHpPercentage()) == true)
-            {
-                yield return eventManager.StartEvent();
-            }
-
             // Si pas d'event anim de destruction de phrase
             enemyManager.DamagePhrase();
             textAppearManager.TextPop();
             textAppearManager.SelectWord(0);
             AudioManager.Instance.PlaySound(audioClipKillPhrase);
             AudioManager.Instance.PlaySound(audioClipKillPhrase2, 0.75f);
+            enemyManager.ResetHalo();
 
-            if (contrat.CurrentLine == contrat.TextData.Count)
+            // Check Event
+            if (eventManager.CheckEvent(contrat.CurrentLine, true, enemyManager.GetHpPercentage()) == true)
             {
-                enemyManager.ResetHalo();
+                yield return eventManager.StartEvent();
+                SetPhrase();
+            }
+            else if (contrat.CurrentLine == contrat.TextData.Count)
+            {
                 lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                 yield return EndSessionCoroutine(50);
                 yield break;
-            }
-
-            // Check si changement d'acteur
-            if (enemyManager.CheckInterlocutor(battleParameter.IndexCurrentCharacter) == false)
+            }            
+            else if (enemyManager.CheckInterlocutor(battleParameter.IndexCurrentCharacter) == false) // Check si changement d'acteur
             {
-                enemyManager.ResetHalo();
                 lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                 SwitchActors();
             }
             else
             {
-                enemyManager.ResetHalo();
                 lineManager.FeedbackNewLine(battleParameter.Contract.TotalLine - battleParameter.Contract.CurrentLine);
                 if (cameraController != null)
                     cameraController.NotQuite();

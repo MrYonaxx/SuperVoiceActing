@@ -34,6 +34,9 @@ namespace VoiceActing
         [SerializeField]
         int hpGainVariance;
 
+        [SerializeField]
+        int damageRoleMultiplier = -1;
+
         /*public override void PreviewSkill(DoublageManager doublageManager)
         {
 

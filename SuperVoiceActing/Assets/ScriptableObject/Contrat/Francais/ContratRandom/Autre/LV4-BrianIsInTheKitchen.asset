@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV4-BrianIsInTheKitchen
+  m_EditorClassIdentifier: 
+  contractName: Brian est dans la cuisine
+  level: 4
+  contractType: 0
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 3
+  weekMax: 7
+  expGain: 20
+  expBonus: 100
+  contractDictionnary: []
+  description:
+  - "Les \xE9ditions [] pr\xE9parent un nouveau livre scolaire pour la prochaine rentr\xE9e.
+    Ce livre apprend du vocabulaire tr\xE8s simple \xE0 de jeunes enfants. \n\nNous
+    avons besoin d'une diction impeccable !"
+  franchise:
+    Enabled: 1
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Narrateur
+      roleNames: []
+      roleType: 3
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: -10, y: 10}
+      timbreRand: {x: -10, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Enfant
+      roleNames: []
+      roleType: 3
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: -10, y: 10}
+      timbreRand: {x: -10, y: 10}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "O\xF9 est Brian ?"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Brian est dans la cuisine.
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "O\xF9 est Jenny, la soeur de Brian ?"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Jenny est dans la salle de bain.
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

@@ -53,6 +53,8 @@ namespace VoiceActing
         [SerializeField]
         int[] expRandomValue;
 
+
+
         [Title("Atk")]
         [SerializeField]
         [OnValueChanged("CalculateDebugAtk")]
@@ -68,6 +70,24 @@ namespace VoiceActing
         [HorizontalGroup("Atk")]
         [SerializeField]
         int[] atkBonusDebug;
+
+
+
+        [Title("Stat")]
+        [SerializeField]
+        [OnValueChanged("CalculateStatModifier")]
+        float baseStatMultiplier;
+
+        [HorizontalGroup("Stat")]
+        [SerializeField]
+        [ReadOnly]
+        int[] statLevel;
+        [HorizontalGroup("Stat")]
+        [SerializeField]
+        float[] statBonusMultiplier;
+        [HorizontalGroup("Stat")]
+        [SerializeField]
+        float[] statTotalMultiplier;
 
         #endregion
 
@@ -123,6 +143,19 @@ namespace VoiceActing
             }
         }
 
+        private void CalculateStatModifier()
+        {
+            statTotalMultiplier = new float[statBonusMultiplier.Length];
+            statLevel = new int[statBonusMultiplier.Length];
+            float bonus = baseStatMultiplier;
+            for (int i = 0; i < statBonusMultiplier.Length; i++)
+            {
+                bonus += statBonusMultiplier[i];
+                statTotalMultiplier[i] = bonus;
+                statLevel[i] = i;
+            }
+        }
+
 
 
 
@@ -151,6 +184,21 @@ namespace VoiceActing
             {
                 for (int j = oldLevel; j < targetLevel; j++)
                     c.TextData[i].HPMax += hpBonus[j];
+            }
+
+            // Equilibrate Stat ==========================================
+            float bonus = 0;
+            float oldBonus = 0;
+            for (int j = oldLevel; j < targetLevel; j++)
+            {
+                oldBonus = bonus;
+                bonus += statBonusMultiplier[j];
+            }
+            
+            for (int i = 0; i < c.Characters.Count; i++)
+            {
+                bonus = baseStatMultiplier + Random.Range(oldBonus, bonus);
+                c.Characters[i].CharacterStat.Multiply(bonus);
             }
         }
 
