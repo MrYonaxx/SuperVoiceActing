@@ -107,12 +107,6 @@ namespace VoiceActing
         {
             get { return roleType; }
         }
-        /*[SerializeField]
-        private RolePersonality rolePersonality;
-        public RolePersonality RolePersonality
-        {
-            get { return rolePersonality; }
-        }*/
 
         [SerializeField]
         private Vector2Int timbre;
@@ -122,6 +116,7 @@ namespace VoiceActing
             set { timbre = value; }
         }
 
+
         [SerializeField]
         private EmotionStat characterStat;
         public EmotionStat CharacterStat
@@ -129,6 +124,15 @@ namespace VoiceActing
             get { return characterStat; }
             set { characterStat = value; }
         }
+
+        [SerializeField]
+        private EmotionStat characterTone;
+        public EmotionStat CharacterTone
+        {
+            get { return characterTone; }
+            set { characterTone = value; }
+        }
+
         /// <summary>
         /// Emotion ID of the best stat the role have
         /// </summary>
@@ -267,7 +271,9 @@ namespace VoiceActing
             // ==================================
 
             SelectBestStat();
-
+            characterTone = new EmotionStat();
+            characterTone.Add(bestStatEmotion, Random.Range(1, 2) + 1);
+            characterTone.Add(secondBestStatEmotion, Random.Range(1, 2));
         }
 
 
@@ -291,6 +297,25 @@ namespace VoiceActing
                     secondBestStatEmotion = i;
                 }
             }
+        }
+
+
+        public int CheckTimbre(Vector2Int timbreActor)
+        {
+            if (timbre.x <= timbreActor.x && timbreActor.x <= timbre.y && timbre.x <= timbreActor.y && timbreActor.y <= timbre.y)
+            {
+                return (timbre.y - timbre.x);
+            }
+            else if (timbre.x <= timbreActor.x && timbreActor.x <= timbre.y)
+            {
+                return (timbre.y - timbreActor.x);
+            }
+            else if (timbre.x <= timbreActor.y && timbreActor.y <= timbre.y)
+            {
+                return (timbreActor.y - timbre.x);
+            }
+            else
+                return 0;
         }
 
 

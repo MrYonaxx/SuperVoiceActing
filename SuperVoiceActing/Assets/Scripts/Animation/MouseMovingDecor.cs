@@ -78,20 +78,21 @@ public class MouseMovingDecor : MonoBehaviour {
         if (rectTransform)
         {
             Vector2 tmp;
-            if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.1f)
+            if (focusPoint != null)
+            {
+                tmp = focusPoint.position;
+            }
+            else if (Mathf.Abs(Input.GetAxis("ControllerRightHorizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("ControllerRightVertical")) > 0.1f)
             {
                 tmp = new Vector2(Screen.width * Input.GetAxis("ControllerRightHorizontal"), Screen.height * -Input.GetAxis("ControllerRightVertical"));
-
             }
-            else if (focusPoint == null)
+            else
             {
                 tmp = Input.mousePosition;
                 tmp.x -= Screen.width * 0.5f;
                 tmp.y -= Screen.height * 0.5f;
                 tmp = new Vector2(Screen.width * (tmp.x / (Screen.width * 0.5f)), Screen.height * (tmp.y / (Screen.height * 0.5f)));
             }
-            else
-                tmp = focusPoint.position;
 
             actual_view_x = 0;
             actual_view_y = 0;

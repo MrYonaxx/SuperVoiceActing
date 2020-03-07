@@ -47,6 +47,8 @@ namespace VoiceActing
         [SerializeField]
         Animator animName;
         [SerializeField]
+        Animator animatorTextbox;
+        [SerializeField]
         TextMeshProUGUI textName;
         [SerializeField]
         TextMeshProUGUI textDate;
@@ -60,6 +62,8 @@ namespace VoiceActing
         CharacterDialogueController characterPrefab;
         [SerializeField]
         Transform transformCharacter;
+        [SerializeField]
+        Transform cameraCenter;
 
         [SerializeField]
         List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
@@ -193,9 +197,12 @@ namespace VoiceActing
                 // ==============================================================================================================================
                 if (currentNode is StoryEventText)
                 {
+                    animatorTextbox.SetTrigger("Feedback");
                     StoryEventText node = (StoryEventText) currentNode;
                     node.SetLanguage(playerData.Language);
                     node.SetNode(textMeshPro, characters, next, dictionary);
+                    if(node.GetDialogue() != null)
+                        cameraCenter.transform.position = -node.GetDialogue().transform.position * 3;
                     DrawName(node.GetInterlocuteur());
                 }
 

@@ -126,6 +126,12 @@ namespace VoiceActing
                 finalScore += contract.Characters[i].RoleScore + contract.Characters[i].RolePerformance;
                 finalHighScore += contract.Characters[i].RoleBestScore;
 
+                Debug.Log(contract.Characters[i].Name);
+                Debug.Log("Score d'Acteur  : " + contract.Characters[i].RoleScore);
+                Debug.Log("Score de Performance  : " + contract.Characters[i].RolePerformance);
+                Debug.Log("Score  : " + finalScore);
+                Debug.Log("Best Score : " + contract.Characters[i].RoleBestScore);
+
             }
             contract.Score = finalScore;
             contract.HighScore = finalHighScore;
@@ -180,8 +186,6 @@ namespace VoiceActing
                 // Calculate Theoric Max
                 role.RoleBestScore += (statRole * 3);
             }
-            Debug.Log("Score " + role.Name + " : " + totalScore);
-            Debug.Log("Score Performance" + role.Name + " : " + role.RolePerformance);
             role.RoleScore = totalScore;
 
 

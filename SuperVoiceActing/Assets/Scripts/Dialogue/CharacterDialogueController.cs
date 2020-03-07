@@ -39,6 +39,8 @@ namespace VoiceActing
 
         [Header("Autres")]
         [SerializeField]
+        protected Animator animatorCharacter;
+        [SerializeField]
         protected Animator animatorBalloon;
         [SerializeField]
         protected Animator animatorAura;
@@ -345,6 +347,13 @@ namespace VoiceActing
                 animatorAura.SetTrigger("Feedback");
                 animatorAura.SetBool("Aura", false);
             }
+        }
+
+
+        public void SpeakAnimation()
+        {
+            if(animatorCharacter != null)
+                animatorCharacter.SetTrigger("Speak");
         }
 
         #endregion

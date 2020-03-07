@@ -6,8 +6,10 @@
 ******************************************************************/
 
 using UnityEngine;
+using System;
 using System.Collections;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 
 namespace VoiceActing
 {
@@ -157,11 +159,96 @@ namespace VoiceActing
 
     }
 
+    public interface IStoryEvent<T>
+    {
+
+        //void ExecuteEvent(StoryEventManager manager);
+    }
+
+    public class StoryEvent6 : IStoryEvent<StoryEvent6>
+    {
+        [HideInInspector]
+        public StoryEventNode Type;
+
+        public bool Equals(StoryEvent6 se6)
+        {
+            return true;
+        }
+    }
+
+
+    [Serializable]
+    public class StoryEventText6 : StoryEvent6
+    {
+        [BoxGroup("Yo !")]
+        public string text;
+        [BoxGroup("Yo !")]
+        public int speed;
+
+        public StoryEventText6()
+        {
+            Type = StoryEventNode.MoveCharacter;
+            speed = 0;
+            text = "";
+        }
+        public void ExecuteEvent(StoryEventManager manager)
+        {
+
+        }
+    }
+
+    /*[Serializable]
+    public struct StoryEventText5 : IStoryEvent<StoryEventText6>
+    {
+        [HideInInspector]
+        public StoryEventNode Type;
+        public string text;
+
+        public StoryEventText5(string a)
+        {
+            Type = StoryEventNode.Text;
+            text = a;
+        }
+        public void ExecuteEvent(StoryEventManager manager)
+        {
+
+        }
+    }*/
+
+    [Serializable]
+    public struct StoryValue : IEquatable<StoryValue>
+    {
+        //[HideInInspector]
+        public StoryEventNode Type;
+
+        [Range(-100, 100)]
+        [LabelWidth(70)]
+        [LabelText("$Type")]
+        public float Value;
+
+        public StoryValue(StoryEventNode type, float value)
+        {
+            this.Type = type;
+            this.Value = value;
+        }
+
+        public StoryValue(StoryEventNode type)
+        {
+            this.Type = type;
+            this.Value = 0;
+        }
+
+        public bool Equals(StoryValue other)
+        {
+            return this.Type == other.Type && this.Value == other.Value;
+        }
+    }
+
     /// <summary>
     /// Definition of the StoryEventData class
     /// </summary>
     [CreateAssetMenu(fileName = "StoryEventData", menuName = "StoryEvent/StoryEventData", order = 1)]
-    public class StoryEventData : ScriptableObject
+    public class StoryEventData : SerializedScriptableObject
     {
         [Title("Scene Info")]
         [SerializeField]
@@ -184,6 +271,46 @@ namespace VoiceActing
         [Title("Event")]
         [SerializeField]
         StoryEventDataBox[] eventNodes;
+
+        [Space]
+        [Title("Test2")]
+        //[ValueDropdown("CustomAddStatsButton", IsUniqueList = true, DrawDropdownForListElements = false, DropdownTitle = "Story Event Node")]
+        [ValueDropdown("FriendlyTextureSizes1", DrawDropdownForListElements = false)]
+        [ListDrawerSettings(DraggableItems = true, Expanded = true)]
+        [SerializeField]
+        List<IEquatable<StoryValue>> eventNodes1;
+
+        private IEnumerable FriendlyTextureSizes1 = new ValueDropdownList<StoryValue>()
+        {
+            {"Allo", new StoryValue() }
+        };
+
+        [Space]
+        [Title("Test")]
+        //[ValueDropdown("CustomAddStatsButton", IsUniqueList = true, DrawDropdownForListElements = false, DropdownTitle = "Story Event Node")]
+        [ValueDropdown("FriendlyTextureSizes", DrawDropdownForListElements = false)]
+        [ListDrawerSettings(DraggableItems = true, Expanded = true)]
+        [SerializeField]
+        List<StoryEvent6> eventNodes2;
+
+        private IEnumerable FriendlyTextureSizes = new ValueDropdownList<StoryEvent6>()
+        {
+            {"Allo", new StoryEventText6() }
+        };
+        /*private static IEnumerable FriendlyTextureSizes = new ValueDropdownList<IStoryEvent>()
+        {
+            {"Text5", new StoryEventText5(StoryEventNode.Text) },
+            {"Text6", new StoryEventText6(StoryEventNode.MoveCharacter) }
+        };*/
+
+        /*private IEnumerable CustomAddStatsButton()
+        {
+            return Enum.GetValues(typeof(StoryEventNode)).Cast<StoryEventNode>()
+                //.Except(this.stats.Select(x => x.Type))
+                .Select(x => new StatValue(x))
+                .AppendWith(this.stats)
+                .Select(x => new ValueDropdownItem(x.Type.ToString(), x));
+        }*/
 
         public int GetEventSize()
         {

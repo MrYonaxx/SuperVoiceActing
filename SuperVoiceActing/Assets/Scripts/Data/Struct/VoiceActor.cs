@@ -386,14 +386,6 @@ namespace VoiceActing
 
 
 
-        #region GettersSetters 
-
-        /* ======================================== *\
-         *           GETTERS AND SETTERS            *
-        \* ======================================== */
-
-
-        #endregion
 
         #region Functions 
 
@@ -404,6 +396,7 @@ namespace VoiceActing
         // Rappel : les classes ne sont pas dupliqué par défaut, à la place les deux variable auront la meme reference donc bug potentiel
         public VoiceActor(VoiceActorData actorData)
         {
+            
             voiceActorName = actorData.SpriteSheets.GetName();
             voiceActorID = actorData.SpriteSheets.name;
             level = actorData.Level;
@@ -568,7 +561,15 @@ namespace VoiceActing
 
 
 
-
+        public void GainExp(ExperienceCurveData experienceCurveData, int expGain)
+        {
+            nextEXP -= expGain;
+            while (nextEXP <= 0)
+            {
+                LevelUp();
+                nextEXP += experienceCurveData.ExperienceCurve[level];
+            }
+        }
 
         public void LevelUp()
         {
@@ -586,7 +587,6 @@ namespace VoiceActing
             hp += (growth.Neutral / 8);
             hpMax += (growth.Neutral / 8);
             level += 1;
-
         }
 
         // Utiliser pour l'équilibrage

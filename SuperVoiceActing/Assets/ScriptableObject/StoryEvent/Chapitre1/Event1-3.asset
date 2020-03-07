@@ -12,29 +12,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
   m_Name: Event1-3
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: eventNodes1
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[System.IEquatable`1[[VoiceActing.StoryValue,
+        Assembly-CSharp]], mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|VoiceActing.StoryValue, Assembly-CSharp
+    - Name: Type
+      Entry: 3
+      Data: 0
+    - Name: Value
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: eventNodes2
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[VoiceActing.StoryEvent6, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|VoiceActing.StoryEventText6, Assembly-CSharp
+    - Name: Type
+      Entry: 3
+      Data: 3
+    - Name: text
+      Entry: 1
+      Data: 
+    - Name: speed
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   background: {fileID: 11400000, guid: 8483a0de16824cd45979c3cd87240071, type: 2}
   characters:
   - characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
     time: 60
-    newPosition: {x: 0, y: -5.2, z: 0}
+    newPosition: {x: 0, y: 0, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
-    newScale: {x: 0.45, y: 0.45, z: 0.45}
+    newScale: {x: 0.5, y: 0.5, z: 0.5}
     fadeIn: 0
     fadeOut: 1
     waitEnd: 0
   - characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990, type: 2}
     time: 60
-    newPosition: {x: 10, y: -5.2, z: 0}
+    newPosition: {x: 1, y: 0, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
-    newScale: {x: 0.45, y: 0.45, z: 0.45}
+    newScale: {x: 0.5, y: 0.5, z: 0.5}
     fadeIn: 0
     fadeOut: 1
     waitEnd: 0
   - characterToMove: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}
     time: 60
-    newPosition: {x: 0, y: -5.2, z: 0}
+    newPosition: {x: 0, y: 0, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
-    newScale: {x: 0.45, y: 0.45, z: 0.45}
+    newScale: {x: 0.5, y: 0.5, z: 0.5}
     fadeIn: 0
     fadeOut: 0
     waitEnd: 0
@@ -87,6 +149,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -104,8 +167,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -160,6 +222,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -177,8 +240,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -232,6 +294,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -249,8 +312,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -277,9 +339,9 @@ MonoBehaviour:
         characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         time: 120
-        newPosition: {x: 0, y: -5.2, z: 0}
+        newPosition: {x: 0, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
         fadeIn: 1
         fadeOut: 0
         waitEnd: 1
@@ -305,6 +367,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -322,8 +385,79 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
+      storyEventConditionActor:
+        variableName: 
+        voiceActorDatas: []
+        storyEvents: []
+        defaultEvent: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocuteur: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterToMove: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        fadeIn: 1
+        fadeOut: 0
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        DataToLoad: {fileID: 0}
+        saveSceneConfiguration: 0
+        DoublageEventToLoad: {fileID: 0}
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: {fileID: 0}
+        eventToAdd: {fileID: 0}
+        eventEndToAdd: {fileID: 0}
+        voiceActorToAdd: {fileID: 0}
+        voiceActorAdd: 0
+        voiceActorRemove: 0
+        voiceActorUnavailable: 0
+        newChapter: 0
+        newObjective: 
+        skipNextWeek: 0
+        unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        globalVariable: 0
+        custom: 0
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+        customScript: {fileID: 0}
+        otherVariable: 
+      storyEventCondition:
+        variableName: 
+        mathOperator: 0
+        value: 0
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -378,6 +512,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -395,80 +530,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        emotionEmoticonBalloon: 0
-        text: (C'est ce type imposant, le producteur de Ragab ?)
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-      storyEventPlayerData:
-        currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
-      storyEventChoices:
-        text: 
-        answers: []
-        storyChoices: []
-      storyEventVariable:
-        globalVariable: 0
-        custom: 0
-        variableName: 
-        mathOperation: 0
-        newValue: 0
-        newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -523,6 +585,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -540,8 +603,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -596,6 +658,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -613,8 +676,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -670,6 +732,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -687,8 +750,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -742,6 +804,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -759,8 +822,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -814,6 +876,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -831,8 +894,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -887,6 +949,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -904,8 +967,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -960,6 +1022,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -977,8 +1040,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1032,6 +1094,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1049,8 +1112,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1105,6 +1167,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1122,8 +1185,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1178,6 +1240,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1195,8 +1258,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1252,6 +1314,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1269,8 +1332,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1325,6 +1387,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1342,8 +1405,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1398,6 +1460,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1415,8 +1478,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1470,6 +1532,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1487,8 +1550,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1515,9 +1577,9 @@ MonoBehaviour:
         characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         time: 180
-        newPosition: {x: -2, y: -5.2, z: 0}
+        newPosition: {x: -0.4, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
         fadeIn: 0
         fadeOut: 0
         waitEnd: 0
@@ -1543,6 +1605,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1560,8 +1623,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1588,9 +1650,9 @@ MonoBehaviour:
         characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
           type: 2}
         time: 180
-        newPosition: {x: 4, y: -5.2, z: 0}
+        newPosition: {x: 0.4, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
         fadeIn: 1
         fadeOut: 0
         waitEnd: 1
@@ -1616,6 +1678,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1633,8 +1696,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1689,6 +1751,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1706,8 +1769,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1762,6 +1824,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1779,8 +1842,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1835,6 +1897,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1852,8 +1915,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1907,6 +1969,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1924,8 +1987,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -1980,6 +2042,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -1997,8 +2060,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2053,6 +2115,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2070,8 +2133,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2127,6 +2189,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2144,8 +2207,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2172,9 +2234,9 @@ MonoBehaviour:
         characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         time: 1
-        newPosition: {x: -2, y: -5.2, z: 0}
+        newPosition: {x: -0.4, y: 0, z: 0}
         newRotation: {x: 0, y: 180, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
         fadeIn: 0
         fadeOut: 0
         waitEnd: 0
@@ -2200,6 +2262,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2217,8 +2280,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2273,6 +2335,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2290,8 +2353,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2346,6 +2408,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2363,8 +2426,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2419,6 +2481,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2436,8 +2499,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2464,9 +2526,9 @@ MonoBehaviour:
         characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
           type: 2}
         time: 120
-        newPosition: {x: 10, y: -5.2, z: 0}
+        newPosition: {x: 1, y: 0, z: 0}
         newRotation: {x: 0, y: 180, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
         fadeIn: 0
         fadeOut: 1
         waitEnd: 1
@@ -2492,6 +2554,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2509,8 +2572,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2564,6 +2626,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2581,8 +2644,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2636,6 +2698,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2653,8 +2716,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2709,6 +2771,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2726,8 +2789,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2754,9 +2816,9 @@ MonoBehaviour:
         characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
           type: 2}
         time: 120
-        newPosition: {x: 0, y: -5.2, z: 0}
+        newPosition: {x: 0, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
         fadeIn: 0
         fadeOut: 0
         waitEnd: 1
@@ -2782,6 +2844,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2799,8 +2862,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2856,6 +2918,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2873,8 +2936,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -2930,6 +2992,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -2947,8 +3010,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3004,6 +3066,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3021,8 +3084,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3077,6 +3139,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3094,8 +3157,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3150,6 +3212,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3167,8 +3230,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3223,6 +3285,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3240,8 +3303,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3295,6 +3357,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3312,8 +3375,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3367,6 +3429,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3384,8 +3447,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3439,6 +3501,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3456,8 +3519,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3511,6 +3573,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3528,8 +3591,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3584,6 +3646,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3601,8 +3664,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3656,6 +3718,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3673,8 +3736,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3729,6 +3791,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3746,8 +3809,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3803,6 +3865,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3820,8 +3883,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3876,6 +3938,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3893,8 +3956,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -3949,6 +4011,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers: []
@@ -3966,8 +4029,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []
@@ -4021,6 +4083,7 @@ MonoBehaviour:
         newObjective: 
         skipNextWeek: 0
         unlockStudio: 0
+        storyEventCustomScript: {fileID: 0}
       storyEventChoices:
         text: 
         answers:
@@ -4043,8 +4106,7 @@ MonoBehaviour:
         variableName: 
         mathOperator: 0
         value: 0
-      storyEventEndCondition:
-        endConditionName: 
+        storyEvent: {fileID: 0}
       storyEventConditionActor:
         variableName: 
         voiceActorDatas: []

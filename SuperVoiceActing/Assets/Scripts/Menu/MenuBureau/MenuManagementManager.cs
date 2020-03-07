@@ -159,7 +159,7 @@ namespace VoiceActing
             // Sinon nextWeek
             AddRandomEvents();
             gameTimelineData.CheckEventsTimeline(playerData);
-            menuActorsLifeManager.VoiceActorWork(playerData.VoiceActors);
+            menuActorsLifeManager.VoiceActorsWork(playerData.VoiceActors, playerData.ContractAvailable);
 
             managementContract.GachaContract(playerData);
             managementContract.ContractNextWeek(playerData);

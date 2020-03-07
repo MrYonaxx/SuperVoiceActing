@@ -112,6 +112,10 @@ namespace VoiceActing
         {
             return interlocuteur;
         }
+        public CharacterDialogueController GetDialogue()
+        {
+            return characterDialogue;
+        }
 
         public void SetNode(TextMeshProUGUI textMesh, List<CharacterDialogueController> charactersEvent, GameObject next, Dictionary<string, string> dictionary)
         {
@@ -122,6 +126,7 @@ namespace VoiceActing
                 if (charactersEvent[i].GetStoryCharacterData() == interlocuteur)
                 {
                     characterDialogue = charactersEvent[i];
+                    characterDialogue.SpeakAnimation();
                     break;
                 }
             }
