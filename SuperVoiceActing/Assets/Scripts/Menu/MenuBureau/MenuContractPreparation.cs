@@ -28,7 +28,7 @@ namespace VoiceActing
         [SerializeField]
         ImageDictionnary typeContractData;
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [Header("Info")]
         [SerializeField]

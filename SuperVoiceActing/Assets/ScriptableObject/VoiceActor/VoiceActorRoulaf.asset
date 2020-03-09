@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1a867a9c4004546835da9bba53d2e4, type: 3}
   m_Name: VoiceActorRoulaf
   m_EditorClassIdentifier: 
-  name: Roulaf
+  actorName: Roulaf
   fan: 0
   price: 6
   level: 1
@@ -48,13 +48,23 @@ MonoBehaviour:
     sweetness: 10
     fear: 10
     trust: 10
-  fourchetteMin: -2
+  baseStat: 100
+  multiplier: 1.2
+  experienceCurve: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  totalExperience: 0
+  voxography: []
   fourchetteMax: 2
-  relation: 0
   potentials: []
-  voice: {fileID: 0}
+  friendshipCost: 
+  humorAffinity:
+    neutral: 0
+    joy: 0
+    sadness: 0
+    disgust: 0
+    anger: 0
+    surprise: 0
+    sweetness: 0
+    fear: 0
+    trust: 0
   skillOffset: {x: 0, y: 0, z: 0}
-  actorSprite: {fileID: 21300000, guid: 42c3dd3cfaef84e48b6078b448e42937, type: 3}
-  actorIcon: {fileID: 21300000, guid: c01e6fa601522af45a925acce69aeaa5, type: 3}
-  actorContractIcon: {fileID: 0}
   spriteSheets: {fileID: 11400000, guid: 67ce95d9d0800bf4b809fde14811baf9, type: 2}

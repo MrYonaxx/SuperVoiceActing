@@ -22,7 +22,7 @@ namespace VoiceActing
         \* ======================================== */
         [Header("CharacterData")]
         [SerializeField]
-        protected StoryCharacterData storyCharacterData;
+        protected VoiceActorData voiceActorData;
         [SerializeField]
         SpriteRenderer spriteRenderer;
         [SerializeField]
@@ -53,6 +53,8 @@ namespace VoiceActing
 
         protected IEnumerator mouthCoroutine = null;
 
+        [SerializeField]
+        protected StoryCharacterData storyCharacterData;
 
         #endregion
 
@@ -66,6 +68,12 @@ namespace VoiceActing
         {
             return spriteRenderer.sprite;
         }
+
+        public VoiceActorData GetVoiceActorData()
+        {
+            return voiceActorData;
+        }
+
         public StoryCharacterData GetStoryCharacterData()
         {
             return storyCharacterData;
@@ -110,6 +118,11 @@ namespace VoiceActing
         }
 
 
+        public virtual void SetVoiceActorData(VoiceActorData vaData)
+        {
+            voiceActorData = vaData;
+            SetStoryCharacterData(vaData.SpriteSheets);
+        }
 
         public virtual void SetStoryCharacterData(StoryCharacterData sprites)
         {

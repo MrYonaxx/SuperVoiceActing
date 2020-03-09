@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -22,9 +23,13 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
 
+        [HorizontalGroup("StoryMusic", LabelWidth = 70, Width = 50)]
         [SerializeField]
         bool playMusic = false;
+
+        [HorizontalGroup("StoryMusic")]
         [SerializeField]
+        [HideLabel]
         AudioClip audio = null;
 
 
@@ -44,8 +49,7 @@ namespace VoiceActing
         /* ======================================== *\
          *                FUNCTIONS                 *
         \* ======================================== */
-
-        protected override IEnumerator StoryEventCoroutine()
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
             if (playMusic)
                 AudioManager.Instance.PlayMusic(audio);
@@ -53,6 +57,12 @@ namespace VoiceActing
                 AudioManager.Instance.StopMusic();
             yield return null;
         }
+
+        public override bool InstantNodeCoroutine()
+        {
+            return true;
+        }
+
 
 
         #endregion

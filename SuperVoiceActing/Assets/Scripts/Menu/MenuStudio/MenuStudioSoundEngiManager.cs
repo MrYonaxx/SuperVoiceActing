@@ -22,7 +22,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [Title("Animator")]
         [SerializeField]

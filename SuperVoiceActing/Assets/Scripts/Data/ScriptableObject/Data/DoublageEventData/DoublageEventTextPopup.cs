@@ -53,7 +53,7 @@ namespace VoiceActing
 
         public override IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
         {
-            eventManager.PanelPlayer.StartPopup(interlocuteur.GetName(), text);
+            //eventManager.PanelPlayer.StartPopup(interlocuteur.GetName(), text);
             yield break;
         }
 

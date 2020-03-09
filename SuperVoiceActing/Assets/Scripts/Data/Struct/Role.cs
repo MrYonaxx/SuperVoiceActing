@@ -258,7 +258,7 @@ namespace VoiceActing
             this.roleSprite = data.RoleSprite;
 
             if(data.ActorLocked != null)
-                this.characterLock = data.ActorLocked.SpriteSheets.name;
+                this.characterLock = data.ActorLocked.NameID;
 
             // ================================== 
             if(data.SkillRoleSelection != null)

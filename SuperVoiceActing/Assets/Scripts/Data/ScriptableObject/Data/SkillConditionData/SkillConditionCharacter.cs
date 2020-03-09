@@ -16,13 +16,13 @@ namespace VoiceActing
     public class SkillConditionCharacter: SkillCondition
     {
         [SerializeField]
-        StoryCharacterData characterData;
+        VoiceActorData characterData;
 
         public override bool CheckCondition(DoublageBattleParameter battleParameter)
         {
             for(int i = 0; i < battleParameter.VoiceActors.Count; i++)
             {
-                if(battleParameter.VoiceActors[i].VoiceActorID == characterData.name)
+                if(battleParameter.VoiceActors[i].VoiceActorID == characterData.NameID)
                 {
                     return true;
                 }

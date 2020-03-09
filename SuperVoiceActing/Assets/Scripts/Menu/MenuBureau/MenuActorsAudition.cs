@@ -23,7 +23,7 @@ namespace VoiceActing
         [SerializeField]
         PlayerData playerData;
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [SerializeField]
         Animator animatorAudition;

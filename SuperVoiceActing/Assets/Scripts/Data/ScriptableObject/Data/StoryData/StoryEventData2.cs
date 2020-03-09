@@ -107,7 +107,7 @@ namespace VoiceActing
                 case StoryEventNode.Effect:
                     return eventNode + " : " + storyEventEffect[0].EventEffect.ToString();
                 case StoryEventNode.MoveCharacter:
-                    return eventNode + " : " + storyEventMoveCharacter[0].CharacterToMove.name;
+                    return eventNode + " : " + storyEventMoveCharacter[0].CharacterMoving.name;
                 case StoryEventNode.PlayerData:
                     return eventNode.ToString();
                 case StoryEventNode.Choices:

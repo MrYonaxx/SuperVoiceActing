@@ -34,7 +34,7 @@ namespace VoiceActing
         [SerializeField]
         ImageDictionnary contractSpriteDictionnary;
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [SerializeField]
         ButtonHistoric buttonHistoric;

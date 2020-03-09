@@ -26,7 +26,7 @@ namespace VoiceActing
         private List<VoiceActor> actorsList = new List<VoiceActor>();
         [Header("Data")]
         [SerializeField]
-        private CharacterSpriteDatabase characterSpriteDatabase;
+        private VoiceActorDatabase characterSpriteDatabase;
 
         [Header("Prefab")]
         [SerializeField]

@@ -20,19 +20,12 @@ namespace VoiceActing
         [HideLabel]
         [HorizontalGroup]
         [SerializeField]
-        StoryEventData DataToLoad;
-        public StoryEventData GetDataToLoad()
+        StoryEventData dataToLoad;
+        public StoryEventData DataToLoad()
         {
-            return DataToLoad;
+            return dataToLoad;
         }
 
-        [HorizontalGroup(LabelWidth = 100)]
-        [SerializeField]
-        bool saveSceneConfiguration;
-        public bool SaveSceneConfiguration()
-        {
-            return saveSceneConfiguration;
-        }
 
         [HideLabel]
         [SerializeField]

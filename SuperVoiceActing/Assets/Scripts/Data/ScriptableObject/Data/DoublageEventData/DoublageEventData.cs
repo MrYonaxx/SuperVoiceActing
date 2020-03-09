@@ -138,7 +138,7 @@ namespace VoiceActing
                 case DoublageEventNode.Sound:
                     return eventNode.ToString(); //+ " : " + doublageEventSound..ToString();
                 case DoublageEventNode.SetCharacter:
-                    return eventNode + " : " + doublageEventSetCharacter.Character.name;
+                    return eventNode + " : ";// + doublageEventSetCharacter.in;
                 case DoublageEventNode.Effect:
                     return eventNode + " : " + doublageEventEffect.EventEffect.ToString();
                 case DoublageEventNode.Skill:

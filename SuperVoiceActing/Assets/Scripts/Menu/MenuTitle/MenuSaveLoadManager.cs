@@ -26,7 +26,7 @@ namespace VoiceActing
          *               ATTRIBUTES                 *
         \* ======================================== */
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [Header("Menu Save")]
         [SerializeField]

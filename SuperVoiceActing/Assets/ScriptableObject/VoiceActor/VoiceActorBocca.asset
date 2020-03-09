@@ -28,6 +28,14 @@ MonoBehaviour:
     sweetness: 18
     fear: 10
     trust: 30
+  potentials:
+  - {fileID: 11400000, guid: bdd35d894af91144db955d08e671c783, type: 2}
+  - {fileID: 11400000, guid: cd670241fb4f8a941b89c3da14fbdd0a, type: 2}
+  - {fileID: 11400000, guid: 35e8a8083523ffd48bbf3f0a467ec3bd, type: 2}
+  - {fileID: 11400000, guid: f1b142fabc2968e48b8833ae3de47e4b, type: 2}
+  - {fileID: 11400000, guid: 46f1e540ce4976a4a9be98fc3187c831, type: 2}
+  - {fileID: 11400000, guid: c3db28482a14ef046ac0098f78fc5dce, type: 2}
+  friendshipCost: 0000000000000000000000000a0000000a00000014000000
   growth:
     neutral: 0
     joy: 60
@@ -51,6 +59,7 @@ MonoBehaviour:
   baseStat: 100
   multiplier: 1.2
   experienceCurve: 640000007800000090000000ac000000ce000000f70000002801000063010000aa010000ff01000065020000df0200007203000022040000f5040000f2050000220700008f080000450a0000520c0000c80e0000bc1100004815000089190000a41e0000c42400001e2c0000f0340000863f00003a4c0000785b0000c36d0000b68300000d9e0000a9bd000097e300001b110100ba47010045890100ecd701004e36020090a70200792f030091d203004796040022810500f59a060026ed0700fa820900f8690b00
+  totalExperience: 4487649
   voxography:
   - contractName: 'Ragab VI : Tears from the battlefield'
     roles:
@@ -521,14 +530,6 @@ MonoBehaviour:
       skillRoles: []
     emotionGained: 08000000
   fourchetteMax: 2
-  potentials:
-  - {fileID: 11400000, guid: bdd35d894af91144db955d08e671c783, type: 2}
-  - {fileID: 11400000, guid: cd670241fb4f8a941b89c3da14fbdd0a, type: 2}
-  - {fileID: 11400000, guid: 35e8a8083523ffd48bbf3f0a467ec3bd, type: 2}
-  - {fileID: 11400000, guid: f1b142fabc2968e48b8833ae3de47e4b, type: 2}
-  - {fileID: 11400000, guid: 46f1e540ce4976a4a9be98fc3187c831, type: 2}
-  - {fileID: 11400000, guid: c3db28482a14ef046ac0098f78fc5dce, type: 2}
-  friendshipCost: 0000000000000000000000000a0000000a00000014000000
   humorAffinity:
     neutral: 0
     joy: 0
@@ -539,5 +540,17 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
+  spriteSheets:
+    characterVoice: {fileID: 8300000, guid: 3203ea9261673ab43be5394019c0e396, type: 3}
+    voiceReel: 
+    emotionVoiceReel: 0
+    spriteIcon: {fileID: 21300000, guid: 115f698608c94514b8d438a44592dfa9, type: 3}
+    spriteEye: {fileID: 0}
+    spriteNormal:
+    - {fileID: 21300000, guid: eaf70e16aa03d624195400b4fc4f3524, type: 3}
+    - {fileID: 21300000, guid: 2577cba4ad2ac264f8061391313ff65c, type: 3}
+    spriteJoy:
+    - {fileID: 21300000, guid: bee498589479d0d45ab679411d625929, type: 3}
+    - {fileID: 21300000, guid: 022edd32e0ec14844b60f7e84f367a5a, type: 3}
+    spriteSpecial: []
   skillOffset: {x: 0, y: 0, z: 0}
-  spriteSheets: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}

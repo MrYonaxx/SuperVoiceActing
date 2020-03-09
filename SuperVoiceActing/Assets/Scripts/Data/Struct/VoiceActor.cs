@@ -274,6 +274,14 @@ namespace VoiceActing
 
         [FoldoutGroup("$voiceActorName")]
         [SerializeField]
+        private int[] experienceCurve;
+        public int[] ExperienceCurve
+        {
+            get { return experienceCurve; }
+        }
+
+        [FoldoutGroup("$voiceActorName")]
+        [SerializeField]
         private int relation;
         public int Relation
         {
@@ -397,8 +405,8 @@ namespace VoiceActing
         public VoiceActor(VoiceActorData actorData)
         {
             
-            voiceActorName = actorData.SpriteSheets.GetName();
-            voiceActorID = actorData.SpriteSheets.name;
+            voiceActorName = actorData.ActorName;
+            voiceActorID = actorData.NameID;
             level = actorData.Level;
             fanGain = 0;
             fan = actorData.Fan;
@@ -420,6 +428,7 @@ namespace VoiceActing
                 friendshipLevel[i] = actorData.FriendshipCost[i];
             }
 
+            experienceCurve = actorData.ExperienceCurve;
 
             skillOffset = actorData.SkillOffset;
 
@@ -561,13 +570,13 @@ namespace VoiceActing
 
 
 
-        public void GainExp(ExperienceCurveData experienceCurveData, int expGain)
+        public void GainExp(int expGain)
         {
             nextEXP -= expGain;
             while (nextEXP <= 0)
             {
                 LevelUp();
-                nextEXP += experienceCurveData.ExperienceCurve[level];
+                nextEXP += experienceCurve[level];
             }
         }
 

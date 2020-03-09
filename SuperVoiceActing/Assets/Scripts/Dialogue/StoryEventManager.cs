@@ -28,10 +28,19 @@ namespace VoiceActing
         [Title("Event")]
         [SerializeField]
         StoryEventData storyEventData;
+        public StoryEventData StoryEventData
+        {
+            get { return storyEventData; }
+        }
 
         [Title("Player")]
         [SerializeField]
         PlayerData playerData;
+        public PlayerData PlayerData
+        {
+            get { return playerData; }
+        }
+
 
         [Title("Managers")]
         [SerializeField]
@@ -40,10 +49,15 @@ namespace VoiceActing
         [Title("EventText")]
         [SerializeField]
         Image imageBackground;
+
         [SerializeField]
         TextMeshProUGUI textMeshPro;
+        public TextMeshProUGUI TextMeshPro { get { return textMeshPro; } }
+
         [SerializeField]
         GameObject next;
+        public GameObject Next { get { return next; } }
+
         [SerializeField]
         Animator animName;
         [SerializeField]
@@ -54,9 +68,7 @@ namespace VoiceActing
         TextMeshProUGUI textDate;
         [SerializeField]
         TextMeshProUGUI textLocation;
-        /*[SerializeField]
-        AudioSource audioSourceText;
-        */
+
         [Title("Characters")]
         [SerializeField]
         CharacterDialogueController characterPrefab;
@@ -67,12 +79,16 @@ namespace VoiceActing
 
         [SerializeField]
         List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
+        public List<CharacterDialogueController> Characters { get { return characters; } }
 
         [Title("Story Effect")]
         [SerializeField]
         StoryEventChoiceManager storyEventChoiceManager;
+        public StoryEventChoiceManager StoryEventChoiceManager { get { return storyEventChoiceManager; } }
+
         [SerializeField]
         StoryEventEffectManager storyEventEffectManager;
+        public StoryEventEffectManager StoryEventEffectManager { get { return storyEventEffectManager; } }
 
 
         [SerializeField]
@@ -80,7 +96,9 @@ namespace VoiceActing
 
 
         List<StoryVariable> localVariables = new List<StoryVariable>();
+
         Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        public Dictionary<string, string> Dictionary { get { return dictionary; } }
 
 
         //private IEnumerator coroutineStory = null;
@@ -160,12 +178,12 @@ namespace VoiceActing
             for (int i = 0; i < newStoryEvent.Characters.Length; i++)
             {
                 characters.Add(Instantiate(characterPrefab, transformCharacter));
-                characters[characters.Count - 1].SetStoryCharacterData(newStoryEvent.Characters[i].CharacterToMove);
+                characters[characters.Count - 1].SetVoiceActorData(newStoryEvent.Characters[i].CharacterMoving);
                 characters[characters.Count - 1].SetPosition(newStoryEvent.Characters[i].NewPosition);
                 //characters[characters.Count - 1].transform.localPosition = newStoryEvent.Characters[i].NewPosition;
                 characters[characters.Count - 1].transform.localScale = newStoryEvent.Characters[i].NewScale;
                 characters[characters.Count - 1].transform.eulerAngles = newStoryEvent.Characters[i].NewRotation;
-                characters[characters.Count - 1].FadeCharacter(newStoryEvent.Characters[i].FadeIn, 1);
+                characters[characters.Count - 1].FadeCharacter(newStoryEvent.Characters[i].Appear, 1);
             }
         }
 
@@ -187,15 +205,32 @@ namespace VoiceActing
             StartCoroutine(NextNodeCoroutine());
         }
 
+        public IEnumerator StartEvent(StoryEventData newStoryEvent)
+        {
+            CreateScene(newStoryEvent);
+            storyEventEffectManager.Fade(false, 60);
+            storyEventEffectManager.Tint(Color.clear, 60);
+            yield return NextNodeCoroutine();
+            unityEvent.Invoke();
+        }
+
+
         private IEnumerator NextNodeCoroutine()
         {
+
             currentNode = storyEventData.GetEventNode(i);
             if (currentNode != null)
             {
                 HideName();
+                if(currentNode.InstantNodeCoroutine() == true)
+                    StartCoroutine(currentNode.ExecuteNodeCoroutine(this));
+                else 
+                    yield return currentNode.ExecuteNodeCoroutine(this);
+                i += 1;
+                StartCoroutine(NextNodeCoroutine());
 
                 // ==============================================================================================================================
-                if (currentNode is StoryEventText)
+                /*if (currentNode is StoryEventText)
                 {
                     animatorTextbox.SetTrigger("Feedback");
                     StoryEventText node = (StoryEventText) currentNode;
@@ -275,7 +310,7 @@ namespace VoiceActing
 
                 yield return StartCoroutine(currentNode.GetStoryEvent());
                 i += 1;
-                StartCoroutine(NextNodeCoroutine());
+                StartCoroutine(NextNodeCoroutine());*/
             }
             else
             {
@@ -310,7 +345,7 @@ namespace VoiceActing
 
         private void DrawName(StoryCharacterData interlocuteur)
         {
-            if (interlocuteur == null)
+            /*if (interlocuteur == null)
             {
                 HideName();
                 return;
@@ -323,7 +358,7 @@ namespace VoiceActing
                 StopCoroutine(coroutineAnimName);
             coroutineAnimName = ScaleAnimName(0.7f, false);
             StartCoroutine(coroutineAnimName);
-            animName.Play("ANIM_BandeRouge");
+            animName.Play("ANIM_BandeRouge");*/
         }
 
 

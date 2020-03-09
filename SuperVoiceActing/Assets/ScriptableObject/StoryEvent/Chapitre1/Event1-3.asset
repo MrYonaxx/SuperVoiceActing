@@ -20,91 +20,36 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: eventNodes1
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[System.IEquatable`1[[VoiceActing.StoryValue,
-        Assembly-CSharp]], mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 1|VoiceActing.StoryValue, Assembly-CSharp
-    - Name: Type
-      Entry: 3
-      Data: 0
-    - Name: Value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: eventNodes2
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[VoiceActing.StoryEvent6, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 3|VoiceActing.StoryEventText6, Assembly-CSharp
-    - Name: Type
-      Entry: 3
-      Data: 3
-    - Name: text
-      Entry: 1
-      Data: 
-    - Name: speed
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
+  createNewScene: 1
   background: {fileID: 11400000, guid: 8483a0de16824cd45979c3cd87240071, type: 2}
   characters:
-  - characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
+  - characterMoving: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
     time: 60
     newPosition: {x: 0, y: 0, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
     newScale: {x: 0.5, y: 0.5, z: 0.5}
-    fadeIn: 0
-    fadeOut: 1
+    appear: 0
     waitEnd: 0
-  - characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990, type: 2}
+  - characterMoving: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
     time: 60
     newPosition: {x: 1, y: 0, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
     newScale: {x: 0.5, y: 0.5, z: 0.5}
-    fadeIn: 0
-    fadeOut: 1
+    appear: 0
     waitEnd: 0
-  - characterToMove: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}
+  - characterMoving: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
     time: 60
     newPosition: {x: 0, y: 0, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
     newScale: {x: 0.5, y: 0.5, z: 0.5}
-    fadeIn: 0
-    fadeOut: 0
+    appear: 0
     waitEnd: 0
   eventNodes:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Ok, [PlayerName], on a peut-\xEAtre un coup \xE0 jouer.)"
@@ -119,19 +64,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -176,7 +119,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Ragab est une grosse s\xE9rie, si j'arrive \xE0 avoir le job, on va
@@ -192,19 +135,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -249,7 +190,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: <color="yellow">*Ding* *Ding*</color>
@@ -264,19 +205,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -321,7 +260,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -336,20 +275,18 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+        characterMoving: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6,
           type: 2}
         time: 120
         newPosition: {x: 0, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 1
-        fadeOut: 0
+        appear: 1
         waitEnd: 1
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -394,7 +331,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -409,19 +346,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 1
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -466,8 +401,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: "Bwahaha ! Vous \xEAtes [PlayerName] ?"
@@ -482,19 +416,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -539,8 +471,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Euh, oui c'est bien moi, et vous \xEAtes M. Bourghi ?"
@@ -555,19 +486,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -612,8 +541,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Hahaha ! J'aurais cru qu'un directeur de doublage reconnaitrait ma voix.
@@ -628,19 +556,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -685,8 +611,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Mais j'vous en veux pas, des voix plus talentueuses que moi y'en a un
@@ -702,19 +627,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -759,7 +682,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -774,19 +697,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -831,7 +752,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 4
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -846,19 +767,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 1
@@ -903,8 +822,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Je suis la voix du personnage Ragab !
@@ -919,19 +837,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -976,8 +892,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Bocca "Boss" Nagais !
@@ -992,19 +907,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1049,7 +962,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: (Wow.)
@@ -1064,19 +977,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1121,8 +1032,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Ha, ravi de vous rencontrer M. Nagais.
@@ -1137,19 +1047,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1194,8 +1102,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Appelez moi Bocca, tout simplement
@@ -1210,19 +1117,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1267,8 +1172,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Mais, je pensais avoir rendez-vous avec le prodcuteur en charge de la
@@ -1284,19 +1188,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1341,8 +1243,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: "Ah, vous en faites pas, il va arriver \xE0 9h p\xE9tante."
@@ -1357,19 +1258,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1414,8 +1313,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Donc dans quelques secondes...
@@ -1430,19 +1328,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1487,7 +1383,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: <color="yellow">*Ding* *Ding*</color>
@@ -1502,19 +1398,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1559,7 +1453,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -1574,20 +1468,18 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+        characterMoving: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6,
           type: 2}
         time: 180
         newPosition: {x: -0.4, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1632,7 +1524,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -1647,20 +1539,18 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+        characterMoving: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f,
           type: 2}
         time: 180
         newPosition: {x: 0.4, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 1
-        fadeOut: 0
+        appear: 1
         waitEnd: 1
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1705,8 +1595,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Ah, M. [PlayerName].
@@ -1721,19 +1610,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1778,8 +1665,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Vous \xEAtes \xE0 l'heure, c'est une qualit\xE9."
@@ -1794,19 +1680,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1851,8 +1735,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Bonjour...?
@@ -1867,19 +1750,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -1924,80 +1805,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
-        emotionNPC: 0
-        emotionEmoticonBalloon: 0
-        text: (Cette fois, il doit s'agir de la bonne personne.)
-        mouthSpeed: 1
-        forceSkip: 0
-        ignorePlayerInput: 0
-      storyEventWait:
-        time: 60
-      storyEventEffect:
-        eventEffect: 0
-        time: 60
-        timeTint: 60
-        tintColor: {r: 0, g: 0, b: 0, a: 0}
-      storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
-        time: 60
-        newPosition: {x: 0, y: -5.2, z: 0}
-        newRotation: {x: 0, y: 0, z: 0}
-        newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
-        waitEnd: 0
-      storyEventSceneLoader:
-        sceneName: 
-      storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
-        DoublageEventToLoad: {fileID: 0}
-      storyEventMusic:
-        playMusic: 0
-        audio: {fileID: 0}
-      storyEventPlayerData:
-        currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
-        storyEventCustomScript: {fileID: 0}
-      storyEventChoices:
-        text: 
-        answers: []
-        storyChoices: []
-      storyEventVariable:
-        globalVariable: 0
-        custom: 0
-        variableName: 
-        mathOperation: 0
-        newValue: 0
-        newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-        storyEvent: {fileID: 0}
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
-  - dataBox:
-      eventNode: 0
-      storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Antoine Bourghi.
@@ -2012,19 +1820,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2069,8 +1875,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Mais ce sera Monsieur Bourghi pour vous.
@@ -2085,19 +1890,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2142,8 +1945,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Et...<link=Pause></link> Bonjour M. Bocca, qu'elle est la raison de
@@ -2159,19 +1961,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2216,7 +2016,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2231,20 +2031,18 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+        characterMoving: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6,
           type: 2}
         time: 1
         newPosition: {x: -0.4, y: 0, z: 0}
         newRotation: {x: 0, y: 180, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2289,8 +2087,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: "Hahaha, j'\xE9tais venu voir mon prochain directeur."
@@ -2305,19 +2102,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2362,8 +2157,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Hmmm, je vois...
@@ -2378,19 +2172,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2435,8 +2227,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Mais je vous laisse discuter affaire ensemble.
@@ -2451,19 +2242,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2508,7 +2297,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2523,20 +2312,18 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
+        characterMoving: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6,
           type: 2}
         time: 120
         newPosition: {x: 1, y: 0, z: 0}
         newRotation: {x: 0, y: 180, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 0
-        fadeOut: 1
+        appear: 1
         waitEnd: 1
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2581,7 +2368,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 1
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2596,19 +2383,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2653,7 +2438,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 4
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2668,19 +2453,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 1
@@ -2725,8 +2508,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Dans tous les cas M. [PlayerName].
@@ -2741,19 +2523,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2798,7 +2578,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2813,20 +2593,18 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
+        characterMoving: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f,
           type: 2}
         time: 120
         newPosition: {x: 0, y: 0, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.5, y: 0.5, z: 0.5}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 1
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2871,8 +2649,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: "Comme vous le savez, je viens m'entretenir avec vous\nau sujet de la
@@ -2888,19 +2665,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -2945,8 +2720,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Je suis le producteur en charge de Ragab Studio, une branche de la
@@ -2962,19 +2736,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3019,8 +2791,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Et nous avons donc... hum... <link=Pause></link>"choisi" votre studio
@@ -3036,19 +2807,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3093,8 +2862,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: "Voici le contrat, il ne vous reste plus qu'\xE0 signer."
@@ -3109,19 +2877,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3166,8 +2932,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Euh... Mais je n'ai encore rien accept\xE9."
@@ -3182,19 +2947,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3239,8 +3002,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Oh oui, je vous laisse lire le contrat.
@@ -3255,19 +3017,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3312,7 +3072,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: (...)
@@ -3327,19 +3087,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3384,7 +3142,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -3399,19 +3157,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3456,7 +3212,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Wow ! C'est vraiment bien pay\xE9 !)"
@@ -3471,19 +3227,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3528,7 +3282,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: (Mais il y a comme anguille sous roche.)
@@ -3543,19 +3297,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3600,7 +3352,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(M\xEAme avec le pr\xE9sum\xE9 succ\xE8s de Princess Muffin, qu'on
@@ -3616,19 +3368,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3673,7 +3423,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Pourtant, tout \xE0 l'air en ordre, je ne vois pas d'arnaque.)"
@@ -3688,19 +3438,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3745,7 +3493,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Et, les d\xE9lais ont l'air raisonnables, contrairement \xE0 Princess
@@ -3761,19 +3509,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3818,7 +3564,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Mais ce type ne me revient pas.<link=Pause></link>\nIl est d\xE9j\xE0
@@ -3835,19 +3581,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3892,8 +3636,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Avant de signer, j'ai quelques questions \xE0 vous poser."
@@ -3908,19 +3651,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -3965,8 +3706,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 11400000, guid: c71a625dfaf711141963476362a02f4f, type: 2}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: '*Soupir*<link=Pause></link> Allez-y.'
@@ -3981,19 +3721,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0
@@ -4038,7 +3776,7 @@ MonoBehaviour:
   - dataBox:
       eventNode: 8
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -4053,19 +3791,17 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 11400000, guid: 9948bbae5d157904f92457cad115f66e, type: 2}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
       storyEventMusic:
         playMusic: 0

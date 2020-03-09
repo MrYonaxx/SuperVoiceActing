@@ -29,7 +29,7 @@ namespace VoiceActing
         InputController inputMixingTable;
 
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [SerializeField]
         Image vignettageNormal;

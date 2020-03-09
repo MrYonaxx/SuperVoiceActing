@@ -26,7 +26,7 @@ namespace VoiceActing
         [SerializeField]
         private CameraController cameraController;
         [SerializeField]
-        private CharacterSpriteDatabase characterSpriteDatabase;
+        private VoiceActorDatabase characterSpriteDatabase;
         [SerializeField]
         private CharacterDialogueController[] characters;
         //0 = centre ; 1 = gauche ; 2 = droite

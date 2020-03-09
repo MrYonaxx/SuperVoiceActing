@@ -27,7 +27,7 @@ namespace VoiceActing
         private string name;*/
         public string NameID
         {
-            get { return spriteSheets.name; }
+            get { return this.name; }
         }
 
         [Title("Informations générales")]
@@ -88,8 +88,24 @@ namespace VoiceActing
             get { return statistique; }
         }
 
+        [SerializeField]
+        [HorizontalGroup("Skill")]
+        [VerticalGroup("Skill/Potential", PaddingBottom = 12)]
+        private SkillActorData[] potentials;
+        public SkillActorData[] Potentials
+        {
+            get { return potentials; }
+        }
+
+        [SerializeField]
+        [VerticalGroup("Skill/Cost", PaddingBottom = 12)]
+        private int[] friendshipCost;
+        public int[] FriendshipCost
+        {
+            get { return friendshipCost; }
+        }
+
         // ========== C R O I S S A N C E =====================================
-        
         [TabGroup("Croissance")]
         [SerializeField]
         [Header("Croissance")]
@@ -128,7 +144,11 @@ namespace VoiceActing
         {
             get { return experienceCurve; }
         }
-
+        [ReadOnly]
+        [OnValueChanged("CalculateExperienceCurve")]
+        [TabGroup("Croissance")]
+        [SerializeField]
+        private float totalExperience = 0;
 
         [Space]
         [Space]
@@ -149,30 +169,18 @@ namespace VoiceActing
             get { return fourchetteMax; }
         }
 
-        [SerializeField]
-        [HorizontalGroup("Skills")]
-        private SkillActorData[] potentials;
-        public SkillActorData[] Potentials
-        {
-            get { return potentials; }
-        }
 
-        [SerializeField]
-        [HorizontalGroup("Skills")]
-        private int[] friendshipCost;
-        public int[] FriendshipCost
-        {
-            get { return friendshipCost; }
-        }
 
 
 
         private void CalculateExperienceCurve()
         {
             experienceCurve[0] = baseStat;
+            totalExperience = 0;
             for (int i = 1; i < experienceCurve.Length; i++)
             {
                 experienceCurve[i] = (int)(experienceCurve[i - 1] * multiplier);
+                totalExperience += experienceCurve[i];
             }
         }
 
@@ -191,21 +199,22 @@ namespace VoiceActing
 
 
 
-        [Space]
-        [Header("Graphics")]
+
+        [TabGroup("Sprites")]
+        [SerializeField]
+        [HideLabel]
+        private StoryCharacterData spriteSheets;
+        public StoryCharacterData SpriteSheets
+        {
+            get { return spriteSheets; }
+        }
+
         [TabGroup("Sprites")]
         [SerializeField]
         private Vector3 skillOffset;
         public Vector3 SkillOffset
         {
             get { return skillOffset; }
-        }
-        [TabGroup("Sprites")]
-        [SerializeField]
-        private StoryCharacterData spriteSheets;
-        public StoryCharacterData SpriteSheets
-        {
-            get { return spriteSheets; }
         }
 
         #endregion

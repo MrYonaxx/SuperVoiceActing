@@ -86,10 +86,7 @@ namespace VoiceActing
 
         [SerializeField]
         protected List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
-        public List<CharacterDialogueController> Characters
-        {
-            get { return characters; }
-        }
+        public List<CharacterDialogueController> Characters { get { return characters; } }
 
         [SerializeField]
         protected Transform[] defaultCharacterTransform;

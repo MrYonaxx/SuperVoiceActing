@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1a867a9c4004546835da9bba53d2e4, type: 3}
   m_Name: VoiceActorMC
   m_EditorClassIdentifier: 
+  actorName: '[PlayerName]'
   fan: 0
   price: 0
   level: 9
@@ -27,6 +28,8 @@ MonoBehaviour:
     sweetness: 4
     fear: 3
     trust: 2
+  potentials: []
+  friendshipCost: 
   growth:
     neutral: 0
     joy: 0
@@ -47,11 +50,12 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
+  baseStat: 100
+  multiplier: 1.2
+  experienceCurve: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  totalExperience: 0
   voxography: []
-  fourchetteMin: 0
   fourchetteMax: 0
-  relation: 0
-  potentials: []
   humorAffinity:
     neutral: 0
     joy: 0
@@ -62,5 +66,14 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
+  spriteSheets:
+    characterVoice: {fileID: 0}
+    voiceReel: 
+    emotionVoiceReel: 0
+    spriteIcon: {fileID: 0}
+    spriteEye: {fileID: 0}
+    spriteNormal:
+    - {fileID: 21300000, guid: e96b9df7e18a0e742835401934140483, type: 3}
+    spriteJoy: []
+    spriteSpecial: []
   skillOffset: {x: 0, y: 0, z: 0}
-  spriteSheets: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa, type: 2}

@@ -18,15 +18,12 @@ namespace VoiceActing
     [System.Serializable]
     public class StoryEventMoveCharacter : StoryEvent
     {
-
-        [HorizontalGroup("Interlocuteur")]
-        [HideLabel]
+        [HorizontalGroup("Interlocuteur", Width = 0.5f)]
         [SerializeField]
-        private StoryCharacterData characterToMove;
-        public StoryCharacterData CharacterToMove
-        {
-            get { return characterToMove; }
-        }
+        [HideLabel]
+        private VoiceActorData characterMoving;
+        public VoiceActorData CharacterMoving { get { return characterMoving; } }
+
 
         [HorizontalGroup("Interlocuteur", LabelWidth = 100)]
         [SerializeField]
@@ -34,36 +31,21 @@ namespace VoiceActing
 
         [SerializeField]
         private Vector3 newPosition = new Vector3(0, 0, 0);
-        public Vector3 NewPosition
-        {
-            get { return newPosition; }
-        }
+        public Vector3 NewPosition { get { return newPosition; } }
+
 
         [SerializeField]
-        Vector3 newRotation;
-        public Vector3 NewRotation
-        {
-            get { return newRotation; }
-        }
+        Vector3 newRotation = new Vector3(0, 0, 0);
+        public Vector3 NewRotation { get { return newRotation; } }
 
         [SerializeField]
         Vector3 newScale = new Vector3(0.5f,0.5f,0.5f);
-        public Vector3 NewScale
-        {
-            get { return newScale; }
-        }
+        public Vector3 NewScale { get { return newScale; } }
 
         [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]
-        bool fadeIn = true;
-        public bool FadeIn
-        {
-            get { return fadeIn; }
-        }
-
-        [HorizontalGroup("Advanced", LabelWidth = 70)]
-        [SerializeField]
-        bool fadeOut = false;
+        bool appear = true;
+        public bool Appear { get { return appear; } }
 
         [HorizontalGroup("Advanced", LabelWidth = 70)]
         [SerializeField]
@@ -73,50 +55,32 @@ namespace VoiceActing
 
 
 
-
-
-
-        public void SetNode(List<CharacterDialogueController> charactersEvent)
+        public override bool InstantNodeCoroutine()
         {
-            for (int i = 0; i < charactersEvent.Count; i++)
+            if (waitEnd == false)
             {
-                if (charactersEvent[i].GetStoryCharacterData() == characterToMove)
+                return true;
+            }
+            return false;
+        }
+
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
+        {
+            yield return MoveCoroutine(storyManager);
+        }
+
+        private IEnumerator MoveCoroutine(StoryEventManager storyManager)
+        {
+            for (int i = 0; i < storyManager.Characters.Count; i++)
+            {
+                if (storyManager.Characters[i].GetVoiceActorData().NameID == characterMoving.NameID)
                 {
-                    character = charactersEvent[i];
+                    character = storyManager.Characters[i];
                     break;
                 }
             }
-        }
 
-        public bool GetWaitEnd()
-        {
-            return waitEnd;
-        }
-
-
-        protected override IEnumerator StoryEventCoroutine()
-        {
-            if(waitEnd == false)
-            {
-                yield break;
-            }
-            else
-            {
-                yield return MoveCoroutine();
-            }
-
-        }
-
-        public IEnumerator MoveCoroutine()
-        {
-            if (fadeIn == true)
-            {
-                character.FadeIn(time);
-            }
-            else if (fadeOut == true)
-            {
-                character.FadeOut(time);
-            }
+            character.FadeCharacter(appear, time);
 
             float t = 0;
             float rate = (60f / time);

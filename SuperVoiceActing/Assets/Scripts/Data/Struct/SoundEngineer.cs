@@ -110,8 +110,8 @@ namespace VoiceActing
 
         public SoundEngineer(SoundEngineerData soundEngineer)
         {
-            engineerName = soundEngineer.SpritesSheets.GetName();
-            soundEngineerID = soundEngineer.SpritesSheets.name;
+            engineerName = soundEngineer.EngineerName;
+            soundEngineerID = soundEngineer.name;
             level = soundEngineer.Level;
             experience = 0;
             salary = soundEngineer.InitialSalary;

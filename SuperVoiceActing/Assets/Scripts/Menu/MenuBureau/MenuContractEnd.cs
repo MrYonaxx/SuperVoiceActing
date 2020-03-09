@@ -21,7 +21,7 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
 
         [SerializeField]
         Animator animatorEnd;

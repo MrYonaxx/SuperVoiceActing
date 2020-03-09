@@ -13,7 +13,7 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the DoublageEvent class
     /// </summary>
-    public class DoublageEvent
+    public abstract class DoublageEvent
     {
         public virtual IEnumerator ExecuteNodeCoroutine(DoublageEventManager eventManager)
         {

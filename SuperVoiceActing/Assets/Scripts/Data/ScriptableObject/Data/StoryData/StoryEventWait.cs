@@ -23,14 +23,11 @@ namespace VoiceActing
             get { return time; }
         }
 
-        protected override IEnumerator StoryEventCoroutine()
+
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
-            float actualTime = time;
-            while (actualTime != 0)
-            {
-                yield return null;
-                actualTime -= 1;
-            }
+
+            yield return new WaitForSeconds(time / 60f);
         }
 
     } // StoryEventText class

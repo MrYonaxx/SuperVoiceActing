@@ -21,8 +21,6 @@ namespace VoiceActing
         \* ======================================== */
         [SerializeField]
         PlayerData playerData;
-        [SerializeField]
-        ExperienceCurveData expCurve;
 
 
         [Title("Parameter Actor Work")]
@@ -109,7 +107,7 @@ namespace VoiceActing
 
             for (int i = 0; i < voiceActors.Count; i++)
             {
-                voiceActors[i].GainExp(expCurve, (int)(((c.ExpBonus + (c.ExpGain * c.TotalLine)) / voiceActors.Count) * expWorkMultiplier));
+                voiceActors[i].GainExp((int)(((c.ExpBonus + (c.ExpGain * c.TotalLine)) / voiceActors.Count) * expWorkMultiplier));
                 voiceActors[i].CreateVoxography(c.Name);
             }
             for (int i = 0; i < c.Characters.Count; i++)

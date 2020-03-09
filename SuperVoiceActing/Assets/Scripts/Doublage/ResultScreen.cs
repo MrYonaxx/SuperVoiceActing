@@ -24,7 +24,7 @@ namespace VoiceActing
         \* ======================================== */
         [Title("Database")]
         [SerializeField]
-        private CharacterSpriteDatabase characterSpriteDatabase;
+        private VoiceActorDatabase characterSpriteDatabase;
         [SerializeField]
         private SkillDatabase skillDatabase;
 

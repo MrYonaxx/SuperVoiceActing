@@ -36,7 +36,7 @@ namespace VoiceActing
         [HorizontalGroup("Interlocuteur", Width = 0.5f)]
         [SerializeField]
         [HideLabel]
-        StoryCharacterData interlocuteur;
+        private VoiceActorData interlocutor;
 
         [HorizontalGroup("Interlocuteur", Width = 0.25f)]
         [SerializeField]
@@ -48,7 +48,6 @@ namespace VoiceActing
         [HideLabel]
         EmotionBalloon emotionEmoticonBalloon;
 
-        //[TabGroup("ParentGroup", "Texte")]
         [SerializeField]
         [TextArea(2,2)]
         [HideLabel]
@@ -58,11 +57,6 @@ namespace VoiceActing
             get { return text;  }
         }
 
-        /*[TabGroup("ParentGroup", "TexteEng")]
-        [SerializeField]
-        [TextArea(2, 2)]
-        [HideLabel]
-        string textEng = null;*/
 
 
         [HorizontalGroup("Option Avancées", LabelWidth = 50)]
@@ -82,60 +76,15 @@ namespace VoiceActing
 
 
 
-        protected TextMeshProUGUI textMeshPro;
-        protected CharacterDialogueController characterDialogue;
-        protected GameObject nextButton;
-
         int actualTime = 0;
         int actualLenght = 0;
 
         List<int> pauseList = new List<int>();
 
-        //int language = 0;
-
         string actualText = null;
-
-
         int voiceLetterInterval = 3;
         int voiceLetterCurrentInterval = 0;
 
-
-
-
-
-        public void SetLanguage(int newLanguage)
-        {
-            //language = newLanguage;
-        }
-
-        public StoryCharacterData GetInterlocuteur()
-        {
-            return interlocuteur;
-        }
-        public CharacterDialogueController GetDialogue()
-        {
-            return characterDialogue;
-        }
-
-        public void SetNode(TextMeshProUGUI textMesh, List<CharacterDialogueController> charactersEvent, GameObject next, Dictionary<string, string> dictionary)
-        {
-            textMeshPro = textMesh;
-            nextButton = next;
-            for (int i = 0; i < charactersEvent.Count; i++)
-            {
-                if (charactersEvent[i].GetStoryCharacterData() == interlocuteur)
-                {
-                    characterDialogue = charactersEvent[i];
-                    characterDialogue.SpeakAnimation();
-                    break;
-                }
-            }
-
-
-            actualText = text;
-            this.actualText = StringReplace(this.actualText, dictionary);
-
-        }
 
         private string StringReplace(string stringB, Dictionary<string, string> dict)
         {
@@ -147,7 +96,7 @@ namespace VoiceActing
         }
 
 
-        public void PlayVoice(char character)
+        public void PlayVoice(char character, CharacterDialogueController characterDialogue)
         {
             voiceLetterCurrentInterval += 1;
             if(voiceLetterCurrentInterval >= voiceLetterInterval)
@@ -161,9 +110,28 @@ namespace VoiceActing
             }
         }
 
-        protected override IEnumerator StoryEventCoroutine()
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
-            // Initialization
+            // Initialization ==========================================================
+            TextMeshProUGUI textMeshPro = storyManager.TextMeshPro;
+            GameObject nextButton = storyManager.Next;
+            CharacterDialogueController characterDialogue = null;
+            if (interlocutor != null)
+            {
+                for (int i = 0; i < storyManager.Characters.Count; i++)
+                {
+                    if (storyManager.Characters[i].GetVoiceActorData().NameID == interlocutor.NameID)
+                    {
+                        characterDialogue = storyManager.Characters[i];
+                        characterDialogue.SpeakAnimation();
+                        break;
+                    }
+                }
+            }
+
+            actualText = text;
+            this.actualText = StringReplace(this.actualText, storyManager.Dictionary);
+
             textMeshPro.textInfo.linkCount = 0;
             pauseList.Clear();
             actualTime = 0;
@@ -177,6 +145,8 @@ namespace VoiceActing
             }
 
             yield return null;
+
+            // Initialization ==========================================================
 
             actualLenght = textMeshPro.textInfo.characterCount;
 
@@ -209,7 +179,6 @@ namespace VoiceActing
                 }
             }
 
-
             if (actualText[0] == '(')
                 textMeshPro.color = new Color(0.8f, 0.8f, 1);
             else
@@ -218,27 +187,29 @@ namespace VoiceActing
 
 
 
-            //    B O U C L E    P R I N C I P A L
+            //    B O U C L E    P R I N C I P A L     =====================================================
 
             while (true)
             {
                 // Print letter + wait time
                 if (actualTime == Mathf.Abs(mouthSpeed) && textMeshPro.maxVisibleCharacters < actualLenght)
                 {
-                    if (CheckPause() == false)
+                    if (CheckPause(textMeshPro, characterDialogue) == false)
                     {
                         textMeshPro.maxVisibleCharacters += 1;
                         actualTime = 0;
                         if (textMeshPro.maxVisibleCharacters > 0 && textMeshPro.maxVisibleCharacters < actualLenght)
                         {
-                            if (actualText[textMeshPro.maxVisibleCharacters-1] == ',' && actualText[textMeshPro.maxVisibleCharacters] == ' ' ||
-                                actualText[textMeshPro.maxVisibleCharacters - 1] == '.' && actualText[textMeshPro.maxVisibleCharacters] == ' ' || 
-                                actualText[textMeshPro.maxVisibleCharacters - 1] == '?' && actualText[textMeshPro.maxVisibleCharacters] == ' ' || 
+                            if (actualText[textMeshPro.maxVisibleCharacters - 1] == ',' && actualText[textMeshPro.maxVisibleCharacters] == ' ' ||
+                                actualText[textMeshPro.maxVisibleCharacters - 1] == '.' && actualText[textMeshPro.maxVisibleCharacters] == ' ' ||
+                                actualText[textMeshPro.maxVisibleCharacters - 1] == '?' && actualText[textMeshPro.maxVisibleCharacters] == ' ' ||
                                 actualText[textMeshPro.maxVisibleCharacters - 1] == '!' && actualText[textMeshPro.maxVisibleCharacters] == ' ')
                                 actualTime -= 12;
                         }
-                        PlayVoice(actualText[textMeshPro.maxVisibleCharacters - 1]);
+                        PlayVoice(actualText[textMeshPro.maxVisibleCharacters - 1], characterDialogue);
                     }
+                    else
+                        nextButton.SetActive(true);
                 }
                 else if (textMeshPro.maxVisibleCharacters < actualLenght)
                 {
@@ -259,7 +230,7 @@ namespace VoiceActing
                     else if (Input.GetButton("ControllerB") || Input.GetMouseButton(1))
                     {
                         actualTime = 0;
-                        if (CheckSkipPause() == false)
+                        if (CheckSkipPause(textMeshPro, characterDialogue) == false)
                         {
                             textMeshPro.maxVisibleCharacters = actualLenght;
                             if (characterDialogue != null)
@@ -280,7 +251,7 @@ namespace VoiceActing
                     else if (Input.GetButtonDown("ControllerA") || Input.GetMouseButtonDown(0))
                     {
                         actualTime = 0;
-                        if (CheckSkipPause() == false)
+                        if (CheckSkipPause(textMeshPro, characterDialogue) == false)
                         {
                             textMeshPro.maxVisibleCharacters = actualLenght;
                             if (characterDialogue != null)
@@ -296,7 +267,7 @@ namespace VoiceActing
                     nextButton.SetActive(true);
                     if (characterDialogue != null)
                         characterDialogue.StopMouth();
-                    if(forceSkip == true)
+                    if (forceSkip == true)
                     {
                         break;
                     }
@@ -306,10 +277,16 @@ namespace VoiceActing
         }
 
 
+        protected override IEnumerator StoryEventCoroutine()
+        {
+            yield return null;
+        }
 
 
 
-        private bool CheckPause()
+
+
+        private bool CheckPause(TextMeshProUGUI textMeshPro, CharacterDialogueController characterDialogue)
         {
             if (pauseList.Count > 0)
             {
@@ -317,14 +294,13 @@ namespace VoiceActing
                 {
                     if (characterDialogue != null)
                         characterDialogue.StopMouth();
-                    nextButton.SetActive(true);
                     return true;
                 }
             }
             return false;
         }
 
-        private bool CheckSkipPause()
+        private bool CheckSkipPause(TextMeshProUGUI textMeshPro, CharacterDialogueController characterDialogue)
         {
             if (pauseList.Count > 0)
             {

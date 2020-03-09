@@ -16,12 +16,16 @@ namespace VoiceActing
     /// </summary>
     /// 
     [System.Serializable]
-    public class StoryEvent
+    public abstract class StoryEvent
     {
-
-        public IEnumerator GetStoryEvent()
+        public virtual IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
-            return StoryEventCoroutine();
+            yield break;
+        }
+
+        public virtual bool InstantNodeCoroutine()
+        {
+            return false;
         }
 
         protected virtual IEnumerator StoryEventCoroutine()

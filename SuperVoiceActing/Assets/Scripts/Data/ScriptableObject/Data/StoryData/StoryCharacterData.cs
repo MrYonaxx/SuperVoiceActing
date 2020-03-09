@@ -29,13 +29,18 @@ namespace VoiceActing
     /// <summary>
     /// Definition of the CharacterData class
     /// </summary>
-    [CreateAssetMenu(fileName = "CharacterStoryData", menuName = "CharacterStory", order = 1)]
-    public class StoryCharacterData : ScriptableObject
+    /// 
+    [System.Serializable]
+    public class StoryCharacterData
     {
         #region Attributes 
 
         [SerializeField]
-        string characterName;
+        private AudioClip characterVoice;
+        public AudioClip CharacterVoice
+        {
+            get { return characterVoice; }
+        }
 
         [HorizontalGroup("VoiceReel")]
         [SerializeField]
@@ -54,13 +59,7 @@ namespace VoiceActing
             get { return emotionVoiceReel; }
         }
 
-        [SerializeField]
-        private AudioClip characterVoice;
-        public AudioClip CharacterVoice
-        {
-            get { return characterVoice; }
-        }
-
+        [Space]
         [SerializeField]
         private Sprite spriteIcon;
         public Sprite SpriteIcon
@@ -95,11 +94,6 @@ namespace VoiceActing
         public Sprite[] SpriteSpecial
         {
             get { return spriteSpecial; }
-        }
-
-        public string GetName()
-        {
-            return characterName;
         }
         
         #endregion

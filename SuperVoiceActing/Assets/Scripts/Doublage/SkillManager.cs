@@ -95,7 +95,7 @@ namespace VoiceActing
 
         [Title("Managers")]
         [SerializeField]
-        CharacterSpriteDatabase characterSpriteDatabase;
+        VoiceActorDatabase characterSpriteDatabase;
         [SerializeField]
         SkillDatabase skillDatabase;
 

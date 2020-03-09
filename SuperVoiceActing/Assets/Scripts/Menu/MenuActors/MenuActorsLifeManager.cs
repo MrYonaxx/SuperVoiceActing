@@ -19,10 +19,6 @@ namespace VoiceActing
         /* ======================================== *\
          *               ATTRIBUTES                 *
         \* ======================================== */
-
-        [SerializeField]
-        ExperienceCurveData experienceCurve;
-
         [SerializeField]
         MenuAutoContract menuAutoContract;
         [SerializeField]
@@ -239,14 +235,7 @@ namespace VoiceActing
             if (random <= chanceWork)
             {
                 voiceActor.Hp -= (int)(voiceActor.HpMax * Random.Range(0.1f, 0.2f));
-                voiceActor.GainExp(experienceCurve, (int)(experienceCurve.ExperienceCurve[voiceActor.Level] * Random.Range(0.1f, 0.3f)));
-                //experience = experience + (int) (experienceCurve.ExperienceCurve[level] * Random.Range(0.1f, 0.3f));
-                /*voiceActor.NextEXP -= (int)(experienceCurve.ExperienceCurve[voiceActor.Level] * Random.Range(0.1f, 0.3f));//experienceCurve.ExperienceCurve[level] - experience;
-                if (voiceActor.NextEXP <= 0)
-                {
-                    voiceActor.LevelUp();
-                    voiceActor.NextEXP += experienceCurve.ExperienceCurve[voiceActor.Level];
-                }*/
+                voiceActor.GainExp((int)(voiceActor.ExperienceCurve[voiceActor.Level] * Random.Range(0.1f, 0.3f)));
             }
             else // le comédien fais des trucs
             {
