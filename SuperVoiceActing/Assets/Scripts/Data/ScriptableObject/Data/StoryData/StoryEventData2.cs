@@ -81,11 +81,6 @@ namespace VoiceActing
         [HideLabel]
         public StoryEventVariable[] storyEventVariable = null;
 
-        [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", StoryEventNode.Condition)]
-        [SerializeField]
-        [HideLabel]
-        public StoryEventConditions[] storyEventCondition = null;
 
 
 
@@ -108,8 +103,6 @@ namespace VoiceActing
                     return eventNode.ToString();
                 case StoryEventNode.Variable:
                     return eventNode.ToString() + " : [" + storyEventVariable[0].VariableName + "]";
-                case StoryEventNode.Condition:
-                    return eventNode.ToString() + " ------------------------------------------------------------------------------------------------------------------------";
                 default:
                     return eventNode.ToString();
             }
@@ -192,8 +185,6 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventChoices[0];
                 case StoryEventNode.Variable:
                     return eventNodes[index].dataBox.storyEventVariable[0];
-                case StoryEventNode.Condition:
-                    return eventNodes[index].dataBox.storyEventCondition[0];
             }
             return null;
         }

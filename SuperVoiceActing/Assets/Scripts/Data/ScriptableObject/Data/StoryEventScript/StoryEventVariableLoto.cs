@@ -19,7 +19,7 @@ namespace VoiceActing
         [SerializeField]
         string variableName;
         [SerializeField]
-        private int lotoRate = 100000;
+        public int lotoRate = 100000;
         [SerializeField]
         private int lotoWinRate = 1;
 
@@ -30,7 +30,7 @@ namespace VoiceActing
             lotoWinRate = 1;
         }
 
-        public override void ApplyCustomEvent(StoryEventManager storyManager)
+        public override StoryEventData ApplyCustomEvent(StoryEventManager storyManager)
         {
             storyManager.PlayerData.NextRandomEvent.Add(10);
             storyManager.PlayerData.Money -= 10 * lotoWinRate;
@@ -39,9 +39,10 @@ namespace VoiceActing
             if(r <= lotoWinRate)
             {
                 storyVariable.value = 1;
-                return;
+                return null;
             }
             storyVariable.value = 0;
+            return null;
         }
 
     }

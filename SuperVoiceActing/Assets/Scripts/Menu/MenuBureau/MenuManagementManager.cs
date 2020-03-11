@@ -102,7 +102,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        private void Start()
+        private void Awake()
         {
             if(playerData.IsLoading == true)
             {

@@ -14,18 +14,17 @@ namespace VoiceActing
 {
     [System.Serializable]
     public class StoryEventVariableRandomActor : StoryEventCustomData
-	{
-        [ValueDropdown("SelectVariable")]
+    {
         [SerializeField]
-        string storyVariableName;
+        VoiceActorData[] voiceActorDatas;
+        [SerializeField]
+        StoryEventData[] storyEventDatas;
 
-        public StoryEventVariableRandomActor()
-        {
-            storyVariableName = "";
-        }
+        [SerializeField]
+        StoryEventData defaultEvent;
 
 
-        public override void ApplyCustomEvent(StoryEventManager storyManager)
+        public override StoryEventData ApplyCustomEvent(StoryEventManager storyManager)
         {
             List<string> actorsIDAvailable = new List<string>();
             for(int i = 0; i < storyManager.PlayerData.VoiceActors.Count; i++)
@@ -44,11 +43,12 @@ namespace VoiceActing
             }
 
             int rand = Random.Range(0, actorsIDAvailable.Count);
-            if(rand < actorsIDAvailable.Count)
+            for(int i = 0; i < voiceActorDatas.Length; i++)
             {
-                storyManager.PlayerData.GetStoryVariable(storyVariableName).valueText = actorsIDAvailable[rand];
+                if (actorsIDAvailable[i].Equals(voiceActorDatas[i].name))
+                    return storyEventDatas[i];
             }
-
+            return defaultEvent;
         }
 
 

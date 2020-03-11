@@ -26,7 +26,6 @@ namespace VoiceActing
         PlayerData,
         Choices,
         Variable,
-        Condition,
         Custom
     }
 
@@ -100,13 +99,6 @@ namespace VoiceActing
         public StoryEventVariable storyEventVariable = null;
 
         [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", StoryEventNode.Condition)]
-        [SerializeField]
-        [HideLabel]
-        public StoryEventConditions storyEventCondition = null;
-
-
-        [VerticalGroup("Hey/Right")]
         [ShowIf("eventNode", StoryEventNode.Custom)]
         [SerializeField]
         [HideLabel]
@@ -132,8 +124,8 @@ namespace VoiceActing
                     return eventNode.ToString();
                 case StoryEventNode.Variable:
                     return eventNode.ToString() + " : " + storyEventVariable.VariableName;
-                case StoryEventNode.Condition:
-                    return eventNode.ToString() + " ------------------------------------------------------------------------------------------------------------------------";
+                case StoryEventNode.LoadEvent:
+                    return eventNode.ToString() + storyEventLoadEvent.GetCondition();
                 default:
                     return eventNode.ToString();
             }
@@ -160,29 +152,6 @@ namespace VoiceActing
 
     }
 
-
-
-
-    public class StoryEventDataTest
-    {
-    }
-
-    public class StoryEventDataTest2 : StoryEventDataTest
-    {
-        public string a;
-        public StoryEventDataTest2()
-        {
-            a = "a";
-        }
-    }
-    public class StoryEventDataTest3 : StoryEventDataTest
-    {
-        public string b;
-        public StoryEventDataTest3()
-        {
-            b = "a";
-        }
-    }
 
 
 
@@ -223,19 +192,6 @@ namespace VoiceActing
         StoryEventDataBox[] eventNodes;
 
 
-
-        [Space]
-        [Title("Event")]
-        [ValueDropdown("Test2")]
-        [SerializeField]
-        StoryEventDataTest eventNodes2;
-
-        private IEnumerable Test2 = new ValueDropdownList<StoryEventDataTest>()
-        {
-            { "Wesh", new StoryEventDataTest2() },
-            { "Random Actor", new StoryEventDataTest3() },
-        };
-
         public int GetEventSize()
         {
             return eventNodes.Length;
@@ -268,8 +224,6 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventChoices;
                 case StoryEventNode.Variable:
                     return eventNodes[index].dataBox.storyEventVariable;
-                case StoryEventNode.Condition:
-                    return eventNodes[index].dataBox.storyEventCondition;
                 case StoryEventNode.Custom:
                     return eventNodes[index].dataBox.storyEventCustom;
             }

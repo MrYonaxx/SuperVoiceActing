@@ -86,11 +86,11 @@ namespace VoiceActing
         int voiceLetterCurrentInterval = 0;
 
 
-        private string StringReplace(string stringB, Dictionary<string, string> dict)
+        private string StringReplace(string stringB, Dictionary<string, StoryVariable> dict)
         {
             foreach (string k in dict.Keys)
             {
-                stringB = stringB.Replace(k, dict[k]);
+                stringB = stringB.Replace(k, dict[k].valueText);
             }
             return stringB;
         }

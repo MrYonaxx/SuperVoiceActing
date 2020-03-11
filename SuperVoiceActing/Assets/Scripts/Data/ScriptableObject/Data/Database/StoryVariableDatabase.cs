@@ -55,6 +55,18 @@ namespace VoiceActing
             valueText = value.ToString();
         }
 
+        public void SetValueString(string newValue)
+        {
+            value = 0;
+            valueText = newValue;
+        }
+
+        public void SetValueInt(int newValue)
+        {
+            value = newValue;
+            valueText = newValue.ToString();
+        }
+
     }
 
     [CreateAssetMenu(fileName = "StoryVariableDatabase", menuName = "Database/StoryVariableDatabase", order = 1)]

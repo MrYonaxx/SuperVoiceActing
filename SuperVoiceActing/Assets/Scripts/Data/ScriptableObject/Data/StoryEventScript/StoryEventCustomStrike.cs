@@ -16,12 +16,8 @@ namespace VoiceActing
     public class StoryEventCustomStrike: StoryEventCustomData
     {
 
-        public StoryEventCustomStrike()
-        {
 
-        }
-
-        public override void ApplyCustomEvent(StoryEventManager storyManager)
+        public override StoryEventData ApplyCustomEvent(StoryEventManager storyManager)
         {
             int rand = Random.Range((int) (storyManager.PlayerData.VoiceActors.Count * 0.25f), (int)(storyManager.PlayerData.VoiceActors.Count * 0.75f));
             for(int i = 0; i < rand; i++)
@@ -29,6 +25,7 @@ namespace VoiceActing
                 int r = Random.Range(0, storyManager.PlayerData.VoiceActors.Count);
                 storyManager.PlayerData.VoiceActors[r].ActorMentalState = VoiceActorState.Dead;
             }
+            return null;
         }
     } 
 

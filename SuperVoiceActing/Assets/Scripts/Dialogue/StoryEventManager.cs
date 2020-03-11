@@ -100,8 +100,8 @@ namespace VoiceActing
 
         List<StoryVariable> localVariables = new List<StoryVariable>();
 
-        Dictionary<string, string> dictionary = new Dictionary<string, string>();
-        public Dictionary<string, string> Dictionary { get { return dictionary; } }
+        Dictionary<string, StoryVariable> dictionary = new Dictionary<string, StoryVariable>();
+        public Dictionary<string, StoryVariable> Dictionary { get { return dictionary; } }
 
 
         //private IEnumerator coroutineStory = null;
@@ -147,11 +147,11 @@ namespace VoiceActing
             
         }
 
-        private string StringReplace(string stringB, Dictionary<string, string> dict)
+        private string StringReplace(string stringB, Dictionary<string, StoryVariable> dict)
         {
             foreach (string k in dict.Keys)
             {
-                stringB = stringB.Replace(k, dict[k]);
+                stringB = stringB.Replace(k, dict[k].valueText);
             }
             return stringB;
         }
@@ -218,35 +218,6 @@ namespace VoiceActing
                 else
                     yield return currentNode.ExecuteNodeCoroutine(this);
             }
-            // ==============================================================================================================================
-            /*else if (currentNode is StoryEventChoices)
-            {
-                storyEventChoiceManager.DrawChoices((StoryEventChoices)currentNode);
-            }
-
-            else if (currentNode is StoryEventVariable)
-            {
-                StoryEventVariable node = (StoryEventVariable)currentNode;
-                node.SetNode(localVariables, playerData, dictionary);
-
-            }
-            else if (currentNode is StoryEventConditions)
-            {
-                StoryEventConditions node = (StoryEventConditions)currentNode;
-                if(node.CheckCondition(localVariables, playerData) == false)
-                {
-                    storyEventData = node.StoryEvent;
-                    i = -1;
-                }
-            }
-            else if (currentNode is StoryEventConditionActor)
-            {
-                StoryEventConditionActor node = (StoryEventConditionActor)currentNode;
-                storyEventData = node.SetNode(localVariables, playerData);
-                CreateScene();
-                i = -1;
-            }*/
-            // ==============================================================================================================================
         }
 
 
@@ -266,8 +237,12 @@ namespace VoiceActing
 
         private void CreateDictionnary()
         {
-            dictionary.Add("[PlayerName]", playerData.PlayerName);
-            dictionary.Add("[StudioName]", playerData.StudioName);
+            dictionary.Add("[PlayerName]", new StoryVariable(0, playerData.PlayerName));
+            dictionary.Add("[StudioName]", new StoryVariable(0, playerData.StudioName));
+            for (int i = 0; i < playerData.StoryVariables.Count; i++)
+            {
+                dictionary.Add(playerData.StoryVariables[i].VariableName, playerData.StoryVariables[i]);
+            }
         }
 
 

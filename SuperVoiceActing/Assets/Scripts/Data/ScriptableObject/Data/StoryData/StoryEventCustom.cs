@@ -12,11 +12,16 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    public class StoryEventCustomData 
+    public interface IStoryEventCustomData
     {
-        public virtual void ApplyCustomEvent(StoryEventManager storyManager)
-        {
 
+    }
+
+    public class StoryEventCustomData : ScriptableObject
+    {
+        public virtual StoryEventData ApplyCustomEvent(StoryEventManager storyManager)
+        {
+            return null;
         }
         protected static IEnumerable SelectVariable()
         {
@@ -25,31 +30,20 @@ namespace VoiceActing
         }
     }
 
+
     [System.Serializable]
 	public class StoryEventCustom : StoryEvent
     {
-        [ValueDropdown("SelectStoryEventCustomData")]
         [SerializeField]
-        StoryEventCustomData[] eventCustom;
+        StoryEventCustomData eventCustom;
 
-        public override bool InstantNodeCoroutine()
-        {
-            return true;
-        }
         public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
-            //eventCustom.ApplyCustomEvent(storyManager);
-            yield break;
+            StoryEventData storyEvent = eventCustom.ApplyCustomEvent(storyManager);
+            if (storyEvent != null)
+                yield return storyManager.ExecuteEvent(storyEvent);
+            yield return null;
         }
-
-
-
-        private IEnumerable SelectStoryEventCustomData = new ValueDropdownList<StoryEventCustomData>()
-        {
-            { "Random Actor", new StoryEventVariableRandomActor() },
-            { "Loto", new StoryEventVariableLoto() },
-        };
-
 
     } // StoryEventScript class
 
