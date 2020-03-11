@@ -304,15 +304,6 @@ namespace VoiceActing
     [CreateAssetMenu(fileName = "PlayerData", menuName = "PlayerData/PlayerData", order = 1)]
     public class PlayerData : ScriptableObject
     {
-
-        [Space]
-        [SerializeField]
-        private int language;
-        public int Language
-        {
-            get { return language; }
-        }
-
         [Space]
         [Space]
         [Space]
@@ -496,10 +487,10 @@ namespace VoiceActing
         }
 
         [SerializeField]
-        private List<StoryVariable> globalVariables = new List<StoryVariable>();
-        public List<StoryVariable> GlobalVariables
+        private List<StoryVariable> storyVariables = new List<StoryVariable>();
+        public List<StoryVariable> StoryVariables
         {
-            get { return globalVariables; }
+            get { return storyVariables; }
         }
 
         [SerializeField]
@@ -788,7 +779,7 @@ namespace VoiceActing
             nextStoryEvents.Clear();
             nextStoryEventsStartWeek.Clear();
             phoneStoryEvents.Clear();
-            globalVariables.Clear();
+            storyVariables.Clear();
             contractFranchise.Clear();
 
             currentContract = new Contract();
@@ -1053,6 +1044,16 @@ namespace VoiceActing
                 minuteDecade = "";
             }
             return hourDecade + hour + ":" + minuteDecade + minute;
+        }
+
+        public StoryVariable GetStoryVariable(string variableName)
+        {
+            for(int i = 0; i < storyVariables.Count; i++)
+            {
+                if (storyVariables[i].VariableName.Equals(variableName))
+                    return storyVariables[i];
+            }
+            return null;
         }
 
         public List<VoiceActor> GetVoiceActorsFromContractID(Contract contract)

@@ -22,9 +22,6 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
-        StoryEventManager storyEventManager;
-
-        [SerializeField]
         Animator[] animatorsZoom;
 
         [SerializeField]
@@ -41,8 +38,18 @@ namespace VoiceActing
         TextMeshProUGUI textBox;
 
 
-        StoryEventChoices choicesData;
+        int choiceSize = 0;
         int indexSelected = -1;
+        public int IndexSelected
+        {
+            get { return indexSelected; }
+        }
+
+        bool choiceSelected = false;
+        public bool ChoiceSelected
+        {
+            get { return choiceSelected; }
+        }
 
         #endregion
 
@@ -63,16 +70,16 @@ namespace VoiceActing
 
         public void DrawChoices(StoryEventChoices data)
         {
+            choiceSize = data.Answers.Length;
             indexSelected = -1;
+            choiceSelected = false;
             choicePanel.SetActive(true);
             ChoiceDezoomOn();
-            choicesData = data;
-            textBox.text = data.Text;
-            StartCoroutine(ChoicesCoroutineAppear());
+            StartCoroutine(ChoicesCoroutineAppear(data));
 
         }
 
-        private IEnumerator ChoicesCoroutineAppear()
+        private IEnumerator ChoicesCoroutineAppear(StoryEventChoices choicesData)
         {
             for (int i = 0; i < choicesData.Answers.Length; i++)
             {
@@ -85,6 +92,21 @@ namespace VoiceActing
         }
 
 
+
+
+
+        public void Select(int index)
+        {
+            if (choiceSelected == true)
+                return;
+            if (indexSelected != -1)
+            {
+                animatorsChoices[indexSelected].SetTrigger("Unselected");
+            }
+            indexSelected = index;
+            animatorsChoices[indexSelected].SetTrigger("Selected");
+        }
+
         public void SelectUp()
         {
             if (indexSelected != -1)
@@ -92,7 +114,7 @@ namespace VoiceActing
                 animatorsChoices[indexSelected].SetTrigger("Unselected");
                 indexSelected -= 1;
                 if (indexSelected < 0)
-                    indexSelected = choicesData.Answers.Length - 1;
+                    indexSelected = choiceSize - 1;
             }
             else
             {
@@ -108,7 +130,7 @@ namespace VoiceActing
             {
                 animatorsChoices[indexSelected].SetTrigger("Unselected");
                 indexSelected += 1;
-                if (indexSelected == choicesData.Answers.Length)
+                if (indexSelected == choiceSize)
                     indexSelected = 0;
             }
             else
@@ -122,6 +144,8 @@ namespace VoiceActing
 
         public void Validate(int index)
         {
+            if (choiceSelected == true)
+                return;
             indexSelected = index;
             Validate();
         }
@@ -129,11 +153,12 @@ namespace VoiceActing
 
         public void Validate()
         {
+            if (choiceSelected == true)
+                return;
             if (indexSelected == -1)
                 return;
             ChoiceDezoomOff();
             inputController.gameObject.SetActive(false);
-            storyEventManager.LoadNewStoryEvent(choicesData.StoryChoices[indexSelected]);
             for (int i = 0; i < animatorsChoices.Length; i++)
             {
                 if (i == indexSelected)
@@ -141,18 +166,7 @@ namespace VoiceActing
                 else
                     animatorsChoices[i].SetTrigger("Disappear");
             }
-            StartCoroutine(WaitEnd());
-        }
-
-        private IEnumerator WaitEnd()
-        {
-            int time = 60;
-            while(time != 0)
-            {
-                time -= 1;
-                yield return null;
-            }
-            choicesData.StopCoroutine();
+            choiceSelected = true;
         }
 
 

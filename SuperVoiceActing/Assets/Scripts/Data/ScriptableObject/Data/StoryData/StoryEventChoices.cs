@@ -40,17 +40,20 @@ namespace VoiceActing
 
         private bool stop = false;
 
+
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
+        {
+            stop = false;
+            storyManager.StoryEventChoiceManager.DrawChoices(this);
+            while (storyManager.StoryEventChoiceManager.ChoiceSelected == false)
+                yield return null;
+            yield return new WaitForSeconds(1f);
+            yield return storyManager.ExecuteEvent(storyChoices[storyManager.StoryEventChoiceManager.IndexSelected]);
+        }
+
         public void StopCoroutine()
         {
             stop = true;
-        }
-
-        protected override IEnumerator StoryEventCoroutine()
-        {
-            while (stop == false)
-                yield return null;
-            stop = false;
-
         }
 
     } // StoryEventChoices class

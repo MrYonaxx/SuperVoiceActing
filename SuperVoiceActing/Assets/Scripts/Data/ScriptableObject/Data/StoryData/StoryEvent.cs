@@ -8,6 +8,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
@@ -15,7 +16,7 @@ namespace VoiceActing
     /// Definition of the StoryEvent class
     /// </summary>
     /// 
-    [System.Serializable]
+    //[System.Serializable]
     public abstract class StoryEvent
     {
         public virtual IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)

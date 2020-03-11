@@ -62,6 +62,8 @@ namespace VoiceActing
         Animator animName;
         [SerializeField]
         Animator animatorTextbox;
+        public Animator AnimatorTextbox { get { return animatorTextbox; } }
+
         [SerializeField]
         TextMeshProUGUI textName;
         [SerializeField]
@@ -76,6 +78,7 @@ namespace VoiceActing
         Transform transformCharacter;
         [SerializeField]
         Transform cameraCenter;
+        public Transform CameraCenter { get { return cameraCenter; } }
 
         [SerializeField]
         List<CharacterDialogueController> characters = new List<CharacterDialogueController>();
@@ -139,8 +142,7 @@ namespace VoiceActing
             CreateDictionnary();
             if (storyEventData != null)
             {
-                CreateScene();
-                StartCoroutine(NextNodeCoroutine());
+                StartCoroutine(StartEvent(storyEventData));
             }
             
         }
@@ -154,14 +156,11 @@ namespace VoiceActing
             return stringB;
         }
 
-        public void CreateScene()
-        {
-            CreateScene(storyEventData);
-        }
-
 
         public void CreateScene(StoryEventData newStoryEvent)
         {
+            if (newStoryEvent.CreateNewScene == false)
+                return;
             textDate.text = calendarData.GetMonthName(playerData.Date.month-1) + " - Semaine " + playerData.Date.week;
             for (int i = 0; i < characters.Count; i++)
             {
@@ -188,134 +187,66 @@ namespace VoiceActing
         }
 
 
-        public void StartStoryEventData(StoryEventData newStoryEvent)
-        {
-            i = 0;
-            storyEventData = newStoryEvent;
-            StartCoroutine(NextNodeCoroutine());
-        }
-
-        public void StartStoryEventDataWithScene(StoryEventData newStoryEvent)
-        {
-            i = 0;
-            storyEventData = newStoryEvent;
-            CreateScene();
-            storyEventEffectManager.Fade(false, 60);
-            storyEventEffectManager.Tint(Color.clear, 60);
-            StartCoroutine(NextNodeCoroutine());
-        }
-
+        /// <summary>
+        /// Lance un event à la fin et créer une scène.
+        /// </summary>
+        /// <param name="storyEvent"></param>
+        /// <returns></returns>
         public IEnumerator StartEvent(StoryEventData newStoryEvent)
         {
             CreateScene(newStoryEvent);
             storyEventEffectManager.Fade(false, 60);
             storyEventEffectManager.Tint(Color.clear, 60);
-            yield return NextNodeCoroutine();
+            yield return null;
+            yield return ExecuteEvent(newStoryEvent);
             unityEvent.Invoke();
         }
 
-
-        private IEnumerator NextNodeCoroutine()
+        /// <summary>
+        /// N'active pas d'event en fin de coroutine
+        /// </summary>
+        /// <param name="storyEvent"></param>
+        /// <returns></returns>
+        public IEnumerator ExecuteEvent(StoryEventData storyEvent)
         {
-
-            currentNode = storyEventData.GetEventNode(i);
-            if (currentNode != null)
+            for(int i = 0; i < storyEvent.GetEventSize(); i++)
             {
+                currentNode = storyEvent.GetEventNode(i);
                 HideName();
-                if(currentNode.InstantNodeCoroutine() == true)
+                if (currentNode.InstantNodeCoroutine() == true)
                     StartCoroutine(currentNode.ExecuteNodeCoroutine(this));
-                else 
+                else
                     yield return currentNode.ExecuteNodeCoroutine(this);
-                i += 1;
-                StartCoroutine(NextNodeCoroutine());
+            }
+            // ==============================================================================================================================
+            /*else if (currentNode is StoryEventChoices)
+            {
+                storyEventChoiceManager.DrawChoices((StoryEventChoices)currentNode);
+            }
 
-                // ==============================================================================================================================
-                /*if (currentNode is StoryEventText)
-                {
-                    animatorTextbox.SetTrigger("Feedback");
-                    StoryEventText node = (StoryEventText) currentNode;
-                    node.SetLanguage(playerData.Language);
-                    node.SetNode(textMeshPro, characters, next, dictionary);
-                    if(node.GetDialogue() != null)
-                        cameraCenter.transform.position = -node.GetDialogue().transform.position * 3;
-                    DrawName(node.GetInterlocuteur());
-                }
+            else if (currentNode is StoryEventVariable)
+            {
+                StoryEventVariable node = (StoryEventVariable)currentNode;
+                node.SetNode(localVariables, playerData, dictionary);
 
-                else if (currentNode is StoryEventMoveCharacter)
+            }
+            else if (currentNode is StoryEventConditions)
+            {
+                StoryEventConditions node = (StoryEventConditions)currentNode;
+                if(node.CheckCondition(localVariables, playerData) == false)
                 {
-                    StoryEventMoveCharacter node = (StoryEventMoveCharacter)currentNode;
-                    node.SetNode(characters);
-                    if(node.GetWaitEnd() == false)
-                    {
-                        StartCoroutine(node.MoveCoroutine());
-                    }
-                }
-
-                else if (currentNode is StoryEventLoad)
-                {
-                    StoryEventLoad node = (StoryEventLoad) currentNode;
-                    if (node.GetDataToLoad() != null)
-                    {
-                        storyEventData = node.GetDataToLoad();
-                        if(node.SaveSceneConfiguration() == false)
-                            CreateScene();
-                        i = -1;
-                    }
-                    else if (node.GetDoublageEventToLoad() != null)
-                    {
-                        //doublageEventManager.StopFlashback(node.GetDoublageEventToLoad());
-                    }
-                }
-
-                else if (currentNode is StoryEventEffect)
-                {
-                    StoryEventEffect node = (StoryEventEffect)currentNode;
-                    node.SetNode(storyEventEffectManager);
-                }
-
-                else if (currentNode is StoryEventPlayerData)
-                {
-                    StoryEventPlayerData node = (StoryEventPlayerData)currentNode;
-                    node.SetNode(playerData);
-                }
-                else if (currentNode is StoryEventChoices)
-                {
-                    storyEventChoiceManager.DrawChoices((StoryEventChoices)currentNode);
-                }
-
-                else if (currentNode is StoryEventVariable)
-                {
-                    StoryEventVariable node = (StoryEventVariable)currentNode;
-                    node.SetNode(localVariables, playerData, dictionary);
-
-                }
-                else if (currentNode is StoryEventConditions)
-                {
-                    StoryEventConditions node = (StoryEventConditions)currentNode;
-                    if(node.CheckCondition(localVariables, playerData) == false)
-                    {
-                        storyEventData = node.StoryEvent;
-                        i = -1;
-                    }
-                }
-                else if (currentNode is StoryEventConditionActor)
-                {
-                    StoryEventConditionActor node = (StoryEventConditionActor)currentNode;
-                    storyEventData = node.SetNode(localVariables, playerData);
-                    CreateScene();
+                    storyEventData = node.StoryEvent;
                     i = -1;
                 }
-                // ==============================================================================================================================
-
-
-                yield return StartCoroutine(currentNode.GetStoryEvent());
-                i += 1;
-                StartCoroutine(NextNodeCoroutine());*/
             }
-            else
+            else if (currentNode is StoryEventConditionActor)
             {
-                unityEvent.Invoke();
-            }
+                StoryEventConditionActor node = (StoryEventConditionActor)currentNode;
+                storyEventData = node.SetNode(localVariables, playerData);
+                CreateScene();
+                i = -1;
+            }*/
+            // ==============================================================================================================================
         }
 
 
@@ -343,26 +274,21 @@ namespace VoiceActing
 
 
 
-        private void DrawName(StoryCharacterData interlocuteur)
+        public void DrawName(string characterName)
         {
-            /*if (interlocuteur == null)
-            {
-                HideName();
-                return;
-            }
-            if (interlocuteur.GetName().Equals("[PlayerName]"))
+            if (characterName.Equals("[PlayerName]"))
                 textName.text = playerData.PlayerName;
             else
-                textName.text = interlocuteur.GetName();
+                textName.text = characterName;
             if (coroutineAnimName != null)
                 StopCoroutine(coroutineAnimName);
             coroutineAnimName = ScaleAnimName(0.7f, false);
             StartCoroutine(coroutineAnimName);
-            animName.Play("ANIM_BandeRouge");*/
+            animName.Play("ANIM_BandeRouge");
         }
 
 
-        private void HideName()
+        public void HideName()
         {
             if (coroutineAnimName != null)
                 StopCoroutine(coroutineAnimName);

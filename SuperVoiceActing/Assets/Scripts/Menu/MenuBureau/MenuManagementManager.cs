@@ -179,7 +179,7 @@ namespace VoiceActing
             }
             else
             {
-                storyEventStartWeek.StartStoryEventDataWithScene(playerData.NextStoryEventsStartWeek[0]);
+                storyEventStartWeek.StartEvent(playerData.NextStoryEventsStartWeek[0]);
                 playerData.NextStoryEventsStartWeek.RemoveAt(0);
             }
         }
@@ -198,7 +198,7 @@ namespace VoiceActing
             }
             else
             {
-                storyEventStartWeek.StartStoryEventDataWithScene(playerData.NextStoryEventsStartWeek[0]);
+                storyEventStartWeek.StartEvent(playerData.NextStoryEventsStartWeek[0]);
                 playerData.NextStoryEventsStartWeek.RemoveAt(0);
             }
         }

@@ -87,12 +87,6 @@ namespace VoiceActing
         [HideLabel]
         public StoryEventConditions[] storyEventCondition = null;
 
-        [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", StoryEventNode.ConditionActor)]
-        [SerializeField]
-        [HideLabel]
-        public StoryEventConditionActor[] storyEventConditionActor = null;
-
 
 
 
@@ -200,8 +194,6 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventVariable[0];
                 case StoryEventNode.Condition:
                     return eventNodes[index].dataBox.storyEventCondition[0];
-                case StoryEventNode.ConditionActor:
-                    return eventNodes[index].dataBox.storyEventConditionActor[0];
             }
             return null;
         }

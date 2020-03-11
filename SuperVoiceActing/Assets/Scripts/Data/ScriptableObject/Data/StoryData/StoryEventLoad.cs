@@ -18,23 +18,28 @@ namespace VoiceActing
     public class StoryEventLoad : StoryEvent
     {
         [HideLabel]
-        [HorizontalGroup]
+        [HorizontalGroup("StoryEventLoad")]
         [SerializeField]
         StoryEventData dataToLoad;
-        public StoryEventData DataToLoad()
-        {
-            return dataToLoad;
-        }
-
 
         [HideLabel]
         [SerializeField]
+        [HorizontalGroup("StoryEventLoad")]
         DoublageEventData DoublageEventToLoad;
+
+
         public DoublageEventData GetDoublageEventToLoad()
         {
             return DoublageEventToLoad;
         }
 
+
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
+        {
+            if (dataToLoad.CreateNewScene == true)
+                storyManager.CreateScene(dataToLoad);
+            yield return storyManager.ExecuteEvent(dataToLoad);
+        }
 
     } // StoryEventLoad class
 

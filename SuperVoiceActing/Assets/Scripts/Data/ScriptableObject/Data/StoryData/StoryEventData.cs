@@ -27,7 +27,7 @@ namespace VoiceActing
         Choices,
         Variable,
         Condition,
-        ConditionActor
+        Custom
     }
 
     [System.Serializable]
@@ -105,12 +105,12 @@ namespace VoiceActing
         [HideLabel]
         public StoryEventConditions storyEventCondition = null;
 
+
         [VerticalGroup("Hey/Right")]
-        [ShowIf("eventNode", StoryEventNode.ConditionActor)]
+        [ShowIf("eventNode", StoryEventNode.Custom)]
         [SerializeField]
         [HideLabel]
-        public StoryEventConditionActor storyEventConditionActor = null;
-
+        public StoryEventCustom storyEventCustom = null;
 
 
 
@@ -131,7 +131,7 @@ namespace VoiceActing
                 case StoryEventNode.Choices:
                     return eventNode.ToString();
                 case StoryEventNode.Variable:
-                    return eventNode.ToString() + " : [" + storyEventVariable.VariableName + "]";
+                    return eventNode.ToString() + " : " + storyEventVariable.VariableName;
                 case StoryEventNode.Condition:
                     return eventNode.ToString() + " ------------------------------------------------------------------------------------------------------------------------";
                 default:
@@ -161,6 +161,31 @@ namespace VoiceActing
     }
 
 
+
+
+    public class StoryEventDataTest
+    {
+    }
+
+    public class StoryEventDataTest2 : StoryEventDataTest
+    {
+        public string a;
+        public StoryEventDataTest2()
+        {
+            a = "a";
+        }
+    }
+    public class StoryEventDataTest3 : StoryEventDataTest
+    {
+        public string b;
+        public StoryEventDataTest3()
+        {
+            b = "a";
+        }
+    }
+
+
+
     /// <summary>
     /// Definition of the StoryEventData class
     /// </summary>
@@ -170,6 +195,10 @@ namespace VoiceActing
         [Title("Scene Info")]
         [SerializeField]
         bool createNewScene = true;
+        public bool CreateNewScene
+        {
+            get { return createNewScene; }
+        }
 
         [ShowIf("createNewScene")]
         [SerializeField]
@@ -192,6 +221,20 @@ namespace VoiceActing
         [Title("Event")]
         [SerializeField]
         StoryEventDataBox[] eventNodes;
+
+
+
+        [Space]
+        [Title("Event")]
+        [ValueDropdown("Test2")]
+        [SerializeField]
+        StoryEventDataTest eventNodes2;
+
+        private IEnumerable Test2 = new ValueDropdownList<StoryEventDataTest>()
+        {
+            { "Wesh", new StoryEventDataTest2() },
+            { "Random Actor", new StoryEventDataTest3() },
+        };
 
         public int GetEventSize()
         {
@@ -227,8 +270,8 @@ namespace VoiceActing
                     return eventNodes[index].dataBox.storyEventVariable;
                 case StoryEventNode.Condition:
                     return eventNodes[index].dataBox.storyEventCondition;
-                case StoryEventNode.ConditionActor:
-                    return eventNodes[index].dataBox.storyEventConditionActor;
+                case StoryEventNode.Custom:
+                    return eventNodes[index].dataBox.storyEventCustom;
             }
             return null;
         }

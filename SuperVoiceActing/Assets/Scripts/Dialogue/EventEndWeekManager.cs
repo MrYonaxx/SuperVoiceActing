@@ -43,12 +43,12 @@ namespace VoiceActing
         {
             if(playerData.NextStoryEvents.Count != 0)
             {
-                storyEventManager.StartStoryEventDataWithScene(playerData.NextStoryEvents[playerData.NextStoryEvents.Count-1]);
+                storyEventManager.StartEvent(playerData.NextStoryEvents[playerData.NextStoryEvents.Count - 1]);
                 playerData.NextStoryEvents.RemoveAt(playerData.NextStoryEvents.Count-1);
             }
             else if (randomEventList.Count != 0)
             {
-                storyEventManager.StartStoryEventDataWithScene(randomEventDatabase.GetRandomEvent(randomEventList[0]));
+                storyEventManager.StartEvent(randomEventDatabase.GetRandomEvent(randomEventList[0]));
                 playerData.NextRandomEvent.RemoveAt(0);
                 randomEventList.RemoveAt(0);
             }

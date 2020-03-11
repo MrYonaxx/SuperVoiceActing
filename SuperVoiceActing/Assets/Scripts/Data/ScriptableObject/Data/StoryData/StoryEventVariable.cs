@@ -22,66 +22,11 @@ namespace VoiceActing
 
 
     [System.Serializable]
-    public class StoryVariable
-    {
-        public string variableName;
-        public int value;
-        public string valueText;
-
-        public StoryVariable()
-        {
-            variableName = "";
-            value = 0;
-            valueText = "0";
-        }
-
-        public StoryVariable(string vName, int vValue)
-        {
-            variableName = vName;
-            value = vValue;
-            valueText = value.ToString();
-        }
-
-        public StoryVariable(string vName, string vValue)
-        {
-            variableName = vName;
-            value = 0;
-            valueText = vValue;
-        }
-
-        public void ApplyMathOperation(MathOperation mathOperation, int newValue)
-        {
-            switch (mathOperation)
-            {
-                case MathOperation.Equal:
-                    value = newValue;
-                    break;
-                case MathOperation.Add:
-                    value += newValue;
-                    break;
-                case MathOperation.Substract:
-                    value -= newValue;
-                    break;
-            }
-            valueText = value.ToString();
-        }
-
-    }
-
-
-
-    [System.Serializable]
     public class StoryEventVariable : StoryEvent
     {
-
-
-        [SerializeField]
-        bool globalVariable;
-
-        [SerializeField]
-        bool custom = false;
-
+        [HideLabel]
         [HorizontalGroup("Variable")]
+        [ValueDropdown("SelectVariable")]
         [SerializeField]
         string variableName;
         public string VariableName
@@ -90,105 +35,41 @@ namespace VoiceActing
         }
 
 
-        [HideIf("custom")]
         [HorizontalGroup("Variable")]
         [HideLabel]
         [SerializeField]
         MathOperation mathOperation;
-        [HideIf("custom")]
         [HorizontalGroup("Variable")]
         [HideLabel]
         [SerializeField]
         int newValue;
-        [HideIf("custom")]
         [HorizontalGroup("Variable")]
         [HideLabel]
         [SerializeField]
         int newValueRandom;
 
-        [ShowIf("custom")]
-        [SerializeField]
-        StoryEventVariableScript customScript;
-
-        [ShowIf("custom")]
-        [SerializeField]
-        string otherVariable;
 
 
-
-        public void SetNode(List<StoryVariable> localVariable, PlayerData playerData, Dictionary<string, string> dictionary)
+        private static IEnumerable SelectVariable()
         {
-            StoryVariable variable = new StoryVariable(variableName, 0);
-
-            bool b = false;
-            if (globalVariable == true) // Check si la valeur existe 
-            {
-                for (int i = 0; i < playerData.GlobalVariables.Count; i++)
-                {
-                    if (playerData.GlobalVariables[i].variableName == variableName)
-                    {
-                        variable = playerData.GlobalVariables[i];
-                        b = true;
-                    }
-                }
-                if (b == false)
-                {
-                    playerData.GlobalVariables.Add(variable);
-                    variable = playerData.GlobalVariables[playerData.GlobalVariables.Count - 1];
-                }
-            }
-            else
-            {
-                for (int i = 0; i < localVariable.Count; i++)
-                {
-                    if (localVariable[i].variableName == variableName)
-                    {
-                        variable = localVariable[i];
-                        b = true;
-                    }
-                }
-                if (b == false)
-                {
-                    localVariable.Add(variable);
-                    variable = localVariable[localVariable.Count - 1];
-                }
-            }
-
-            if (custom == false) // Creation de la valeur de la variable
-            {
-                int finalValue = newValue;
-                if (newValueRandom >= newValue)
-                    finalValue = Random.Range(newValue, newValueRandom + 1);
-                variable.ApplyMathOperation(mathOperation, finalValue);
-            }
-            else
-            {
-                customScript.CreateStoryVariable(variable, variableName, playerData);
-            }
-            AddToDictionnary(dictionary, variable.variableName, variable.valueText);
+            return UnityEditor.AssetDatabase.LoadAssetAtPath<StoryVariableDatabase>(UnityEditor.AssetDatabase.GUIDToAssetPath(UnityEditor.AssetDatabase.FindAssets("StoryVariableDatabase")[0]))
+                .GetAllVariablesNames();
         }
 
 
 
-
-
-        private void AddToDictionnary(Dictionary<string, string> dictionary, string variableName, string value)
+        public override bool InstantNodeCoroutine()
         {
-            string realVariableName = "[" + variableName + "]";
-            foreach (string k in dictionary.Keys)
-            {
-                if (k == realVariableName)
-                {
-                    dictionary[k] = value;
-                    return;
-                }
-            }
-            dictionary.Add(realVariableName, value);
+            return true;
         }
 
-        protected override IEnumerator StoryEventCoroutine()
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
-            yield return null;
+            int finalValue = newValue;
+            if (newValueRandom >= newValue)
+                finalValue = Random.Range(newValue, newValueRandom + 1);
+            storyManager.PlayerData.GetStoryVariable(variableName).ApplyMathOperation(mathOperation, finalValue);
+            yield break;
         }
 
 

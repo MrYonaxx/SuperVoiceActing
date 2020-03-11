@@ -142,7 +142,14 @@ namespace VoiceActing
             if (characterDialogue != null)
             {
                 characterDialogue.PlayAnimBalloon(-1);
+                storyManager.DrawName(characterDialogue.GetVoiceActorData().ActorName);
+                storyManager.CameraCenter.transform.position = characterDialogue.transform.position;
             }
+            else
+            {
+                storyManager.HideName();
+            }
+            storyManager.AnimatorTextbox.SetTrigger("Feedback");
 
             yield return null;
 

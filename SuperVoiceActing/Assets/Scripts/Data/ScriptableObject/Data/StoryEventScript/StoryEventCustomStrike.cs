@@ -12,16 +12,22 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "StoryEventCustomStrike", menuName = "StoryEvent/StoryEventCustom/Strike", order = 1)]
-    public class StoryEventCustomStrike: StoryEventCustomScript
+    [System.Serializable]
+    public class StoryEventCustomStrike: StoryEventCustomData
     {
-        public override void ApplyCustomScript(PlayerData playerData)
+
+        public StoryEventCustomStrike()
         {
-            int rand = Random.Range((int) (playerData.VoiceActors.Count * 0.25f), (int)(playerData.VoiceActors.Count * 0.75f));
+
+        }
+
+        public override void ApplyCustomEvent(StoryEventManager storyManager)
+        {
+            int rand = Random.Range((int) (storyManager.PlayerData.VoiceActors.Count * 0.25f), (int)(storyManager.PlayerData.VoiceActors.Count * 0.75f));
             for(int i = 0; i < rand; i++)
             {
-                int r = Random.Range(0, playerData.VoiceActors.Count);
-                playerData.VoiceActors[r].ActorMentalState = VoiceActorState.Dead;
+                int r = Random.Range(0, storyManager.PlayerData.VoiceActors.Count);
+                storyManager.PlayerData.VoiceActors[r].ActorMentalState = VoiceActorState.Dead;
             }
         }
     } 

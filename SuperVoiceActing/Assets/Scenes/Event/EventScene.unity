@@ -2129,17 +2129,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3284556262317186789, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4239563409864671714, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
         type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 978387456}
-    - target: {fileID: 4239563409864671714, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
-        type: 3}
-      propertyPath: storyEventData
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e6cd1545dd15d146a930890895025a6,
-        type: 2}
     - target: {fileID: 4270392025970248274, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
         type: 3}
       propertyPath: m_Name
@@ -2221,10 +2220,63 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 20026156798340304}
+    - target: {fileID: 4270392026664166478, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 7991
+      objectReference: {fileID: 0}
     - target: {fileID: 4270392026790782388, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 20026156798340304}
+    - target: {fileID: 5089176879532254704, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172663453580545109, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290825309660555302, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47e8ee67791fa24e9e6b49b1f455b4b, type: 3}
+--- !u!1 &4270392026751419797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4270392027485561185, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4270392026751419796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4270392026751419798 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6172663453580545109, guid: f47e8ee67791fa24e9e6b49b1f455b4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4270392026751419796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4270392026751419799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270392026751419797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224c3635f64f22144b201c52c5dbf586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeScreenVelocity: 50
+  virtualMouse: {fileID: 4270392026751419798}
+  particleMouse: []
+  eventMouseLeft:
+    m_PersistentCalls:
+      m_Calls: []
+  eventMouseRight:
+    m_PersistentCalls:
+      m_Calls: []

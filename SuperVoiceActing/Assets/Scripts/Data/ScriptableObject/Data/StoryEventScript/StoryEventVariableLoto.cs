@@ -12,19 +12,29 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "VariableRandomLoto", menuName = "StoryEvent/StoryEventVariable/Loto", order = 1)]
-    public class StoryEventVariableLoto : StoryEventVariableScript
+    [System.Serializable]
+    public class StoryEventVariableLoto : StoryEventCustomData
     {
+        [ValueDropdown("SelectVariable")]
+        [SerializeField]
+        string variableName;
         [SerializeField]
         private int lotoRate = 100000;
         [SerializeField]
         private int lotoWinRate = 1;
 
-
-        public override void CreateStoryVariable(StoryVariable storyVariable, string variableName, PlayerData playerData)
+        public StoryEventVariableLoto()
         {
-            playerData.NextRandomEvent.Add(10);
-            playerData.Money -= 10 * lotoWinRate;
+            variableName = "";
+            lotoRate = 100000;
+            lotoWinRate = 1;
+        }
+
+        public override void ApplyCustomEvent(StoryEventManager storyManager)
+        {
+            storyManager.PlayerData.NextRandomEvent.Add(10);
+            storyManager.PlayerData.Money -= 10 * lotoWinRate;
+            StoryVariable storyVariable = storyManager.PlayerData.GetStoryVariable(variableName);
             int r = Random.Range(0, lotoRate);
             if(r <= lotoWinRate)
             {

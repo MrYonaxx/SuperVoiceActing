@@ -24,6 +24,18 @@ namespace VoiceActing
             get { return voiceActorsDatabase; }
         }
 
+        public VoiceActorData GetVoiceActorData(string characterName)
+        {
+            for (int i = 0; i < voiceActorsDatabase.Count; i++)
+            {
+                if (voiceActorsDatabase[i].NameID == characterName)
+                {
+                    return voiceActorsDatabase[i];
+                }
+            }
+            return null;
+        }
+
         public StoryCharacterData GetCharacterData(string characterName)
         {
             for (int i = 0; i < voiceActorsDatabase.Count; i++)

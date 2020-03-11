@@ -93,7 +93,7 @@ namespace VoiceActing
         public void StartPhoneEvent()
         {
             phoneObject.SetActive(true);
-            storyEventManager.StartStoryEventData(playerData.PhoneStoryEvents[0]);
+            storyEventManager.StartEvent(playerData.PhoneStoryEvents[0]);
             playerData.PhoneStoryEvents.RemoveAt(0);
             this.gameObject.SetActive(false);
             mouseController.gameObject.SetActive(false);
@@ -145,7 +145,7 @@ namespace VoiceActing
             if(newContract.StoryEventWhenAccepted != null)
             {
                 phoneObject.SetActive(true);
-                storyEventManager.StartStoryEventData(newContract.StoryEventWhenAccepted);
+                storyEventManager.StartEvent(newContract.StoryEventWhenAccepted);
                 eventPhone = true;
                 mouseController.gameObject.SetActive(false);
             }

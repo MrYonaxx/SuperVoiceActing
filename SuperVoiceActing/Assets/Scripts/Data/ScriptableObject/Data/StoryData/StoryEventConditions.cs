@@ -41,7 +41,7 @@ namespace VoiceActing
             int variableValue = 0;
             for (int i = 0; i < localVariable.Count; i++)
             {
-                if (localVariable[i].variableName == variableName)
+                if (localVariable[i].VariableName == variableName)
                 {
                     variableValue = localVariable[i].value;
                 }

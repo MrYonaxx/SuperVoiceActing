@@ -8,45 +8,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "VariableRandomActor", menuName = "StoryEvent/StoryEventVariable/RandomActor", order = 1)]
-    public class StoryEventVariableRandomActor : StoryEventVariableScript
+    [System.Serializable]
+    public class StoryEventVariableRandomActor : StoryEventCustomData
 	{
+        [ValueDropdown("SelectVariable")]
+        [SerializeField]
+        string storyVariableName;
+
+        public StoryEventVariableRandomActor()
+        {
+            storyVariableName = "";
+        }
 
 
-
-        public override void CreateStoryVariable(StoryVariable storyVariable, string variableName, PlayerData playerData)
+        public override void ApplyCustomEvent(StoryEventManager storyManager)
         {
             List<string> actorsIDAvailable = new List<string>();
-            for(int i = 0; i < playerData.VoiceActors.Count; i++)
+            for(int i = 0; i < storyManager.PlayerData.VoiceActors.Count; i++)
             {
-                if(playerData.VoiceActors[i].Availability == true)
+                if(storyManager.PlayerData.VoiceActors[i].Availability == true)
                 {
-                    actorsIDAvailable.Add(playerData.VoiceActors[i].VoiceActorID);
+                    actorsIDAvailable.Add(storyManager.PlayerData.VoiceActors[i].VoiceActorID);
                 }
             }
-            if (playerData.CurrentContract != null)
+            if (storyManager.PlayerData.CurrentContract != null)
             {
-                for (int i = 0; i < playerData.CurrentContract.VoiceActorsID.Count; i++)
+                for (int i = 0; i < storyManager.PlayerData.CurrentContract.VoiceActorsID.Count; i++)
                 {
-                    actorsIDAvailable.Remove(playerData.CurrentContract.VoiceActorsID[i]);
+                    actorsIDAvailable.Remove(storyManager.PlayerData.CurrentContract.VoiceActorsID[i]);
                 }
             }
-
-
 
             int rand = Random.Range(0, actorsIDAvailable.Count);
             if(rand < actorsIDAvailable.Count)
             {
-                storyVariable.valueText = actorsIDAvailable[rand];
-                //return new StoryVariable(variableName, actorsIDAvailable[rand]);
+                storyManager.PlayerData.GetStoryVariable(storyVariableName).valueText = actorsIDAvailable[rand];
             }
-            /*else
-            {
-                return new StoryVariable(variableName, null);
-            }*/
 
         }
 
