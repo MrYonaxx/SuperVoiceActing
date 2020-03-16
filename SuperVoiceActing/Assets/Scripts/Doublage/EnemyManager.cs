@@ -345,6 +345,11 @@ namespace VoiceActing
             }
         }
 
+
+
+
+
+
         public float DamagePhrase()
         {
             for (int i = 0; i < particleFeedbacks.Length; i++)
@@ -448,6 +453,23 @@ namespace VoiceActing
             }
             return bonusDamage;
         }
+
+
+
+
+
+
+
+        public bool CheckIfMiss()
+        {
+            return true;
+        }
+
+
+
+
+
+
 
 
 

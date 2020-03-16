@@ -60,7 +60,7 @@ MonoBehaviour:
     money: 5000
     moneyBonus: 0
     sessionNumber: -1
-    weekRemaining: 1
+    weekRemaining: 2
     currentLine: 0
     totalLine: 4
     currentMixing: 0
@@ -184,53 +184,54 @@ MonoBehaviour:
     battleTheme: {fileID: 8300000, guid: cbfeec91e8013fa4c89ab6d1fb05e545, type: 3}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: Lessive Skop
-    description: La lessive Skop est notre nouveau produit.
+  - name: Nouvelle voiture Panther
+    description: "La publicit\xE9 de notre nouvelle voiture Panther, cependant nous
+      souhaitons aborder le propos avec un th\xE8me plus touchant."
     contractType: 3
-    level: 5
-    money: 1930
+    level: 6
+    money: 2530
     moneyBonus: 0
     sessionNumber: -1
-    weekRemaining: 3
+    weekRemaining: 4
     currentLine: 0
-    totalLine: 8
+    totalLine: 10
     currentMixing: 0
     totalMixing: 0
     score: 0
     highScore: 0
     soundEngineerID: 
     characters:
-    - nameID: Microbe
-      name: Microbe
+    - nameID: "P\xE8re"
+      name: "P\xE8re"
       roleSprite: {fileID: 0}
-      line: 25
+      line: 30
       fan: 0
-      attack: 13
+      attack: 15
       defense: 0
-      roleType: 2
-      timbre: {x: -5, y: 10}
+      roleType: 3
+      timbre: {x: 3, y: 10}
       characterStat:
-        neutral: 2
-        joy: 0
-        sadness: 0
-        disgust: 7
-        anger: 6
-        surprise: 4
-        sweetness: 0
-        fear: 4
-        trust: 0
-      characterTone:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 2
+        neutral: 3
+        joy: 9
+        sadness: 20
+        disgust: 9
         anger: 1
         surprise: 0
         sweetness: 0
         fear: 0
         trust: 0
-      bestStatEmotion: 3
-      secondBestStatEmotion: 4
+      characterTone:
+        neutral: 1
+        joy: 0
+        sadness: 2
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      bestStatEmotion: 2
+      secondBestStatEmotion: 0
       roleScore: 0
       rolePerformance: 0
       roleBestScore: 0
@@ -241,128 +242,159 @@ MonoBehaviour:
     - 
     textData:
     - interlocuteur: 0
-      hpMax: 106
-      text: "Bwah je suis une t\xE2che ind\xE9l\xE9bile !"
-      enemyResistance:
-        neutral: -30
-        joy: 10
-        sadness: -30
-        disgust: 50
-        anger: 50
-        surprise: 0
-        sweetness: -50
-        fear: 0
-        trust: -50
-      enemyWeakPoints: 0000000005000000
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 106
-      text: "Personne ne r\xE9ussira \xE0 m'extirper de ce magnifique jean blanc !"
+      hpMax: 176
+      text: Rapide...
       enemyResistance:
         neutral: 0
         joy: 50
-        sadness: -50
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 0
+        sweetness: 100
+        fear: 0
+        trust: 50
+      enemyWeakPoints: 00000000
+      eventDatas: []
+    - interlocuteur: 0
+      hpMax: 176
+      text: Audacieuse...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 0
+        disgust: 0
+        anger: 50
+        surprise: 0
+        sweetness: 70
+        fear: 0
+        trust: 50
+      enemyWeakPoints: 00000000
+      eventDatas: []
+    - interlocuteur: 0
+      hpMax: 176
+      text: Et dangereuse...
+      enemyResistance:
+        neutral: 0
+        joy: 50
+        sadness: 50
         disgust: 50
         anger: 50
         surprise: 0
-        sweetness: -50
-        fear: -50
+        sweetness: 50
+        fear: 0
         trust: 50
-      enemyWeakPoints: 
+      enemyWeakPoints: 01000000
       eventDatas: []
     - interlocuteur: 0
-      hpMax: 106
-      text: "Je d\xE9teste la lessive !"
+      hpMax: 176
+      text: "C'est comme \xE7a... comme \xE7a que je l'ai perdu."
       enemyResistance:
-        neutral: -50
-        joy: -30
-        sadness: -50
-        disgust: 50
-        anger: 100
-        surprise: 0
-        sweetness: -100
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 40
+        anger: 0
+        surprise: -80
+        sweetness: -25
         fear: 0
-        trust: -30
+        trust: -80
+      enemyWeakPoints: 0200000008000000
+      eventDatas: []
+    - interlocuteur: 0
+      hpMax: 176
+      text: Est-ce que je regrette ?
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 0
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
       enemyWeakPoints: 03000000
       eventDatas: []
     - interlocuteur: 0
-      hpMax: 106
-      text: Surtout la lessive de la marque Skop !
+      hpMax: 176
+      text: "Bien s\xFBr."
       enemyResistance:
-        neutral: -50
-        joy: 0
-        sadness: -50
-        disgust: 50
-        anger: 100
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
         surprise: 0
-        sweetness: -100
+        sweetness: 0
         fear: 0
-        trust: -30
+        trust: 50
+      enemyWeakPoints: 01000000
+      eventDatas: []
+    - interlocuteur: 0
+      hpMax: 176
+      text: "Est-ce que je souhaite retourner en arri\xE8re ?"
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 20
+        sweetness: -25
+        fear: 0
+        trust: 20
+      enemyWeakPoints: 0400000006000000
+      eventDatas: []
+    - interlocuteur: 0
+      hpMax: 176
+      text: Evidemment.
+      enemyResistance:
+        neutral: 0
+        joy: -80
+        sadness: 100
+        disgust: 30
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 50
+      enemyWeakPoints: 00000000
+      eventDatas: []
+    - interlocuteur: 0
+      hpMax: 176
+      text: "Mais c'est pour \xE7a que je continuerai de conduire."
+      enemyResistance:
+        neutral: 0
+        joy: 100
+        sadness: 100
+        disgust: -50
+        anger: -50
+        surprise: -50
+        sweetness: 10
+        fear: -50
+        trust: 0
       enemyWeakPoints: 06000000
       eventDatas: []
     - interlocuteur: 0
-      hpMax: 106
-      text: "Qui illumine vos v\xEAtements et votre vie."
-      enemyResistance:
-        neutral: -50
-        joy: -50
-        sadness: 0
-        disgust: 100
-        anger: 50
-        surprise: 0
-        sweetness: -50
-        fear: -30
-        trust: -50
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 106
-      text: "Je la d\xE9teste !!"
+      hpMax: 176
+      text: Pour elle, et son sourire.
       enemyResistance:
         neutral: 0
-        joy: -100
-        sadness: -50
-        disgust: 50
-        anger: 100
-        surprise: -50
-        sweetness: -100
-        fear: -20
-        trust: -50
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 106
-      text: "Je ne peux pas y r\xE9sister..."
-      enemyResistance:
-        neutral: -50
-        joy: -50
-        sadness: 10
-        disgust: 70
-        anger: 50
-        surprise: 50
-        sweetness: 0
-        fear: 50
-        trust: -50
-      enemyWeakPoints: 03000000
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 106
-      text: "La lessive Skop, pour des v\xEAtements d'un blanc... Eclatant."
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 20
-        anger: 20
-        surprise: 0
-        sweetness: 0
-        fear: 0
+        joy: 100
+        sadness: 100
+        disgust: -80
+        anger: -80
+        surprise: -80
+        sweetness: 50
+        fear: -80
         trust: 0
-      enemyWeakPoints: 0200000008000000
+      enemyWeakPoints: 01000000
       eventDatas: []
     emotionsUsed: []
-    eventData: []
-    expGain: 73
+    eventData:
+    - {fileID: 11400000, guid: 37e4ab507190c644bbea455c3c34e00a, type: 2}
+    expGain: 83
     expBonus: 50
     researchBonus: 0
     producerMP: 0
@@ -375,409 +407,13 @@ MonoBehaviour:
     battleTheme: {fileID: 0}
     victoryTheme: {fileID: 0}
     isNull: 0
-  - name: Bloodsouls
-    description: "Bloodsouls est la nouvelle franchise des cr\xE9ateurs de \"You died\".
-      \n\nL'ambiance malsaine et m\xE9lancolique doit \xEAtre  parfaitement retranscrite.
-      Sinon l'immersion du joueur en sera chamboul\xE9."
-    contractType: 2
-    level: 5
-    money: 5440
-    moneyBonus: 0
-    sessionNumber: -1
-    weekRemaining: 4
-    currentLine: 0
-    totalLine: 7
-    currentMixing: 0
-    totalMixing: 7
-    score: 0
-    highScore: 0
-    soundEngineerID: 
-    characters:
-    - nameID: "Poup\xE9e"
-      name: "Poup\xE9e"
-      roleSprite: {fileID: 0}
-      line: 143
-      fan: 817
-      attack: 16
-      defense: 0
-      roleType: 4
-      timbre: {x: -6, y: -2}
-      characterStat:
-        neutral: 10
-        joy: 29
-        sadness: 26
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 29
-        fear: 0
-        trust: 0
-      characterTone:
-        neutral: 0
-        joy: 2
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 1
-        fear: 0
-        trust: 0
-      bestStatEmotion: 1
-      secondBestStatEmotion: 6
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: VoiceActorDea
-      previousVoiceActor: 
-      skillRoles:
-      - RoleSkill-Melancolique
-      - RoleSkill-Triste
-      - RoleSkill-Douce
-    - nameID: Chasseur Gascoigne
-      name: Chasseur Gascoigne
-      roleSprite: {fileID: 0}
-      line: 23
-      fan: 227
-      attack: 24
-      defense: 0
-      roleType: 5
-      timbre: {x: 2, y: 7}
-      characterStat:
-        neutral: 9
-        joy: 31
-        sadness: 13
-        disgust: 31
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      characterTone:
-        neutral: 0
-        joy: 2
-        sadness: 0
-        disgust: 1
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      bestStatEmotion: 1
-      secondBestStatEmotion: 3
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: VoiceActorMoineMaeda
-      previousVoiceActor: 
-      skillRoles:
-      - RoleSkill-Folie
-      - RoleSkill-Melancolique
-    voiceActorsID:
-    - 
-    - 
-    textData:
-    - interlocuteur: 0
-      hpMax: 55
-      text: Bonjour, brave chasseur.
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: -90
-        anger: -90
-        surprise: -50
-        sweetness: 100
-        fear: -90
-        trust: -50
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 52
-      text: "Je suis une poup\xE9e, je suis dans ce r\xEAve pour veiller sur vous."
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: -90
-        anger: -90
-        surprise: -50
-        sweetness: 100
-        fear: -90
-        trust: -50
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 118
-      text: "Honorable chasseur, partez en qu\xEAte des \xE9chos du sang."
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: -90
-        anger: -90
-        surprise: -50
-        sweetness: 100
-        fear: -90
-        trust: 50
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 1
-      text: Je les canaliserai pour vous donner plus de force.
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: -90
-        anger: -90
-        surprise: -50
-        sweetness: 100
-        fear: -90
-        trust: 50
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 1
-      hpMax: 75
-      text: Des monstres partout autour de moi...
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 100
-        disgust: 100
-        anger: 0
-        surprise: -90
-        sweetness: -90
-        fear: 30
-        trust: -90
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 1
-      hpMax: 110
-      text: "... Vous serez comme eux, t\xF4t ou tard..."
-      enemyResistance:
-        neutral: 0
-        joy: -90
-        sadness: 100
-        disgust: 50
-        anger: 50
-        surprise: -90
-        sweetness: -90
-        fear: 30
-        trust: -90
-      enemyWeakPoints: 
-      eventDatas: []
-    - interlocuteur: 1
-      hpMax: 191
-      text: Haahahahahahaha !
-      enemyResistance:
-        neutral: 0
-        joy: 100
-        sadness: 0
-        disgust: 0
-        anger: 100
-        surprise: 0
-        sweetness: 0
-        fear: 100
-        trust: 0
-      enemyWeakPoints: 
-      eventDatas: []
-    emotionsUsed: []
-    eventData: []
-    expGain: 100
-    expBonus: 1000
-    researchBonus: 0
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  - name: Cordons bleus Panure
-    description: ' '
-    contractType: 3
-    level: 5
-    money: 2150
-    moneyBonus: 0
-    sessionNumber: -1
-    weekRemaining: 2
-    currentLine: 0
-    totalLine: 3
-    currentMixing: 0
-    totalMixing: 0
-    score: 0
-    highScore: 0
-    soundEngineerID: 
-    characters:
-    - nameID: Cuisinier
-      name: Cuisinier
-      roleSprite: {fileID: 0}
-      line: 28
-      fan: 0
-      attack: 10
-      defense: 0
-      roleType: 3
-      timbre: {x: -10, y: 10}
-      characterStat:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 7
-        fear: 0
-        trust: 0
-      characterTone:
-        neutral: 1
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 2
-        fear: 0
-        trust: 0
-      bestStatEmotion: 6
-      secondBestStatEmotion: 0
-      roleScore: 0
-      rolePerformance: 0
-      roleBestScore: 0
-      characterLock: 
-      previousVoiceActor: 
-      skillRoles: []
-    voiceActorsID:
-    - 
-    textData:
-    - interlocuteur: 0
-      hpMax: 106
-      text: Yum ..., les cordons bleus de chez Panure ...
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: -60
-        disgust: -100
-        anger: -50
-        surprise: 30
-        sweetness: 30
-        fear: -100
-        trust: 50
-      enemyWeakPoints: 00000000
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 106
-      text: "Du jambon de cochons de pays, tu\xE9s \xE0 la main..."
-      enemyResistance:
-        neutral: 0
-        joy: 25
-        sadness: -10
-        disgust: -80
-        anger: -100
-        surprise: 0
-        sweetness: 80
-        fear: 0
-        trust: 50
-      enemyWeakPoints: 010000000600000009000000
-      eventDatas: []
-    - interlocuteur: 0
-      hpMax: 106
-      text: Il n'y a rien de meilleur !
-      enemyResistance:
-        neutral: 0
-        joy: 50
-        sadness: -60
-        disgust: -100
-        anger: -100
-        surprise: 0
-        sweetness: 100
-        fear: -100
-        trust: 50
-      enemyWeakPoints: 03000000
-      eventDatas: []
-    emotionsUsed: []
-    eventData: []
-    expGain: 72
-    expBonus: 30
-    researchBonus: 0
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 0
-  contractHistoric:
-  - name: Princess Muffin
-    description: 
-    contractType: 1
-    level: 0
-    money: 0
-    moneyBonus: 0
-    sessionNumber: 0
-    weekRemaining: 0
-    currentLine: 0
-    totalLine: 0
-    currentMixing: 0
-    totalMixing: 0
-    score: 60
-    highScore: 100
-    soundEngineerID: 
-    characters: []
-    voiceActorsID:
-    - VoiceActorBocca
-    textData:
-    - interlocuteur: 0
-      hpMax: 0
-      text: Charlotte attention !
-      enemyResistance:
-        neutral: 0
-        joy: 0
-        sadness: 0
-        disgust: 0
-        anger: 0
-        surprise: 0
-        sweetness: 0
-        fear: 0
-        trust: 0
-      enemyWeakPoints: 
-      eventDatas: []
-    emotionsUsed: []
-    eventData: []
-    expGain: 0
-    expBonus: 0
-    researchBonus: 0
-    producerMP: 0
-    artificialIntelligence: []
-    canGameOver: 0
-    storyEventWhenAccepted: {fileID: 0}
-    storyEventWhenEnd: {fileID: 0}
-    storyEventWhenGameOver: {fileID: 0}
-    sessionLock: 0
-    battleTheme: {fileID: 0}
-    victoryTheme: {fileID: 0}
-    isNull: 1
+  contractHistoric: []
   contractFranchise:
-  - franchiseName: LV1-LessiveAriole
+  - franchiseName: LV2-Voiture
     currentFranchiseNumber: 0
     isRemaster: 0
     franchiseRoles: []
-  - franchiseName: LV5-DemonBorne
-    currentFranchiseNumber: 0
-    isRemaster: 0
-    franchiseRoles:
-    - nameID: "Poup\xE9e"
-      name: "Poup\xE9e"
-      fan: 817
-    - nameID: Chasseur Gascoigne
-      name: Chasseur Gascoigne
-      fan: 227
-  - franchiseName: LV1-Jambon
+  - franchiseName: LV4-ShonenSportif
     currentFranchiseNumber: 0
     isRemaster: 0
     franchiseRoles: []
@@ -785,7 +421,10 @@ MonoBehaviour:
   - LV3-Metro
   - LV1-EntrepriseEkavox
   - LV1-FilmEtudiant
+  - LV5-DemonBorne
+  - LV1-Jambon
   - LV1-KidGIGN
+  - LV1-LessiveAriole
   - LV3-FightingBattle
   - LV4-Castlemania
   - LV1-LigneTelephonique
@@ -794,7 +433,6 @@ MonoBehaviour:
   - LV2-Bolognaise
   - LV2-Chipsala
   - LV2-Chipso
-  - LV2-Voiture
   - LV4-NintendoDirect
   - ClimClimaxLv2
   - TurboGazonLv1
@@ -805,32 +443,28 @@ MonoBehaviour:
   - LV4-BrianIsInTheKitchen
   - LV4-JulietteEtRomeo
   contractGachaCooldown:
-  - contract: LV1-LessiveAriole
-    cooldown: 17
-  - contract: LV5-DemonBorne
-    cooldown: 9
-  - contract: LV1-Jambon
-    cooldown: 7
+  - contract: LV2-Voiture
+    cooldown: 8
   voiceActors:
   - voiceActorName: Moine-Maeda
     voiceActorID: VoiceActorMoineMaeda
     fan: 0
     fanGain: 0
     price: 6
-    level: 8
-    hp: 351
-    hpMax: 351
+    level: 20
+    hp: 507
+    hpMax: 507
     timbre: {x: -2, y: 4}
     statistique:
-      neutral: 12
-      joy: 9
-      sadness: 11
-      disgust: 14
-      anger: 9
-      surprise: 12
-      sweetness: 8
-      fear: 21
-      trust: 14
+      neutral: 25
+      joy: 19
+      sadness: 22
+      disgust: 27
+      anger: 16
+      surprise: 25
+      sweetness: 17
+      fear: 44
+      trust: 35
     statModifier:
       neutral: 0
       joy: 0
@@ -857,24 +491,24 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 85
-      sadness: 90
-      disgust: 114
-      anger: 66
-      surprise: 92
-      sweetness: 88
-      fear: 175
-      trust: 180
+      joy: 82
+      sadness: 92
+      disgust: 108
+      anger: 63
+      surprise: 100
+      sweetness: 84
+      fear: 186
+      trust: 175
     currentGrowth:
       neutral: 0
-      joy: 95
-      sadness: 30
-      disgust: 98
-      anger: 62
-      surprise: 44
-      sweetness: 16
-      fear: 25
-      trust: 60
+      joy: 58
+      sadness: 48
+      disgust: 52
+      anger: 97
+      surprise: 0
+      sweetness: 96
+      fear: 34
+      trust: 25
     nextEXP: 120
     experienceCurve: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     relation: 0
@@ -891,12 +525,12 @@ MonoBehaviour:
     voxography: []
     actorMentalState: 0
     availability: 1
-    bestGrowthFirst: 8
-    bestGrowthSecond: 7
+    bestGrowthFirst: 7
+    bestGrowthSecond: 8
     bestGrowthThird: 3
   - voiceActorName: Bocca
     voiceActorID: VoiceActorBocca
-    fan: 4991
+    fan: 4989
     fanGain: 0
     price: 15
     level: 20
@@ -1449,20 +1083,20 @@ MonoBehaviour:
     fan: 0
     fanGain: 0
     price: 11
-    level: 8
-    hp: 328
-    hpMax: 328
+    level: 20
+    hp: 496
+    hpMax: 496
     timbre: {x: -6, y: -1}
     statistique:
-      neutral: 12
-      joy: 13
-      sadness: 16
-      disgust: 7
-      anger: 11
-      surprise: 12
-      sweetness: 16
-      fear: 14
-      trust: 12
+      neutral: 26
+      joy: 28
+      sadness: 27
+      disgust: 19
+      anger: 17
+      surprise: 22
+      sweetness: 41
+      fear: 31
+      trust: 26
     statModifier:
       neutral: 0
       joy: 0
@@ -1489,24 +1123,24 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 119
-      sadness: 115
+      joy: 122
+      sadness: 101
       disgust: 95
-      anger: 38
-      surprise: 79
-      sweetness: 229
-      fear: 125
-      trust: 110
+      anger: 46
+      surprise: 82
+      sweetness: 221
+      fear: 132
+      trust: 111
     currentGrowth:
       neutral: 0
-      joy: 33
-      sadness: 5
-      disgust: 65
-      anger: 66
-      surprise: 53
-      sweetness: 3
-      fear: 75
-      trust: 70
+      joy: 18
+      sadness: 19
+      disgust: 5
+      anger: 74
+      surprise: 58
+      sweetness: 99
+      fear: 8
+      trust: 9
     nextEXP: 120
     experienceCurve: 640000007800000090000000ac000000ce000000f70000002801000063010000aa010000ff01000065020000df0200007203000022040000f5040000f2050000220700008f080000450a0000520c0000c80e0000bc1100004815000089190000a41e0000c42400001e2c0000f0340000863f00003a4c0000785b0000c36d0000b68300000d9e0000a9bd000097e300001b110100ba47010045890100ecd701004e36020090a70200792f030091d203004796040022810500f59a060026ed0700fa820900f8690b00
     relation: 0
@@ -1528,20 +1162,20 @@ MonoBehaviour:
     fan: 0
     fanGain: 0
     price: 6
-    level: 8
-    hp: 298
-    hpMax: 298
+    level: 20
+    hp: 466
+    hpMax: 466
     timbre: {x: -7, y: 3}
     statistique:
-      neutral: 13
-      joy: 19
-      sadness: 20
-      disgust: 12
-      anger: 5
-      surprise: 7
-      sweetness: 18
-      fear: 5
-      trust: 20
+      neutral: 27
+      joy: 38
+      sadness: 38
+      disgust: 23
+      anger: 12
+      surprise: 17
+      sweetness: 36
+      fear: 14
+      trust: 38
     statModifier:
       neutral: 0
       joy: 0
@@ -1569,23 +1203,23 @@ MonoBehaviour:
     growth:
       neutral: 113
       joy: 161
-      sadness: 148
-      disgust: 104
+      sadness: 149
+      disgust: 98
       anger: 57
-      surprise: 71
-      sweetness: 149
-      fear: 69
+      surprise: 75
+      sweetness: 148
+      fear: 71
       trust: 151
     currentGrowth:
       neutral: 0
-      joy: 27
-      sadness: 36
-      disgust: 28
-      anger: 99
-      surprise: 97
-      sweetness: 43
-      fear: 83
-      trust: 57
+      joy: 59
+      sadness: 31
+      disgust: 62
+      anger: 83
+      surprise: 25
+      sweetness: 12
+      fear: 49
+      trust: 69
     nextEXP: 120
     experienceCurve: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     relation: 0
@@ -1599,26 +1233,26 @@ MonoBehaviour:
     availability: 1
     bestGrowthFirst: 1
     bestGrowthSecond: 8
-    bestGrowthThird: 6
+    bestGrowthThird: 2
   - voiceActorName: Jean-Christophe
     voiceActorID: VoiceActorJeanChristophe
     fan: 1
     fanGain: 0
     price: 6
-    level: 8
-    hp: 294
-    hpMax: 294
+    level: 20
+    hp: 438
+    hpMax: 438
     timbre: {x: -2, y: 4}
     statistique:
-      neutral: 11
-      joy: 9
-      sadness: 13
-      disgust: 14
-      anger: 11
-      surprise: 10
-      sweetness: 10
-      fear: 11
-      trust: 15
+      neutral: 23
+      joy: 15
+      sadness: 28
+      disgust: 34
+      anger: 18
+      surprise: 21
+      sweetness: 18
+      fear: 29
+      trust: 27
     statModifier:
       neutral: 0
       joy: 0
@@ -1645,24 +1279,24 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 54
-      sadness: 119
-      disgust: 165
-      anger: 86
-      surprise: 93
-      sweetness: 40
-      fear: 151
-      trust: 102
+      joy: 52
+      sadness: 124
+      disgust: 168
+      anger: 69
+      surprise: 94
+      sweetness: 53
+      fear: 149
+      trust: 101
     currentGrowth:
       neutral: 0
-      joy: 78
-      sadness: 33
-      disgust: 55
-      anger: 2
-      surprise: 51
-      sweetness: 80
-      fear: 57
-      trust: 14
+      joy: 88
+      sadness: 56
+      disgust: 92
+      anger: 11
+      surprise: 86
+      sweetness: 7
+      fear: 31
+      trust: 19
     nextEXP: 120
     experienceCurve: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     relation: 0
@@ -1686,20 +1320,20 @@ MonoBehaviour:
     fan: 0
     fanGain: 0
     price: 6
-    level: 8
-    hp: 292
-    hpMax: 292
+    level: 20
+    hp: 484
+    hpMax: 484
     timbre: {x: -9, y: -4}
     statistique:
-      neutral: 11
-      joy: 12
-      sadness: 12
-      disgust: 12
-      anger: 12
-      surprise: 11
-      sweetness: 13
-      fear: 11
-      trust: 11
+      neutral: 27
+      joy: 30
+      sadness: 26
+      disgust: 29
+      anger: 25
+      surprise: 24
+      sweetness: 31
+      fear: 28
+      trust: 24
     statModifier:
       neutral: 0
       joy: 0
@@ -1726,24 +1360,24 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 130
-      joy: 141
-      sadness: 132
-      disgust: 139
-      anger: 131
-      surprise: 120
-      sweetness: 144
-      fear: 117
-      trust: 116
+      joy: 144
+      sadness: 123
+      disgust: 142
+      anger: 118
+      surprise: 112
+      sweetness: 150
+      fear: 136
+      trust: 115
     currentGrowth:
       neutral: 0
-      joy: 87
-      sadness: 24
-      disgust: 73
-      anger: 17
-      surprise: 40
-      sweetness: 8
-      fear: 19
-      trust: 12
+      joy: 36
+      sadness: 37
+      disgust: 98
+      anger: 42
+      surprise: 28
+      sweetness: 50
+      fear: 84
+      trust: 85
     nextEXP: 120
     experienceCurve: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     relation: 0
@@ -1763,20 +1397,20 @@ MonoBehaviour:
     fan: 0
     fanGain: 0
     price: 6
-    level: 8
-    hp: 298
-    hpMax: 298
+    level: 21
+    hp: 418
+    hpMax: 480
     timbre: {x: -8, y: -7}
     statistique:
-      neutral: 12
-      joy: 31
-      sadness: 10
-      disgust: 9
-      anger: 9
-      surprise: 9
-      sweetness: 12
-      fear: 10
-      trust: 9
+      neutral: 27
+      joy: 52
+      sadness: 24
+      disgust: 24
+      anger: 21
+      surprise: 24
+      sweetness: 27
+      fear: 22
+      trust: 24
     statModifier:
       neutral: 0
       joy: 0
@@ -1803,25 +1437,25 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 161
-      sadness: 105
+      joy: 164
+      sadness: 107
       disgust: 110
-      anger: 110
-      surprise: 97
+      anger: 96
+      surprise: 108
       sweetness: 110
-      fear: 110
-      trust: 97
+      fear: 97
+      trust: 108
     currentGrowth:
       neutral: 0
-      joy: 27
-      sadness: 35
-      disgust: 70
-      anger: 70
-      surprise: 79
-      sweetness: 70
-      fear: 70
-      trust: 79
-    nextEXP: 120
+      joy: 80
+      sadness: 40
+      disgust: 0
+      anger: 20
+      surprise: 60
+      sweetness: 0
+      fear: 40
+      trust: 60
+    nextEXP: 4235
     experienceCurve: 640000007800000090000000ac000000ce000000f70000002801000063010000aa010000ff01000065020000df0200007203000022040000f5040000f2050000220700008f080000450a0000520c0000c80e0000bc1100004815000089190000a41e0000c42400001e2c0000f0340000863f00003a4c0000785b0000c36d0000b68300000d9e0000a9bd000097e300001b110100ba47010045890100ecd701004e36020090a70200792f030091d203004796040022810500f59a060026ed0700fa820900f8690b00
     relation: 0
     skillOffset: {x: 0, y: 0, z: 0}
@@ -1837,7 +1471,7 @@ MonoBehaviour:
     availability: 1
     bestGrowthFirst: 1
     bestGrowthSecond: 3
-    bestGrowthThird: 4
+    bestGrowthThird: 6
   voiceActorsGacha:
   - voiceActorName: Ara
     voiceActorID: VoiceActorAra
@@ -1884,14 +1518,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 112
-      joy: 227
-      sadness: 99
-      disgust: 94
-      anger: 93
-      surprise: 106
-      sweetness: 93
-      fear: 98
-      trust: 90
+      joy: 158
+      sadness: 108
+      disgust: 110
+      anger: 102
+      surprise: 110
+      sweetness: 110
+      fear: 99
+      trust: 103
     currentGrowth:
       neutral: 0
       joy: 0
@@ -1917,8 +1551,8 @@ MonoBehaviour:
     actorMentalState: 0
     availability: 1
     bestGrowthFirst: 1
-    bestGrowthSecond: 5
-    bestGrowthThird: 2
+    bestGrowthSecond: 3
+    bestGrowthThird: 5
   - voiceActorName: Bodler
     voiceActorID: VoiceActorBodler
     fan: 0
@@ -1964,14 +1598,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 106
-      joy: 94
-      sadness: 39
-      disgust: 169
-      anger: 158
-      surprise: 130
-      sweetness: 51
-      fear: 116
-      trust: 93
+      joy: 73
+      sadness: 34
+      disgust: 173
+      anger: 153
+      surprise: 149
+      sweetness: 47
+      fear: 121
+      trust: 100
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2041,14 +1675,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 113
-      joy: 126
-      sadness: 118
-      disgust: 91
-      anger: 34
-      surprise: 90
-      sweetness: 211
+      joy: 115
+      sadness: 124
+      disgust: 85
+      anger: 47
+      surprise: 70
+      sweetness: 233
       fear: 129
-      trust: 111
+      trust: 107
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2074,7 +1708,7 @@ MonoBehaviour:
     availability: 1
     bestGrowthFirst: 6
     bestGrowthSecond: 7
-    bestGrowthThird: 1
+    bestGrowthThird: 2
   - voiceActorName: Gertrude
     voiceActorID: VoiceActorGertrude
     fan: 0
@@ -2120,14 +1754,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 130
-      joy: 123
-      sadness: 119
-      disgust: 124
-      anger: 138
-      surprise: 117
-      sweetness: 126
-      fear: 143
-      trust: 150
+      joy: 142
+      sadness: 145
+      disgust: 136
+      anger: 125
+      surprise: 119
+      sweetness: 115
+      fear: 123
+      trust: 135
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2149,9 +1783,9 @@ MonoBehaviour:
     voxography: []
     actorMentalState: 0
     availability: 1
-    bestGrowthFirst: 8
-    bestGrowthSecond: 7
-    bestGrowthThird: 4
+    bestGrowthFirst: 2
+    bestGrowthSecond: 1
+    bestGrowthThird: 3
   - voiceActorName: Jeau
     voiceActorID: VoiceActorJeau
     fan: 2
@@ -2197,14 +1831,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 75
-      joy: 51
-      sadness: 90
-      disgust: 48
+      joy: 47
+      sadness: 85
+      disgust: 43
       anger: 116
-      surprise: 145
-      sweetness: 49
-      fear: 44
-      trust: 62
+      surprise: 144
+      sweetness: 53
+      fear: 57
+      trust: 60
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2274,14 +1908,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 101
-      joy: 64
-      sadness: 127
+      joy: 58
+      sadness: 118
       disgust: 165
-      anger: 72
-      surprise: 86
-      sweetness: 40
+      anger: 60
+      surprise: 98
+      sweetness: 50
       fear: 151
-      trust: 105
+      trust: 110
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2355,14 +1989,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 111
-      joy: 53
-      sadness: 105
-      disgust: 127
-      anger: 69
-      surprise: 72
-      sweetness: 113
-      fear: 176
-      trust: 175
+      joy: 83
+      sadness: 109
+      disgust: 110
+      anger: 85
+      surprise: 67
+      sweetness: 81
+      fear: 182
+      trust: 173
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2440,11 +2074,11 @@ MonoBehaviour:
       joy: 56
       sadness: 117
       disgust: 174
-      anger: 76
-      surprise: 70
-      sweetness: 55
-      fear: 145
-      trust: 117
+      anger: 84
+      surprise: 76
+      sweetness: 44
+      fear: 141
+      trust: 118
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2467,7 +2101,7 @@ MonoBehaviour:
     availability: 1
     bestGrowthFirst: 3
     bestGrowthSecond: 7
-    bestGrowthThird: 2
+    bestGrowthThird: 8
   - voiceActorName: Trich
     voiceActorID: VoiceActorTrich
     fan: 100
@@ -2513,14 +2147,14 @@ MonoBehaviour:
       trust: 0
     growth:
       neutral: 102
-      joy: 122
-      sadness: 68
-      disgust: 128
+      joy: 116
+      sadness: 74
+      disgust: 129
       anger: 125
-      surprise: 63
+      surprise: 62
       sweetness: 125
-      fear: 79
-      trust: 110
+      fear: 78
+      trust: 111
     currentGrowth:
       neutral: 0
       joy: 0
@@ -2570,21 +2204,9 @@ MonoBehaviour:
   nextStoryEvents: []
   nextStoryEventsStartWeek: []
   phoneStoryEvents: []
-  storyVariables:
-  - variableName: '[VarLocal1]'
-    value: 0
-    valueText: Ragab
-  - variableName: '[VarLocal2]'
-    value: 0
-    valueText: Bocca
-  - variableName: '[VarLocal3]'
-    value: 0
-    valueText: Je dois sauver la terre !
-  - variableName: '[VarLocal4]'
-    value: 60
-    valueText: 60
+  storyVariables: []
   tutoEvent: 
-  nextRandomEvent: 
+  nextRandomEvent: 02000000
   inventoryEquipement: []
   currentEquipement:
   - {fileID: 0}
@@ -2629,7 +2251,7 @@ MonoBehaviour:
   storyResumeUnlocked: 00
   currentChapter: 2
   currentObjective: "Attendre que Dor\xE9mi r\xE9ponde."
-  playerStudioLevel: 5
+  playerStudioLevel: 6
   maintenance: 6000
   money: 36000
   researchPoint: 10
@@ -2638,7 +2260,7 @@ MonoBehaviour:
     month: 5
     year: 1
   timer: 0
-  season: 3
+  season: 1
   comboMax: 3
   deck:
     neutral: 1

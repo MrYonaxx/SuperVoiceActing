@@ -98,15 +98,13 @@ MonoBehaviour:
         trust: 25
       actorLocked: {fileID: 0}
       skillRoleSelection:
-      - skillsA:
+      - randomDrawMin: 0
+        randomDrawMax: 1
+        skills:
         - {fileID: 11400000, guid: ede6c53357e0ed74e8e0ce71e71ea075, type: 2}
-        skillsB:
-        - {fileID: 11400000, guid: 9ed25ceab68e60447ade6950bdf52251, type: 2}
-        - {fileID: 0}
-        skillsC:
         - {fileID: 11400000, guid: b8eb70949dd2e094582e63e1ff250740, type: 2}
-        - {fileID: 0}
-        skillsD: []
+        skillsRandom:
+        - {fileID: 11400000, guid: e00c71b4573c2c1458636889a2866a71, type: 2}
   - mainCharacter: 1
     optional: 0
     charactersProfil:
@@ -144,11 +142,13 @@ MonoBehaviour:
         trust: 0
       actorLocked: {fileID: 0}
       skillRoleSelection:
-      - skillsA:
+      - randomDrawMin: 0
+        randomDrawMax: 2
+        skills:
         - {fileID: 11400000, guid: 26c318496d2301843a80513a86af1070, type: 2}
-        skillsB: []
-        skillsC: []
-        skillsD: []
+        skillsRandom:
+        - {fileID: 11400000, guid: beac03a4a49cd7b45aac17ee45d59dd6, type: 2}
+        - {fileID: 11400000, guid: 5fdc7cc1218fbe3419ec93ed159b6258, type: 2}
   producerMP: 0
   artificialIntelligence: []
   textDataContract:

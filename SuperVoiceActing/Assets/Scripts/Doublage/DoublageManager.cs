@@ -258,6 +258,7 @@ namespace VoiceActing
             /*turnManager.DrawTurn(battleParameter.Turn);
             lineManager.DrawLineNumber(battleParameter.Contract.CurrentLine);
             lineManager.DrawMaxLineNumber(battleParameter.Contract.TotalLine);*/
+            lineManager.DrawLineHealthBar(battleParameter.Contract.TextData);
 
             resultScreenManager.SetManagers(contrat, battleParameter.VoiceActors, actorsManager);
 
@@ -442,9 +443,10 @@ namespace VoiceActing
                 textAppearManager.SetLetterSpeed(8);
             }
 
+            actorsManager.AddBonusStat(battleParameter.VoiceActors, battleParameter.CurrentAttackEmotion);
             emotionAttackManager.CardAttack();
             emotionAttackManager.SwitchCardTransformToRessource();
-            actorsManager.AddBonusStat(battleParameter.VoiceActors, battleParameter.CurrentAttackEmotion);
+            
 
             skillManager.HideSkillWindow();
             actorsManager.DrawActorStat(battleParameter.CurrentActor(), battleParameter.Cards);
@@ -666,6 +668,7 @@ namespace VoiceActing
             contrat.CurrentLine += 1;
             battleParameter.KillCount += 1;
             lineManager.DrawLineNumber(contrat.CurrentLine);
+            lineManager.ShowCurrentLineHealthBar(contrat.CurrentLine);
             emotionAttackManager.ResetCard();
             skillManager.ResetMovelist();
             emotionAttackManager.StartTurnCardFeedback();

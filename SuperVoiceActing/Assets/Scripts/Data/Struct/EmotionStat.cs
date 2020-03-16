@@ -13,7 +13,7 @@ using Sirenix.OdinInspector;
 namespace VoiceActing
 {
     [System.Serializable]
-    public struct EmotionStat
+    public class EmotionStat
     {
         [VerticalGroup("EmotionStat", PaddingBottom = 10)]
         [Title("Neutr", " ", TitleAlignments.Centered)]
@@ -115,7 +115,7 @@ namespace VoiceActing
             set { trust = value; }
         }
 
-        public EmotionStat(string a = "")
+        public EmotionStat()
         {
             this.joy = 0;
             this.sadness = 0;

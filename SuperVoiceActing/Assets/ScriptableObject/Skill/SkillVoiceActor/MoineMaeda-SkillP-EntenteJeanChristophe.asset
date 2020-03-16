@@ -37,6 +37,7 @@ MonoBehaviour:
       ignoreHPLimit: 0
       hpGain: 0
       hpGainVariance: 0
+      damageRoleMultiplier: -1
     skillEffectEmotionStat:
       skillTarget: 0
       emotionStat:
@@ -82,6 +83,7 @@ MonoBehaviour:
       firstEmotion: 0
       secondEmotion: 0
   bonusSkillEffects: []
+  noPreview: 0
   producerCost: 0
   isPassive: 1
   movelist:
@@ -118,7 +120,9 @@ MonoBehaviour:
         sweetness: 0
         fear: 0
         trust: 0
+    skillConditionContractType:
+      contractType: 0
     skillConditionCharacter:
-      characterData: {fileID: 11400000, guid: 8a2080d9b91350341ae62d050794000a, type: 2}
+      characterData: {fileID: 11400000, guid: f4a4be1ad3e10864e96fe72529e39e85, type: 2}
   bigAnimation: 1
   isMalus: 0

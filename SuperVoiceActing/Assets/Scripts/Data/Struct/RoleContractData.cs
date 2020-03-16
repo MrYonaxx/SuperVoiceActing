@@ -277,6 +277,8 @@ namespace VoiceActing
 
         public string[] CreateSkillList()
         {
+            if (skillsRandom == null)
+                return null;
             List<string> res = new List<string>();
             List<SkillRoleData> randSkills = new List<SkillRoleData>(skillsRandom.Length);
             int randomDraw = Random.Range(randomDrawMin, randomDrawMax+1);
