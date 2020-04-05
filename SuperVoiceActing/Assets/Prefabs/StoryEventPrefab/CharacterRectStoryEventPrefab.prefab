@@ -26,11 +26,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2901715237159417360}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2901715237475497814}
+  m_Father: {fileID: 5790258045811334007}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -97,11 +97,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2901715237475497814}
-  - component: {fileID: 2901715237475497809}
-  - component: {fileID: 2901715237475497808}
   - component: {fileID: 2901715237475497815}
   - component: {fileID: 2901715237475497810}
-  - component: {fileID: 4771161582717576823}
   m_Layer: 5
   m_Name: CharacterRectStoryEventPrefab
   m_TagString: Untagged
@@ -120,51 +117,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
-  - {fileID: 2901715237159417361}
+  - {fileID: 5790258045811334007}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1700, y: 2000}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0}
---- !u!222 &2901715237475497809
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2901715237475497813}
-  m_CullTransparentMesh: 0
---- !u!114 &2901715237475497808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2901715237475497813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 34bcc4fed29754b40be5ac6ddaa91b7c, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2901715237475497815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,17 +138,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba989e0f238f96642a35a06b7ff91fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyCharacterData: {fileID: 11400000, guid: 5a8ca4d0dc3e59a418e33d3fb3664009, type: 2}
+  voiceActorData: {fileID: 0}
   spriteRenderer: {fileID: 0}
   eyesScript: {fileID: 2901715237159417356}
   mouthEmitSound: 0
   speedMouth: 11
   voice: {fileID: 2901715237475497810}
-  animatorCharacter: {fileID: 4771161582717576823}
+  animatorCharacter: {fileID: 3017243205857247419}
   animatorBalloon: {fileID: 0}
   animatorAura: {fileID: 0}
   auraRenderer: {fileID: 0}
-  imageRenderer: {fileID: 2901715237475497808}
+  storyCharacterData:
+    characterVoice: {fileID: 0}
+    voiceReel: 
+    emotionVoiceReel: 0
+    spriteIcon: {fileID: 0}
+    spriteEye: {fileID: 0}
+    spriteNormal: []
+    spriteJoy: []
+    spriteSpecial: []
+  imageRenderer: {fileID: 229408970674307087}
   rectTransform: {fileID: 2901715237475497814}
 --- !u!82 &2901715237475497810
 AudioSource:
@@ -285,14 +255,89 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &4771161582717576823
+--- !u!1 &3538447059650014751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5790258045811334007}
+  - component: {fileID: 5992856406887595338}
+  - component: {fileID: 229408970674307087}
+  - component: {fileID: 3017243205857247419}
+  m_Layer: 5
+  m_Name: CharacterRectStoryEventSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5790258045811334007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538447059650014751}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2901715237159417361}
+  m_Father: {fileID: 2901715237475497814}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2000, y: 2101}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!222 &5992856406887595338
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538447059650014751}
+  m_CullTransparentMesh: 0
+--- !u!114 &229408970674307087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538447059650014751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 59fe05661f0fed74cb33183f5321ef13, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3017243205857247419
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2901715237475497813}
+  m_GameObject: {fileID: 3538447059650014751}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5358ccd9af122f44d8fa5db1c1f1cf15, type: 2}

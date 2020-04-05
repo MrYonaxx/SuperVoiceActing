@@ -31,11 +31,25 @@ namespace VoiceActing
         [SerializeField]
         int sellOptionIndex = 1;
         [SerializeField]
-        int exitOptionIndex = 2;
+        int talkOptionIndex = 2;
+        [SerializeField]
+        int exitOptionIndex = 3;
         [SerializeField]
         Animator animatorTransition;
         [SerializeField]
         CameraBureau cameraDekstop;
+
+        [Title("Menu Shop")]
+        [SerializeField]
+        List<EquipementData> shopCurrentStockDebug;
+
+        [Title("Dialogue")]
+        [SerializeField]
+        StoryEventData storyEventData;
+
+
+        List<Equipement> shopCurrentStock = new List<Equipement>();
+
         #endregion
 
         #region GettersSetters 
@@ -53,22 +67,39 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        protected override void Start()
+        {
+            base.Start();
+            if(shopCurrentStockDebug != null)
+            {
+                for(int i = 0; i < shopCurrentStockDebug.Count; i++)
+                {
+                    shopCurrentStock.Add(new Equipement(shopCurrentStockDebug[i]));
+                }          
+            }
+        }
+
         public void Validate()
         {
             
             if (indexSelected == buyOptionIndex)
             {
-                return;
+                menuShopSelection.SetEquipementsShowcase(shopCurrentStock, true);
+                menuShopSelection.gameObject.SetActive(true);
+                this.gameObject.SetActive(false);
             }
             else if(indexSelected == sellOptionIndex)
             {
+                menuShopSelection.SetEquipementsShowcase(playerData.InventoryEquipement, false);
+                menuShopSelection.gameObject.SetActive(true);
+                this.gameObject.SetActive(false);
+            }
+            else if (indexSelected == talkOptionIndex)
+            {
                 return;
-                /*menuShopSelection.SetEquipementsShowcase(playerData.InventoryEquipement, false);
-                menuShopSelection.gameObject.SetActive(true);*/
             }
             else if (indexSelected == exitOptionIndex)
             {
-                this.gameObject.SetActive(false);
                 ExitMenuShop();
             }
         }

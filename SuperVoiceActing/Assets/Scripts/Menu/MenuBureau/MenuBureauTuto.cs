@@ -68,7 +68,6 @@ namespace VoiceActing
             {
                 this.gameObject.SetActive(false);
             }
-            //StartTuto(0);
         }
         
         ////////////////////////////////////////////////////////////////////////////////////////////////

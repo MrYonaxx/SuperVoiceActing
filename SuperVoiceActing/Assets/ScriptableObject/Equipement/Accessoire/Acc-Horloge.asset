@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 186e6cb6f9e3fd04dbd9df1f1c23d02a, type: 3}
-  m_Name: AccessoireChauffage
+  m_Name: Acc-Horloge
   m_EditorClassIdentifier: 
-  equipmentName: 
-  equipementCategory: 0
+  equipmentName: Horloge
+  equipementCategory: 3
   price: 0
   maintenance: 0
-  description: 
+  description: "Installe une horloge dans le studio. Cet horloge amm\xE8ne les com\xE9diens
+    \xE0 travailler plus rapidement mais augmente leur chance de rater une prise."
+  soundQuality: 0
+  flatAtkBoost: 0
+  criticalPercentageBoost: 0
   atkBonus:
     neutral: 0
     joy: 0
@@ -27,6 +31,7 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
+  flatDefenseBoost: 0
   defBonus:
     neutral: 0
     joy: 0
@@ -37,3 +42,10 @@ MonoBehaviour:
     sweetness: 0
     fear: 0
     trust: 0
+  scoreBonus: 0
+  expRate: 0
+  turnBonus: 0
+  immuneState: {fileID: 0}
+  soundEngiMixingBonus: 0
+  soundEngiPowerBonus: 0
+  soundEngiTurnBonus: 0

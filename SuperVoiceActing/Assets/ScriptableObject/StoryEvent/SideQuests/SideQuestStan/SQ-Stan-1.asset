@@ -1,0 +1,3567 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
+  m_Name: SQ-Stan-1
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  createNewScene: 1
+  background: {fileID: 11400000, guid: bf4e0c3e91d3a3a45935265135d67970, type: 2}
+  characters:
+  - characterMoving: {fileID: 11400000, guid: f47599e8d689a6541b253b90ef8adad8, type: 2}
+    time: 60
+    newPosition: {x: 0.4, y: 0, z: 0}
+    newRotation: {x: 0, y: 0, z: 0}
+    newScale: {x: 0.5, y: 0.5, z: 0.5}
+    appear: 1
+    waitEnd: 0
+  - characterMoving: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+    time: 60
+    newPosition: {x: -0.4, y: 0, z: 0}
+    newRotation: {x: 0, y: 0, z: 0}
+    newScale: {x: -1, y: 1, z: 0.5}
+    appear: 1
+    waitEnd: 0
+  - characterMoving: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+    time: 60
+    newPosition: {x: -1, y: 0, z: 0}
+    newRotation: {x: 0, y: 0, z: 0}
+    newScale: {x: -0.5, y: 0.5, z: 0.5}
+    appear: 0
+    waitEnd: 0
+  eventNodes:
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "H\xE9 ! M. [PlayerName] !"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5,
+          type: 2}
+        time: 1
+        newPosition: {x: -0.4, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 1, y: 1, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: C'est Stan ?
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a,
+          type: 2}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 1
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 30
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 1
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5,
+          type: 2}
+        time: 1
+        newPosition: {x: -0.4, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -1, y: 1, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5,
+          type: 2}
+        time: 30
+        newPosition: {x: -0.6, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -1, y: 1, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: f47599e8d689a6541b253b90ef8adad8,
+          type: 2}
+        time: 30
+        newPosition: {x: 0.6, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "M. [PlayerName] ! J'ai eu une id\xE9e, IN-SANE !"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Calme toi...
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Euh oui oui.
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a,
+          type: 2}
+        time: 1
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Salut mam'zelle, salut m'sieur.
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a,
+          type: 2}
+        time: 1
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 2
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Bref, j'ai eu une id\xE9e de malade ! \xC9coutez-\xE7a."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "J'me suis d'mand\xE9 pourquoi j'\xE9tais nul et que je gagnais pas
+          les auditions."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Et c'est l\xE0 que j'ai jou\xE9 \xE0 ce jeu et que j'ai compris."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "On devrait faire des s\xE9ances d'enregistrements..."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 2
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "En r\xE9alit\xE9 virtuelle !"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Quoi ?
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 2
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "En r\xE9alit\xE9 virtuelle !"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: J'ai entendu, j'ai entendu...
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Mais pourquoi ? Et comment ?
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Avec un casque en r\xE9alit\xE9 virtuelle !"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 'On en porte tous un, et pfiou !
+
+          On est dans un autre monde !'
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: (Qu'est-ce qu'on va faire de lui... )
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Si c'est bien ce que je pense, \xE7a a l'air amusant."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Comment \xE7a ?"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Quand on incarne un personnage, on doit imaginer le contexte et la
+          sc\xE8ne pour \xEAtre dans le bon ton."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Mais avec ce casque sur la t\xEAte, plus besoin d'imaginer."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "On se retrouve... heum... dans une autre r\xE9alit\xE9 litt\xE9ralement."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: f47599e8d689a6541b253b90ef8adad8, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Oh, je vois, et donc en r\xE9alit\xE9 virtuelle, vous r\xE9aliser un
+          jeu d'acteur encore plus authentique."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Vous n'allez pas vous y mettre vous aussi.
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Je savais que vous me comprendriez les copains !
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: '...'
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5,
+          type: 2}
+        time: 120
+        newPosition: {x: -0.6, y: -0.02, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -1.04, y: 1.04, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a,
+          type: 2}
+        time: 120
+        newPosition: {x: 0, y: -0.02, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -0.54, y: 0.54, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: f47599e8d689a6541b253b90ef8adad8,
+          type: 2}
+        time: 120
+        newPosition: {x: 0.6, y: -0.02, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.54, y: 0.54, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: '...'
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "H\xE9 me regardez pas comme \xE7a !"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5,
+          type: 2}
+        time: 1
+        newPosition: {x: -0.6, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -1, y: 1, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a,
+          type: 2}
+        time: 1
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: -0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 3
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 11400000, guid: f47599e8d689a6541b253b90ef8adad8,
+          type: 2}
+        time: 1
+        newPosition: {x: 0.6, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Bon... on va tester.\nMais comment on met tout \xE7a en place ?"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Deja faut acheter les casques, c'est 2000 \xE0 l'unit\xE9."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 6
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Quoi !? C'est si ch\xE8re de jouer \xE0 des jeux vid\xE9os ?!"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: C'est le prix de l'immersion. Vous allez pas regretter, je vous jure
+          !
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Ensuite il faut payer un mod\xE9lisateur 3D et un d\xE9veloppeur."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "(On fait du doublage ou un jeu vid\xE9o... ?)"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: f47599e8d689a6541b253b90ef8adad8, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "Moi je dis \xE7a se tente, je vais aller pr\xE9parer une installation."
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7d8f0ae4aaad74f4392165abc266a0f5, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Je suis d'accord on va bien s'amuser !
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 49a0f2904bac934439af61aad7fc215e, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: "(J'essaye de monter un business les gars... on est pas l\xE0 pour faire
+          des soir\xE9es jeux vid\xE9os.)"
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 0
+      storyEventText:
+        interlocutor: {fileID: 11400000, guid: 7ff1f4fb4f4b2ed4e93ee635cebee52a, type: 2}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: Y'a un bundle avec tout ce qu'il faut au <color=yellow>magasin FLAC</color>.
+          Appelez-moi quand vous les aurez !
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 2
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 5
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: 
+        mathOperation: 0
+        newValue: 0
+        newValueRandom: 0
+      storyEventCustom:
+        eventCustom: {fileID: 0}
+  - dataBox:
+      eventNode: 9
+      storyEventText:
+        interlocutor: {fileID: 0}
+        emotionNPC: 0
+        emotionEmoticonBalloon: 0
+        text: 
+        mouthSpeed: 1
+        forceSkip: 0
+        ignorePlayerInput: 0
+      storyEventWait:
+        time: 60
+      storyEventEffect:
+        eventEffect: 0
+        time: 60
+        timeTint: 60
+        tintColor: {r: 0, g: 0, b: 0, a: 0}
+      storyEventMoveCharacter:
+        characterMoving: {fileID: 0}
+        time: 60
+        newPosition: {x: 0, y: 0, z: 0}
+        newRotation: {x: 0, y: 0, z: 0}
+        newScale: {x: 0.5, y: 0.5, z: 0.5}
+        appear: 1
+        waitEnd: 0
+      storyEventSceneLoader:
+        sceneName: 
+      storyEventLoadEvent:
+        dataToLoad: {fileID: 0}
+        DoublageEventToLoad: {fileID: 0}
+        conditions: []
+      storyEventMusic:
+        playMusic: 0
+        audio: {fileID: 0}
+      storyEventPlayerData:
+        currentContract: {fileID: 0}
+        contractToAdd: []
+        eventToAdd: []
+        eventEndToAdd: []
+        voiceActorToAdd: []
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
+      storyEventChoices:
+        text: 
+        answers: []
+        storyChoices: []
+      storyEventVariable:
+        variableName: '[StanSideQuest]'
+        mathOperation: 0
+        newValue: 10
+        newValueRandom: 10
+      storyEventCustom:
+        eventCustom: {fileID: 0}

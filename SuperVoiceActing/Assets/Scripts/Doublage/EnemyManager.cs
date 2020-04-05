@@ -460,9 +460,12 @@ namespace VoiceActing
 
 
 
-        public bool CheckIfMiss()
+        public bool CheckIfMiss(int actorStat)
         {
-            return true;
+            int rand = Random.Range(0, 100);
+            if(rand < actorStat)
+                return true;
+            return false;
         }
 
 

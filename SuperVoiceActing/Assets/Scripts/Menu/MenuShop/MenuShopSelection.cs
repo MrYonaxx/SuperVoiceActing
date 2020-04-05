@@ -45,10 +45,10 @@ namespace VoiceActing
         [SerializeField]
         List<ButtonEquipement> buttonEquipementList = new List<ButtonEquipement>();
         [SerializeField]
-        List<EquipementData> equipementsShowcase;
+        List<Equipement> equipementsShowcase;
 
         [SerializeField]
-        int saleDivision = 4;
+        int saleDivision = 10;
 
         bool buyMode = true;
         int indexCreateList = 0;
@@ -63,7 +63,7 @@ namespace VoiceActing
          *           GETTERS AND SETTERS            *
         \* ======================================== */
 
-        public void SetEquipementsShowcase(List<EquipementData> equipements, bool isBuyMode)
+        public void SetEquipementsShowcase(List<Equipement> equipements, bool isBuyMode)
         {
             buyMode = isBuyMode;
             equipementsShowcase = equipements;
@@ -71,7 +71,7 @@ namespace VoiceActing
             indexSelected = 0;
             indexCategory = 0;
 
-            DrawEquipementInventory(categories[indexCategory]);
+            DrawEquipementsCategory(categories[indexCategory]);
             AfterSelection();
         }
 
@@ -83,6 +83,19 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
+        public void Select(int index)
+        {
+            indexSelected = index;
+            animatorSelection.gameObject.transform.position = buttonsList[indexSelected].transform.position;
+            AfterSelection();
+        }
+
+        public void Validate(int index)
+        {
+            indexSelected = index;
+            Validate();
+        }
+
         public void Validate()
         {
             if(buyMode == true) // Buy
@@ -91,6 +104,7 @@ namespace VoiceActing
                 {
                     menuContractMoney.AuditionFeedback();
                     playerData.Money -= buttonEquipementList[indexSelected].GetEquipement().Price;
+                    playerData.InventoryEquipement.Add(buttonEquipementList[indexSelected].GetEquipement());
                 }
             }
             else // Sell
@@ -98,7 +112,7 @@ namespace VoiceActing
                 menuContractMoney.AddSalaryFast((buttonEquipementList[indexSelected].GetEquipement().Price / saleDivision));
                 playerData.Money += (buttonEquipementList[indexSelected].GetEquipement().Price / saleDivision);
                 equipementsShowcase.Remove(buttonEquipementList[indexSelected].GetEquipement());
-                DrawEquipementInventory(categories[indexCategory]);
+                DrawEquipementsCategory(categories[indexCategory]);
             }
         }
 
@@ -130,7 +144,7 @@ namespace VoiceActing
                 indexCategory = 0;
             }
             selectionCategories.transform.position = transformCategories[indexCategory].transform.position;
-            DrawEquipementInventory(categories[indexCategory]);
+            DrawEquipementsCategory(categories[indexCategory]);
         }
 
         public void SelectCategoryLeft()
@@ -146,7 +160,7 @@ namespace VoiceActing
                 indexCategory = transformCategories.Length - 1;
             }
             selectionCategories.transform.position = transformCategories[indexCategory].transform.position;
-            DrawEquipementInventory(categories[indexCategory]);
+            DrawEquipementsCategory(categories[indexCategory]);
         }
 
 
@@ -154,7 +168,7 @@ namespace VoiceActing
 
 
 
-        private void DrawEquipementInventory(EquipementCategory eqCategory)
+        private void DrawEquipementsCategory(EquipementCategory eqCategory)
         {
             if (eqCategory == EquipementCategory.All)
             {
@@ -176,17 +190,17 @@ namespace VoiceActing
             CleanButtons();
         }
 
-        private void CreateButtonEquipement(EquipementData eqData)
+        private void CreateButtonEquipement(Equipement eqData)
         {
             if (buttonEquipementList.Count <= indexCreateList) // On doit créer un nouveau bouton
             {
                 buttonEquipementList.Add(Instantiate(buttonPrefab, buttonScrollListTransform));
-                buttonEquipementList[indexCreateList].DrawEquipement(eqData);
+                buttonEquipementList[indexCreateList].DrawEquipement(eqData, eqData.Price, indexCreateList);
                 buttonsList.Add(buttonEquipementList[indexCreateList].GetRectTransform());
             }
             else // On peut réécrire un bouton existant
             {
-                buttonEquipementList[indexCreateList].DrawEquipement(eqData);
+                buttonEquipementList[indexCreateList].DrawEquipement(eqData, eqData.Price, indexCreateList);
                 if (buttonsList.Count <= indexCreateList)
                     buttonsList.Add(buttonEquipementList[indexCreateList].GetRectTransform());
                 else

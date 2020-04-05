@@ -20,6 +20,8 @@ namespace VoiceActing
 
         [SerializeField]
         ContractData[] contractToAdd;
+        [SerializeField]
+        ContractData[] contractsAvailable;
 
         [SerializeField]
         StoryEventData[] eventToAdd;
@@ -51,6 +53,11 @@ namespace VoiceActing
             {
                 storyManager.PlayerData.ContractAccepted.Add(new Contract(contractToAdd[i]));
                 storyManager.PlayerData.ContractAccepted[storyManager.PlayerData.ContractAccepted.Count - 1].CheckCharacterLock(storyManager.PlayerData.VoiceActors);
+            }
+            for (int i = 0; i < contractsAvailable.Length; i++)
+            {
+                storyManager.PlayerData.ContractAvailable.Add(new Contract(contractsAvailable[i]));
+                storyManager.PlayerData.ContractAvailable[storyManager.PlayerData.ContractAvailable.Count - 1].CheckCharacterLock(storyManager.PlayerData.VoiceActors);
             }
 
 

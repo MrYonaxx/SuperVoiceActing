@@ -181,8 +181,8 @@ namespace VoiceActing
 
         private void DrawMoodBonus()
         {
-            textMoodBonus.gameObject.SetActive(true);
-            textMoodBonus.text = moodBonus.ToString() + "%";
+            //textMoodBonus.gameObject.SetActive(true);
+            //textMoodBonus.text = moodBonus.ToString() + "%";
             /*if (moodBonus == 0)
             {
                 textMoodBonus.gameObject.SetActive(false);

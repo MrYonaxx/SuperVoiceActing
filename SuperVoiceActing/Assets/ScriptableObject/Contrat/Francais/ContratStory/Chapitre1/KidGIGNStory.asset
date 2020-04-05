@@ -35,12 +35,34 @@ MonoBehaviour:
     un nouveau produit de la licence."
   - "[Nom] est une marque de jouet pour enfants.\nLa publicit\xE9 vise \xE0 vendre
     un nouvelle accessoire pour la licence."
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Narrateur
+    - roleName: 
+      roleNames: []
+      roleType: 0
       roleSprite: {fileID: 0}
       lineMin: 10
       lineMax: 20
@@ -71,24 +93,28 @@ MonoBehaviour:
         fear: 0
         trust: 3
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Paris est menac\xE9 !"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -10
         joy: -50
@@ -101,12 +127,14 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
+      customTextDatas: []
     - text: La ville est en flamme !
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 11
-        hpMax: 13
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: -10
         joy: -50
@@ -119,20 +147,26 @@ MonoBehaviour:
         trust: 0
       enemyWeakPoints:
       - wordIndex: 4
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Mais qui voil\xE0 !? Les [Nom] !!!"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 12
-        hpMax: 16
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -145,20 +179,26 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "\xC0 bord de leur vaisseau toupie !?"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 15
-        hpMax: 19
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -171,20 +211,26 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 5
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Et avec une nouvelle arme !?
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 14
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -198,20 +244,26 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 3
       - wordIndex: 4
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Un canon proto-alpha-IV !!!
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 12
-        hpMax: 18
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -224,12 +276,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
+      customTextDatas: []
     - text: Le Super-Micro-Blaster !!!
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 12
-        hpMax: 18
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -242,20 +296,26 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Ils repoussent les menaces anti-gouvernementales.
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 12
-        hpMax: 17
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 30
@@ -269,20 +329,26 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Les jouets [Nom] ne conviennent pas aux enfants de moins de 14 ans.
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 15
-        hpMax: 20
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 50
         joy: 50
@@ -295,9 +361,12 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 12
+      eventData: []
+      customTextDatas: []
   eventData:
   - {fileID: 11400000, guid: 2d3e2b37862018b4b89caaa6a72bc6dc, type: 2}
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
@@ -305,3 +374,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

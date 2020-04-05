@@ -21,7 +21,7 @@ namespace VoiceActing
         [SerializeField]
         string sceneName = "";
 
-        protected override IEnumerator StoryEventCoroutine()
+        public override IEnumerator ExecuteNodeCoroutine(StoryEventManager storyManager)
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             while (!asyncLoad.isDone)

@@ -12,8 +12,8 @@ using Sirenix.OdinInspector;
 
 namespace VoiceActing
 {
-    [CreateAssetMenu(fileName = "ExperienceCurveData", menuName = "ExperienceCurveData", order = 1)]
-    public class ExperienceCurveData : ScriptableObject
+    //[CreateAssetMenu(fileName = "ExperienceCurveData", menuName = "ExperienceCurveData", order = 1)]
+    public class ExperienceCurveData
 	{
 
         [OnValueChanged("CalculateExperienceCurve")]

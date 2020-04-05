@@ -54,6 +54,7 @@ namespace VoiceActing
         {
             get { return maintenance; }
         }
+        [TextArea(1,2)]
         [SerializeField]
         private string description;
         public string Description
@@ -61,8 +62,15 @@ namespace VoiceActing
             get { return description; }
         }
 
-        [Space]
-        [Space]
+
+        [Title("Statistique")]
+        [SerializeField]
+        private int soundQuality;
+        public int SoundQuality
+        {
+            get { return soundQuality; }
+        }
+        [Title("Offensive Bonus")]
         [SerializeField]
         private int flatAtkBoost;
         public int FlatAtkBoost
@@ -75,8 +83,6 @@ namespace VoiceActing
         {
             get { return criticalPercentageBoost; }
         }
-
-        [Header("Equipement Atk (%)")]
         [HideLabel]
         [SerializeField]
         private EmotionStat atkBonus;
@@ -94,7 +100,6 @@ namespace VoiceActing
         {
             get { return flatDefenseBoost; }
         }
-        [Header("Equipement Def (%)")]
         [HideLabel]
         [SerializeField]
         private EmotionStat defBonus;
@@ -149,19 +154,6 @@ namespace VoiceActing
             get { return soundEngiTurnBonus; }
         }
 
-        public void Equip(PlayerData playerData)
-        {
-            playerData.AtkBonus.Add(atkBonus);
-            playerData.DefBonus.Add(defBonus);
-            playerData.Maintenance += maintenance;
-        }
-
-        public void Unequip(PlayerData playerData)
-        {
-            playerData.AtkBonus.Add(atkBonus.Reverse());
-            playerData.DefBonus.Add(defBonus.Reverse());
-            playerData.Maintenance -= maintenance;
-        }
 
 
     } // EquipementData class

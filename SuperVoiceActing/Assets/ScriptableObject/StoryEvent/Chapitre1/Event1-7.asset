@@ -12,37 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfad76a8e2348047be72ace8e91357f, type: 3}
   m_Name: Event1-7
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  createNewScene: 1
   background: {fileID: 11400000, guid: bf4e0c3e91d3a3a45935265135d67970, type: 2}
   characters:
-  - characterToMove: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26, type: 2}
+  - characterMoving: {fileID: 0}
     time: 60
     newPosition: {x: 4, y: -5.2, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
     newScale: {x: 0.45, y: 0.45, z: 0.45}
-    fadeIn: 1
-    fadeOut: 0
+    appear: 1
     waitEnd: 0
-  - characterToMove: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483, type: 2}
+  - characterMoving: {fileID: 0}
     time: 60
     newPosition: {x: -4, y: -5.2, z: 0}
     newRotation: {x: 0, y: 180, z: 0}
     newScale: {x: 0.45, y: 0.45, z: 0.45}
-    fadeIn: 1
-    fadeOut: 0
+    appear: 1
     waitEnd: 0
-  - characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990, type: 2}
+  - characterMoving: {fileID: 0}
     time: 60
     newPosition: {x: -10, y: -5.2, z: 0}
     newRotation: {x: 0, y: 0, z: 0}
     newScale: {x: 0.45, y: 0.45, z: 0.45}
-    fadeIn: 0
-    fadeOut: 0
+    appear: 1
     waitEnd: 0
   eventNodes:
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -57,65 +64,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: Beau travail champion.
@@ -130,65 +121,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Heum... Merci.
@@ -203,65 +178,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "M\xEAme si je me suis peut-\xEAtre tromp\xE9 dans la direction \xE0
@@ -277,65 +236,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: T'en fais pas.
@@ -350,65 +293,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "C'est normal de douter, \xE7a veut dire que tu sais prendre du recul."
@@ -423,65 +350,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Et de ce que j'ai vu, \xE7a ne t'as pas emp\xEAch\xE9 de tout donner,
@@ -497,64 +408,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(J'ai tout donn\xE9, mais j'ai peut-\xEAtre tout perdu auss...)"
@@ -569,65 +465,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9fc61f0caedd504e93f864e98138483,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Bocca a raison, m\xEAme si ta vision n'\xE9tait pas celle de l'auteur,
@@ -643,65 +523,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Peut-\xEAtre qu'on devra r\xE9-enregistrer certains passages."
@@ -716,65 +580,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Mais si le r\xE9alisateur de Ragab voulait que tu sois fid\xE8le \xE0
@@ -791,65 +639,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: "Vous avez tous fait du bon travail, maintenant qu'est-ce que vous diriez
@@ -865,65 +697,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 1
         emotionEmoticonBalloon: 0
         text: C'est moi qui invite !
@@ -938,64 +754,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -1010,65 +811,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Navr\xE9 d'interrompre votre discussion, mais il y a un changement
@@ -1084,65 +869,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 3
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -1157,66 +926,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        characterMoving: {fileID: 0}
         time: 120
         newPosition: {x: -5, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 1
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Il reste des lignes de dialogues \xE0 enregistrer."
@@ -1231,64 +983,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -1303,64 +1040,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -1375,65 +1097,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 74915b421297ba940b81633692ad7efa,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Quoi ?
@@ -1448,65 +1154,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Il semblerait que le d\xE9veloppement prenne du retard."
@@ -1521,65 +1211,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "De ce fait, la derni\xE8re sc\xE8ne que nous avons enregistr\xE9 ne
@@ -1595,64 +1269,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: (
@@ -1667,64 +1326,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Tout ces efforts ann\xE9antis...)"
@@ -1739,65 +1383,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Et puisque la fin a \xE9t\xE9 remani\xE9, certains dialogues ont chang\xE9."
@@ -1812,65 +1440,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: e9a9b4b17228bbe4b80647a9ac80b990,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: Heureusement, cela ne concerne que M. Bocca et cela ne devrait pas prendre
@@ -1886,65 +1498,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Bah. Si ce n'est que \xE7a, on retarde juste notre petite f\xEAte."
@@ -1959,65 +1555,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 11400000, guid: 91df4a2e74d2ac240901065f82011a26,
-          type: 2}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "Allez [Nom], on a un travail \xE0 finir."
@@ -2032,64 +1612,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: (Pas le choix, j'y retourne.)
@@ -2104,64 +1669,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 0
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: "(Mais du coup je ne connais pas la sc\xE8ne. J'esp\xE8re que \xE7a
@@ -2177,64 +1727,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 2
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2249,64 +1784,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 1
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2321,64 +1841,49 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 7
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2393,66 +1898,52 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: 
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 11400000, guid: 8807423013b3cc34aa118cae8f57feaf,
           type: 2}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 11400000, guid: b06495b2317a8b24793ea0c2557b89b6,
-          type: 2}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 1
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}
   - dataBox:
       eventNode: 5
       storyEventText:
-        interlocuteur: {fileID: 0}
+        interlocutor: {fileID: 0}
         emotionNPC: 0
         emotionEmoticonBalloon: 0
         text: 
@@ -2467,57 +1958,42 @@ MonoBehaviour:
         timeTint: 60
         tintColor: {r: 0, g: 0, b: 0, a: 0}
       storyEventMoveCharacter:
-        characterToMove: {fileID: 0}
+        characterMoving: {fileID: 0}
         time: 60
         newPosition: {x: 0, y: -5.2, z: 0}
         newRotation: {x: 0, y: 0, z: 0}
         newScale: {x: 0.45, y: 0.45, z: 0.45}
-        fadeIn: 0
-        fadeOut: 0
+        appear: 1
         waitEnd: 0
       storyEventSceneLoader:
         sceneName: Doublage
       storyEventLoadEvent:
-        DataToLoad: {fileID: 0}
-        saveSceneConfiguration: 0
+        dataToLoad: {fileID: 0}
         DoublageEventToLoad: {fileID: 0}
+        conditions: []
       storyEventMusic:
         playMusic: 0
         audio: {fileID: 0}
       storyEventPlayerData:
         currentContract: {fileID: 0}
-        contractToAdd: {fileID: 0}
-        eventToAdd: {fileID: 0}
-        eventEndToAdd: {fileID: 0}
-        voiceActorToAdd: {fileID: 0}
-        voiceActorAdd: 0
-        voiceActorRemove: 0
-        voiceActorUnavailable: 0
-        newChapter: 0
-        newObjective: 
-        skipNextWeek: 0
-        unlockStudio: 0
+        contractToAdd:
+        - {fileID: 0}
+        eventToAdd:
+        - {fileID: 0}
+        eventEndToAdd:
+        - {fileID: 0}
+        voiceActorToAdd:
+        - {fileID: 0}
+        voiceActorToRemove: []
+        voiceActorUnavailable: []
       storyEventChoices:
         text: 
         answers: []
         storyChoices: []
       storyEventVariable:
-        globalVariable: 0
-        custom: 0
         variableName: 
         mathOperation: 0
         newValue: 0
         newValueRandom: 0
-        customScript: {fileID: 0}
-        otherVariable: 
-      storyEventCondition:
-        variableName: 
-        mathOperator: 0
-        value: 0
-      storyEventEndCondition:
-        endConditionName: 
-      storyEventConditionActor:
-        variableName: 
-        voiceActorDatas: []
-        storyEvents: []
-        defaultEvent: {fileID: 0}
+      storyEventCustom:
+        eventCustom: {fileID: 0}

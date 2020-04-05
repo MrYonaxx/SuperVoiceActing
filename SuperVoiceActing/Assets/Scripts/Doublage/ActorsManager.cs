@@ -306,7 +306,7 @@ namespace VoiceActing
         {
             textActorAttackPower.gameObject.SetActive(true);
             textActorAttackPower.text = ((int)(attackPower * voiceActor.BonusDamage)).ToString();
-            textDamage.text = ((int)(attackDamage * voiceActor.BonusResistance) + attackDamageBonus).ToString();
+            //textDamage.text = ((int)(attackDamage * voiceActor.BonusResistance) + attackDamageBonus).ToString();
 
             if(attackPower != 0 && voiceActor.BonusDamage > 1)
                 textActorAttackPower.color = colorAttackBuff;
@@ -315,12 +315,12 @@ namespace VoiceActing
             else
                 textActorAttackPower.color = Color.white;
 
-            if (attackDamage != 0 && voiceActor.BonusResistance > 1)
+            /*if (attackDamage != 0 && voiceActor.BonusResistance > 1)
                 textDamage.color = colorDamageDebuff;
             else if (attackDamage != 0 && voiceActor.BonusResistance < 1)
                 textDamage.color = colorDamageBuff;
             else
-                textDamage.color = Color.white;
+                textDamage.color = Color.white;*/
         }
 
 
@@ -336,7 +336,7 @@ namespace VoiceActing
             //animatorDamage.SetTrigger("Attack");
             ActorTakeDamage(voiceActor, (int) (attackDamage * voiceActor.BonusResistance));
             attackDamage = 0;
-            textDamage.text = attackDamage.ToString();
+            //textDamage.text = attackDamage.ToString();
             textActorAttackPower.gameObject.SetActive(false);
             DrawDamagePrevisualization(voiceActor);
         }

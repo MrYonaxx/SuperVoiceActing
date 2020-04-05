@@ -179,7 +179,6 @@ namespace VoiceActing
                 characters.Add(Instantiate(characterPrefab, transformCharacter));
                 characters[characters.Count - 1].SetVoiceActorData(newStoryEvent.Characters[i].CharacterMoving);
                 characters[characters.Count - 1].SetPosition(newStoryEvent.Characters[i].NewPosition);
-                //characters[characters.Count - 1].transform.localPosition = newStoryEvent.Characters[i].NewPosition;
                 characters[characters.Count - 1].transform.localScale = newStoryEvent.Characters[i].NewScale;
                 characters[characters.Count - 1].transform.eulerAngles = newStoryEvent.Characters[i].NewRotation;
                 characters[characters.Count - 1].FadeCharacter(newStoryEvent.Characters[i].Appear, 1);
@@ -188,7 +187,7 @@ namespace VoiceActing
 
 
         /// <summary>
-        /// Lance un event à la fin et créer une scène.
+        /// Lance un UnityEvent à la fin et créer une scène.
         /// </summary>
         /// <param name="storyEvent"></param>
         /// <returns></returns>
@@ -198,7 +197,9 @@ namespace VoiceActing
             storyEventEffectManager.Fade(false, 60);
             storyEventEffectManager.Tint(Color.clear, 60);
             yield return null;
+            Debug.Log("bidibibadibidou");
             yield return ExecuteEvent(newStoryEvent);
+            Debug.Log("bidibibadibidou-Fin");
             unityEvent.Invoke();
         }
 
@@ -221,11 +222,11 @@ namespace VoiceActing
         }
 
 
-        public void LoadNewStoryEvent(StoryEventData data)
+        /*public void LoadNewStoryEvent(StoryEventData data)
         {
             storyEventData = data;
             i = -1;
-        }
+        }*/
 
 
 

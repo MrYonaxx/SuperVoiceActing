@@ -27,12 +27,34 @@ MonoBehaviour:
   description:
   - "Nous r\xE9alisons un film \xE0 l'attention de nos employ\xE9s pour notre Entreprise
     Ekavox."
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - Narrateur
+    - roleName: 
+      roleNames: []
+      roleType: 0
       roleSprite: {fileID: 0}
       lineMin: 12
       lineMax: 60
@@ -63,24 +85,28 @@ MonoBehaviour:
         fear: 9
         trust: 7
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "L'ins\xE9curit\xE9..."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -93,12 +119,14 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
+      customTextDatas: []
     - text: Les carries...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -111,20 +139,26 @@ MonoBehaviour:
         trust: -30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Elles entrainent la peur dans nos coeurs...
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -138,12 +172,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 3
       - wordIndex: 6
+      eventData: []
+      customTextDatas: []
     - text: Il arrive qu'elles provoquent la mort.
-      textStats:
-        interlocuteurID: 0
-        linked: 2
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -157,12 +193,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 3
       - wordIndex: 5
+      eventData: []
+      customTextDatas: []
     - text: "La mort de la dignit\xE9"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: -90
@@ -176,21 +214,27 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 0
-      nbPhraseMin: 0
-      nbPhraseMax: 1
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Eh oui, \xEAtre au travail, ne signifie pas d\xE9laisser son hygi\xE8ne
         dentaire !"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 11
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 60
@@ -203,20 +247,26 @@ MonoBehaviour:
         trust: 60
       enemyWeakPoints:
       - wordIndex: 8
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
       all: 1
-      nbPhraseMin: 0
-      nbPhraseMax: 0
-      condition: 0
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "C'est pourquoi chez Ekavox, nous nous engageons \xE0 accorder 10 minutes..."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -229,12 +279,14 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
+      customTextDatas: []
     - text: '...Au brossage de dents de toutes l''entreprise !'
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 100
@@ -247,13 +299,15 @@ MonoBehaviour:
         trust: 50
       enemyWeakPoints:
       - wordIndex: 5
+      eventData: []
+      customTextDatas: []
     - text: "Les 30 minutes de repas seront donc consacr\xE9es \xE0 30% au brossage
         de dents !"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 50
@@ -266,9 +320,12 @@ MonoBehaviour:
         trust: 100
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
+      customTextDatas: []
   eventData:
   - {fileID: 11400000, guid: 60354efe6c241734dbd7544a43f1045b, type: 2}
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
@@ -276,3 +333,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

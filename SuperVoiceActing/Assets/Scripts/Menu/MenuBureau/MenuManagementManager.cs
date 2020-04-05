@@ -22,17 +22,20 @@ namespace VoiceActing
         \* ======================================== */
 
         [SerializeField]
+        private int debugActorLevel = 20;
+        [SerializeField]
         InitialPlayerData playerDataDebug;
         [SerializeField]
         PlayerData playerData;
+
+        [Header("Timeline")]
         [SerializeField]
         CalendarData calendarData;
         [SerializeField]
         private RandomEventDatabase randomEventDatabase;
         [SerializeField]
         private GameTimelineData gameTimelineData;
-        [SerializeField]
-        private int debugActorLevel = 20;
+
 
         [Header("Managers")]
         [SerializeField]
@@ -40,7 +43,7 @@ namespace VoiceActing
         [SerializeField]
         private MenuManagementContract managementContract;
 
-        [Header("Managers")]
+        [Header("Managers to initialize")]
         [SerializeField]
         private MenuContratManager contractManager;
         [SerializeField]
@@ -58,7 +61,7 @@ namespace VoiceActing
         [SerializeField]
         private MenuContractMoney moneyManager;
 
-        [Header("Managers")]
+        [Header("Menu Studio")]
         [SerializeField]
         private GameObject menuStudioBlackscreen;
         [SerializeField]
@@ -69,19 +72,23 @@ namespace VoiceActing
         private MenuNextWeek menuNextWeek;
         [SerializeField]
         private MenuContractEnd menuContractEnd;
+        [SerializeField]
+        private GameObject mouseManager;
 
 
         [Header("Event Start Week")]
         [SerializeField]
         StoryEventManager storyEventStartWeek;
         [SerializeField]
-        GameObject storyEventTexture;
-        [SerializeField]
         GameObject storyEventPrefab;
 
         [Header("Sound")]
         [SerializeField]
         private AudioClip defaultDekstopTheme;
+
+
+
+        bool noDrawContractThisWeek = false;
 
 
 
@@ -120,7 +127,6 @@ namespace VoiceActing
             else
             {
                 storyEventPrefab.SetActive(true);
-                storyEventTexture.SetActive(true);
                 storyEventStartWeek.CreateScene(playerData.NextStoryEventsStartWeek[0]);
             }
             menuStudioMain.gameObject.SetActive(playerData.MenuStudioUnlocked);
@@ -161,10 +167,10 @@ namespace VoiceActing
             gameTimelineData.CheckEventsTimeline(playerData);
             menuActorsLifeManager.VoiceActorsWork(playerData.VoiceActors, playerData.ContractAvailable);
 
-            managementContract.GachaContract(playerData);
+            if(noDrawContractThisWeek == false)
+                managementContract.GachaContract(playerData);
             managementContract.ContractNextWeek(playerData);
             managementContract.CheckContractCooldown(playerData);
-
 
             playerData.SetBestActor();
         }
@@ -173,27 +179,46 @@ namespace VoiceActing
         // Appelé après l'anim de next week
         public void NextWeekEnd()
         {
-            if (playerData.NextStoryEventsStartWeek.Count == 0)
-            {
-                CheckContractDone();
-            }
-            else
-            {
-                storyEventStartWeek.StartEvent(playerData.NextStoryEventsStartWeek[0]);
-                playerData.NextStoryEventsStartWeek.RemoveAt(0);
-            }
+            StartCoroutine(WeekStartCoroutine());
         }
 
+        private IEnumerator WeekStartCoroutine()
+        {
+            // On joue les story events
+            while (playerData.NextStoryEventsStartWeek.Count != 0) 
+            {
+                StoryEventData currentStoryEvent = playerData.NextStoryEventsStartWeek[0];
+                playerData.NextStoryEventsStartWeek.RemoveAt(0);
+                yield return storyEventStartWeek.StartEvent(currentStoryEvent);
+                if(playerData.NextStoryEventsStartWeek.Count == 0)
+                {
+                    InitialiazeManagers();
+                    storyEventPrefab.SetActive(false);
+                    menuNextWeek.SkipTransition();
+                    yield return new WaitForSeconds(1f);
+                }
+            }
 
+
+            // On check les contrats réussis
+            yield return CoroutineProgressAnimation();
+            if (menuContractEnd.CheckContractDone(playerData) == false) // S'il y a des contrat terminés on check contract done sinon go phone
+            {
+                CheckPhoneEvents();
+            }
+
+            mouseManager.SetActive(true);
+            contractManager.ActivateInput(true);
+            CheckMoneyGain();
+        }
 
         // Appelé après un event, soit on en fait un autre soit on part en jeu
-        public void CheckNextStartEvent()
+        /*public void CheckNextStartEvent()
         {
             if (playerData.NextStoryEventsStartWeek.Count == 0)
             {
                 InitialiazeManagers();
                 storyEventPrefab.SetActive(false);
-                storyEventTexture.SetActive(false);
                 menuNextWeek.SkipTransition(); // Joue l'anim de next week
             }
             else
@@ -201,17 +226,15 @@ namespace VoiceActing
                 storyEventStartWeek.StartEvent(playerData.NextStoryEventsStartWeek[0]);
                 playerData.NextStoryEventsStartWeek.RemoveAt(0);
             }
-        }
+        }*/
 
 
 
-        private void CheckContractDone()
+        /*private void CheckContractDone()
         {
             // Bug fonction quand meme appelé quand on load
             StartCoroutine(CoroutineProgressAnimation());
-
-
-        }
+        }*/
 
         private IEnumerator CoroutineProgressAnimation()
         {
@@ -221,10 +244,10 @@ namespace VoiceActing
             yield return new WaitForSeconds(1);
             yield return contractManager.ProgressMixingContract();
             yield return null;
-            if (menuContractEnd.CheckContractDone(playerData) == false) // S'il y a des contrat terminés on check contract done sinon go phone
+            /*if (menuContractEnd.CheckContractDone(playerData) == false) // S'il y a des contrat terminés on check contract done sinon go phone
             {
                 CheckPhoneEvents();
-            }
+            }*/
         }
 
 
@@ -255,8 +278,6 @@ namespace VoiceActing
 
         public void CheckMoneyGain()
         {
-            contractManager.ActivateInput(true);
-            //if (playerData.Date.week == playerData.MonthDate[playerData.Date.month - 2]) // Nouveau mois
             if (playerData.Date.week == calendarData.GetMonthDate(playerData.Date.month - 2)) // Nouveau mois
             {
                 moneyManager.AddSalaryDatas("Entretien", -playerData.Maintenance);
@@ -264,6 +285,9 @@ namespace VoiceActing
             moneyManager.DrawMoneyGain();
             infoManager.DrawResearch(playerData.ResearchPoint);
         }
+
+
+
 
 
 

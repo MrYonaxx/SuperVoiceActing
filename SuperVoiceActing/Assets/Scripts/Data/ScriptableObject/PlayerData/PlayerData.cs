@@ -520,14 +520,14 @@ namespace VoiceActing
 
         [Title("Equipement Data")]
         [SerializeField]
-        private List<EquipementData> inventoryEquipement;
-        public List<EquipementData> InventoryEquipement
+        private List<Equipement> inventoryEquipement = new List<Equipement>();
+        public List<Equipement> InventoryEquipement
         {
             get { return inventoryEquipement; }
         }
         [SerializeField]
-        private EquipementData[] currentEquipement;
-        public EquipementData[] CurrentEquipement
+        private Equipement[] currentEquipement;
+        public Equipement[] CurrentEquipement
         {
             get { return currentEquipement; }
         }
@@ -815,22 +815,22 @@ namespace VoiceActing
                 tutoEvent.Add(initialPlayerData.InitialTutoEvent[i]);
             }
 
-            inventoryEquipement = new List<EquipementData>(initialPlayerData.InventoryDebug.Count);
+            inventoryEquipement = new List<Equipement>(initialPlayerData.InventoryDebug.Count);
             for (int i = 0; i < initialPlayerData.InventoryDebug.Count; i++)
             {
-                inventoryEquipement.Add(initialPlayerData.InventoryDebug[i]);
+                inventoryEquipement.Add(new Equipement(initialPlayerData.InventoryDebug[i]));
             }
 
-            inventoryFormation = new List<FormationData>(initialPlayerData.FormationDebug.Count);
+            /*inventoryFormation = new List<FormationData>(initialPlayerData.FormationDebug.Count);
             for (int i = 0; i < initialPlayerData.FormationDebug.Count; i++)
             {
                 inventoryFormation.Add(initialPlayerData.FormationDebug[i]);
-            }
+            }*/
 
-            currentEquipement = new EquipementData[initialPlayerData.InitialEquipement.Length];
+            currentEquipement = new Equipement[initialPlayerData.InitialEquipement.Length];
             for (int i = 0; i < initialPlayerData.InitialEquipement.Length; i++)
             {
-                currentEquipement[i] = initialPlayerData.InitialEquipement[i];
+                currentEquipement[i] = new Equipement(initialPlayerData.InitialEquipement[i]);
             }
 
             equipementCategories = new EquipementCategory[initialPlayerData.EquipementCategories.Length];

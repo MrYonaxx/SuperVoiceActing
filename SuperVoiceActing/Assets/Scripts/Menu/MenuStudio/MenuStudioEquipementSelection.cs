@@ -99,17 +99,17 @@ namespace VoiceActing
         }
 
 
-        public void CreateButtonEquipement(EquipementData eqData)
+        public void CreateButtonEquipement(Equipement eqData)
         {
             if(buttonEquipementList.Count <= indexCreateList) // On doit créer un nouveau bouton
             {
                 buttonEquipementList.Add(Instantiate(buttonPrefab, buttonScrollListTransform));
-                buttonEquipementList[indexCreateList].DrawEquipement(eqData);
+                buttonEquipementList[indexCreateList].DrawEquipement(eqData, eqData.Maintenance, indexCreateList);
                 buttonsList.Add(buttonEquipementList[indexCreateList].GetRectTransform());
             }
             else // On peut réécrire un bouton existant
             {
-                buttonEquipementList[indexCreateList].DrawEquipement(eqData);
+                buttonEquipementList[indexCreateList].DrawEquipement(eqData, eqData.Maintenance, indexCreateList);
                 if (buttonsList.Count <= indexCreateList)
                     buttonsList.Add(buttonEquipementList[indexCreateList].GetRectTransform());
                 else
@@ -146,7 +146,7 @@ namespace VoiceActing
 
 
 
-        private void DrawEquipementSelectedDetail(EquipementData eqData)
+        private void DrawEquipementSelectedDetail(Equipement eqData)
         {
             atkDetailLabel.color = colorZero;
             defDetailLabel.color = colorZero;

@@ -455,10 +455,11 @@ namespace VoiceActing
                     screenManager[index].SetActive(true);
                     if (cameraScreen[index] != null)
                     {
-                        cameraScreen[index].SetActive(true);
-                        raycasters[index].enabled = true;
-                        mouseCursor.SetParent(raycasters[index].gameObject.transform);
+                        cameraScreen[index].SetActive(true);                      
                     }
+                    raycasters[index].enabled = true;
+                    mouseCursor.SetParent(raycasters[index].gameObject.transform);
+                    mouseCursor.localScale = Vector3.one;
                 }
             }
         }

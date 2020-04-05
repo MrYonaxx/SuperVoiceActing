@@ -30,12 +30,34 @@ MonoBehaviour:
   description:
   - "L'entreprise [Nom] cherche une voix sympathique pour accompagner ses clients
     dans leurs d\xE9marches."
+  franchise:
+    Enabled: 0
+    isSeries: 0
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 0
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 1
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
   characters:
   - mainCharacter: 1
     optional: 0
     charactersProfil:
-    - names:
-      - "R\xE9pondeur"
+    - roleName: 
+      roleNames: []
+      roleType: 0
       roleSprite: {fileID: 0}
       lineMin: 20
       lineMax: 50
@@ -66,24 +88,28 @@ MonoBehaviour:
         fear: 2
         trust: 6
       actorLocked: {fileID: 0}
-      artificialIntelligence: []
+      skillRoleSelection: []
   producerMP: 0
   artificialIntelligence: []
   textDataContract:
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 1
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Bonjour, vous \xEAtes bien chez [Nom]."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 7
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 30
@@ -97,20 +123,26 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 0
       - wordIndex: 5
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Veuillez ne pas quitter, nous allons prendre votre appel.
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 8
-        hpMax: 15
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 30
@@ -123,12 +155,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 3
+      eventData: []
+      customTextDatas: []
     - text: "Ne quittez pas, nous allons prendre suite \xE0 votre appel."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 8
-        hpMax: 14
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 30
@@ -141,20 +175,26 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 1
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 2
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: "Nous nous efforcons d'\xE9courter votre attente."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 9
-        hpMax: 17
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 30
@@ -167,12 +207,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
+      customTextDatas: []
     - text: "Veuillez conserver l'\xE9coute, nous recherchons votre correspondant."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 19
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 30
@@ -185,20 +227,26 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
+      customTextDatas: []
   - textDataCondition:
-      all: 0
-      nbPhraseMin: 1
-      nbPhraseMax: 4
-      condition: 0
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
       dictID: 
       dictCondition: 
+      copy: 0
+      textCopy: -1
     textDataPossible:
     - text: Chez [Nom], 93% des clients sont satisfaits.
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 10
-        hpMax: 12
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 70
@@ -211,12 +259,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 2
+      eventData: []
+      customTextDatas: []
     - text: "Nous vous souhaitons de bonnes f\xEAtes."
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 8
-        hpMax: 13
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 30
         joy: 100
@@ -229,12 +279,14 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 0
+      eventData: []
+      customTextDatas: []
     - text: Nos services sont actuellement indisponibles.
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 7
-        hpMax: 14
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 30
@@ -248,12 +300,14 @@ MonoBehaviour:
       enemyWeakPoints:
       - wordIndex: 1
       - wordIndex: 4
+      eventData: []
+      customTextDatas: []
     - text: "Le temps de r\xE9ponse moyen de cet appel est d'environ 2 minutes"
-      textStats:
-        interlocuteurID: 0
-        linked: 0
-        hpMin: 15
-        hpMax: 21
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
       enemyResistance:
         neutral: 0
         joy: 0
@@ -266,9 +320,12 @@ MonoBehaviour:
         trust: 30
       enemyWeakPoints:
       - wordIndex: 10
+      eventData: []
+      customTextDatas: []
   eventData:
   - {fileID: 11400000, guid: 714426cc46973b54aa8356c4049bece9, type: 2}
   eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
   eventEndContract: {fileID: 0}
   canGameOver: 0
   eventGameOver: {fileID: 0}
@@ -276,3 +333,5 @@ MonoBehaviour:
   battleTheme: {fileID: 0}
   victoryTheme: {fileID: 0}
   sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

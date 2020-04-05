@@ -10,11 +10,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace VoiceActing
 {
-	public class ButtonEquipement : MonoBehaviour
-	{
+	public class ButtonEquipement : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+    {
         #region Attributes 
 
         /* ======================================== *\
@@ -30,7 +31,15 @@ namespace VoiceActing
         [SerializeField]
         TextMeshProUGUI equipementCost;
 
-        EquipementData equipement;
+        [SerializeField]
+        int buttonIndex = 0;
+        [SerializeField]
+        UnityEventInt eventOnEnter;
+        [SerializeField]
+        UnityEventInt eventOnClick;
+
+
+        Equipement equipement;
 
         #endregion
 
@@ -49,7 +58,7 @@ namespace VoiceActing
          *                FUNCTIONS                 *
         \* ======================================== */
 
-        public void DrawEquipement(EquipementData eqData)
+        public void DrawEquipement(Equipement eqData, int money, int i)
         {
             if (eqData == null)
             {
@@ -59,9 +68,10 @@ namespace VoiceActing
             else
             {
                 equipementName.text = eqData.EquipmentName;
-                equipementCost.text = eqData.Maintenance.ToString();
+                equipementCost.text = money.ToString();
             }
             equipement = eqData;
+            buttonIndex = i;
         }
 
         public RectTransform GetRectTransform()
@@ -69,7 +79,7 @@ namespace VoiceActing
             return equipementRectTransform;
         }
 
-        public EquipementData GetEquipement()
+        public Equipement GetEquipement()
         {
             return equipement;
         }
@@ -94,7 +104,15 @@ namespace VoiceActing
         }
 
 
-
+        public void OnPointerEnter(PointerEventData data)
+        {
+            eventOnEnter.Invoke(buttonIndex);
+        }
+        public void OnPointerClick(PointerEventData data)
+        {
+            if (data.button == PointerEventData.InputButton.Left)
+                eventOnClick.Invoke(buttonIndex);
+        }
 
         #endregion
 

@@ -196,21 +196,6 @@ namespace VoiceActing
 
         public void ContractNextWeek(PlayerData playerData)
         {
-            /*for (int i = 0; i < playerData.ContractAccepted.Count; i++)
-            {
-                if (playerData.ContractAccepted[i] != null)
-                {
-                    playerData.ContractAccepted[i].WeekRemaining -= 1;
-                    if (playerData.ContractAccepted[i].CurrentLine == playerData.ContractAccepted[i].TotalLine)
-                    {
-                        continue;
-                    }
-                    if (playerData.ContractAccepted[i].WeekRemaining <= 0)
-                    {
-                        playerData.ContractAccepted.RemoveAt(i);
-                    }
-                }
-            }*/
             for (int i = 0; i < playerData.ContractAvailable.Count; i++)
             {
                 playerData.ContractAvailable[i].WeekRemaining -= 1;

@@ -24,8 +24,7 @@ namespace VoiceActing
 
 
         [Title("Menu Studio Equipement")]
-        [InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
-        // The one who own all stats
+        //[InfoBox("Joie > Tristesse > Dégoût > Colère > Surprise > Douceur > Peur > Confiance")]
         [SerializeField]
         PlayerData playerData;
 
@@ -135,11 +134,11 @@ namespace VoiceActing
         {
             for(int i = 0; i < playerData.CurrentEquipement.Length; i++)
             {
-                buttonEquipements[i].DrawEquipement(playerData.CurrentEquipement[i]);
+                buttonEquipements[i].DrawEquipement(playerData.CurrentEquipement[i], playerData.CurrentEquipement[i].Maintenance, i);
             }
         }
 
-        private void DrawEquipementSelectedDetail(EquipementData eqData)
+        private void DrawEquipementSelectedDetail(Equipement eqData)
         {
             atkDetailLabel.color = colorZero;
             defDetailLabel.color = colorZero;

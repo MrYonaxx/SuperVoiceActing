@@ -143,7 +143,7 @@ namespace VoiceActing
             {
                 characterDialogue.PlayAnimBalloon(-1);
                 storyManager.DrawName(characterDialogue.GetVoiceActorData().ActorName);
-                storyManager.CameraCenter.transform.position = characterDialogue.transform.position;
+                storyManager.CameraCenter.transform.position = characterDialogue.GetPosition() * -1000;
             }
             else
             {

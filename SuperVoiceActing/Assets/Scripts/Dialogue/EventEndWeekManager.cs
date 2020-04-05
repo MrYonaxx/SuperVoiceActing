@@ -35,27 +35,30 @@ namespace VoiceActing
                 randomEventList.Add(playerData.NextRandomEvent[i]);
 
             if (storyEventManager.DebugData() == false)
-                CheckEventEndWeek();
+                StartCoroutine(CheckEventEndWeek());
         }
 
 
-        public void CheckEventEndWeek()
+        /*public void CheckEventEndWeek()
         {
-            if(playerData.NextStoryEvents.Count != 0)
+
+        }*/
+
+        public IEnumerator CheckEventEndWeek()
+        {
+            while (playerData.NextStoryEvents.Count != 0)
             {
-                storyEventManager.StartEvent(playerData.NextStoryEvents[playerData.NextStoryEvents.Count - 1]);
-                playerData.NextStoryEvents.RemoveAt(playerData.NextStoryEvents.Count-1);
+                Debug.Log(playerData.NextStoryEvents[playerData.NextStoryEvents.Count - 1]);
+                yield return storyEventManager.StartEvent(playerData.NextStoryEvents[playerData.NextStoryEvents.Count - 1]);
+                playerData.NextStoryEvents.RemoveAt(playerData.NextStoryEvents.Count - 1);
             }
-            else if (randomEventList.Count != 0)
+            while (randomEventList.Count != 0)
             {
-                storyEventManager.StartEvent(randomEventDatabase.GetRandomEvent(randomEventList[0]));
+                yield return storyEventManager.StartEvent(randomEventDatabase.GetRandomEvent(randomEventList[0]));
                 playerData.NextRandomEvent.RemoveAt(0);
                 randomEventList.RemoveAt(0);
             }
-            else
-            {
-                SceneManager.LoadScene("Bureau", LoadSceneMode.Single);
-            }
+            SceneManager.LoadScene("Bureau", LoadSceneMode.Single);
         }
 
     } // EventEndWeekManager class

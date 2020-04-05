@@ -70,6 +70,7 @@ namespace VoiceActing
 
         public void DrawChoices(StoryEventChoices data)
         {
+            Debug.Log(data.StoryChoices);
             choiceSize = data.Answers.Length;
             indexSelected = -1;
             choiceSelected = false;

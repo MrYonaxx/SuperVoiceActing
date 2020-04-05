@@ -1,0 +1,361 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810afdeecb40d084481ec90ff6bc382e, type: 3}
+  m_Name: LV3-CuisineDesRois
+  m_EditorClassIdentifier: 
+  contractName: La cuisine des [Nom]
+  level: 3
+  contractType: 1
+  salaryMin: 0
+  salaryMax: 0
+  mixingMin: 0
+  mixingMax: 0
+  weekMin: 3
+  weekMax: 7
+  expGain: 20
+  expBonus: 100
+  contractDictionnary:
+  - nameID: '[Nom]'
+    namesDictionnary:
+    - Rois
+    - Seigneurs
+    - Ducs
+  description:
+  - "La cuisine des [Nom] est une \xE9mission de t\xE9l\xE9- r\xE9alit\xE9 sur Le
+    Chef, un cuisinier hors pair venant aux secours des pires restaurants du monde.\n\nLe
+    mot d'ordre est \"Emotion\". Les spectateurs doivent vibrer, ressentir le drame
+    humain au naturel. Ils ne doivent pas se rendre compte que ce n'est que de la
+    t\xE9l\xE9vision."
+  franchise:
+    Enabled: 1
+    isSeries: 1
+    canScale: 1
+    canStartFranchiseAtMin: 0
+    canStartAtFranchiseAtMax: 10
+    franchiseCountIncreaseMin: 1
+    franchiseCountIncreaseMax: 2
+    canReboot: 0
+    chanceOfRebootAtEachIteration: 0
+    alwaysRebootAtEnd: 1
+    canRemaster: 0
+    chanceOfRemasterAtEachIteration: 100
+    alwaysRemasterAtEnd: 1
+    remasterSuffix: 
+    prefix: 0
+    priorityScaling: 0
+    priorityOrder: 0
+    priorityOrderNoLoop: 0
+    priorityRandom: 0
+    contractDatas: []
+  characters:
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: Le Chef
+      roleNames: []
+      roleType: 1
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 15
+        surprise: 15
+        sweetness: 0
+        fear: 0
+        trust: 5
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 20
+        surprise: 20
+        sweetness: 0
+        fear: 0
+        trust: 10
+      actorLocked: {fileID: 0}
+      skillRoleSelection: []
+  - mainCharacter: 1
+    optional: 0
+    charactersProfil:
+    - roleName: 
+      roleNames:
+      - Martin
+      - Simon
+      - Florian
+      roleType: 0
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection: []
+  - mainCharacter: 1
+    optional: 1
+    charactersProfil:
+    - roleName: 
+      roleNames:
+      - Sylvia
+      - Mathilde
+      - Dominique
+      roleType: 0
+      roleSprite: {fileID: 0}
+      lineMin: 0
+      lineMax: 0
+      fanMin: 0
+      fanMax: 0
+      atkMin: 0
+      atkMax: 0
+      timbre: {x: 0, y: 0}
+      timbreRand: {x: 0, y: 0}
+      characterStatMin:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      characterStatMax:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      actorLocked: {fileID: 0}
+      skillRoleSelection: []
+  producerMP: 0
+  artificialIntelligence: []
+  textDataContract:
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "Ecoutez-moi, je suis l\xE0 pour vous aider \xE0 remettre ce "
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: "Et tout ce que je vois c'est une cuisine d\xE9gueulasse !"
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: Et tout ce que je vois c'est un personnel qui se fout de ma gueule !
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 0
+      characterCondition: 0
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: "L\xE0, le chef commence \xE0 insulter mon \xE9tablissement."
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: Du coup, je m'emporte et je lui dis les choses en face.
+      interlocuteurID: 1
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  - textDataCondition:
+      all: 1
+      nbMin: 0
+      nbMax: 0
+      conditionChara: 1
+      characterCondition: 2
+      conditionDico: 0
+      dictID: 
+      dictCondition: 
+      copy: 0
+      textCopy: -1
+    textDataPossible:
+    - text: Quand j'ai vu mon mari et le Chef se disputait, j'ai pas pu retenir mes
+        larmes.
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+    - text: J'ai... j'ai eu honte. Honte de mon mari.
+      interlocuteurID: 0
+      advanced: 0
+      hpMin: 0
+      hpMax: 0
+      context: 
+      enemyResistance:
+        neutral: 0
+        joy: 0
+        sadness: 0
+        disgust: 0
+        anger: 0
+        surprise: 0
+        sweetness: 0
+        fear: 0
+        trust: 0
+      enemyWeakPoints: []
+      eventData: []
+      customTextDatas: []
+  eventData: []
+  eventAcceptedContract: {fileID: 0}
+  eventBeforeSession: {fileID: 0}
+  eventEndContract: {fileID: 0}
+  canGameOver: 0
+  eventGameOver: {fileID: 0}
+  changeBGM: 0
+  battleTheme: {fileID: 0}
+  victoryTheme: {fileID: 0}
+  sessionLock: 0
+  debugHPMin: 0
+  debugHPMax: 0

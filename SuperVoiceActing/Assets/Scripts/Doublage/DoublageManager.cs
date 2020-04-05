@@ -734,8 +734,6 @@ namespace VoiceActing
                 lineManager.FeedbackNewLineSwitch(false);
             }
             battleParameter.IndexCurrentCharacter = enemyManager.GetInterlocutor();
-            //actorsManager.SetIndexActors(enemyManager.GetInterlocutor());
-            //roleManager.SetIndexRole(enemyManager.GetInterlocutor());
 
             roleManager.SetIndexRole(battleParameter.IndexCurrentCharacter);
             emotionAttackManager.SwitchCardTransformToRessource();

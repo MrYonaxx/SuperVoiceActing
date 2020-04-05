@@ -58,7 +58,7 @@ namespace VoiceActing
     public class GameTimelineEventtData
     {
 
-        [HorizontalGroup("Hey", PaddingLeft = 50)]
+        [HorizontalGroup("Hey", PaddingLeft = 20)]
         [SerializeField]
         public StoryEventData[] eventsPhone;
 
@@ -66,9 +66,16 @@ namespace VoiceActing
         [SerializeField]
         public StoryEventData[] eventStartWeek;
 
-        [HorizontalGroup("Hey", PaddingRight = 50)]
+        [HorizontalGroup("Hey", PaddingRight = 20)]
         [SerializeField]
         public StoryEventData[] eventEndWeek;
+
+        [HorizontalGroup("Hey5", LabelWidth = 120, Width = 50, PaddingLeft = 20, PaddingRight = 20)]
+        [SerializeField]
+        public bool noRandEvent = false;
+        [HorizontalGroup("Hey5", LabelWidth = 120, Width = 50, PaddingLeft = 20, PaddingRight = 20)]
+        [SerializeField]
+        public bool noRandContract = false;
     }
 
 

@@ -30,7 +30,7 @@ namespace VoiceActing
 
 
 
-    [CreateAssetMenu(fileName = "RandomEventDatabase", menuName = "RandomEvent/RandomEventDatabase", order = 1)]
+    [CreateAssetMenu(fileName = "RandomEventDatabase", menuName = "Database/RandomEventDatabase", order = 1)]
     public class RandomEventDatabase : ScriptableObject
 	{
         [TabGroup("RandomStoryEvents")]
